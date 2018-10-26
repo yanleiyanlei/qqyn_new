@@ -1,0 +1,50 @@
+<!--pages/searchnull/searchnull.wxml-->
+<view class='search'>
+  <view>
+    <text class='iconfont icon-sousuo'></text>
+    <input confirm-type="search" bindconfirm="search" bindinput='searchValue'></input>
+  </view>
+  <text class='btn' bindtap='searchbtn'>搜索</text>
+</view>
+
+<!--内容为空，提示  -->
+<view class='hint'>
+  <image src='http://m.77farmers.com/Public/Home/img/searchnull.png'></image>
+  <view>很抱歉，没有找到相关产品~</view>
+  <view>换个关键词吧</view>
+</view>
+<!--推荐商品  -->
+<view class='recommend'>
+  <view class='recommend-tit'>
+    <image src='../../image/index/m_xian.png'></image>
+    推荐商品
+    <image src='../../image/index/m_xian.png'></image>
+    <view>按您所需，为您优选</view>
+  </view>
+<!--循环商品  -->
+  <view class='main'>
+     <block wx:for="{{goods}}">
+      <view class='goods'>
+       <!--判断第二件0元购商品标示  -->
+        <!-- <image wx:if="{{item.goods_id==23||item.goods_id==347||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
+        <!--判断新品和预售标示  -->
+        <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+        <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+        <image src="{{item.thumbnails}}" data-goodsid='{{item.goods_id}}' bindtap='goodsDetails'  />
+        <text class='goodsname'> {{item.goods_name}}</text>
+        <text class='goodsdis'>{{item.goods_remark}}</text>
+        <text class='goodsweight'>{{item.spec_name}}</text>
+        <view>
+          <text class='goodsprice'>￥{{item.shop_price}}</text>
+          <text class='goodsdelprice'  wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
+          <block wx:for="{{cartList}}" wx:for-item="item2">
+            <view wx:if="{{item.goods_id==item2.goods_id}}" class="cartnum">{{item2.goods_num}}</view>  
+          </block>
+          <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+          <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}"   bindtap="cart"></image>
+        </view>
+      </view>
+    </block> 
+  
+  </view>
+</view>

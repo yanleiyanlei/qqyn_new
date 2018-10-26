@@ -1,0 +1,48 @@
+/* pages/m-setting/m-setting.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.listBox {
+  position: relative;
+  width: 100%;
+  padding: 0 32rpx;
+  background: #fff;
+}
+
+.list {
+  background: #fff;
+  width: 100%;
+  font-size: 32rpx;
+  height: 100rpx;
+  background: #fff;
+  position: relative;
+  right: 0;
+  top: 0;
+}
+
+.list text {
+  line-height: 100rpx;
+}
+
+.list .iconfont {
+  color: #333;
+  float: right;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+
+.list image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  float: right;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+}
+
+.list .one {
+  color: #303030;
+  font-size: 32rpx;
+}

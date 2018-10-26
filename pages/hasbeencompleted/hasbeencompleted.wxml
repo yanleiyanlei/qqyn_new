@@ -1,0 +1,17 @@
+<!-- 拼步数活动已完成 -->
+<page>
+  <view class="hasbeen">
+  	  <image src="https://m.7710mall.com/Uploads/xxc/m_step_bg.png" mode="scaleToFill" class="slide-image"/>
+  	  <image src="https://m.7710mall.com/Uploads/xxc/m_step_good.png" class="eggs"></image>
+  	  <view class="titles"> 
+  	  	 <text class="ones">恭喜您任务完成！</text>
+         <text class="twos">可获得{{rice_rand}}克大米</text>
+  	  </view>
+      
+  
+  	  <view class="btntext">
+  	  	  <text bindtap='pagesm2'>再组一队</text>
+  	  	  <text class="qxbtn" bindtap='tiaocar'>去商场逛逛</text>
+  	  </view>
+  </view>
+</page>

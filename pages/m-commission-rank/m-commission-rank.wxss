@@ -1,0 +1,113 @@
+@import "../../lib/style/public.wxss";
+
+.top {
+  width: 100%;
+  height: 300rpx;
+  position: relative;
+}
+
+.top .bg {
+  width: 100%;
+  height: 220rpx;
+}
+
+.top .con {
+  width: 684rpx;
+  height: 160rpx;
+  position: absolute;
+  top: 140rpx;
+  left: 50%;
+  margin-left: -342rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  -ms-border-radius: 10rpx;
+  -o-border-radius: 10rpx;
+}
+
+.left text, .right text {
+  font-size: 48rpx;
+  color: #ff712b;
+  line-height: 160rpx;
+}
+
+.left, .right {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+  position: relative;
+  overflow: hidden；;
+}
+
+.center image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  position: absolute;
+  top: -80rpx;
+  left: 50%;
+  margin-left: -80rpx;
+}
+
+.center .user-name {
+  padding: 10rpx 20rpx;
+  width: 100%;
+  font-size: 28rpx;
+  color: #303030;
+  position: absolute;
+  bottom: 0;
+  top: 80rpx;
+  text-align: center;
+  line-height: 36rpx;
+}
+
+/* 列表 */
+
+.list {
+  padding-left: 33rpx;
+  background: #fff;
+  /* height: 100rpx; */
+}
+
+.lists {
+  height: 100rpx;
+  /* border-bottom: 1rpx solid #ccc; */
+}
+
+.lists {
+  font-size: 30rpx;
+  line-height: 100rpx;
+  color: #303030;
+}
+
+.lists view {
+  float: left;
+  padding: 0 10rpx;
+}
+
+.lists .one {
+  width: 180rpx;
+}
+
+.lists .two {
+  width: 340rpx;
+}
+
+.lists .three {
+  width: 180rpx;
+  text-align: right;
+}
+
+.fresh-time {
+  text-align: center;
+  font-size: 30rpx;
+  color: #666;
+  line-height: 60rpx;
+}

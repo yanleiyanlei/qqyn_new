@@ -1,0 +1,136 @@
+/* pages/m-charge/m-charge.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.prompting {
+  width: 100%;
+  height: 65rpx;
+  background: none;
+  font-size: 24rpx;
+  line-height: 65rpx;
+  padding-left: 30rpx;
+}
+
+.balance {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  padding: 0rem 30rpx 0 30rpx;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  line-height: 100rpx;
+}
+
+.balance text {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.balance .balan {
+  font-size: 28rpx;
+  margin-left: 50rpx;
+  display: block;
+  color: #303030;
+  -webkit-box-flex: 3;
+}
+
+.balance .balan text {
+  font-size: 22rpx;
+}
+
+.balance .balan-rig {
+  font-size: 30rpx;
+}
+
+/*////////  */
+
+.amount {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 10rpx;
+  padding: 35rpx 30rpx 30rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.amount-tit {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.amount .amount-smal {
+
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #ff712b;
+  margin-top: 17rpx;
+  line-height: 80rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+}
+
+.amount-smal view {
+  float: left;
+  margin-left: 57rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.amount-smal view text{
+  float: left;
+}
+
+.amount-smal view input {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: none;
+  font-size: 30rpx;
+  color: #303030;
+  float: left;
+}
+
+.amount .Howmuchimpact {
+  width: 100%;
+  height: auto;
+  background: none;
+}
+
+.amount .Howmuchimpact .list {
+  float: left;
+  width: 220rpx;
+  height: 130rpx;
+  background: none;
+  border: 1rpx solid #bfbfbf;
+  border-radius: 10rpx;
+  margin: 0 5rpx;
+  text-align: center;
+  margin-bottom: 8rpx;
+}
+.amount .Howmuchimpact .active{
+  border:1rpx solid #ff712b;
+}
+.amount .Howmuchimpact .list .one {
+  font-size: 30rpx;
+  color: #303030;
+  padding-top: 16rpx;
+}
+
+.amount .Howmuchimpact .list .two {
+  -webkit-text-size-adjust: none;
+  font-size: 24rpx;
+  color: #aaa;
+  margin-top: 20rpx;
+}
+
+.pay {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+}

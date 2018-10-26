@@ -1,0 +1,71 @@
+/* pages/search/search.wxss */
+@import"../../lib/style/iconfont.wxss";
+@import"../../lib/style/mainGoods.wxss";
+page{
+  background: #f7f7f7;
+}
+/*头部搜索  */
+.search{
+  padding: 0 32rpx;
+  display: flex;
+  line-height: 110rpx;
+  height: 110rpx;
+  border-bottom: 1rpx solid #b5b5b5;
+  font-size: 32rpx;
+  background: #fff;
+}
+.search view{
+  width: 580rpx;
+  height: 70rpx;
+  background: #f3f3f3;
+  border-radius: 10rpx;
+  display: flex;
+  line-height: 70rpx;
+  margin-top: 22rpx;
+}
+.search view text{
+  font-size: 40rpx;
+  margin: 0 15rpx;
+}
+.search view input{
+  width: 480rpx;
+  height: 65rpx;
+}
+.btn{
+  margin-left: 20rpx;
+}
+
+/*提示  */
+.hint{
+  width: 100%;
+  height: 360rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #aaa;
+  background: #fff;
+}
+.hint image{
+  width: 90rpx;
+  height: 93rpx;
+  margin-top: 95rpx;
+  margin-bottom: 45rpx;
+}
+
+/*推荐商品  */
+.recommend{
+  background: #fff;
+  margin-top: 10rpx;
+}
+.recommend .recommend-tit{
+  font-size: 32rpx;
+  color: #303030;
+  text-align: center;
+}
+.recommend .recommend-tit image{
+  height: 40rpx;
+  width: 40rpx;
+}
+.recommend .recommend-tit view{
+  color: #ff712b;
+  font-size: 24rpx;
+}

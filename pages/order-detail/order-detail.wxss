@@ -1,0 +1,207 @@
+/* pages/order-detail/order-detail.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.address {
+  background: #fff;
+  padding: 13rpx 32rpx;
+}
+
+.address .ico {
+  float: left;
+}
+
+.address .ico text {
+  font-size: 32rpx;
+  line-height: 86rpx;
+  margin-right: 22rpx;
+  color: #565656;
+}
+
+.address .address-info {
+  float: left;
+  width: 600rpx;
+}
+
+.address .address-info view {
+  line-height: 43rpx;
+}
+
+.address .address-info text {
+  color: #303030;
+  font-size: 28rpx;
+}
+
+/* 商品 */
+
+.order-info {
+  background: #fff;
+  margin-top: 10rpx;
+}
+
+.order-info .order-Num {
+  height: 80rpx;
+  padding: 0 32rpx;
+}
+
+.order-info .order-Num .one {
+  font-size: 26rpx;
+  color: #303030;
+  line-height: 80rpx;
+}
+
+.order-info .order-Num .two {
+  font-size: 26rpx;
+  color: #ff712b;
+  line-height: 80rpx;
+  float: right;
+}
+
+.order-info .good {
+  padding: 30rpx 32rpx;
+   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box; 
+}
+
+.order-info .good .left {
+  float: left;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.order-info .good .left image {
+  width: 100%;
+  height: 100%;
+}
+
+.order-info .good .right {
+  float: left;
+  margin-left: 25rpx;
+  width: 500rpx;
+  height: 160rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.order-info .good .right .goods-name {
+  font-size: 32rpx;
+  color: #303030;
+  line-height: 55rpx;
+}
+
+.order-info .good .right .goods-feature {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 55rpx;
+}
+
+.order-info .good .right .goods-price {
+  font-size: 32rpx;
+  color: #ff712b;
+  position: absolute;
+  bottom: 0;
+}
+
+.order-info .good .right .number {
+  font-size: 26rpx;
+  float: right;
+  line-height: 55rpx;
+}
+
+.box {
+  height: 440rpx;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 70rpx;
+  
+}
+
+.box .more {
+  width: 100%;
+  text-align: center;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #eee;
+  position: absolute;
+  bottom: 0;
+  color: #303030;
+  font-size: 24rpx;
+}
+
+/* 价格详情 */
+
+.bill {
+  background: #fff;
+  font-size: 24rpx;
+  padding: 13rpx 32rpx;
+}
+
+.bill view {
+  line-height: 50rpx;
+}
+
+.bill text {
+  color: #666;
+}
+
+.bill .right {
+  float: right;
+}
+
+/* 快递 */
+
+.delivery-info {
+  background: #fff;
+  padding: 13rpx 32rpx;
+
+}
+
+.delivery-info text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 43rpx;
+}
+
+/* 操作 */
+
+.mdd-op {
+  width: 686rpx;
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  background: #fff;
+  padding: 0 32rpx;
+  text-align: right;
+}
+.mdd-op text {
+  display: inline-block;
+  width: 140rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+  -ms-border-radius:10rpx;
+  -o-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+}
+.mdd-op .cancel,
+.mdd-op .logistics,
+.mdd-op .delete,
+.mdd-op .link-p,
+.mdd-op .buy {
+  border: 1px solid #bababa;
+  color: #303030;
+}
+.mdd-op .pay,
+.mdd-op .receive,
+.mdd-op .quik,
+.mdd-op .estimate {
+  border: 1px solid #ff712b;
+  color: #ff712b;
+}

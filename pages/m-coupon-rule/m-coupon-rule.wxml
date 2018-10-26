@@ -1,0 +1,16 @@
+<!--优惠券规则页面-->
+
+<view class="coucpincide">
+  <view class="coucindju border-box">
+    <view class="one">什么是优惠券？</view>
+    <view class="two">优惠券是用于商品支付金额的账户电子券，在支付下单时如果订单满足优惠券使用条件则自动选择使用，一张优惠券最多只能被使用一次。</view>
+  </view>
+  <view class="rhhqu border-box">
+    <view class="one">如何获得优惠券？</view>
+    <view class="two">领取微信、QQ朋友确认收货后分享的红包获得，其他特殊活动系统将自动派发，请您及时留意。</view>
+  </view>
+  <view class="yxtime border-box">
+    <view class="one">优惠券有效期</view>
+    <view class="two">每张优惠券上标有不同时间的起始日期，请及时使用。过期的优惠券将无法继续使用。</view>
+  </view>
+</view>

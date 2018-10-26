@@ -1,0 +1,140 @@
+@import "../../lib/style/iconfont.wxss";
+.tab-left{  
+    width: 100%;  
+    height: 240rpx;  
+    border:1rpx solid #bfbfbf;
+    padding-top: 40rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    box-sizing: border-box;
+}  
+.tab-left view{  
+    width: 155rpx;
+    height: 70rpx;
+    border: 1rpx solid #bfbfbf;
+    float: left;
+    line-height: 70rpx;
+    text-align: center;
+    border-radius: 15rpx;
+    margin-bottom: 18rpx;
+    font-size: 28rpx;
+    color: #303030;
+}
+#tab-hd01{
+    margin-right: 18rpx;
+}
+#tab-hd02{
+    margin-right: 18rpx;
+}
+#tab-hd03{
+    margin-right: 18rpx;
+}
+.tab-left .active{  
+    color: #ff712b;  
+    border: 1rpx solid #ff712b;
+} 
+.contenter{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    padding-bottom: 50rpx;
+    box-sizing: border-box;
+}
+.tab-right{  
+    line-height: 160%;  
+}  
+.tab-right .right-item{  
+    padding-left: 15rpx;  
+    display: none;  
+}  
+.tab-right .right-item.active{  
+    display: block;  
+}  
+.alls{
+    width: 100%;
+    height: atuo;
+}
+.allslist{
+
+}
+.topview{
+    width: 100%;
+    height: 100rpx;
+    background: none;
+    margin-top: 20rpx;
+}
+.toptitle{
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1rpx solid #bfbfbf;
+}
+.wernz{
+    font-size: 28rpx;
+    color: #303030;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 30rpx;
+}
+.touxiangs{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    float: left;
+}
+.name_ty{
+    float: left;
+    width: auto;
+    overflow: hidden;
+    font-size: 28rpx;
+    margin-left: 15rpx;
+}
+.icon-haoping2{
+    color: #ff712b;
+    margin-left: 10rpx;
+}
+.commtime{
+    float: right;
+    font-size: 28rpx;
+}
+.imgses{
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
+    margin-bottom: 10rpx;
+}
+.models_img{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:#C0C0C0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+    padding: 300rpx 40rpx 300rpx 40rpx;  
+    box-sizing: border-box;
+}
+.models_img swiper{
+    width: 100%;
+    height: 100%; 
+}
+.imgbig{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.imgbig image{
+    width: 100%;
+    height: 100%;
+}
+.slide-image{
+    width: 100%;
+    height: 100%;
+}

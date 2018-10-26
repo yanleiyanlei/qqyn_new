@@ -1,0 +1,21 @@
+<!-- 积分规则页面 -->
+<view class="what_int">
+  <view class="h3">什么是积分?</view>
+  <view class="p">积分是会员完成指定行为给予的福利。</view>
+</view>
+<view class="how_int">
+  <view class="h4">如何获得积分？</view>
+  <view class="p clearfix">
+    <text class="b">购物获得</text>
+    <text class="i">————会员消费即可获取积分</text>
+  </view>
+  <view class="p clearfix">
+    <text class="b">评论获得</text>
+    <text class="i">————在订单完成后一周内进行有效评价，审核通过后， 可获得积分奖励</text>
+  </view>
+  <view class="p clearfix">
+    <text class="b">任务获得</text>
+    <text class="i">————每日登录签到、进行购物评价等行为，会发放相应 的积分。</text>
+  </view>
+
+</view>

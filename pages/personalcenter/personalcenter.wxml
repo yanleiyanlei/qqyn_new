@@ -1,0 +1,159 @@
+<!--小程序活动个人中心页-->
+<page>
+  <!--头部banner-->
+  <view class="banners">
+    <view class="lefttile" bindtap='goindex'>
+      进入商城
+    </view>
+    <view class='righttile'>
+      <image src='{{head_pic}}' class='toux'></image>
+      <text class='ke'>{{data.rice_nums}}g</text>
+      <text class='duih' wx:if="{{data.rice_nums>=500 && member_id==uid}}" bindtap='jumpTo' data-set="list1">兑换</text>
+       <text class='duihs' wx:if="{{data.rice_nums<500 && member_id!=uid || soldout==false}}" style="display:none">兑换</text>
+       
+    </view>
+    <view class='wenzcont'>
+      <view class='onestile'>
+        已有
+        <text>{{total_num}}</text>组队拼团
+      </view>
+      <view class='twotitl' wx:if="{{soldout==false}}">
+        <image src='https://m.7710mall.com/Uploads/xxc/m_xian.png' class='botxian'></image>
+        <text>离任务结束还有：</text>
+        <text class="time">{{h1}}</text>
+        <text class="time">:</text>
+        <text class="time">{{m1}}</text>
+        <text class="time">:</text>
+        <text class="time">{{s1}}</text>
+        <image src='https://m.7710mall.com/Uploads/xxc/m_xian.png' class='botxian'></image>
+      </view>
+        <view class='twotitl' wx:if="{{soldout==true}}">
+        <image src='https://m.7710mall.com/Uploads/xxc/m_xian.png' class='botxian'></image>
+        <text>离任务结束还有：</text>
+        <text class="time">00</text>
+        <text class="time">:</text>
+        <text class="time">00</text>
+        <text class="time">:</text>
+        <text class="time">00</text>
+        <image src='https://m.7710mall.com/Uploads/xxc/m_xian.png' class='botxian'></image>
+      </view>
+    </view>
+    <image bindtap='gomstep' src='https://m.7710mall.com/Uploads/xxc/my_team.png' class='my_team'></image>
+  </view>
+
+  <view class="hotnews" wx:if="{{rice_list.length!=0}}">
+    <view class='hothuq'>最新获取</view>
+    <view class='contontersa' style="{{cssasd}}">
+     <view class='contenter' wx:for="{{rice_list}}">
+      <text class='name'>{{item.nickname}}</text>
+      <text class='nengl' wx:if="{{item.flag==1}}">获取{{item.rice_num}}g</text>
+      <text class='nengl' wx:if="{{item.flag==0}}">兑换{{item.rice_nums}}g</text>
+      <text class='temes'>{{item.add_time}}</text>
+    </view>
+    </view>
+
+    <view class="button-wrapper">
+      <view bindtap="setLoading" style='{{loacjte}}'>
+        {{loadText}}
+        <text class='iconfont icon-arrow-down'></text>
+      </view>
+    </view>
+  </view>
+  <view class='ginre' wx:if="{{data.rice_rank.length!=0}}">
+    <view class='tittles'>
+      排行榜
+    </view>
+    <view class='paim' style='{{heigjhs}}'>
+      <view class='numweone' wx:for="{{data.rice_rank}}" bindtap='gopersonal' data-id="{{item.member_id}}">
+        <image src='https://m.7710mall.com/Uploads/xxc/1.png' class='ones' mode="aspectFill" wx:if="{{index==0}}"></image>
+         <image src='https://m.7710mall.com/Uploads/xxc/2.png' class='ones' mode="aspectFill" wx:if="{{index==1}}"></image>
+          <image src='https://m.7710mall.com/Uploads/xxc/3.png' class='ones' mode="aspectFill" wx:if="{{index==2}}"></image>
+           <image src='https://m.7710mall.com/Uploads/xxc/4.png' class='ones' mode="aspectFill" wx:if="{{index==3}}"></image>
+            <image src='https://m.7710mall.com/Uploads/xxc/5.png' class='ones' mode="aspectFill" wx:if="{{index==4}}"></image>
+             <image src='https://m.7710mall.com/Uploads/xxc/6.png' class='ones' mode="aspectFill" wx:if="{{index==5}}"></image>
+              <image src='https://m.7710mall.com/Uploads/xxc/7.png' class='ones' mode="aspectFill" wx:if="{{index==6}}"></image>
+               <image src='https://m.7710mall.com/Uploads/xxc/8.png' class='ones' mode="aspectFill" wx:if="{{index==7}}"></image>
+                <image src='https://m.7710mall.com/Uploads/xxc/9.png' class='ones' mode="aspectFill" wx:if="{{index==8}}"></image>
+                 <image src='https://m.7710mall.com/Uploads/xxc/10.png' class='ones' mode="aspectFill" wx:if="{{index==9}}"></image>
+        <image src='{{item.head_pic}}' class='oness' mode="aspectFill"></image>
+        <view class="personsort">
+          <text class="nilname">{{item.nickname}}</text>
+          <text class="nilnames">{{item.tip}}</text>
+        </view>
+        <text class='rice_nums'>
+           {{item.rice_nums}}g
+         </text>
+      </view>
+
+    </view>
+    <view class="button-wrapper" style='padding-bottom:20rpx;'>
+      <view bindtap="setLoadings" style='{{loacjtes}}'>
+        {{loadText}}
+        <text class='iconfont icon-arrow-down'></text>
+      </view>
+    </view>
+  </view>
+   
+  <view class='ginre' wx:if="{{member_id==uid && soldout==false}}">
+  
+    <view class='tittles'>
+      获取兑换
+    </view>
+    
+    <view class='giepost' wx:for="{{data.exchange}}">
+       <image src='{{item.goods_img}}' class='onesss' mode="aspectFill"></image>
+       <view class='jianmoney'>
+          <view class='tilong'>
+             稻花香大米{{item.ex_price}}元立减券
+          </view>
+           <view class='tilongs'>
+             消耗{{item.ex_rice}}克
+          </view>
+       </view>
+     <view class='goduihua' wx:if="{{data.rice_nums >= item.ex_rice && item.is_coupon!=1}}" bindtap="goduihua" data-id="{{item.id}}">
+         {{contenter}}
+     </view>
+     <view class='goduihua' wx:if="{{item.is_coupon==1}}" bindtap="goduihuas" data-id="{{item.id}}">
+         去下单
+     </view>
+      <view class='goduihuas' wx:if="{{data.rice_nums < item.ex_rice && item.is_coupon!=1}}">
+         立即兑换
+       </view>
+    </view>
+  </view>
+  
+  <!--底部活动-->
+  <view class='actices' bindtap='gowfx'>
+     <image src='https://m.7710mall.com/Uploads/xxc/hd_rk.jpg'  class='acteimg'></image>
+  </view>
+
+<!--兑换大米 弹窗-->
+ <view class='personald' style='{{centerdui}}'>
+     <view class='personcont'>
+     <image src='https://m.7710mall.com/Uploads/xxc/off.png' class='offs' bindtap='offs'></image>
+       <view class='persinti'>
+          获取兑换
+       </view>
+        <view class='giepost' wx:for="{{data.exchange}}">
+       <image src='{{item.goods_img}}' class='onesss' mode="aspectFill"></image>
+       <view class='jianmoney'>
+          <view class='tilong'>
+             稻花香大米{{item.ex_price}}元立减券
+          </view>
+           <view class='tilongs'>
+             消耗{{item.ex_rice}}克
+          </view>
+       </view>
+     <view class='goduihua' wx:if="{{data.rice_nums >= item.ex_rice && item.is_coupon!=1}}" bindtap="goduihua" data-id="{{item.id}}">
+         {{contenter}}
+     </view>
+     <view class='goduihua' wx:if="{{item.is_coupon==1}}" bindtap="goduihuas" data-id="{{item.id}}">
+         去下单
+     </view>
+      <view class='goduihuas' wx:if="{{data.rice_nums < item.ex_rice && item.is_coupon!=1}}">
+         立即兑换
+       </view>
+    </view>
+     </view>
+ </view>
+</page>

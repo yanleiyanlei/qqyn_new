@@ -1,0 +1,91 @@
+<!--修改个人信息页面-->
+<form bindsubmit='formSubmit'>
+<input name="member_id" value='{{uid}}' style="display:none"></input>
+<input name="sex" value="{{sex}}" style="display:none"></input>
+<input name="birthday" value="{{date}}" style="display:none"></input>
+
+
+
+<view class="listBox border1" style="margin-top:10rpx">
+  <view class="list" style="height:120rpx">
+    <text style="line-height:120rpx" >头像\t:\t</text>
+    <image src="{{imgSrc}}" bindtap="chooseImage"></image>
+  </view>
+</view>
+<view class="listBox ">
+  <view class="list">
+    <text>昵称\t:\t</text>
+    <input value="{{info.nickname}}" name="nickname"></input>
+  </view>
+</view>
+<view class="listBox border1 " style="margin-top:10rpx">
+  <view class="list">
+    <text>手机号\t:\t</text>
+    <input value="{{info.phone}}" name="phone"></input>
+  </view>
+</view>
+<view class="listBox border1">
+  <view class="list">
+    <text>性别\t:\t</text>
+    <block wx:if="{{sex==2}}">
+      <view data-sex="2" bindtap="sex" class="clearfix" style="float:left">
+        <text class="iconfont icon-chuangyikongjianICON_fuzhi- sexs"></text>
+        <text class="two">女</text>
+      </view>
+      <view data-sex="1" bindtap="sex" class="clearfix" style="float:left">
+        <text class="iconfont icon-yuan sexs"></text>
+        <text class="two">男</text>
+
+      </view>
+
+    </block>
+     <block wx:elif="{{sex==1}}">
+      <view data-sex="2" bindtap="sex" class="clearfix" style="float:left">
+        <text class="iconfont icon-yuan sexs"></text>
+        <text class="two">女</text>
+      </view>
+      <view data-sex="1" bindtap="sex" class="clearfix" style="float:left">
+        <text class="iconfont icon-chuangyikongjianICON_fuzhi- sexs"></text>
+        <text class="two">男</text>
+
+      </view>
+
+    </block>
+    <block wx:else>
+      <view data-sex="2" bindtap="sex" class="clearfix" style="float:left">
+        <text class="iconfont icon-yuan sexs"></text>
+        <text class="two">女</text>
+      </view>
+      <view data-sex="1" bindtap="sex" class="clearfix" style="float:left">
+        <text class="iconfont icon-yuan sexs"></text>
+        <text class="two">男</text>
+
+      </view>
+
+    </block>
+
+
+  </view>
+</view>
+<view class="listBox ">
+  <view class="list">
+    <text>生日\t:\t</text>
+    <picker mode="date" value="{{date}}" start="{{year-200}}" end="{{year}}" bindchange="bindDateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+</view>
+<!-- <view class="listBox ">
+  <view class="list">
+    <text>选择地区\t:\t</text>
+    <picker mode="region" value="{{region}}" custom-item="{{customItem}}" bindchange="bindRegionChange" name="address_sheng">
+      <view class="picker">
+        {{region[0]}},{{region[1]}},{{region[2]}}
+      </view>
+    </picker>
+  </view>
+</view> -->
+<button form-type='submit' class="tj">保存</button>
+</form>

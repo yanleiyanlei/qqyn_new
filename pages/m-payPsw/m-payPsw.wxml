@@ -1,0 +1,34 @@
+<!--个人中心支付密码页面-->
+<form bindsubmit='formSubmit'>
+
+
+<view class="content">
+  <!-- <view class="list border1">
+    <view class="clearfix">
+      <text class="one">手机号\t:\t</text>
+      <input type="text" placeholder="请输入手机号" class="in" id="dh" />
+    </view>
+  </view>
+  <view class="list border1">
+    <view class="clearfix">
+
+      <text class="one">验证码\t:\t</text>
+      <input type="text" placeholder="请输入6位验证码" class="in" id="dh" />
+      <text class="yzm">获取验证码</text>
+    </view>
+  </view> -->
+  <view class="list border1">
+    <view class="clearfix">
+      <text class="one">支付密码\t:\t</text>
+      <input type="password" placeholder="请输入6位支付密码" maxlength='6' class="in" id="dh" name="opsw"/>
+    </view>
+  </view>
+  <view class="list border1">
+    <view class="clearfix">
+      <text class="one">支付密码\t:\t</text>
+      <input type="password" placeholder="请再次输入密码" class="in" id="dh" maxlength='6' name="apsw"/>
+    </view>
+  </view>
+</view>
+<button class="tj" form-type='submit'>确认提交</button>
+</form>

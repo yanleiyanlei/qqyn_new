@@ -1,0 +1,164 @@
+<page>
+  <view class='members' style='{{overhier}}'>
+    <image src='https://m.7710mall.com/Uploads/xxc/topimg.jpg' class='topimg'></image>
+    <view class='onecont'  wx:for="{{goods}}">
+
+      <view class='boxs' style='{{topimg}}' wx:if="{{item.radios!=1}}">
+        <image src='../../image/select.png' bindtap='seless' data-id="{{item.spec_key}}" mode="aspectFill" class='seleing'></image>
+         <view class='titleson'>
+            <text class='tc-s'>套餐价</text>
+            <text class='scrices'>￥199</text>
+          </view>
+          <view class='contems'>
+           青青定制<text>安心生态超值</text>{{item.spec_name}}
+          </view>
+          <image src='https://m.7710mall.com/Uploads/xxc/xz.png'  mode="aspectFill" class='xz' wx:if="{{item.radio==1}}" bindtap='selectimg' data-id="{{item.spec_key}}"></image>
+             <image src='https://m.7710mall.com/Uploads/xxc/wxz.png' mode="aspectFill" class='xz' wx:else bindtap='selectimg' data-id="{{item.spec_key}}"></image>
+      </view>
+      <view class='zhankconte' wx:if="{{item.radios==1}}">
+       <view class='titleson'>
+            <text class='tc-s'>套餐价</text>
+            <text class='scrices'>￥199</text>
+          </view>
+          <view class='contems'>
+           青青定制<text>安心生态超值</text>套餐A
+          </view>
+        <image src='https://m.7710mall.com/Uploads/xxc/xz.png' mode="aspectFill" class='xz' wx:if="{{item.radio==1}}" bindtap='selectimg' data-id="{{item.spec_key}}"></image>
+             <image src='https://m.7710mall.com/Uploads/xxc/wxz.png' mode="aspectFill" class='xz' wx:else bindtap='selectimg' data-id="{{item.spec_key}}"></image>
+       <image src="{{item.pic}}" class='beijingt'></image>
+      </view>
+    </view>
+       <view>
+    <view class='lsgm'>
+       <view class='sboxone' bindtap='lsgm'>
+         立即购买>>
+       </view>
+       <view class='supperma'>成为超级会员</view>
+    </view>
+    </view>
+      <image src='https://m.7710mall.com/Uploads/xxc/twoimg.jpg' class='twoimg'></image>
+       <image src='https://m.7710mall.com/Uploads/xxc/twoimgs.jpg' class='twoimgs'></image>
+       <image src='https://m.7710mall.com/Uploads/xxc/thereimg.png' class='thereimg'></image>
+       <image src='https://m.7710mall.com/Uploads/xxc/thereimgs.png' class='thereimgs'></image>
+    <view class='qqwd'>
+      <view class='contes'>
+          <view class='contenone'>
+              <view class='title'>
+              1.青青优农是什么平台？
+              </view>
+              <view class='neir'>
+              答：青青优农是一家从事销售有机绿色无公害生鲜的电商交易平台。公司的经营理念源于“有机、绿色、健康”，确保销售生鲜产品，新鲜、安全、提高用户的购物体验。
+              </view>
+          </view>
+
+          <view class='contwo'>
+            <view class='title'>
+              2.怎么赚钱？
+              </view>
+              <view class='neir'>
+              答：推荐一个好友奖30元现金，并且分享商品每单立即获得10%的奖励金
+              </view>
+          </view>
+
+          <view class='contwo'>
+            <view class='title'>
+              3.需要囤货吗？
+              </view>
+              <view class='neir'>
+              答:无需囤货，商城直接发货，所有蔬菜品质保障不愁客源。
+              </view>
+          </view>
+
+          <view class='contwo'>
+            <view class='title'>
+              4.我们的优势
+              </view>
+              <view class='neir'>
+              答：我们寻找原始的味道，每一款产品精挑细选，打造高品质的健康生活。
+              </view>
+          </view>
+          <view class='contwo'>
+            <view class='title'>
+              5.怎么查看奖励？
+              </view>
+              <view class='neir'>
+              答：奖励金可以在自己的个人中心进行查看。
+              </view>
+          </view>
+      </view>
+    </view>
+    <image src='https://m.7710mall.com/Uploads/xxc/16.png' class='imgbe'></image>
+  </view>
+  <view class='goshop'  bindtap='lsgm' style='{{tabFixed}}'>
+  立即购买成为超级会员>
+  </view>
+
+  <view class='mebersi' style='{{mebersi}}'>
+  <image src='https://m.7710mall.com/Uploads/xxc/offs.png' class='offss' bindtap='offs'></image>
+    <view class='frimembe'>
+       <view class='nowdat' wx:if="{{twoshu!=' '}}">
+         <text class='myadd'>我的收货地址</text>
+         <view style='{{notadas}}'>
+         <view class='myeher' wx:for="{{twoshu}}">
+            <view class='leftanjiu' wx:if="{{item.radio=='true'}}" data-id="{{item.id}}" data-state="{{item.radio}}" bindtap='chexkadd'>
+              <text class="iconfont icon-chuangyikongjianICON_fuzhi- choose xuanz"></text>
+            </view>
+             <view class='leftanjiu' wx:else data-state="{{item.radio}}" data-id="{{item.id}}" bindtap='chexkadd'>
+                <text class="iconfont icon-yuan choose "></text>
+            </view>
+             <view class='rightle'>
+                <view class='ssxian'>
+                {{item.sheng}} {{item.shi}}
+                </view>
+                <view class='xiangxid'>
+                {{item.address_content}}
+                </view>
+             </view>
+            </view>
+         </view>
+
+         <view class='morecont' bindtap='gengdadd' style="{{nonemore}}">
+           更多收货地址
+           <text class='iconfont icon-arrow-down'></text>
+         </view>
+       </view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view>
+       <view class='addfrom' style='{{addblock}}'>
+         <text class='myadd'>填写地址</text>
+          <view class='username'>
+             <text class="bs">姓名\t:</text>
+             <input class="in" disabled="{{bloons}}" type="text" name="address_names"/>   
+           </view>
+           <view class='username'>
+             <text class="bs">手机号\t:</text>
+             <input class="in" type="number" disabled="{{bloons}}" name="address_namea"/>   
+           </view>
+            <view class='username'>
+             <text class="bs">选择城市\t:</text>
+              <picker mode="region" value="{{region}}" disabled="{{bloons}}" custom-item="{{customItem}}" bindchange="bindRegionChange" name="address_sheng">
+        <view class="picker">
+          {{region[0]}},{{region[1]}},{{region[2]}}
+        </view>
+        </picker>
+      </view>
+        <view class='username'>
+             <text class="bs">详细地址\t:</text>
+             <input class="in" type="text" disabled="{{bloons}}" name="address_name"/>   
+           </view>
+       </view>
+      
+       <view class='submits'>
+          <button formType='submit'>保存</button>
+       </view>
+       </view>
+   </form>
+    </view>
+
+  </view>
+  <!--199会员弹窗  -->
+  <view class='tanch' style='{{memberones}}'>
+    <view class='canaklt' bindtap='gomyshop'>
+    </view>
+  </view>
+</page> 

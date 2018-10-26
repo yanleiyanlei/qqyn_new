@@ -1,0 +1,45 @@
+<!-- 个人中心，我的积分页面 -->
+<view class="mypoints">
+  <view class="back-mypo">
+    <image src="https://m.7710mall.com/Uploads/xxc/backgout.png" alt="" />
+    <view class="image-rba">
+      <image src="https://m.7710mall.com/Uploads/xxc/people.png" alt="" />
+    </view>
+    <navigator style="color: #ffffff;">
+      <view class="positione dl">
+        <view class="dt">
+          <image src="https://m.7710mall.com/Uploads/xxc/a_03.png" class="log-rw" alt="" />
+        </view>
+        <view class="dd">任务积分</view>
+      </view>
+    </navigator>
+
+
+    <navigator url="/pages/m-integral-d/m-integral-d">
+
+      <view class="mylog2 clearfix">
+        <image src="https://m.7710mall.com/Uploads/xxc/myjifen_03.png" style="width: 28rpx;height: 28rpx; margin-right: 10rpx;" /> 积分说明
+      </view>
+    </navigator>
+
+    <view class="jf">0
+      <text>积分</text>
+    </view>
+  </view>
+  <!-- 积分明细 -->
+  <view class="logbook clearfix">
+    <image src="https://m.7710mall.com/Uploads/xxc/log-jf_10.png" />
+    <text>积分明细</text>
+  </view>
+  <!-- <view class="poinstiafg">
+    <view class="dl">
+      <view class="dt">签到积分</view>
+      <view class="dd">2017.08.15
+        <text>15:00:00</text>
+      </view>
+      <view class="p">+5</view>
+    </view>
+
+  </view> -->
+
+</view>

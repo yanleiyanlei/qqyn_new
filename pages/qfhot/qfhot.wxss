@@ -1,0 +1,117 @@
+/* pages/qfhot/qfhot.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import"../../lib/style/mainGoods.wxss";
+@import"../../lib/style/public.wxss";
+/*banner====  */
+page{
+  background: #f7f7f7;
+}
+.banner{
+  width: 100%;
+  height: 300rpx;
+}
+.banner image{
+  width: 100%;
+  height: 100%;
+}
+
+/*商品===  */
+.main{
+  display: flex;
+  justify-content:flex-start;
+  flex-wrap: wrap; 
+  align-items: center;
+  padding: 0 16rpx;
+  padding-bottom: 30rpx;
+}
+.main .goods{
+  width: 330rpx;
+  height: 530rpx;
+  margin: 0 15rpx;
+  margin-top: 30rpx; 
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+}
+
+.main .goods image{
+  width: 330rpx;
+  height: 330rpx;
+  
+}
+.main .goods image.hot{
+  width: 34rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.main  image.label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 51rpx;
+  height: 65rpx;
+}
+.main .goods .goodsname{
+  width: 330rpx;
+  display: inline-block;
+  font-size: 26rpx;
+  color: #303030;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  margin-top: 12rpx;
+  margin-left: 20rpx;
+}
+
+.main .goods .goodsdis{
+  width: 330rpx;
+  display: inline-block;
+  font-size: 22rpx;
+  color: #909090;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  margin-left: 20rpx;
+}
+.main .goods .goodsweight{
+  font-size: 20rpx;
+  color: #909090;
+  margin-left: 20rpx;
+}
+
+.main .goods .goodsprice{
+  color: #ff712b;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+.main .goods .goodsdelprice{
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 20rpx;
+}
+.main .goods view{
+  width: 330rpx;
+}
+.main .goods view image{
+  width: 60rpx;
+  height: 60rpx;
+  float: right;
+}
+/* .main .goods view.cartnum{
+  width: 26rpx;
+  height: 26rpx;
+  background: #ff2f2f;
+  border-radius: 20rpx;
+  font-size: 18rpx;
+  text-align: center;
+  line-height: 26rpx;
+  color: #fff;
+  position: absolute;
+  right: 15rpx;
+  bottom: 75rpx;
+} */

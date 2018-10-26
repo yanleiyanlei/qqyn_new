@@ -1,0 +1,23 @@
+<!-- 商品列表 -->
+<page>
+  <view class="shopher">
+  	  商品列表
+  </view>
+  <view class="shopnum">
+  	  <view class="main" wx:for="{{datas}}">
+	  		<view class="img_main" bindtap="imgurleh" data-id="{{item.goods_id}}">
+	  	      <image src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_photo}}"></image>	   
+  	    </view>
+  	  	   <view class="shoplists">
+  	  	   	 <view>{{item.goods_name}}</view>
+             <view>{{item.goods_spec_key}}</view>
+             <view class='colors'>￥{{item.goods_price}}
+               <text class="yprice" wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
+             </view>
+  	  	   </view>
+  	  	   <view class="shionume">
+  	  	   	 x{{item.quantity}}
+  	  	   </view>
+  	  </view>
+  </view>
+</page>

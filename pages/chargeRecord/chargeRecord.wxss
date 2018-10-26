@@ -1,0 +1,134 @@
+/* pages/chargeRecharge/chargeRecord.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.cash-back {
+  width: 100%;
+  height: 300rpx;
+  background: #fff;
+}
+
+.cash-back .back-ug {
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.cash-back .cash-money {
+  width: 200rpx;
+  height: 90rpx;
+  background: none;
+  color: #ff712b;
+  position: absolute;
+  top: 160rpx;
+  left: 300rpx;
+  z-index: 100;
+}
+
+.cash-back .cash-money .one {
+  font-size: 40rpx;
+  display: inline-block;
+  width: 180rpx;
+  height: 40rpx;
+  background: none;
+  margin-left: -20rpx;
+  text-align: center;
+}
+
+.cash-back .peo-img {
+  width: 245rpx;
+  height: 245rpx;
+  background: none;
+  position: absolute;
+  left: 250rpx;
+  top: 80rpx;
+  z-index: 99;
+}
+
+.cash-back .cz {
+  position: absolute;
+  font-size: 28rpx;
+  top: 180rpx;
+  right: 120rpx;
+  color: #fff;
+}
+
+.cash-back .one image {
+  width: 51rpx;
+  height: 47rpx;
+  background: none;
+}
+
+.cash-back .two {
+  color: #fff;
+}
+
+.banktitle {
+  width: 100%;
+  height: 95rpx;
+  background: #fff;
+  /* border-bottom: 1rpx solid #bfbfbf; */
+}
+
+.banktitle .banktitle-box {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+
+.banktitle .banktitle-box view {
+  font-size: 30rpx;
+  color: #303030;
+  -webkit-box-flex: 1;
+  flex: 1;
+  text-align: center;
+  height: 94rpx;
+  box-sizing: border-box;
+  line-height: 95rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+}
+
+.banktitle .active {
+  color: #ff712b;
+  border-bottom: 2rpx solid #ff712b;
+}
+
+.consumption {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding:0 30rpx;
+  box-sizing: border-box;
+  margin-top:10rpx;
+}
+
+.consumption .consumption-box {
+  width: 100%;
+  height:130rpx;
+  background: #fff;
+  position: relative;
+}
+
+.consumption .one {
+  font-size: 28rpx;
+  color: #303030;
+  padding-top: 26rpx;
+}
+
+.consumption .two {
+  font-size: 24rpx;
+  color: #606060;
+  margin-top: 20rpx;
+}
+
+.consumption .two text {
+  margin-left: 10rpx;
+}
+
+.consumption .three {
+  font-size:30rpx;
+  color: #303030;
+  position: absolute;
+  right: 30rpx;
+  top: 26rpx;
+}

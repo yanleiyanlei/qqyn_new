@@ -1,0 +1,154 @@
+<!-- 拼步数提现页面 -->
+<view class="wechatwidth">
+  <view class="wech-content">
+    <view class="wecah-fres">
+      单笔提现限额当前余额的{{info.withdrawal_proportion}}，每月可提现{{info.withdrawdesign_num}}次
+    </view>
+    <view class="todaybalance">
+      <text class="h3">当前余额</text>
+      <text class="p">￥{{remain}}</text>
+      <navigator url="/pages/m-withdraw-d/m-withdraw-d" hover-class='Nhover'>
+        <text class="a">明细<text class="fuhao"></text></text>
+      </navigator>
+    </view>
+    <!--提现金额-->
+    <view class="bananwechat">
+      <view class="h4">提现金额</view>
+      <view class="tixian">
+        <view class="monry">
+          <text class="i">￥</text>
+          <input type="text" value="" placeholder="请输入10的倍数" value="{{all}}" bindblur='allmoney' />
+        </view>
+        <text class="span" bindtap="all">全部提现</text>
+      </view>
+      <view class="p">可提现金额
+        <text class="span">￥{{money}}</text>
+      </view>
+      <view class="p" style="margin-left:50rpx;">最少提现金额
+        <text class="span">￥{{info.withdrawdesign_small}}</text>
+      </view>
+    </view>
+    <!--手续费-->
+    <view class="poundage">
+      <text class="h4">手续费</text>
+      <text class="p">
+      <text class="i">￥</text>{{fee}}</text>
+      <!-- <text class="a">无可使用提现券</text> -->
+    </view>
+    <!--提现账户-->
+    <view class="accoutban" bindtap="chooseWay">
+      <text class="h4">提现账户</text>
+      <view class="paypayment">
+        <block wx:if="{{way2==1}}">
+          <text class="iconfont icon-weixin i"></text>
+          <text class="b" data-id="">微信</text>
+        </block>
+        <block wx:elif="{{way2==2}}">
+          <text class="iconfont icon-zhifubao i" style="color:#0aaaf0;"></text>
+          <text class="b" data-id="">支付宝</text>
+        </block>
+        <block wx:elif="{{way2==3}}">
+          <text class="iconfont icon-yue i" style="color:#0aaaf0;"></text>
+          <text class="b" data-id="">余额</text>
+        </block>
+        <block wx:else>
+          <text class="b">请选择提现方式</text>
+        </block>
+        <text class="span"></text>
+      </view>
+    </view>
+    <form bindsubmit='formSubmit'>
+    <input name="member_id" value="{{uid}}" style="display:none"></input>
+      <input name="jine" value="{{all}}" style="display:none"></input>
+      <input name="service_charge" value="{{fee}}" style="display:none"> </input>
+      <input name="withdrawal_path" value='{{way2}}' style="display:none"></input>
+      <view class="bank-id" wx:if="{{way2==2||way2==1}}">
+        <view class="p">请填写下面的提现信息</view>
+
+        <view class="ul">
+          <view class="li border1">
+            <text class="label">收款人姓名</text>
+            <input type="text" name="payee" class="form-control" placeholder="填写收款人真实姓名"></input>
+          </view>
+          <view class="li border1">
+            <text class="label">收款人电话</text>
+            <input type="text" name="phone" class="form-control" placeholder="填写收款人手机号码" />
+          </view>
+          <view class="li border1">
+            <text class="label">提现账号</text>
+            <input type="text" name="cash_account" class="form-control" placeholder="填写收款人收款账号" />
+          </view>
+        </view>
+      </view>
+
+      <view class="Applyfor">
+        <button form-type='submit'>立即申请</button>
+      </view>
+    </form>
+  </view>
+
+
+
+</view>
+<!--遮罩层-->
+<view class="apply-zhe" wx:if="{{way}}">
+  <view class="pay-type">
+    <view class="off-i p border1">提现账户
+      <text class="iconfont icon-weibiaoti101 i" bindtap="closeWay"></text>
+    </view>
+    <view class="pay-weixin">
+      <block wx:for="{{info.withdrawdesign_account}}">
+        <view class="weixin border1" wx:if="{{item==1}}">
+          <text class="iconfont icon-weixin i" style="color: #09bb07;"></text>
+          <view class="dl">
+            <view class="dt" data-id="0">微信</view>
+            <view class="dd">微信提现</view>
+          </view>
+          <text class="label" data-way="1" bindtap="way">
+          <!-- <input type="radio" value="0" name="abc"  /> -->
+          <block wx:if="{{way2==1}}">
+           <text class="iconfont icon-chuangyikongjianICON_fuzhi-"></text>
+      </block>
+      <block wx:else>
+        <text class="iconfont icon-yuan "></text>
+      </block>
+
+      </text>
+      </view>
+      <view class="weixin border1" wx:if="{{item==2}}">
+        <text class="iconfont icon-zhifubao i" style="color:#0aaaf0;"></text>
+        <view class="dl">
+          <view class="dt">支付宝</view>
+          <view class="dd">支付宝提现</view>
+        </view>
+        <text class="label" data-way="2" bindtap="way">
+           <block wx:if="{{way2==2}}">
+           <text class="iconfont icon-chuangyikongjianICON_fuzhi-"></text>
+        </block>
+        <block wx:else>
+          <text class="iconfont icon-yuan "></text>
+        </block>
+        </text>
+      </view>
+      <view class="weixin border1" wx:if="{{item==3}}">
+        <text class="iconfont icon-yue i" style="color:#0aaaf0;"></text>
+        <view class="dl">
+          <view class="dt">余额</view>
+          <view class="dd">余额提现</view>
+        </view>
+        <text class="label" data-way="3" bindtap="way">
+          <block wx:if="{{way2==3}}">
+           <text class="iconfont icon-chuangyikongjianICON_fuzhi-"></text>
+        </block>
+        <block wx:else>
+          <text class="iconfont icon-yuan "></text>
+        </block>
+        </text>
+      </view>
+      </block>
+
+
+
+    </view>
+  </view>
+</view>

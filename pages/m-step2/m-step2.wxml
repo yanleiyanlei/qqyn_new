@@ -1,0 +1,434 @@
+<!-- 拼步数活动，加入活动页面 -->
+<view class="mdd" style="{{wz}}">
+
+
+
+  <!-- 弹出现在组队信息 -->
+  <view class="mask" style="{{tt}}"></view>
+  <view class="close" style="{{tt}}">
+    <form report-submit="true" bindsubmit='close'>
+      <button form-type='submit'></button>
+      <image src="https://m.7710mall.com/Uploads/xxc/close.png"></image>
+    </form>
+  </view>
+  <scroll-view scroll-y class="m-group" style="{{tt}}">
+
+    <view class="scroll-top border1">立即组队</view>
+    <block wx:for="{{arr2}}">
+      <view class="border1">
+        <view class="group-item clearfix border-box">
+          <view class="left clearfix">
+            <view class="tx">
+              <image src="{{item.head_pic}}"></image>
+              <text class="leader">团长</text>
+            </view>
+            <view class="two">
+              <block wx:if="{{item.nickname==''}}">
+                <view class="name">
+                  <text decode="{{true}}">&nbsp;</text>
+                </view>
+              </block>
+              <block wx:else>
+                <view>
+                  <text class="name">{{item.nickname}}</text>
+                </view>
+              </block>
+
+              <view>
+                <text class="hd">{{item.step_name}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="right">
+            <view class="info">
+              <view class="one">还差
+                <text style="color:#ff0000">{{item.sheng_mem}}</text>人</view>
+            </view>
+            <view class="join">
+              <form report-submit="true" bindsubmit="Submit2">
+                <input name='acid' value="{{item.step_id}}" style="display:none"></input>
+                <input name="teamid" value="{{item.team_id}}" style="display:none"></input>
+                <button formType="submit" class="jr">立即加入</button>
+              </form>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+    </block>
+
+
+
+    <!-- <view class="scroll-bottom" wx:if="{{arr2.lenght>=10}}">显示10个正在组团的战队</view> -->
+  </scroll-view>
+
+  <!-- 内容 -->
+  <view class="hd-banner">
+    <view class="jrsc">
+      <navigator url="/pages/index/index" open-type='switchTab' hover-class='Nhover'>
+        <image src="https://m.7710mall.com/Uploads/xxc/index.png"></image>
+      </navigator>
+    </view>
+    <navigator url="/pages/personalcenter/personalcenter?uid={{uid}}">
+      <view class="exchange clearfix border-box">
+        <image src="{{head_pic}}"></image>
+        <text>{{rice}}g</text>
+
+      </view>
+    </navigator>
+    <!-- <view class="remain">剩余:{{remainNum}}份</view> -->
+    <block wx:if="{{step_rand[y].type==1}}">
+      <view class="situation">
+        <view class="one">{{step_rand[y].nickname}}</view>
+        <view class="two">{{step_rand[y].step_name}}</view>
+      </view>
+    </block>
+    <block wx:if="{{step_rand[y].type==2}}">
+      <view class="situation">
+        <view class="one">{{step_rand[y].nickname}}</view>
+        <view class="two">获得{{step_rand[y].rice_num}}g大米</view>
+      </view>
+    </block>
+    <block wx:if="{{step_rand[x].type==1}}">
+      <view class="situation2">
+        <view class="one">{{step_rand[x].nickname}}</view>
+        <view class="two">{{step_rand[x].step_name}}</view>
+      </view>
+    </block>
+    <block wx:if="{{step_rand[x].type==2}}">
+      <view class="situation2">
+        <view class="one">{{step_rand[x].nickname}}</view>
+        <view class="two">获得{{step_rand[x].rice_num}}g大米</view>
+      </view>
+    </block>
+    <view class="hd-dw">
+      <view class="now-join">已有\t
+        <text class="now-join-num">{{total_num}}</text>\t人组队拼团</view>
+      <block wx:if="{{soldout}}">
+        <view class="end-gap">
+          <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png"></image>
+          <view class="center">离任务结束还有:
+            <text class="time border-box">0</text>
+            <text>:</text>
+            <text class="time border-box">0</text>
+            <text>:</text>
+            <text class="time border-box">0</text>
+          </view>
+          <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png" style="float:right"></image>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="end-gap">
+          <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png"></image>
+          <view class="center">离任务结束还有:
+            <text class="time border-box">{{h1}}</text>
+            <text>:</text>
+            <text class="time border-box">{{m1}}</text>
+            <text>:</text>
+            <text class="time border-box">{{s1}}</text>
+          </view>
+          <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png" style="float:right"></image>
+        </view>
+      </block>
+    </view>
+
+
+    <image src="https://m.7710mall.com/Uploads/xxc/step_banner.png" class="banner"></image>
+  </view>
+  <!-- 组队选择 -->
+  <view class="tit border-box">选择组队任务
+    <text>(我的步数{{step}})</text>
+  </view>
+  <view class="box clearfix border-box">
+    <view class="left">
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[0].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#3ac0ff">
+          <button form-type='submit' class="tj"></button>
+
+          <view class="one">{{act[0].step_name}}</view>
+          <view class="join" data-acid="{{act[0].id}}">
+            <text style="color:#3ac0ff">立即组队</text>
+          </view>
+        </view>
+      </form>
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[1].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#fecb69;margin-top:25rpx;">
+          <button form-type='submit' class="tj"></button>
+          <view class="one">{{act[1].step_name}}</view>
+          <view class="join" data-acid="{{act[1].id}}">
+            <text style="color:#fecb69">立即组队</text>
+          </view>
+        </view>
+      </form>
+    </view>
+    <view class="right">
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[2].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#ff7990">
+          <button form-type='submit' class="tj"></button>
+          <view class="one">{{act[2].step_name}}</view>
+          <!-- <view class="one">{{item.step_name}}</view> -->
+          <view class="join" data-acid="{{act[2].id}}">
+            <text style="color:#ff7990">立即组队</text>
+          </view>
+        </view>
+      </form>
+
+    </view>
+
+
+  </view>
+
+  <!-- 他人组队情况 -->
+  <!-- <view class="tit" wx:if="{{arr.length!=0}}">加入其它战队</view> -->
+  <view class="tit border-box" style="margin-top:10rpx;line-height:80rpx;" wx:if="{{arr.length!=0}}">加入他人战队
+    <text class="more" bindtap='more' wx:if="{{arr.length>2}}">查看更多></text>
+  </view>
+  <block wx:if="{{arr.length>=2}}">
+    <swiper class="group" interval="5000" vertical="true" display-multiple-items="2" autoplay='true' circular="true" wx:if="{{arr.length!=0}}">
+      <block wx:for="{{arr}}">
+        <swiper-item class="group-list">
+          <view class="xx">
+            <view class="group-item clearfix border-box">
+              <view class="left clearfix">
+                <view class="tx">
+                  <image src="{{item.head_pic}}"></image>
+                  <text class="leader">团长</text>
+                </view>
+                <view class="two">
+                  <!-- <view class="name" wx:if="{{item.nickname==''}}">1/view> -->
+                  <block wx:if="{{item.nickname==''}}">
+                    <view class="name">
+                      <text decode="{{true}}">&nbsp;</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class="name">{{item.nickname}}</view>
+                  </block>
+
+                  <view class="hd">{{item.step_name}}</view>
+                </view>
+
+              </view>
+              <view class="right">
+                <view class="info">
+                  <view class="one">还差
+                    <text style="color:#ff0000">{{item.sheng_mem}}</text>人拼成</view>
+                  <view class="two">剩余{{item.step_number}}步</view>
+                </view>
+                <view class="join">
+                  <form report-submit="true" bindsubmit="Submit2">
+                    <input name='acid' value="{{item.step_id}}" style="display:none"></input>
+                    <input name="teamid" value="{{item.team_id}}" style="display:none"></input>
+                    <button formType="submit" class="jr">立即加入</button>
+                  </form>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </block>
+  <block wx:else>
+    <swiper class="group" interval="5000" vertical="true" autoplay='true' circular="true" display-multiple-items="{{arr.length}}" wx:if="{{arr.length!=0}}">
+      <block wx:for="{{arr}}">
+        <swiper-item class="group-list">
+          <view class="border1">
+            <view class="group-item clearfix border-box">
+              <view class="left clearfix">
+                <view class="tx">
+                  <image src="{{item.head_pic}}"></image>
+                  <text class="leader">团长</text>
+                </view>
+                <view class="two">
+                  <block wx:if="{{item.nickname==''}}">
+                    <view class="name">
+                      <text decode="{{true}}">&nbsp;</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class="name">{{item.nickname}}</view>
+                  </block>
+
+                  <view class="hd">{{item.step_name}}</view>
+                </view>
+
+              </view>
+              <view class="right">
+                <view class="info">
+                  <view class="one">还差
+                    <text style="color:#ff0000">{{item.sheng_mem}}</text>人拼成</view>
+                  <view class="two">剩余{{item.step_number}}步</view>
+                </view>
+                <view class="join">
+                  <form report-submit="true" bindsubmit="Submit2">
+                    <input name='acid' value="{{item.step_id}}" style="display:none"></input>
+                    <input name="teamid" value="{{item.team_id}}" style="display:none"></input>
+                    <button formType="submit" class="jr">立即加入</button>
+                  </form>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+  </block>
+
+
+  <!-- 排行榜 -->
+  <view class="tit border-box" style="margin-top:10rpx;line-height:80rpx;border-bottom:1rpx solid #eee;" wx:if="{{rank.length!=0}}">排行榜</view>
+
+  <view class="ph" style="{{foldClass}}">
+    <!-- 第一 -->
+    <block wx:for="{{rank}}">
+      <view style="border-bottom:1rpx solid #eee;">
+        <navigator url="/pages/personalcenter/personalcenter?uid={{item.member_id}}">
+
+
+          <view class="ph-item clearfix border-box">
+            <view class="left clearfix">
+              <view class="sequence">
+                <block wx:if="{{index==0}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/1.png"></image>
+                </block>
+                <block wx:if="{{index==1}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/2.png" class="formal"></image>
+                </block>
+                <block wx:if="{{index==2}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/3.png"></image>
+                </block>
+                <block wx:if="{{index==3}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/4.png"></image>
+                </block>
+                <block wx:if="{{index==4}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/5.png"></image>
+                </block>
+                <block wx:if="{{index==5}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/6.png"></image>
+                </block>
+                <block wx:if="{{index==6}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/7.png"></image>
+                </block>
+                <block wx:if="{{index==7}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/8.png"></image>
+                </block>
+                <block wx:if="{{index==8}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/9.png"></image>
+                </block>
+                <block wx:if="{{index==9}}">
+                  <image src="https://m.7710mall.com/Uploads/xxc/10.png"></image>
+                </block>
+
+              </view>
+              <view class="tx">
+                <image src="{{item.head_pic}}"></image>
+              </view>
+              <view class="two">
+                <block wx:if="{{item.nickname==''}}">
+                  <view class="name">
+                    <text decode="{{true}}">&nbsp;</text>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="name">{{item.nickname}}</view>
+                </block>
+
+                <view class="hd">{{item.tip}}</view>
+              </view>
+            </view>
+            <view class="right">
+              <text class="prize">{{item.rice_nums}}g</text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+
+    </block>
+
+
+    <!-- <view class="border1">
+    <view class="ph-item clearfix">
+      <view class="left clearfix">
+        <view class="sequence">
+          <image src="https://m.7710mall.com/Uploads/xxc/2.png"></image>
+        </view>
+        <view class="tx">
+          <image src="/image/my/m_kf.png"></image>
+        </view>
+        <view class="two">
+          <view class="name">李晓明</view>
+          <view class="hd">3人3000步</view>
+        </view>
+      </view>
+      <view class="right">
+        <text class="prize">2.5kg</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="border1">
+    <view class="ph-item clearfix">
+      <view class="left clearfix">
+        <view class="sequence">
+          <image src="https://m.7710mall.com/Uploads/xxc/3.png"></image>
+        </view>
+        <view class="tx">
+          <image src="/image/my/m_kf.png"></image>
+        </view>
+        <view class="two">
+          <view class="name">李晓明</view>
+          <view class="hd">3人3000步</view>
+        </view>
+      </view>
+      <view class="right">
+        <text class="prize">2.5kg</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="border1">
+    <view class="ph-item clearfix">
+      <view class="left clearfix">
+        <view class="sequence">
+          <image src="https://m.7710mall.com/Uploads/xxc/3.png"></image>
+        </view>
+        <view class="tx">
+          <image src="/image/my/m_kf.png"></image>
+        </view>
+        <view class="two">
+          <view class="name">李晓明</view>
+          <view class="hd">3人3000步</view>
+        </view>
+      </view>
+      <view class="right">
+        <text class="prize">2.5kg</text>
+      </view>
+    </view>
+  </view> -->
+
+    <view class="fold" bindtap='fold' style="{{fold}}">更多战队
+      <text class="iconfont icon-arrow-down" style="font-size:20rpx;margin-left:8rpx;"></text>
+    </view>
+
+  </view>
+  <view class="other-hd" bindtap='gowx'>
+
+    <image src="https://m.7710mall.com/Uploads/xxc/hd_rk.jpg"></image>
+
+  </view>
+</view>
+<!-- <view class="other-hd">
+  <navigator>
+    <image src="https://m.7710mall.com/Uploads/xxc/m_step.png"></image>
+  </navigator>
+</view> -->

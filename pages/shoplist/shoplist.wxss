@@ -1,0 +1,63 @@
+.shopher{
+	width: 100%;
+    height: 90rpx;
+    border-bottom: 1rpx solid #BFBFBF;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #303030;
+    background: #fff;
+}
+.shopnum{
+	width: 100%;
+	height: auto;
+	padding: 0 32rpx;
+    background: #fff;
+    box-sizing: border-box;
+}
+.main{
+	font-size: 32rpx;
+    height: 220rpx;
+    border-bottom: 1rpx solid #BFBFBF;
+    padding-top: 30rpx;
+    box-sizing: border-box;
+}
+.img_main{
+    width: 160rpx;
+    height: 160rpx;
+    display: inline-block;
+    margin-right: 20rpx;
+    float: left;
+}
+.img_main image{
+    width:100%;
+    height:100%;
+}
+.shoplists{
+        float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 400rpx;
+}
+.shionume{
+    line-height: 170rpx;
+    width: 100rpx;
+    height: 190rpx;
+    text-align: center;
+    background: none;
+    float: right;
+}
+.shoplists view{
+    display: block;
+    line-height: 55rpx;
+    font-size: 32rpx;
+}
+.shoplists .colors{
+    color:#ff712b;
+}
+.yprice{
+    text-decoration:line-through;
+    margin-left:10rpx;
+    color:#666666;
+}

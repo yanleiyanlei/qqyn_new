@@ -1,0 +1,344 @@
+<!-- 评论页面 -->
+<view class="tab">  
+  <view class="tab-left" bindtap="tabFun">  
+    <view class="{{tabArr.curHdIndex=='0'? 'active' : ''}}" id="tab-hd01" data-id="0">全部({{reviewsnum}})</view>  
+    <view class="{{tabArr.curHdIndex=='1'? 'active' : ''}}" id="tab-hd02" data-id="1">有图({{datares.haveImg}})</view>  
+    <view class="{{tabArr.curHdIndex=='2'? 'active' : ''}}" id="tab-hd03" data-id="2">好评({{datares.nicereview}})</view>  
+    <view class="{{tabArr.curHdIndex=='3'? 'active' : ''}}" id="tab-hd04" data-id="3">中评({{datares.minureview}})</view>  
+    <view class="{{tabArr.curHdIndex=='4'? 'active' : ''}}" id="tab-hd05" data-id="4">差评({{datares.badreview}})</view>  
+  </view>  
+</view>  
+<view class="contenter">
+	<view class="tab-right"> 
+	    <!-- 全部评论-->
+	    <view class="right-item {{tabArr.curBdIndex=='0'? 'active' : ''}}" id="alls">
+	         <view class="allslist" wx:for="{{datalis}}">
+	         	<view class="topview">
+	         	     <view wx:if="{{item.head_pic==null}}">
+                   <image class="touxiangs" src="{{src}}" mode="aspectFill"> </image>
+                </view>
+                <view wx:elif="{{item.openid==null && item.add_time >0}}">
+                   <image class="touxiangs" src="{{src}}" mode="aspectFill"> </image>
+                </view>
+                <view wx:else>
+                   <image class="touxiangs" src="{{item.head_pic}}" mode="aspectFill"> </image>
+                </view>
+	         		<view class="name_ty">
+	         			<text wx:if="{{item.nickname==null}}">匿名用户</text>
+	         			<text wx:else>{{item.nickname}}</text>
+	         			<text class="iconfont icon-haoping2"></text>
+	         			 <text wx:if="{{item.satisfaction==1}}">差评</text>
+                     <text wx:if="{{item.satisfaction==2}}">中评</text>
+                      <text wx:if="{{item.satisfaction==3}}">好评</text>
+	         		</view>
+	         		<view class="commtime">
+	         			{{item.timesto}}
+	         		</view>
+	         	</view>
+	         	<!--图片放大显示 效果-->
+	         	<view class="models_img" hidden="{{modelHidden}}"  bindtap="modalinputs">
+                 <view class="imgbig">
+                     <swiper indicator-dots="{{indicatorDots}}"
+                        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
+                        <block wx:for="{{item.reviews_photo}}">
+                          <swiper-item>
+                            <image src="{{goodsReviewimg}}" class="slide-image"/>
+                          </swiper-item>
+                        </block>
+                     </swiper>
+                 </view>
+              </view>
+              <!--商品 评论加 图片展示-->
+	         	<view class="toptitle">
+	         		<view class="wernz">{{item.reviews_text}}</view>
+	         		<!--判断图片路径 评论位置类型 1：PC；2：wechat；3：手机端-->
+	         		<view wx:if="{{item.review_type==1}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{pcSrc}}{{item}}" class="imgses" data-src="{{pcSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==2}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image  wx:for="{{item.reviews_photo}}" src="{{dImg}}{{item}}" data-src="{{dImg}}{{item}}" class="imgses" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==3}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{wechatSrc}}{{item}}" class="imgses" data-src="{{wechatSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         	</view>
+	         </view>    
+	    </view> 
+         <!--有图-->
+	    <view class="right-item {{tabArr.curBdIndex=='1'? 'active' : ''}}" wx:for="{{Ydatalis}}">
+	         <view class="allslist">
+	         	<view class="topview">
+	         	    <view wx:if="{{item.head_pic==null}}">
+	         	    	<image src="{{src}}" class="touxiangs"></image>
+	         	    </view>
+	         	     <view wx:else>
+	         	    	<image src="{{item.head_pic}}" class="touxiangs"></image>
+	         	    </view>
+	         		<view class="name_ty">
+	         			<text wx:if="{{item.nickname==null}}">匿名用户</text>
+	         			<text wx:else>{{item.nickname}}</text>
+	         			<text class="iconfont icon-haoping2"></text>
+	         			 <text wx:if="{{item.satisfaction==1}}">差评</text>
+                     <text wx:if="{{item.satisfaction==2}}">中评</text>
+                      <text wx:if="{{item.satisfaction==3}}">好评</text>
+	         		</view>
+	         		<view class="commtime">
+	         			{{item.timesto}}
+	         		</view>
+	         	</view>
+	         	<!--图片放大显示 效果-->
+	         	<view class="models_img" hidden="{{modelHidden}}" bindtap="modalinputs">
+                 <view class="imgbig">
+                     <swiper indicator-dots="{{indicatorDots}}"
+                        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
+                        <block wx:for="{{item.reviews_photo}}">
+                          <swiper-item>
+                            <image src="{{goodsReviewimg}}" class="slide-image"/>
+                          </swiper-item>
+                        </block>
+                     </swiper>
+                 </view>
+              </view>
+	         	<view class="toptitle">
+	         		<view class="wernz">{{item.reviews_text}}</view>
+	         		<!--判断图片路径 评论位置类型 1：PC；2：wechat；3：手机端-->
+	         		<view wx:if="{{item.review_type==1}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{pcSrc}}{{item}}" class="imgses" data-src="{{pcSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==2}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{dImg}}{{item}}" class="imgses" data-src="{{dImg}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==3}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{wechatSrc}}{{item}}" class="imgses" data-src="{{wechatSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         	</view>
+	         </view>    
+	    </view> 
+	      <!--好评-->
+	    <view class="right-item {{tabArr.curBdIndex=='2'? 'active' : ''}}" wx:for="{{goodscommes}}">
+	      <view class="allslist">
+	         	<view class="topview">
+	         	    <view wx:if="{{item.head_pic==null}}">
+	         	    	<image src="{{src}}" class="touxiangs"></image>
+	         	    </view>
+	         	     <view wx:else>
+	         	    	<image src="{{item.head_pic}}" class="touxiangs"></image>
+	         	    </view>
+	         		<view class="name_ty">
+	         			<text wx:if="{{item.nickname==null}}">匿名用户</text>
+	         			<text wx:else>{{item.nickname}}</text>
+	         			<text class="iconfont icon-haoping2"></text>
+	         			 <text wx:if="{{item.satisfaction==1}}">差评</text>
+                     <text wx:if="{{item.satisfaction==2}}">中评</text>
+                      <text wx:if="{{item.satisfaction==3}}">好评</text>
+	         		</view>
+	         		<view class="commtime">
+	         			{{item.timesto}}
+	         		</view>
+	         	</view>
+	         	<!--图片放大显示 效果-->
+	         	<view class="models_img" hidden="{{modelHidden}}" bindtap="modalinputs">
+                 <view class="imgbig">
+                     <swiper indicator-dots="{{indicatorDots}}"
+                        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
+                        <block wx:for="{{item.reviews_photo}}">
+                          <swiper-item>
+                            <image src="{{goodsReviewimg}}" class="slide-image"/>
+                          </swiper-item>
+                        </block>
+                     </swiper>
+                 </view>
+              </view>
+	         	<view class="toptitle">
+	         		<view class="wernz">{{item.reviews_text}}</view>
+	         		<!--判断图片路径 评论位置类型 1：PC；2：wechat；3：手机端-->
+	         		<view wx:if="{{item.review_type==1}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{pcSrc}}{{item}}" class="imgses" data-src="{{pcSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==2}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{dImg}}{{item}}" class="imgses" data-src="{{dImg}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==3}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{wechatSrc}}{{item}}" class="imgses" data-src="{{wechatSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         	</view>
+	         </view>    
+	    </view>  
+	     <!--中评-->
+	    <view class="right-item {{tabArr.curBdIndex=='3'? 'active' : ''}}" wx:for="{{centscommes}}">
+	       <view class="allslist">
+	         	<view class="topview">
+	         	    <view wx:if="{{item.head_pic==null}}">
+	         	    	<image src="{{src}}" class="touxiangs"></image>
+	         	    </view>
+	         	     <view wx:else>
+	         	    	<image src="{{item.head_pic}}" class="touxiangs"></image>
+	         	    </view>
+	         		<view class="name_ty">
+	         			<text wx:if="{{item.nickname==null}}">匿名用户</text>
+	         			<text wx:else>{{item.nickname}}</text>
+	         			<text class="iconfont icon-haoping2"></text>
+	         			 <text wx:if="{{item.satisfaction==1}}">差评</text>
+                     <text wx:if="{{item.satisfaction==2}}">中评</text>
+                      <text wx:if="{{item.satisfaction==3}}">好评</text>
+	         		</view>
+	         		<view class="commtime">
+	         			{{item.timesto}}
+	         		</view>
+	         	</view>
+	         	<!--图片放大显示 效果-->
+	         	<view class="models_img" hidden="{{modelHidden}}" bindtap="modalinputs">
+                 <view class="imgbig">
+                     <swiper indicator-dots="{{indicatorDots}}"
+                        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
+                        <block wx:for="{{item.reviews_photo}}">
+                          <swiper-item>
+                            <image src="{{goodsReviewimg}}" class="slide-image"/>
+                          </swiper-item>
+                        </block>
+                     </swiper>
+                 </view>
+              </view>
+	         	<view class="toptitle">
+	         		<view class="wernz">{{item.reviews_text}}</view>
+	         		<!--判断图片路径 评论位置类型 1：PC；2：wechat；3：手机端-->
+	         		<view wx:if="{{item.review_type==1}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{pcSrc}}{{item}}" class="imgses" data-src="{{pcSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==2}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{dImg}}{{item}}" class="imgses" data-src="{{dImg}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==3}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{wechatSrc}}{{item}}" class="imgses" data-src="{{wechatSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         	</view>
+	         </view>    
+	    </view>  
+	    <!--差评-->
+	    <view class="right-item {{tabArr.curBdIndex=='4'? 'active' : ''}}" wx:for="{{chascommes}}">
+	         <view class="allslist">
+	         	<view class="topview">
+	         	    <view wx:if="{{item.head_pic==null}}">
+	         	    	<image src="{{src}}" class="touxiangs"></image>
+	         	    </view>
+	         	     <view wx:else>
+	         	    	<image src="{{item.head_pic}}" class="touxiangs"></image>
+	         	    </view>
+	         		<view class="name_ty">
+	         			<text wx:if="{{item.nickname==null}}">匿名用户</text>
+	         			<text wx:else>{{item.nickname}}</text>
+	         			<text class="iconfont icon-haoping2"></text>
+	         			 <text wx:if="{{item.satisfaction==1}}">差评</text>
+                     <text wx:if="{{item.satisfaction==2}}">中评</text>
+                      <text wx:if="{{item.satisfaction==3}}">好评</text>
+	         		</view>
+	         		<view class="commtime">
+	         			{{item.timesto}}
+	         		</view>
+	         	</view>
+	         	<!--图片放大显示 效果-->
+	         	<view class="models_img" hidden="{{modelHidden}}" bindtap="modalinputs">
+                 <view class="imgbig">
+                     <swiper indicator-dots="{{indicatorDots}}"
+                        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
+                        <block wx:for="{{item.reviews_photo}}">
+                          <swiper-item>
+                            <image src="{{goodsReviewimg}}" class="slide-image"/>
+                          </swiper-item>
+                        </block>
+                     </swiper>
+                 </view>
+              </view>
+	         	<view class="toptitle">
+	         		<view class="wernz">{{item.reviews_text}}</view>
+	         		<!--判断图片路径 评论位置类型 1：PC；2：wechat；3：手机端-->
+	         		<view wx:if="{{item.review_type==1}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{pcSrc}}{{item}}" class="imgses" data-src="{{pcSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==2}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{dImg}}{{item}}" class="imgses" data-src="{{dImg}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         		<view wx:if="{{item.review_type==3}}">
+	         			<view class="commerimg" wx:if="{{item.reviews_photo==''}}">
+	       
+		         		</view>
+		         		<view class="commerimg" wx:else>
+		         			<image wx:for="{{item.reviews_photo}}" src="{{wechatSrc}}{{item}}" class="imgses" data-src="{{wechatSrc}}{{item}}" bindtap="modalinput"></image>
+		         		</view>
+	         		</view>
+	         	</view>
+	         </view>    
+	    </view>  
+  </view>  
+</view>
+ 

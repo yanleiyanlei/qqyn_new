@@ -1,0 +1,364 @@
+@import "../../lib/style/iconfont.wxss";
+page{
+  width: 100%;
+  height: 100%;
+  background: #f8f8f8;
+}
+.scr{
+    position: relative;
+    height: 360rpx;
+}
+.banners{
+  width: 100%;
+  height: 850rpx;
+  background: url('https://m.7710mall.com/Uploads/xxc//step_banner.png') no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+.contontersa{
+  width: 100%;
+  overflow: hidden;
+}
+.contontersa::-webkit-scrollbar {
+        display: none;
+   }
+
+.lefttile{
+  position: absolute;
+  width: 155rpx;
+  height: 60rpx;
+  background: #ebf6fa;
+  top: 18rpx;
+  left: 0;
+  border-bottom-right-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+  font-size: 25rpx;
+  color: #ff4800;
+  text-align: center;
+  line-height: 60rpx;
+  font-weight: 550;
+}
+.righttile{
+  position: absolute;
+  right: 0;
+  top: 18rpx;
+  width: auto;
+  padding-left: 4rpx;
+  padding-right: 5rpx;
+  box-sizing: border-box;
+  height: 60rpx;
+  background: #ebf6fa;
+  border-bottom-left-radius: 50rpx;
+  border-top-left-radius: 50rpx;
+}
+.toux{
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 50rpx;
+  margin-left: 7rpx;
+  vertical-align: middle;
+  margin-top: 3rpx;
+}
+.ke{
+  font-size: 22rpx;
+  margin-left: 6rpx;
+  color: #434343;
+}
+.duih{
+  display: inline-block;
+  width: 70rpx;
+  height: 33rpx;
+  font-size: 22rpx;
+  line-height: 33rpx;
+  background: #ff903f;
+  text-align: center;
+  color: #fff;
+  margin-left: 5rpx;
+  border-radius: 50rpx;
+}
+.duihs{
+  display: inline-block;
+  width: 70rpx;
+  height: 33rpx;
+  font-size: 22rpx;
+  background: #bfbfbf;
+  border: 1rpx solid #eeeeee;
+  margin-left: 10rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 50rpx;
+}
+.wenzcont{
+  position: absolute;
+  top: 333rpx;
+  width: 100%;
+  height: 83rpx;
+}
+.onestile{
+  width: 100%;
+  text-align: center;
+  color: #31aacd;
+  font-size: 24rpx;
+}
+.onestile text{
+  font-size: 28rpx;
+  color: #006785;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.twotitl{
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #3faed0;
+  margin-top: 8rpx;
+}
+.twotitl .time{
+  font-size: 28rpx;
+  color: #006785;
+}
+.twotitl .botxian{
+  margin-right: 15rpx;
+  margin-left: 15rpx;
+}
+.botxian{
+  width: 70rpx;
+  height: 3rpx;
+  vertical-align: middle;
+}
+.hotnews{
+  width: 100%;
+  height: auto;
+  padding: 50rpx 37rpx 30rpx 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+.hothuq{
+  font-size: 28rpx;
+  color: #434343;
+  margin-bottom: 40rpx;
+}
+.ginre{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 10rpx;  
+}
+.contenter{
+  width: 100%;
+  height: 50rpx;
+  position: relative;
+  line-height: 50rpx;
+}
+.name{
+  display: inline-block;
+  font-size: 24rpx;
+  color: #434343;
+  width: 200rpx;
+   overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    vertical-align: middle;
+}
+.nengl{
+  font-size: 26rpx;
+  color: #666666;
+  margin-left: 41rpx;
+  width: 210rpx;
+  text-align: left;
+}
+.temes{
+  font-size: 24rpx;
+  color: #999999;
+  position: absolute;
+  right: 0;
+  vertical-align: middle;
+}
+.button-wrapper{
+  font-size: 26rpx;
+  color: #b8b8b8;
+  margin-top: 30rpx;
+  text-align: center
+}
+.icon-arrow-down{
+  margin-left: 5rpx;
+  vertical-align: middle;
+}
+.tittles{
+  width: 100%;
+  height: 90rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #434343;
+  padding-left: 30rpx;
+  box-sizing:border-box;
+}
+.paim{
+   width: 100%;
+   overflow: hidden;
+   padding-left: 20rpx;
+   padding-right: 50rpx;
+   box-sizing: border-box;
+}
+.numweone{
+  width: 100%;
+  height: 120rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.ones{
+ 
+  float: left;
+  width:37rpx;
+  height:48rpx;
+  margin-top: 38rpx;
+}
+.personsort{
+  width: auto;
+  height: 100%;
+  float: left;
+}
+.personsort text{
+ display: block;
+}
+.oness{
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50rpx;
+  margin-top: 23rpx;
+  margin-left: 10rpx;
+  margin-right: 15rpx;
+  float: left;
+}
+.onesss{
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50rpx;
+  margin-top: 23rpx;
+  margin-left: 29rpx;
+  margin-right: 15rpx;
+  float: left;
+}
+.nilname{
+  font-size: 24rpx;
+  color: #434343;
+  margin-top: 30rpx;
+  height: 30rpx;
+  margin-bottom: 10rpx;
+}
+.nilnames{
+  font-size: 22rpx;
+  color: #a9a8a8;
+}
+.rice_nums{
+  display: block;
+  float: right;
+  font-size: 24rpx;
+  color: #434343;
+  margin-top: 15rpx;
+}
+.giepost{
+  width: 100%;
+  height: 120rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.jianmoney{
+  float: left;
+  width: auto;
+  height: 100%;
+}
+.tilong{
+  font-size: 24rpx;
+  color: #434343;
+  margin-top: 30rpx;
+  display: block;
+}
+.tilongs{
+  color: #999999;
+  font-size: 22rpx;
+  margin-top: 10rpx;
+}
+.goduihua{
+  width: 130rpx;
+  height: 60rpx;
+  border: 1px solid #ff8041;
+  border-radius: 10rpx;
+  float: right;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #fff;
+  margin-right: 40rpx;
+  margin-top: 30rpx;
+  background: #ff8041;
+}
+.goduihuas{
+  width: 130rpx;
+  height: 60rpx;
+  border: 1px solid #eeeeee;
+  border-radius: 10rpx;
+  float: right;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #dcdcdc;
+  margin-right: 40rpx;
+  margin-top: 30rpx;
+}
+.actices{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 10rpx;
+  padding: 30rpx 30rpx 37rpx 30rpx;
+  box-sizing: border-box;
+}
+.personald{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 85rpx;
+  padding-right: 85rpx;
+  box-sizing: border-box;
+  background-color: #c0c0c0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999999;
+}
+.offs{
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top: 158rpx;
+  right: 85rpx;
+}
+.personcont{
+  width: 100%;
+  height: 670rpx;
+  overflow-y: auto;
+  background: #fff;
+  padding-bottom: 46rpx;
+  margin-top: 237rpx;
+  border-radius: 10rpx;
+}
+.persinti{
+  width: 100%;
+  height: 103rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #434343;
+  line-height: 103rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.acteimg{
+  width: 100%;
+  height: 340rpx;
+}
+.my_team{
+width: 150rpx;
+height: 50rpx;
+position: absolute;
+right: 0;
+bottom: 380rpx;
+}

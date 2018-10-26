@@ -1,0 +1,178 @@
+@import "../../lib/style/public.wxss";
+@import "../../lib/style/iconfont.wxss";
+
+.cash-back {
+  width: 100%;
+  height: 300rpx;
+  background: #fff;
+  position: relative;
+}
+
+.cash-back .back-ug {
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.cash-back .cash-money {
+  width: 245rpx;
+  height: 245rpx;
+  background: none;
+  color: #ff712b;
+  position: absolute;
+  top: 80rpx;
+  left: 50%;
+  margin-left: -123rpx;
+  z-index: 99;
+  text-align: center;
+  line-height: 245rpx;
+}
+
+.cash-back .cash-money text {
+  font-size: 41rpx;
+  position: relative;
+}
+
+.cash-back .cash-money .dd {
+  font-size: 24rpx;
+  position: relative;
+  top: -15rpx;
+  right: -10rpx;
+}
+
+.cash-back .peo-image {
+  width: 245rpx;
+  height: 245rpx;
+  background: none;
+  position: absolute;
+  left: 250rpx;
+  top: 80rpx;
+  z-index: 2;
+}
+
+/* 切换 */
+
+.nav {
+  height: 88rpx;
+  background: #fff;
+}
+
+.nav .nav-box {
+  width: 100%;
+  height: 87rpx;
+  overflow: hidden;
+}
+
+.nav .nav-box .box {
+  font-size: 30rpx;
+  height: 87rpx;
+  line-height: 87rpx;
+  text-align: center;
+  color: #303030;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  padding: 0 20rpx;
+}
+
+.nav .nav-box .ll {
+  width: 100%;
+  height: 87rpx;
+}
+
+.nav .nav-box .box .active {
+  color: #ff712b;
+  border-bottom: 2rpx solid #ff712b;
+}
+
+/* 记录 */
+
+.content {
+  padding: 0 33rpx;
+  background: #fff;
+}
+
+.list {
+  height: 130rpx;
+  padding: 25rpx 0;
+}
+
+.content .left {
+  float: left;
+}
+
+.content .left .tx {
+  width: 82rpx;
+  height: 82rpx;
+  margin-right: 20rpx;
+}
+
+.content .left .tx image {
+  width: 82rpx;
+  height: 82rpx;
+}
+
+.content .left .name {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 40rpx;
+}
+
+.content .left .time {
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color: #666;
+}
+
+.content .right {
+  float: right;
+}
+
+.content .one {
+  font-size: 28rpx;
+  color: #ff712b;
+  text-align: right;
+  line-height: 40rpx;
+}
+
+.content .two {
+  font-size: 24rpx;
+  color: #666;
+  text-align: right;
+  line-height: 40rpx;
+}
+
+.pm-box {
+  width: 550rpx;
+  height: 60rpx;
+  padding: 10rpx 0;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 30rpx;
+  -webkit-border-radius: 30rpx;
+  -mozt-border-radius: 30rpx;
+  -ms-border-radius: 30rpx;
+  -o-border-radius: 30rpx;
+}
+
+.pm-way .img-box {
+  position: relative;
+  height: 40rpx;
+}
+
+.pm-way image {
+  position: absolute；;
+}
+
+.pm-way text {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 45rpx;
+  margin: 0 16rpx;
+}
+
+.pm-way .active {
+  color: #ff712b;
+}

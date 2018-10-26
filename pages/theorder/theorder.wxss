@@ -1,0 +1,241 @@
+@import "../../lib/style/iconfont.wxss";
+page{
+	width: 100%;
+	height: 100%;
+	background: #eeeeee;
+}
+.zhnegote{
+	height: 100%;
+	background: #eeeeee;
+}
+.theorder{
+	width: 100%;
+	height: 178rpx;
+	background: #fff;
+	position: relative;
+}
+
+.adress_ther .icon-dizhi{
+	   font-size: 40rpx;
+       color: #FF712B;
+       margin-right: 10rpx;
+       text-align: center;
+}
+.address_diz{
+	 white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.youjianr{
+	float: right;
+	margin-right: 32rpx;
+}
+.adress_ther{
+	text-align: center;
+	width: 100%;
+	height: 170rpx;
+	background: none;
+	line-height: 170rpx;
+	font-size: 32rpx;
+	color: #303030;
+}
+.botthe{
+	width: 100%;
+	height: 8rpx;
+	position: absolute;
+	bottom: 1rpx;
+}
+.centerothe{
+	width: 100%;
+	height: 310rpx;
+	margin-top: 10rpx;
+	padding: 0 30rpx 0 30rpx;
+	box-sizing: border-box;
+	background: #fff;
+}
+.toptime{
+	width: 100%;
+	height: 90rpx;
+	border-bottom: 1rpx solid #bfbfbf;
+	line-height: 90rpx;
+    font-size: 32rpx;
+    color: #303030;
+
+}
+.imglist{
+	width:100%;
+	height: 220rpx;
+	display: flex;
+	flex-direction: row;
+}
+.left_shop{
+	flex: 1;
+	height: 200rpx;
+	background: none;
+	margin-right: 20rpx;
+	padding-top: 30rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.left_shop image{
+	width: 160rpx;
+	height: 165rpx;
+}
+.listwu{
+	width: 100%;
+	height: auto;
+	margin-top: 10rpx;
+	padding: 0 30rpx 0 30rpx;
+	box-sizing: border-box;
+	background: #fff;
+	text-align: left;
+}
+.listthetre{
+	width: 100%;
+	height: 470rpx;
+	background: #fff;
+	margin-top: 10rpx;
+	padding: 0 30rpx 0 30rpx;
+	box-sizing: border-box;
+	margin-bottom: 120rpx;
+}
+.botbtn{
+	width: 100%;
+	height: 100rpx;
+	position: fixed;
+	bottom: 0px;
+	background: #fff;
+	display: flex;
+	flex-direction: row;
+	z-index: 9999;
+}
+.numprices{
+   flex:1;
+   text-align: right;
+   margin-right: 15rpx;
+   line-height: 100rpx;
+   font-size: 32rpx;
+   color: #303030;
+}
+.numbers{
+	color: #ff712b;
+}
+.tijiao{
+   display: block;
+   width: 270rpx;
+   height: 100rpx;
+   float: right;
+   line-height: 100rpx;
+   font-size: 32rpx;
+   color: #fff;
+   text-align: center;
+   background: linear-gradient(#ffae31,#ff792c); 
+}
+.yutime{
+	width: 100%;
+	height: 90rpx;
+	border-bottom: 1rpx solid #bfbfbf;
+	
+	line-height: 90rpx;
+    font-size: 32rpx;
+    color: #303030;
+}
+.youhuiq{
+	width: 100%;
+	height: 90rpx;
+	line-height: 90rpx;
+    font-size: 32rpx;
+    color: #303030;
+}
+.majialiuya{
+	width: 100%;
+	height: 100rpx;
+	line-height: 100rpx;
+    font-size: 32rpx;
+    color: #303030;
+    display: flex;
+    flex-direction: row;
+}
+.liuyan{
+	
+	width: 170rpx;
+}
+.majialiuya input{
+	flex:1;
+	height: 100rpx;
+	background: none;
+}
+.satime{
+	float: right;
+	color: #ff712b;
+}
+.satimes{
+	float: right;
+	color: #B0B0B0;
+}
+.coloa{
+	color: #ff712b;
+}
+.icon-iconfontyoujiantou{
+	font-size: 32rpx;
+	color: #303030;
+}
+.righship{
+	font-size: 26rpx;
+    color: #303030;
+    float: right;
+    line-height: 220rpx;
+}
+.tehdaara{
+	position: relative;
+	width:100%;
+   height:178rpx;
+}
+.tehdaara .icon-dizhi{
+    position: absolute;
+    top: 0rpx;
+    left: 32rpx;
+}
+.tehdaar .aadress_ther {
+	
+}
+.addressname{
+	padding-top: 20rpx;
+	float: left;
+    font-size: 32rpx;
+    color: #303030;
+    line-height: 36rpx;
+    margin-left: 80rpx;
+    margin-top: 20rpx;
+    width: 580rpx;
+    background: none;
+    height: 150rpx;
+    padding-left: 20rpx;
+    box-sizing: border-box;
+}
+.name_phone{
+	width: 100%;
+	height: 60rpx;
+	background: #fff;
+}
+.names{
+	margin-right: 20rpx;
+}
+.asdasd{
+	text-align: left;
+}
+.cityr{
+	margin-right: 20rpx;
+}
+.selects{
+  height: 50rpx;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+.weekser{
+  margin-left: 6rpx;
+  display: inline-block;
+}
+.weekwe{
+  float: left;
+}

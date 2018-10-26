@@ -1,0 +1,139 @@
+/* pages/m-logistic/m-logistic.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.order-info {
+  padding: 38rpx 32rpx;
+  background: #fff;
+}
+
+.order-info .order {
+  overflow: hidden;
+}
+
+.order-info .order .order-info-left {
+  float: left;
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+}
+
+.order-info .order .order-info-left image {
+  width: 100%;
+  height: 100%;
+}
+
+.order-info .order .order-info-left .tip {
+  width: 100%;
+  height: 40rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  text-align: center;
+  color: #fff;
+}
+
+.order-info .order .order-info-right {
+  float: right;
+  width: 490rpx;
+}
+
+.order-info .order .order-info-right .log-state {
+  font-size: 32rpx;
+  color: #ff712b;
+  line-height: 50rpx;
+}
+
+.order-info .order .order-info-right .log-express {
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: #666;
+}
+
+.order-info .order .order-info-right .service {
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: #666;
+}
+
+/* 物流 */
+
+.logistic {
+  margin-top:10rpx;
+  background: #fff;
+  padding: 20rpx 32rpx;
+}
+
+.logistic .logistic-box .logistic-left {
+  float: left;
+  width: 160rpx;
+}
+
+.logistic .logistic-box .logistic-left view {
+  font-size:26rpx;
+  color: #999;
+  text-align: center;
+}
+
+.logistic .logistic-box .logistic-right {
+  float: right;
+  position: relative;
+  width: 490rpx;
+  padding-left: 30rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  border-left: 1rpx solid #dbdbdb;
+}
+
+.logistic .logistic-box .logistic-right .one {
+  font-size:28rpx;
+  color: #999;
+  line-height: 40rpx;
+}
+
+.logistic .logistic-box .logistic-right .two {
+  font-size: 24rpx;
+  color: #bbb;
+  line-height: 38rpx;
+}
+
+.logistic .logistic-box .logistic-right:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: -15rpx;
+  top: 20rpx;
+  width: 20rpx;
+  height:20rpx;
+  -webkit-border-radius: 20rpx;
+  background: #dbdbdb;
+  border: 5rpx solid #eee;
+}
+
+.logistic .logistic-box:last-child .logistic-left .one {
+  color: #ff712b;
+}
+
+.logistic .logistic-box:last-child  .logistic-right {
+  border-left: 1rpx solid #ff712b;
+}
+
+.logistic .logistic-box:last-child  .logistic-right .one {
+  color: #ff712b;
+}
+
+.logistic .logistic-box:last-child  .logistic-right .two {
+  color: #ff712b;
+}
+
+.logistic .logistic-box:last-child  .logistic-right:before {
+  background: #ff712b;
+  border: 5rpx solid #fff;
+}

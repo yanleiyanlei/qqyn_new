@@ -1,0 +1,19 @@
+<!--礼品卡充值页面-->
+<form bindsubmit='formSubmit'>
+
+  <view class="chong-text">
+    兑换成功后相应优惠劵发送到账户中，供消费使用。
+  </view>
+
+
+  
+  <view class="tit">
+    <text class="bt">请输入兑换码</text>
+    <text class="ts">(字母、符号或数字兑换码)</text>
+  </view>
+  <view class="box clearfix">
+    <input type="text" name="pwd1" maxlength="8" data-sta="8" focus="{{sta==8?true:false}}" class="{{sta==8?'active':''}}" bindfocus="focus" bindblur="blur" bindinput="inputChange" />
+  </view>
+
+  <button form-type='submit' class="tj">确认兑换</button>
+</form>

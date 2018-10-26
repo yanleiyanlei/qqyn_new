@@ -1,0 +1,98 @@
+/* pages/myInfo/myInfo.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+.listBox {
+  position: relative;
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #fff;
+}
+
+.list {
+  background: #fff;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  position: relative;
+  right: 0;
+  top: 0;
+}
+
+.list input {
+  height: 100rpx;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  float: left;
+  border: none;
+  color: #666;
+  font-size: 30rpx;
+  width: 500rpx;
+   margin-left: 20rpx;
+}
+
+.list text {
+  line-height: 100rpx;
+  float: left;
+  color: #303030;
+  font-size: 32rpx;
+}
+.list .two {
+ 
+  color: #666;
+  font-size: 30rpx;
+}
+.list .iconfont {
+  font-size: 36rpx;
+  margin-left: 40rpx;
+  margin-right: 20rpx;
+  float: left;
+}
+
+.list picker{
+  font-size: 28rpx;
+  border: none;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  width: 400rpx;
+  vertical-align: middle;
+   float: left; 
+   color: #303030;
+}
+
+
+
+.list .icon-yuan {
+  color: #666;
+}
+
+.list .icon-chuangyikongjianICON_fuzhi- {
+  color: #ff712b;
+}
+
+.list image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  float: left;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+.tj{
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  text-align: center;
+  margin-top: 50rpx; 
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 100rpx;
+  border-radius: 0;
+}
+

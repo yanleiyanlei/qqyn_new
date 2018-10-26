@@ -1,0 +1,153 @@
+<!-- 个人中心，订单页面 -->
+
+<!-- 优惠券 -->
+<view class="mask" style="{{tt}}"></view>
+<view class="success" style="{{tt}}">
+  <image class="close" bindtap='close' src="https://m.7710mall.com/Uploads/xxc//close.png"></image>
+  <view class="success-con">
+    <image class="success-img" src="https://m.7710mall.com/Uploads/xxc//hd_fx.png">
+    </image>
+    <!-- <block wx:for="{{pop_msg}}">
+      <view class="one">{{item}}</view>
+    </block> -->
+      <view class="one">{{tip}}</view> 
+    <!-- <view class="one">11111</view> -->
+    <view class="two">有效期至：{{end}}</view>
+  </view>
+  <view class="op-box">
+    <navigator url="/pages/index/index" open-type='switchTab' hover-class='Nhover'>
+      <view class="use">立即使用</view>
+    </navigator>
+  
+  </view>
+  <image src="https://m.7710mall.com/Uploads/xxc//m-fsuccess.png" class="bg">
+  </image>
+</view>
+<!-- 切换 -->
+<view class="nav border1 border-box">
+  <view class="nav-box border-box">
+    <view class="{{active==0?'active':''}}" data-sta="0" bindtap="orderReload">
+      <text>全部</text>
+    </view>
+    <view class="{{active==1?'active':''}}" data-sta="1" bindtap="orderReload">
+      <text>待付款</text>
+    </view>
+    <view class="{{active==2?'active':''}}" data-sta="2" bindtap="orderReload">
+      <text>待发货</text>
+    </view>
+    <view class="{{active==3?'active':''}}" data-sta="3" bindtap="orderReload">
+      <text>待收货</text>
+    </view>
+    <view class="{{active==4?'active':''}}" data-sta="4" bindtap="orderReload">
+      <text>待评价</text>
+    </view>
+  </view>
+</view>
+<!-- 空 -->
+<block wx:if="{{iskong}}">
+  <view class="kong">
+    <view style="margin-top: 280rpx;">
+      <text class="iconfont icon-dingdan-copy"></text>
+    </view>
+    <view tyle="margin-top:70rpx;">
+      <text class="tt">还没有订单呢，快去逛逛看吧！</text>
+    </view>
+  </view>
+</block>
+<!-- 订单信息 -->
+<block wx:else>
+  <view class="order-info border-box" wx:for="{{orderlist}}">
+    <view class="order-Num border1">
+      <text class="order-bh">订单编号：{{item.order_number}}</text>
+      <text class="order-state" wx:if="{{item.order_type==1&&item.orderstatus==0}}">待付款</text>
+      <text class="order-state" wx:elif="{{item.order_type==1&&item.orderstatus==1}}">待发货</text>
+      <text class="order-state" wx:elif="{{item.order_type==1&&item.orderstatus==2}}">待收货</text>
+      <text class="order-state" wx:elif="{{item.order_type==1&&item.orderstatus==3}}">已完成</text>
+      <text class="order-state" wx:elif="{{item.order_type==0&&item.orderstatus!=0}}">订单已受理</text>
+      <text class="order-state" wx:elif="{{item.order_type==0&&item.orderstatus==0}}">订单关闭</text>
+    </view>
+    <view class="good-info">
+      <block wx:if="{{item.order_list.length==1}}">
+        <navigator url="/pages/order-detail/order-detail?oid={{item.show_id}}&cla={{active}}" hover-class='Nhover'>
+          <view class="good clearfix" wx:for="{{item.order_list}}" wx:for-item="goodinfo">
+            <view class="left">
+              <image src="{{goodinfo.thumbnails}}"></image>
+            </view>
+            <view class="right">
+              <view>
+                <text class="goods-name">{{goodinfo.goods_name}}</text>
+                <text class="number">x{{goodinfo.quantity}}</text>
+              </view>
+              <view class="goods-feature">{{goodinfo.goods_spec_key}}</view>
+              <view class="goods-price">
+                <text style="font-size:22rpx">￥</text>
+                <text>{{goodinfo.goods_price}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+      <block wx:else>
+        <navigator url="/pages/order-detail/order-detail?oid={{item.show_id}}&cla={{active}}" hover-class='Nhover'>
+
+
+          <view class="big-box clearfix">
+            <block wx:for="{{item.order_list}}" wx:for-item="goodinfo">
+              <image src="{{goodinfo.thumbnails}}"></image>
+            </block>
+          </view>
+        </navigator>
+      </block>
+      <view class="order-money border1">
+        <text style="font-size: 24rpx;color: #666;margin-right: 24rpx;">共{{item.quantity}}件</text>
+        <text style="font-size: 24rpx;color: #303030;">应付总额：￥</text>
+        <text style="font-size:30rpx;color:#303030;font-weight: bold;">{{item.actualpayment}}</text>
+        <text style="font-size: 24rpx;color: #303030;margin-left:10rpx" wx:if="{{item.freight!=0}}">(含运费:{{item.freight}})</text>
+        <text style="font-size: 24rpx;color: #303030;margin-left:10rpx" wx:else>(免运费)</text>
+      </view>
+    </view>
+    <view class="operation">
+      <block wx:if="{{item.order_type==1&&item.orderstatus==0}}">
+        <text class="cancel" style="margin-right:40rpx;" data-oid="{{item.show_id}}" bindtap="cancelOrder" hover-class="Nhover">取消订单</text>
+        <!-- <navigator url="/pages/mpay/mpay?oid={{item.show_id}}&money={{item.actualpayment}}&sta={{active}}&wz=1"> -->
+        <text class="pay" data-oid="{{item.show_id}}" data-orderNum="{{item.order_number}}" data-money="{{item.actualpayment}}" data-sta="{{active}}" hover-class="Nhover" bindtap="pay" data-coupon="{{item.coupon_type}}" data-end="{{item.release_time}}" data-tip="{{item.msg}}" >确认付款</text>
+        <!-- </navigator> -->
+      </block>
+      <block wx:elif="{{item.order_type==1&&item.orderstatus==1}}">
+        <text class="cancel" style="margin-right:40rpx;" data-oid="{{item.show_id}}" bindtap="cancelOrder" hover-class="Nhover">取消订单</text>
+
+        <text class="link-p" style="margin-right: 40rpx;" data-oid="{{item.show_id}}" bindtap="link" hover-class="Nhover">联系客服</text>
+
+        <text class="quik" data-oid="{{item.show_id}}" bindtap="remindDeliver" hover-class="Nhover">提醒发货</text>
+      </block>
+      <block wx:elif="{{item.order_type==1&&item.orderstatus==2}}">
+        <text class="logistics" style="margin-right:40rpx;" data-oid="{{item.show_id}}" bindtap="logistic" hover-class="Nhover">查看物流</text>
+        <text class="receive" data-oid="{{item.show_id}}" bindtap="confirmReceipt" hover-class="Nhover">确认收货</text>
+      </block>
+      <block wx:elif="{{item.order_type==1&&item.orderstatus==3}}">
+        <text class="delete" style="margin-right: 40rpx;" data-oid="{{item.show_id}}" bindtap='deleteOrder' hover-class="Nhover">删除订单</text>
+        <!-- <text class="buy" style="margin-right: 40rpx;" data-oid="{{item.show_id}}" hover-class="Nhover">再次购买</text> -->
+        <navigator url="/pages/m-estimate-list/m-estimate-list?cla={{active}}&oid={{item.show_id}}">
+          <text class="estimate" data-oid="{{item.show_id}}" hover-class="Nhover">评价</text>
+        </navigator>
+      </block>
+      <block wx:elif="{{item.order_type==0&&item.orderstatus!=0}}">
+        <text class="delete" data-oid="{{item.show_id}}" bindtap='deleteOrder' hover-class="Nhover">删除订单</text>
+      </block>
+      <block wx:elif="{{item.order_type==0&&item.orderstatus==0}}">
+        <text class="delete" data-oid="{{item.show_id}}" bindtap='deleteOrder' hover-class="Nhover">删除订单</text>
+      </block>
+
+      <!-- <text class="link-p" style="margin-right: 0.4rem;">联系客服</text>
+      <text class="quik">提醒发货</text> -->
+
+      <!-- <text class="logistics" style="margin-right: 0.4rem;">查看物流</text>
+      <text class="receive">确认收货</text> -->
+
+      <!-- <text class="delete" style="margin-right: 0.4rem;">删除订单</text>
+      <text class="buy" style="margin-right: 0.4rem;">再次购买</text>
+      <text class="estimate">评价</text> -->
+      <!-- <text class="delete">删除订单</text> -->
+    </view>
+  </view>
+</block>

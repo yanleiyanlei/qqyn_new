@@ -1,0 +1,57 @@
+/* pages/search/search.wxss */
+@import"../../lib/style/iconfont.wxss";
+@import"../../lib/style/public.wxss";
+.search{
+  margin: 0 32rpx;
+  display: flex;
+  line-height: 110rpx;
+  height: 110rpx;
+  border-bottom: 1rpx solid #b5b5b5;
+  font-size: 32rpx;
+}
+.search view{
+  width: 580rpx;
+  height: 70rpx;
+  background: #f3f3f3;
+  border-radius: 10rpx;
+  display: flex;
+  line-height: 70rpx;
+  margin-top: 22rpx;
+}
+.search view text{
+  font-size: 40rpx;
+  margin: 0 15rpx;
+}
+.search view input{
+  width: 480rpx;
+  height: 65rpx;
+}
+.btn{
+  margin-left: 20rpx;
+}
+
+/*热门搜索===  */
+.hotSearch{
+  margin: 0 32rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+  border-bottom: 1rpx solid #b5b5b5;
+}
+.hotTit{
+  margin: 20rpx 0;
+}
+.hotSearch view view{
+  font-size: 28rpx;
+  float: left;
+  padding: 20rpx;
+  border: 1rpx solid #b5b5b5;
+  border-radius: 6rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+/*清除==  */
+.clear{
+  float: right;
+  color: #908f8f;
+  font-size: 26rpx;
+}

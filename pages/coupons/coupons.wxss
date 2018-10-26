@@ -1,0 +1,157 @@
+@import "../../lib/style/iconfont.wxss";
+page{
+    width: 100%;
+	height: 100%;
+	background: #f6f6f6;	
+}
+.content{
+	width: 100%;
+	height: 100%;
+	background: #f6f6f6;
+	padding: 20rpx 0;
+	box-sizing: border-box; 
+}
+.icon-web-icon-{
+
+	font-size: 45rpx;
+}
+.top_gui{
+	line-height: 66rpx;
+	font-size: 28rpx;
+	text-align: right;
+	margin-right: 27rpx;
+	color: #303030;
+}
+.coupons{
+	width: 100%;
+	padding: 0 27rpx;
+	box-sizing: border-box;
+  overflow: hidden;
+}
+
+.wsycoupons{
+	margin-bottom: 17rpx;
+	width: 100%;
+	height: 220rpx;
+	border-radius: 15rpx;
+	background: url('https://m.7710mall.com/Uploads/xxc/m_coupon1.png') no-repeat;
+    position: relative;
+    background-size: cover;
+}
+.shopquan{
+  position: absolute;
+  left: 10rpx;
+  top: 50rpx;
+}
+.shopquan text{
+  display: block;
+  font-size: 28rpx;
+  color: #fff;
+}
+.wsycouponss{
+    margin-bottom: 17rpx;
+	width: 100%;
+	height: 220rpx;
+	border-radius: 15rpx;
+	background: url('https://m.7710mall.com/Uploads/xxc/m_coupon2.png') no-repeat;
+  background-size: cover;
+}
+.wsycouponss .pricelists{
+  color: #ffccb3;
+}
+.wsycouponss .m-scope{
+  color: #cccccc;
+}
+.wsycouponss .m-full .wmks{
+  color: #ffccb3;
+}
+.wsycouponss .m-time{
+  color: #ccc;
+  
+}
+.pricelist{
+	float: left;
+    width: 220rpx;
+    background: none;
+    height: 100%;
+    text-align: center;
+    font-size: 35rpx;
+    color: #ff712b;
+     padding-top: 70rpx;
+    box-sizing: border-box;
+}
+.pricelists{
+	float: left;
+    width: 220rpx;
+    background: none;
+    height: 100%;
+    text-align: center;
+    font-size: 35rpx;
+    color: #666666;
+    padding-top: 70rpx;
+    box-sizing: border-box;
+}
+.yprice{
+  text-decoration:line-through;
+  color: #ccc;
+  font-size: 28rpx;
+  display: block;
+}
+.moneyss{
+	font-size: 60rpx;
+	color: #ffccb3;
+}
+.moneys{
+	font-size: 60rpx;
+	color: #ff712b;
+}
+.pricerigh{
+	float: left;
+	width: 400rpx;
+	height: 100%;
+	margin-left: 48rpx;
+	background: none;
+}
+.m-full{
+	margin-top: 35rpx;
+	display: flex;
+	flex-direction: row;
+}
+.m-scope{
+	font-size: 26rpx;
+    color: #434343;
+    line-height: 30rpx;
+    margin-top: 35rpx;
+}
+.wmks{
+   font-size: 22rpx;
+    color: #666666;
+    line-height: 30rpx;	
+}
+.wmk{
+	font-size: 22rpx;
+    color: #ff712b;
+    line-height: 30rpx;
+}
+.qsy{
+	display: inline-block;
+   padding: 5rpx 5rpx 5rpx 5rpx;
+    text-align: center;
+    line-height: 28rpx;
+    color: #FF712B;
+    border: 1rpx solid #ff712b;
+    border-radius: 14rpx;
+    margin-left: 40rpx;
+    font-size: 24rpx;
+}
+.m-time{
+	 font-size: 22rpx;
+    color: #888888;
+    height: 30rpx;
+    line-height: 30rpx;
+    margin-top: 32rpx;
+}
+.wsycoupons .assas{
+  padding-top: 50rpx;
+  box-sizing: border-box;
+}

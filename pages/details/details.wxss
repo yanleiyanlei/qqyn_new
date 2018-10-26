@@ -1,0 +1,814 @@
+/**details.wxss**/
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.shopdetails {
+  width: 100%;
+  height: 750rpx;
+  background: none;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.3;
+  filter: opacity(30);
+  z-index: 9999999;
+}
+
+.userInfo {
+  position: fixed;
+  z-index: 99999999;
+  background: #fff;
+  width: 600rpx;
+  height: 250rpx;
+  top: 50%;
+  left: 50%;
+  margin-top: -150rpx;
+  margin-left: -300rpx;
+}
+
+.bannerimg {
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.introduce {
+  width: 100%;
+  height: auto;
+  background: #fbfbfb;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+}
+
+.name_shop {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 5rpx;
+  box-shadow: 0rpx 5rpx 5rpx 5rpx #ccc;
+  padding: 36rpx 28rpx 0 28rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.addcoupn {
+  position: absolute;
+  right: 32rpx;
+  width: auto;
+  top: 50rpx;
+  text-align: center;
+}
+
+.addimg {
+  width: 39rpx;
+  height: 50rpx;
+}
+
+.moneys {
+  font-size: 24rpx;
+  color: #ff7b33;
+}
+
+.goodsname {
+  font-size: 36rpx;
+  color: #303030;
+  font-weight: 480;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 28rpx;
+  display: block;
+}
+
+.goodsms {
+  font-size: 28rpx;
+  color: #909090;
+  display: block;
+}
+
+.price {
+  width: 100%;
+  height: 70rpx;
+  margin-top: 30rpx;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.prices {
+  color: #ff7117;
+  font-size: 37rpx;
+  margin-left: 10rpx;
+  font-weight: bold;
+}
+
+.ylpries {
+  text-decoration: line-through;
+  font-size: 25rpx;
+  color: #878787;
+  margin-left: 10rpx;
+}
+
+.yisw {
+  color: #303030;
+  font-weight: 500;
+  float: right;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+}
+
+.yujitime {
+  font-size: 26rpx;
+  color: #303030;
+  line-height: 70rpx;
+}
+
+.icon-tixing {
+  color: #ff712b;
+  margin-right: 10rpx;
+  font-weight: bolder;
+  font-size: 32rpx;
+}
+
+.center {
+  width: 100%;
+  height: auto;
+  background: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+
+.discounts {
+  width: 100%;
+  height: 140rpx;
+  background: #fff;
+  margin-top: 10rpx;
+  border-radius: 5rpx;
+  box-shadow: 0rpx 3rpx 3rpx 3rpx #ccc;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+}
+
+.icon-youhui {
+  color: #ff712b;
+  font-size: 40rpx;
+  font-weight: 450;
+  vertical-align: middle;
+}
+
+.title_o {
+  font-size: 26rpx;
+}
+
+.tishi {
+  display: block;
+  text-align: center;
+  font-size: 26rpx;
+  margin-top: 8rpx;
+  color: #909090;
+}
+
+.evaluation {
+  margin-top: 8rpx;
+  width: 100%;
+  height: auto;
+  border-radius: 5rpx;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  padding-top: 5rpx;
+  box-shadow: 0rpx 3rpx 3rpx 3rpx #ccc;
+}
+
+.evalut {
+  width: 100%;
+  height: 113rpx;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+  box-sizing: border-box;
+}
+
+.pingjis {
+  width: 100%;
+  height: auto;
+  padding-right: 20rpx;
+  padding-left: 28rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #bfbfbf;
+}
+
+.yhtit {
+  color: #303030;
+  font-size: 31rpx;
+  line-height: 113rpx;
+  float: left;
+}
+
+.yhtit .num {
+  color: #303030;
+  font-size: 29rpx;
+}
+
+.quabu {
+  float: right;
+  color: #303030;
+  font-size: 31rpx;
+  line-height: 113rpx;
+}
+
+.printisetse {
+  width: 100%;
+  height: auto;
+  border-bottom: 1rpx solid #bfbfbf;
+}
+
+.printisetse:last-child {
+  border-bottom: none;
+}
+
+.peonple {
+  width: 100%;
+  height: 127rpx;
+  background: none;
+  padding-top: 36rpx;
+  box-sizing: border-box;
+}
+
+.widget__arrow {
+  width: 85rpx;
+  height: 85rpx;
+  float: left;
+  margin-right: 10rpx;
+  border-radius: 50%;
+}
+
+.name_co {
+  width: auto;
+  height: 100%;
+  float: left;
+  background: none;
+  overflow: hidden;
+  color: #303030;
+  font-size: 26rpx;
+}
+
+.name_ni {
+  color: #303030;
+  font-size: 26rpx;
+  width: 300rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iomg {
+  display: block;
+  font-size: 26rpx;
+  color: #ff712b;
+  margin-top: 13rpx;
+}
+
+.pintime {
+  font-size: 26rpx;
+  color: #a1a1a1;
+  float: right;
+}
+
+.contenter_igm {
+  width: 100%;
+  height: auto;
+  padding-top: 22rpx;
+  box-sizing: border-box;
+  background: none;
+}
+
+.conts {
+  font-size: 28rpx;
+  color: #303030;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10rpx;
+}
+
+.imageUt {
+  width: 166rpx;
+  height: 166rpx;
+  margin-left: 7rpx;
+  margin-right: 7rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.detailshsop {
+  margin-top: 5rpx;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding-left: 28rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+  border-radius: 5rpx;
+  box-shadow: 0rpx 3rpx 3rpx 3rpx #ccc;
+}
+
+.detailastitle {
+  width: 100%;
+  height: 110rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #bfbfbf;
+  color: #303030;
+  font-size: 31rpx;
+  line-height: 110rpx;
+  text-align: center;
+}
+
+.guige {
+  width: 100%;
+  height: 85rpx;
+  border-bottom: 1rpx solid #bfbfbf;
+  font-size: 28rpx;
+  line-height: 85rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.guige:last-child {
+  border-bottom: none;
+}
+
+.adss {
+  margin-bottom: -10rpx;
+}
+
+.adasdas {
+  width: 100%;
+}
+
+/* 底部 */
+
+.bottomdetaile {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0px;
+  border-top: 1rpx solid #bfbfbf;
+  display: flex;
+  flex-direction: row;
+}
+
+.bottomdetaile text {
+  flex: 1;
+  background: #fff;
+}
+
+.tiaoz {
+  flex: 1;
+  height: 100%;
+}
+
+.bottomdetaile .homepage {
+  border-right: 1rpx solid #d2d2d2;
+}
+
+.bottomdetaile .theret {
+  border-right: none;
+}
+
+.bottomdetaile .shopcar {
+  width: 220rpx;
+  display: inline-block;
+  background: #ffb516;
+  border: none;
+  font-size: 33rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.bottomdetaile .lijgm {
+  width: 220rpx;
+  display: inline-block;
+  background: #ff5c25;
+  border: none;
+  font-size: 33rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.homepage {
+  text-align: center;
+  color: #02cb6a;
+  font-size: 25rpx;
+  display: block;
+}
+
+.collection {
+  text-align: center;
+  font-size: 25rpx;
+  color: #606060;
+  border-right: 1rpx solid #d2d2d2;
+}
+
+.gouwuche {
+  text-align: center;
+  font-size: 25rpx;
+  color: #606060;
+  display: block;
+}
+
+.bottomdetaile .icon-weibiaoti11 {
+  display: block;
+  font-size: 40rpx;
+  margin-top: 14rpx;
+  color: #02cb6a;
+  border-right: none;
+}
+
+.icon-gouwuche {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 45rpx;
+}
+
+.collection .icon-xin {
+  display: inline-block;
+  margin-top: 12rpx;
+  font-size: 40rpx;
+}
+
+.collection .icon-xin1 {
+  display: inline-block;
+  margin-top: 12rpx;
+  font-size: 40rpx;
+  color: #ff712b;
+}
+
+.models_img {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #c0c0c0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  padding: 300rpx 40rpx 300rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.imgbig {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.imgbig image {
+  width: 100%;
+  height: 100%;
+}
+
+.addcatsw {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #c0c0c0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 99999999;
+}
+
+.addcatsws {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #c0c0c0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 99999999;
+}
+
+.fxtc {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #c0c0c0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 99999999;
+}
+
+.guigeadd {
+  width: 100%;
+  height: 800rpx;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+
+.tioheign {
+  width: 100%;
+  height: 200rpx;
+  border-bottom: 1rpx solid #bfbfbf;
+  position: relative;
+}
+
+.tiel_g {
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #303030;
+  clear: both;
+}
+
+.guiges {
+  width: 100%;
+  height: auto;
+  background: none;
+  margin-bottom: 15rpx;
+}
+
+.guiges text {
+  display: inline-block;
+  width: 155rpx;
+  height: 70rpx;
+  border: 1rpx solid #bfbfbf;
+  border-radius: 15rpx;
+  text-align: center;
+  line-height: 70rpx;
+  color: #303030;
+  font-size: 28rpx;
+  float: left;
+  margin-bottom: 10rpx;
+  margin-right: 19rpx;
+}
+
+.guiges .active {
+  color: #ff712b;
+  border: 1rpx solid #ff712b;
+}
+
+.quebtn {
+  position: absolute;
+  bottom: 0;
+  height: 100rpx;
+  width: 100%;
+  background: #ff8b00;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 33rpx;
+}
+
+.tiel_ga {
+  width: 100%;
+  font-size: 30rpx;
+  color: #303030;
+  clear: both;
+  margin-top: 15rpx;
+  height: auto;
+}
+
+.jiajian {
+  width: 200rpx;
+  float: right;
+  text-align: right;
+  margin-right: 15rpx;
+}
+
+.fanku {
+  font-size: 40rpx;
+  color: #ff712b;
+  display: inline-block;
+  width: 55rpx;
+  height: 55rpx;
+  border: 1rpx solid #ff712b;
+  background: none;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.number {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  font-size: 33rpx;
+}
+
+.touimg {
+  width: 190rpx;
+  height: 190rpx;
+  position: absolute;
+  top: -30rpx;
+  float: left;
+  border-radius: 10rpx;
+  border: 2rpx solid #e5e5e5;
+}
+
+.iimgnage {
+  width: auto;
+  height: 150rpx;
+  background: none;
+  margin-left: 230rpx;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+}
+
+.icon-guanbi {
+  position: absolute;
+  right: 30rpx;
+  top: 10rpx;
+  font-size: 45rpx;
+}
+
+.names {
+  font-size: 28rpx;
+}
+
+.pricese {
+  font-size: 28rpx;
+  color: #ff712b;
+  margin-top: 30rpx;
+}
+
+.shopprices {
+  width: 440rpx;
+  background: #ccc;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.shoppricess {
+  width: 440rpx;
+  background: #ff712b;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.newsshop {
+  display: inline-block;
+  width: auto;
+  height: 35rpx;
+  background: #ff712b;
+  color: #fff;
+  font-size: 26rpx;
+  margin-left: 10rpx;
+}
+
+.fxconten {
+  width: 100%;
+  height: 510rpx;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+}
+.detailimg{
+  width: 100%;
+  height: 184rpx;
+  position: absolute;
+  bottom: 510rpx;
+}
+.contentsa{
+  width: 100%;
+  height: 297rpx;
+}
+.contleft{
+  width: 85rpx;
+  height: 100%;
+  margin-left: 64rpx;
+  float: left;
+  text-align: center;
+}
+.contleft text{
+  font-size: 26rpx;
+  color: #9a9a9a;
+  display: block;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.concent{
+   width: 85rpx;
+  height: 100%;
+  float: left;
+  text-align: center;
+}
+.xian{
+  width: 17rpx;
+  height: 224rpx;
+}
+.friendq{
+  padding-top: 15rpx;
+}
+.contright{
+  float: left
+}
+.contright view{
+  width: 443rpx;
+  height: 105rpx;
+  background: url('https://m.7710mall.com/Uploads/xxc/fenx_03.png') no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 20rpx 20rpx 0 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.backgr{
+  width: 100%;
+  height: 100%;
+}
+.leftwe{
+  float: left;
+  width: 50%;
+  height: 100%;
+  text-align: right;
+  padding-right: 40rpx;
+  box-sizing: border-box;
+}
+.leftwes{
+  float: left;
+  width: 50%;
+  height: 100%;
+  text-align: left;
+  padding-left: 40rpx;
+  box-sizing: border-box;
+}
+.wecar{
+  width: 68rpx;
+  height: 68rpx;
+  margin-right: 97rpx;
+}
+.wecars{
+  width: 68rpx;
+  height: 68rpx;
+  margin-left: 97rpx;
+}
+.fexwe{
+  font-size: 26rpx;
+  color: #ff712b;
+}
+.leftwe button{
+  font-size: 26rpx;
+  color: #ff712b;
+  list-style: none;
+  width: 260rpx;
+  height: 60rpx;
+  background: #fff;
+  border: none;
+  float: right;
+}
+.leftwes button{
+  font-size: 26rpx;
+  color: #ff712b;
+  list-style: none;
+  width: 260rpx;
+  height: 60rpx;
+  background: #fff;
+  border: none;
+  float: left;
+}
+.oofsss{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 40rpx;
+  bottom: 679rpx;
+}

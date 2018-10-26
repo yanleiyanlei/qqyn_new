@@ -1,0 +1,130 @@
+@import "../../lib/style/public.wxss";
+@import "../../lib/style/iconfont.wxss";
+.wrapper {
+  overflow: hidden;
+  padding-bottom:110rpx;
+}
+/* 空地址 */
+.kong {
+  width: 100%;
+  overflow: hidden;
+}
+.kong .kong-icon {
+  text-align: center;
+  margin-top: 280rpx;
+}
+.kong .kong-icon text{
+  font-size: 190rpx;
+  color: #cacaca;
+}
+.kong .kong-tip {
+  text-align: center;
+  font-size: 28rpx;
+  color: #cacaca;
+  margin-top: 70rpx;
+}
+/* 地址 */
+.listBox {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: #fff;
+  margin-top: 10rpx;
+}
+
+.list {
+  background: #fff;
+  width: 100%;
+}
+.list .top {
+  padding: 10rpx 32rpx;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.list .top .one {
+  height: 86rpx;
+}
+.list .top .one view {
+  width: 50%;
+  float: left;
+}
+.list .top .one .left text,
+.list .top .one .right text {
+  font-size:32rpx;
+  color: #303030;
+  height: 70rpx;
+  line-height:86rpx;
+  text-align: right;
+}
+.list .top .one .right {
+  text-align: right;
+}
+.list .top .two {
+  background: #fff;
+}
+.list .top .two view {
+  font-size:28rpx;
+  color: #666;
+  color: #303030;
+  line-height: 40rpx;
+}
+.list .top .two view .address2{
+  margin-left: 10rpx;
+}
+.list .bot {
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  height: 90rpx;
+}
+.list .bot .left,.list .bot .right {
+  height: 90rpx;
+  width: 50%;
+  float: left;
+}
+.list .bot text {
+  height: 90rpx;
+  line-height:90rpx;
+  color: #303030;
+  margin-right: 10rpx;
+  vertical-align: middle;
+  font-size:28rpx;
+
+}
+
+.list .bot .left .iconfont {
+  font-size: 36rpx;
+  color: #666;
+}
+.list .bot .right view{
+  /* width: 50%; */
+  float: right;
+  margin-left: 10rpx;
+}
+
+.list .bot .left .icon-chuangyikongjianICON_fuzhi- {
+  color: #ff712b;
+}
+.list .bot .right {
+  text-align: right;
+}
+/* 新建地址 */
+.addAddress {
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  position: fixed;
+  bottom: 0;
+  font-size: 10px;
+  text-align: center;
+}
+.addAddress text{
+  font-size:32rpx;
+  color: #fff;
+  line-height: 100rpx;
+}

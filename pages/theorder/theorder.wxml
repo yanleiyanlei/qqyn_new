@@ -1,0 +1,137 @@
+<!-- 订单页面 -->
+<page>
+<view class="zhnegote">
+	<view class="theorder adad" wx:if="{{address==null}}">
+	  <view class="adress_ther" bindtap="newaddress">
+	  	   <text class="iconfont icon-dizhi dizhi"></text>
+	  	   请添加收货地址  +
+	  	   <text class="iconfont icon-iconfontyoujiantou youjianr"></text>
+	  </view>
+	 <image src="http://m.77farmers.com/Public/Home/img/order_loc.png" class="botthe"></image>
+	</view>
+	<view class="theorder tehdaara" wx:else>
+	  <view class="adress_ther asdasd" bindtap="newaddress">
+	  	  <text class="iconfont icon-dizhi"></text>
+	  	  <view class="addressname">
+	  	  	<view class="name_phone">
+	  	  		<text class="names">{{address.name}}</text>
+	  	  		<text>{{address.phone}}</text>
+	  	  	</view>
+	  	  	<view class="address_diz">
+	  	  		<text class="cityr">{{address.sheng}}</text>
+	  	  		<text>{{address.shi}}</text>
+	  	  		<text wx:if="{{address.qu==null}}"></text>
+	  	  		<text wx:else>{{address.qu}}</text>
+	  	  		<text class="idihsd">{{address.address_content}}</text>
+	  	  	</view>
+	  	  </view>
+	  	  <text class="iconfont icon-iconfontyoujiantou youjianr"></text>
+	  </view>
+	 <image src="http://m.77farmers.com/Public/Home/img/order_loc.png" class="botthe"></image>
+	</view>
+	<view class="centerothe">
+		<view class="toptime">
+			商品清单
+		</view>
+		<view class="imglist">
+			<view class="left_shop">
+				<image wx:for="{{goodsorder}}" src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_photo}}" bindtap="urldetails" data-id="{{item.goods_id}}"></image>
+			</view>
+			<view class="righship" bindtap="listshop">
+				共{{quantity.quantity}}件 <text class="iconfont icon-iconfontyoujiantou"></text>
+			</view>
+		</view>
+	</view>
+	<view  class="listwu">
+
+		<view class="yutime">
+			<text>预计送达时间</text>
+			<view class="satime" wx:if="{{quantity.order[0].is_sale==1}}">
+			     <text>3日后发货</text>
+			</view>
+			<view class="satime" wx:elif="{{loc=='北京市' || loc=='天津市' || loc=='河北省'&&quantity.order[0].is_sale!=1}}">
+			     <text wx:if="{{quantity.timestos >= 10}}">次日到达</text>
+			     <text wx:else>今日到达</text>
+			</view>
+			<view class="satime" wx:else>
+				  <text wx:if="{{quantity.timestos >= 10}}">后天到达</text>
+			     <text wx:else>次日到达</text>
+			</view>
+		</view>
+    
+  	<view class="yutime" wx:if="{{quantity.select_weekday1!=undefined}}">
+			<text style='float:left'>蔬菜送达时间</text>
+			<view class="satimes weekwe">
+            <icon wx:if="{{weCharstatus}}" class='selects' type="success" data-key="0" color="#ff712b" bindtap="selectAll"/>
+				  <icon wx:else type="circle" data-keys="{{quantity.select_weekday1}}"  class='selects' data-key="0" color="#bfbfbf" bindtap="selectAll"/>
+             <text class='weekser'> {{quantity.select_weekday1}}</text>
+			</view>
+      	<view class="satimes weekwe">
+              <icon wx:if="{{yuestutea}}" class='selects' type="success" data-key="0" color="#ff712b" bindtap="selectAlls"/>
+				  <icon wx:else data-keys="{{quantity.select_weekday2}}" type="circle" class='selects' data-key="0" color="#bfbfbf" bindtap="selectAlls"/>
+             <text class='weekser'> {{quantity.select_weekday2}}</text>
+			</view>
+		</view>
+
+		<view class="youhuiq">
+		<text>商品总额</text>
+			<text class="satimes">￥{{quantity.money}}</text>
+		</view>
+     
+     
+	</view>
+
+	<view class="listthetre">
+		<view class="yutime" bindtap="commentsi" data-moy="{{quantity.money}}">
+			<text>优惠券</text>
+			<text class="satimes" wx:if="{{quantity.coupon==null}}">
+			  <text>{{quantity.num}}张可用</text>
+			  <text class="iconfont icon-iconfontyoujiantou"></text>
+			</text>
+			<text class="satimes" wx:else>
+			  <text class="coloa">-￥{{quantity.coupon.coupon_money}}</text>
+			</text>
+		</view>
+		<view class="yutime">
+			<text>优惠金额</text>
+			<text class="satime" wx:if="{{quantity.huodong==null}}">-￥0.00</text>
+			<text class="satime" wx:else>-￥{{quantity.huodong}}</text>
+		</view>
+		<view class="yutime">
+			<text>运费</text>
+			<text class="satime" wx:if="{{quantity.money>=package_mail}}">￥0.00</text>
+			<text class="satime" wx:else>￥{{quantity.commpany.upto_amount}}</text>
+		</view>
+		<view class="majialiuya">
+			<text class="liuyan">买家留言：</text> 
+		    <input class="input" name="userName" placeholder="30字以内" bindinput ="userNameInput"  maxlength="30"/>
+			
+		</view>
+	</view>
+	<view class="botbtn">
+		<view class="numprices">
+		  合计:
+		  <text class="numbers" wx:if="{{money>=package_mail && quantity.coupon==null}}">￥{{money}}</text>
+		   <text class="numbers" wx:if="{{money>=package_mail && quantity.coupon!=null}}">￥{{compoins}}</text>
+		  <text class="numbers" wx:if="{{money < package_mail && quantity.coupon==null}}">￥{{allsprice}}</text>
+		  <text class="numbers" wx:if="{{money < package_mail && quantity.coupon!=null}}">￥{{conprice}}</text>
+		</view>
+		
+		 <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money>=99 && quantity.coupon==null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}" data-actualpayment="{{money}}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-sheng="{{address.sheng}}" data-shi="{{address.shi}}" data-qu="{{address.qu}}" data-cont="{{userName}}" data-freight="{{quantity.commpany.upto_amount}}" data-id="{{address.id}}">去结算</text>
+
+		  <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money>=99 && quantity.coupon!=null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}" data-actualpayment="{{compoins}}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-cont="{{userName}}" data-qu="{{address.qu}}" data-sheng="{{address.sheng}}" data-shi="{{address.shi}}" data-freight="{{quantity.commpany.upto_amount}}" data-id="{{address.id}}">去结算</text>
+
+		   <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money< 99 && quantity.coupon==null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}" data-actualpayment="{{allsprice}}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-cont="{{userName}}" data-sheng="{{address.sheng}}" data-qu="{{address.qu}}" data-shi="{{address.shi}}" data-freight="{{quantity.commpany.upto_amount}}" data-id="{{address.id}}">去结算</text>
+
+		    <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money < 99 && quantity.coupon!=null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}" data-actualpayment="{{conprice }}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-cont="{{userName}}" data-sheng="{{address.sheng}}" data-shi="{{address.shi}}" data-qu="{{address.qu}}" data-freight="{{quantity.commpany.upto_amount}}" data-id="{{address.id}}">去结算</text>
+
+		   <!--   <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money>=99 && quantity.coupon==null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}" data-actualpayment="{{money}}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-cont="{{userName}}">￥{{money}}</text>
+		   		   
+		   		   <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{money-quantity.coupon.coupon_money}}" wx:if="{{money>=99 && quantity.coupon!=null}}">￥{{money-quantity.coupon.coupon_money}}</text> -->
+
+		 <!--  <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{allsprice}}"  wx:if="{{money < 99 && quantity.coupon==null}}">￥{{allsprice}}</text>
+		 
+		 <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{conprice}}" wx:if="{{money < 99 && quantity.coupon!=null}}">￥{{conprice}}</text> -->
+	</view>
+</view>
+</page>

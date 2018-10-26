@@ -1,0 +1,91 @@
+/* pages/gift-charge/gift-charge.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+page{
+  background: #fff;
+}
+.chong-text {
+  width: 100%;
+  height: auto;
+  background: none;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  color: #606060;
+  font-size: 24rpx;
+  line-height: 64rpx;
+  background: #f0f0f0;
+}
+
+.tit {
+  width: 100%;
+  height: 67rpx;
+  line-height:67rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  margin-top: 15rpx;
+}
+
+.tit .bt {
+  font-size: 30rpx;
+  color: #303030;
+}
+
+.tit .ts {
+  font-size: 24rpx;
+  color: #bbb;
+  margin-left: 10rpx;
+}
+
+.box {
+  width: 100%;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+.box .xian text {
+  float: left;
+  width:20rpx;
+  height: 1rpx;
+  background: #ccc;
+  margin-top: 34rpx;
+}
+
+.box .xian{
+  float: left;
+  width: 20rpx;
+  margin: 0 15rpx;
+  height: 68rpx;
+}
+
+.box input {
+  float: left;
+  width: 255rpx;
+  height: 68rpx;
+  border: 1px solid #ccc;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.box .active {
+  border: 1px solid #ff712b;
+}
+
+.tj {
+  width: 100%;
+  height: 100rpx;
+  font-size: 32rpx;
+  background: #ff712b;
+  color: #fff;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  border-radius: 0;
+}

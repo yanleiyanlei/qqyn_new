@@ -1,0 +1,62 @@
+<!--个人中心充值页面-->
+<view class="prompting border-box">
+  充值后可使用余额进行交易支付，充值一定金额可升等级
+</view>
+<view class="balance border-box ">
+  <text>当前余额</text>
+  <text class="balan"><text>￥</text>{{remain}}</text>
+  <navigator url="/pages/chargeRecord/chargeRecord" hover-class='Nhover' open-type='redirectTo'>
+    <text class="balan-rig">明细<text class="iconfont icon-iconfontyoujiantou"></text></text>
+  </navigator>
+
+</view>
+<view class="amount">
+  <view class="amount-tit">
+    充值金额
+  </view>
+  <view class="amount-smal">
+    <view>
+      <text>￥</text>
+      <input type="text" value="{{money}}"  disabled='disabled' />
+    </view>
+  </view>
+  <view class="Howmuchimpact">
+    <view class=" clearfix">
+      <view class="list border-box {{money==200?'active':''}}" bindtap="choose" data-money="200" data-other="5">
+        <view class="one">￥200
+        </view>
+        <view class="two">充￥200送￥5
+        </view>
+      </view>
+      <view class="list border-box {{money==800?'active':''}}" bindtap="choose" data-money="800" data-other="50">
+        <view class="one">￥800
+        </view>
+        <view class="two">充￥800送￥50
+        </view>
+      </view>
+      <view class="list border-box {{money==1000?'active':''}}" bindtap="choose" data-money="1000" data-other="100">
+        <view class="one">￥1000
+        </view>
+        <view class="two">充￥1000送￥100
+        </view>
+      </view>
+      <view class="list border-box {{money==2000?'active':''}}" bindtap="choose" data-money="2000" data-other="180">
+        <view class="one">￥2000
+        </view>
+        <view class="two">充￥2000送￥180
+        </view>
+      </view>
+      <view class="list border-box {{money==5000?'active':''}}" bindtap="choose" data-money="5000" data-other="300">
+        <view class="one">￥5000
+        </view>
+        <view class="two">充￥5000送￥300
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+<!-- <navigator url="/pages/mpay/mpay?money={{money}}&mdd=0&wz=0"> -->
+<view class="pay" bindtap='pay'>立即支付</view>
+
+<!-- </navigator> -->

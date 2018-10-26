@@ -1,0 +1,73 @@
+<!--个人中心商品评价页面-->
+<form bindsubmit="formSubmit">
+  <view class="order-info border-box" style="margin-top: 0;">
+    <view class="good-info border1">
+      <view class="good">
+        <view class="left">
+          <image src="{{orderinfo.thumbnails}}"></image>
+        </view>
+        <view class="right">
+          <view class="goods-name">{{orderinfo.goods_name}}</view>
+          <view class="goods-feature">{{orderinfo.goods_spec_key}}</view>
+          <view class="goods-price">
+            <text style="font-size: 22rpx;">￥</text>
+            <text>{{orderinfo.goods_price}}</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <input type="text" name="goods_id" value='{{orderinfo.goods_id}}' style="display:none" />
+    <input type="text" name="order_number" value='{{orderinfo.order_number}}' style="display:none"/>
+    <input type="text" name="file_img" value='{{imgList}}' style="display:none"/>
+    <input type="text" name="is_check" value='{{typp}}' style="display:none"/>
+    <input type="text" name="order_time" value='{{orderinfo.order_createtime}}' style="display:none"/>
+    <input type="text" name="hp" value='{{hp}}' style="display:none"/>
+    <!-- 等级 -->
+    <view class="estimate-level" wx:if="{{Nadd}}">
+      <view>
+        <view style="color: #ff4b55;" class="hp list" data-level="3" bindtap="level">
+          <text class="iconfont {{levelDis[2]}}"></text>
+          <text>好评</text>
+        </view>
+        <view style="color: #ffae00;" class="zp list" data-level="2" bindtap="level">
+          <text class="iconfont {{levelDis[1]}}"></text>
+          <text>中评</text>
+        </view>
+        <view style="color: #434343;" class="cp list" data-level="1" bindtap="level">
+          <text class="iconfont {{levelDis[0]}}"></text>
+          <text>差评</text>
+        </view>
+      </view>
+    </view>
+    <!-- 评价 -->
+    <view class="estimate-txt" style="margin-top:20rpx;">
+      <!-- <view class="tip">
+     
+    </view> -->
+      <textarea  class="border-box" placeholder=" 输入商品评价" name="reviews_text"></textarea>
+    </view>
+    <!-- 图片 -->
+    <view class="add-pic clearfix" style="margin-top: 20rpx;padding-bottom: 20rpx;">
+      <block wx:for="{{imgList}}">
+        <view class="pic iconfont">
+          <text class="iconfont icon-cha qxImg" bindtap="qxImg" data-imgsrc="{{item}}"></text>
+          <image src="{{item}}"></image>
+        </view>
+      </block>
+
+      <view class="pic iconfont icon-jia1" bindtap="chooseImg" wx:if="{{imgLength==3?false:true}}">
+      </view>
+
+
+      <view class="num">
+        <text class="picNum" style="font-size:20rpx;color: #999;margin-left: 10rpx;">{{imgLength}}</text>
+        <text style="font-size: 20rpx;color: #999;">/3</text>
+      </view>
+    </view>
+
+  </view>
+  <view class="tijiao">
+    <button formType="submit">{{tip}}</button>
+  </view>
+</form>

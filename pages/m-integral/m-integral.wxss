@@ -1,0 +1,177 @@
+.mylog2 {
+  position: absolute;
+  top: 30rpx;
+  right:30rpx;
+  font-size:24rpx;
+  color: #fff;
+  line-height: 30rpx;
+}
+.mylog2 image{
+  float: left;
+}
+.aimg {
+  width: 26rpx;
+  height: 26rpx;
+}
+page{
+  background: #f0f0f0;
+}
+.mypoints {
+  width: 100%;
+  height: 100%;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  position: relative;
+}
+
+.mypoints .back-mypo {
+  width: 100%;
+  height: 300rpx;
+  background: none;
+}
+
+.mypoints .back-mypo image {
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.mypoints .back-mypo .image-rba image {
+  width: 246rpx;
+  height: 246rpx;
+  background: none;
+  position: absolute;
+  top: 80rpx;
+  left: 250rpx;
+}
+/* 任务积分 */
+.mypoints .back-mypo .positione {
+  position: absolute;
+  top: 120rpx;
+  left: 110rpx;
+  text-align: center;
+  height:92rpx;
+  /* background:red; */
+}
+
+.mypoints .back-mypo .positione .dt .log-rw {
+  width: 57rpx;
+  height: 57rpx;
+  background: none;
+}
+
+.mypoints .back-mypo .positione .dd {
+  font-size: 28rpx;
+  color: #fff;
+}
+/* 签到 */
+.mypoints .back-mypo .qipositi {
+  position: absolute;
+  top: 120rpx;
+  right:110rpx;
+  text-align: center;
+  height:92rpx;
+  /* background: red; */
+}
+
+.mypoints .back-mypo .qipositi .dt .log-rw {
+  width:57rpx;
+  height: 57rpx;
+  background: none;
+}
+
+.mypoints .back-mypo .qipositi .dd {
+  font-size: 28rpx;
+  color: #fff;
+}
+/*200 积分 */
+.mypoints .back-mypo .jf {
+  width: 142rpx;
+  height: 65rpx;
+  background: none;
+  font-size: 40rpx;
+  color: #ff712b;
+  position: absolute;
+  left: 310rpx;
+  top: 180rpx;
+  z-index: 22;
+  font-weight: bold;
+  line-height: 65rpx;
+  text-align: center;
+}
+
+.mypoints .back-mypo .jf text {
+  font-size: 24rpx;
+  font-weight: normal;
+}
+/* 积分明细标题 */
+.mypoints .logbook {
+  width: 100%;
+  height: 100rpx;
+  background: none;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  line-height: 100rpx;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+
+.mypoints .logbook text {
+  display: block;
+  font-size: 30rpx;
+  color: #303030;
+  margin-left: 10rpx;
+  line-height: 100rpx;
+}
+
+.mypoints .logbook image {
+  width: 45rpx;
+  height: 45rpx;
+  background: none;
+  margin-top: 25rpx;
+  
+
+}
+/* 积分列表 */
+.mypoints .poinstiafg {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.mypoints .poinstiafg .dl {
+  width: 100%;
+  height: 130rpx;
+  background: #fff;
+  position: relative;
+   border-bottom: 1rpx solid #bfbfbf;
+}
+
+.mypoints .poinstiafg .dl .dt {
+  color: #303030;
+  font-size: 28rpx;
+  padding-top: 30rpx;
+}
+
+.mypoints .poinstiafg .dl .dd {
+  font-size: 22rpx;
+  color: #909090;
+  padding-top: 15rpx;
+}
+
+.mypoints .poinstiafg .dl .dd text {
+  margin-left: 15rpx;
+}
+
+.mypoints .poinstiafg .dl .p {
+  color: #303030;
+  font-size: 28rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}
+
+

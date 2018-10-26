@@ -1,0 +1,101 @@
+<!-- 个人中心，我的青粉页面 -->
+<view class="cash-back">
+  <image src="https://m.7710mall.com/Uploads/xxc/backgout.png" class="back-ug" alt="" />
+  <image src="https://m.7710mall.com/Uploads/xxc/people.png" class="peo-image" alt="" />
+
+  <view class="cash-money">
+    <text class="mm">{{people}}<text class="dd">人</text></text>
+
+  </view>
+</view>
+<!-- 切换 -->
+<view class="nav border1 border-box">
+  <view class="nav-box flex">
+    <view class="flex1  box" data-sta="0" bindtap="tab">
+      <view class="ll {{active==0?'active':''}} border-box">
+        <text>青春合伙人</text>
+      </view>
+    </view>
+    <view class="flex1  box" data-sta="1" bindtap="tab">
+      <view class="ll {{active==1?'active':''}} border-box">
+        <text>我的合伙人</text>
+      </view>
+    </view>
+    <view class="flex1  box" data-sta="2" bindtap="tab">
+      <view class="ll {{active==2?'active':''}} border-box">
+        <text>朋友圈</text>
+      </view>
+    </view>
+
+
+  </view>
+</view>
+<view class="pm" style="margin-top:15rpx;">
+  <view class="pm-box clearfix flex border-box">
+    <view class="pm-way flex1 clearfix" style="border-right:1rpx solid #ccc;" data-stas="0" bindtap='tab2'>
+      <text class="{{active2==0?'active':''}}" style="float:right">入会时间排名</text>
+      <view class="img-box" style="float:right">
+        <image style="width:40rpx" src="https://m.7710mall.com/Uploads/xxc/rili_03.png" style="width:40rpx;height:34rpx;">
+        </image>
+      </view>
+
+
+    </view>
+    <view class="pm-way flex1 clearfix " data-stas="1" bindtap="tab2">
+      <view class="img-box" style="float:left;margin-left:16rpx;">
+        <image style="width:32rpx;height:33rpx;" src="https://m.7710mall.com/Uploads/xxc/money_06.png">
+        </image>
+
+      </view>
+
+      <text class="{{active2==1?'active':''}}" style="float:left;">累计金额排名</text>
+    </view>
+  </view>
+</view>
+<!-- 记录 -->
+<view class="content" style="margin-top:30rpx;">
+  <block wx:for="{{list}}">
+    <view class="border1">
+      <view class="list clearfix border-box ">
+        <view class="left clearfix border-box">
+          <view class="tx" style="float:left">
+            <image src="{{item.head_pic}}"></image>
+          </view>
+          <view style="float:left">
+            <view class="name">{{item.nickname}}</view>
+            <view class="time">{{item.add_time}}</view>
+          </view>
+
+        </view>
+        <view class="right">
+          <view class="one">￥{{item.distribute_amount}}</view>
+          <view class="two">{{item.member_down_line}}人</view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+
+  <!-- <view class="border1">
+    <view class="list clearfix border-box ">
+      <view class="left clearfix border-box">
+        <view class="tx" style="float:left">
+          <image src="https://m.7710mall.com/Uploads/xxc/people.png"></image>
+        </view>
+        <view style="float:left">
+          <view class="name">名字</view>
+          <view class="time">2017.08.15 17:00:00</view>
+        </view>
+
+      </view>
+      <view class="right">
+        <view class="one">￥200.00</view>
+        <view class="two">5人</view>
+      </view>
+    </view>
+
+  </view> -->
+
+
+
+</view>

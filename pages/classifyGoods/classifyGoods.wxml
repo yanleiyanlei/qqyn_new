@@ -1,0 +1,88 @@
+<!--pages/classifyGoods/classifyGoods.wxml-->
+<!--二级分类 页面 -->
+<import src="/lib/template/userInfo2.wxml" />
+<template is="user2" data="{{mshow}}"></template>
+<view class='second' id="second">
+  <block wx:for="{{second}}">
+    <!--判断特定二级添加标签背景，修改可直接复制还二级ID 
+  <view wx:if="{{item.id==96}}" data-secondid='96' bindtap='second' style='background:url(http://m.77farmers.com/Public/Home/img/m_hd_bg.png) center no-repeat; background-size:cover;color:#fff'>
+    <image src='{{item.cat_img}}'></image>{{item.cat_name}}
+  </view>
+  <view wx:elif="{{item.id==97}}" data-secondid='97' bindtap='second' style='background:url(http://m.77farmers.com/Public/Home/img/m_hd_bg.png) center no-repeat; background-size:cover;color:#fff'>
+    <image src='{{item.cat_img}}'></image>{{item.cat_name}}
+  </view>
+  <view wx:elif="{{item.id==98}}" data-secondid='98' bindtap='second' style='background:url(http://m.77farmers.com/Public/Home/img/m_hd_bg.png) center no-repeat; background-size:cover;color:#fff'>
+    <image src='{{item.cat_img}}'></image>{{item.cat_name}}
+  </view> -->
+    <view data-secondid='{{item.id}}' bindtap='second'>
+      <image src='{{item.cat_img}}'></image>{{item.cat_name}}
+    </view>
+
+  </block>
+</view>
+<!--筛选  -->
+<view class="screen" id="screen">
+  <view bindtap='newgoods' class="{{active}}">最新</view>
+  <view bindtap='saleN' data-order="{{xlOrder}}" class='{{xlactive}}'>
+    销量
+    <text class='iconfont icon-sanjiao-bottom'></text>
+    <text class='iconfont icon-icon-test'></text>
+  </view>
+  <view bindtap='priceN' data-order="{{jgOrder}}" class='{{jgactive}}'>
+    价格
+    <text class='iconfont icon-sanjiao-bottom'></text>
+    <text class='iconfont icon-icon-test'></text>
+  </view>
+  <view bindtap='sxClick' class='{{sxactive}}'>
+    筛选
+    <text class='iconfont icon-shaixuan'></text>
+  </view>
+</view>
+<!--商品  -->
+
+<view class='main'>
+  <view class='mark {{show}}'>
+    <view class='select'>
+      <view class='select-cont'>
+        <view class='{{sactive}}' bindtap='ngoods'>新品上市</view>
+        <view class='{{hactive}}' bindtap='hgoods'>热销产品</view>
+      </view>
+      <view class='select-footer'>
+        <view bindtap='cancel'>取消筛选</view>
+        <view bindtap='confirm'>确定</view>
+      </view>
+    </view>
+  </view>
+
+  <block wx:for="{{goods}}">
+    <view class='goods'>
+      <!--判断第二件0元购商品标示  -->
+      <!-- <image wx:if="{{item.goods_id==23||item.goods_id==347||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
+      <!--判断新品和预售标示  -->
+      <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+
+      <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+      <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+      <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+      <image wx:if="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+      <image wx:if="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+      <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+
+      <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" bindtap='goodsDetails' />
+      <text class='goodsname'> {{item.goods_name}}</text>
+      <text class='goodsdis'>{{item.goods_remark}}</text>
+      <text class='goodsweight'>{{item.spec_name}}</text>
+      <view>
+        <text class='goodsprice'>￥{{item.shop_price}}</text>
+        <text class='goodsdelprice' wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
+        <block wx:for="{{cartList}}" wx:for-item="item2">
+          <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+        </block>
+        <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+        <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
+      </view>
+    </view>
+  </block>
+
+
+</view>

@@ -1,0 +1,21 @@
+<!--pages/gz/gz.wxml-->
+ <template name="gz"> 
+  <view class="gzs {{1==cs?'show':'hide'}}" bindtap='cs'>
+    <view class='cont'>
+      <view class='cont-left'>
+        <image src='http://m.7710mall.com/Public/Home/img/m_logo.png'></image>
+      </view>
+      <view class='cont-right'>
+        <view class='r1'>青青优农</view>
+        <view class='r2'>食绿色有机果蔬，承载健康生活！</view>
+      </view>
+
+      <view class='cont-wm'>
+        <image src='http://m.7710mall.com/Public/Home/img/m_ma.png'></image>
+        <view>长按二维码关注我们</view>
+      </view>
+    </view>
+
+    
+  </view>
+ </template> 

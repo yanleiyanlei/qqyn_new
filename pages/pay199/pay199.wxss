@@ -1,0 +1,286 @@
+@import "../../lib/style/iconfont.wxss";
+.paystime{
+   width: 100%;
+   height: 170rpx;
+   background: none;
+   border-bottom: 1rpx solid #dadada;
+   padding: 0 130rpx;
+   padding-top: 35rpx;
+   box-sizing: border-box;
+   
+}
+.areaselected{
+  display: none;
+}
+.ddmoney{
+	font-size: 32rpx;
+	color: #303030;
+	width: 100%;
+	text-align: center;
+}
+.ddmoney text{
+	font-size: 37rpx;
+	color: #ff712b;
+}
+.ddmoneys{
+	margin-top: 28rpx;
+	font-size: 26rpx;
+	color: #828282;
+}
+.paytype{
+	width: 100%;
+	height: 200rpx;
+	padding-left: 25rpx;
+	padding-right: 25rpx;
+	box-sizing: border-box;
+   font-size: 32rpx;
+    color: #303030;
+}
+.paywechat{
+	width: 100%;
+	height: 99rpx;
+    line-height: 99rpx;
+	border-bottom: 1rpx solid #dadada;
+}
+.payyue{
+   line-height: 99rpx;
+	width: 100%;
+	height: 99rpx;
+	border-bottom: 1rpx solid #dadada;
+}
+.btnpay{
+	position: fixed;
+	bottom: 0rpx;
+	width: 100%;
+	height: 150rpx;
+	background:none;
+	text-align: center;
+	font-size: 30rpx;
+	color: #fff;
+}
+.btnpay .qxbtn{
+	width: 226rpx;
+	height: 64rpx;
+	border-radius: 33rpx;
+	border: 1rpx solid #fd7138;
+	color: #fd7138;
+	line-height: 64rpx;
+	display: inline-block;
+	font-size: 26rpx;
+	text-align: center;
+}
+.btnpay .gopay{
+	width: 230rpx;
+	height: 66rpx;
+	border: 1rpx solid #fd7138;
+	border-radius: 33rpx;
+	background: #fd7138;
+	color: #fff;
+	line-height: 66rpx;
+	margin-left: 80rpx;
+	font-size: 26rpx;
+	display: inline-block;
+	text-align: center;
+}
+.icon-iconfontzhanghuzichan{
+  font-size: 50rpx;
+  color: #ff442b;
+  vertical-align: middle;
+}
+.icon-weixin{
+  font-size: 50rpx;
+  color: #1fb922;
+  vertical-align: middle;
+}
+
+.paywechat{
+	position: relative;
+}
+.payyue{
+position: relative;
+}
+.paywechat .a{
+	position: absolute;
+	right: 0;
+	top: 10rpx;
+}
+.payyue .b{
+	position: absolute;
+	right: 0;
+	top: 10rpx;
+}
+.wallets-password {
+ position: absolute;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background: rgba(0, 0, 0, 0.6);
+}
+ 
+.wallets-password .input-content-wrap {
+ position: absolute;
+ top: 200rpx;
+ left: 50%;
+ display: flex;
+ flex-direction: column;
+ width: 600rpx;
+ height:390rpx;
+ margin-left: -300rpx;
+ background: #fff;
+ border-radius: 20rpx;
+}
+ .tis{
+ 	width: 100%;
+ 	height: 50rpx;
+ 	background: none;
+ 	font-size: 26rpx;
+ 	color:#55a1ff;
+ }
+ .tis text{
+ 	float: right;
+ 	margin-right: 20rpx;
+ }
+.wallets-password .input-content-wrap .top {
+ display: flex;
+ align-items: center;
+ height: 110rpx;
+ border-bottom: 2rpx solid #ddd;
+ justify-content: space-around;
+}
+ 
+.wallets-password .input-content-wrap .top .close {
+ font-size: 44rpx;
+ color: #999;
+ font-weight: 100;
+ position: absolute;
+ right: 30rpx;
+}
+ 
+.wallets-password .input-content-wrap .top .forget {
+ color: #00a2ff;
+ font-size: 22rpx;
+}
+ 
+.wallets-password .input-content-wrap .actual_fee {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #000;
+ height: 80rpx;
+ margin: 0 23rpx;
+ border-bottom: 2rpx solid #ddd;
+}
+ 
+.wallets-password .input-content-wrap .actual_fee span {
+ font-size: 24rpx;
+}
+ 
+.wallets-password .input-content-wrap .actual_fee text {
+ font-size: 36rpx;
+}
+ 
+.wallets-password .input-content-wrap .input-password-wrap {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 150rpx;
+ margin-top: 20rpx;
+}
+ 
+.wallets-password .input-content-wrap .input-password-wrap .password_dot {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ color: #000;
+ box-sizing: border-box;
+ width: 90rpx;
+ height: 90rpx;
+ border: 2rpx solid #ddd;
+ border-left: none 0;
+}
+ 
+.wallets-password .input-content-wrap .input-password-wrap .password_dot:nth-child(1) {
+ border-left: 2rpx solid #ddd;
+}
+ 
+.wallets-password .input-content-wrap .input-password-wrap .password_dot i {
+ background: #000;
+ border-radius: 50%;
+ width: 20rpx;
+ height: 20rpx;
+}
+ 
+.wallets-password .input-content {
+ position: absolute;
+ opacity: 0;
+ left: -100%;
+ top: 600rpx;
+ background: #f56;
+ z-index: -999;
+}
+ 
+.wallets-password .input-content.active {
+ z-index: -99;
+}
+.couponents{
+ width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #c0c0c0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  padding: 0rpx 40rpx 0rpx 30rpx;
+  box-sizing: border-box;
+}
+.imgcoupoin{
+  width: 100%;
+  height: 868rpx;
+  margin-top: 150rpx;
+  background-image: url("https://m.7710mall.com/Uploads/xxc/coupons.png"); 
+  background-size:100% 100%;  
+  background-repeat:no-repeat;
+  position: relative;
+}
+.offs{
+  position: absolute;
+  top: 0rpx;
+  right: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+.titles_c{
+  position: absolute;
+  top: 383rpx;
+  left: 235rpx;
+  width: 200rpx;
+  height: 83rpx;
+  text-align: center;
+}
+.one_tit{
+  font-size: 20rpx;
+  display: block;
+  line-height: 40rpx;
+  color: #913407;
+}
+.two_tit{
+  font-size: 18rpx;
+  display: block;
+  color: #666666
+}
+.li_num{
+  width: 508rpx;
+  height: 86rpx;
+  background: #fff;
+  position: absolute;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 86rpx;
+  bottom: 150rpx;
+  left: 90rpx;
+  color: #ff712b;
+  font-size: 31rpx;
+}/* pages/pay199/pay199.wxss */

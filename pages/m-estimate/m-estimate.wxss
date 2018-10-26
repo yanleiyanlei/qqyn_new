@@ -1,0 +1,177 @@
+/* pages/m-estimate/m-estimate.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.order-info {
+  background: #fff;
+  margin-top: 10rpx;
+  padding: 0 32rpx;
+}
+
+.order-info .good {
+  padding: 30rpx 0;
+  overflow: hidden;
+}
+
+.order-info .good .left {
+  float: left;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.order-info .good .left image {
+  width: 100%;
+  height: 100%;
+}
+
+.order-info .good .right {
+  float: left;
+  margin-left: 25rpx;
+  width: 500rpx;
+  height: 160rpx;
+  position: relative;
+}
+
+.order-info .good .right .goods-name {
+  font-size: 32rpx;
+  color: #303030;
+}
+
+.order-info .good .right .goods-feature {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 55rpx;
+}
+
+.order-info .good .right .goods-price {
+  font-size: 32rpx;
+  color: #ff712b;
+  position: absolute;
+  bottom: 0;
+}
+
+.order-info .good .right .number {
+  float: right;
+}
+
+/* 等级 */
+
+.order-info .estimate-level {
+  width: 100%;
+  height: 110rpx;
+}
+
+.order-info .estimate-level .list {
+  line-height: 110rpx;
+  width: 200rpx;
+  float: left;
+}
+
+.order-info .estimate-level .list .iconfont {
+  font-size: 36rpx;
+  line-height: 110rpx;
+  float: left;
+}
+
+.order-info .estimate-level .list text {
+  font-size: 26rpx;
+  margin-left: 18rpx;
+  line-height: 110rpx;
+  float: left;
+}
+
+/* 评价 */
+
+.order-info .estimate-txt {
+  position: relative;
+  height: 120rpx;
+}
+
+.order-info .estimate-txt .tip {
+  position: absolute;
+  left: 10rpx;
+  top: 10rpx;
+  z-index: 9;
+  font-size: 22rpx;
+}
+
+.order-info .estimate-txt textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 530rpx;
+  height: 120rpx;
+  background: #f9f9f9;
+  border: 1rpx solid #d0d0d0;
+  resize: none;
+  border-radius: 10rpx;
+  padding: 10rpx;
+
+  font-size: 22rpx;
+}
+/* 图片 */
+.order-info .add-pic .pic + .pic {
+  margin-left:20rpx;
+}
+.order-info .add-pic .num {
+
+  margin-top: 90rpx;
+  display: inline-block;
+}
+.order-info .add-pic .pic {
+  float: left;
+  width: 120rpx;
+  height:120rpx;
+  font-size:42rpx;
+  line-height: 120rpx;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  color: #bfbfbf;
+  background: #fff;
+  border: 1rpx dotted #ddd;
+  border-radius: 4rpx;
+  display: inline-block;
+}
+.order-info .add-pic .pic .qxImg {
+  position: absolute;
+  top:-45rpx;
+  right: -20rpx;
+  color: #000;
+  font-size: 40rpx;
+}
+.order-info .add-pic .pic image {
+  width: 100%;
+  height: 100%;
+}
+.order-info .add-pic .pic input {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+/* 提交 */
+.tijiao {
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 10rpx;
+  text-align: center;
+}
+
+.tijiao button {
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 100rpx;
+  border: none;
+}

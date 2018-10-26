@@ -1,0 +1,81 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wxb2e467de32e95eb7",
+	"projectname": "%E9%9D%92%E9%9D%92%E4%BC%98%E5%86%9C",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": -1,
+					"name": "分类筛选页面",
+					"pathName": "pages/classifyGoods/classifyGoods",
+					"query": "id=1"
+				},
+				{
+					"id": 1,
+					"name": "二级",
+					"pathName": "pages/secondGoods/secondGoods",
+					"query": "oneType=1&twoType=12"
+				},
+				{
+					"id": 3,
+					"name": "详情页面",
+					"pathName": "pages/details/details",
+					"query": "goodsid=23"
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "二维码",
+					"pathName": "pages/m-step3/m-step3",
+					"query": "teamid=289",
+					"scene": "1012"
+				},
+				{
+					"id": 5,
+					"name": "成功页",
+					"pathName": "pages/hasbeencompleted/hasbeencompleted",
+					"query": "coupon=33&coupon_man=10&coupon_money=20&res=0"
+				},
+				{
+					"id": 6,
+					"name": "199",
+					"pathName": "pages/members/members",
+					"query": ""
+				}
+			]
+		}
+	}
+}

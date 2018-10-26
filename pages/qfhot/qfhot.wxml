@@ -1,0 +1,43 @@
+<!--pages/qfhot/qfhot.wxml-->
+<!--banner  -->
+<!-- 权限 -->
+<import src="/lib/template/userInfo2.wxml" />
+<template is="user2" data="{{mshow}}">
+</template>
+
+<view class='banner'>
+  <image src='{{banner[0].ad_img}}'></image>
+</view>
+
+<view class='main'>
+  <block wx:for="{{goods}}">
+    <view class='goods'>
+      <!--判断第二件0元购商品标示  -->
+      <!-- <image wx:if="{{item.goods_id==23||item.goods_id==347||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
+      <!--判断新品和预售标示  -->
+      <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+      <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+      <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+      <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+      <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+      <image wx:if="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+      <image wx:if="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+
+      <image src="{{item.thumbnails}}" data-goodsid='{{item.goods_id}}' bindtap='goodsDetails' />
+      <text class='goodsname'> {{item.goods_name}}</text>
+      <text class='goodsdis'>{{item.goods_remark}}</text>
+      <text class='goodsweight'>{{item.spec_name}}</text>
+      <view>
+        <text class='goodsprice'>￥{{item.shop_price}}</text>
+        <text class='goodsdelprice'  wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
+        <block wx:for="{{cartList}}" wx:for-item="item2">
+          <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+        </block>
+        <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+        <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
+      </view>
+    </view>
+  </block>
+
+
+</view>

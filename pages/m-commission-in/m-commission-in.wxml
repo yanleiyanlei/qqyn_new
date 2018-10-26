@@ -1,0 +1,66 @@
+<!-- 佣金明细 -->
+<view class="cash-back">
+  <image src="https://m.7710mall.com/Uploads/xxc/backgout.png" class="back-ug" alt="" />
+  <image src="https://m.7710mall.com/Uploads/xxc/people.png" class="peo-image" alt="" />
+
+  <view class="cash-money">
+    <text>￥{{info.ktxyj}}</text>
+  </view>
+</view>
+<view class="box border-box" style="margin-top:30rpx;">
+  <view class="con">
+    <text class="left">可提现金额</text>
+    <text class="right">￥{{info.ktxyj}}</text>
+  </view>
+</view>
+<view class="box border-box" style="margin-top:10rpx;">
+  <view class="con border1">
+    <text class="left">待审核佣金</text>
+    <text class="right">￥{{info.check_pending}}</text>
+  </view>
+</view>
+<view class="box border-box">
+  <view class="con border1">
+    <text class="left">待打款佣金</text>
+    <text class="right">￥{{info.to_pay_with}}</text>
+  </view>
+</view>
+<view class="box border-box">
+  <view class="con">
+    <text class="left">成功提现佣金</text>
+    <text class="right">￥{{info.successful_withdrawal}}</text>
+  </view>
+</view>
+<!-- <navigator hover-class='Nhover' url="/pages/m-commission-in-d/m-commission-in-d">
+
+  <view class="box border-box" style="margin-top:10rpx;">
+    <view class="con">
+      <text class="left">待收货佣金</text>
+      <text class="right">￥{{info.to_receive_commission}}<text class="iconfont icon-iconfontyoujiantou"></text></text>
+    </view>
+  </view>
+
+</navigator> -->
+
+<view class="box border-box" style="margin-top:10rpx;" bindtap="tip">
+  <view class="con border1">
+    <text class="left">用户须知</text>
+    <text class="right"><text class="iconfont icon-iconfontyoujiantou" wx:if="{{!tip}}"></text>
+    <text class="iconfont icon-arrow-down" wx:if="{{tip}}"></text></text>
+  </view>
+</view>
+<view class="tip" wx:if="{{tip}}">
+  <view class="one">
+    买家确认收货后或自动确认收货后（3天），所获佣金可 提现。结算期内，买家退货，佣金将自动扣除。
+  </view>
+  <view class="two">
+    注意：佣金满{{man}}元后才能申请提现
+  </view>
+</view>
+<navigator url="/pages/m-withdraw/m-withdraw">
+<view class="tx">
+  申请提现
+</view>
+
+
+</navigator>

@@ -1,0 +1,419 @@
+/* pages/m-withdraw/m-withdraw.wxss */
+@import "../../lib/style/public.wxss";
+@import "../../lib/style/iconfont.wxss";
+
+.wechatwidth {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.wechatwidth .wech-content {
+  -webkit-box-flex: 1;
+  overflow-y: auto;
+}
+
+.wechatwidth .wech-content::-webkit-scrollbar {
+  width: 0;
+}
+
+.wechatwidth .wech-content .wecah-fres {
+  width: 100%;
+  height: 65rpx;
+  background: none;
+  line-height: 65rpx;
+  font-size: 24rpx;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.wechatwidth .wech-content .todaybalance {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  padding: 0 30rpx 0 30rpx;
+  box-sizing: border-box;
+  line-height: 100rpx;
+  /* display: -webkit-box; */
+  -webkit-box-orient: horizontal;
+}
+
+.wechatwidth .wech-content .todaybalance .h3 {
+  list-style: none;
+  font-weight: normal;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  color: #303030;
+}
+
+.wechatwidth .wech-content .todaybalance .p {
+  margin-left: 54rpx;
+  /* -webkit-box-flex: 1; */
+  font-size: 30rpx;
+  line-height: 100rpx;
+  color: #303030;
+}
+
+.wechatwidth .wech-content .todaybalance navigator {
+  float: right;
+  height: 100rpx;
+}
+
+.wechatwidth .wech-content .todaybalance .a {
+  font-weight: normal;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.wechatwidth .wech-content .todaybalance .fuhao {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+  border: 2rpx solid;
+  transform: rotateZ(45deg);
+  border-bottom: none;
+  border-left: none;
+  vertical-align: middle;
+}
+
+.wechatwidth .wech-content .bananwechat {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 236rpx;
+  background: #fff;
+  padding: 37rpx 30rpx 0 30rpx;
+  box-sizing: border-box;
+}
+
+.wechatwidth .wech-content .bananwechat .h4 {
+  font-weight: normal;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.wechatwidth .wech-content .bananwechat .tixian {
+  width: 100%;
+  height: 90rpx;
+  background: none;
+  border-bottom: 2rpx solid #ff712b;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  line-height: 90rpx;
+}
+
+.wechatwidth .wech-content .bananwechat .tixian .monry {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-flex: 1;
+  font-size: 30rpx;
+  color: #303030;
+  line-height: 90rpx;
+  margin-left: 60rpx;
+}
+
+.tixian .i {
+  display: block;
+}
+
+.wechatwidth .wech-content .bananwechat .tixian .monry input {
+  width: 100%;
+  height: 100%;
+  margin-top: 18rpx;
+  display: block;
+  border: none;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.wechatwidth .wech-content .bananwechat .tixian .span {
+  margin-top: 20rpx;
+  display: block;
+  width: 140rpx;
+  height: 40rpx;
+  background: none;
+  border: 1rpx solid #ff7835;
+  font-size: 24rpx;
+  color: #ff712b;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 50rpx;
+}
+
+.wechatwidth .wech-content .bananwechat .p {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #909090;
+  display: inline-block;
+}
+
+.wechatwidth .wech-content .poundage {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  padding: 0 30rpx 0 30rpx;
+  box-sizing: border-box;
+  line-height: 100rpx;
+  /* -webkit-box-orient: horizontal; */
+}
+
+.wechatwidth .wech-content .poundage .h4 {
+  font-weight: normal;
+  font-size: 30rpx;
+  color: #303030;
+}
+
+.wechatwidth .wech-content .poundage .p {
+  font-size: 30rpx;
+  color: #303030;
+  line-height: 100rpx;
+  margin-left: 80rpx;
+}
+
+.wechatwidth .wech-content .poundage .p .i {
+  font-size: 24rpx;
+  color: #303030;
+}
+
+.wechatwidth .wech-content .poundage .a {
+  color: #ff712b;
+  float: right;
+  font-size: 30rpx;
+}
+
+.wechatwidth .wech-content .poundage .a .fuhao {
+  display: inline-block;
+  width: 18rpx;
+  height: 18rpx;
+  border: 1rpx solid #333;
+  transform: rotateZ(45deg);
+  border-bottom: none;
+  border-left: none;
+  vertical-align: middle;
+}
+
+.wechatwidth .wech-content .accoutban {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  padding: 0 30rpx 0 30rpx;
+  box-sizing: border-box;
+  line-height: 100rpx;
+}
+
+.wechatwidth .wech-content .accoutban .h4 {
+  font-weight: normal;
+  font-size: 30rpx;
+  color: #303030;
+  float: left;
+}
+
+.wechatwidth .wech-content .accoutban .paypayment {
+  float: right;
+  font-size: 30rpx;
+  color: #606060;
+}
+
+.wechatwidth .wech-content .accoutban .paypayment .i {
+  font-size: 52rpx;
+  color: #09bb07;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.wechatwidth .wech-content .accoutban .paypayment .b {
+  font-weight: normal;
+}
+
+.wechatwidth .wech-content .accoutban .paypayment image {
+  width: 52rpx;
+  height: 40rpx;
+  background: none;
+  vertical-align: middle;
+}
+
+.wechatwidth .wech-content .accoutban .paypayment .span {
+  display: inline-block;
+  width: 18rpx;
+  height: 18rpx;
+  /*background: red;*/
+  border: 1rpx solid #333;
+  transform: rotateZ(45deg);
+  border-bottom: none;
+  border-left: none;
+}
+
+.bank-id {
+  width: 100%;
+  height: auto;
+  /* display: none; */
+}
+
+.bank-id .p {
+  font-size: 28rpx;
+  color: #606060;
+  line-height: 65rpx;
+  margin-left: 30rpx;
+}
+
+.bank-id .ul {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.bank-id .ul .li {
+  width: 100%;
+  height: 110rpx;
+  /* border-bottom: 1rpx solid #bfbfbf; */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+
+.bank-id .label {
+  font-size: 28rpx;
+  color: #303030;
+  line-height: 110rpx;
+  display: block;
+}
+
+.bank-id input {
+  vertical-align: middle;
+  margin-left: 37rpx;
+  width: 100%;
+  height: 60rpx;
+  border: none;
+  line-height: 110rpx;
+  margin-top: 26rpx;
+  font-size: 28rpx;
+  color: #606060;
+  /* position: static!important; */
+}
+
+.wechatwidth .Applyfor {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+}
+
+.wechatwidth .Applyfor button {
+  display: block;
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+/* 谈谈 */
+
+.apply-zhe {
+  width: 100%;
+  height: 100%;
+  background: #8c8c8c;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.apply-zhe .pay-type {
+  width: 100%;
+  height: 576rpx;
+  background: #fff;
+  position: absolute;
+  bottom: 0px;
+}
+
+.apply-zhe .pay-type .p {
+  width: 100%;
+  height: 85rpx;
+  background: none;
+  font-size: 30rpx;
+  color: #303030;
+  line-height: 85rpx;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  /* border-bottom: 1rpx solid #909090; */
+}
+
+.apply-zhe .pay-type .p .i {
+  float: right;
+  margin-right: 50rpx;
+  font-size: 40rpx;
+  color: #666;
+}
+
+.apply-zhe .pay-type .pay-weixin {
+  width: 100%;
+  height: auto;
+  background: none;
+  padding-left: 80rpx;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+}
+
+.apply-zhe .pay-type .pay-weixin .label {
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  float: right;
+  margin-right: 10rpx;
+  line-height: 100rpx;
+}
+
+.apply-zhe .pay-type .pay-weixin .label .i {
+  margin-top: 30rpx;
+  margin-right: 10rpx;
+  font-size: 30rpx;
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  text-align: center;
+  line-height: 30rpx;
+  color: #fff;
+  border: #818181 1rpx solid;
+}
+
+.apply-zhe .pay-type .pay-weixin .label .icon-chuangyikongjianICON_fuzhi- {
+  color: #ff712b;
+}
+
+.apply-zhe .pay-type .pay-weixin .weixin {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  width: 100%;
+  height: 100rpx;
+  background: none;
+  /* border-bottom: 1rpx solid #909090; */
+  font-size: 24rpx;
+}
+
+.apply-zhe .pay-type .pay-weixin .weixin .i {
+  line-height: 100rpx;
+  font-size: 50rpx;
+}
+
+.apply-zhe .pay-type .pay-weixin .weixin .dl {
+  -webkit-box-flex: 1;
+  margin-left: 30rpx;
+}
+
+.apply-zhe .pay-type .pay-weixin .weixin .dl .dt {
+  margin-top: 15rpx;
+  color: #303030;
+}
+
+.apply-zhe .pay-type .pay-weixin .weixin .dl .dd {
+  color: #606060;
+}

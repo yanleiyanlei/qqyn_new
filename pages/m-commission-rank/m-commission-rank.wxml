@@ -1,0 +1,48 @@
+<!-- 佣金排名页面 -->
+<view class="top">
+  <image src="https://m.7710mall.com/Uploads/xxc/yong_back.jpg" class="bg">
+  </image>
+  <view class="con flex">
+    <view class="left flex1">
+      <text>{{info.rank_num}}<text style="font-size:30rpx;">名</text></text>
+    </view>
+    <view class="center flex1">
+      <image src="{{info.head_pic}}"></image>
+      <view class="user-name border-box">{{info.nickname}}</view>
+    </view>
+    <view class="right flex1">
+      <text><text style="font-size:30rpx;">￥</text>{{info.distribute_amount}}
+      </text>
+    </view>
+  </view>
+</view>
+<!-- 列表 -->
+<view style="margin-top:20rpx;">
+  <block wx:for="{{list}}">
+
+    <view class="list border-box ">
+      <view class="border1 ">
+        <view class="lists border-box clearfix">
+          <view class="one border-box">{{item.rank_num}}</view>
+          <view class="two border-box">{{item.nickname}}</view>
+          <view class="three border-box">{{item.distribute_amount}}</view>
+        </view>
+      </view>
+
+    </view>
+  </block>
+
+  <!-- <view class="list border-box">
+    <view class="border1">
+
+      <view class="lists  border-box clearfix">
+        <view class="one border-box">排名</view>
+        <view class="two border-box">昵称</view>
+        <view class="three border-box">金额</view>
+      </view>
+    </view>
+
+  </view> -->
+
+</view>
+<view class="fresh-time">上次更新时间：{{tt}}</view>

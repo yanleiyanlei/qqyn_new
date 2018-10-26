@@ -1,0 +1,63 @@
+<view class="wrapper">
+  <!-- 地址为空 -->
+
+  <block wx:if="{{iskong}}">
+    <view class="kong">
+      <view class="kong-icon">
+        <text class="iconfont icon-shouhuodizhi"></text>
+      </view>
+      <view class="kong-tip">
+        <text>还没有任何收货地址呢~</text>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="box1">
+      <view class="listBox clearfix" wx:for="{{address}}">
+        <view class="list">
+          <view class="top border1" bindtap="tiatheror" data-id="{{item.id}}">
+            <view class="one clearfix">
+              <view class="left">
+                <text class="name">{{item.name}}</text>
+              </view>
+              <view class="right">
+                <text class="phone">{{item.phone}}</text>
+              </view>
+            </view>
+            <view class="two">
+              <view>
+                <text class="address1" wx:if="{{item.qu==null}}">{{item.sheng}}{{item.shi}}</text>
+                <text class="address1" wx:else>{{item.sheng}}{{item.shi}}{{item.qu}}</text>
+                <text class="address2">{{item.address_content}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="bot">
+            <view class="left" wx:if="{{item.akey==1}}" data-defalt="{{item.akey}}" data-id="{{item.member_id}}"  data-aid="{{item.id}}"data-aid="{{item.id}}" bindtap="defaltAddress">
+              <text class="iconfont icon-chuangyikongjianICON_fuzhi- choose "></text>
+              <text>默认地址</text>
+            </view>
+            <view class="left" wx:else data-defalt="{{item.akey}}" data-id="{{item.member_id}}"   data-aid="{{item.id}}" bindtap="defaltAddress">
+              <text class="iconfont icon-yuan choose "></text>
+              <text>默认地址</text>
+            </view>
+            <view class="right">
+              <view data-id="{{item.member_id}}" data-aid="{{item.id}}" bindtap="delete">
+                <text class="iconfont icon-dujiayunxinicon08"></text>
+                <text>删除</text>
+              </view>
+               <view data-id="{{item.member_id}}" data-aid="{{item.id}}" bindtap="edit">
+                <text class="iconfont icon-bianji2"></text>
+                <text>编辑</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 新建地址 -->
+  <view class="addAddress" bindtap="addaddress">
+    <text>新建地址</text>
+  </view>
+</view>

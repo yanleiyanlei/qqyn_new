@@ -1,0 +1,212 @@
+<!-- 个人中心优惠券页面 -->
+<view class="nav border1">
+  <view class="clearfix navbox">
+    <view class="{{active==1?'active':''}}" data-sta="1" bindtap="tab">
+      <text>未使用</text>
+    </view>
+    <view class="{{active==2?'active':''}}" data-sta="2" bindtap="tab">
+      <text>已使用</text>
+    </view>
+    <view class="{{active==3?'active':''}}" data-sta="3" bindtap="tab">
+      <text>已过期</text>
+    </view>
+  </view>
+</view>
+<view class="m-rule clearfix">
+<!-- by yan.lei 兑换优惠劵 -->
+  <navigator url="/pages/third-number/third-number">
+    <text class="third_number">兑换优惠劵</text>
+  </navigator>
+
+
+  <navigator url="/pages/m-coupon-rule/m-coupon-rule">
+    <text class="gz"><text class="iconfont icon-web-icon-"></text>使用规则</text>
+  </navigator>
+
+
+</view>
+<view class="m-box m-box1">
+  <!-- 空 -->
+  <view class="m-kong" wx:if="{{coupon.length<=0}}">
+    <view class="one">
+      <image src="/image/my/m_coupon_icon.png">
+      </image>
+    </view>
+    <view class="two">
+      没有更多优惠券了~~
+    </view>
+  </view>
+
+  <!-- 优惠券 -->
+  <block wx:else>
+    <block wx:for="{{coupon}}">
+      <block wx:if="{{item.coupon_type==0}}">
+        <!-- 普通优惠券 -->
+
+        <block wx:if="{{item.discounts==0}}">
+          <navigator open-type="switchTab" url="/pages/index/index" style="display:inline-block" hover-class="Nhover">
+            <view class="m-list m-list1 clearfix">
+              <view class="m-list-left">
+                <view class="zl border-box">
+                  <text>优</text>
+                  <text>惠</text>
+                  <text>券</text>
+                </view>
+                <text class="one"><text class="two">￥</text>{{item.coupon_money}}</text>
+              </view>
+              <view class="m-list-right">
+
+                <view class="m-scope">全场通用优惠券</view>
+                <view class="m-full">
+                  <text class="one" wx:if="{{item.coupon_state==0}}">无门槛</text>
+                  <text class="one" wx:elif="{{item.coupon_state==1}}">【满{{item.coupon_man}}元可用】</text>
+                  <navigator open-type="switchTab" url="/pages/index/index" style="display:inline-block" hover-class="Nhover">
+                    <text class="two">去使用</text>
+                  </navigator>
+                </view>
+                <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
+              </view>
+            </view>
+          </navigator>
+
+        </block>
+        <block wx:if="{{item.discounts==1}}">
+
+          <view class="m-list m-list3 clearfix">
+            <view class="m-list-left">
+              <view class="zl border-box">
+                <text>优</text>
+                <text>惠</text>
+                <text>券</text>
+              </view>
+              <text class="one"><text class="two">￥</text>{{item.coupon_money}}</text>
+            </view>
+            <view class="m-list-right">
+
+              <view class="m-scope">全场通用优惠券</view>
+              <view class="m-full">
+                <text class="one" wx:if="{{item.coupon_state==0}}">无门槛</text>
+                <text class="one" wx:elif="{{item.coupon_state==1}}">【满{{item.coupon_man}}元可用】</text>
+
+              </view>
+              <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{item.discounts==2}}">
+          <view class="m-list m-list4 clearfix">
+            <view class="m-list-left">
+              <view class="zl border-box">
+                <text>优</text>
+                <text>惠</text>
+                <text>券</text>
+              </view>
+              <text class="one"><text class="two">￥</text>{{item.coupon_money}}</text>
+            </view>
+            <view class="m-list-right">
+
+              <view class="m-scope">全场通用优惠券</view>
+              <view class="m-full">
+                <text class="one" wx:if="{{item.coupon_state==0}}">无门槛</text>
+                <text class="one" wx:elif="{{item.coupon_state==1}}">【满{{item.coupon_man}}元可用】</text>
+
+              </view>
+              <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
+            </view>
+          </view>
+
+        </block>
+
+      </block>
+      <block wx:if="{{item.coupon_type=='a'}}">
+        <!-- 商品优惠券 -->
+        <block wx:if="{{item.discounts==0}}">
+          <!-- <navigator url="/pages/details/details?goodsid={{item.goods_id}}" style="display:inline-block" hover-class="Nhover"> -->
+          <navigator open-type="switchTab" url="/pages/index/index" style="display:inline-block" hover-class="Nhover">
+            <view class="m-listg m-listg1 clearfix">
+              <view class="m-list-left">
+                <view class="zl border-box">
+                  <text>商</text>
+                  <text>品</text>
+                  <text>券</text>
+                </view>
+
+                <text class="one"><text class="two">￥</text>{{item.new_price}}</text>
+                <text class="o-price">原价:￥<text>{{item.shop_price}}</text></text>
+              </view>
+              <view class="m-list-right">
+
+                <view class="m-good">{{item.goods_name}}立减{{item.new_price}}元</view>
+                <view class="m-full">
+                  <text class="one" style="color:#434343">【{{item.spec_name}}】</text>
+                  <navigator open-type="switchTab" url="/pages/index/index" style="display:inline-block" hover-class="Nhover">
+                    <text class="two">去使用</text>
+                  </navigator>
+                  <!-- <navigator url="/pages/details/details?goodsid={{item.goods_id}}" style="display:inline-block" hover-class="Nhover">
+                    <text class="two">查看商品</text>
+                  </navigator>  -->
+                </view>
+                <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+        <block wx:if="{{item.discounts==1}}">
+          <view class="m-listg m-listg3 clearfix">
+            <view class="m-list-left">
+              <view class="zl border-box">
+                <text>商</text>
+                <text>品</text>
+                <text>券</text>
+              </view>
+              <text class="one"><text class="two">￥</text>{{item.new_price}}</text>
+              <text class="o-price">原价:￥<text>{{item.shop_price}}</text></text>
+            </view>
+            <view class="m-list-right">
+
+              <view class="m-good">{{item.goods_name}}立减{{item.new_price}}元</view>
+              <view class="m-full">
+                <text class="one" style="color:#434343">【{{item.spec_name}}】</text>
+              </view>
+              <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{item.discounts==2}}">
+          <view class="m-listg m-listg4 clearfix">
+            <view class="m-list-left">
+              <view class="zl border-box">
+                <text>商</text>
+                <text>品</text>
+                <text>券</text>
+              </view>
+
+              <text class="one"><text class="two">￥</text>{{item.new_price}}</text>
+              <text class="o-price">原价:￥<text>{{item.shop_price}}</text></text>
+            </view>
+            <view class="m-list-right">
+
+              <view class="m-good">{{item.goods_name}}立减{{item.new_price}}元</view>
+              <view class="m-full">
+                <text class="one" style="color:#434343">【{{item.spec_name}}】</text>
+
+
+              </view>
+              <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
+            </view>
+          </view>
+        </block>
+
+      </block>
+
+
+
+
+    </block>
+  </block>
+
+
+
+
+
+</view>

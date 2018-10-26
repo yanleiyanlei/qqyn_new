@@ -1,0 +1,5 @@
+<!-- 分享商品到朋友圈页面 -->
+<canvas canvas-id="myCanvas" class="myCanvas" style="margin:0 auto;width:352px; height: 462.5px;" ></canvas>
+<!-- <view class="tip">保存图片后可分享朋友圈</view> -->
+<view style="text-align:center;margin-top:74rpx;"><button  bindtap='savetup' class="save" >保存图片</button></view> 
+<view class="tip">保存图片可分享朋友圈</view>

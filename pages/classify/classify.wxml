@@ -1,0 +1,24 @@
+<!--分类页面-->
+<loading hidden="{{hiddenLoading}}">正在加载</loading>
+<view class='main'>
+
+  <block wx:for="{{imgurl}}">
+    <navigator wx:if="{{item.img[0].ad_position==17}}" url='../qfhot/qfhot'>
+      <view class='classify'>
+        <image src='{{item.img[0].ad_img}}'></image>
+      </view>
+    </navigator>
+    <navigator wx:elif="{{item.img[0].ad_position==67}}" url='../secondGoods/secondGoods?page=1&goodsid={{item.one_cat_id}}'>
+      <view class='classify'>
+        <image src='{{item.img[0].ad_img}}'></image>
+      </view>
+    </navigator>
+    <navigator wx:elif="{{item.img[0].ad_position!==17&&item.img[0].ad_position!==67}}" url='../classifyGoods/classifyGoods?id={{item.one_cat_id}}'>
+      <view class='classify'>
+        <image src='{{item.img[0].ad_img}}'></image>
+      </view>
+    </navigator>
+
+  </block>
+
+</view>

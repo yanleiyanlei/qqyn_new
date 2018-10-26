@@ -1,0 +1,76 @@
+<!-- 分享得优惠券页面 -->
+<!-- 没有登录 -->
+<import src="/lib/template/userInfo.wxml" />
+<template is="user" data="{{mshow}}">
+</template>
+<!-- 领取优惠券 -->
+<view class="mask" style="{{tt}}"></view>
+<view class="success" style="{{tt}}">
+  <image class="close" bindtap='close' src="https://m.7710mall.com/Uploads/xxc//close.png"></image>
+  <view class="success-con">
+    <image class="success-img" src="https://m.7710mall.com/Uploads/xxc//hd_fx.png">
+    </image>
+    <block wx:for="{{pop_msg}}">
+      <view class="one">{{item}}</view>
+    </block>
+
+    <!-- <view class="one">11111</view> -->
+    <view class="two">有效期至：{{end_time}}</view>
+  </view>
+  <view class="op-box">
+    <navigator url="/pages/index/index" open-type='switchTab' hover-class='Nhover'>
+      <view class="use">立即使用</view>
+    </navigator>
+    <view class="again" bindtap='close'>再玩一次,继续抢福利</view>
+
+  </view>
+  <image src="https://m.7710mall.com/Uploads/xxc//m-fsuccess.png" class="bg">
+  </image>
+</view>
+<!-- 正文 -->
+<view class="hd-banner">
+  <image src="https://m.7710mall.com/Uploads/xxc//fx_banner.png"></image>
+</view>
+<view class="hd-rule">
+  <view class="rule-tit">活动规则:</view>
+  <view class="rule border-box">
+    <view class="list clearfix">
+      <view class="left">1、</view>
+      <view class="right">用户成功分享3个微信群，即可100%领取“59元减30元优惠券”；成功分享6个微信群，可再领取79元减30元优惠券；成功分享9个微信群，可再次领取99元减30元优惠券。每个微信用户均可参与活动，重复微信群不计入次数，所获优惠券可在青青优农商城内使用。
+      </view>
+    </view>
+    <view class="list clearfix">
+      <view class="left">2、</view>
+      <view class="right">每个优惠券有对应的有效期，请及时使用，以免过期。每笔订单仅限使用一张优惠券，特殊活动不同享优惠。
+      </view>
+    </view>
+    <view class="list clearfix">
+      <view class="left">3、</view>
+      <view class="right">每个用户发起的活动有参与有效期，如超过有效期或活动结束，仍未达到要求数量的微信群，则分享失败，无法获得对应的优惠券。
+      </view>
+    </view>
+    <view class="list clearfix">
+      <view class="left">4、</view>
+      <view class="right">活动期间，每日优惠券限量发放，先到先得。</view>
+    </view>
+    <view class="list clearfix">
+      <view class="left">5、</view>
+      <view class="right">在法律允许的范围内，青青优农有权对活动规则进行解释，如有任何问题请与青青优农客服联系，客服热线400-688-1602。
+      </view>
+    </view>
+  </view>
+</view>
+<button class="go-fx" open-type='share'>{{msg}}</button>
+<navigator url='/pages/index/index' open-type='switchTab' class="gg border-box" hover-class='Nhover'>
+  去商城逛逛
+</navigator>
+<view class="more" style="{{more}}">
+  <image class="zs" src="https://m.7710mall.com/Uploads/xxc//m_tit.png">
+  </image>
+  <navigator url="/pages/m-step/m-step" hover-class='Nhover'>
+
+    <image class="pin" src="https://m.7710mall.com/Uploads/xxc//m_p.png">
+    </image>
+  </navigator>
+
+</view>

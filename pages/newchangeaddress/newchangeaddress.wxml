@@ -1,0 +1,59 @@
+<view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+
+
+    <view class="box border1">
+      <view class="m-box clearfix">
+        <text class="bs">姓名\t:</text>
+        <input class="in" type="text" name="address_name" value="{{name}}"/>
+      </view>
+    </view>
+    
+    <view class="box border1">
+      <view class="m-box clearfix">
+        <text class="bs">手机号\t:</text>
+        <input class="in" name="address_phone" value="{{phone}}" type="number"/>
+      </view>
+    </view>
+     <view class="box border1">
+      <view class="m-box clearfix">
+        <text class="bs">备用手机号\t:</text>
+        <input class="in" name="beiyong_phone" value="{{ by_phone}}" type="number"/>
+      </view>
+    </view>
+    <view class="box border1">
+      <view class="m-box clearfix">
+        <text class="bs">选择区域\t:</text>
+        <!-- <input class="in" name="address"/> -->
+        <picker mode="region" value="{{region}}" custom-item="{{customItem}}" bindchange="bindRegionChange" name="address_sheng">
+        <view class="picker">
+          {{region[0]}},{{region[1]}},{{region[2]}}
+        </view>
+        </picker>
+      </view>
+    </view>
+    <view class="box border1">
+      <view class="m-box clearfix">
+        <text class="bs">详细地址\t:</text>
+        <input class="in" name="address_content" value="{{address2}}"/>
+      </view>
+    </view>
+    <input name="type" value='1' style="display:none"/>
+    <view class="box border1">
+      <view class="m-box clearfix">
+        <text class="left">设为默认地址\t:</text>
+
+        <text class="iconfont icon-chuangyikongjianICON_fuzhi- choose " bindtap="defaltAddress" data-defalt="{{defalt}}" wx:if="{{defalt}}"></text>
+         <text class="iconfont icon-yuan choose " bindtap="defaltAddress" data-defalt="{{defalt}}" wx:else></text>
+         <radio-group name="akey" style="display:none">
+          <radio  value="{{akey}}" checked='{{defalt}}'></radio>
+         </radio-group>
+       
+      </view>
+    </view>
+    <view class="save">
+      <button formType='submit'>保存</button>
+    </view>
+  </form>
+</view>

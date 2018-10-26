@@ -1,0 +1,100 @@
+<!-- 个人中心，物流页面 -->
+<view class="order-info">
+  <view class="order clearfix">
+    <view class="order-info-left">
+      <image src="{{logisticImg}}"></image>
+      <view class="tip">{{logisticNum}}件商品</view>
+    </view>
+    <view class="order-info-right">
+      <view wx:if="{{express!=5}}">
+      <view class="log-state" wx:if="{{sta}}">已签收</view>
+      <view class="log-state" wx:else>未签收</view>
+      </view>
+      <view class="log-express">{{expressName}}：{{expressNum}}</view>
+      <view class="service">客服电话：400-688-1602</view>
+    </view>
+  </view>
+</view>
+<!--万家康冷链  -->
+<block wx:if="{{express==5}}">
+  
+  <view class="logistic">
+    <block>
+     <view class="logistic-box clearfix active">
+        <view class="logistic-left">
+
+        </view>
+        <view class="logistic-right">
+
+          <view class="two">{{expressName}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+ </block>
+<!--顺丰  -->
+<block wx:if="{{express==2}}">
+  <view class="logistic">
+    <block wx:if="{{lstart}}">
+
+      <block wx:for="{{logistic}}">
+        <view class="logistic-box clearfix ">
+          <view class="logistic-left">
+            <view class="one">
+              {{item["@attributes"].accept_time}}
+            </view>
+            <!-- <view class="two">8:00</view>  -->
+          </view>
+          <view class="logistic-right">
+            <block wx:if="{{item['@attributes'].opcode==80}}">
+              <view class="one">已签收</view>
+            </block>
+            <view class="two">{{item["@attributes"].remark}}</view>
+          </view>
+        </view>
+      </block>
+    </block>
+
+    <block wx:else>
+      <view class="logistic-box clearfix active">
+        <view class="logistic-left">
+
+        </view>
+        <view class="logistic-right">
+
+          <view class="two">等待拣货</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+
+<!-- 中通快递 -->
+<block wx:if="{{express==4}}">
+  <view class="logistic">
+    <block wx:if="{{lstart}}">
+      <block wx:for="{{logistic}}">
+        <view class="logistic-box clearfix ">
+          <view class="logistic-left">
+            <view class="one">
+              {{item.scanDate}}
+            </view>
+          </view>
+          <view class="logistic-right">
+            <view class="two">{{item.desc}}</view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class="logistic-box clearfix active">
+        <view class="logistic-left">
+        </view>
+        <view class="logistic-right">
+          <view class="two">等待拣货</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>

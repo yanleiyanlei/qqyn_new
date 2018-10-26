@@ -1,0 +1,446 @@
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+/**index.wxss**/
+
+page {
+  background: #f7f7f7;
+}
+
+/*搜索===========  */
+
+.search {
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  direction: center;
+  font-size: 24rpx;
+  color: #fff;
+  padding: 20rpx 32rpx;
+}
+
+.search .searchLoc {
+  width: 115rpx;
+  line-height: 60rpx;
+  margin-right: 0rpx;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search .searchCont {
+  width: 568rpx;
+  height: 60rpx;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+/*swiper======  */
+
+.index-swiper {
+  position: relative;
+}
+
+.index-swiper swiper {
+  height: 370rpx;
+}
+
+.index-swiper image {
+  width: 100%;
+  height: 370rpx;
+}
+
+/*hint========  */
+
+.hint {
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  font-size: 22rpx;
+  color: #ff712b;
+  /* padding-top: 14rpx; */
+}
+
+.hint view {
+  display: flex;
+  height: 64rpx;
+  line-height: 60rpx;
+  direction: center;
+}
+
+.hint image {
+  width: 34rpx;
+  height: 64rpx;
+  margin-right: 8rpx;
+}
+
+/*nav======  */
+
+.nav {
+  background: #fff;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  height: 180rpx;
+  /* padding-top: 40rpx; */
+  margin-bottom: 10rpx;
+}
+
+.nav view {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav text {
+  font-size: 24rpx;
+  color: #606060;
+}
+
+.nav image {
+  width: 104rpx;
+  height: 105rpx;
+  margin-bottom: 20rpx;
+}
+
+/*青青活动===  */
+
+.qqactive {
+  background: #fff;
+}
+
+.qqactive .active-tit {
+  padding: 30rpx 32rpx;
+  display: flex;
+  direction: center;
+  line-height: 40rpx;
+}
+
+.qqactive .active-tit image {
+  width: 159rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+
+.qqactive .active-tit text {
+  font-size: 24rpx;
+  color: #434343;
+}
+
+.qqactive .active-tit .gz {
+  font-size: 24rpx;
+  color: #fd5f4c;
+  margin-left: 105rpx;
+  float: right;
+  position: relative;
+  top: -5rpx;
+}
+
+.qqactive .active-tit text.icon-guanzhu1 {
+  color: #fd5f4c;
+  font-size: 46rpx;
+}
+
+.qqactive .activeimg image {
+  width: 100%;
+  height: 280rpx;
+}
+
+/*今日推荐  */
+
+.todayRecommend {
+  background: #fff;
+  margin-top: 10rpx;
+}
+
+.goodshow {
+  height: 420rpx;
+  display: flex;
+  direction: center;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
+
+.todayRecommend-tit {
+  display: flex;
+  direction: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30rpx;
+  padding-top: 20rpx;
+}
+
+.todayRecommend-tit view {
+  font-size: 28rpx;
+  color: #434343;
+  text-align: center;
+  display: flex;
+  direction: center;
+}
+
+.todayRecommend-tit view image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.todayRecommend-tit view text {
+  line-height: 40rpx;
+  font-size: 22rpx;
+  color: #434343;
+}
+
+/*单个商品样式============  */
+
+.goodshow swiper-item {
+  width: 240rpx;
+  margin-right: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.goodshow swiper-item image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 18rpx;
+}
+
+.goodshow swiper-item image.hot {
+  width: 51rpx;
+  height: 54rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.goodshow swiper-item image.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 51rpx;
+  height: 65rpx;
+}
+
+.goodshow swiper-item .goodsname {
+  width: 240rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  color: #303030;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.goodshow swiper-item .goodsdis {
+  width: 240rpx;
+  display: inline-block;
+  font-size: 20rpx;
+  color: #909090;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.goodshow swiper-item .goodsweight {
+  font-size: 20rpx;
+  color: #909090;
+}
+
+.goodshow swiper-item .goodsprice {
+  color: #ff712b;
+  font-size: 28rpx;
+}
+
+.goodshow swiper-item .goodsdelprice {
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 20rpx;
+}
+
+.goodshow swiper-item view {
+  width: 240rpx;
+}
+
+.goodshow swiper-item view image {
+  width: 50rpx;
+  height: 50rpx;
+  float: right;
+}
+
+.goodshow swiper-item .cartnum {
+  width: 26rpx;
+  height: 26rpx;
+  background: #ff2f2f;
+  border-radius: 20rpx;
+  font-size: 18rpx;
+  text-align: center;
+  line-height: 26rpx;
+  color: #fff;
+  position: absolute;
+  right: 40rpx;
+  bottom: 60rpx;
+}
+
+/*青粉推荐=====  */
+
+.qfRecommend {
+  margin-top: 10rpx;
+  background: #fff;
+}
+
+.qfRecommend-tit {
+  padding: 20rpx 0;
+}
+
+.qfRecommend .qfRecommend-tit image {
+  width: 100%;
+  height: 110rpx;
+}
+
+/*商品四个类目=============  */
+
+.goodsType {
+  /* background: #fff; */
+}
+
+.goodsType .goodsType-tit {
+  padding: 0 30rpx;
+  margin-top: 10rpx;
+  background: #fff;
+}
+
+.goodsType .goodsType-tit view {
+  padding: 25rpx 0;
+  line-height: 66rpx;
+}
+
+.goodsType .goodsType-tit view .typeIco {
+  display: inline-block;
+  width: 10rpx;
+  height: 52rpx;
+  background: #ff0;
+  margin-right: 20rpx;
+  position: relative;
+  top: 10rpx;
+}
+
+.goodsType .goodsType-tit view .typeName {
+  color: #434343;
+  font-size: 32rpx;
+}
+
+.goodsType .goodsType-tit view .typeMore {
+  font-size: 24rpx;
+  color: #434343;
+  float: right;
+}
+
+.goodsType .goodsType-tit view .typeMore text {
+  font-size: 24rpx;
+}
+
+.goodsType .goodsType-tit image {
+  width: 690rpx;
+  height: 340rpx;
+  margin-bottom: 30rpx;
+}
+
+/* 其它活动 */
+
+.other-hd {
+  text-align: center;
+  margin-top: 10rpx;
+  padding: 40rpx 0;
+  background: #fff;
+}
+
+.other-hd image {
+  width: 690rpx;
+  height: 340rpx;
+}
+
+/* 我的小店 */
+
+#header {
+  height: 160rpx;
+  background: #fff;
+  padding: 30rpx 32rpx;
+  margin-bottom: 20rpx;
+}
+
+#header .userimg {
+  width: 160rpx;
+  height: 160rpx;
+  float: left;
+  margin-right: 20rpx;
+}
+
+#header .userimg image {
+  /* width: 160rpx;
+  height: 160rpx; */
+   max-width: 100%;
+  max-height: 100%; 
+  /* width: 100%;
+  height: 100%; */
+}
+
+#header .usermes .username {
+  font-size: 36rpx;
+  line-height: 40rpx;
+  color: #303030;
+  margin-bottom: 10rpx;
+}
+
+#header .usermes .ul {
+  height: 116rpx;
+  overflow: hidden;
+  border-radius: 0 0 10rpx 10rpx;
+  box-shadow: -5rpx 5rpx 10rpx #ccc;
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+}
+
+#header .usermes .ul .li {
+  flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  float: left;
+  font-size: 26rpx;
+  color: #303030;
+  padding: 0 32rpx;
+  margin: 10rpx 0;
+  text-align: center;
+  border-right: 1rpx solid #bfbfbf;
+}
+
+#header .usermes .ul .li image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+#header .usermes .ul .li .span {
+  color: #ff712b;
+  font-size: 30rpx;
+}
+
+#header .usermes .ul .li .p {
+  margin-top: 20rpx;
+}
+
+#header .usermes .ul .li:last-child {
+  border: none;
+}

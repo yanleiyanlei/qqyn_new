@@ -1,0 +1,85 @@
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+.box {
+  padding: 0 32rpx;
+  height: 100rpx;
+    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box; 
+  background: #fff; 
+}
+.box .m-box {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  position: relative;
+}
+.box .m-box .bs {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #303030;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 180rpx;
+  vertical-align: middle;
+   float: left; 
+}
+.box .m-box .in {
+  font-size: 28rpx;
+  border: none;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  width: 400rpx;
+  vertical-align: middle;
+   float: left; 
+}
+.box .m-box picker{
+  font-size: 28rpx;
+  border: none;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  width: 400rpx;
+  vertical-align: middle;
+   float: left; 
+   color: #303030;
+}
+.box .m-box .left,.box .m-box .iconfont{
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #333;
+  margin-right:10rpx;
+  vertical-align: middle;
+}
+.box .m-box .icon-chuangyikongjianICON_fuzhi- {
+  color: #ff712b!important;
+}
+.box .m-box .left{
+  font-size:28rpx;
+  float: left;
+}
+.box .m-box .iconfont{
+  font-size: 34rpx;
+  color: #666;
+  float: right;
+}
+/* 保存 */
+.save {
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  font-size: 10px;
+  text-align: center;
+  margin-top: 50rpx;
+}
+.save button {
+  width: 100%;
+  height: 100rpx;
+  background: #ff712b;
+  font-size:32rpx;
+  color: #fff;
+  line-height: 100rpx;
+  border: none;
+  outline: none;
+}

@@ -1,0 +1,51 @@
+<view class="cash-back">
+  <image src="https://m.7710mall.com/Uploads/xxc/backgout.png" class="back-ug" alt="" />
+  <image src="https://m.7710mall.com/Uploads/xxc/people.png" class="peo-image" alt="" />
+
+  <view class="cash-money">
+    <text>￥{{money}}</text>
+  </view>
+</view>
+<!-- 记录 -->
+<view class="content" style="margin-top:30rpx;">
+  <block wx:for="{{info}}">
+    <view class="border1">
+      <view class="list clearfix border-box ">
+        <view class="left clearfix border-box">
+          <view style="float:left">
+            <view class="name">{{info.nickname}}</view>
+            <view class="time">{{info.time}}</view>
+          </view>
+
+        </view>
+        <view class="right">
+          <view class="one">￥{{info.get_money}}</view>
+          <view class="two" wx:if="{{info.status==1}}">待发货</view>
+          <view class="two" wx:if="{{info.status==2}}">待收货</view>
+          <view class="two" wx:if="{{info.status==3}}">待分佣结算</view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+
+  <!-- <view class="border1">
+    <view class="list clearfix border-box ">
+      <view class="left clearfix border-box">
+        <view style="float:left">
+          <view class="name">名字</view>
+          <view class="time">2017.08.15 17:00:00</view>
+        </view>
+
+      </view>
+      <view class="right">
+        <view class="one">￥200.00</view>
+        <view class="two">5人</view>
+      </view>
+    </view>
+
+  </view> -->
+
+
+
+</view>

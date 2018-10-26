@@ -1,0 +1,52 @@
+<!--提现详情页面-->
+<!-- 切换 -->
+<view class="nav border1 border-box">
+  <view class="nav-box flex">
+    <view class="flex1 {{active==0?'active':''}}" data-sta="0" bindtap="tab">
+      <text>全部</text>
+    </view>
+    <view class="flex1 {{active==1?'active':''}}" data-sta="1" bindtap="tab">
+      <text>待审核</text>
+    </view>
+    <view class="flex1 {{active==2?'active':''}}" data-sta="2" bindtap="tab">
+      <text>待打款</text>
+    </view>
+    <view class="flex1 {{active==3?'active':''}}" data-sta="3" bindtap="tab">
+      <text>已成功</text>
+    </view>
+
+  </view>
+</view>
+<view class="box border-box">
+  <block wx:for="{{list}}">
+    <view class="border1">
+      <view class="list">
+        <view class="pay">提现
+          <text class="span">￥{{item.withdrawal_money}}</text>
+        </view>
+        <view class="pay">申请提现时间
+
+          <text class="i">{{item.withdrawal_time}}</text>
+        </view>
+        <view class="pay" wx:if="{{item.operating_status==1&&item.withdrawal_state==1}}">打款时间
+           <text class="i">{{item.time}}</text>
+            
+        </view>
+        <view class="pay">状态
+          <text class="b" wx:if="{{item.operating_status==0}}">待审核</text>
+           <text class="b" wx:if="{{item.operating_status==1&&item.withdrawal_state==1}}">提现成功</text>
+           <text class="b" wx:if="{{item.operating_status==1&&item.withdrawal_state==2}}">待打款</text>
+            <text class="b" wx:if="{{item.operating_status==2}}">申请未通过</text>
+            
+        </view>
+      </view>
+    </view>
+
+
+  </block>
+
+
+
+
+
+</view>

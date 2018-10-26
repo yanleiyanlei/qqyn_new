@@ -1,0 +1,68 @@
+<!-- 佣金明细页面 -->
+<view class="cash-back">
+  <image src="https://m.7710mall.com/Uploads/xxc/backgout.png" class="back-ug" alt="" />
+  <image src="https://m.7710mall.com/Uploads/xxc/people.png" class="peo-image" alt="" />
+
+  <view class="cash-money">
+    <text class="mm">{{people}}<text class="dd">人</text></text>
+
+  </view>
+</view>
+<!-- 切换 -->
+<!-- <view class="nav border1 border-box">
+  <view class="nav-box flex">
+    <view class="flex1 {{active==0?'active':''}}" data-sta="0" bindtap="tab">
+      <text>全部</text>
+    </view>
+    <view class="flex1 {{active==1?'active':''}}" data-sta="1" bindtap="tab">
+      <text>待审核</text>
+    </view>
+    <view class="flex1 {{active==2?'active':''}}" data-sta="2" bindtap="tab">
+      <text>待打款</text>
+    </view>
+    <view class="flex1 {{active==3?'active':''}}" data-sta="3" bindtap="tab">
+      <text>待收货</text>
+    </view>
+    <view class="flex1 {{active==4?'active':''}}" data-sta="4" bindtap="tab">
+      <text>已成功</text>
+    </view>
+
+  </view>
+</view> -->
+<!-- 记录 -->
+<view class="content" style="margin-top:30rpx;">
+  <block wx:for="{{info}}">
+    <!-- <view class="border1">
+      <view class="list clearfix border-box ">
+        <view class="left clearfix border-box">
+          <view style="float:left">
+            <view class="name">{{item.buyname}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+        </view>
+        <view class="right" wx:if="{{item.status==1}}">
+          <view class="two">待收佣金</view>
+          <view class="one">￥{{item.money}}</view>
+        </view>
+        <view class="right" wx:if="{{item.status==3}}">
+          <view class="two">已收佣金</view>
+          <view class="one">￥{{item.money}}</view>
+        </view>
+      </view>
+    </view> -->
+    <view class="border1">
+      <view class="list clearfix border-box ">
+        <view class="top clearfix border-box">
+          <view class="left money">￥{{item.money}}</view>
+          <view class="right"></view>
+        </view>
+        <view class="top clearfix border-box">
+
+          <view class=" left state " wx:if="{{item.status==1}}">待收佣金</view>
+           <view class=" left state" wx:if="{{item.status==3}}">已收佣金</view>
+          <view class="right time">{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

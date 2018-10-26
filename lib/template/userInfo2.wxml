@@ -1,0 +1,13 @@
+<!-- 授权模板二 -->
+<template name="user2">
+  <view class="mask" style="{{mshow}}"></view>
+  <view class="userInfo" style="{{mshow}}">
+    <view class="tt">"青青优农"要获得你的公开信息（昵称，头像等）</view>
+    <view class="op">
+      <view>
+        <button open-type='getUserInfo' bindgetuserinfo='UserInfo'>允许</button>
+      </view>
+      <view bindtap='close'>拒绝</view>
+    </view>
+  </view>
+</template>

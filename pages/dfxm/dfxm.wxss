@@ -1,0 +1,30 @@
+/* pages/fxm/fxm.wxss */
+@import "../../lib/style/public.wxss";
+page{
+  background: #fff;
+}
+.save{
+  background: #ff712b;
+  color: #fff;
+  width: 290rpx;
+  height: 75rpx;
+  border-radius: 75rpx;
+  -webkit-border-radius:35rpx;
+  -moz-border-radius:35rpx;
+  -ms-border-radius:35rpx;
+  -o-border-radius:35rpx;
+  font-size: 28rpx;
+
+}
+.tip{
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 28rpx;
+}
+page{
+  padding-bottom: 46rpx;
+}
+.myCanvas{
+  box-shadow: 0rpx 0px 5rpx #bbb;
+}

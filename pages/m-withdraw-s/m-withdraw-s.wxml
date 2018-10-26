@@ -1,0 +1,25 @@
+<!-- 提现成功页面 -->
+<view class="top">
+  <view class="top-icon">
+    <text class="iconfont icon-chenggong"></text>
+  </view>
+  <view class="top-one">提现申请已提现成功</view>
+  <view class="top-two">我们会在3-5个工作日内审核完成并打款</view>
+</view>
+<view class="box border-box" style="margin-top:10rpx;">
+  <view class="bb border-box">
+    <view class="box-one">提现金额</view>
+    <view class="box-two">￥{{money}}</view>
+
+  </view>
+
+</view>
+<view class="box border-box">
+  <view class="bb border-box" style="border:none">
+    <view class="box-one">提现账户</view>
+    <view class="box-two" wx:if="{{path==1}}"> <text class="iconfont icon-weixin i" style="color:#09bb07"></text>微信</view>
+    <view class="box-two" wx:if="{{path==2}}"><text class="iconfont icon-zhifubao i" style="color:#0aaaf0;"></text>支付宝</view>
+    <view class="box-two" wx:if="{{path==3}}"><text class="iconfont icon-yue i" style="color:#0aaaf0;"></text>余额</view>
+  </view>
+
+</view>

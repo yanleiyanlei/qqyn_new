@@ -1,0 +1,46 @@
+<!--个人中心，消费明细-->
+<view class="cash-back">
+  <image class="back-ug" src="/image/my/backgout.png"></image>
+  <view class="cash-money">
+    <text class="one"><text style="font-size:32rpx;">￥</text>{{remain}}</text>
+  </view>
+  <image src="/image/my/people.png" class="peo-img"></image>
+  <navigator url="/pages/m-charge/m-charge" open-type='redirectTo'>
+    <view class="cz">
+      <view class="one">
+        <image src="/image/my/pngjife_03.png"></image>
+      </view>
+      <view class="two">充值</view>
+    </view>
+  </navigator>
+</view>
+<view class="banktitle border1">
+  <view class='banktitle-box'>
+    <view class="{{sta==3?'active':''}}" bindtap="tab" data-sta="3">消费明细</view>
+    <view class="{{sta==1?'active':''}}" bindtap='tab' data-sta="1">充值记录</view>
+  </view>
+</view>
+<view class="consumption">
+  <block wx:if="{{sta==3}}">
+    <view class="consumption-box border1" wx:for="{{bill}}">
+      <view class="one">消费</view>
+      <view class="two">
+        <text>{{item.order_addtime}}</text>
+      </view>
+      <view class="three">
+        <text>-￥</text>{{item.actualpayment}}</view>
+    </view>
+
+  </block>
+   <block wx:elif="{{sta==1}}">
+   <view class="consumption-box border1" wx:for="{{bill}}">
+      <view class="one">充值</view>
+      <view class="two">
+        <text>{{item.itunes_time}}</text>
+      </view>
+      <view class="three">
+        <text>+￥</text>{{item.itunes_money}}</view>
+    </view>
+  </block> 
+
+</view>

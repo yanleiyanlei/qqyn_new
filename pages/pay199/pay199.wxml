@@ -1,0 +1,90 @@
+<!--pages/pay199/pay199.wxml-->
+<!-- 支付页面 -->
+<!--商品券弹窗-->
+<view class="paystime">
+	<view class="ddmoney">订单金额：
+     <text>￥199</text>
+	</view>
+	<view class="ddmoneys">
+	订单提交成功，请在<text style="color:#ff712b">{{clock}}</text>分内完成支付
+	</view>
+</view>
+<view class="paytype">
+	<view class="paywechat {{money == 0 ? 'areaselected' : ''}}">
+		<text class="iconfont icon-weixin"></text>
+		微信支付
+		<view class="but">
+				<view class="a">
+				 <icon wx:if="{{weCharstatus}}" type="success" data-key="0" color="#ff712b" bindtap="selectAll"/>
+				  <icon wx:else type="circle" data-key="0" color="#bfbfbf" bindtap="selectAll"/>
+			</view>				
+		</view>
+	</view>
+
+	<view class="payyue">
+		<text class="iconfont icon-iconfontzhanghuzichan"></text>
+		余额支付
+		 <view class="b">
+				 <icon wx:if="{{yuestutea}}" type="success" data-key="0" color="#ff712b" bindtap="selectAlls"/>
+				 <icon wx:else type="circle" data-key="0" color="#bfbfbf" bindtap="selectAlls"/>
+		</view>
+	</view>
+</view>
+<!-- 输入密码 -->
+<view class="btnpay">
+		 <view class="qxbtn" bindtap="qxpay">
+		 	取消支付
+		 </view>
+		 <view class="gopay" bindtap="pay">
+		 	去支付
+		 </view>
+</view>
+<view class="couponents" style="{{shows}}">
+  <view class="imgcoupoin">
+     <image src='../../image/hd/offs.png' class="offs" bindtap='offss'></image>
+      <view class="titles_c">
+        <text class="one_tit">{{satisfy_money}}元减{{reduce_moeny}}优惠券</text>
+        <text class="two_tit">有效期至：{{now_time}}</text>
+      </view>
+      <view class="li_num" bindtap="goshops">
+        立即使用
+      </view>
+  </view>
+</view>
+<view wx:if="{{wallets_password_flag}}" class="wallets-password">
+		<view class="input-content-wrap">
+		<view class="top">
+		<view class="txt">请输入支付密码</view>
+		<view catchtap="close_wallets_password" class="close">×</view>
+		</view>
+		<view class="actual_fee">
+			<span>￥</span>
+			<text>199</text>
+		</view>
+		<view catchtap="set_Focus" class="input-password-wrap">
+		<view class="password_dot">
+		<i wx:if="{{wallets_password.length>=1}}"></i>
+		</view>
+		<view class="password_dot">
+		<i wx:if="{{wallets_password.length>=2}}"></i>
+		</view>
+		<view class="password_dot">
+		<i wx:if="{{wallets_password.length>=3}}"></i>
+		</view>
+		<view class="password_dot">
+		<i wx:if="{{wallets_password.length>=4}}"></i>
+		</view>
+		<view class="password_dot">
+		<i wx:if="{{wallets_password.length>=5}}"></i>
+		</view>
+		<view class="password_dot">
+		<i wx:if="{{wallets_password.length>=6}}"></i>
+		</view>
+		</view>
+		<view class="tis">
+			<text bindtap="newpwd">设置新密码</text>
+			<text bindtap="newpwd">忘记密码？</text>
+		</view>
+		</view>
+		<input bindinput="set_wallets_password" class="input-content" password type="number" focus="{{isFocus}}" maxlength="6" />
+</view>

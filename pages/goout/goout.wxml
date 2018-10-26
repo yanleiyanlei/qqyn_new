@@ -1,0 +1,4 @@
+<!-- 打开小程序的分享页面 -->
+<canvas canvas-id="myCanvas" style="margin:0 auto;width:375px; height: 525px;border-raidus:1rpx;" ></canvas>
+<!-- <view class="tip">保存图片后可分享朋友圈</view> -->
+<view style="text-align:center;margin-top:40rpx;"><button  bindtap='savetup' class="save" >保存图片分享朋友圈</button></view> 

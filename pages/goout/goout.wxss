@@ -1,0 +1,23 @@
+/* pages/fxm/fxm.wxss */
+.save{
+  background: #ff712b;
+  color: #fff;
+  width: 470rpx;
+  height: 75rpx;
+  border-radius: 75rpx;
+  -webkit-border-radius:35rpx;
+  -moz-border-radius:35rpx;
+  -ms-border-radius:35rpx;
+  -o-border-radius:35rpx;
+  font-size: 28rpx;
+
+}
+.tip{
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 90rpx;
+}
+page{
+  padding-bottom: 46rpx;
+}

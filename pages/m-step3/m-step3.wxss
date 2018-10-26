@@ -1,0 +1,481 @@
+/* pages/m-step3/m-step3.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+page {
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+}
+
+.content .main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  width: 100%;
+  height: 1220rpx;
+}
+
+.top {
+  text-align: center;
+  margin-top: 50rpx;
+  position: relative;
+}
+
+.top image {
+  width: 514rpx;
+  height: 400rpx;
+}
+
+.top .finish-mask {
+  position: absolute;
+  top: 0;
+  left: 116rpx;
+  display: inline-block;
+  width: 514rpx;
+  height: 400rpx;
+  z-index: 998;
+}
+
+.tit {
+  text-align: center;
+  font-size: 32rpx;
+  color: #434343;
+  margin-top: 15rpx;
+}
+
+.sub-tit {
+  font-size: 28rpx;
+  color: #434343;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.sub-tit .mission {
+  color: #f00;
+}
+
+.way {
+  font-size: 24rpx;
+  color: #61aefe;
+  position: relative;
+}
+
+.way button {
+  font-size: 24rpx;
+  color: #61aefe;
+  background: #fff;
+  padding: 0;
+  top: -20rpx;
+}
+
+.way button::after {
+  border: none;
+}
+
+.my-team {
+  position: absolute;
+  width: 156rpx;
+  height: 52rpx;
+  bottom: 70rpx;
+  right: 0rpx;
+}
+
+.my-team image {
+  width: 156rpx;
+  height: 52rpx;
+}
+
+.my-team button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  opacity: 0;
+  filter: opacity(0);
+  width: 156rpx;
+  height: 52rpx;
+}
+
+.add-team {
+  position: absolute;
+  width: 156rpx;
+  height: 52rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+
+.add-team image {
+  width: 156rpx;
+  height: 52rpx;
+}
+
+.add-team button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  opacity: 0;
+  filter: opacity(0);
+  width: 156rpx;
+  height: 52rpx;
+}
+
+.way .iconfont {
+  font-size: 26rpx;
+  margin-right: 8rpx;
+}
+
+.box {
+  padding: 0 60rpx;
+  margin-top: 50rpx;
+}
+
+.boxs {
+  border: 1rpx solid #c6c6c6;
+  border-radius: 15rpx;
+}
+
+.lists {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 80rpx;
+  overflow: hidden;
+}
+
+.lists view {
+  height: 80rpx;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 26rpx;
+  line-height: 80rpx;
+}
+
+.box-tit view {
+  color: #434343;
+}
+
+.box-con {
+  border-top: 1rpx solid #c6c6c6;
+}
+
+.box-con view {
+  color: #f00;
+}
+
+.big-box {
+  padding: 0 60rpx;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin-top: 50rpx;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.item {
+  text-align: center;
+  width: 108rpx;
+  padding-bottom: 20rpx;
+  font-size: 26rpx;
+  line-height: 80rpx;
+  margin: 0 9rpx;
+}
+
+.item .one {
+  display: inline-block;
+  width: 108rpx;
+  height: 108rpx;
+  text-align: center;
+  border: 1rpx dashed #ff712b;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  position: relative;
+}
+
+.item .one image {
+  width: 90rpx;
+  height: 90rpx;
+  margin-top: 10rpx;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
+
+.item .one .leader {
+  display: inline-block;
+  width: 60rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  position: absolute;
+  top: 92rpx;
+  left: 24rpx;
+  font-size: 20rpx;
+  background: #ff712b;
+  color: #fff;
+  text-align: center;
+  border-radius: 28rpx;
+  -webkit-border-radius: 28rpx;
+  -moz-border-radius: 28rpx;
+  -ms-border-radius: 28rpx;
+  -o-border-radius: 28rpx;
+}
+
+.item .two {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  color: #ff712b;
+}
+
+.op {
+  width: 100%;
+  height: 70rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.op text, .op button {
+  display: inline-block;
+  width: 230rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box; 
+  font-size: 26rpx;
+  text-align: center;
+  border-radius: 66rpx;
+  -webkit-border-radius: 66rpx;
+  -moz-border-radius: 66rpx;
+  -ms-border-radius: 66rpx;
+  -o-border-radius: 66rpx;
+  float: left;
+}
+
+.op .op1 {
+  background: #ff712b;
+  color: #fff;
+}
+
+.op .op2 {
+  color: #ff712b;
+  border: 1rpx solid #ff712b;
+}
+
+.op .op3 {
+  color: #ff712b;
+  border: 1rpx solid #ff712b;
+}
+
+/* 规则 */
+
+.close {
+  position: fixed;
+  top: 32rpx;
+  right: 32rpx;
+  z-index: 1000;
+  /* background: #000; */
+}
+
+.close button {
+  width: 50rpx;
+  height: 50rpx;
+  background: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: opacity(0);
+}
+
+.close image {
+  width: 50rpx;
+  height: 50rpx;
+  /* position: absolute; */
+  z-index: 1001;
+}
+
+.hd-rule {
+  width: 710rpx;
+  position: fixed;
+  bottom: 30rpx;
+  left: 20rpx;
+  z-index: 1000;
+}
+
+.hd-rule-box {
+  padding: 50rpx 20rpx 20rpx 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  -ms-border-radius: 10rpx;
+  -o-border-radius: 10rpx;
+}
+
+.hd-rule .rule-tit {
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 83rpx;
+  /* font-weight: bold; */
+  margin-top: 20rpx;
+  margin-left: 50rpx;
+}
+
+.hd-rule .rule {
+  font-size: 22rpx;
+  color: #a8a8a8;
+  line-height: 45rpx;
+  /* height: 350rpx; */
+  overflow: hidden;
+}
+
+.hd-rule .rule .hd-type {
+  margin: 15rpx 0;
+}
+
+.hd-rule .rule .hd-type view {
+  line-height: 43rpx;
+  color: #f00;
+}
+
+.hd-rule .rule  .left {
+  float: left;
+  width: 30rpx;
+}
+
+.hd-rule .rule  .right {
+  float: left;
+  width: 600rpx;
+}
+
+/* 人员已满 */
+
+.finish .tit {
+  color: #d0d0d0;
+}
+
+.finish .sub-tit {
+  color: #d0d0d0;
+}
+
+.finish .sub-tit .mission {
+  color: #d0d0d0;
+}
+
+.finish .box-tit view {
+  color: #d0d0d0;
+}
+
+.finish .item .one {
+  border: 1rpx dashed #919191;
+}
+
+.finish .item .one .leader {
+  background: #d0d0d0;
+}
+
+.finish .item .two {
+  color: #d0d0d0;
+}
+
+/* 现在差多少 */
+
+.now {
+  width: 100%;
+  position: fixed;
+  bottom: -10rpx;
+  z-index: 1000;
+}
+
+.now-con {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  text-align: center;
+}
+
+.remain_step_bg {
+  width: 100%;
+  height: 710rpx;
+}
+
+.remian {
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #434343;
+  margin-top: 320rpx;
+}
+
+.remian text {
+  color: #ff712b;
+}
+
+.end-gap {
+  font-size: 26rpx;
+  color: #434343;
+  height: 45rpx;
+  line-height: 45rpx;
+  padding: 0 105rpx;
+  margin-top: 60rpx;
+}
+
+.end-gap image {
+  width: 120rpx;
+  height: 8rpx;
+  float: left;
+  margin-top: 20rpx;
+}
+
+.end-gap .center {
+  float: left;
+}
+
+.end-gap text {
+  color: #ff712b;
+}
+
+.end-gap .time {
+  display: inline-block;
+  width: 45rpx;
+  height: 45rpx;
+  border: 1rpx solid #ff712b;
+  text-align: center;
+  line-height: 45rpx;
+  border-radius: 8rpx;
+  -webkit-border-radius: 8rpx;
+  -ms-border-radius: 8rpx;
+  -moz-border-radius: 8rpx;
+  -o-border-radius: 8rpx;
+
+  margin: 0 10rpx;
+  color: #ff712b;
+}

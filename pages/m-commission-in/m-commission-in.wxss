@@ -1,0 +1,89 @@
+@import "../../lib/style/public.wxss";
+@import "../../lib/style/iconfont.wxss";
+
+.cash-back {
+  width: 100%;
+  height: 300rpx;
+  background: #fff;
+  position: relative;
+}
+
+.cash-back .back-ug {
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.cash-back .cash-money {
+  width: 245rpx;
+  height: 245rpx;
+  background: none;
+  color: #ff712b;
+  position: absolute;
+  top: 80rpx;
+  left: 50%;
+  margin-left: -123rpx;
+  z-index: 99;
+  text-align: center;
+  line-height: 245rpx;
+}
+
+.cash-back .cash-money text {
+  font-size: 41rpx;
+  position: relative;
+}
+
+.cash-back .peo-image {
+  width: 245rpx;
+  height: 245rpx;
+  background: none;
+  position: absolute;
+  left: 250rpx;
+  top: 80rpx;
+}
+
+.box {
+  padding-left: 30rpx;
+  background: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.box .left {
+  font-size: 30rpx;
+  color: #303030;
+}
+
+.box .right {
+  font-size: 26rpx;
+  color: #303030;
+  float: right;
+  margin-right: 30rpx;
+}
+
+.tip {
+  padding: 24rpx 30rpx;
+  background: #fff;
+}
+
+.tip .one {
+  font-size: 26rpx;
+  color: #7c7c7c;
+  line-height: 40rpx;
+}
+.tip .two{
+  font-size: 30rpx;
+  color: #333;
+  line-height: 40rpx;
+  margin-top: 30rpx;
+}
+.tx{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  background: #fc932c;
+  color: #fff;
+  text-align: center;
+  margin-top: 20rpx;
+}

@@ -1,0 +1,28 @@
+<!--pages/myInfo/myInfo.wxml-->
+<form bindsubmit='formSubmit'>
+  <input name="member_id" value='{{uid}}' style="display:none"></input>
+  <view class="listBox border1">
+    <view class="list">
+      <text>名称\t:\t</text>
+      <input value="{{info.nickname}}" name="nickname"></input>
+    </view>
+  </view>
+  <view class="listBox border1 " >
+    <view class="list">
+      <text>联系电话\t:\t</text>
+      <input value="{{info.my_phone}}" name="my_phone"></input>
+    </view>
+  </view>
+
+  <view class="listBox border1" >
+    <view class="list" style="height:120rpx">
+      <text style="line-height:120rpx">图标\t:\t</text>
+      <image src="{{info.shop_header}}" bindtap="chooseImage"></image>
+    </view>
+  </view>
+  <textarea name="shop_intro" placeholder='小店简介，分享你的小店' value="{{info.shop_intro}}">
+  
+  </textarea>
+  
+  <button form-type='submit' class="tj">保存</button>
+</form>

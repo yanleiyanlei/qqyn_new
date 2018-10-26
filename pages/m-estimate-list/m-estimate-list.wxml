@@ -1,0 +1,38 @@
+<!-- 个人中心评价列表页面 -->
+<view class="mul">
+  <view class="order-info">
+    <view class="order-Num border1">
+      <text class="order-bh">订单编号：{{orderNum}}</text>
+      <text class="order-state">交易完成</text>
+    </view>
+  </view> 
+  <view class="order-info" style='margin-top:0!important;margin-bottom:10rpx' wx:for="{{orderList}}">
+    <view class="good-info">
+      <view class="good clearfix" >
+        <view class="left">
+          <image src="{{item.thumbnails}}"></image>
+        </view>
+        <view class="right">
+          <view>
+            <text class="goods-name">{{item.goods_name}}</text>
+            <text class="number">x{{item.quantity}}</text>
+          </view>
+          <view class="goods-feature">{{item.goods_spec_key}}</view>
+          <view class="goods-price">
+            <text style="font-size:22rpx">￥</text>
+            <text>{{item.goods_price}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="order-money border1">
+        <text style="font-size: 24rpx;color: #666;margin-right: 24rpx;">共{{item.quantity}}件</text>
+        <text style="font-size: 24rpx;color: #303030;">应付总额：￥</text>
+        <text style="font-size:30rpx;color:#303030;font-weight: bold;">{{item.goods_money}}</text>
+        <!-- <text style="font-size: 24rpx;color: #303030;margin-left:10rpx">(含运费:20)</text> -->
+      </view>
+      <view class="operation">
+        <navigator url="/pages/m-estimate/m-estimate?gid={{item.order_id}}&cla={{active}}&num={{item.order_number}}&goodid={{item.goods_id}}"><text class="estimate">评价商品</text></navigator>
+      </view>
+    </view>
+  </view>
+</view>

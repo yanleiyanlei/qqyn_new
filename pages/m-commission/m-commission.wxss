@@ -1,0 +1,166 @@
+@import "../../lib/style/public.wxss";
+
+.mycomminsis {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.menber-top {
+  width: 100%;
+  height: 390rpx;
+  background: #ccc;
+  text-align: center;
+}
+
+.menber-top image {
+  margin-top: 27rpx;
+  width: 155rpx;
+  height: 155rpx;
+  background: none;
+  border-radius: 100%;
+  -webkit-box-radius: 100%;
+  -moz-box-radius: 100%;
+  -ms-box-radius: 100%;
+  -o-box-radius: 100%;
+}
+
+.menber-top .dl .dt {
+  margin-top: 15rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+
+.menber-top .dl .dd {
+  font-size: 24rpx;
+  color: #fff;
+  margin-top: 10rpx;
+}
+
+.title-di {
+  width: 100%;
+  height: 160rpx;
+  background: none;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  position: absolute;
+  top: 300rpx;
+}
+
+.title-di .title-white {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 10rpx;
+  -webkit-box-orient: horizontal;
+  -webkit-box-shadow: 1rpx 1rpx 2rpx 1rpx #ccc;
+  -moz-box-shadow: 1rpx 1rpx 2rpx 1rpx #ccc;
+  -ms-box-shadow: 1rpx 1rpx 2rpx 1rpx #ccc;
+  -o-box-shadow: 1rpx 1rpx 2rpx 1rpx #ccc;
+}
+
+.title-di .title-white .dl {
+  text-align: center;
+}
+
+.title-di .title-white .dl .dt {
+  color: #ff712b;
+  font-size: 24rpx;
+  margin-top: 45rpx;
+}
+
+.title-di .title-white .dl .dd {
+  color: #303030;
+  font-size: 28rpx;
+  margin-top: 1rpx;
+}
+
+.title-di .title-white text {
+  display: block;
+  width: 2rpx;
+  height: 80%;
+  background: #bfbfbf;
+  margin-top: 15rpx;
+}
+
+.pd {
+  width: 100%;
+  height: 88rpx;
+  background: #f0f0f0;
+}
+
+.aditemi {
+  width: 100%;
+  height: 200rpx;
+  background: #fff;
+  -webkit-box-orient: horizontal;
+}
+
+.aditemi .dl {
+  text-align: center;
+}
+
+.aditemi .dl .dt {
+  width: 100%;
+  height: 125rpx;
+}
+
+.aditemi .dl image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 25rpx;
+  background: none;
+}
+
+.aditemi .dl .dd {
+  font-size: 28rpx;
+  color: #303030;
+}
+
+.comminul {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 10rpx;
+}
+
+.comminul .ul {
+  width: 100%;
+  height: 100%;
+  background: none;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.comminul .ul .li {
+  width: 100%;
+  height: 100rpx;
+  background: none;
+  /* border-bottom: 1rpx solid #bfbfbf; */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+
+.comminul .ul .li .h4 {
+  font-weight: normal;
+  font-size: 28rpx;
+  color: #303030;
+  line-height: 100rpx;
+  -webkit-box-flex: 1;
+}
+
+.comminul .ul .li text {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+  /*background: red;*/
+  border: 2rpx solid #303030;
+  transform: rotateZ(45deg);
+  border-bottom: none;
+  border-left: none;
+  vertical-align: middle;
+  margin-right: 30rpx;
+  margin-top: 30rpx;
+}

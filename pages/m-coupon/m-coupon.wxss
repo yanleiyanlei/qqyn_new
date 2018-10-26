@@ -1,0 +1,450 @@
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.nav {
+  height: 80rpx;
+  background: #fff;
+  padding: 0 27rpx;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+.nav .navbox {
+  width: 100%;
+  height: 80rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.nav .navbox view {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  width: 20%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #434343;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+.nav .navbox text {
+  display: inline-block;
+  width: 80%;
+  height: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+.nav .navbox .active {
+  color: #ff712b;
+  border-bottom: 2rpx solid #ff712b;
+}
+
+.m-rule .gz {
+  font-size: 24rpx;
+  color: #909090;
+  float: right;
+  line-height: 66rpx;
+  height: 66rpx;
+  margin-right: 27rpx;
+}
+
+.m-rule .iconfont {
+  font-size: 30rpx;
+  float: left;
+  line-height: 66rpx;
+  height: 66rpx;
+}
+
+/* 空 */
+
+.m-kong .one {
+  text-align: center;
+  margin-top: 220rpx;
+}
+
+.m-kong .one image {
+  width: 116rpx;
+  height: 116rpx;
+}
+
+.m-kong .two {
+  font-size: 24rpx;
+  color: #909090;
+  text-align: center;
+  margin-top: 35rpx;
+}
+
+/* 优惠券 */
+
+.m-box {
+  /* padding: 0 27rpx; */
+  overflow: hidden;
+}
+
+.m-box .m-list1 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon1.png");
+}
+
+.m-box .m-list2 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon2.png");
+}
+
+.m-box .m-list2 .m-list-left .one {
+  color: #ccc !important;
+}
+
+.m-box .m-list2 .m-list-right .m-scope {
+  color: #ccc !important;
+}
+
+.m-box .m-list2 .m-full .one {
+  color: #ccc !important;
+}
+
+.m-box .m-list2 .m-time {
+  color: #ccc !important;
+}
+
+.m-box .m-list3 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon3.png");
+}
+
+.m-box .m-list3 .m-list-left .one {
+  color: #ccc !important;
+}
+
+.m-box .m-list3 .m-list-right .m-scope {
+  color: #ccc !important;
+}
+
+.m-box .m-list3 .m-full .one {
+  color: #ccc !important;
+}
+
+.m-box .m-list3 .m-time {
+  color: #ccc !important;
+}
+
+.m-box .m-list4 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon4.png");
+}
+
+.m-box .m-list4 .m-list-left .one {
+  color: #ccc !important;
+}
+
+.m-box .m-list4 .m-list-right .m-scope {
+  color: #ccc !important;
+}
+
+.m-box .m-list4 .m-full .one {
+  color: #ccc !important;
+}
+
+.m-box .m-list4 .m-time {
+  color: #ccc !important;
+}
+
+.m-box .m-list {
+  width: 750rpx;
+  height: 222rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 20rpx;
+}
+
+.m-box .m-list .m-list-left {
+  float: left;
+  width:250rpx;
+  text-align: center;
+  position: relative;
+}
+.m-box .m-list .m-list-left .zl{
+  padding: 60rpx 0;
+  height: 222rpx;
+  width: 50rpx;
+  position: absolute;
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+}
+.m-box .m-list .m-list-left .zl text{
+  display: block;
+}
+.m-box .m-list .m-list-left .one {
+  font-size: 70rpx;
+  color: #ff712b;
+  line-height: 220rpx;
+}
+
+.m-box .m-list .m-list-left .two {
+  font-size:28rpx;
+}
+
+.m-box .m-list .m-list-right {
+  float: left;
+  width: 400rpx;
+  margin-left: 20rpx;
+}
+
+.m-box .m-list .m-list-right .m-scope {
+  font-size: 26rpx;
+  color: #434343;
+  line-height:30rpx;
+  margin-top: 35rpx;
+}
+
+.m-box .m-list .m-list-right .m-full {
+  margin-top: 10rpx;
+  position: relative;
+}
+
+.m-box .m-list .m-list-right .m-full .one {
+  font-size: 22rpx;
+  color: #ff712b;
+  line-height: 30rpx;
+}
+
+.m-box .m-list .m-list-right .m-full .two {
+  display: inline-block;
+  position: absolute;
+  top: 12rpx;
+  right: 20rpx;
+  width: 110rpx;
+  height: 28rpx;
+  text-align: center;
+  line-height: 28rpx;
+  color: #ff712b;
+  border: 1rpx solid #ff712b;
+  border-radius:14rpx;
+  -webkit-border-radius: 14rpx;
+  -moz-border-radius: 14rpx;
+  -o-border-radius: 14rpx;
+  -ms-border-radius:14rpx;
+  margin-left: 50rpx;
+  font-size: 22rpx;
+
+}
+
+.m-box .m-list .m-list-right .m-time {
+  font-size: 22rpx;
+  color: #888;
+  height: 30rpx;
+  line-height:30rpx;
+  margin-top: 32rpx;
+}
+/* 优惠券2商品 */
+.m-box {
+  /* padding: 0 27rpx; */
+  overflow: hidden;
+}
+
+.m-box .m-listg1 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon1.png");
+}
+
+.m-box .m-listg2 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon2.png");
+}
+
+.m-box .m-listg2 .m-list-left .one {
+  color: #ccc !important;
+}
+
+.m-box .m-listg2 .m-list-right .m-good {
+  color: #ccc !important;
+}
+
+.m-box .m-listg2 .m-full .one {
+  color: #ccc !important;
+}
+
+.m-box .m-listg2 .m-time {
+  color: #ccc !important;
+}
+
+.m-box .m-listg3 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon3.png");
+}
+
+.m-box .m-listg3 .m-list-left .one {
+  color: #ccc !important;
+}
+
+.m-box .m-listg3 .m-list-right .m-good {
+  color: #ccc !important;
+}
+
+.m-box .m-listg3 .m-full .one {
+  color: #ccc !important;
+}
+
+.m-box .m-listg3 .m-time {
+  color: #ccc !important;
+}
+
+.m-box .m-listg4 {
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_coupon4.png");
+}
+
+.m-box .m-listg4 .m-list-left .one {
+  color: #ccc !important;
+}
+
+.m-box .m-listg4 .m-list-right .m-good {
+  color: #ccc !important;
+}
+
+.m-box .m-listg4 .m-full .one {
+  color: #ccc !important;
+}
+
+.m-box .m-listg4 .m-time {
+  color: #ccc !important;
+}
+
+.m-box .m-listg {
+  width: 750rpx;
+  height: 222rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 20rpx;
+}
+
+.m-box .m-listg .m-list-left {
+  float: left;
+  width:250rpx;
+  text-align: center;
+  position: relative;
+}
+.m-box .m-listg .m-list-left .zl{
+  padding: 60rpx 0;
+  height: 222rpx;
+  box-sizing: border-box;
+
+  width: 50rpx;
+  position: absolute;
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+}
+.m-box .m-listg .m-list-left .zl text{
+  display: block;
+  line-height: 34rpx;
+}
+.m-box .m-listg .m-list-left .one {
+  font-size: 70rpx;
+  color: #ff712b;
+  height: 70rpx;
+  line-height:70rpx;
+  display: block;
+  margin-top: 55rpx;
+}
+
+.m-box .m-listg .m-list-left .two {
+  font-size:28rpx;
+}
+.m-box .m-listg .m-list-left .o-price{
+  display: block;
+  margin-top: 16rpx;
+  font-size: 20rpx;
+  line-height: 20rpx;
+  color: #c9c9c9;
+  text-decoration:line-through;
+}
+.m-box .m-listg .m-list-left .o-price text{
+  font-size: 20rpx;
+
+}
+.m-box .m-listg .m-list-right {
+  float: left;
+  width: 400rpx;
+  margin-left: 20rpx;
+}
+
+.m-box .m-listg .m-list-right .m-good {
+  font-size: 26rpx;
+  color: #ff712b;
+  line-height:30rpx;
+  margin-top: 35rpx;
+}
+
+.m-box .m-listg .m-list-right .m-full {
+  margin-top: 10rpx;
+  position: relative;
+}
+
+.m-box .m-listg .m-list-right .m-full .one {
+  font-size: 22rpx;
+  color: #ff712b;
+  line-height: 30rpx;
+}
+
+.m-box .m-listg .m-list-right .m-full .two {
+  display: inline-block;
+  position: absolute;
+  top: 12rpx;
+  right: 20rpx;
+  width: 110rpx;
+  height: 28rpx;
+  text-align: center;
+  line-height: 28rpx;
+  color: #ff712b;
+  border: 1rpx solid #ff712b;
+  border-radius:14rpx;
+  -webkit-border-radius: 14rpx;
+  -moz-border-radius: 14rpx;
+  -o-border-radius: 14rpx;
+  -ms-border-radius:14rpx;
+  margin-left: 50rpx;
+  font-size: 22rpx;
+}
+
+.m-box .m-listg .m-list-right .m-time {
+  font-size: 22rpx;
+  color: #888;
+  height: 30rpx;
+  line-height:30rpx;
+  margin-top: 32rpx;
+}
+.third_number{
+display:inline-block;
+position:absolute;
+top:99rpx;
+left:-38rpx;
+width:160rpx;
+height:34rpx;
+text-align:center;
+line-height:28rpx;
+color:#ff712b;
+border:1rpx solid #ff712b;
+border-radius:14rpx;
+-webkit-border-radius:14rpx;
+-moz-border-radius:14rpx;
+-o-border-radius:14rpx;
+-ms-border-radius:14rpx;
+margin-left:50rpx;
+font-size:23rpx;
+
+}

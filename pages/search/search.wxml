@@ -1,0 +1,41 @@
+<!--pages/search/search.wxml-->
+
+
+<view class='search'>
+  <view>
+    <text class='iconfont icon-sousuo'></text>
+    <input confirm-type="search" bindconfirm="search" bindinput='searchValue'></input>
+  </view>
+  <text class='btn' bindtap='searchbtn'>搜索</text>
+</view>
+
+
+<!--热门搜索  -->
+<view class='hotSearch'>
+  <view class='hotTit'>热门搜索</view>
+  <view>
+  <block wx:for="{{hot_seaech}}" >
+    <!--by yan.lei 前三个加了个样式 -->
+    <view style='color:#ff712b' wx:if="{{index<=2}}" bindtap='hotsearch' data-name="{{item.search_name}}">
+        {{item.search_name}}
+    </view>
+    <view wx:if="{{index>2}}" bindtap='hotsearch' data-name="{{item.search_name}}">
+        {{item.search_name}}
+    </view>
+  </block>  
+
+  </view>
+</view>
+
+<!--最近搜索  -->
+<view class='hotSearch' style='border:none'>
+  <view class='hotTit'>最近搜索 <text class='clear' bindtap='clear'>清空</text></view>
+  <view>
+      <block wx:for="{{hots}}" >
+        <view bindtap='hotsearch' data-name="{{item}}">
+          {{item}}
+        </view>
+      </block>  
+
+  </view>
+</view>

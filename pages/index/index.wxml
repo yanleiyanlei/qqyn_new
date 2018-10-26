@@ -1,0 +1,275 @@
+<!-- <view class="mask" style="{{mshow}}"></view>
+<view class="userInfo" style="{{mshow}}">
+  <view class="tt">"青青优农"要获得你的公开信息（昵称，头像等）</view>
+  <view class="op">
+    <view><button open-type='getUserInfo' bindgetuserinfo='UserInfo'>允许</button></view>
+    <view bindtap='close'>拒绝</view>
+  </view>
+</view> -->
+<import src="/lib/template/userInfo2.wxml" />
+<template is="user2" data="{{mshow}}">
+</template>
+
+<view id="header" wx:if="{{store}}">
+  <navigator url="/pages/shopinfo/shopinfo" style="display:inline">
+    <view class="userimg">
+      <image src="{{shop.memberInfo.head_pic}}" />
+    </view>
+  </navigator>
+  <view class="usermes">
+    <view class="username">
+      {{shop.memberInfo.nickname}}
+    </view>
+    <view class="ul">
+      <view class="li">
+        <view class="span">{{shop.goodsnum}}</view>
+        <view class="p">全部商品</view>
+      </view>
+      <view class="li">
+        <view class="span">{{shop.goodsnew}}</view>
+        <view class="p">上新品</view>
+      </view>
+
+    </view>
+  </view>
+</view>
+<view class="gzs {{cs?'show':'hide'}}" bindtap='cs'>
+  <view class='cont'>
+    <view class='cont-left'>
+      <image src='http://m.7710mall.com/Public/Home/img/m_logo.png'></image>
+    </view>
+    <view class='cont-right'>
+      <view class='r1'>青青优农</view>
+      <view class='r2'>食绿色有机果蔬，承载健康生活！</view>
+    </view>
+    <view class='cont-wm'>
+      <image src='{{ewmimg}}' data-src="{{ewmimg}}" bindtap="previewImage"></image>
+      <view>保存扫码,关注我们!</view>
+    </view>
+  </view>
+</view>
+<!--首页轮播  -->
+<view class='index-swiper'>
+  <!--搜索  -->
+  <view class='search'>
+    <view class='searchLoc'>
+      <text class='iconfont icon-unie609'></text> {{location}}
+    </view>
+    <navigator url='../search/search'>
+      <view class='searchCont'>
+        <text class='iconfont icon-sousuo'></text> 请输入关键字搜索
+      </view>
+    </navigator>
+
+  </view>
+
+  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" indicator-color="rgba(255,255,255,.3)" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true'>
+
+    <block wx:for="{{banner}}">
+      <swiper-item>
+        <block wx:if="{{item.bannerlink}}">
+          <navigator url='{{item.bannerlink}}' hover-class='Nhover'>
+            <image src="{{item.bannersrc}}" class="slide-image" />
+          </navigator>
+        </block>
+        <block>
+          <image src="{{item.bannersrc}}" class="slide-image" />
+        </block>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!--swiper下服务提示  -->
+<view class='hint'>
+  <view>
+    <image src="../../image/index/hint1.png" /> 满99元包邮
+  </view>
+  <view>
+    <image src="../../image/index/hint2.png" /> 有机绿色生态
+  </view>
+  <view>
+    <image src="../../image/index/hint3.png" /> 全国冷链物流
+  </view>
+
+</view>
+
+<!--nav  -->
+<view class='nav'>
+  <block wx:for="{{navUrls}}">
+    <navigator url='../classifyGoods/classifyGoods?id={{item.one_cat_id}}' hover-class='Nhover'>
+      <view>
+        <image src='{{item.ad_img}}'></image>
+        <text>{{item.ad_name}}</text>
+      </view>
+    </navigator>
+  </block>
+
+</view>
+
+<!--青青活动  -->
+<view class='qqactive'>
+  <view class='active-tit'>
+    <image src='../../image/index/active-tit.png'></image>
+    <text>【青青优农】农场震撼来袭</text>
+    <view class='gz' bindtap='gz'>
+      <text class='iconfont icon-guanzhu1'></text> 关注</view>
+  </view>
+
+  <view class='activeimg'>
+    <navigator url='{{qqhdlink}}'>
+      <image src='{{qqactiveUrls[0].ad_img}}'></image>
+    </navigator>
+  </view>
+</view>
+
+<!--今日推荐  -->
+<view class='todayRecommend'>
+  <view class='todayRecommend-tit'>
+    <view>今日推荐</view>
+    <view>
+      <image src='../../image/index/m_xian.png'></image>
+      <text>Today the optimization</text>
+      <image src='../../image/index/m_xian.png'></image>
+    </view>
+  </view>
+
+  <swiper class='goodshow' display-multiple-items="2.5" previous-margin="32rpx">
+    <block wx:for="{{todayUrls}}">
+      <swiper-item>
+        <!--判断第二件0元购商品标示  暂写死,index、classifyGoods、qfhot、searchnull、secondGoods、页面需要添加-->
+        <!-- <image wx:if="{{item.goods_id==23||item.goods_id==347||item.goods_id==300||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
+        <!--判断新品和预售标示  -->
+        <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+
+        <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+        <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+        <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+        <image wx:if="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+        <image wx:if="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+        <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+
+
+
+
+
+
+
+        <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" bindtap='goodsDetails' />
+
+        <text class='goodsname'>{{item.goods_name}} </text>
+        <text class='goodsdis'>{{item.goods_remark}}</text>
+        <text class='goodsweight'>{{item.spec_name}}</text>
+        <view>
+          <text class='goodsprice'>￥{{item.shop_price}}</text>
+          <text class='goodsdelprice' wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
+          <block wx:for="{{cartList}}" wx:for-item="item2">
+            <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+          </block>
+          <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+          <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" data-num='' bindtap="cart"></image>
+        </view>
+
+      </swiper-item>
+    </block>
+
+  </swiper>
+</view>
+
+<!--青粉推荐  -->
+<view class='qfRecommend'>
+  <view class='qfRecommend-tit'>
+    <navigator url='../qfhot/qfhot' hover-class='Nhover'>
+      <image src='{{qfUrls.img[0].ad_img}}'></image>
+    </navigator>
+  </view>
+
+
+  <swiper class='goodshow' display-multiple-items="2.5" previous-margin="32rpx">
+    <block wx:for="{{qfUrls.goods}}">
+      <swiper-item>
+        <image class='hot' wx:if="{{index==0}}" src='../../image/index/hot.png'></image>
+        <image class='hot' wx:elif="{{index==1}}" src='../../image/index/hot.png'></image>
+        <image class='hot' wx:elif="{{index==2}}" src='../../image/index/hot.png'></image>
+        <image class='goodsimg' src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" bindtap='goodsDetails' />
+        <text class='goodsname'>{{item.goods_name}}</text>
+        <text class='goodsdis'>{{item.goods_remark}}</text>
+        <text class='goodsweight'>{{item.spec_name}}</text>
+        <view>
+          <text class='goodsprice'>￥{{item.shop_price}}</text>
+          <text class='goodsdelprice' wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
+          <block wx:for="{{cartList}}" wx:for-item="item2">
+            <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+          </block>
+          <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+          <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
+        </view>
+      </swiper-item>
+    </block>
+
+  </swiper>
+</view>
+
+<!--商品四个类目====  -->
+
+<view class='goodsType'>
+  <block wx:for="{{goodsType}}">
+    <view class='goodsType-tit'>
+      <view>
+        <text class='typeIco' wx:if="{{index==0}}" style='background:#83ce3c'></text>
+        <text class='typeIco' wx:if="{{index==1}}" style='background:#ff712b'></text>
+        <text class='typeIco' wx:if="{{index==2}}" style='background:#7a96fc'></text>
+        <text class='typeIco' wx:if="{{index==3}}" style='background:#fecf56'></text>
+        <text class='typeIco' wx:if="{{index==4}}" style='background:#f87275'></text>
+        <text class='typeName'>{{item.green[0].cat_name}}</text>
+        <navigator class='typeMore' url='../classifyGoods/classifyGoods?id={{item.green[0].one_cat_id}}' hover-class='Nhover'>更多
+          <text class='iconfont icon-iconfontyoujiantou'></text>
+        </navigator>
+      </view>
+      <navigator hover-class='Nhover' url='../classifyGoods/classifyGoods?id={{item.green[0].one_cat_id}}'>
+        <image src='{{item.cat_img}}'></image>
+      </navigator>
+    </view>
+
+    <swiper class='goodshow' display-multiple-items="2.5" previous-margin="32rpx">
+      <block wx:for="{{item.green}}">
+        <swiper-item>
+          <!--判断第二件0元购商品标示  -->
+          <!-- <image wx:if="{{item.goods_id==347||item.goods_id==23||item.goods_id==300||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
+          <!--判断新品和预售标示  -->
+          <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+
+          <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+          <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+          <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+          <image wx:if="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+          <image wx:if="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+          <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+
+          <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" bindtap='goodsDetails' />
+          <text class='goodsname'> {{item.goods_name}}</text>
+          <text class='goodsdis'>{{item.goods_remark}}</text>
+          <text class='goodsweight'>{{item.spec_name}}</text>
+          <view>
+            <text class='goodsprice'>￥{{item.shop_price}}</text>
+
+            <text class='goodsdelprice' wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
+
+            <block wx:for="{{cartList}}" wx:for-item="item2">
+              <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+            </block>
+            <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+            <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
+          </view>
+        </swiper-item>
+      </block>
+
+
+    </swiper>
+
+  </block>
+</view>
+<view class="other-hd" bindtap='gowx'>
+
+  <image src='{{qqactiveUrls[1].ad_img}}'></image>
+
+</view>
