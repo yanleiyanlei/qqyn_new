@@ -124,10 +124,12 @@ Page({
         wx.hideLoading()
       }, 1000)
     } else {
+      var wi = wx.getStorageSync("wi");
       var uid = wx.getStorageSync("userinfo").uid;
       var _this = this;
-      if (weekday == undefined) {
+      if (weekday == undefined) {//小哥哥能不能加个备注，蔬菜
         var obj ={
+          wi: wi,//by yan.lei 把wi拿出来传到提交订单接口
           member_id: uid,//用户id
           seller_id: 1,
           dis_id: dis_id,
@@ -144,6 +146,7 @@ Page({
         }
       }else{
         var obj = {
+          wi: wi,//by yan.lei
           member_id: uid,//用户id
           seller_id: 1,
           dis_id: dis_id,

@@ -203,6 +203,13 @@ Page({
      if(pid){
        wx.setStorageSync("pid", pid);
      }
+    //by yan.lei 对方会把wi传进来 扔缓存里
+     var wi = options.wi;
+     if(wi){
+       wx.setStorageSync("wi", wi);
+     }
+
+
      var uid = wx.getStorageSync("userinfo").uid;
      var that = this;
      
