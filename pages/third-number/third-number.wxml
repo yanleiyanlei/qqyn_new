@@ -2,7 +2,7 @@
 <form bindsubmit='formSubmit'>
 
   <view class="chong-text">
-    兑换成功后相应优惠劵发送到账户中，供消费使用。
+    兑换成功后相应优惠劵发送到账户中，供消费使用
   </view>
 
 
