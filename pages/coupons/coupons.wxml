@@ -6,117 +6,29 @@
     </view>
 
     <view class="coupons">
-      <view class="wsycoupons" wx:for="{{datalist}}" wx:if="{{item.coupon_type=='a'&&blones==true}}" bindtap="usercous" data-id="{{item.dis_id}}">
-        <view class="shopquan">
-          <text>商</text>
-          <text>品</text>
-          <text>券</text>
-        </view>
-        <view class="pricelist assas" style="padding-left:30rpx;box-sizing: border-box;">
-          ￥
-          <text class="moneys">{{item.new_price}}</text>
-          <text style="display:block" class="yprice">原价:{{item.shop_price}}</text>
-        </view>
-        <view class="pricerigh">
-          <view class="m-scope">{{item.goods_name}}立减{{item.new_price}}元</view>
-          <view class="m-full">
-            <view class="wmks">
-              【满{{item.spec_name}}】
-            </view>
-
+      <block wx:for="{{datalist}}" wx:key="unipue">
+        <view class="wsycoupons {{ item.is_not == false ?'wsycouponss':''}} " bindtap="{{item.is_not == true ?'usercous':' '}}" data-id="{{item.dis_id}}">
+          <view class="shopquan">
+            <text>优</text>
+            <text>惠</text>
+            <text>券</text>
           </view>
-          <view class="m-time" bindtap="usercous" data-id="{{item.dis_id}}">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
-        </view>
-      </view>
-
-      <view class="wsycoupons" wx:for="{{datalist}}" wx:if="{{item.coupon_state==0 &&item.coupon_type!='a'}}" bindtap="usercous" data-id="{{item.dis_id}}">
-        <view class="shopquan">
-          <text>优</text>
-          <text>惠</text>
-          <text>券</text>
-        </view>
-        <view class="pricelist">
-          ￥
-          <text class="moneys">{{item.coupon_money}}</text>
-        </view>
-        <view class="pricerigh">
-          <view class="m-scope" wx:if="{{item.coupon_type==0}}">全场通用</view>
-          <view class="m-full">
-            <view class="wmk">
-              【无门槛】
-            </view>
-            <view class="wmk" wx:if="{{item.coupon_state==1}}">
-              【满{{item.coupon_man}}元可用】
-            </view>
-            <view class="qsy">去使用</view>
+          <view class="pricelist assas" style="padding-left:30rpx;box-sizing: border-box;">
+            ￥
+            <text class="moneys">{{item.coupon_money}}</text>
+            <text style="display:block" class="yprice">原价:{{item.coupon_money}}</text>
           </view>
-          <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
-        </view>
-      </view>
-      <view class="wsycoupons" wx:for="{{datalist}}" wx:if="{{item.coupon_state==1 && dats >=item.coupon_man}}" bindtap="usercous" data-id="{{item.dis_id}}">
-        <view class="shopquan">
-          <text>优</text>
-          <text>惠</text>
-          <text>券</text>
-        </view>
-        <view class="pricelist">
-          ￥
-          <text class="moneys">{{item.coupon_money}}</text>
-        </view>
-        <view class="pricerigh">
-          <view class="m-scope" wx:if="{{item.coupon_type==0}}">全场通用</view>
-          <view class="m-full">
-            <view class="wmk">
-              【满{{item.coupon_man}}元可用】
+          <view class="pricerigh">
+            <view class="m-scope" wx:if="{{item.coupon_type==0}}">全场通用</view>
+            <view class="m-scope" wx:elif="{{item.coupon_type=='zt1'}}">专题券</view>
+            <view class="m-full">
+              <view class="wmks" wx:if="{{item.coupon_state==0}}">无门槛</view>
+              <view class="wmks" wx:elif="{{item.coupon_state==1}}">满{{item.coupon_man}}减{{item.coupon_money}}</view>
             </view>
+            <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
           </view>
-          <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
         </view>
-
-      </view>
-      <view class="wsycouponss wsycoupons" wx:for="{{datalist}}" wx:if="{{item.coupon_state==1 && dats < item.coupon_man}}" data-id="{{item.dis_id}}">
-        <view class="shopquan">
-          <text>优</text>
-          <text>惠</text>
-          <text>券</text>
-        </view>
-        <view class="pricelists">
-          ￥
-          <text class="moneyss">{{item.coupon_money}}</text>
-        </view>
-        <view class="pricerigh">
-          <view class="m-scope" wx:if="{{item.coupon_type==0}}">全场通用</view>
-          <view class="m-full">
-            <view class="wmks">
-              【满{{item.coupon_man}}元可用】
-            </view>
-          </view>
-          <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
-        </view>
-
-      </view>
-
-      <view class="wsycouponss wsycoupons" wx:for="{{datalist}}" wx:if="{{item.coupon_type=='a'&&blones==false}}">
-        <view class="shopquan">
-          <text>商</text>
-          <text>品</text>
-          <text>券</text>
-        </view>
-        <view class="pricelists assas" style="padding-left:30rpx;box-sizing: border-box;">
-          ￥
-          <text class="moneyss">{{item.new_price}}</text>
-          <text style="display:block" class="yprice">原价:{{item.shop_price}}</text>
-        </view>
-        <view class="pricerigh">
-          <view class="m-scope">{{item.goods_name}}立减{{item.new_price}}元</view>
-          <view class="m-full">
-            <view class="wmks">
-              【满{{item.spec_name}}】
-            </view>
-          </view>
-          <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
-        </view>
-      </view>
+      </block>
     </view>
 
   </view>

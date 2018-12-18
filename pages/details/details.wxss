@@ -88,12 +88,11 @@ swiper {
 }
 
 .goodsname {
+  width: 70%;
   font-size: 36rpx;
   color: #303030;
   font-weight: 480;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
   margin-bottom: 28rpx;
   display: block;
 }

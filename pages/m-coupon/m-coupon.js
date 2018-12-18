@@ -82,7 +82,7 @@ Page({
       data: { member_id: that.data.uid, seller_id: 1 },
       method: 'post',
       success: function (res) {
-        console.log(res)
+        console.log(res.data)
         that.setData({
           coupon: res.data.coupon_one
         })
