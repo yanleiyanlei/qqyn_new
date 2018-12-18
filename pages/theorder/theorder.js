@@ -281,7 +281,7 @@ Page({
           console.log(dastas);
           if (dastas.status == true) {
             wx.request({
-              url: app.globalData.Murl + '/Applets/Carts/order1',
+              url: app.globalData.Murl + '/Applets/Cart/order1',
               data: {
                 member_id: uid,
                 seller_id: 1,
@@ -380,7 +380,7 @@ Page({
           console.log(dastas);
           if (dastas.status == true) {
             wx.request({
-              url: app.globalData.Murl + '/Applets/Carts/order1',
+              url: app.globalData.Murl + '/Applets/Cart/order1',
               data: {
                 member_id: uid,
                 seller_id: 1,

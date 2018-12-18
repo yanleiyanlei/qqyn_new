@@ -60,7 +60,7 @@ Page({
    //获取uid
     var uid = wx.getStorageSync("userinfo").uid;
     wx.request({
-      url: app.globalData.Murl + '/Applets/Carts/coupons2',
+      url: app.globalData.Murl + '/Applets/Cart/coupons2',
       data: { member_id: uid, cp: options.cp },
       method: "post",
       success: function (res) {
