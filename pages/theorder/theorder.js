@@ -14,11 +14,12 @@ Page({
     item: " ",
     selAddress: " ",
     package_mail: [],
-    userName: '',
+    userName: '',          //用户留言
     weCharstatus: false,   // 全选状态，默认全选
     yuestutea:false,
+    jine:""
   },
-  userNameInput: function (e) {
+  userNameInput: function (e) {  //用户留言
     this.setData({
       userName: e.detail.value
     })
@@ -284,8 +285,8 @@ Page({
               data: {
                 member_id: uid,
                 seller_id: 1,
-                dis_id: dis_id,
-                Cart_address_id: item
+                dis_id: dis_id,  //优惠卷id
+                Cart_address_id: item  //地址id
               },
               method: "post",
               success: function (res) {
@@ -293,9 +294,9 @@ Page({
                 var datalist = res.data;
                 var godsorder = datalist.order;
                 console.log(datalist.select_weekday1);
-                var commpany = datalist.commpany;
-                var can_goods_coupon = datalist.can_goods_coupon;
-                var is_goods_coupon = datalist.is_goods_coupon;
+                var commpany = datalist.commpany;   //运费满减信息
+                var can_goods_coupon = datalist.can_goods_coupon;//商品卷可用数量
+                var is_goods_coupon = datalist.is_goods_coupon;  //优惠卷是否为商品类型卷
                 datalist.timestos = getNowTime(datalist.reviews_addtime);
                 if (is_goods_coupon == 1) {
                   var reduce_moeny = datalist.reward_coupon.reduce_moeny;
@@ -307,38 +308,44 @@ Page({
                     now_time: now_time,
                   })
                 }
-                if (datalist.address == null) {
+                if (datalist.address == null) {  //当没有填写地址时
                   _this.setData({
-                    goodsorder: godsorder,
-                    quantity: datalist,
-                    is_goods_coupon: is_goods_coupon,
-                    can_goods_coupon: can_goods_coupon,
-                    address: datalist.address,
-                    money: Number(datalist.money),
-                    allsprice: Number(datalist.money) + Number(commpany.upto_amount),
-                    package_mail: Number(datalist.commpany.package_mail)
+                    goodsorder: godsorder,  //商品信息
+                    quantity: datalist,     //返回的所有信息
+                    is_goods_coupon: is_goods_coupon,  //是否为商品卷
+                    can_goods_coupon: can_goods_coupon, //商品卷可用数量
+                    address: datalist.address,     //地址
+                    money: Number(datalist.money),  //商品总价
+                    allsprice: Number(datalist.money) + Number(commpany.upto_amount),                         //总价加上运费
+                    package_mail: Number(datalist.commpany.package_mail)//满99减运费
                   })
-                } else {
-                  _this.setData({
-                    goodsorder: godsorder,
-                    quantity: datalist,
-                    is_goods_coupon: is_goods_coupon,
-                    can_goods_coupon: can_goods_coupon,
-                    address: datalist.address,
+                } else {     //当填写地址时
+                  _this.setData({    
+                    goodsorder: godsorder,   //商品信息
+                    quantity: datalist,      //返回的所有信息
+                    is_goods_coupon: is_goods_coupon,   //是否为商品卷
+                    can_goods_coupon: can_goods_coupon,  //商品卷可用数量
+                    address: datalist.address,     //地址
                     loc: datalist.address.sheng,
-                    money: Number(datalist.money),
-                    allsprice: Number(datalist.money) + Number(commpany.upto_amount),
-                    package_mail: Number(datalist.commpany.package_mail)
+                    money: Number(datalist.money),  //商品总价
+                    allsprice: Number(datalist.money) + Number(commpany.upto_amount),                              //总价加上运费
+                    package_mail: Number(datalist.commpany.package_mail)//满99减运费
                   })
 
                 }
-                var allsprices = _this.data.allsprice;
+                var allsprices = _this.data.allsprice;    //总价加上运费赋值给allsprices      
                 console.log(allsprices);
-                var moneys = _this.data.money;
+                console.log(_this.data.quantity);
+                var jine = Number(_this.data.package_mail) + Number(_this.data.quantity.coupon.coupon_money);
+                _this.setData({
+                  jine:jine
+                })
+                console.log(jine)
+                var moneys = _this.data.money; //商品总价赋值给moneys
                 if (datalist.coupon == null) {
 
                 } else {
-                  var prices = datalist.coupon.coupon_money;
+                  var prices = datalist.coupon.coupon_money; //优惠卷金额
 
                   _this.setData({
                     conprice: Number(allsprices - prices).toFixed(2),
@@ -354,6 +361,7 @@ Page({
           }
         }
       })
+      
     } else if (page == 1) {
       /*立即购买的接口*/
       var _urlshop = app.globalData.Murl + "/Applets/Cart/goBuy";
@@ -426,6 +434,10 @@ Page({
                 }
                 var allsprices = _this.data.allsprice;
                 console.log(allsprices);
+                var jine = Number(_this.data.package_mail) + Number(_this.data.quantity.coupon.coupon_money);
+                _this.setData({
+                  jine: jine
+                })
                 var moneys = _this.data.money;
                 if (datalist.coupon == null) {
 
@@ -445,5 +457,7 @@ Page({
       })
 
     }
+
+   
   }
 })

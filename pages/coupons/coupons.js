@@ -33,11 +33,11 @@ Page({
 
     let pagess = getCurrentPages();//当前页面
     let prevPages = pagess[pagess.length - 2];//上一页面
-    prevPages.setData({//直接给上移页面赋值
+    prevPages.setData({        //直接给上移页面赋值
       dis_id: e.currentTarget.dataset.id,
     });
     console.log(prevPages.data.dis_id);
-    wx.navigateBack({//返回
+    wx.navigateBack({       //返回上一页
       delta: 1
     })
     /* wx.redirectTo({

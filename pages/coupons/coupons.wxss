@@ -125,7 +125,7 @@ page{
 }
 .wmks{
    font-size: 22rpx;
-    color: #666666;
+    color: #ff712b;
     line-height: 30rpx;	
 }
 .wmk{

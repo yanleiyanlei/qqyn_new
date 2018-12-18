@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/index/index",
     "pages/third-number/third-number",
     "pages/pay199/pay199",
@@ -60,7 +61,8 @@
     "pages/order-detail/order-detail",
     "pages/mpay/mpay",
     "pages/newchangeaddress/newchangeaddress",
-    "pages/newaddaddress/newaddaddress"
+    "pages/newaddaddress/newaddaddress",
+    "pages/special/special"
   ],
   "window": {
     "backgroundTextStyle": "light",

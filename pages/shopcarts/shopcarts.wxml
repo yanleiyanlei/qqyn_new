@@ -1,96 +1,96 @@
 <!-- 购物车 -->
 <!-- 购物车头部导航 -->
 <page>
-<!--小程序的loaing组件!-->
-<loading hidden="{{hiddenLoading}}">正在加载</loading>
-<view class="hdtop">
-			<view class="tiels">全场满99.00元包邮，还差
-       <text wx:if="{{ commpany.transportation_name==3 && totalPrice >= package_mail}}">0</text>
-        <text wx:elif="{{is_coupon==1}}">(选择优惠商品券免运费)</text>
-      <text wx:else>{{zonprice}}</text>
-      元包邮</view>
-      <navigator opent-type="redirectTo" url="/pages/m-coupon/m-coupon" hover-class='Nhover'>
-			<view class="coupons">优惠券  ></view>
+  <!--小程序的loaing组件!-->
+  <loading hidden="{{hiddenLoading}}">正在加载</loading>
+  <view class="hdtop">
+    <view class="tiels">全场满99.00元包邮，还差
+      <text wx:if="{{ commpany.transportation_name==3 && totalPrice >= package_mail}}">0</text>
+      <text wx:elif="{{is_coupon==1}}">(选择优惠商品券免运费)</text>
+      <text wx:else>{{zonprice}}</text> 元包邮
+    </view>
+    <navigator opent-type="redirectTo" url="/pages/m-coupon/m-coupon" hover-class='Nhover'>
+      <view class="coupons">优惠券 ></view>
+    </navigator>
+  </view>
+  <view class="shopcartitle">
+    <text class="sh-title">购物车</text>
+    <view bindtap="toggle">
+      <text class="bianji" wx:if="{{hieneflae}}">编辑</text>
+      <text class="bianji" wx:else>完成</text>
+    </view>
+  </view>
+  <view class="cartboxs" wx:if="{{carts!=''}}">
+    <view class="cart-box" wx:for="{{carts}}">
+      <!-- wx:for 渲染购物车列表 -->
+      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" data-key="{{item.id}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+        <!--  wx:if 是否选择显示不同图标 -->
+        <view class="content">
+          <icon wx:if="{{item.selected==true}}" type="success" data-key="0" data-id="{{item.id}}" color="#ff712b" bindtap="selectList" data-index="{{index}}" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+          <icon wx:else type="circle" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+          <!-- 购物车商品图片 -->
+          <view class="imgtex" data-id="{{item.goods_id}}" bindtap="tiaodeilts">
+            <image src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_thumb}}" class="shopimg" alt=""></image>
+          </view>
+          <view class="shop_name">
+            <text class="shnm" data-id="{{item.goods_id}}" bindtap="tiaodeilts">{{item.goods_name}}</text>
+            <text class="shgg">{{item.goods_remark}}</text>
+            <text class="shgg">{{item.spec_name}}</text>
+            <text class="prices">￥{{item.goods_price}}</text>
+          </view>
+          <view class="jiajian">
+            <text bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}" class="fanku">-</text>
+            <text class="number">{{item.goods_num}}</text>
+            <text bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}" class="fanku">+</text>
+          </view>
+        </view>
+
+        <!-- 删除 -->
+        <view class="del" bindtap="deleteLists" data-index="{{index}}" data-key="{{item.id}}">删除</view>
+      </view>
+    </view>
+    <view class="cart-box" wx:for="{{carts}}" wx:if="{{carts==''}}">
+
+    </view>
+  </view>
+  <view class="cartboxs" wx:if="{{carts==''}}">
+    <view class="kongcars">
+      <view class="cartssjh">
+        <text class="iconfont icon-gouwuche3"></text>
+      </view>
+      <view class="kongvie">
+        您的购物车还是空的哦~~
+      </view>
+      <navigator open-type="switchTab" url="/pages/index/index" hover-class="none">
+        <view class="guang">
+
+          去逛逛
+
+        </view>
       </navigator>
-		</view>
-<view class="shopcartitle">
-	<text class="sh-title">购物车</text>
-  <view bindtap="toggle">
-  	<text class="bianji" wx:if="{{hieneflae}}">编辑</text>
-    <text class="bianji" wx:else>完成</text>
+    </view>
   </view>
-</view>
-<view class="cartboxs" wx:if="{{carts!=''}}">
-<view class="cart-box" wx:for="{{carts}}">
-    <!-- wx:for 渲染购物车列表 -->
-     <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" data-key="{{item.id}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
-      <!--  wx:if 是否选择显示不同图标 -->
-       <view class="content">
-            <icon wx:if="{{item.selected==true}}" type="success" data-key="0" data-id="{{item.id}}" color="#ff712b" bindtap="selectList" data-index="{{index}}" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}"/>
-           <icon wx:else type="circle" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}"/>
-                <!-- 购物车商品图片 -->
-                <view class="imgtex" data-id="{{item.goods_id}}" bindtap="tiaodeilts">
-                <image src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_thumb}}"  class="shopimg" alt=""></image>
-                </view>
-                <view class="shop_name">
-                    <text class="shnm" data-id="{{item.goods_id}}" bindtap="tiaodeilts">{{item.goods_name}}</text>
-                    <text class="shgg">{{item.goods_remark}}</text>
-                    <text class="shgg">{{item.spec_name}}</text>
-                   <text class="prices">￥{{item.goods_price}}</text> 
-                </view>
-               <view class="jiajian">
-                  <text bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}" class="fanku">-</text>
-                  <text class="number">{{item.goods_num}}</text>
-                  <text bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}" class="fanku">+</text>
-              </view> 
-          </view> 
-        
-          <!-- 删除 -->
-         <view class="del" bindtap="deleteLists" data-index="{{index}}" data-key="{{item.id}}">删除</view> 
-     </view> 
-</view>
-  <view class="cart-box" wx:for="{{carts}}"  wx:if="{{carts==''}}" >
-           
-  </view>
-</view>
-<view class="cartboxs" wx:if="{{carts==''}}">
-       <view class="kongcars">
-         <view class="cartssjh">
-           <text class="iconfont icon-gouwuche3"></text>
-         </view>
-         <view class="kongvie">
-          您的购物车还是空的哦~~
-         </view>
-         <navigator open-type="switchTab" url="/pages/index/index" hover-class="none">
-         <view class="guang">
-           
-           去逛逛
-           
-         </view>
-         </navigator>
-       </view>
-</view>
-<view class="jiesnum" wx:for="{{carts}}">
+  <view class="jiesnum" wx:for="{{carts}}">
     <!-- wx:if 是否全选显示不同图标 -->
-    <icon wx:if="{{selectAllStatus}}" type="success" color="#FF712B" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}"/>
-    <icon wx:else type="circle" color="#bfbfbf" bindtap="selectAll"  data-kc="{{item.store_count}}" data-num="{{item.goods_num}}"/>
+    <icon wx:if="{{selectAllStatus}}" type="success" color="#FF712B" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+    <icon wx:else type="circle" color="#bfbfbf" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
     <text class="name_b">全选</text>
-    
+
     <!-- 总价 -->
     <view class="zongnum" wx:if="{{hieneflae}}">
-      <text class="hej">合计:</text> 
-    	 <text class="pricesnum">￥{{totalPrice}}</text>
-    	 <text class="hej" class="yuf" wx:if="{{ commpany.transportation_name==3 && totalPrice >= package_mail}}">(本单已达到免运费)</text>
-       <!--拼步数活动的运费价钱-->
-       <text class="hej" class="yuf" wx:elif="{{is_coupon==1}}">(选择优惠商品券免运费)</text>
-    	 <text class="hej" class="yuf" wx:else>(再购买{{zonprice}}元免运费)</text>
+      <text class="hej">合计:</text>
+      <text class="pricesnum">￥{{totalPrice}}</text>
+      <text class="hej" class="yuf" wx:if="{{ commpany.transportation_name==3 && totalPrice >= package_mail}}">(本单已达到免运费)</text>
+      <!--拼步数活动的运费价钱-->
+      <text class="hej" class="yuf" wx:elif="{{is_coupon==1}}">(选择优惠商品券免运费)</text>
+      <text class="hej" class="yuf" wx:else>(再购买{{zonprice}}元免运费)</text>
     </view>
-      <view class="zongnume" wx:if="{{hieneflae}}" bindtap="goshop" data-index="{{item.selected}}">
-    	  <text>去结算</text>
-      </view>
-       <view class="zongnume" wx:else bindtap="dellbutn" data-index="{{index}}">
-         <text data-aid="{{item.id}}">删除</text>
-      </view>
-</view>
+    <view class="zongnume" wx:if="{{hieneflae}}" bindtap="goshop" data-index="{{item.selected}}">
+      <text>去结算</text>
+    </view>
+    <view class="zongnume" wx:else bindtap="dellbutn" data-index="{{index}}">
+      <text data-aid="{{item.id}}">删除</text>
+    </view>
+  </view>
 </page>
 <!-- 加入购物车 -->
