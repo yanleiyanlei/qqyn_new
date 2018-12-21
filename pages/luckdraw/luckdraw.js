@@ -17,14 +17,14 @@ Page({
     indexSelect: 0, //被选中的奖品index
     isRunning: false, //是否正在抽奖
     imageAward: [
-      '../../image/luckdraw/a.jpg',
-      '../../image/luckdraw/b.jpg',
-      '../../image/luckdraw/c.jpg',
-      '../../image/luckdraw/e.jpg',
-      '../../image/luckdraw/h.jpg',
-      '../../image/luckdraw/g.jpg',
-      '../../image/luckdraw/f.jpg',
-      '../../image/luckdraw/d.jpg',
+      'http://m.7710mall.com/Public/xcximg/a.jpg',
+      'http://m.7710mall.com/Public/xcximg/b.jpg',
+      'http://m.7710mall.com/Public/xcximg/c.jpg',
+      'http://m.7710mall.com/Public/xcximg/d.jpg',
+      'http://m.7710mall.com/Public/xcximg/e.jpg',
+      'http://m.7710mall.com/Public/xcximg/f.jpg',
+      'http://m.7710mall.com/Public/xcximg/g.jpg',
+      'http://m.7710mall.com/Public/xcximg/h.jpg',
     ], //奖品图片数组
     times: 0 // 抽奖次数
   },
