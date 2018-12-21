@@ -36,8 +36,8 @@
       </view>
       <view class="yujitime" wx:else>
         <text class="iconfont icon-tixing"></text>
-        <text wx:if="{{nowTime>10}}"> 23:00前下单，预计明日到达</text>
-        <text wx:else> 10:00前下单，预计今日到达</text>
+        <text wx:if="{{nowTime<17}}"> 17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
+        <text wx:else>17:00后下单，预计48小时内送达(节假日及特殊情况延后发货)</text>
       </view>
     </view>
 
