@@ -7,7 +7,7 @@
 <!-- 抽奖主内容 -->
 <!-- 顶部图片 -->
 <view class='page_bd'>
-  <image style='width:100%;display:block' mode='widthFix' src='../../image/luckdraw/1.jpg'></image>
+  <image style='width:100%;display:block' mode='widthFix' src='http://m.7710mall.com/Public/xcximg/1.jpg'></image>
 </view>
 
 <!-- 抽奖内容区域 -->
@@ -25,11 +25,11 @@
 </view>
 <!-- 底部图片 -->
 <view class="page_bd">
-<image style="width: 100%;display:block;" mode="widthFix" src="../../image/luckdraw/3.jpg"></image>
-  <image style="width: 100%;display:block;" mode="widthFix" src="../../image/luckdraw/3.jpg"></image>
-  <image style="width: 100%;display:block;" mode="widthFix" src="../../image/luckdraw/4.jpg"></image>
-  <image style="width: 100%;display:block;" mode="widthFix" src="../../image/luckdraw/5.jpg"></image>
-  <image style="width: 100%;display:block;" mode="widthFix" src="../../image/luckdraw/6.jpg"></image>
+<image style="width: 100%;display:block;" mode="widthFix" src="http://m.7710mall.com/Public/xcximg/2.jpg"></image>
+  <image style="width: 100%;display:block;" mode="widthFix" src="http://m.7710mall.com/Public/xcximg/3.jpg"></image>
+  <image style="width: 100%;display:block;" mode="widthFix" src="http://m.7710mall.com/Public/xcximg/4.jpg"></image>
+  <image style="width: 100%;display:block;" mode="widthFix" src="http://m.7710mall.com/Public/xcximg/5.jpg"></image>
+  <image style="width: 100%;display:block;" mode="widthFix" src="http://m.7710mall.com/Public/xcximg/6.jpg"></image>
   <navigator url="/pages/index/index" class='gohome' open-type='reLaunch'>
  返回首页
   </navigator>
