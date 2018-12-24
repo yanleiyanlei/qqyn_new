@@ -171,14 +171,15 @@ Page({
         header: { 'Content-Type': 'application/json' },
         success: function (res) {
           const datas = res.data;
-          console.log(datas);
-          if (datas.status==false){
-            wx.showToast({
-              title: datas.data,
-              icon: 'none',
-              duration: 2000
-            })
-          }else{
+          // console.log(datas);
+          // if (datas.status==false){
+          //   console.log(datas.data)
+          //   wx.showToast({
+          //     title: datas.data,
+          //     icon: 'none',
+          //     duration: 2000
+          //   })
+          // }else{
             _this.setData({
               actualpayment: actualpayment,
               orderid: datas.orderid,//订单id
@@ -191,7 +192,7 @@ Page({
               fail: function (res) { console.log(res) },
               complete: function (res) { console.log(res) },
             })
-          }
+          // }
         }
       })
     }
@@ -269,7 +270,7 @@ Page({
       return formatDate;
     }
     var uid = wx.getStorageSync("userinfo").uid;
-    if (page == 2) {
+    if (page == 2) {   //如果page==2 说明是从购物车进入
       /*购物车结算的接口*/
       var urlshop = app.globalData.Murl + "/Applets/Cart/CartBuy";
       wx.request({
@@ -291,8 +292,8 @@ Page({
               method: "post",
               success: function (res) {
                 console.log(res.data);
-                var datalist = res.data;
-                var godsorder = datalist.order;
+                var datalist = res.data; //返回的所有信息
+                var godsorder = datalist.order;  //商品信息
                 console.log(datalist.select_weekday1);
                 var commpany = datalist.commpany;   //运费满减信息
                 var can_goods_coupon = datalist.can_goods_coupon;//商品卷可用数量
@@ -348,8 +349,8 @@ Page({
                   var prices = datalist.coupon.coupon_money; //优惠卷金额
 
                   _this.setData({
-                    conprice: Number(allsprices - prices).toFixed(2),
-                    compoins: Number(moneys - prices).toFixed(2),
+                    conprice: Number(allsprices - prices).toFixed(2),// 当有邮费时的价格
+                    compoins: Number(moneys - prices).toFixed(2),// 没有邮费时的价格
                   })
                 }
               }
