@@ -31,21 +31,52 @@ Page({
 
   //判断用户是否确认登录
 
-  close: function() { //用户拒绝登录
+  close: function () { //用户拒绝登录
     this.setData({
       mshow: "display:none"
     })
   },
-  UserInfo: function(e) {
+  UserInfo: function (e) {
     this.setData({
       mshow: "display:none"
     })
-    user.user(e)
+    wx.login({
+      success: function (res) {
+        var code = res.code;
+        var utoken = wx.getStorageSync("utoken");
+        var pid = wx.getStorageSync("pid");
+        console.log(pid);
+        wx.request({
+          //用户登陆URL地址，请根据自已项目修改
+          url: app.globalData.Murl + '/Applets/Login/userAuthSlogin',
+          method: "POST",
+          data: {
+            utoken: utoken,
+            code: code,
+            encryptedData: e.detail.encryptedData,
+            iv: e.detail.iv,
+            pid: pid
+          },
+          success: function (res) {
+            
+            var utoken = res.data.utoken;
+            console.log(res);
+            //设置用户缓存
+            wx.setStorageSync("utoken", utoken);
+            wx.setStorageSync("userinfo", res.data.userinfo);
+            //console.log("允许");
+            wx.reLaunch({
+              url: '/pages/luckdraw/luckdraw',
+            })
+          }
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var _this = this;
     //圆点设置
     var leftCircle = 7.5;
@@ -89,7 +120,7 @@ Page({
     })
 
     //让圆点闪烁起来
-    setInterval(function() {
+    setInterval(function () {
       if (_this.data.colorCircleFirst == "#FFFFFF") {
         _this.setData({
           colorCircleFirst: '#FE4D32',
@@ -155,19 +186,19 @@ Page({
         header: {
           'content-type': 'application/json' // 默认值
         },
-        success: function(res) {
+        success: function (res) {
           if (res.data.status == true) {
             _this.setData({
               times: res.data.num
             })
           }
         },
-        fail: function() {
+        fail: function () {
           wx.showLoading({
             title: '网络连接失败！',
           })
 
-          setTimeout(function() {
+          setTimeout(function () {
             wx.hideLoading()
           }, 2000)
         }
@@ -176,7 +207,7 @@ Page({
     }
   },
   //点击立即抽奖
-  startGame: function() {
+  startGame: function () {
     if (this.data.isRunning) return
     var _this = this;
     var uid = wx.getStorageSync("userinfo").uid;
@@ -195,13 +226,13 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         method: 'POST',
-        success: function(res) {
+        success: function (res) {
           if (times <= 0) {
             wx.showModal({
               title: '',
               content: "抽奖次数已用完",
               showCancel: false, //去掉取消按钮
-              success: function(res) {
+              success: function (res) {
                 if (res.confirm) {
                   _this.setData({
                     isRunning: false
@@ -216,7 +247,7 @@ Page({
             if (res.data.status == true) {
               var indexSelect = 0;
               var i = 0;
-              var timer = setInterval(function() {
+              var timer = setInterval(function () {
                 indexSelect++;
                 i += 30;
                 if (i > res.data.wz) {
@@ -225,7 +256,7 @@ Page({
                     title: '恭喜您',
                     content: res.data.content,
                     showCancel: false, //去掉取消按钮
-                    success: function(res) {
+                    success: function (res) {
                       times--;
                       if (res.confirm) {
                         _this.setData({
@@ -248,70 +279,70 @@ Page({
                 title: '',
                 content: "抽奖次数已用完",
                 showCancel: false, //去掉取消按钮
-                success: function(res) {}
+                success: function (res) { }
               })
             }
           }
         },
-        fail: function(res) {
+        fail: function (res) {
           wx.showLoading({
             title: '网络连接失败！',
           })
 
-          setTimeout(function() {
+          setTimeout(function () {
             wx.hideLoading()
           }, 2000)
         },
-        complete: function(res) {},
+        complete: function (res) { },
       })
     }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
