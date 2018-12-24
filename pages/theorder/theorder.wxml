@@ -59,7 +59,7 @@
         </view>
       </view>
 
-      <view class="yutime" wx:if="{{quantity.select_weekday1!=undefined}}">
+      <!-- <view class="yutime" wx:if="{{quantity.select_weekday1!=undefined}}">
         <text style='float:left'>蔬菜送达时间</text>
         <view class="satimes weekwe">
           <icon wx:if="{{weCharstatus}}" class='selects' type="success" data-key="0" color="#ff712b" bindtap="selectAll" />
@@ -71,7 +71,7 @@
           <icon wx:else data-keys="{{quantity.select_weekday2}}" type="circle" class='selects' data-key="0" color="#bfbfbf" bindtap="selectAlls" />
           <text class='weekser'> {{quantity.select_weekday2}}</text>
         </view>
-      </view>
+      </view> -->
 
       <view class="youhuiq">
         <text>商品总额</text>
