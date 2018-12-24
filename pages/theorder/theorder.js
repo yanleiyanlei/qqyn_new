@@ -171,7 +171,8 @@ Page({
         header: { 'Content-Type': 'application/json' },
         success: function (res) {
           const datas = res.data;
-          // console.log(datas);
+          console.log('abc');
+           console.log(datas);
           // if (datas.status==false){
           //   console.log(datas.data)
           //   wx.showToast({
@@ -291,6 +292,7 @@ Page({
               },
               method: "post",
               success: function (res) {
+                console.log('abcd');
                 console.log(res.data);
                 var datalist = res.data; //返回的所有信息
                 var godsorder = datalist.order;  //商品信息
@@ -337,7 +339,13 @@ Page({
                 var allsprices = _this.data.allsprice;    //总价加上运费赋值给allsprices      
                 console.log(allsprices);
                 console.log(_this.data.quantity);
+                console.log(1234); 
+                console.log(_this.data.package_mail);
+                if (_this.data.quantity.coupon==null){
+                  var jine = Number        (_this.data.package_mail) ;
+                }else{
                 var jine = Number(_this.data.package_mail) + Number(_this.data.quantity.coupon.coupon_money);
+                }
                 _this.setData({
                   jine:jine
                 })
@@ -435,7 +443,12 @@ Page({
                 }
                 var allsprices = _this.data.allsprice;
                 console.log(allsprices);
-                var jine = Number(_this.data.package_mail) + Number(_this.data.quantity.coupon.coupon_money);
+
+                if (_this.data.quantity.coupon == null) {
+                  var jine = Number(_this.data.package_mail);
+                } else {
+                  var jine = Number(_this.data.package_mail) + Number(_this.data.quantity.coupon.coupon_money);
+                }
                 _this.setData({
                   jine: jine
                 })
