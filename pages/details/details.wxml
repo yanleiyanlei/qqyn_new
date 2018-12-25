@@ -322,7 +322,7 @@
        </view>
         <view class='leftwes' bindtap='sharefrend'>
           <image src='https://m.7710mall.com/Uploads/xxc/peyq.png' class='wecars'></image>
-           <button class="" style="border:none;background:#fff;">分享至朋友圈</button>
+           <button class="" style="border:none;background:#fff;">保存海报</button>
        </view>
     </view>
    </view>
