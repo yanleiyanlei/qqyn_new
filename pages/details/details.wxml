@@ -15,10 +15,10 @@
   <view class="name_shop">
     <text class="goodsname">{{shopName.goods_name}} {{shopName.spec_name}}</text>
     <text class="goodsms">{{shopName.goods_remark}}</text>
-    <view class='addcoupn' bindtap='openfx'>
+   <!-- <view class='addcoupn' bindtap='openfx'>
       <view><image src='../../image/hd/actimg_03.png' class='addimg'></image></view>
       <view class='moneys'>点我赚￥{{shop_prices}}</view>
-    </view>
+    </view>-->
     <view class="price">
       <text class="prices">￥{{shopName.shop_price}}</text>
       <text class="ylpries" wx:if="{{shopName.market_price!=0}}">￥{{shopName.market_price}}</text>
