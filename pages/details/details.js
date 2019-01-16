@@ -552,7 +552,7 @@ Page({
     var shop_price = shopName.shop_price;
     // console.log(that.data.id)
     return {
-      title: "【快来抢购】" + goods_name + "~微信专享价￥:" + shop_price,
+      title: goods_name + "￥" + shop_price,
       path: '/pages/details/details?goodsid=' + that.data.goodImg.goods_id+'&pid='+uid,
       imageUrl: '',
       success: function (res) {

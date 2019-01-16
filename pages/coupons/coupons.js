@@ -27,6 +27,16 @@ Page({
 
 
   },
+  nodisid:function(){
+    let pagess = getCurrentPages();//当前页面
+    let prevPages = pagess[pagess.length - 2];//上一页面
+    prevPages.setData({        //直接给上移页面赋值
+      dis_id: 'null',
+    });
+    wx.navigateBack({       //返回上一页
+      delta: 1
+    })
+  },
   usercous(e) {
     var dis_id = e.currentTarget.dataset.id;
     console.log(dis_id);

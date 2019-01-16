@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    path:" ", //类型 1=微信  3=余额
+    money:" ", //提现金额
+    number: " " //提款人微信账号
 
   },
 
@@ -12,22 +15,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var id = options.id;
-    var that = this;
-    wx.request({
-      url: app.globalData.Murl + '/Applets/User/Cashwithdrawal',
-      data: {
-        id: id
-      },
-      method: 'post',
-      success: function(res) {
-        console.log(res)
-        that.setData({
-          money: res.data.withdrawal_money,
-          path: res.data.withdrawal_path
-        })
-      }
+    var _this = this;
+    var money = options.money;
+    var path= options.path;
+    var number = options.number;
+    _this.setData({
+      money:money,
+      path:path,
+      number: number
     })
+    // wx.request({
+    //   url: app.globalData.Murl + '/Applets/User/Cashwithdrawal',
+    //   data: {
+    //     id: id
+    //   },
+    //   method: 'post',
+    //   success: function(res) {
+    //     console.log(res)
+    //     that.setData({
+    //       money: res.data.withdrawal_money,
+    //       path: res.data.withdrawal_path
+    //     })
+    //   }
+    // })
   },
 
   /**

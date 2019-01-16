@@ -4,7 +4,7 @@
     <view class="top_gui" bindtap="mcouponru">
       <text class="iconfont icon-web-icon-"></text> 使用规则
     </view>
-
+<view bindtap='nodisid' class='noyouhui'> 不使用优惠券</view>
     <view class="coupons">
       <block wx:for="{{datalist}}" wx:key="unipue">
         <view class="wsycoupons {{ item.is_not == false ?'wsycouponss':''}} " bindtap="{{item.is_not == true ?'usercous':' '}}" data-id="{{item.dis_id}}">
@@ -32,4 +32,5 @@
     </view>
 
   </view>
+  
 </page>

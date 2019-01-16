@@ -11,9 +11,9 @@ Page({
     mshow: "display:none"
   },
   goindex:function(){
-    app.globalData.store=1
+    // app.globalData.store=1
     wx.switchTab({
-      url: '/pages/index/index',
+      url: '/pages/bution/bution',
     })
   },
   //跳到199

@@ -1,0 +1,72 @@
+<!--pages/bution/bution.wxml-->
+
+<import src="/lib/template/userInfo2.wxml" />
+<template is="user2" data="{{mshow}}">
+</template>
+<view class='con-top'>
+  <image src='http://m.7710mall.com/Public/xcximg/top.png'></image>
+  <view class='ment' hidden='{{mentshow}}'>
+    <image src='{{message.img}}'></image>
+    <text>{{message.title}}</text>
+  </view>
+</view>
+<view class='con-share'>
+  <swiper current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper" previous-margin='100rpx' next-margin="100rpx" circular="true">
+    <block wx:for="{{swiperli}}" wx:key="unique">
+      <swiper-item class="swiper-item">
+        <image src='{{item}}' data-url="{{item}}" bindtap='previewImage'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{swiperli}}" wx:key="unique">
+      <view class="dot{{index == swiperCurrent ? ' active' : ''}}" bindtap="chuangEvent" id="{{index}}"></view>
+    </block>
+  </view>
+  <view class='text'>
+    <text>长按海报“保存”图片</text>
+    <text>可从手机相册分享到朋友圈</text>
+  </view>
+</view>
+
+<view class='con-proble'>
+  <block wx:for="{{swipertx}}" wx:key="unique">
+    <view class='probleli'>
+      <text>{{item.title}}</text>
+      <text>{{item.txt}}</text>
+    </view>
+  </block>
+  <view class='probleli probleph'>
+    <text bindtap='telphone' data-phone="{{phone[1]}}">{{phone[0]}}<text class='telphone'>{{phone[1]}}</text></text>
+  </view>
+</view>
+<view class='footer'>
+  <image src='http://m.7710mall.com/Public/xcximg/footer.png'></image>
+  <text class='tapback' bindtap='tapback'>活动细则 >></text>
+</view>
+<view class='yaoqing' style='{{tabFixed}}'>
+  <text bindtap='toshare'>立即邀请</text>
+</view>
+
+<view class='back' hidden='{{backshow}}'>
+  <view class='back-con'>
+    <view class='back-tit'>
+      <text>活动细则</text>
+      <image bindtap='backhide' src='../../image/tabBar/close.png'></image>
+    </view>
+    <text>1、分销规则适用于青青优农微信小程序和微信商城参与有效。</text>
+    <text>2、被推荐人通过邀请链接注册成功后，即可与推荐人形成推荐关系。</text>
+    <text>3、推荐人可获得推荐关系中被推荐人首次订单实付金额（扣除运费金额）的28%作为佣金奖励，佣金金额=（被推荐人首次订单实付金额 - 运费）*28％
+    例1，被推荐人首次订单实付金额130元，推荐人可获得佣金金额=（130-0）*28%=36.4元
+例2，被推荐人首次订单实付金额69元（其中运费为12元），推荐人可得佣金=（69-12）*28%=16.0元</text>
+    <text>4、申请提现至微信余额，佣金提现单次不得低于30元，单次提现手续费为申请提现金额的1%，系统自动计算扣除，手续费不足1元按1元扣除；提现金额累计自然月不得超过500元；申请提现至账户余额，无手续费（推荐）。</text>
+    <text>5、提现申请不超过1-3个工作日审核完成。</text>
+    <text>6、出现作弊行为（包括但不限于批量注册、恶意购买、虚假分享、虚假信息、虚假交易等）青青优农有权处理作弊账号，并追究其法律责任。</text>
+    <text>7、推荐关系不得变更，不得取消。</text>
+    <text>8、最终解释权归青青优农所有。</text>
+  </view>
+</view>
+
+<view class='tapshare' hidden='{{shareshow}}' bindtap='closeshare'>
+  <image src='http://m.7710mall.com/Uploads/xxc/share.png'></image>
+</view>

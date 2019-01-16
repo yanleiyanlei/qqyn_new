@@ -24,7 +24,7 @@
       </view>
       <view class="info">
         <text class="username">{{nickName}}</text>
-        <text class="level">{{levelname}}</text>
+        <!-- <text class="level">{{levelname}}</text> -->
       </view>
     </view>
     <view class="info-list flex">
@@ -127,9 +127,9 @@
     <view class="m-tit border1">
       <view class="m-tit-box clearfix">
         <text class="left">会员权益</text>
-            <!-- <text class="iconfont icon-kefu" style="color: #fd8d555!important;font-size: 0.36rem;margin-right: 0.1rem;font-weight: normal;"></text> -->
+        <!-- <text class="iconfont icon-kefu" style="color: #fd8d555!important;font-size: 0.36rem;margin-right: 0.1rem;font-weight: normal;"></text> -->
 
-        <text class="right" bindtap="link"><text class="iconfont icon-kefu" style="color: #fd8d555!important;font-size:36rpx;margin-right: 10rpx;font-weight: normal;"></text>联系客服</text>
+        <!-- <text class="right" bindtap="link"><text class="iconfont icon-kefu" style="color: #fd8d555!important;font-size:36rpx;margin-right: 10rpx;font-weight: normal;"></text>联系客服</text> -->
 
       </view>
     </view>
@@ -137,34 +137,26 @@
       <swiper class="swiper-container" display-multiple-items="3.2">
         <!-- <view class="swiper-wrapper"> -->
         <swiper-item class="swiper-slide">
-         
-            <view class="m-store equity-list" bindtap='goindex'>
-              <view class="one">我的小店</view>
-              <view class="two">无小店就无客源</view>
-            </view>
-          
+
+          <view class="m-store equity-list" bindtap='goindex'>
+          </view>
+
         </swiper-item>
         <swiper-item class=" swiper-slide">
           <navigator hover-class="Nhover" url="/pages/m-commission/m-commission">
             <view class="m-commission equity-list">
-              <view class="one">我的佣金</view>
-              <view class="two">天天坐躺赚收入</view>
             </view>
           </navigator>
         </swiper-item>
         <swiper-item class="swiper-slide">
           <navigator href="" hover-class="Nhover" url="/pages/m-fans/m-fans">
             <view class="m-fans  equity-list">
-              <view class="one">我的青粉</view>
-              <view class="two">招人不难合作不累</view>
             </view>
           </navigator>
         </swiper-item>
-        <swiper-item class="swiper-slide" >
-          <navigator url="/pages/m-integral/m-integral" hover-class="Nhover">
+        <swiper-item class="swiper-slide">
+          <navigator hover-class="Nhover">
             <view class="m-accumulate equity-list">
-              <view class="one">我的积分</view>
-              <view class="two">任务积分天天领</view>
             </view>
           </navigator>
         </swiper-item>
@@ -180,8 +172,8 @@
 
 
   <!-- 礼品卡 -->
-  
-<image  class="card" bindtap='members' src="http://ss.bjzzdk.com/Public/Home/img/m_card.png"></image>
+
+  <image class="card" bindtap='members' src="https://m.7710mall.com/Uploads/xxc/m_card.jpg"></image>
 
   <!-- 我的专属 -->
   <view class="my-exclusive">

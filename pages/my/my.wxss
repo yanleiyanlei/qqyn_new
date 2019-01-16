@@ -161,8 +161,7 @@ page{
 /* 礼品卡 */
 .card{
   width: 100%;
-  height: 210rpx;
-  /* background-image: url(../img/m_card.png); */
+  height: 310rpx;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -245,16 +244,16 @@ page{
   height: 250rpx;
 }
 .m-equity .m-equity-box .swiper-slide .m-store {
-  background-image: url("https://m.7710mall.com/Uploads/xxc/m_store.png");
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_store1.png");
 }
 .m-equity .m-equity-box .swiper-slide .m-commission {
-  background-image: url("https://m.7710mall.com/Uploads/xxc/m_commission.png");
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_commission1.png");
 }
 .m-equity .m-equity-box .swiper-slide .m-fans {
-  background-image: url("https://m.7710mall.com/Uploads/xxc/m_fans.png");
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_fans1.png");
 }
 .m-equity .m-equity-box .swiper-slide .m-accumulate {
-  background-image: url("https://m.7710mall.com/Uploads/xxc/m_accumulate.png");
+  background-image: url("https://m.7710mall.com/Uploads/xxc/m_accumulate1.png");
 }
 .m-equity .m-equity-box .swiper-slide .equity-list {
   width: 210rpx;
@@ -271,7 +270,7 @@ page{
   line-height: 38rpx;
   color: #ff7c3c;
   text-align: center;
-  margin-top: 140rpx;
+  margin-top: 146rpx;
 }
 .m-equity .m-equity-box .swiper-slide .equity-list .two {
   width: 100%;

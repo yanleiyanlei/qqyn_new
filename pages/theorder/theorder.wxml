@@ -94,13 +94,15 @@
       </view>
       <view class="yutime">
         <text>优惠金额</text>
-        <text class="satime" wx:if="{{quantity.huodong==null}}">-￥0.00</text>
-        <text class="satime" wx:else>-￥{{quantity.huodong}}</text>
+        <!-- <text class="satime" wx:if="{{quantity.huodong==null}}">-￥0.00</text>
+        <text class="satime" wx:else>-￥{{quantity.huodong}}</text> -->
+        <text class="satime">-￥0.0</text>
       </view>
       <view class="yutime">
         <text>运费</text>
-        <text class="satime" wx:if="{{quantity.money>=jine}}">￥0.00</text>
-        <text class="satime" wx:else>￥{{quantity.commpany.upto_amount}}</text>
+        <!-- <text class="satime" wx:if="{{quantity.money>=jine}}">￥0.00</text>
+        <text class="satime" wx:else>￥{{quantity.commpany.upto_amount}}</text> -->
+        <text class="satime">￥{{upto_amount}}</text>
       </view>
       <view class="majialiuya">
         <text class="liuyan">买家留言：</text>
@@ -111,13 +113,14 @@
     <view class="botbtn">
       <view class="numprices">
         合计:
-        <text class="numbers" wx:if="{{money>=package_mail && quantity.coupon==null}}">￥{{money}}</text>
+        <!-- <text class="numbers" wx:if="{{money>=package_mail && quantity.coupon==null}}">￥{{money}}</text>
         <text class="numbers" wx:if="{{money>=jine && quantity.coupon!=null}}">￥{{compoins}}</text>
         <text class="numbers" wx:if="{{money < package_mail && quantity.coupon==null}}">￥{{allsprice}}</text>
-        <text class="numbers" wx:if="{{money < jine && quantity.coupon!=null}}">￥{{conprice}}</text>
+        <text class="numbers" wx:if="{{money < jine && quantity.coupon!=null}}">￥{{conprice}}</text> -->
+        <text class="numbers">￥{{lasttotal}}</text>
       </view>
-
-      <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money>=99 && quantity.coupon==null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}"
+      <text class="tijiao" bindtap="subdingr">去结算</text>
+      <!-- <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money>=99 && quantity.coupon==null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}"
         data-actualpayment="{{money}}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-sheng="{{address.sheng}}" data-shi="{{address.shi}}" data-qu="{{address.qu}}" data-cont="{{userName}}" data-freight="{{quantity.commpany.upto_amount}}"
         data-id="{{address.id}}">去结算</text>
 
@@ -131,7 +134,7 @@
 
       <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money < 99 && quantity.coupon!=null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}"
         data-actualpayment="{{conprice }}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-cont="{{userName}}" data-sheng="{{address.sheng}}" data-shi="{{address.shi}}" data-qu="{{address.qu}}" data-freight="{{quantity.commpany.upto_amount}}"
-        data-id="{{address.id}}">去结算</text>
+        data-id="{{address.id}}">去结算</text> -->
 
       <!--   <text class="tijiao" bindtap="subdingr" data-key="{{quantity.address}}" data-price="{{quantity.money}}" wx:if="{{money>=99 && quantity.coupon==null}}" data-dis_id="{{quantity.coupon.dis_id}}" data-coupon="{{quantity.coupon.coupon_money}}" data-quantity="{{quantity.quantity}}" data-actualpayment="{{money}}" data-name="{{address.name}}" data-photo="{{address.phone}}" data-dizhi="{{address.address_content}}" data-cont="{{userName}}">￥{{money}}</text>
 		   		   

@@ -5,21 +5,23 @@
 @import "../../lib/style/public.wxss";
 
 .nav {
-  height: 88rpx;
+  height: 86rpx;
   background: #fff;
 }
 
 .nav .nav-box {
   width: 100%;
-  height: 87rpx;
+  height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: space-around;
 }
 
 .nav .nav-box view {
   font-size: 30rpx;
   height: 87rpx;
   line-height: 87rpx;
-  width: 20%;
+  width: 100rpx;
   text-align: center;
   color: #303030;
   box-sizing: border-box;
@@ -31,44 +33,79 @@
 
 .nav .nav-box .active {
   color: #ff712b;
-  border-bottom: 2rpx solid #ff712b;
+  border-bottom: 4rpx solid #ff712b;
 }
 
 /* //// */
 
-.box {
-  padding: 0 33rpx;
-  background: #fff;
-  margin-top: 20rpx;
-}
-
-.list {
+.all {
   width: 100%;
-  /* background: #fff; */
-  padding-top: 30rpx;
-  padding-bottom: 30rpx;
-  /* border-bottom: 1rpx solid #d9d6d6; */
+  height: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 30rpx;
+  color: #333;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.all view:first-child{
+  margin-right: 20rpx;
+}
+.all text {
+  color: #ff6c00;
 }
 
-.list .pay {
-  font-weight: normal;
+.box {
+  width: 100%;
+}
+
+.box-li {
+  width: 100%;
+  height: 260rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.box-li-top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #e5e5e5;
+  padding-bottom: 16rpx;
   font-size: 28rpx;
-  line-height: 43rpx;
-  color: #303030;
+  color: #333;
 }
 
-.list .pay .span {
-  float: right;
+.box-li-bottom {
+  padding-top: 36rpx;
+  font-size: 30rpx;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
 }
 
-.list .pay .i {
-  float: right;
-  color: #aaa;
-  margin-right: 10rpx;
+.box-li-bottom .box-jin {
+  color: #ff6c00;
 }
 
-.list .pay .b {
-  float: right;
-  color: #aaa;
-  font-weight: 100;
+.box-li-top .box-success {
+  color: #00b30d;
+}
+
+.box-li-top .box-exam {
+  color: #fe3f3f;
+}
+
+.box-li-top .box-make {
+  color: #4095ff;
+}
+
+.disright {
+  display: flex;
+  justify-content: flex-end;
 }
