@@ -3,24 +3,26 @@
   <image src="{{info.select.head_pic}}" />
   <view class="dl">
     <view class="dt">{{info.select.nickname}}</view>
-    <view class="dd" wx:if="{{info.select.is_distribut==1}}">超级会员</view>
-     <view class="dd" wx:else>普通会员</view>
+    <!-- <view class="dd" wx:if="{{info.select.is_distribut==1}}">超级会员</view>
+     <view class="dd" wx:else>普通会员</view> -->
   </view>
 </view>
 <view class="title-di border-box">
   <view class="title-white flex">
     <view class="dl flex1">
-      <view class="dt">{{info.selec.ktxyj}}</view>
+     <view class="dt">￥{{info.yqyj}}</view>
+      <view class="dd ddd">预期佣金</view>
+      <view class="dt">￥{{info.selec.ktxyj}}</view>
       <view class="dd">可提现金额</view>
     </view>
     <text></text>
     <view class="dl flex1">
-      <view class="dt">{{info.select.distribute_amount}}</view>
+      <view class="dt">￥{{info.select.distribute_amount}}</view>
       <view class="dd">佣金总额</view>
     </view>
     <text></text>
     <view class="dl flex1">
-      <view class="dt">{{info.selec.successful_withdrawal}}</view>
+      <view class="dt">￥{{info.selec.successful_withdrawal}}</view>
       <view class="dd">累计提现金额</view>
     </view>
   </view>
@@ -30,7 +32,7 @@
 <view class="aditemi flex">
 
   <view class="dl sqtop-up flex1">
-    <navigator url="/pages/m-withdraw/m-withdraw" style="display:inline-block" hover-class='Nhover'>
+    <navigator url="/pages/cash/cash" style="display:inline-block" hover-class='Nhover'>
       <view class="dt">
         <image src="https://m.7710mall.com/Uploads/xxc/sqtx_03.png" />
       </view>
@@ -53,23 +55,23 @@
 
 <view class="comminul">
   <view class="ul">
-    <navigator hover-class='Nhover' url="/pages/m-commission-in/m-commission-in">
+    <!-- <navigator hover-class='Nhover' url="/pages/m-commission-in/m-commission-in">
       <view class="li border1">
         <view class="h4">收入佣金</view>
         <text></text>
       </view>
-    </navigator>
+    </navigator> -->
     <navigator hover-class='Nhover' url="/pages/m-commission-in-all/m-commission-in-all">
       <view class="li border1">
         <view class="h4">佣金明细</view>
         <text></text>
       </view>
     </navigator>
-    <navigator hover-class='Nhover' url="/pages/m-commission-rank/m-commission-rank">
+    <!-- <navigator hover-class='Nhover' url="/pages/m-commission-rank/m-commission-rank">
       <view class="li">
         <view class="h4">佣金排名</view>
         <text></text>
       </view>
-    </navigator>
+    </navigator> -->
   </view>
 </view>

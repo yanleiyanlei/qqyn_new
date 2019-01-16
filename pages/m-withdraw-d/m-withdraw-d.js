@@ -37,12 +37,13 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
+    var uid = wx.getStorageSync("userinfo").uid;
     wx.request({
-      url: app.globalData.Murl + '/Applets/User/cash_dec',
-      data: { member_id: wx.getStorageSync("userinfo").uid },
+      url: app.globalData.Murl+'/Applets/User/cash_dec',
+      data: { member_id: uid },
       method: 'post',
       success: function (res) {
-        console.log(res)
+        console.log(res.data)
         that.setData({
           list1: res.data.all,
           list2: res.data.review,

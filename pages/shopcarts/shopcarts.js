@@ -10,7 +10,7 @@ Page({
     startX: 0, //开始坐标
     startY: 0,
     isTouchMove: false,  //列表右滑状态
-    hieneflae: false, //false =完成  true= 编辑
+    hieneflae: false, //false =编辑状态  true
     settlEment: "去结算",
     modelHidden: "true",
     numbers: [], //获取到 要 删除的 列表的下标

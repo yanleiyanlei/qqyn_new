@@ -2,51 +2,57 @@
 <!-- 切换 -->
 <view class="nav border1 border-box">
   <view class="nav-box flex">
-    <view class="flex1 {{active==0?'active':''}}" data-sta="0" bindtap="tab">
+    <view class=" {{active==0?'active':''}}" data-sta="0" bindtap="tab">
       <text>全部</text>
     </view>
-    <view class="flex1 {{active==1?'active':''}}" data-sta="1" bindtap="tab">
+    <view class=" {{active==1?'active':''}}" data-sta="1" bindtap="tab">
       <text>待审核</text>
     </view>
-    <view class="flex1 {{active==2?'active':''}}" data-sta="2" bindtap="tab">
+    <view class=" {{active==2?'active':''}}" data-sta="2" bindtap="tab">
       <text>待打款</text>
     </view>
-    <view class="flex1 {{active==3?'active':''}}" data-sta="3" bindtap="tab">
+    <view class=" {{active==3?'active':''}}" data-sta="3" bindtap="tab">
       <text>已成功</text>
     </view>
-
   </view>
 </view>
-<view class="box border-box">
-  <block wx:for="{{list}}">
-    <view class="border1">
-      <view class="list">
-        <view class="pay">提现
-          <text class="span">￥{{item.withdrawal_money}}</text>
+<view class='all'>
+  <view wx:if="{{active==0}}">月计：<text wx:if="{{list!=''}}">¥{{list[0].moneys}}</text><text wx:if="{{list==''}}">¥0.00</text></view>
+  <view>总计：<text wx:if="{{list!=''}}">¥{{list[0].money}}</text><text wx:if="{{list==''}}">¥0.00</text></view>
+</view>
+<view class='box border-box'>
+  <block wx:for="{{list}}" wx:key="unique">
+    <view class='box-li'>
+    <!-- 提现时间审核状态 -->
+      <view class='box-li-top'>
+        <text>{{item.withdrawal_time}}</text>
+        <text class='box-exam' wx:if="{{item.operating_status==0}}">待审核</text>
+        <text class='box-success' wx:if="{{item.operating_status==1&&item.withdrawal_state==1}}">已成功</text>
+        <text class='box-make' wx:if="{{item.operating_status==1&&item.withdrawal_state==2}}">待打款</text>
+        <text class='box-exam' wx:if="{{item.operating_status==2}}">未通过</text>
+      </view>
+      <!-- 提现余额跟手续费 -->
+      <view class='box-li-bottom'>
+        <view>
+          <text class='box-jin'>¥{{item.withdrawal_money}}</text>
         </view>
-        <view class="pay">申请提现时间
-
-          <text class="i">{{item.withdrawal_time}}</text>
+        <view>
+          <text wx:if="{{item.withdrawal_path==1}}">余额提现</text>
+          <text wx:if="{{item.withdrawal_path==3}}">微信提现</text>
         </view>
-        <view class="pay" wx:if="{{item.operating_status==1&&item.withdrawal_state==1}}">打款时间
-           <text class="i">{{item.time}}</text>
-            
+        <view>手续费：
+          <text>¥{{item.service_charge}}</text>
         </view>
-        <view class="pay">状态
-          <text class="b" wx:if="{{item.operating_status==0}}">待审核</text>
-           <text class="b" wx:if="{{item.operating_status==1&&item.withdrawal_state==1}}">提现成功</text>
-           <text class="b" wx:if="{{item.operating_status==1&&item.withdrawal_state==2}}">待打款</text>
-            <text class="b" wx:if="{{item.operating_status==2}}">申请未通过</text>
-            
+      </view>
+      <!-- 实际到账 -->
+      <view class='box-li-bottom disright'>
+        <view>
+          <text>实际到账：</text>
+        </view>
+        <view>
+          <text class='box-jin'>¥{{item.withdrawal_money}}</text>
         </view>
       </view>
     </view>
-
-
   </block>
-
-
-
-
-
 </view>

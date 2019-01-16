@@ -1,0 +1,95 @@
+<!--pages/cash/cash.wxml-->
+<view class='cash'>
+  <text class='cash-txt'>可提现方式</text>
+  <view class='header'>
+    <view class="header-li {{switchindex==0 ? 'active' : ''}}" data-index='0' bindtap='switchnav'>
+      <image src='../../image/bution/weixin.png'></image>
+      <text>微信体现</text>
+      <image class='activeimg' src='../../image/bution/activeback.png'></image>
+    </view>
+    <view class="header-li {{switchindex==1 ? 'active' : ''}}" data-index='1' bindtap='switchnav'>
+      <image src='../../image/bution/yue.png'></image>
+      <text>余额体现</text>
+      <image class='activeimg' src='../../image/bution/activeback.png'></image>
+    </view>
+  </view>
+  <view class='nav'>
+    <view class='nav-li' wx:if="{{switchindex==0}}">
+
+      <view class='nav-money'>
+        <view>
+          <text> 提现金额 </text>
+          <input type="number" placeholder="请输入10的倍数" bindinput='totalall' value=''></input>
+          <text class='keti'>可提现(￥{{userxinxi.select[0].ktxyj}})</text>
+        </view>
+        <text>最低提现{{userxinxi.selec[0].withdrawdesign_small}}元，当月最高提现{{userxinxi.max_quota}}元。</text>
+      </view>
+
+      <view class='nav-top'>
+        <view class='nav-top-p'>本月提现剩余额度
+          <text class="yanse">￥{{userxinxi.sur_amt}}</text>
+        </view>
+      </view>
+
+
+
+      <view class='nav-money'>
+        <view>
+          <text> 手续费 </text>
+          <text class='shouxu'>¥{{weixintotalpro}}</text>
+        </view>
+        <text>手续费 1％，最少为1元</text>
+      </view>
+
+      <text>请填写提现信息</text>
+
+      <view class='nav-input'>
+        <text>收款人姓名</text>
+        <input type="text" placeholder="请填写收款人真实信息" bindinput='subname' value='{{userxinxi.payment_info.payee}}'></input>
+      </view>
+
+      <view class='nav-input'>
+        <text>收款人电话</text>
+        <input type="text" placeholder="请填写收款人真实信息" bindinput='subphone' value='{{userxinxi.payment_info.phone}}'></input>
+      </view>
+
+      <view class='nav-input'>
+        <text>收款人身份证号码</text>
+        <input type="text" placeholder="请输入收款人真实身份证号码" bindinput='subidea' value='{{userxinxi.payment_info.id_number}}'></input>
+      </view>
+
+      <view class='nav-input'>
+        <text>收款人微信账号</text>
+        <input type="text" placeholder="请输入收款人微信账号" bindinput='subcount' value='{{userxinxi.payment_info.cash_account}}'></input>
+      </view>
+
+      <view class='tijiao' bindtap='submit'>
+        <text>立即申请</text>
+      </view>
+
+    </view>
+
+
+
+    <view class='nav-li' wx:if="{{switchindex==1}}">
+
+      <view class='nav-top'>
+        <view class='nav-top-p'>可提现总金额
+          <text>￥{{userxinxi.select[0].ktxyj}}</text>
+        </view>
+      </view>
+
+      <view class='nav-money'>
+        <view>
+          <text> 提现金额 </text>
+          <input type="text" placeholder="请输入提现金额" value='' bindinput='totalalls'></input>
+        </view>
+      </view>
+
+      <view class='tijiao' bindtap='submity'>
+        <text>立即申请</text>
+      </view>
+
+    </view>
+  </view>
+</view>

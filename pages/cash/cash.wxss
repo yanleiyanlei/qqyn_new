@@ -1,0 +1,224 @@
+/* pages/cash/cash.wxss */
+
+page {
+  width: 100%;
+  background: #f6f6f6;
+}
+
+.cash {
+  width: 100%;
+}
+
+.cash-txt {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 70rpx;
+  font-size: 26rpx;
+  color: #434343;
+  padding-left: 32rpx;
+  line-height: 70rpx;
+}
+
+.header {
+  width: 100%;
+  overflow: hidden;
+}
+
+.header-li {
+  width: 365rpx;
+  height: 200rpx;
+  float: left;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-li:last-child {
+  float: right;
+}
+
+.header-li image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 30rpx;
+}
+
+.header-li text {
+  font-size: 26rpx;
+  color: #434343;
+}
+
+.nav {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.nav-li {
+  margin-bottom: 100rpx;
+}
+
+.nav-top {
+}
+
+.nav-top-p {
+  font-size: 26rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 32rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #eee;
+}
+
+.nav-top-p>text {
+  padding-left: 80rpx;
+}
+
+.nav-top-p .yanse {
+  color: #ff702c;
+  padding-left: 30rpx;
+}
+
+.nav-top-p .nav-a {
+  padding-left: 245rpx;
+}
+
+.nav-money {
+  width: 100%;
+}
+
+.nav-money {
+  width: 100%;
+  height: 130rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 32rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-money>view {
+  color: #434343;
+  font-size: 26rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  overflow: hidden;
+}
+
+.nav-money>view>text {
+  height: 60rpx;
+  line-height: 60rpx;
+  float: left;
+}
+.nav-money>view>text:last-child{
+  font-size: 22rpx;
+  color: #bbb;
+}
+.nav-money>view>input {
+  background: none;
+  outline: none;
+  border: 0px;
+  vertical-align: middle;
+  margin-left: 18rpx;
+  font-size: 26rpx;
+  width: 300rpx;
+  height: 60rpx;
+  float: left;
+}
+
+.nav-money>view>input::placeholder {
+  color: #bbb;
+}
+
+.nav-money>text {
+  color: #fe7e7e;
+  font-size: 22rpx;
+}
+
+.nav-money>view> .shouxu {
+  padding-left: 44rpx;
+}
+
+.nav-li>text {
+  box-sizing: border-box;
+  display: block;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding-left: 32rpx;
+  font-size: 26rpx;
+  color: #434343;
+}
+
+.nav-input {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 32rpx;
+  font-size: 26rpx;
+  color: #434343;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+}
+
+.nav-input>text {
+  height: 100rpx;
+  line-height: 100rpx;
+  float: left;
+}
+
+.nav-input>input {
+  float: left;
+  background: none;
+  outline: none;
+  border: 0px;
+  vertical-align: inherit;
+  margin-left: 18rpx;
+  font-size: 26rpx;
+  height: 100rpx;
+  width: 400rpx;
+}
+
+.nav-input>input::placeholder {
+  color: #bbb;
+}
+
+.tijiao {
+  display: block;
+  z-index: 100;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #fff;
+  margin-top: 20rpx;
+  background: #ff702c;
+  padding-left: 0;
+  font-size: 32rpx;
+  position: fixed;
+  bottom: 0;
+}
+
+.header-li .activeimg {
+  display: none;
+  position: absolute;
+  width: 79rpx;
+  height: 66rpx;
+  bottom: 0;
+  right: 0;
+  margin-right: 0;
+}
+
+.header .active {
+  border: 2rpx solid #fd8d55;
+  position: relative;
+  width: 361rpx;
+  height: 196rpx;
+}
+
+.header .active .activeimg {
+  display: block;
+}

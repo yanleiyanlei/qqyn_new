@@ -1,0 +1,250 @@
+/* pages/bution/bution.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+page {
+  background: #c2ec5c;
+  width: 100%;
+}
+
+.con-top {
+  width: 100%;
+  margin-bottom: 18rpx;
+  position: relative;
+}
+
+.ment {
+  box-sizing: border-box;
+  position: fixed;
+  top: 100rpx;
+  left: 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 40rpx;
+  border-radius: 40rpx;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0 40rpx 0 3rpx;
+  transition: all 2s;
+  z-index: 100;
+}
+
+.ment image {
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.ment text {
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.con-top>image {
+  width: 100%;
+  display: block;
+  height: 1010rpx;
+}
+
+.con-share {
+  width: 100%;
+  height: 1142rpx;
+  background-image: url("http://m.7710mall.com/Public/xcximg/share.png");
+  background-position: center;
+  background-size: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 12rpx;
+}
+
+.con-share .swiper {
+  width: 100%;
+  height: 892rpx;
+  margin-top: 96rpx;
+}
+
+.con-share .swiper .swiper-item {
+  width: 100rpx;
+  height: 892rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.con-share .swiper image {
+  display: block;
+  width: 502rpx;
+  height: 892rpx;
+  margin: 0 13rpx;
+}
+
+.con-proble {
+  width: 100%;
+  height: 1168rpx;
+  background-image: url("http://m.7710mall.com/Public/xcximg/problem.png");
+  background-position: center;
+  background-size: 100%;
+  margin-top: 15rpx;
+  padding: 0 12rpx;
+  box-sizing: border-box;
+}
+
+.con-proble .probleli {
+  padding: 2rpx 10rpx;
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 36rpx;
+}
+
+.con-proble .probleli:first-child {
+  padding-top: 80rpx;
+}
+
+.con-proble .probleli>text {
+  display: block;
+  width: 100%;
+}
+
+.telphone {
+  color: #c4eafe;
+  text-decoration: underline;
+  font-style: italic;
+  display: inline-block;
+}
+
+.footer {
+  width: 100%;
+  position: relative;
+}
+
+.tapback {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding-left: 280rpx;
+  color: #ff6c00;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 112rpx;
+}
+
+.footer image {
+  width: 100%;
+  display: block;
+  height: 281rpx;
+}
+
+.dots {
+  width: 100%;
+  position: absolute;
+  bottom: 104rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dots .dot {
+  margin: 0 7rpx;
+  width: 20rpx;
+  height: 20rpx;
+  background: #fff;
+  border-radius: 50%;
+  transition: all 0.6s;
+  font: 300 18rpx/28rpx "microsoft yahei";
+  text-align: center;
+}
+
+.dots .dot.active {
+  background: #558515;
+  color: #fff;
+}
+
+.text {
+  width: 100%;
+  color: #4a7510;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  text-align: center;
+  margin-top: 60rpx;
+}
+
+.text text {
+  display: block;
+  width: 100%;
+}
+
+.yaoqing {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background: #ff6c00;
+  transition: all 2000ms;
+}
+
+.yaoqing text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.back {
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 2, 2, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 101;
+}
+
+.back .back-con {
+  box-sizing: border-box;
+  background: #fff;
+  width: 710rpx;
+  border-radius: 10rpx;
+  padding: 26rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #333;
+}
+
+.back .back-con>text {
+  display: block;
+  width: 100%;
+}
+
+.back-tit {
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 50rpx;
+  position:relative;
+}
+.back-tit image{
+  width: 29rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+.tapshare {
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 2, 2, 0.7);
+  position: fixed;
+  top: 0;
+  z-index: 101;
+}
+.tapshare image{
+  width: 750rpx;
+  height: 350rpx;
+}

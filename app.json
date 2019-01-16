@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+   
     "pages/index/index",
     "pages/third-number/third-number",
     "pages/pay199/pay199",
@@ -63,14 +63,21 @@
     "pages/newchangeaddress/newchangeaddress",
     "pages/newaddaddress/newaddaddress",
     "pages/special/special",
-    "pages/luckdraw/luckdraw"
-    
+    "pages/luckdraw/luckdraw",
+    "pages/bution/bution",
+    "pages/cash/cash"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "青青优农",
     "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "tabBar": {
     "color": "#ff7c24",
@@ -90,20 +97,20 @@
         "selectedIconPath": "image/tabBar/2.png"
       },
       {
+        "pagePath": "pages/bution/bution",
+        "text": "福利",
+        "iconPath": "image/tabBar/fuli.png",
+        "selectedIconPath": "image/tabBar/fuli.png"
+      },
+      {
         "pagePath": "pages/shopcarts/shopcarts",
         "text": "购物车",
         "iconPath": "image/tabBar/3-1.png",
         "selectedIconPath": "image/tabBar/3.png"
       },
       {
-        "pagePath": "pages/members/members",
-        "text": "开小店",
-        "iconPath": "image/tabBar/4-1.png",
-        "selectedIconPath": "image/tabBar/4.png"
-      },
-      {
         "pagePath": "pages/my/my",
-        "text": "会员",
+        "text": "我的",
         "iconPath": "image/tabBar/5-1.png",
         "selectedIconPath": "image/tabBar/5.png"
       }

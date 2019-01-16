@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 0,
+    active: 1,
     active2: 0
   },
 
@@ -80,13 +80,13 @@ Page({
       success: function (res) {
         console.log(res)
         that.setData({
-          people:res.data.qq[0].member_down_line,
+          people:res.data.num,
           list1:res.data.qq,
           list21: res.data.partner,
           list22: res.data.partner_money,
           list31: res.data.wechat,
           list32: res.data.wechat_money,
-          list: res.data.qq
+          list: res.data.partner
         })
       }
     })

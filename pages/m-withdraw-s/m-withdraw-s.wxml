@@ -17,9 +17,13 @@
 <view class="box border-box">
   <view class="bb border-box" style="border:none">
     <view class="box-one">提现账户</view>
-    <view class="box-two" wx:if="{{path==1}}"> <text class="iconfont icon-weixin i" style="color:#09bb07"></text>微信</view>
-    <view class="box-two" wx:if="{{path==2}}"><text class="iconfont icon-zhifubao i" style="color:#0aaaf0;"></text>支付宝</view>
-    <view class="box-two" wx:if="{{path==3}}"><text class="iconfont icon-yue i" style="color:#0aaaf0;"></text>余额</view>
+    <view class="box-two" wx:if="{{path==1}}">
+      <text class="iconfont icon-weixin i" style="color:#09bb07"></text>微信账号{{number}}</view>
+    <view class="box-two" wx:if="{{path==3}}">
+      <text class="iconfont icon-yue i" style="color:#0aaaf0;"></text>余额</view>
   </view>
 
+</view>
+<view class='tsuccess'>
+   <navigator url='/pages/my/my' open-type="switchTab" >完成</navigator>
 </view>

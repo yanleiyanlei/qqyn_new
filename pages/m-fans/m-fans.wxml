@@ -1,6 +1,6 @@
 <!-- 个人中心，我的青粉页面 -->
 <view class="cash-back">
-  <image src="https://m.7710mall.com/Uploads/xxc/backgout.png" class="back-ug" alt="" />
+  <image src="https://m.7710mall.com/Uploads/xxc/backgout.jpg" class="back-ug" alt="" />
   <image src="https://m.7710mall.com/Uploads/xxc/people.png" class="peo-image" alt="" />
 
   <view class="cash-money">
@@ -11,21 +11,21 @@
 <!-- 切换 -->
 <view class="nav border1 border-box">
   <view class="nav-box flex">
-    <view class="flex1  box" data-sta="0" bindtap="tab">
-      <view class="ll {{active==0?'active':''}} border-box">
-        <text>青春合伙人</text>
-      </view>
-    </view>
     <view class="flex1  box" data-sta="1" bindtap="tab">
       <view class="ll {{active==1?'active':''}} border-box">
-        <text>我的合伙人</text>
+        <text>我的青粉</text>
       </view>
     </view>
-    <view class="flex1  box" data-sta="2" bindtap="tab">
+    <view class="flex1  box" data-sta="0" bindtap="tab">
+      <view class="ll {{active==0?'active':''}} border-box">
+        <text>我的推荐人</text>
+      </view>
+    </view>
+    <!-- <view class="flex1  box" data-sta="2" bindtap="tab">
       <view class="ll {{active==2?'active':''}} border-box">
         <text>朋友圈</text>
       </view>
-    </view>
+    </view> -->
 
 
   </view>
@@ -33,7 +33,7 @@
 <view class="pm" style="margin-top:15rpx;">
   <view class="pm-box clearfix flex border-box">
     <view class="pm-way flex1 clearfix" style="border-right:1rpx solid #ccc;" data-stas="0" bindtap='tab2'>
-      <text class="{{active2==0?'active':''}}" style="float:right">入会时间排名</text>
+      <text class="{{active2==0?'active':''}}" style="float:right">邀请时间排名</text>
       <view class="img-box" style="float:right">
         <image style="width:40rpx" src="https://m.7710mall.com/Uploads/xxc/rili_03.png" style="width:40rpx;height:34rpx;">
         </image>

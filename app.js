@@ -107,6 +107,6 @@ App({
     code: "1",
     location: "北京",
     Murl: "https://m.7710mall.com/index.php"
-    //Murl: "https://www.7710mall.com/index.php"
+    // Murl: "https://m.test.7710mall.com/index.php"
   }
 })

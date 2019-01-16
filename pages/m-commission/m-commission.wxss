@@ -13,6 +13,10 @@
   height: 390rpx;
   background: #ccc;
   text-align: center;
+  background: url("https://m.7710mall.com/Uploads/xxc/back.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .menber-top image {
@@ -41,12 +45,12 @@
 
 .title-di {
   width: 100%;
-  height: 160rpx;
+  height: 200rpx;
   background: none;
   padding-left: 30rpx;
   padding-right: 30rpx;
   position: absolute;
-  top: 300rpx;
+  top: 264rpx;
 }
 
 .title-di .title-white {
@@ -63,18 +67,29 @@
 
 .title-di .title-white .dl {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .title-di .title-white .dl .dt {
   color: #ff712b;
   font-size: 24rpx;
-  margin-top: 45rpx;
 }
 
 .title-di .title-white .dl .dd {
   color: #303030;
   font-size: 28rpx;
   margin-top: 1rpx;
+}
+.title-di .title-white .dl .ddd {
+  box-sizing: border-box;
+  width: 70%;
+  text-align: center;
+  padding-bottom: 10rpx;
+  margin-bottom: 10rpx;
+  border-bottom: 2rpx solid #999999;
 }
 
 .title-di .title-white text {
