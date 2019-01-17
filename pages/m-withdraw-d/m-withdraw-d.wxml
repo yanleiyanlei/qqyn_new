@@ -17,13 +17,19 @@
   </view>
 </view>
 <view class='all'>
-  <view wx:if="{{active==0}}">月计：<text wx:if="{{list!=''}}">¥{{list[0].moneys}}</text><text wx:if="{{list==''}}">¥0.00</text></view>
-  <view>总计：<text wx:if="{{list!=''}}">¥{{list[0].money}}</text><text wx:if="{{list==''}}">¥0.00</text></view>
+  <view wx:if="{{active==0}}">月计：
+    <text wx:if="{{list!=''}}">¥{{list[0].moneys?list[0].moneys:'0.00'}}</text>
+    <text wx:if="{{list==''}}">¥0.00</text>
+  </view>
+  <view>总计：
+    <text wx:if="{{list!=''}}">¥{{list[0].money?list[0].money:'0.00'}}</text>
+    <text wx:if="{{list==''}}">¥0.00</text>
+  </view>
 </view>
 <view class='box border-box'>
   <block wx:for="{{list}}" wx:key="unique">
     <view class='box-li'>
-    <!-- 提现时间审核状态 -->
+      <!-- 提现时间审核状态 -->
       <view class='box-li-top'>
         <text>{{item.withdrawal_time}}</text>
         <text class='box-exam' wx:if="{{item.operating_status==0}}">待审核</text>
