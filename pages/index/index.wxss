@@ -119,6 +119,7 @@ page {
   padding: 30rpx 32rpx;
   display: flex;
   direction: center;
+  justify-content: space-between;
   line-height: 40rpx;
 }
 
