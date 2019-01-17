@@ -110,7 +110,7 @@
 <view class='qqactive'>
   <view class='active-tit'>
     <image src='../../image/index/active-tit.png'></image>
-    <text>【青青优农】农场震撼来袭</text>
+    <text></text>
     <view class='gz' bindtap='gz'>
       <text class='iconfont icon-guanzhu1'></text> 关注</view>
   </view>
