@@ -10,6 +10,11 @@ Page({
     yhq: "",
     mshow: "display:none"
   },
+  tomcharge:function(){
+    wx.navigateTo({
+      url: '/pages/m-charge/m-charge',
+    })
+  },
   goindex:function(){
     // app.globalData.store=1
     wx.switchTab({
