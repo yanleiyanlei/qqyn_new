@@ -28,7 +28,7 @@
       </view>
     </view>
     <view class="info-list flex">
-      <view class="list flex1">
+      <view class="list flex1" bindtap='tomcharge'>
         <view class="one">
           <text>{{member_money}}</text>
         </view>
@@ -42,7 +42,7 @@
           </navigator>
         </view>
       </view>
-      <view class="list flex1">
+      <view class="list flex1" >
         <navigator opent-type="redirectTo" url="/pages/m-commission/m-commission" hover-class='Nhover'>
           <view class="one">
             <text>{{commission}}</text>
