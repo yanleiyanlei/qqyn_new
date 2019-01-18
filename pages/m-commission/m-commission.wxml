@@ -22,9 +22,15 @@
     </view>
     <text></text>
     <view class="dl flex1">
+     <view class="dt">￥{{info.tx}}</view>
+      <view class="dd ddd">累计提现</view>
+      <view class="dt">￥{{info.dz}}</view>
+      <view class="dd">累计到账</view>
+    </view>
+    <!-- <view class="dl flex1">
       <view class="dt">￥{{info.selec.successful_withdrawal}}</view>
       <view class="dd">累计提现金额</view>
-    </view>
+    </view> -->
   </view>
 </view>
 

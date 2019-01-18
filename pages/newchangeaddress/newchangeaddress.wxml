@@ -5,7 +5,8 @@
 
     <view class="box border1">
       <view class="m-box clearfix">
-        <text class="bs">姓名\t:</text>
+        <!-- <text space="nbsp" class="bs">姓 名:</text> -->
+        <text space="emsp" class="bs">姓 名\t:</text>
         <input class="in" type="text" name="address_name" value="{{name}}"/>
       </view>
     </view>
