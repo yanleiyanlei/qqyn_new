@@ -297,7 +297,7 @@ Page({
   //   }
   // },
   /*点击 跳到商品详情*/
-  urldetails(e) {
+  urldetails(e) { 
     let goodsid = e.currentTarget.dataset.id;
     wx.redirectTo({
       url: '../details/details?goodsid=' + goodsid,
@@ -374,6 +374,7 @@ Page({
   onShow: function() {
     var _this = this;
     var page = _this.data.page; //page= 2 购物车进入  page=1 商品立即购买进入
+    console.log(page);
     var goods_id = _this.data.goods_id; //商品id
     var spec_key = _this.data.spec_key; //商品规格
     var num = _this.data.num; //商品数量
@@ -484,18 +485,18 @@ Page({
         }
       })
     } else if (page == 1) { //商品立即结算过来
-      wx.request({
-        url: app.globalData.Murl + "/Applets/Cart/CartBuy",
-        data: {
-          member_id: uid,
-          seller_id: 1,
-          goods_id: goods_id,
-          spec_key: spec_key,
-          goods_num: num,
-        },
-        method: "post",
-        success: function(res) {
-          if (res.data.status == true) { //请求成功获取信息
+      // wx.request({
+      //   url: app.globalData.Murl + "/Applets/Cart/CartBuy",
+      //   data: {
+      //     member_id: uid,
+      //     seller_id: 1,
+      //     goods_id: goods_id,
+      //     spec_key: spec_key,
+      //     goods_num: num,
+      //   },
+      //   method: "post",
+      //   success: function(res) {
+      //     if (res.data.status == true) { //请求成功获取信息
             wx.request({
               url: app.globalData.Murl + '/Applets/Cart/order1',
               data: {
@@ -572,13 +573,13 @@ Page({
                 console.log(_this.data.upto_amount);
               }
             })
-          } else if (res.data.status == false) { //跳转到我的订单页
-            wx.redirectTo({
-              url: '../m-order/m-order?sta=0',
-            })
-          }
-        }
-      })
+      //     } else if (res.data.status == false) { //跳转到我的订单页
+      //       wx.redirectTo({
+      //         url: '../m-order/m-order?sta=0',
+      //       })
+      //     }
+      //   }
+      // })
     }
   },
   // onShow: function() {
