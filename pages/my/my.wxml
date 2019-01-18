@@ -33,7 +33,7 @@
           <text>{{member_money}}</text>
         </view>
         <view class="two">
-          <navigator open-type='redirectTo' hover-class='Nhover'>
+          <navigator open-type='navigate' hover-class='Nhover' url="/pages/m-charge/m-charge">
             <text>余额</text>
           </navigator>
           <text class="iconfont icon-dian1"></text>
