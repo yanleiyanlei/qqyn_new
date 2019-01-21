@@ -338,10 +338,12 @@ Page({
               var cas = link[link.length - 1].split(".")[0]
               var cas2 = link[link.length - 1].split("=")[1]
               //console.log(link)
+              var falg_banner = false;
               for (var j = 0; j < link.length; j++) {
                 // 循环判断跳转到是分类页面还是详情页面
 
                 if (link[j] == "classify_content") {
+                  falg_banner = true
                   var j = Number(j)
                   // console.log(link[j + 1] )
 
@@ -362,20 +364,31 @@ Page({
 
 
                 } else if (link[j] == "goodsdetails") {
+                  falg_banner = true;
                   var blink = "../details/details?goodsid=" + cas
 
                   var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
                   banner.push(sj)
                   break
 
-                } else if (link.length == 7) {
+                } 
+                //为毛跳转链接里的参数个数=7就跳到商品页  先注释了  by yan.lei 2019.01.21 没链接跳转到个人中心吧
+               /* else if (link.length == 7) {
                   var blink = "../details/details?goodsid=" + cas2
 
                   var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
                   banner.push(sj)
                   break
-                }
+                }*/
+              
+              }
+              //console.log('aaaa');
+              //console.log(falg_banner);
+              if (falg_banner == false) {
+                var blink = "../my/my"
 
+                var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
+                banner.push(sj)
               }
             }
 

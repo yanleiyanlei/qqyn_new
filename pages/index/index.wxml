@@ -67,11 +67,19 @@
 
     <block wx:for="{{banner}}">
       <swiper-item>
-        <block wx:if="{{item.bannerlink}}">
+        <block wx:if="{{item.bannerlink && item.bannerlink !='../my/my'}}">
           <navigator url='{{item.bannerlink}}' hover-class='Nhover'>
             <image src="{{item.bannersrc}}" class="slide-image" />
           </navigator>
         </block>
+
+  <block wx:elif="{{item.bannerlink && item.bannerlink =='../my/my'}}" >
+          <navigator url='{{item.bannerlink}}' hover-class='Nhover' open-type='switchTab'>
+            <image src="{{item.bannersrc}}" class="slide-image" />
+          </navigator>
+        </block>
+
+
         <block>
           <image src="{{item.bannersrc}}" class="slide-image" />
         </block>

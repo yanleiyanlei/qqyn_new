@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -80,6 +80,18 @@
 					"name": "cps测试",
 					"pathName": "pages/index/index",
 					"query": "wi=123456789abc"
+				},
+				{
+					"id": -1,
+					"name": "转盘",
+					"pathName": "pages/luckdraw/luckdraw",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "微信运动",
+					"pathName": "pages/m-step2/m-step2",
+					"query": ""
 				}
 			]
 		}
