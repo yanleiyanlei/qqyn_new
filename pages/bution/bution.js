@@ -17,7 +17,8 @@ Page({
     message: [], //流动信息
     phone: [], //活动细则第七条
     backshow: true, //活动细则
-    shareshow:true //点击提示分享
+    shareshow:true, //点击提示分享
+    xianshang:""   
   },
   //拒绝授权登录
   close: function() {
@@ -197,7 +198,8 @@ Page({
         _this.setData({
           swiperli: res.data.img,
           swipertx: res.data.content,
-          phone: res.data.phone
+          phone: res.data.phone,
+          xianshang:res.data.pd
         })
       }
     })
