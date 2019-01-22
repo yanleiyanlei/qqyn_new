@@ -23,7 +23,7 @@
       <view class="dot{{index == swiperCurrent ? ' active' : ''}}" bindtap="chuangEvent" id="{{index}}"></view>
     </block>
   </view>
-  <view class='text'>
+  <view class='text' wx:if="{{xianshang==1}}">
     <text>长按海报“保存”图片</text>
     <text>可从手机相册分享到朋友圈</text>
   </view>
@@ -44,7 +44,7 @@
   <image src='http://m.7710mall.com/Public/xcximg/footer.png'></image>
   <text class='tapback' bindtap='tapback'>活动细则 >></text>
 </view>
-<view class='yaoqing' style='{{tabFixed}}'>
+<view class='yaoqing' style='{{tabFixed}}' wx:if="{{xianshang==1}}">
   <text bindtap='toshare'>立即邀请</text>
 </view>
 
