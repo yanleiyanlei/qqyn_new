@@ -10,14 +10,18 @@ Page({
   data: {
     goods: [],
     second: [],
-    mshow:"display:none",
+    mshow: "display:none",
     // oneType:"",
     twoType: "",
     active: "",
     xlactive: "",
     jgactive: "",
     xlOrder: 1,
-    jgOrder: 1
+    jgOrder: 1,
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 1000
   },
   close: function () {
     this.setData({
@@ -45,7 +49,7 @@ Page({
       var spec_key = e.currentTarget.dataset.key;
       //console.log(uid)
       wx.request({
-        url: app.globalData.Murl+'/Applets/Cart/ajaxAddcart/',
+        url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
         data: {
           member_id: uid,//会员ID
           goods_id: goods_id, //商品ID
@@ -69,7 +73,7 @@ Page({
           })
           if (res.data.status == 1) {
             // 重新更新购物车数据表
-            const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
+            const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
             wx.request({
               url: shopusr,
               data: {
@@ -138,7 +142,7 @@ Page({
     var that = this;
     // 获取购物车列表
     var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
     wx.request({
       url: shopusr,
       data: {
@@ -174,9 +178,11 @@ Page({
     // 页面加载时，请求到对应二级商品和二级下次级分类
     var that = this;
     that.setData({ oneType: options.id })
+
     wx.request({
-      url: app.globalData.Murl+'/Applets/Index/classify_content',
+      url: app.globalData.Murl + '/Applets/Index/classify_content',
       data: { one_cat_id: options.id },
+      // data: { one_cat_id: 2 },
       method: "POST",
       header: {
         'content-type': 'application/json' // 默认值
@@ -285,7 +291,7 @@ Page({
     console.log(that.data.oneType)
     console.log(that.data.twoType)
     wx.request({
-      url: app.globalData.Murl+'/Applets/Index/timesort',
+      url: app.globalData.Murl + '/Applets/Index/timesort',
       data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType },
       method: "POST",
       header: {
@@ -317,7 +323,7 @@ Page({
     console.log(e.currentTarget.dataset.secondid)
     //that.setData({ twoType: e.currentTarget.dataset.secondid })
     wx.request({
-      url: app.globalData.Murl+'/Applets/Index/timesort',
+      url: app.globalData.Murl + '/Applets/Index/timesort',
       data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType },
       method: "POST",
       header: {
@@ -345,7 +351,7 @@ Page({
     if (e.currentTarget.dataset.order == 1) {
       // 销量降序
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/xiaoxia',
+        url: app.globalData.Murl + '/Applets/Index/xiaoxia',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType },
         method: "POST",
         header: {
@@ -371,7 +377,7 @@ Page({
     } else if (e.currentTarget.dataset.order == 2) {
       // 销量升序======================
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/xiaoshang',
+        url: app.globalData.Murl + '/Applets/Index/xiaoshang',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType },
         method: "POST",
         header: {
@@ -402,7 +408,7 @@ Page({
     if (e.currentTarget.dataset.order == 1) {
       // 价格sheng序
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/priceshang',
+        url: app.globalData.Murl + '/Applets/Index/priceshang',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType },
         method: "POST",
         header: {
@@ -434,7 +440,7 @@ Page({
     } else if (e.currentTarget.dataset.order == 2) {
       // 价格jiang序
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/pricexia',
+        url: app.globalData.Murl + '/Applets/Index/pricexia',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType },
         method: "POST",
         header: {
@@ -504,7 +510,7 @@ Page({
     that.setData({ sactive: "" })
 
     wx.request({
-      url: app.globalData.Murl+'/Applets/Index/screen',
+      url: app.globalData.Murl + '/Applets/Index/screen',
       data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType, state: that.data.sxID },
       method: "POST",
       header: {
@@ -536,11 +542,11 @@ Page({
 
 
   },
-  onShow:function(){
-    var that= this;
+  onShow: function () {
+    var that = this;
     // 获取购物车列表
     var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
     wx.request({
       url: shopusr,
       data: {
@@ -552,9 +558,9 @@ Page({
         console.log(res.data.cartList)
 
         that.setData({
-          cartList:res.data.cartList
+          cartList: res.data.cartList
         })
-  
+
       }
     })
   }

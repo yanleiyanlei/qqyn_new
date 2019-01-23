@@ -3,22 +3,22 @@
 <import src="/lib/template/userInfo2.wxml" />
 <template is="user2" data="{{mshow}}"></template>
 <view class='second' id="second">
-  <block wx:for="{{second}}">
-    <!--判断特定二级添加标签背景，修改可直接复制还二级ID 
-  <view wx:if="{{item.id==96}}" data-secondid='96' bindtap='second' style='background:url(http://m.77farmers.com/Public/Home/img/m_hd_bg.png) center no-repeat; background-size:cover;color:#fff'>
-    <image src='{{item.cat_img}}'></image>{{item.cat_name}}
-  </view>
-  <view wx:elif="{{item.id==97}}" data-secondid='97' bindtap='second' style='background:url(http://m.77farmers.com/Public/Home/img/m_hd_bg.png) center no-repeat; background-size:cover;color:#fff'>
-    <image src='{{item.cat_img}}'></image>{{item.cat_name}}
-  </view>
-  <view wx:elif="{{item.id==98}}" data-secondid='98' bindtap='second' style='background:url(http://m.77farmers.com/Public/Home/img/m_hd_bg.png) center no-repeat; background-size:cover;color:#fff'>
-    <image src='{{item.cat_img}}'></image>{{item.cat_name}}
-  </view> -->
+  <!-- <block wx:for="{{second}}">
     <view data-secondid='{{item.id}}' bindtap='second'>
       <image src='{{item.cat_img}}'></image>{{item.cat_name}}
     </view>
 
-  </block>
+  </block> -->
+  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" indicator-color="rgba(255,255,255,.3)" interval="{{interval}}" duration="{{duration}}" display-multiple-items='2.5' circular='true'>
+
+    <block wx:for="{{second}}">
+      <swiper-item>
+        <view data-secondid='{{item.id}}' bindtap='second'>
+          <image src='{{item.cat_img}}'></image>{{item.cat_name}}
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
 </view>
 <!--筛选  -->
 <view class="screen" id="screen">
