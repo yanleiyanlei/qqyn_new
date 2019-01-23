@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -91,6 +91,12 @@
 					"id": 9,
 					"name": "微信运动",
 					"pathName": "pages/m-step2/m-step2",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "抽奖",
+					"pathName": "pages/luckyears/luckyears",
 					"query": ""
 				}
 			]

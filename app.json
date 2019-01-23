@@ -65,7 +65,8 @@
     "pages/special/special",
     "pages/luckdraw/luckdraw",
     "pages/bution/bution",
-    "pages/cash/cash"
+    "pages/cash/cash",
+    "pages/luckyears/luckyears"
 
   ],
   "window": {
