@@ -3,7 +3,6 @@ const app = getApp()
 Page({
   data: {
     datalist: [],
-    dats: [],
   },
   //页面跳转
   mcouponru() {
@@ -76,13 +75,10 @@ Page({
       success: function (res) {
 
         console.log(res.data);
-        var dats = res.data;
         var datalist = res.data.select;
 
         _this.setData({
           datalist: datalist,
-          blones: dats.goods_coupon,
-          dats: Number(dats.money)
         })
       }
     })

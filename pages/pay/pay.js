@@ -94,9 +94,13 @@ Page({
                 url: '../m-order/m-order?sta=' + 0,
               })
             } else if (that.data.is_goods_coupon == 1) {
-              that.setData({
-                shows: "display:block",
-                wallets_password_flag:false,
+              wx.showToast({
+                title: '支付成功',
+                icon: 'success',
+                duration: 2000
+              })
+              wx.redirectTo({
+                url: '../m-order/m-order?sta=' + 0,
               })
             }
 					} else if (datalist.data == -4) {
