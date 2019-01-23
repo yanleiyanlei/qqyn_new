@@ -1,0 +1,55 @@
+<!--apges/luckdraw/luckdraw.wxml 跨年狂欢抽奖活动-->
+
+<!-- 引入登录模板 -->
+<import src="/lib/template/userInfo2.wxml" />
+<template is="user2" data="{{mshow}}"></template>
+
+<!-- 抽奖主内容 -->
+<!-- 顶部图片 -->
+<view class='page_bd'>
+  <!-- <image style='width:100%;display:block' mode='widthFix' src='http://m.7710mall.com/Public/xcximg/1.jpg'></image> -->
+  <image style='width:100%;display:block' mode='widthFix' src='https://m.7710mall.com/Public/xcximg/newyear/01.jpg'></image>
+</view>
+
+<!-- 抽奖内容区域 -->
+<view class='container-bg' style='height:819rpx;'>
+  <image style='width:100%;height:819rpx;display:block' src='https://m.7710mall.com/Public/xcximg/newyear/02.jpg'></image>
+  <text class='have-times'>当前剩余抽奖次数{{times}}</text>
+  <view class='container-out'>
+    <view class='circle' wx:for="{{circleList}}" wx:key="unique" style='top:{{item.topCircle}}rpx;left:{{item.leftCircle}}rpx;background-color:{{index%2==0 ? colorCircleFirst : colorCircleSecond}}'></view><!-- 小圆点部分 -->
+    <view class="container-in">
+        <view class="content-out" wx:for="{{awardList}}" wx:key="unique" style="top:{{item.topAward}}rpx;left:{{item.leftAward}}rpx;background-color: {{(index==indexSelect) ? colorAwardSelect : colorAwardDefault}};">
+          <image class="award-image" src="{{item.imageAward}}"></image>
+        </view>
+        <view class="start-btn" bindtap="startGame"></view>
+      </view>
+  </view>
+</view>
+<!-- 底部图片 --> 
+<view class="page_bd">
+<image style="width: 100%;display:block;" mode="widthFix" src="https://m.7710mall.com/Public/xcximg/newyear/03.jpg"></image>
+  <image style="width: 100%;display:block;" mode="widthFix" src="https://m.7710mall.com/Public/xcximg/newyear/4.jpg"></image>
+  <button class='fenxiangBtn' wx:if='{{pd==1}}' open-type="share">立即分享 ></button>
+  <image style="width: 100%;display:block;" mode="widthFix" src="https://m.7710mall.com/Public/xcximg/newyear/5.png"></image>
+  <view class='callPhone' bindtap="link"></view>  <!-- 拨打电话 -->
+  <navigator url="/pages/index/index" class='gohome' open-type='reLaunch'>
+ 返回首页
+  </navigator> 
+  <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}" bindtap="toggleDialog">
+    <view class="zan-dialog__mask"  />
+    <view class="zan-dialog__container">
+      <!-- <view style='padding:535rpx 0 0 260rpx;font-size:40rpx;font-weight:900;color:#c31b19'>恭喜您</view> -->
+      <view class='jg'><text>{{contentJp}}</text></view>
+
+      <!-- 抽奖结果的弹窗 -->
+    </view>
+  </view>
+  <view class="zan-dialog {{ showDialogg ? 'zan-dialog--show' : '' }}" bindtap="toggleDialogg">
+    <view class="zan-dialog__mask"  />
+    <view class="zan-dialog__container">
+      <!-- <view style='padding:535rpx 0 0 190rpx;font-size:30rpx;color:#c31b19'>您今日已抽奖{{times}}次</view> -->
+      <view style='padding:570rpx 0 0 105rpx;font-size:30rpx;color:#c31b19'>达当日抽奖上限  请明日继续参与</view>
+    </view>
+    <!-- 抽奖满次后要显示的弹窗 -->
+  </view>
+</view>
