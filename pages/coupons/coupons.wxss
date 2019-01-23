@@ -141,6 +141,7 @@ page {
   color: #434343;
   line-height: 30rpx;
   margin-top: 35rpx;
+  text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:360rpx; 
 }
 
 .wmks {
