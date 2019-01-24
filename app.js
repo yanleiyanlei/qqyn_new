@@ -22,6 +22,10 @@ App({
       console.log(res.hasUpdate)
     })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 75dfd2d122d653af66b477a08bb0fcb335c90a8b
     updateManager.onUpdateReady(function () {
       console.log(2);
       wx.showModal({
@@ -35,6 +39,10 @@ App({
         }
       })
     })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 75dfd2d122d653af66b477a08bb0fcb335c90a8b
 
     updateManager.onUpdateFailed(function() {
       // 新版本下载失败
