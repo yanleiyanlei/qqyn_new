@@ -173,7 +173,7 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   width: 690rpx;  
   height: 340rpx;
   position: absolute;
-  z-index: 10;
+  z-index: 10 ;
   left: 50%;
   bottom:224rpx;
   transform: translateX(-50%);

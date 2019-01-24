@@ -6,7 +6,7 @@
 
 <!-- 抽奖主内容 -->
 <!-- 顶部图片 -->
-<view class='page_bd'>
+<view class='page_bd' >
   <!-- <image style='width:100%;display:block' mode='widthFix' src='http://m.7710mall.com/Public/xcximg/1.jpg'></image> -->
   <image style='width:100%;display:block' mode='widthFix' src='https://m.7710mall.com/Public/xcximg/newyear/01.jpg'></image>
 </view>

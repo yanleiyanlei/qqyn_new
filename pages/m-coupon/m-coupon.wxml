@@ -156,7 +156,7 @@
               </view>
 
               <!-- 优惠劵价格 -->
-              <text class="one"><text class="two">￥</text>{{item.new_price}}</text>
+              <text class="one"><text class="two">￥</text>{ {item.new_price}}</text>
             </view>
             <view class="m-list-right">
 

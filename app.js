@@ -23,6 +23,7 @@ App({
     })
 
     updateManager.onUpdateReady(function () {
+      
       console.log(2);
       wx.showModal({
         title: '更新提示',
