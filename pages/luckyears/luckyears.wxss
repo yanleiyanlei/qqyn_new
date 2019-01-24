@@ -170,12 +170,13 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
 }
 .callPhone{
   /* background: red; */
-  width: 220rpx;  
-  height: 30rpx;
+  width: 690rpx;  
+  height: 340rpx;
   position: absolute;
-  z-index: 10;
-  right: 180rpx;
-  bottom: 380rpx;
+  z-index: 10 ;
+  left: 50%;
+  bottom:224rpx;
+  transform: translateX(-50%);
 }
 .fenxiangBtn{
   width: 124rpx;height:36rpx;position:absolute;top:1536rpx;right:51rpx;display:block;padding:0;margin:0;border:10%;font-size: 20rpx;

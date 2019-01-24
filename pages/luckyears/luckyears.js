@@ -71,7 +71,7 @@ Page({
             wx.setStorageSync("userinfo", res.data.userinfo);
             console.log("允许");
             wx.reLaunch({
-              url: '/pages/luckdraw/luckdraw',
+              url: '/pages/luckyears/luckyears',
             })
 
            
@@ -88,20 +88,14 @@ Page({
     })
   },
   link: function () {
-    wx.makePhoneCall({
-      phoneNumber: '4006881602', //此号码并非真实电话号码，仅用于测试  
-      success: function () {
-        console.log("拨打电话成功！")
-      },
-      fail: function () {
-        console.log("拨打电话失败！")
-      }
+    wx.switchTab({
+      url: '/pages/bution/bution',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) { 
     
     console.log(1232131232131)
     var _this = this;
