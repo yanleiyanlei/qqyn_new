@@ -372,7 +372,7 @@ Page({
     }
     var uid = wx.getStorageSync("userinfo").uid;
     return {
-      title: '我获得了200元优惠券，有福同享！',
+      title: '新年好运气！我获得了150元优惠券，大家有福同享哈！',
       path: '/pages/luckdraw/luckdraw',
       imageUrl: "https://m.7710mall.com/Public/xcximg/newyear/shareny.jpg",
       success: (res) => {

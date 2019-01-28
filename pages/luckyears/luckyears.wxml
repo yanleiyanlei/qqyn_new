@@ -48,7 +48,7 @@
     <view class="zan-dialog__mask"  />
     <view class="zan-dialog__container">
       <!-- <view style='padding:535rpx 0 0 190rpx;font-size:30rpx;color:#c31b19'>您今日已抽奖{{times}}次</view> -->
-      <view style='padding:570rpx 0 0 105rpx;font-size:30rpx;color:#c31b19'>达当日抽奖上限  请明日继续参与</view>
+      <view style='padding:570rpx 0 0 225rpx;font-size:30rpx;color:#c31b19'>抽奖次数不足</view>
     </view>
     <!-- 抽奖满次后要显示的弹窗 -->
   </view>
