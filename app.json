@@ -1,0 +1,120 @@
+{
+  "pages": [
+  
+    "pages/index/index",
+    "pages/third-number/third-number",
+    "pages/pay199/pay199",
+    "pages/my/my",
+    "pages/m-commission-in-d/m-commission-in-d",
+    "pages/dfxm/dfxm",
+    "pages/members/members",
+    "pages/shopinfo/shopinfo",
+    "pages/m-withdraw-s/m-withdraw-s",
+    "pages/m-fans/m-fans",
+    "pages/m-commission-in-all/m-commission-in-all",
+    "pages/m-commission-rank/m-commission-rank",
+    "pages/m-commission-in/m-commission-in",
+    "pages/m-withdraw-d/m-withdraw-d",
+    "pages/m-withdraw/m-withdraw",
+    "pages/m-commission/m-commission",
+    "pages/m-integral/m-integral",
+    "pages/m-integral-d/m-integral-d",
+    "pages/m-step/m-step",
+    "pages/m-step2/m-step2",
+    "pages/fxm/fxm",
+    "pages/goout/goout",
+    "pages/personalcenter/personalcenter",
+    "pages/m-step3/m-step3",
+    "pages/hasbeencompleted/hasbeencompleted",
+    "pages/m-fx/m-fx",
+    "pages/logs/logs",
+    "pages/classify/classify",
+    "pages/qfhot/qfhot",
+    "pages/classifyGoods/classifyGoods",
+    "pages/secondGoods/secondGoods",
+    "pages/search/search",
+    "pages/searchnull/searchnull",
+    "pages/theorder/theorder",
+    "pages/pay/pay",
+    "pages/shopcarts/shopcarts",
+    "pages/details/details",
+    "pages/coupons/coupons",
+    "pages/newaddress/newaddress",
+    "pages/shoplist/shoplist",
+    "pages/comments/comments",
+    "pages/addAddress/addAddress",
+    "pages/changeAddress/changeAddress",
+    "pages/chargeRecord/chargeRecord",
+    "pages/gift-charge/gift-charge",
+    "pages/link/link",
+    "pages/m-address/m-address",
+    "pages/m-charge/m-charge",
+    "pages/m-coupon/m-coupon",
+    "pages/m-coupon-rule/m-coupon-rule",
+    "pages/m-estimate/m-estimate",
+    "pages/m-estimate-list/m-estimate-list",
+    "pages/m-logistic/m-logistic",
+    "pages/m-order/m-order",
+    "pages/m-payPsw/m-payPsw",
+    "pages/m-setting/m-setting",
+    "pages/myInfo/myInfo",
+    "pages/order-detail/order-detail",
+    "pages/mpay/mpay",
+    "pages/newchangeaddress/newchangeaddress",
+    "pages/newaddaddress/newaddaddress",
+    "pages/special/special",
+    "pages/luckdraw/luckdraw",
+    "pages/bution/bution",
+    "pages/cash/cash",
+    "pages/luckyears/luckyears"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "青青优农",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "tabBar": {
+    "color": "#ff7c24",
+    "selectedColor": "#ff7c24",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/tabBar/1-1.png",
+        "selectedIconPath": "image/tabBar/1.png"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "text": "分类",
+        "iconPath": "image/tabBar/2-1.png",
+        "selectedIconPath": "image/tabBar/2.png"
+      },
+      {
+        "pagePath": "pages/bution/bution",
+        "text": "福利",
+        "iconPath": "image/tabBar/fuli.png",
+        "selectedIconPath": "image/tabBar/fuli.png"
+      },
+      {
+        "pagePath": "pages/shopcarts/shopcarts",
+        "text": "购物车",
+        "iconPath": "image/tabBar/3-1.png",
+        "selectedIconPath": "image/tabBar/3.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "image/tabBar/5-1.png",
+        "selectedIconPath": "image/tabBar/5.png"
+      }
+    ]
+  }
+}
