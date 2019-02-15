@@ -126,3 +126,21 @@ page{
 	float: right;
 	color: #ff712b;
 }
+.prompt{
+  width: 464rpx;
+	height: 66rpx;
+	font-family: FZLTHK--GBK1-0;
+	font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+  position: absolute;
+  top: 688rpx;
+  left: 143rpx;
+  display: flex;
+  flex-direction: column;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: center;
+}

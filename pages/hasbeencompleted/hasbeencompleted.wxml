@@ -2,13 +2,17 @@
 <page>
   <view class="hasbeen">
   	  <image src="https://m.7710mall.com/Uploads/xxc/m_step_bg.png" mode="scaleToFill" class="slide-image"/>
-  	  <image src="https://m.7710mall.com/Uploads/xxc/m_step_good.png" class="eggs"></image>
+  	
+      <image class='eggs' src='https://m.test.7710mall.com/Uploads/xcx_img/success.png'></image>
   	  <view class="titles"> 
   	  	 <text class="ones">恭喜您任务完成！</text>
-         <text class="twos">可获得{{rice_rand}}克大米</text>
+         <text class="twos">可获得{{rice_rand}}</text>
   	  </view>
       
-  
+      <view class='prompt'>
+        <view>特价商品券可在【青青商城-会员-优惠券】</view>
+        <view style='margin-top:5rpx'>之中进行查看使用</view>
+      </view>
   	  <view class="btntext">
   	  	  <text bindtap='pagesm2'>再组一队</text>
   	  	  <text class="qxbtn" bindtap='tiaocar'>去商场逛逛</text>

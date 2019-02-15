@@ -2,4 +2,14 @@
 
 <canvas canvas-id="myCanvas" style="margin:0 auto;width:375px; height: 618px;border-raidus:1rpx;" ></canvas>
 <!-- <view class="tip">保存图片后可分享朋友圈</view> -->
+<!-- <view class="now-join">已有\t -->
+  <!-- <text class="now-join-num">{{total_num}}</text>\t人参加活动 -->
+<!-- </view> -->
+<!-- <view class='now-join1'>
+  活动期间内每个微信用户均可参与拼步数活动
+</view> -->
+<!-- <view class='now-join2'>
+  成功即可获得 <text class='now-join-num'>{{goodName}}</text> 元优惠券
+</view> -->
+
 <view style="text-align:center;margin-top:20rpx;"><button  bindtap='savetup' class="save" >保存图片分享朋友圈</button></view> 

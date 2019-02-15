@@ -21,3 +21,59 @@
 page{
   padding-bottom: 46rpx;
 }
+.now-join {
+  font-size: 30rpx;
+  color: #31aacd;
+  /* font-size: 24rpx; */
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+	font-stretch: normal;
+	line-height: 36rpx;
+	letter-spacing: 0px;
+  position:absolute;
+  top:475rpx;
+  left:220rpx;
+  z-index: 999；
+}
+.now-join1 {
+  font-size: 30rpx;
+  color: #31aacd;
+  /* font-size: 24rpx; */
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+	font-stretch: normal;
+	line-height: 36rpx;
+	letter-spacing: 0px;
+  position:absolute;
+  top:540rpx;
+  left:95rpx;
+  z-index: 999；
+}
+.now-join2 {
+  font-size: 28rpx;
+  color: #31aacd;
+  /* font-size: 24rpx; */
+  font-family: MicrosoftYaHei;
+  font-weight: bold;
+	font-stretch: normal;
+	line-height: 36rpx;
+	letter-spacing: 0px;
+  position:absolute;
+  top:575rpx;
+  left:150rpx;
+  z-index: 999；
+
+}
+.now-join-num {
+  font-size: 32rpx;
+  color: #ff5e00;
+  line-height: 68rpx;
+}
+canvas{
+  position: relative;
+  /* z-index: 1; */
+}
+.banner{
+  width: 750rpx;
+  height: 1058rpx;
+}

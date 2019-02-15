@@ -20,6 +20,7 @@ Page({
     h1: "",
     m1: "",
     s1: "",
+    rice_rand:"",
     klist: []
   },
   /**
@@ -44,8 +45,24 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
+    var pid = options.pid;
+    if (pid) {
+      wx.setStorageSync("pid", pid);
+    }
     //请求数据
-   
+    wx.request({//任务规则
+      url: app.globalData.Murl + '/Applets/Active/active_word',
+      method: "post",
+      data: { member_id: wx.getStorageSync("userinfo").uid },
+      success: function (res) {
+        console.log(res)
+        console.log(res.data)
+        that.setData({
+          msg: res.data
+        })
+      }
+
+    })
     var Cteamid = decodeURIComponent(options.scene);
     console.log(Cteamid)
 
@@ -92,7 +109,8 @@ Page({
                         people_step: res.data.people_step,
                         teamMember: res.data.info.member_info,
                         ac_id: res.data.info.step_id,
-                        klist: klist
+                        klist: klist,
+                        rice_rand: res.data.info.rice_rand
                       })
                       if (res.data.info.step_people_num <= 5) {
                         that.setData({
@@ -115,6 +133,9 @@ Page({
                       }
 
                       if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
+                        // wx.redirectTo({
+                        //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                        // })
                         wx.redirectTo({
                           url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
                         })
@@ -277,7 +298,8 @@ Page({
                             actInfo: res.data.info,
                             teamMember: res.data.info.member_info,
                             ac_id: res.data.info.step_id,
-                            klist: klist
+                            klist: klist,
+                            rice_rand: res.data.info.rice_rand
                           })
                           if (res.data.info.step_people_num<=5){
                             that.setData({
@@ -299,6 +321,9 @@ Page({
                             })
                           }
                           if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
+                            // wx.redirectTo({
+                            //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                            // })
                             wx.redirectTo({
                               url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
                             })
@@ -536,7 +561,7 @@ Page({
         console.log(res)
         if (res.data.status == 1) {
           wx.navigateTo({
-            url: '/pages/fxm/fxm?goodname=' + res.data.goods_name + "&fxcode=" + res.data.code,
+            url: '/pages/fxm/fxm?goodname=' + that.data.rice_rand + "&fxcode=" + res.data.code,
           })
         } else if (res.data.status == -4) {
           wx.showToast({
@@ -614,7 +639,8 @@ Page({
                                 actInfo: res.data.info,
                                 teamMember: res.data.info.member_info,
                                 ac_id: res.data.info.step_id,
-                                klist: klist
+                                klist: klist,
+                                rice_rand: res.data.info.rice_rand
                               })
                               if (res.data.info.step_people_num <= 5) {
                                 that.setData({
@@ -628,9 +654,13 @@ Page({
                               }
                               if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
 
+                                // wx.redirectTo({
+                                //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                                // })
                                 wx.redirectTo({
-                                  url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                                  url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand
                                 })
+                                
                               }
                               if (res.data.status == 2) {//邀请好友，人数未满，该用户在该团队，
                                 that.setData({
@@ -756,7 +786,8 @@ Page({
                   actInfo: res.data.info,
                   teamMember: res.data.info.member_info,
                   ac_id: res.data.info.step_id,
-                  klist: klist
+                  klist: klist,
+                  rice_rand: res.data.info.rice_rand
                 })
                 if (res.data.info.step_people_num <= 5) {
                   that.setData({
@@ -770,8 +801,11 @@ Page({
                 }
                 if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
 
+                  // wx.redirectTo({
+                  //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                  // })
                   wx.redirectTo({
-                    url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                    url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand
                   })
                 }
                 if (res.data.status == 2) {//邀请好友，人数未满，该用户在该团队，
@@ -898,10 +932,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this;
-
+    var uid = wx.getStorageSync("userinfo").uid;
     return {
-      title: '只差' + that.data.remainStep + '步啦！快来拼步数抢稻花香大米',
-      path: '/pages/m-step3/m-step3?scene=' + that.data.team_id,
+      title: '只差' + that.data.remainStep + '步啦！快来拼步数抢200元优惠券',
+      path: '/pages/m-step3/m-step3?scene=' + that.data.team_id + '&pid=' + uid,
       imageUrl: '',
       success: function (res) {
 
