@@ -176,12 +176,14 @@ page {
   height: 45rpx;
   line-height: 45rpx;
   font-weight:bold;
-
+ 
   /* padding: 0 220rpx; */
   margin: 0 auto;
   margin-left:220rpx; 
   width: 510rpx;
+   margin-top:-13rpx;
 }
+
 
 .end-gap image {
   width: 68rpx;
@@ -364,10 +366,12 @@ page {
 }
 
 .group-item {
-  padding: 20rpx 26rpx 20rpx 26rpx;
+  padding: 20rpx 6rpx 20rpx 6rpx;
   height: 120rpx;
 }
-
+.twooo{
+  margin-top: 8rpx;
+}
 .group-item .left {
   height: 100%;
   float: left;
@@ -436,6 +440,7 @@ page {
 
 .group-item .right {
   float: right;
+  width: 60%;
 }
 
 .group-item .right .info {
@@ -455,6 +460,7 @@ page {
 .group-item .right .info .two {
   color: #a9a8a8;
   font-size: 22rpx;
+  margin-top: 8rpx;
   line-height: 36rpx;
 }
 
@@ -997,4 +1003,77 @@ page {
   position: absolute;
   top: 0;
   left: 510rpx;
+}
+
+/* 规则 */
+
+.hd-rule {
+  width: 100%;
+  margin-top: 10rpx;
+  padding: 0 40rpx;
+}
+
+.hd-rule .fold {
+  text-align: center;
+  font-size: 26rpx;
+  color: #888;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #fff;
+}
+
+.hd-rule .fold::after {
+  border: none;
+}
+
+.hd-rule .rule-tit {
+  font-size: 28rpx;
+  color: #434343;
+  line-height: 83rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+
+.hd-rule .rule {
+  font-size: 24rpx;
+  color: #a8a8a8;
+  line-height: 45rpx;
+  /* height: 350rpx; */
+  overflow: hidden;
+}
+
+.hd-rule .rule .hd-type {
+  margin: 20rpx 0;
+}
+
+.hd-rule .rule .hd-type view {
+  line-height: 43rpx;
+  color: #f00;
+}
+
+.hd-rule .rule  .left {
+  float: left;
+  width: 30rpx;
+}
+
+.hd-rule .rule  .right {
+  float: left;
+  width: 630rpx;
+}
+.hd-rule .fold {
+  text-align: center;
+  font-size: 26rpx;
+  color: #888;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #f8f8f8;
+  
+}
+
+.fold::after {
+  border: none;
+}
+
+.group-item .righttttt{
+  width: 50%;
 }

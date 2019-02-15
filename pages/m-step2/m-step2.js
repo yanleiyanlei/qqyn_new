@@ -14,7 +14,13 @@ Page({
     soldout: false,
     foldClass: "height:366rpx!important;padding-bottom:70rpx",
     fold: "display:block",
-    tt: "display:none"
+    tt: "display:none",
+    foldd: true,//规则折叠
+    fold2: false,//战队折叠
+    fold3: false,
+    foldStyle: "height:340rpx;",
+    foldStyle2: "height:auto!important;",
+    foldStyle3: "height:1250rpx!important;",
   },
 
   /**
@@ -354,7 +360,19 @@ Page({
     }, 5000)
 
 
+    wx.request({//任务规则
+      url: app.globalData.Murl + '/Applets/Active/active_word',
+      method: "post",
+      data: { member_id: wx.getStorageSync("userinfo").uid },
+      success: function (res) {
+        console.log(res)
+        console.log(res.data)
+        that.setData({
+          msg: res.data
+        })
+      }
 
+    })
 
     // 活动类型
     wx.request({//小程序拼步数活动列表
@@ -548,6 +566,33 @@ Page({
       complete: function (res) { },
     })
 
+  },
+  Sfold: function (e) {//规则展开
+    var that = this;
+    var formId = e.detail.formId;
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Active/get_mem_formid',
+      data: { member_id: that.data.uid, formid: formId },
+      method: 'post',
+      success: function (res) {
+      }
+    })
+    var foldd = e.detail.value.ff;
+    console.log(e.detail.value.ff)
+    if (foldd == 'true') {
+      console.log("fold为真")
+      that.setData({
+        foldd: false,
+        foldStyle: "height:auto!important;"
+      })
+    } else if (foldd == 'false') {
+      console.log("fold为假")
+      console.log(555)
+      that.setData({
+        foldd: true,
+        foldStyle: "height:350rpx!important;"
+      })
+    }
   },
   Submit: function (e) {//自己开团
     var that = this

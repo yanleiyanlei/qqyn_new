@@ -164,7 +164,7 @@ page {
   margin:0 auto;
   margin-left:220rpx; 
   width:510rpx;
-
+  margin-top: -13rpx;
 }
 
 .end-gap image {

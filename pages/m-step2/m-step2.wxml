@@ -48,6 +48,7 @@
             <view class="info">
               <view class="one">还差
                 <text style="color:#ff0000">{{item.sheng_mem}}</text>人</view>
+              <view class='two twooo'>剩余{{item.step_number}}步</view>
             </view>
             <view class="join">
               <form report-submit="true" bindsubmit="Submit2">
@@ -183,7 +184,7 @@
                 </view>
 
               </view>
-              <view class="right">
+              <view class="right righttttt">
                 <view class="info">
                   <view class="one">还差
                     <text style="color:#ff0000">{{item.sheng_mem}}</text>人拼成</view>
@@ -228,7 +229,7 @@
                 </view>
 
               </view>
-              <view class="right">
+              <view class="right righttttt">
                 <view class="info">
                   <view class="one">还差
                     <text style="color:#ff0000">{{item.sheng_mem}}</text>人拼成</view>
@@ -555,8 +556,105 @@
     <!-- <view class="fold" bindtap='fold' style="{{fold}}">更多战队
       <text class="iconfont icon-arrow-down" style="font-size:20rpx;margin-left:8rpx;"></text>
     </view>
-
+  
   </view> -->
+  <!-- 规则 -->
+  <view class="hd-rule border-box">
+    <view class="rule-tit">活动规则:</view>
+    <view class="rule border-box" style="{{foldStyle}}">
+      <view class="list clearfix">
+        <view class='huodongjiangpin'>
+          <view>
+              {{msg.msg1}}
+          </view>
+          <view>
+              {{msg.msg2}}
+          </view>
+          <view>
+              {{msg.msg3}}
+          </view>
+          <view>
+              {{msg.msg4}}
+          </view>
+          <view>
+              {{msg.msg5}}
+          </view>
+          <view>
+              {{msg.msg6}}
+          </view>
+          <view>
+              {{msg.msg7}}
+          </view>
+          <view>
+              {{msg.msg8}}
+          </view>
+        </view>
+        <!-- <view class="left">1、</view>
+        <view class="right"> 活动期间内每个微信用户均可参与活动，可自主发起组队拼团任务，也可加入他人战队完成拼团任务，队伍完成相应拼团任务，每位队员即可获得对应的特价商品券。。 -->
+          <!-- <block wx:if="{{rule.length>0}}">
+            <view class="hd-type">
+              <block wx:for="{{rule}}">
+                <view>{{item.step_people_num}}人满{{item.step_number}}步， {{item.collage_price}}元可拼团购买{{item.goods_price}}元的{{item.goods_name}}。</view>
+              </block>
+
+            </view>
+
+          </block> -->
+          <!-- <view>
+            活动队伍有
+          </view>
+          <view>
+            a)8人拼5万步
+          </view>
+          <view>
+            b)5人拼3万步
+          </view>
+          <view>
+            c)3人拼1.5万步
+          </view> -->
+        <!-- </view> -->
+      </view>
+      
+      <!-- <view class="list clearfix">
+        <view class="left">2、</view>
+        <view class="right">500g可抵5元，1000g可抵10元，1500g可以抵15元。
+        </view>
+      </view>
+      <view class="list clearfix">
+        <view class="left">3、</view>
+        <view class="right"> 获得的特价商品优惠券可在青青优农商城使用，请在有效时间内使用，数量有限，先到先得。
+        </view>
+      </view>
+      <view class="list clearfix">
+        <view class="left">4、</view>
+        <view class="right">微信步数单日有效，若当日未完成组队任务，则组队失败，无法获得对应的奖励。
+        </view>
+      </view>
+      <view class="list clearfix">
+        <view class="left">5、</view>
+        <view class="right">在法律允许的范围内，青青优农有权对活动规则进行解释，如有任何问题请与青青优农客服联系，客服热线400-688-1602。
+        </view>
+      </view>
+      <view class="list clearfix">
+        <view class="left">6、</view>
+        <view class="right">本次获得配送只限于北京地区（六环内）
+        </view>
+      </view> -->
+
+    </view>
+    <form report-submit="true" bindsubmit='Sfold' wx:if="{{foldd}}">
+      <input name="ff" value="{{foldd}}" style="display:none"></input>
+      <button class="fold" form-type='submit'>更多攻略
+        <text class="iconfont icon-arrow-down" style="font-size:20rpx;margin-left:8rpx;"></text>
+      </button>
+    </form>
+    <form report-submit="true" bindsubmit='Sfold' wx:if="{{!foldd}}">
+      <input name="ff" value="{{foldd}}" style="display:none"></input>
+      <button class="fold" form-type='submit'>收起
+        <text class="iconfont icon-arrow-up" style="font-size:20rpx;margin-left:8rpx;"></text>
+      </button>
+    </form>
+  </view>
   <view class="other-hd" bindtap='gowx'>
     <view class='more'>
       <view class='left'></view>
