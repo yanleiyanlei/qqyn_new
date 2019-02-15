@@ -1,0 +1,114 @@
+/* pages/m-step2/m-step2.wxss */
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/public.wxss";
+
+.border1:after {
+  background: #ccc;
+}
+
+page {
+  width: 100%;
+  height: 100%;
+  background: #f8f8f8 !important;
+}
+
+.mdd {
+  width: 100%;
+  height: 100%;
+}
+
+.bgImg{
+  width: 750rpx;
+  height: 100%;
+  position: relative;
+}
+.bg{
+  width: 750rpx;
+  height: 100%;
+}
+.banner{
+  position: absolute;
+  top: 69rpx;
+  left: 121rpx;
+  width: 510rpx;
+  height: 378rpx;
+}
+.title{
+  position: absolute;
+  top: 536rpx;
+  left: 195rpx;
+  width: 359rpx;
+  height: 84rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title .top{
+  font-family: FZLTHK--GBK1-0;
+	font-size: 32rpx;
+	font-weight: normal;
+	letter-spacing: 1px;
+	color: #29951c;
+}
+.title .bottom{
+  font-family: FZLTHK--GBK1-0;
+	font-size: 26rpx;
+	font-weight: normal;
+	letter-spacing: 1px;
+	color: #434343;
+  margin: 10rpx 0 0 0;
+}
+.prompt{
+  width: 464rpx;
+	height: 66rpx;
+	font-family: FZLTHK--GBK1-0;
+	font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+  position: absolute;
+  top: 688rpx;
+  left: 143rpx;
+  display: flex;
+  flex-direction: column;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: center;
+}
+.again{
+  width: 230rpx;
+	height: 66rpx;
+	background-color: #ff712b;
+	border-radius: 33rpx;
+  position: absolute;
+  left: 115rpx;
+  top: 901rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: FZLTHK--GBK1-0;
+	font-size: 26rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
+.goShop{
+  width: 230rpx;
+	height: 66rpx;
+	border-radius: 33px;
+	border: solid 1px #ff712b;
+  position: absolute;
+  left: 405rpx;
+  top: 901rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: FZLTHK--GBK1-0;
+	font-size: 26rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #ff712b;
+}

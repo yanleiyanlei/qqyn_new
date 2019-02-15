@@ -4,79 +4,77 @@
 <template is="user" data="{{mshow}}">
 </template>
 <!-- 正文 -->
-<view class="hd-banner">
-  <view class="jrsc">
-    <navigator url="/pages/index/index" open-type='switchTab' hover-class='Nhover'>
-      <image src="https://m.7710mall.com/Uploads/xxc/index.png"></image>
-    </navigator>
-  </view>
-  <navigator url="/pages/personalcenter/personalcenter?uid={{uid}}">
-    <view class="exchange clearfix border-box">
-      <image src="{{head_pic}}"></image>
-      <text>{{rice}}g</text>
-    </view>
-  </navigator>
-  <block wx:if="{{step_rand[y].type==1}}">
-    <view class="situation">
-      <view class="one">{{step_rand[y].nickname}}</view>
-      <view class="two">{{step_rand[y].step_name}}</view>
-    </view>
-  </block>
-  <block wx:if="{{step_rand[y].type==2}}">
-    <view class="situation">
-      <view class="one">{{step_rand[y].nickname}}</view>
-      <view class="two">获得{{step_rand[y].rice_num}}g大米</view>
-    </view>
-  </block>
-  <block wx:if="{{step_rand[x].type==1}}">
-    <view class="situation2">
-      <view class="one">{{step_rand[x].nickname}}</view>
-      <view class="two">{{step_rand[x].step_name}}</view>
-    </view>
-  </block>
-  <block wx:if="{{step_rand[x].type==2}}">
-    <view class="situation2">
-      <view class="one">{{step_rand[x].nickname}}</view>
-      <view class="two">获得{{step_rand[x].rice_num}}g大米</view>
-    </view>
-  </block>
-
-  <!-- <view class="remain">{{goodsname}}剩余:{{remainNum}}份</view> -->
-
-  <view class="hd-dw">
-    <view class="now-join">已有\t
-      <text class="now-join-num">{{total_num}}</text>\t人组队拼团</view>
-    <block wx:if="{{soldout}}">
-      <view class="end-gap">
-        <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png"></image>
-        <view class="center">离任务结束还有:
-          <text class="time border-box">0</text>
-          <text>:</text>
-          <text class="time border-box">0</text>
-          <text>:</text>
-          <text class="time border-box">0</text>
-        </view>
-        <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png" style="float:right"></image>
+<view>
+ <view class="hd-banner">
+    <!-- <view class="jrsc">
+      <navigator url="/pages/index/index" open-type='switchTab' hover-class='Nhover'>
+        <image src="https://m.7710mall.com/Uploads/xxc/index.png"></image>
+      </navigator>
+    </view> -->
+    
+      <view bindtap='gomstep'  class="exchange clearfix border-box">
+        <!-- <image src="{{head_pic}}"></image> -->
+        <!-- <text>{{rice}}g</text> -->
+        <text>拼步首页</text>
+      </view>
+    
+    <!-- <view class="remain">剩余:{{remainNum}}份</view> -->
+    <block wx:if="{{step_rand[y].type==1}}">
+      <view class="situation">
+        <view class="one">{{step_rand[y].nickname}}</view>
+        <view class="two">{{step_rand[y].step_name}}</view>
       </view>
     </block>
-    <block wx:else>
-      <view class="end-gap">
-        <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png"></image>
-        <view class="center">离任务结束还有:
-          <text class="time border-box">{{h1}}</text>
-          <text>:</text>
-          <text class="time border-box">{{m1}}</text>
-          <text>:</text>
-          <text class="time border-box">{{s1}}</text>
-        </view>
-        <image src="https://m.7710mall.com/Uploads/xxc/m_xian.png" style="float:right"></image>
+    <block wx:if="{{step_rand[y].type==2}}">
+      <view class="situation">
+        <view class="one">{{step_rand[y].nickname}}</view>
+        <view class="two">获得{{step_rand[y].rice_num}}g大米</view>
       </view>
     </block>
+    <block wx:if="{{step_rand[x].type==1}}">
+      <view class="situation2">
+        <view class="one">{{step_rand[x].nickname}}</view>
+        <view class="two">{{step_rand[x].step_name}}</view>
+      </view>
+    </block>
+    <block wx:if="{{step_rand[x].type==2}}">
+      <view class="situation2">
+        <view class="one">{{step_rand[x].nickname}}</view>
+        <view class="two">获得{{step_rand[x].rice_num}}g大米</view>
+      </view>
+    </block>
+    <view class="hd-dw">
+      <view class="now-join">已有\t
+        <text class="now-join-num">{{total_num}}</text>\t人组队拼步</view>
+      <block wx:if="{{soldout}}">
+        <view class="end-gap">
+          <view class="center">离任务结束还有:
+            <text class="time border-box">0</text>
+            <text>:</text>
+            <text class="time border-box">0</text>
+            <text>:</text>
+            <text class="time border-box">0</text>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="end-gap">
+          
+          <view class="center">距离任务结束还有:
+            <text class="time border-box">{{h1}}</text>
+            <text>:</text>
+            <text class="time border-box">{{m1}}</text>
+            <text>:</text>
+            <text class="time border-box">{{s1}}</text>
+          </view>
+          
+        </view>
+      </block>
+    </view>
+
+
+    <image src="https://m.test.7710mall.com/Uploads/xcx_img/banner.png" class="banner"></image>
   </view>
-
-
-  <image src="https://m.7710mall.com/Uploads/xxc/step_banner.png" class="banner"></image>
-</view>
 <view class="tab clearfix">
   <view class="{{sta==1?'active':''}}" bindtap="tab" data-sta="1">进行中</view>
   <view class="{{sta==2?'active':''}}" bindtap="tab" data-sta="2">已成功</view>
@@ -84,141 +82,6 @@
 </view>
 <!-- 加入的团队 -->
 <view class="team border-box">
-
-
-
-
-   <!-- <view class="bigbox">
-    <view class="box2">
-      <view class="time">2018-06-08 13:40:56</view>
-      <view class="box">
-        <image class="state" src="https://m.7710mall.com/Uploads/xxc/m_process.png"></image>
-        <view class="boxs">
-          <view class="lists box-tit">
-            <view>任务</view>
-            <view>参与人数</view>
-            <view>完成率</view>
-            <view>已走步数</view>
-          </view>
-          <view class="lists box-tit box-con">
-            <view>{{items.step_name}}</view>
-            <view>{{items.step_people_num}}</view>
-            <view>{{items.comp_rate}}</view>
-            <view>{{items.total_mem}}</view>
-          </view>
-          <view class="member-block">
-
-
-
-            <view class="member" >
-              <swiper class="member-box clearfix" display-multiple-items="5.5">
-                <swiper-item class="member-item">
-                  <view class="item">
-                    <view class="one">
-                      <image src="/image/my/m_kf.png"></image>
-                      <text class="leader">团长</text>
-                    </view>
-                    <view class="two">66步</view>
-                  </view>
-                </swiper-item>
-                <swiper-item class="member-item">
-                  <view class="item">
-                    <view class="one">
-                      <image src="/image/my/m_kf.png"></image>
-                      <text class="leader">团长</text>
-                    </view>
-                    <view class="two">66步</view>
-                  </view>
-
-                </swiper-item>
-                <swiper-item class="member-item">
-                  <view class="item">
-                    <view class="one">
-                      <image src="/image/my/m_kf.png"></image>
-                      <text class="leader">团长</text>
-                    </view>
-                    <view class="two">66步</view>
-                  </view>
-                </swiper-item>
-
-                <swiper-item class="member-item">
-                  <view class="item">
-                    <view class="one">
-                      <image src="/image/my/m_kf.png"></image>
-                      <text class="leader">团长</text>
-                    </view>
-                    <view class="two">66步</view>
-                  </view>
-
-                </swiper-item>
-
-                <swiper-item class="member-item">
-                  <view class="item">
-                    <view class="one">
-                      <image src="/image/my/m_kf.png"></image>
-                      <text class="leader">团长</text>
-                    </view>
-                    <view class="two">66步</view>
-                  </view>
-
-                </swiper-item>
-
-                <swiper-item class="member-item">
-                  <view class="item">
-                    <view class="one">
-                      <image src="/image/my/m_kf.png"></image>
-                      <text class="leader">团长</text>
-                    </view>
-                    <view class="two">66步</view>
-                  </view>
-
-                </swiper-item>
-
-                <swiper-item class="member-item">
-                  <view class="item">
-                    <view class="one">
-                      <image src="/image/my/m_kf.png"></image>
-                      <text class="leader">团长</text>
-                    </view>
-                    <view class="two">66步</view>
-                  </view>
-
-                </swiper-item>
-
-
-
-
-
-              </swiper>
-            </view>
-            <view class="detail">
-              <text class="iconfont icon-tiaozhuan"></text>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <!-- <view class="team-tit" wx:if="{{teamList1.lenght!=0}}">我组建的战队</view> -->
@@ -239,16 +102,16 @@
           <block wx:if="{{items.state==2}}">
             <view class="boxs">
               <view class="lists box-tit">
-                <view>任务</view>
+                <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>已走步数</view>
+                <view>剩余步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
                 <view>{{items.step_people_num}}</view>
                 <view>{{items.comp_rate}}</view>
-                <view>{{items.total_mem}}</view>
+                <view>{{items.sheng}}</view>
               </view>
               <view class="member-block border-box">
                 <view class="member">
@@ -257,12 +120,14 @@
                       <block wx:for="{{items.member_info}}">
                         <swiper-item class="member-item">
                           <view class="item">
-                            <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'>
+                            <!-- <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'> -->
                               <view class="one {{uid==item.member_id?'active':''}}">
                                 <image src="{{item.head_pic}}"></image>
+                                
                                 <text class="leader" wx:if="{{items.member_first==item.member_id}}">团长</text>
+                                <text wx:if="{{item.new_member}}"  class='newPeople'>新人</text>
                               </view>
-                            </navigator>
+                            <!-- </navigator> -->
                             <view class="two">{{item.step_number}}步</view>
                           </view>
                         </swiper-item>
@@ -276,12 +141,13 @@
                       <block wx:for="{{items.member_info}}">
                         <swiper-item class="member-item">
                           <view class="item">
-                            <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'>
+                            <!-- <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'> -->
                               <view class="one {{uid==item.member_id?'active':''}}">
                                 <image src="{{item.head_pic}}"></image>
                                 <text class="leader" wx:if="{{items.member_first==item.member_id}}">团长</text>
+                                <text wx:if="{{item.new_member}}"  class='newPeople'>新人</text>
                               </view>
-                            </navigator>
+                            <!-- </navigator> -->
                             <view class="two">{{item.step_number}}步</view>
                           </view>
                         </swiper-item>
@@ -292,6 +158,7 @@
                 <view class="detail">
                   <form report-submit="true" bindsubmit="Submit2">
                     <input name="zl" value="1" style="display:none"></input>
+                    <input name="rice_rand" value="{{items.rice_rand}}" style="display:none"></input>
                     <!-- <input name="teamid" value="{{items.team_id}}" style="display:none"></input> -->
                     <button formType="submit">
                     </button>
@@ -313,16 +180,16 @@
           <block wx:if="{{items.state==1}}">
             <view class="boxs">
               <view class="lists box-tit">
-                <view>任务</view>
+                <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>已走步数</view>
+                <view>剩余步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
                 <view>{{items.step_people_num}}</view>
                 <view>{{items.comp_rate}}</view>
-                <view>{{items.total_mem}}</view>
+                <view>{{items.sheng}}</view>
               </view>
               <view class="member-block border-box">
                 <view class="member">
@@ -331,12 +198,13 @@
                       <block wx:for="{{items.member_info}}">
                         <swiper-item class="member-item">
                           <view class="item">
-                            <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'>
+                            <!-- <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'> -->
                               <view class="one {{uid==item.member_id?'active':''}}">
                                 <image src="{{item.head_pic}}"></image>
                                 <text class="leader" wx:if="{{items.member_first==item.member_id}}">团长</text>
+                                <text wx:if="{{item.new_member}}"  class='newPeople'>新人</text>
                               </view>
-                            </navigator>
+                            <!-- </navigator> -->
                             <view class="two">{{item.step_number}}步</view>
                           </view>
                         </swiper-item>
@@ -359,12 +227,14 @@
                       <block wx:for="{{items.member_info}}">
                         <swiper-item class="member-item">
                           <view class="item">
-                            <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'>
+                            <!-- <navigator url='/pages/personalcenter/personalcenter?uid={{item.member_id}}&page=1' hover-class='Nhover'> -->
                               <view class="one {{uid==item.member_id?'active':''}}">
                                 <image src="{{item.head_pic}}"></image>
+                                
                                 <text class="leader" wx:if="{{items.member_first==item.member_id}}">团长</text>
+                                <text wx:if="{{item.new_member}}"  class='newPeople'>新人</text>
                               </view>
-                            </navigator>
+                            <!-- </navigator> -->
                             <view class="two">{{item.step_number}}步</view>
                           </view>
                         </swiper-item>
@@ -400,16 +270,16 @@
           <block wx:if="{{items.state==3}}">
             <view class="boxs">
               <view class="lists box-tit">
-                <view>任务</view>
+                <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>已走步数</view>
+                <view>剩余步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
                 <view>{{items.step_people_num}}</view>
                 <view>{{items.comp_rate}}</view>
-                <view>{{items.total_mem}}</view>
+                <view>{{items.sheng}}</view>
               </view>
               <view class="member-block border-box">
                 <view class="member">
@@ -421,7 +291,9 @@
                             <view class="one {{uid==item.member_id?'active':''}}">
                               <view class="tx-mask"></view>
                               <image src="{{item.head_pic}}"></image>
+                              <text wx:if="{{item.new_member}}"  class='newPeople'>新人</text>
                               <text class="leader" wx:if="{{items.member_first==item.member_id}}">团长</text>
+                              
                             </view>
                             <view class="two">{{item.step_number}}步</view>
                           </view>
@@ -448,6 +320,7 @@
                               <view class="tx-mask"></view>
                               <image src="{{item.head_pic}}"></image>
                               <text class="leader" wx:if="{{items.member_first==item.member_id}}">团长</text>
+                              <text wx:if="{{item.new_member}}"  class='newPeople'>新人</text>
                             </view>
                             <view class="two">{{item.step_number}}步</view>
                           </view>
@@ -626,14 +499,206 @@
 </view>
 <!-- 实时数据 -->
 
+  <!-- 组队选择 -->
+  <view class="joinZD">
+    <view class='top'>
+      <view class='left2'>
+        <view class='leftIcon'></view>
+        <view class='leftText' style='margin-left:10rpx;'>创建组队任务<text>(我的当前步数：{{step}}步)</text></view>
 
+        <!--  -->
+      </view>
+      <view class='right'>
+       
+      </view>
+    </view>
+  </view>
+  <view class="box clearfix border-box">
+    <view class='renwu1' wx:if="{{act[0].goods_short_name == '一'}}">
+      <image src='{{act[0].act_img}}' class='renwuPic1'></image>
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[0].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#ff7990">
+          <button form-type='submit' class="tj"></button>
+          <view class="one">{{act[0].step_name}}</view>
+          <!-- <view class="one">{{item.step_name}}</view> -->
+          <view class="joinn" data-acid="{{act[0].id}}">
+            <text>立即组队</text>
+          </view>
+        </view>
+      </form>
+      <view class='more' bindtap='renwu1qingqiu'>更多奖品</view>
+      <view class='bottom'>
+        <view class='bottomBox'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
+          <image src='{{goods[0].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goods[0].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>1</text>
+          <text class='text3'>原价￥{{goods[0].shop_price}}/份</text>
+        </view>
+        <view class='bottomBox'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
+          <image src='{{goods[1].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goods[1].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>1</text>
+          <text class='text3'>原价￥{{goods[1].shop_price}}/份</text>
+        </view>
+        <view class='bottomBox'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
+          <image src='{{goods[2].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goods[2].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>1</text>
+          <text class='text3'>原价￥{{goods[2].shop_price}}/份</text>
+        </view>
+      </view>
+    </view>
+    <view class='renwu1' wx:if="{{act[1].goods_short_name == '二'}}" style='border: solid 2px #1ed161;'>
+      <image src='{{act[1].act_img}}' class='renwuPic1'></image>
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[1].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#ff7990">
+          <button form-type='submit' class="tj"></button>
+          <view class="one">{{act[1].step_name}}</view>
+          <!-- <view class="one">{{item.step_name}}</view> -->
+          <view class="joinn" data-acid="{{act[1].id}}">
+            <text>立即组队</text>
+          </view>
+        </view>
+      </form>
+      <view bindtap='renwu2qingqiu' class='more'>更多奖品</view>
+      <view class='bottom'>
+        <view class='bottomBox bottomBox2'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='{{goodsecond[0].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodsecond[0].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>￥{{goodsecond[0].money}}</text>
+          <text class='text3'>原价￥{{goodsecond[0].shop_price}}/份</text>
+        </view>
+        <view class='bottomBox bottomBox2'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='{{goodsecond[1].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodsecond[1].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>￥{{goodsecond[1].money}}</text>
+          <text class='text3'>原价￥{{goodsecond[1].shop_price}}/份</text>
+        </view>
+        <view class='bottomBox bottomBox2'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='{{goodsecond[2].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodsecond[2].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>￥{{goodsecond[2].money}}</text>
+          <text class='text3'>原价￥{{goodsecond[2].shop_price}}/份</text>
+        </view>
+      </view>
+    </view>
+    <view class='renwu1' wx:if="{{act[2].goods_short_name == '三'}}" style='border: solid 2px #2fa5cb;'>
+      <image src='{{act[2].act_img}}' class='renwuPic1'></image>
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[2].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#ff7990">
+          <button form-type='submit' class="tj"></button>
+          <view class="one">{{act[2].step_name}}</view>
+          <!-- <view class="one">{{item.step_name}}</view> -->
+          <view class="joinn" data-acid="{{act[2].id}}">
+            <text>立即组队</text>
+          </view>
+        </view>
+      </form>
+      <view class='more' bindtap='renwu3qingqiu'>更多奖品</view>
+      <view class='bottom'>
+        <view class='bottomBox bottomBox2'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='{{goodthrid[0].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodthrid[0].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>￥{{goodthrid[0].money}}</text>
+          <text class='text3'>原价￥{{goodthrid[0].shop_price}}/份</text>
+        </view>
+        <view class='bottomBox bottomBox2'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='{{goodthrid[1].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodthrid[1].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>￥{{goodthrid[1].money}}</text>
+          <text class='text3'>原价￥{{goodthrid[1].shop_price}}/份</text>
+        </view>
+        <view class='bottomBox bottomBox2'>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='{{goodthrid[2].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodthrid[2].goods_id}}' class='pic2'></image>
+          <text class='text1'>券后价</text>
+          <text class='text2'>￥{{goodthrid[1].money}}</text>
+          <text class='text3'>原价￥{{goodthrid[2].shop_price}}/份</text>
+        </view>
+      </view>
+    </view>
+    <view class='bottomTitle'>
+      <view class='bottomTitle1'>温馨提示：<view class='bottomTitle3'>任务2、3战队中含有新成员，奖励可</view> <text>升级</text><view class='bottomTitle2'> 哦！</view></view>
+    </view>
+    <!-- <view class="left">
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[0].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#3ac0ff">
+          <button form-type='submit' class="tj"></button>
+
+          <view class="one">{{act[0].step_name}}</view>
+          <view class="join" data-acid="{{act[0].id}}">
+            <text style="color:#3ac0ff">立即组队</text>
+          </view>
+        </view>
+      </form>
+      <form report-submit="true" bindsubmit="Submit">
+        <input value='{{act[1].id}}' name="ac_id" style="display:none"></input>
+
+        <view class="list" style="background:#fecb69;margin-top:25rpx;">
+          <button form-type='submit' class="tj"></button>
+          <view class="one">{{act[1].step_name}}</view>
+          <view class="join" data-acid="{{act[1].id}}">
+            <text style="color:#fecb69">立即组队</text>
+          </view>
+        </view>
+      </form>
+    </view>
+    <view class="right">
+      
+
+    </view> -->
+
+
+  </view>
 <!-- 规则 -->
 <view class="hd-rule border-box">
   <view class="rule-tit">活动规则:</view>
   <view class="rule border-box" style="{{foldStyle}}">
     <view class="list clearfix">
-      <view class="left">1、</view>
-      <view class="right"> 活动期间内每个微信用户均可参与活动，可自主发起组队拼团任务，也可加入他人战队完成拼团任务，队伍完成相应拼团任务，每位队员即可随机获得大米，难度不同获取的大米数不同,每天队员之间不可重复组队。
+      <view class='huodongjiangpin'>
+        <view>
+            {{msg.msg1}}
+        </view>
+        <view>
+            {{msg.msg2}}
+        </view>
+        <view>
+            {{msg.msg3}}
+        </view>
+        <view>
+            {{msg.msg4}}
+        </view>
+        <view>
+            {{msg.msg5}}
+        </view>
+        <view>
+            {{msg.msg6}}
+        </view>
+        <view>
+            {{msg.msg7}}
+        </view>
+        <view>
+            {{msg.msg8}}
+        </view>
+      </view>
+      <!-- <view class="left">1、</view>
+      <view class="right"> 活动期间内每个微信用户均可参与活动，可自主发起组队拼团任务，也可加入他人战队完成拼团任务，队伍完成相应拼团任务，每位队员即可获得对应的特价商品券。。 -->
         <!-- <block wx:if="{{rule.length>0}}">
           <view class="hd-type">
             <block wx:for="{{rule}}">
@@ -643,7 +708,7 @@
           </view>
 
         </block> -->
-        <view>
+        <!-- <view>
           活动队伍有
         </view>
         <view>
@@ -654,10 +719,11 @@
         </view>
         <view>
           c)3人拼1.5万步
-        </view>
-      </view>
+        </view> -->
+      <!-- </view> -->
     </view>
-    <view class="list clearfix">
+    
+    <!-- <view class="list clearfix">
       <view class="left">2、</view>
       <view class="right">500g可抵5元，1000g可抵10元，1500g可以抵15元。
       </view>
@@ -681,7 +747,7 @@
       <view class="left">6、</view>
       <view class="right">本次获得配送只限于北京地区（六环内）
       </view>
-    </view>
+    </view> -->
 
   </view>
   <form report-submit="true" bindsubmit='Sfold' wx:if="{{fold}}">
@@ -698,17 +764,17 @@
   </form>
 </view>
 <!-- 更多 -->
-<view class="more" style="{{more}}">
-  <image class="zs" src="https://m.7710mall.com/Uploads/xxc/m_tit.png">
-  </image>
-  
-    <image class="pin" src="https://m.7710mall.com/Uploads/xxc/hd_rk.jpg" bindtap='gowx'>
-    </image>
+  <view class="other-hd" bindtap='gowx'>
+    <view class='more'>
+      <view class='left'></view>
+      <view class='center'>更多活动</view>
+      <view class='right'></view>
+    </view>
+    <image src="https://m.test.7710mall.com/Uploads/xcx_img/bannerFenxiao.png"></image>
 
+  </view>
 
-</view>
-
-<block wx:if="{{soldout}}">
+<!-- <block wx:if="{{soldout}}">
   <view class="stop">
     <text>今日活动已结束</text>
   </view>
@@ -719,4 +785,5 @@
       <button form-type='submit'>立即组队</button>
     </form>
   </view>
-</block>
+</block> -->
+</view>

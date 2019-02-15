@@ -126,13 +126,13 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
 .zan-dialog__container {
   position: fixed;
   bottom: 400rpx;
-  width: 612rpx;
-  background: url('https://m.7710mall.com/Public/xcximg/newyear/tanchuang.png')no-repeat;
+  width: 732rpx;
+  background: url('http://thyrsi.com/t6/664/1548743355x2890174106.png')no-repeat;
   background-size:100%;
   /* //弹窗布局宽 */
-  height: 707rpx;
+  height: 733rpx;
   /* //弹窗布局高，与下面弹出距离transform有关 */
-  margin-left: 66rpx;
+  margin-left: 9rpx;
   /* background: #f8f8f8; */
   transform: translateY(300%);
   /* //弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
@@ -188,3 +188,81 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   background: #da4330;
   border-radius: 18px;
 }  
+.shuiguo{
+  width: 176rpx;
+  height: 176rpx;
+  position: fixed;
+  left: 178rpx;
+  bottom: 304rpx;
+}
+.baokuan{
+  width: 31rpx;
+  height: 58rpx;
+  position: fixed;
+  left: 312rpx;
+  bottom: 423rpx;
+  background: url('http://thyrsi.com/t6/664/1548744033x2890191853.png')no-repeat center;
+  background-size: 100%;
+}
+.shuiguoContent{
+  width: 200rpx;
+	height: 55rpx;
+	font-family: SourceHanSansSC-Regular;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #666666;
+  position: fixed;
+  left: 365rpx;
+  bottom: 406rpx;
+}
+.jine{
+  width: 68rpx;
+	height: 27rpx;
+	font-family: SourceHanSansSC-Regular;
+	font-size: 36rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #feb401;
+  position: fixed;
+  left: 365rpx;
+  bottom: 321rpx;
+}
+.shangxian{
+  	width: 308rpx;
+	height: 26rpx;
+	font-family: PingFang-SC-Regular;
+	font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #000000;
+  position: fixed;
+  left: 215rpx;
+  bottom: 243rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add1{
+  width: 192rpx;
+	height: 60rpx;
+	background-color: #fff665;
+	background: url('http://thyrsi.com/t6/664/1548744636x2890174375.png')no-repeat center;
+  background-size: 100%;
+  position: fixed;
+  left: 150rpx;
+  bottom: 148rpx;
+}
+.add2{
+  width: 192rpx;
+	height: 60rpx;
+	background-color: #fff665;
+	background: url('http://thyrsi.com/t6/664/1548744726x2728279033.png')no-repeat center;
+  background-size: 100%;
+  position: fixed;
+  left: 383rpx;
+  bottom: 148rpx;
+}

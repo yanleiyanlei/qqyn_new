@@ -3,9 +3,10 @@ var user = require("../../lib/js/user.js")
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据lexlee
    */
   data: {
+    act:[],
     uid: '',
     mshow: "display:none",//授权遮罩
     more: "display:block",//更多活动
@@ -17,6 +18,7 @@ Page({
     foldStyle3: "height:1250rpx!important;",
     team: "",
     teamList1: [],
+    rice_rand:'',
     teamList2: [],
     teamList3: [],
     teamList: [],//渲染的组队信息
@@ -27,8 +29,8 @@ Page({
     sta: 1//切换
   },
   gowx: function () {
-    wx.navigateTo({
-      url: '/pages/goout/goout',
+    wx.switchTab({
+      url: '/pages/bution/bution',
     })
   },
   tab: function (e) {
@@ -162,12 +164,16 @@ Page({
                     method: "post",
                     success: function (res) {
                       console.log(res)
+                      console.log(1111111111111112)
+                      // console.log(res.data.finish[0].rice_rand)
                       that.setData({
                         teamList1: res.data.going,
                         teamList2: res.data.finish,
                         teamList3: res.data.all,
                         head_pic: res.data.head_pic,
-                        rice: res.data.member_rice
+                        rice: res.data.member_rice,
+                        // rice_rand: res.data.finish[0].rice_rand
+
                       })
                       if (that.data.sta == 1) {
                         that.setData({
@@ -260,7 +266,9 @@ Page({
       })
       var timer = setInterval(function () {
         var userInfo = wx.getStorageSync("userinfo");
+        console.log(userInfo.uid)
         if (userInfo.uid) {
+          
           clearInterval(timer)
           that.setData({
             uid: wx.getStorageSync("userinfo").uid,
@@ -289,12 +297,14 @@ Page({
                         success: function (res) {
                           console.log(res)
                           console.log(res)
+                          // console.log(res.data.finish[0].rice_rand)
                           that.setData({
                             teamList1: res.data.going,
                             teamList2: res.data.finish,
                             teamList3: res.data.all,
                             head_pic: res.data.head_pic,
-                            rice: res.data.member_rice
+                            rice: res.data.member_rice,
+                            // rice_rand: res.data.finish[0].rice_rand
                           })
                           if (that.data.sta == 1) {
                             that.setData({
@@ -406,7 +416,10 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
-
+    var pid = options.pid;
+    if (pid) {
+      wx.setStorageSync("pid", pid);
+    }
 
     var timer2 = setInterval(function () {
       // console.log(that.data.x)
@@ -436,7 +449,142 @@ Page({
       }
     }, 5000)
 
+    wx.request({//页面已经开团的轮播
+      url: app.globalData.Murl + '/Applets/Active/carousel',
+      method: "post",
+      data: { member_id: wx.getStorageSync("userinfo").uid },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          arr: res.data.list,
+          arr2: res.data.list,
+          step: res.data.mem_step_num.step_number
+        })
+        // if (res.data.list.length > 2 && res.data.list.length <= 10) {
+        //   that.setData({
+        //     arr2: res.data.list
+        //   })
+        // } else {
 
+        //   var arrZ = [];
+        //   for (var i = 0; i <10; i++) {
+        //     arrZ.push(res.data.list[i])
+        //   }
+        //   that.setData({
+        //     arr2: arrZ
+        //   })
+        // }
+
+        that.setData({
+          rank: res.data.rice_rank,
+          head_pic: res.data.head_pic,
+          rice: res.data.member_rice
+        })
+        if (res.data.rice_rank.length > 3) {
+          that.setData({
+            foldClass: "height:380rpx;padding-bottom:70rpx",
+            fold1: "display:block",
+          })
+        } else {
+          that.setData({
+            foldClass: "height:autorpx;padding-bottom:0rpx",
+            fold1: "display:none",
+          })
+        }
+
+
+
+
+
+      }
+
+    })
+    wx.request({//任务一数据请求
+      url: app.globalData.Murl + '/Applets/Tgs/goodfirst',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //application/json for get
+      },
+      method: "post",
+      success: function (res) {
+        console.log("任务一图片列表")
+        console.log(res.data)
+        console.log(res.data.goods)
+        // console.log(res.data.goods[0].shop_price)
+        that.setData({
+          goods: res.data.goods,
+        })
+      }
+    })
+    wx.request({//任务二数据请求
+      url: app.globalData.Murl + '/Applets/Tgs/goodsecond',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //application/json for get
+      },
+      method: "post",
+      success: function (res) {
+        console.log("任务二图片列表")
+        console.log(res.data)
+        console.log(res.data.goods)
+        // console.log(res.data.goods[0].shop_price)
+        that.setData({
+          goodsecond: res.data.goods,
+        })
+      }
+    })
+    wx.request({//任务三数据请求
+      url: app.globalData.Murl + '/Applets/Tgs/goodthrid',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //application/json for get
+      },
+      method: "post",
+      success: function (res) {
+        console.log("任务三图片列表")
+        console.log(res.data)
+        console.log(res.data.goods)
+        // console.log(res.data.goods[0].shop_price)
+        that.setData({
+          goodthrid: res.data.goods,
+        })
+      }
+    })
+    // wx.request({//任务列表
+    //   url: app.globalData.Murl + '/Applets/Active/sy_step_list',
+    //   method: "post",
+    //   data: { member_id: wx.getStorageSync("userinfo").uid },
+    //   success: function (res) {
+    //     console.log(321321321321)
+    //     console.log(res.data[0].act_img)
+    //     that.setData({
+    //       act_renwu:res.data
+    //     })
+    //   }
+
+    // })
+    wx.request({//任务规则
+      url: app.globalData.Murl + '/Applets/Active/active_word',
+      method: "post",
+      data: { member_id: wx.getStorageSync("userinfo").uid },
+      success: function (res) {
+        console.log(res)
+        console.log(res.data)
+        that.setData({
+          msg:res.data
+        })
+      }
+
+    })
+    wx.request({//小程序拼步数活动列表
+      url: app.globalData.Murl + '/Applets/Active/get_step_list',
+      data: { member_id: wx.getStorageSync("userinfo").uid },
+      method: "post",
+      success: function (res) {
+        console.log(123123132)
+        console.log(res.data)
+        that.setData({
+          act: res.data
+        })
+      }
+    })
     // 轮播上的倒计时
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
@@ -470,30 +618,77 @@ Page({
   UserInfo: function (e) {//开通权限获得用户信息
     user.user(e)
   },
-  Sfold: function (e) {//规则展开
+  renwu1qingqiu: function () {  //任务一刷新更多奖品
     var that = this;
-    var formId = e.detail.formId;
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Active/get_mem_formid',
-      data: { member_id: that.data.uid, formid: formId },
-      method: 'post',
+    wx.request({//任务一数据请求
+      url: app.globalData.Murl + '/Applets/Tgs/goodfirst',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //application/json for get
+      },
+      method: "post",
       success: function (res) {
+        console.log("任务一图片列表")
+        console.log(res.data)
+        console.log(res.data.goods)
+        // console.log(res.data.goods[0].shop_price)
+        that.setData({
+          goods: res.data.goods,
+        })
       }
     })
-    var fold = e.detail.value.ff;
-    console.log(e.detail.value.ff)
-    if (fold=='true') {
-      that.setData({
-        fold: false,
-        foldStyle: "height:auto!important;"
-      })
-    }else if(fold=='false'){
-      console.log(555)
-      that.setData({
-        fold: true,
-        foldStyle: "height:350rpx!important;"
-      })
-    }
+  },
+  renwu2qingqiu: function () { //任务二刷新更多奖品
+    var that = this;
+    wx.request({//任务二数据请求
+      url: app.globalData.Murl + '/Applets/Tgs/goodsecond',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //application/json for get
+      },
+      method: "post",
+      success: function (res) {
+        console.log("任务二图片列表")
+        console.log(res.data)
+        console.log(res.data.goods)
+        // console.log(res.data.goods[0].shop_price)
+        that.setData({
+          goodsecond: res.data.goods,
+        })
+      }
+    })
+  },
+  renwu3qingqiu: function () {   //任务三刷新更多奖品
+    var that = this;
+    wx.request({//任务三数据请求
+      url: app.globalData.Murl + '/Applets/Tgs/goodthrid',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' //application/json for get
+      },
+      method: "post",
+      success: function (res) {
+        console.log("任务三图片列表")
+        console.log(res.data)
+        console.log(res.data.goods)
+        // console.log(res.data.goods[0].shop_price)
+        that.setData({
+          goodthrid: res.data.goods,
+        })
+      }
+    })
+  },
+  goodsDetails: function (e) {
+    //console.log(e.currentTarget.dataset.goodsid)
+    wx.navigateTo({
+      url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+
+  },
+  gomstep:function(){
+    wx.navigateTo({
+      url: '/pages/m-step2/m-step2'
+    })
   },
   Sfold2: function (e) {//我组建的团队展开
     var that = this;
@@ -547,59 +742,60 @@ Page({
       })
     }
   },
-  Submit: function (e) {//进入下一页的开通微信步数
-    var that = this;
-    var formId = e.detail.formId;
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Active/get_mem_formid',
-      data: { member_id: that.data.uid, formid: formId },
-      method: 'post',
-      success: function (res) {
-      }
-    })
-    if (!wx.getStorageSync('run')) {
-      wx.login({
-        success: function (res) {
-          var code = res.code;
-          wx.openSetting({
-            success(res) {
-              if (res.authSetting["scope.werun"]) {
-                wx.getWeRunData({//解密微信运动
-                  success(res) {
-                    wx.setStorageSync("run", true);
-                    wx.request({
-                      url: app.globalData.Murl + '/Applets/Active/wx_movemen',
-                      data: { code: code, encryptedData: res.encryptedData, iv: res.iv, member_id: that.data.uid },
-                      method: "post",
-                      success: function (res) {
-                        wx.navigateTo({
-                          url: '/pages/m-step2/m-step2',
-                        })
-                      }
-                    })
-                  },
-                  fail() {
-                    wx.showToast({
-                      title: '请授权微信运动步数，参加活动',
-                      icon: "none",
-                      duration: 1000
-                    })
-                  }
-                })
-              }
-            }
-          })
-        }
-      })
-    } else {
-      wx.navigateTo({
-        url: '/pages/m-step2/m-step2',
-      })
-    }
-  },
+  // Submit: function (e) {//进入下一页的开通微信步数
+  //   var that = this;
+  //   var formId = e.detail.formId;
+  //   wx.request({
+  //     url: app.globalData.Murl + '/Applets/Active/get_mem_formid',
+  //     data: { member_id: that.data.uid, formid: formId },
+  //     method: 'post',
+  //     success: function (res) {
+  //     }
+  //   })
+  //   if (!wx.getStorageSync('run')) {
+  //     wx.login({
+  //       success: function (res) {
+  //         var code = res.code;
+  //         wx.openSetting({
+  //           success(res) {
+  //             if (res.authSetting["scope.werun"]) {
+  //               wx.getWeRunData({//解密微信运动
+  //                 success(res) {
+  //                   wx.setStorageSync("run", true);
+  //                   wx.request({
+  //                     url: app.globalData.Murl + '/Applets/Active/wx_movemen',
+  //                     data: { code: code, encryptedData: res.encryptedData, iv: res.iv, member_id: that.data.uid },
+  //                     method: "post",
+  //                     success: function (res) {
+  //                       wx.navigateTo({
+  //                         url: '/pages/m-step2/m-step2',
+  //                       })
+  //                     }
+  //                   })
+  //                 },
+  //                 fail() {
+  //                   wx.showToast({
+  //                     title: '请授权微信运动步数，参加活动',
+  //                     icon: "none",
+  //                     duration: 1000
+  //                   })
+  //                 }
+  //               })
+  //             }
+  //           }
+  //         })
+  //       }
+  //     })
+  //   } else {
+  //     wx.navigateTo({
+  //       url: '/pages/m-step2/m-step2',
+  //     })
+  //   }
+  // },
   Submit2: function (e) {//点击不同的战队显示
     var that = this;
     var zl = e.detail.value.zl;
+    var rice_rand = e.detail.value.rice_rand;
     var formId = e.detail.formId;
     console.log(formId)
     if (zl == 1) {
@@ -608,10 +804,12 @@ Page({
         data: { member_id: that.data.uid, formid: formId },
         method: 'post',
         success: function (res) {
+          console.log(taat.data.uid)
         }
       })
+      
       wx.navigateTo({
-        url: '/pages/personalcenter/personalcenter?uid=' + that.data.uid,
+        url: '/pages/hasbeencompleted/hasbeencompleted?uid=' + that.data.uid + "&rice_rand=" + rice_rand,
       })
     }
     if (zl == 2) {
@@ -635,6 +833,85 @@ Page({
         success: function (res) {
 
         }
+      })
+    }
+  },
+  Submit: function (e) {//自己开团
+    var that = this
+    var ac_id = e.detail.value.ac_id;
+    var formId = e.detail.formId;//模板id
+    console.log(formId)
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Active/get_mem_formid',
+      data: { member_id: that.data.uid, formid: formId },
+      method: 'post',
+      success: function (res) {
+      }
+    })
+    wx.showModal({
+      title: '组队',
+      content: '是否立即组队',
+      success: function (res) {
+        console.log(222)
+        console.log(res)
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.Murl + '/Applets/Active/create_step',
+            data: { member_id: that.data.uid, ac_id: ac_id, formid: formId },
+            method: "post",
+            success: function (res) {
+              var sta = res.data.status;
+              console.log(res)
+              console.log(res.data.msg)
+              if (sta == 1) {
+                wx.navigateTo({
+                  url: '/pages/m-step3/m-step3?scene=' + res.data.team_id,
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.msg,
+                  // title: "bug",
+                  icon: "none",
+                  duration: 1000
+                })
+              }
+            }
+          })
+
+
+        } else {
+
+        }
+      }
+    })
+
+
+
+  },
+  Sfold: function (e) {//规则展开
+    var that = this;
+    var formId = e.detail.formId;
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Active/get_mem_formid',
+      data: { member_id: that.data.uid, formid: formId },
+      method: 'post',
+      success: function (res) {
+      }
+    })
+    var fold = e.detail.value.ff;
+    console.log(e.detail.value.ff)
+    if (fold == 'true') {
+      console.log("fold为真")
+      that.setData({
+        fold: false,
+        foldStyle: "height:auto!important;"
+      })
+    } else if (fold == 'false') {
+      console.log("fold为假")
+      console.log(555)
+      that.setData({
+        fold: true,
+        foldStyle: "height:350rpx!important;"
       })
     }
   },
@@ -679,9 +956,10 @@ Page({
   onShareAppMessage: function () {
     var that = this;
     // console.log(that.data.id)
+    var uid = wx.getStorageSync("userinfo").uid;
     return {
-      title: '青青优农',
-      path: '/pages/m-step/m-step',
+      title: '快来拼步数抢200元优惠券',
+      path: '/pages/m-step/m-step?pid=' + uid,
       imageUrl: '',
       success: function (res) {
 

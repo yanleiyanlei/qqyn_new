@@ -32,6 +32,7 @@ Page({
     ], //奖品图片数组
     times: 0 ,// 抽奖次数
     pd:0 //立即分享是否显示
+    
   },
 
   //判断用户是否确认登录
@@ -261,7 +262,7 @@ Page({
         },
         method: 'POST',
         success: function (res) {
-
+          
           console.log(res.data)
           if (times <= 0) {
             console.log(res.data.content)
@@ -289,6 +290,7 @@ Page({
                     contentJp: res.data.data.content,
                     isRunning: false,
                     times:times
+
                   })
                   _this.toggleDialog();//显示弹窗，抽奖结果
                 } else {

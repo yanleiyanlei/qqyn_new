@@ -1,0 +1,16 @@
+
+
+<view class='bgImg'>
+  <image class='bg' src='https://m.test.7710mall.com/Uploads/xcx_img/bgimg.png'></image>
+  <image class='banner' src='https://m.test.7710mall.com/Uploads/xcx_img/success.png'></image>
+  <view class='title'>
+    <view class='top'>恭喜您任务完成 !</view>
+    <view class='bottom'>可获得一张6.9元特价商品券</view>
+  </view>
+  <view class='prompt'>
+    <view>特价商品券可在【青青商城-会员-优惠券】</view>
+    <view style='margin-top:5rpx'>之中进行查看使用</view>
+  </view>
+  <view class='again'>再组一队</view>
+  <view class='goShop'>去商城逛逛</view>
+</view>

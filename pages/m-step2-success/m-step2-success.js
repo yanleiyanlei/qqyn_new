@@ -10,7 +10,6 @@ Page({
     mshow: "display:none",//授权遮罩
     act: "",
     arr: [],
-    goods:[],
     soldout: false,
     foldClass: "height:366rpx!important;padding-bottom:70rpx",
     fold: "display:block",
@@ -21,8 +20,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   gowx: function () {
-    wx.switchTab({
-      url: '/pages/bution/bution',
+    wx.navigateTo({
+      url: '/pages/goout/goout',
     })
   },
   fold: function () {
@@ -80,17 +79,6 @@ Page({
 
                 },
                 complete: function () {//进入页面轮播上的假数据
-
-                  //更新完成步数  
-                  wx.request({
-                    url: app.globalData.Murl + '/Applets/Active/team_first',
-                    data: { member_id: wx.getStorageSync("userinfo").uid },
-                    method: "post",
-                    success: function (res) {
-
-                    }
-                  })
-
                   wx.request({
                     url: app.globalData.Murl + '/Applets/Active/step_detail',
                     method: "post",
@@ -174,17 +162,6 @@ Page({
 
                     },
                     complete: function () {
-                     //更新完成步数   
-                      wx.request({
-                        url: app.globalData.Murl + '/Applets/Active/team_first',
-                        data: { member_id: wx.getStorageSync("userinfo").uid },
-                        method: "post",
-                        success: function (res) {
-                         
-                        }
-                      })
-
-
                       // 参加的团队
                       wx.request({
                         url: app.globalData.Murl + '/Applets/Active/team_list',
@@ -324,10 +301,7 @@ Page({
       uid: wx.getStorageSync("userinfo").uid
     })
     //随机数
-    var pid = options.pid;
-    if (pid) {
-      wx.setStorageSync("pid", pid);
-    }
+
     var timer2 = setInterval(function () {
       console.log(that.data.x)
       console.log(that.data.y)
@@ -359,7 +333,6 @@ Page({
     // 活动类型
     wx.request({//小程序拼步数活动列表
       url: app.globalData.Murl + '/Applets/Active/get_step_list',
-      
       method: "post",
       success: function (res) {
         console.log(res.data)
@@ -368,55 +341,6 @@ Page({
         })
       }
     })
-    wx.request({//任务一数据请求
-      url: app.globalData.Murl + '/Applets/Tgs/goodfirst',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //application/json for get
-      },
-      method: "post",
-      success: function (res) {
-        console.log("任务一图片列表")
-        console.log(res.data)
-        console.log(res.data.goods)
-        // console.log(res.data.goods[0].shop_price)
-        that.setData({
-          goods: res.data.goods,
-        })
-      }
-    })
-    wx.request({//任务二数据请求
-      url: app.globalData.Murl + '/Applets/Tgs/goodsecond',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //application/json for get
-      },
-      method: "post",
-      success: function (res) {
-        console.log("任务二图片列表")
-        console.log(res.data)
-        console.log(res.data.goods)
-        // console.log(res.data.goods[0].shop_price)
-        that.setData({
-          goodsecond: res.data.goods,
-        })
-      }
-    })
-    wx.request({//任务三数据请求
-      url: app.globalData.Murl + '/Applets/Tgs/goodthrid',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //application/json for get
-      },
-      method: "post",
-      success: function (res) {
-        console.log("任务三图片列表")
-        console.log(res.data)
-        console.log(res.data.goods)
-        // console.log(res.data.goods[0].shop_price)
-        that.setData({
-          goodthrid: res.data.goods,
-        })
-      }
-    })
-
     // 排行榜假数据
     // wx.request({
     //   url: app.globalData.Murl + '/Applets/Active/mem_rice',
@@ -482,73 +406,6 @@ Page({
   UserInfo: function (e) {//开通权限获得用户信息
     user.user(e)
   },
-  renwu1qingqiu: function () {  //任务一刷新更多奖品
-    var that = this;
-    wx.request({//任务一数据请求
-      url: app.globalData.Murl + '/Applets/Tgs/goodfirst',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //application/json for get
-      },
-      method: "post",
-      success: function (res) {
-        console.log("任务一图片列表")
-        console.log(res.data)
-        console.log(res.data.goods)
-        // console.log(res.data.goods[0].shop_price)
-        that.setData({
-          goods: res.data.goods,
-        })
-      }
-    })
-  },
-  renwu2qingqiu: function () { //任务二刷新更多奖品
-    var that = this;
-    wx.request({//任务二数据请求
-      url: app.globalData.Murl + '/Applets/Tgs/goodsecond',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //application/json for get
-      },
-      method: "post",
-      success: function (res) {
-        console.log("任务二图片列表")
-        console.log(res.data)
-        console.log(res.data.goods)
-        // console.log(res.data.goods[0].shop_price)
-        that.setData({
-          goodsecond: res.data.goods,
-        })
-      }
-    })
-  },
-  renwu3qingqiu: function () {   //任务三刷新更多奖品
-    var that = this;
-    wx.request({//任务三数据请求
-      url: app.globalData.Murl + '/Applets/Tgs/goodthrid',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' //application/json for get
-      },
-      method: "post",
-      success: function (res) {
-        console.log("任务三图片列表")
-        console.log(res.data)
-        console.log(res.data.goods)
-        // console.log(res.data.goods[0].shop_price)
-        that.setData({
-          goodthrid: res.data.goods,
-        })
-      }
-    })
-  },
-  goodsDetails: function (e) {
-    //console.log(e.currentTarget.dataset.goodsid)
-    wx.navigateTo({
-      url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-
-  },
   Submit: function (e) {//自己开团
     var that = this
     var ac_id = e.detail.value.ac_id;
@@ -565,8 +422,6 @@ Page({
       title: '组队',
       content: '是否立即组队',
       success: function (res) {
-        console.log(222)
-        console.log(res)
         if (res.confirm) {
           wx.request({
             url: app.globalData.Murl + '/Applets/Active/create_step',
@@ -583,7 +438,6 @@ Page({
               } else {
                 wx.showToast({
                   title: res.data.msg,
-                  // title: "bug",
                   icon: "none",
                   duration: 1000
                 })
@@ -694,40 +548,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    var that = this;
-    var uid = wx.getStorageSync("userinfo").uid;
-    return {
-      title: '快来拼步数抢200元优惠券',
-      path: '/pages/m-step2/m-step2?pid='+uid,
-      imageUrl: '',
-      success: function (res) {
 
-        var shareTickets = res.shareTickets[0];
-        wx.login({
-          success: function (res) {
-
-            var code = res.code;
-            wx.getShareInfo({
-              shareTicket: shareTickets,
-              success: function (res) {
-                var encryptedData = res.encryptedData;
-                var iv = res.iv;
-
-              },
-              fail: function (res) { },
-              complete: function (res) { }
-            })
-
-
-
-          }
-        })
-
-
-      },
-      fail: function (res) {
-
-      }
-    }
   }
 })

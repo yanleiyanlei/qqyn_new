@@ -330,6 +330,17 @@
   background-position: center;
   background-size: cover;
   margin-bottom: 20rpx;
+  position: relative;
+}
+.quanma{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size:32rpx;
+  font-weight: bold;
+  color:#ff712b;
+  line-height:30rpx;
+  margin-top:35rpx;
 }
 
 .m-box .m-listg .m-list-left {

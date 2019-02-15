@@ -47,8 +47,21 @@
   <view class="zan-dialog {{ showDialogg ? 'zan-dialog--show' : '' }}" bindtap="toggleDialogg">
     <view class="zan-dialog__mask"  />
     <view class="zan-dialog__container">
+      <image src='http://thyrsi.com/t6/664/1548743827x2890149584.png' class='shuiguo'></image>
+      <view class='baokuan'></view>
+      <view class='shuiguoContent'>麒麟西瓜 瓜味甜润 约3.6kg</view>
+      <view class='jine'>￥46</view>
+      <view class='shangxian'>您的抽奖次数已达到上线</view>
+      <view class='add1'>
+        <view></view>
+      </view>
+      <view class='add2'>
+        <view></view>
+      </view>
       <!-- <view style='padding:535rpx 0 0 190rpx;font-size:30rpx;color:#c31b19'>您今日已抽奖{{times}}次</view> -->
-      <view style='padding:570rpx 0 0 225rpx;font-size:30rpx;color:#c31b19'>抽奖次数不足</view>
+      <!-- <view style='padding:570rpx 0 0 225rpx;font-size:30rpx;color:#c31b19'>
+      <view></view>
+      </view> -->
     </view>
     <!-- 抽奖满次后要显示的弹窗 -->
   </view>
