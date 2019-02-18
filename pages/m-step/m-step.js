@@ -138,6 +138,18 @@ Page({
         })
       }
     })
+    wx.request({//小程序拼步数活动列表
+      url: app.globalData.Murl + '/Applets/Active/get_step_list',
+      data: { member_id: wx.getStorageSync("userinfo").uid },
+      method: "post",
+      success: function (res) {
+        console.log(123123132)
+        console.log(res.data)
+        that.setData({
+          act: res.data
+        })
+      }
+    })
     //判断授权
     if (wx.getStorageSync("userinfo").uid) {
       that.setData({
@@ -804,7 +816,7 @@ Page({
         data: { member_id: that.data.uid, formid: formId },
         method: 'post',
         success: function (res) {
-          console.log(taat.data.uid)
+          console.log(that.data.uid)
         }
       })
       

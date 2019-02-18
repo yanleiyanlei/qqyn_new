@@ -5,6 +5,9 @@ Page({
   /**
    * 页面的初始数据
    */
+  // onPullDownRefresh() {
+  //   wx.stopPullDownRefresh()
+  // },
   data: {
     uid: "",
     mshow: "display:none",//授权遮罩

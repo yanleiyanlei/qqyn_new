@@ -976,7 +976,7 @@ page {
   position: absolute;
   top: 169rpx;
   left: 301rpx;
-  z-index: 999;
+  /* z-index: 999; */
 }
 .bottomBox2{
   width: 222rpx;
@@ -1139,7 +1139,7 @@ page {
 	color: #888888;
 }
 .list .one_{
-  width:100%;
+  width:80%;
   height:24rpx;
   font-family:MicrosoftYaHei;
   font-size:23rpx;
@@ -1154,13 +1154,13 @@ page {
 .list .one_ text{
   font-family: MicrosoftYaHei;
 	font-size: 37rpx;
-	font-weight: normal;
+	font-weight: bold;
 	font-style: italic;
 	font-stretch: normal;
 	letter-spacing: 0px;
 	color: #ffc001;
-	/* box-shadow: 2px 2px 0px 0px 
-		rgba(119, 3, 157, 0.82); */
+  /* box-shadow: 1rpx 1rpx 1rpx 1rpx 
+		rgba(113, 3, 157, 0.823); */
 }
 .list .one{
   width:312rpx;
@@ -1174,5 +1174,14 @@ page {
   position:absolute;
   top:45rpx;
   left:46rpx;
+
+}
+.shuaxinjiangpin{
+  width:170rpx;
+  height:40rpx;
+  position:absolute;
+  top:160rpx;
+  left:270rpx;
+  z-index:999;
 
 }

@@ -923,7 +923,7 @@ page {
 
 }
 .list .one_{
-  width:100%;
+  width:80%;
   height:24rpx;
   font-family:MicrosoftYaHei;
   font-size:23rpx;
@@ -958,7 +958,7 @@ page {
   position:absolute;
   top:64rpx;
   right:100rpx;
-  /* z-index:999; */
+  z-index:999;
 }
 .box .more{
   width: 80rpx;
@@ -972,7 +972,7 @@ page {
   position: absolute;
   top: 169rpx;
   left: 301rpx;
-  z-index: 999;
+  /* z-index: 999; */
 }
 .bottomBox2{
   width: 222rpx;
@@ -1100,4 +1100,13 @@ page {
 
 .group-item .righttttt{
   width: 50%;
+}
+.shuaxinjiangpin{
+  width:170rpx;
+  height:40rpx;
+  position:absolute;
+  top:160rpx;
+  left:270rpx;
+  z-index:999;
+
 }
