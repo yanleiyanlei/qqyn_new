@@ -522,6 +522,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[0].step_name}}</view>
+          <view class='one_'>可享受到店 <text>{{act[0].money}}</text> 元任选优惠活动</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="joinn" data-acid="{{act[0].id}}">
             <text>立即组队</text>
@@ -561,6 +562,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[1].step_name}}</view>
+          <view class='one_'>可享受到店 <text>{{act[1].money}}</text> 元任选优惠活动</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="joinn" data-acid="{{act[1].id}}">
             <text>立即组队</text>
@@ -600,6 +602,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[2].step_name}}</view>
+          <view class='one_'>可享受到店 <text>{{act[2].money}}</text> 元任选优惠活动</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="joinn" data-acid="{{act[2].id}}">
             <text>立即组队</text>
