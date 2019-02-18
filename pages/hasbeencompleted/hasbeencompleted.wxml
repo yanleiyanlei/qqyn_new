@@ -1,7 +1,7 @@
 <!-- 拼步数活动已完成 -->
 <page>
   <view class="hasbeen">
-  	  <image src="https://m.7710mall.com/Uploads/xxc/m_step_bg.png" mode="scaleToFill" class="slide-image"/>
+  	  <!-- <image src="https://m.7710mall.com/Uploads/xxc/m_step_bg.png" mode="scaleToFill" class="slide-image"/> -->
   	
       <image class='eggs' src='https://m.test.7710mall.com/Uploads/xcx_img/success.png'></image>
   	  <view class="titles"> 

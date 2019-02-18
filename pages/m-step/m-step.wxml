@@ -13,7 +13,7 @@
     </view> -->
     
       <view bindtap='gomstep'  class="exchange clearfix border-box">
-        <!-- <image src="{{head_pic}}"></image> -->
+        <image src="{{head_pic}}"></image>
         <!-- <text>{{rice}}g</text> -->
         <text>拼步首页</text>
       </view>
@@ -529,25 +529,26 @@
           </view>
         </view>
       </form>
-      <view class='more' bindtap='renwu1qingqiu'>更多奖品</view>
+      <view bindtap='renwu1qingqiu' class='shuaxinjiangpin'> </view>
+      <view class='more'>更多奖品</view>
       <view class='bottom'>
-        <view class='bottomBox'>
+        <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[0].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
-          <image src='{{goods[0].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goods[0].goods_id}}' class='pic2'></image>
+          <image src='{{goods[0].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>1</text>
           <text class='text3'>原价￥{{goods[0].shop_price}}/份</text>
         </view>
-        <view class='bottomBox'>
+        <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[1].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
-          <image src='{{goods[1].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goods[1].goods_id}}' class='pic2'></image>
+          <image src='{{goods[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>1</text>
           <text class='text3'>原价￥{{goods[1].shop_price}}/份</text>
         </view>
-        <view class='bottomBox'>
+        <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[2].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
-          <image src='{{goods[2].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goods[2].goods_id}}' class='pic2'></image>
+          <image src='{{goods[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>1</text>
           <text class='text3'>原价￥{{goods[2].shop_price}}/份</text>
@@ -569,25 +570,26 @@
           </view>
         </view>
       </form>
-      <view bindtap='renwu2qingqiu' class='more'>更多奖品</view>
+      <view bindtap='renwu2qingqiu' class='shuaxinjiangpin'> </view>
+      <view class='more'>更多奖品</view>
       <view class='bottom'>
-        <view class='bottomBox bottomBox2'>
+        <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[0].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
-          <image src='{{goodsecond[0].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodsecond[0].goods_id}}' class='pic2'></image>
+          <image src='{{goodsecond[0].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥{{goodsecond[0].money}}</text>
           <text class='text3'>原价￥{{goodsecond[0].shop_price}}/份</text>
         </view>
-        <view class='bottomBox bottomBox2'>
+        <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[1].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
-          <image src='{{goodsecond[1].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodsecond[1].goods_id}}' class='pic2'></image>
+          <image src='{{goodsecond[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥{{goodsecond[1].money}}</text>
           <text class='text3'>原价￥{{goodsecond[1].shop_price}}/份</text>
         </view>
-        <view class='bottomBox bottomBox2'>
+        <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[2].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
-          <image src='{{goodsecond[2].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodsecond[2].goods_id}}' class='pic2'></image>
+          <image src='{{goodsecond[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥{{goodsecond[2].money}}</text>
           <text class='text3'>原价￥{{goodsecond[2].shop_price}}/份</text>
@@ -609,27 +611,28 @@
           </view>
         </view>
       </form>
-      <view class='more' bindtap='renwu3qingqiu'>更多奖品</view>
+      <view bindtap='renwu3qingqiu' class='shuaxinjiangpin'> </view>
+      <view class='more'>更多奖品</view>
       <view class='bottom'>
-        <view class='bottomBox bottomBox2'>
+        <view class='bottomBox bottomBox2'  bindtap='goodsDetails' data-goodsid='{{goodthrid[0].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
-          <image src='{{goodthrid[0].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodthrid[0].goods_id}}' class='pic2'></image>
+          <image src='{{goodthrid[0].medium_img}}' class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥{{goodthrid[0].money}}</text>
           <text class='text3'>原价￥{{goodthrid[0].shop_price}}/份</text>
         </view>
-        <view class='bottomBox bottomBox2'>
+        <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodthrid[1].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
-          <image src='{{goodthrid[1].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodthrid[1].goods_id}}' class='pic2'></image>
+          <image src='{{goodthrid[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥{{goodthrid[1].money}}</text>
           <text class='text3'>原价￥{{goodthrid[1].shop_price}}/份</text>
         </view>
-        <view class='bottomBox bottomBox2'>
+        <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodthrid[2].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
-          <image src='{{goodthrid[2].medium_img}}' bindtap='goodsDetails' data-goodsid='{{goodthrid[2].goods_id}}' class='pic2'></image>
+          <image src='{{goodthrid[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥{{goodthrid[1].money}}</text>
+          <text class='text2'>￥{{goodthrid[2].money}}</text>
           <text class='text3'>原价￥{{goodthrid[2].shop_price}}/份</text>
         </view>
       </view>

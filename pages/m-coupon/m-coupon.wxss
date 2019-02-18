@@ -335,7 +335,7 @@
 .quanma{
   position: absolute;
   top: 0;
-  right: 0;
+  right: 70rpx;
   font-size:32rpx;
   font-weight: bold;
   color:#ff712b;

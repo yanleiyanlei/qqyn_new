@@ -654,12 +654,12 @@ Page({
                               }
                               if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
 
-                                // wx.redirectTo({
-                                //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
-                                // })
                                 wx.redirectTo({
-                                  url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand
+                                  url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
                                 })
+                                // wx.redirectTo({
+                                //   url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand
+                                // })
                                 
                               }
                               if (res.data.status == 2) {//邀请好友，人数未满，该用户在该团队，
@@ -801,12 +801,12 @@ Page({
                 }
                 if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
 
-                  // wx.redirectTo({
-                  //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
-                  // })
                   wx.redirectTo({
-                    url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand
+                    url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
                   })
+                  // wx.redirectTo({
+                  //   url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand
+                  // })
                 }
                 if (res.data.status == 2) {//邀请好友，人数未满，该用户在该团队，
                   that.setData({
