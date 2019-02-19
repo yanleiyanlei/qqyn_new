@@ -83,9 +83,9 @@
 
 </view> -->
 
-<view class="content " style="{{five}}">
+<view class="content ">
 
-  <image class="bg" src="https://m.7710mall.com/Uploads/xxc/m_step_bg.png" style="{{five}}"></image>
+  <!-- <image class="bg" src="https://m.7710mall.com/Uploads/xxc/m_step_bg.png" style="{{five}}"></image> -->
   <view class="main {{sta1==3?'finish':''}}">
     <view class="top">
       <view class="finish-mask" wx:if="{{sta1==3}}">

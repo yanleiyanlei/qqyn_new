@@ -618,7 +618,7 @@ Page({
         if (res.confirm) {
           wx.request({
             url: app.globalData.Murl + '/Applets/Active/create_step',
-            data: { member_id: that.data.uid, ac_id: ac_id, formid: formId },
+            data: { member_id: that.data.uid, ac_id: ac_id},
             method: "post",
             success: function (res) {
               var sta = res.data.status;
