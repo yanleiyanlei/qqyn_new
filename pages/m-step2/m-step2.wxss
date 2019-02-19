@@ -938,7 +938,7 @@ page {
 .list .one_ text{
   font-family: MicrosoftYaHei;
 	font-size: 37rpx;
-	font-weight: normal;
+	font-weight: bold;
 	font-style: italic;
 	font-stretch: normal;
 	letter-spacing: 0px;
