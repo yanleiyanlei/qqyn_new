@@ -72,7 +72,7 @@ page {
   width: 100%;
   position: absolute;
   text-align: center;
-  top: 180rpx;
+  top: 210rpx;
 }
 
 .hd-banner .situation {
