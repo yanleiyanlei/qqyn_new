@@ -86,7 +86,9 @@ Page({
                 data: { code: code, encryptedData: res.encryptedData, iv: res.iv, member_id: that.data.uid },
                 method: "post",
                 success: function (res) {
-
+                  that.setData({
+                    step: res.data.step_num,
+                  })  
                 },
                 complete: function () {//进入页面轮播上的假数据
 
@@ -179,7 +181,9 @@ Page({
                     data: { code: code, encryptedData: res.encryptedData, iv: res.iv, member_id: that.data.uid },
                     method: "post",
                     success: function (res) {
-
+                    that.setData({
+                      step: res.data.step_num,
+                    })    
 
                     },
                     complete: function () {
