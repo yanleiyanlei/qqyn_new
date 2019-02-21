@@ -13,7 +13,7 @@
          <view wx:if="{{rice_rand != '1元优惠劵'}}">
             <view class='yiquan'>可获得{{rice_rand}}</view>
             <view class='quanBox' wx:for='{{code_info}}'>
-                <image class='youhuiquanPic' mode='widthFix' src='/image/hasbeencompleted/优惠券.png'></image>  
+                <image class='youhuiquanPic' mode='widthFix' src='/image/hasbeencompleted/youhuiquan.png'></image>  
                 <view  style='position:absolute;width:100%;height:100%;top:0;left:0;display:flex;flex-direction: row;'>
                   <view class='boxLeft'>
                     <view>
