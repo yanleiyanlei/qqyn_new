@@ -40,7 +40,7 @@ page {
   display: inline-block;
   height: 60rpx;
   position: absolute;
-  top: 20rpx;
+  bottom: 20rpx;
   right: 0;
   background: #fff;
   opacity: 0.8;
@@ -84,7 +84,7 @@ page {
   width: 100%;
   position: absolute;
   text-align: center;
-  top: 210rpx;
+  top: 180rpx;
 }
 
 .hd-banner .situation {
@@ -195,7 +195,7 @@ page {
 .end-gap .center {
   height: 45rpx;
   float: left;
-  margin-left: 18rpx;
+  margin-left: -10rpx;
   font-size: 24rpx;
   /* font-size: 24px; */
 	font-weight:bold;
@@ -346,10 +346,10 @@ page {
   width: 291rpx;
   height: 60rpx;
   position: absolute;
-  z-index: 999;
   right: 15rpx;
-  top: 64rpx;
+  top: 55rpx;
   opacity: 0;
+  z-index: 999;
   filter: opacity(0);
 }
 
@@ -366,7 +366,7 @@ page {
 }
 
 .group-item {
-  padding: 20rpx 6rpx 20rpx 6rpx;
+  padding: 15rpx 6rpx 20rpx 6rpx;
   height: 120rpx;
 }
 .twooo{
@@ -375,6 +375,7 @@ page {
 .group-item .left {
   height: 100%;
   float: left;
+  margin-left: 5rpx;
 }
 
 .group-item .left .tx {
@@ -469,7 +470,7 @@ page {
 }
 
 .group-item .right .join .jr {
-  width: 160rpx;
+  width: 180rpx;
   height: 60rpx;
   background-image: linear-gradient(0deg, 
 		#00efba 0%, 
@@ -479,6 +480,8 @@ page {
   color: #fff;
   margin-left: 36rpx;
   margin-top: 10rpx;
+  position: absolute;
+  right: 10rpx;
 }
 
 /* 排行 */
@@ -579,9 +582,9 @@ page {
   z-index: 1000;
   top: 140rpx;
   left: 50%;
-  margin-left: -290rpx;
+  margin-left: -340rpx;
   background: #fff;
-  width: 580rpx;
+  width: 680rpx;
   height: 788rpx;
   border-radius: 20rpx;
   -webkit-border-radius: 20rpx;
@@ -593,11 +596,19 @@ page {
 }
 
 .scroll-top {
-  text-align: center;
-  font-size: 36rpx;
-  color: #434343;
-  height: 100rpx;
-  line-height: 100rpx;
+ text-align:center;
+  font-size:36rpx;
+  color:#434343;
+  height:100rpx;
+  line-height:100rpx;
+  position:fixed;
+  width:680rpx;
+  top:140rpx;
+  z-index:999;
+  background:#fff;
+
+
+
 }
 
 .scroll-bottom {
@@ -806,7 +817,7 @@ page {
 	color: #434343;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .left2 .leftIcon{
   width: 6rpx;
@@ -878,18 +889,18 @@ page {
   left: 104rpx;
 }
 .bottomBox .text2{
-  font-family: MicrosoftYaHei;
-	font-size: 23rpx;
-	font-weight: normal;
-	font-style: italic;
-	font-stretch: normal;
-	letter-spacing: 0px;
-	color: #ffffff;
-	/* box-shadow: 2px 2px 0px 0px 
-		rgba(119, 3, 157, 0.82); */
-  position: absolute;
-  top: 16rpx;
-  right: 16rpx;
+  font-family:MicrosoftYaHei;
+  font-size:25rpx;
+  font-weight:normal;
+  font-style:italic;
+  font-stretch:normal;
+  letter-spacing:0px;
+ color:#fff;
+position:absolute;
+top:-10rpx;
+right:35rpx;
+
+
 }
 .bottomBox .text3{
   font-family: MicrosoftYaHei;
@@ -900,8 +911,8 @@ page {
 	letter-spacing: 0px;
 	color: #666666;
   position: absolute;
-  top: 57rpx;
-  right: 0rpx;
+  top: 65rpx;
+  left: 104rpx;
 }
 .box image{
   width: 710rpx;
@@ -942,7 +953,7 @@ page {
 	font-style: italic;
 	font-stretch: normal;
 	letter-spacing: 0px;
-	color: #ffc001;
+	
 	/* box-shadow: 2px 2px 0px 0px 
 		rgba(119, 3, 157, 0.82); */
 }
@@ -958,7 +969,7 @@ page {
   position:absolute;
   top:64rpx;
   right:100rpx;
-  z-index:999;
+  /* z-index:999; */
 }
 .box .more{
   width: 80rpx;
@@ -971,7 +982,7 @@ page {
 	color: #ffffff;
   position: absolute;
   top: 169rpx;
-  left: 301rpx;
+  left: 322rpx;
   /* z-index: 999; */
 }
 .bottomBox2{
@@ -988,46 +999,46 @@ page {
   left:127rpx;
 }
 .bottomTitle{
-  width: 576rpx;
+  width: 589rpx;
   height: 25rpx;
+  background: url('https://m.test.7710mall.com/Uploads/xcx_img/wxts.png') no-repeat center;
+  background-size: 100%;
   position: relative;
   margin-top: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.bottomTitle1{
+/* .bottomTitle1{
   font-family: MicrosoftYaHei;
 	font-size: 22rpx;
+  height: 25rpx;
 	font-weight: normal;
 	color: #ff8041;
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin-left: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 730rpx;
 }
 .bottomTitle1 .bottomTitle3{
-  width: 460rpx;
+  width:460rpx;
   font-size: 22rpx;
 	font-weight: normal;
 	color: #666666;
-  position: absolute;
-  top: 0;
-  left: 100rpx;
+  margin-left: 200rpx;
 }
 .bottomTitle1 text{
   width: 60rpx;
   font-size: 24rpx;
 	font-weight: bold;
 	color: #ff8041;
-  position: absolute;
-  top: -1rpx;
-  left: 460rpx;
 }
 .bottomTitle2{
   font-size: 22rpx;
 	font-weight: normal;
 	color: #666666;
-  position: absolute;
-  top: 0;
-  left: 510rpx;
-}
+} */
 
 /* 规则 */
 
@@ -1109,4 +1120,35 @@ page {
   left:270rpx;
   z-index:999;
 
+}
+.renwu2{
+  border: 1rpx solid #1ed161;
+}
+.renwu3{
+  border: 1rpx solid #2fa5cb;
+}
+.bottomBox .text22 {
+  position:absolute;
+  top:-10rpx;
+  right:5rpx;
+  color: #fff;
+}
+.bottomBox .pic33{
+  position: absolute;
+  right:6rpx;
+top:-17rpx;
+
+}
+.textGreen{
+  color: #096d39;
+}
+.textBlue{
+  color: #08666f;
+}
+.textYellow{
+  color: #ffc001;
+}
+.hd-time{
+  font-size: 22rpx;
+  color: #333333;
 }

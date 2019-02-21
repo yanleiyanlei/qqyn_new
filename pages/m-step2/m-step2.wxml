@@ -109,11 +109,12 @@
       </view>
     </block>
     <view class="hd-dw">
+      <view class='hd-time'>活动时间：{{act.stime}}-{{act.etime}}</view>
       <view class="now-join">已有\t
         <text class="now-join-num">{{total_num}}</text>\t人组队拼步</view>
       <block wx:if="{{soldout}}">
         <view class="end-gap">
-          <view class="center">离任务结束还有:
+          <view class="center">距今日任务结束还剩:
             <text class="time border-box">0</text>
             <text>:</text>
             <text class="time border-box">0</text>
@@ -125,7 +126,7 @@
       <block wx:else>
         <view class="end-gap">
           
-          <view class="center">距离任务结束还有:
+          <view class="center">距今日任务结束还剩:
             <text class="time border-box">{{h1}}</text>
             <text>:</text>
             <text class="time border-box">{{m1}}</text>
@@ -267,7 +268,7 @@
     </view>
   </view>
   <view class="box clearfix border-box">
-    <view class='renwu1'>
+    <view class='renwu1' wx:if='{{act[0].step_endtime}}'>
       <image src='https://m.test.7710mall.com/Uploads/xcx_img/1.png' class='renwuPic1'></image>
       <form report-submit="true" bindsubmit="Submit">
         <input value='{{act[0].id}}' name="ac_id" style="display:none"></input>
@@ -275,7 +276,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[0].step_name}}</view>
-          <view class='one_'>可享受到店<text>{{act[0].money}}</text> 元任选优惠活动</view>
+          <view class='one_'>可到店享受<text class='textYellow' >{{act[0].money}}</text> 元兑换指定商品优惠活动</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="join" data-acid="{{act[0].id}}">
             <text>立即组队</text>
@@ -283,32 +284,32 @@
         </view>
       </form>
       <view bindtap='renwu1qingqiu' class='shuaxinjiangpin'> </view>
-      <view class='more'>更多奖品</view>
+      <view class='more'>换一批</view>
       <view class='bottom'>
         <view class='bottomBox'  bindtap='goodsDetails' data-goodsid='{{goods[0].goods_id}}' >
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[0].medium_img}}'class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>1</text>
-          <text class='text3'>原价{{goods[0].shop_price}}/份</text>
+          <text class='text2'>￥1.0</text>
+          <text class='text3'>原价￥{{goods[0].shop_price}}</text>
         </view>
         <view class='bottomBox'  bindtap='goodsDetails' data-goodsid='{{goods[1].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[1].medium_img}}' class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>1</text>
-          <text class='text3'>原价￥{{goods[1].shop_price}}/份</text>
+          <text class='text2'>￥1.0</text>
+          <text class='text3'>原价￥{{goods[1].shop_price}}</text>
         </view>
         <view class='bottomBox'  bindtap='goodsDetails' data-goodsid='{{goods[2].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image>
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[2].medium_img}}' class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>1</text>
-          <text class='text3'>原价￥{{goods[2].shop_price}}/份</text>
+          <text class='text2'>￥1.0</text>
+          <text class='text3'>原价￥{{goods[2].shop_price}}</text>
         </view>
       </view>
     </view>
-    <view class='renwu1' style='border: solid 2px #1ed161;'>
+    <view class='renwu1 renwu2'>
       <image src='https://m.test.7710mall.com/Uploads/xcx_img/2.png' class='renwuPic1'></image>
       <form report-submit="true" bindsubmit="Submit">
         <input value='{{act[1].id}}' name="ac_id" style="display:none"></input>
@@ -316,7 +317,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[1].step_name}}</view>
-          <view class='one_'>可享受青青优农商城价值 <text>{{act[1].money}} </text>元商品</view>
+          <view class='one_'>可享受青青优农商城价值 <text class='textGreen' >{{act[1].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="join" data-acid="{{act[1].id}}">
             <text>立即组队</text>
@@ -324,32 +325,32 @@
         </view>
       </form>
       <view bindtap='renwu2qingqiu' class='shuaxinjiangpin'> </view>
-      <view class='more'>更多奖品</view>
+      <view class='more'>换一批</view>
       <view class='bottom'>
         <view class='bottomBox bottomBox2'  bindtap='goodsDetails' data-goodsid='{{goodsecond[0].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodsecond[0].medium_img}}' class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥{{goodsecond[0].money}}</text>
-          <text class='text3'>原价￥{{goodsecond[0].shop_price}}/份</text>
+          <text class='text2 text22'>￥{{goodsecond[0].money}}</text>
+          <text class='text3'>原价￥{{goodsecond[0].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[1].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodsecond[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥{{goodsecond[1].money}}</text>
-          <text class='text3'>原价￥{{goodsecond[1].shop_price}}/份</text>
+          <text class='text2 text22'>￥{{goodsecond[1].money}}</text>
+          <text class='text3'>原价￥{{goodsecond[1].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[2].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodsecond[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥{{goodsecond[2].money}}</text>
-          <text class='text3'>原价￥{{goodsecond[2].shop_price}}/份</text>
+          <text class='text2 text22'>￥{{goodsecond[2].money}}</text>
+          <text class='text3'>原价￥{{goodsecond[2].shop_price}}</text>
         </view>
       </view>
     </view>
-    <view class='renwu1' style='border: solid 2px #2fa5cb;'>
+    <view class='renwu1 renwu3'>
       <image src='https://m.test.7710mall.com/Uploads/xcx_img/3.png' class='renwuPic1'></image>
       <form report-submit="true" bindsubmit="Submit">
         <input value='{{act[2].id}}' name="ac_id" style="display:none"></input>
@@ -357,7 +358,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[2].step_name}}</view>
-          <view class='one_'>可享受青青优农商城价值 <text>{{act[2].money}} </text>元商品</view>
+          <view class='one_'>可享受青青优农商城价值 <text class='textBlue' >{{act[2].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="join" data-acid="{{act[2].id}}">
             <text>立即组队</text>
@@ -365,33 +366,34 @@
         </view>
       </form>
       <view bindtap='renwu3qingqiu' class='shuaxinjiangpin'> </view>
-      <view class='more'>更多奖品</view>
+      <view class='more'>换一批</view>
       <view class='bottom'>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodthrid[0].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodthrid[0].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥{{goodthrid[0].money}}</text>
-          <text class='text3'>原价￥{{goodthrid[0].shop_price}}/份</text>
+          <text class='text2 text22'>￥{{goodthrid[0].money}}</text>
+          <text class='text3'>原价￥{{goodthrid[0].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodthrid[1].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodthrid[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥{{goodthrid[1].money}}</text>
-          <text class='text3'>原价￥{{goodthrid[1].shop_price}}/份</text>
+          <text class='text2 text22'>￥{{goodthrid[1].money}}</text>
+          <text class='text3'>原价￥{{goodthrid[1].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodthrid[2].goods_id}}'>
           <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodthrid[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥{{goodthrid[2].money}}</text>
-          <text class='text3'>原价￥{{goodthrid[2].shop_price}}/份</text>
+          <text class='text2 text22'>￥{{goodthrid[2].money}}</text>
+          <text class='text3'>原价￥{{goodthrid[2].shop_price}}</text>
         </view>
       </view>
     </view>
     <view class='bottomTitle'>
-      <view class='bottomTitle1'>温馨提示：<view class='bottomTitle3'>任务2、3战队中含有新成员，奖励可</view> <text>升级</text><view class='bottomTitle2'> 哦！</view></view>
+      <!-- <view class='bottomTitle1'>温馨提示：<view class='bottomTitle3'>任务二、三战队中含有新成员，奖励可</view> <text>升级</text><view class='bottomTitle2'> 哦！</view></view> -->
+      <!-- <image src='/image/hd/wxts.png' class='bottomTitlePics'></image> -->
     </view>
     <!-- <view class="left">
       <form report-submit="true" bindsubmit="Submit">
@@ -593,6 +595,9 @@
           </view>
           <view>
               {{msg.msg8}}
+          </view>
+          <view>
+              {{msg.msg9}}
           </view>
         </view>
         <!-- <view class="left">1、</view>

@@ -28,7 +28,7 @@ page {
   display: inline-block;
   height: 60rpx;
   position: absolute;
-  top: 20rpx;
+  bottom: 20rpx;
   right: 0;
   background: #fff;
   opacity: 0.8;
@@ -72,7 +72,7 @@ page {
   width: 100%;
   position: absolute;
   text-align: center;
-  top: 210rpx;
+  top: 180rpx;
 }
 
 .hd-banner .situation {
@@ -177,7 +177,7 @@ page {
 .end-gap .center {
   height:45rpx;
   float:left;
-  margin-left:18rpx;
+  margin-left:-10rpx;
   font-size:24rpx;
   font-weight:bold;
   letter-spacing:0px;
@@ -432,7 +432,7 @@ page {
 }
 
 .member .item .active {
-  border: 1rpx dashed #ff712b;
+  /* border: 1rpx dashed #ff712b; */
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -906,18 +906,16 @@ page {
   left: 104rpx;
 }
 .bottomBox .text2{
-  font-family: MicrosoftYaHei;
-	font-size: 23rpx;
-	font-weight: normal;
-	font-style: italic;
-	font-stretch: normal;
-	letter-spacing: 0px;
-	color: #ffffff;
-	/* box-shadow: 2px 2px 0px 0px 
-		rgba(119, 3, 157, 0.82); */
-  position: absolute;
-  top: 10rpx;
-  right: 16rpx;
+  font-family:MicrosoftYaHei;
+  font-size:25rpx;
+  font-weight:normal;
+  font-style:italic;
+  font-stretch:normal;
+  letter-spacing:0px;
+  color:#ff8041;
+  position:absolute;
+  top:24rpx;
+  right:16rpx;
 }
 .bottomBox .text3{
   font-family: MicrosoftYaHei;
@@ -928,8 +926,8 @@ page {
 	letter-spacing: 0px;
 	color: #666666;
   position: absolute;
-  top: 57rpx;
-  right: 0rpx;
+  top: 65rpx;
+  left: 104rpx;
 }
 .box image{
   width: 710rpx;
@@ -962,7 +960,6 @@ page {
   position:absolute;
   top:64rpx;
   right:100rpx;
-  /* z-index:999; */
 }
 .box .more{
   width: 80rpx;
@@ -975,7 +972,7 @@ page {
 	color: #ffffff;
   position: absolute;
   top: 169rpx;
-  left: 301rpx;
+  left: 322rpx;
   /* z-index: 999; */
 }
 .bottomBox2{
@@ -993,12 +990,17 @@ page {
 
 }
 .bottomTitle{
-  width: 576rpx;
+  width: 589rpx;
   height: 25rpx;
+  background: url('https://m.test.7710mall.com/Uploads/xcx_img/wxts.png') no-repeat center;
+  background-size: 100%;
   position: relative;
   margin-top: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.bottomTitle1{
+/* .bottomTitle1{
   font-family: MicrosoftYaHei;
 	font-size: 22rpx;
 	font-weight: normal;
@@ -1032,14 +1034,14 @@ page {
   position: absolute;
   top: 0;
   left: 510rpx;
-}
+} */
 .tj {
   width: 291rpx;
   height: 60rpx;
   position: absolute;
   z-index: 999;
   right: 15rpx;
-  top: 64rpx;
+  top: 55rpx;
   opacity: 0;
   filter: opacity(0);
 }
@@ -1158,7 +1160,7 @@ page {
 	font-style: italic;
 	font-stretch: normal;
 	letter-spacing: 0px;
-	color: #ffc001;
+	/* color: #ffc001; */
   /* box-shadow: 1rpx 1rpx 1rpx 1rpx 
 		rgba(113, 3, 157, 0.823); */
 }
@@ -1184,4 +1186,29 @@ page {
   left:270rpx;
   z-index:999;
 
+}
+.renwu2{
+  border: 1rpx solid #1ed161;
+}
+.renwu3{
+  border: 1rpx solid #2fa5cb;
+}
+.bottomBox .text22 {
+  position:absolute;
+  top:-10rpx;
+  right:10rpx;
+  color: #fff;
+}
+.textGreen{
+  color: #096d39;
+}
+.textBlue{
+  color: #08666f;
+}
+.textYellow{
+  color: #ffc001;
+}
+.hd-time{
+  font-size: 22rpx;
+  color: #333333;
 }
