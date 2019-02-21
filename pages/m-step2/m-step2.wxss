@@ -1152,3 +1152,6 @@ top:-17rpx;
   font-size: 22rpx;
   color: #333333;
 }
+.border11{
+  top: 100rpx;
+}

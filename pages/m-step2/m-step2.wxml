@@ -20,7 +20,7 @@
 
     <view class="scroll-top border1">立即组队</view>
     <block wx:for="{{arr2}}">
-      <view class="border1">
+      <view class="border1 border11">
         <view class="group-item clearfix border-box">
           <view class="left clearfix">
             <view class="tx">
