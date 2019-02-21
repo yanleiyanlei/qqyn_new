@@ -43,6 +43,9 @@
         <view>
             {{msg.msg8}}
         </view>
+        <view>
+            {{msg.msg9}}
+        </view>
       </view>
       </view>
     </view>
