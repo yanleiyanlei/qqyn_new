@@ -8,7 +8,9 @@ Page({
   data: {
     nickName: "好友",
     goodname:'',
-    total_num:''
+    total_num:'',
+    etime:'',
+    stime:''
   },
 
   /**
@@ -17,7 +19,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
-      goodName: options.goodname
+      goodName: options.goodname,
+      stime:options.stime,
+      etime:options.etime
     })
     // console.log(wx.getStorageSync("userinfo").nickName)
     that.setData({
@@ -74,6 +78,22 @@ Page({
         ctx.drawImage(bgImgPath, 0, 0, 375, 529);
 
         //绘制标题  
+        ctx.setFontSize(12);
+        //ctx.font = "bold";
+        ctx.setFillStyle('#333333');
+        ctx.fillText('活动时间:', 108, 225);
+        ctx.setFontSize(12);
+        //ctx.font = "bold";
+        ctx.setFillStyle('#333333');
+        ctx.fillText(that.data.stime, 165, 225);
+        ctx.setFontSize(12);
+        //ctx.font = "bold";
+        ctx.setFillStyle('#333333');
+        ctx.fillText('-', 218, 225);
+        ctx.setFontSize(12);
+        //ctx.font = "bold";
+        ctx.setFillStyle('#333333');
+        ctx.fillText(that.data.etime, 223, 225);
         ctx.font = "bold 50px sans-serif";
         ctx.setFontSize(15);
         //ctx.font = "bold";

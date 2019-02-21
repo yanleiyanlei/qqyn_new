@@ -18,6 +18,7 @@ Nhover {
 .border1 {
   position: relative;
   border: none;
+  top: 100rpx;
 }
 
 .border1:after {

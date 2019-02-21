@@ -6,13 +6,39 @@
       <image class='eggs' src='https://m.test.7710mall.com/Uploads/xcx_img/success.png'></image>
   	  <view class="titles"> 
   	  	 <text class="ones">恭喜您任务完成！</text>
-         <text class="twos">可获得{{rice_rand}}</text>
+         <view wx:if="{{rice_rand == '1元优惠劵'}}">
+            <view class='yiquan'>可到店享受1元兑换指定商品优惠活动</view>
+            <image class='dizhiPic' src='/image/hasbeencompleted/map.png'></image>
+         </view>
+         <view wx:if="{{rice_rand != '1元优惠劵'}}">
+            <view class='yiquan'>可获得{{rice_rand}}</view>
+            <view class='quanBox' wx:for='{{code_info}}'>
+                <image class='youhuiquanPic' mode='widthFix' src='/image/hasbeencompleted/优惠券.png'></image>  
+                <view  style='position:absolute;width:100%;height:100%;top:0;left:0;display:flex;flex-direction: row;'>
+                  <view class='boxLeft'>
+                    <view>
+                      <text class='fuhao' style='font-size:40rpx'>￥</text>
+                      <text class='jine' style='font-size:70rpx'>{{item.price}}</text>
+                    </view>
+                  
+                  </view>
+                  <view class='boxRight'>
+                    <text class='manjian'>满{{item.man}}可用</text>
+                  </view>
+                  <!-- <text class='shuliang'>{{item.num}}</text> -->
+                  <image  wx:if='{{item.num == 2}}' src='/image/hasbeencompleted/x2icon.png' class='shuliang'></image>     
+                </view>
+                <!-- <text wx:if='{{item.num == 2}}' class='shuliang'>{{item.num}}</text> -->
+            </view>
+         </view>
   	  </view>
+      <navigator url='/pages/m-coupon/m-coupon'>
+        <view class='prompt'>
+          <view>特价商品券可在 【<text style='width:160rpx'>青青商城-会员-优惠券</text>】</view>
+          <view style='margin-top:5rpx'>之中进行查看使用</view>
+        </view>
+      </navigator>
       
-      <view class='prompt'>
-        <view>特价商品券可在【青青商城-会员-优惠券】</view>
-        <view style='margin-top:5rpx'>之中进行查看使用</view>
-      </view>
   	  <view class="btntext">
   	  	  <text bindtap='pagesm2'>再组一队</text>
   	  	  <text class="qxbtn" bindtap='tiaocar'>去商场逛逛</text>

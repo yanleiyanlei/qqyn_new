@@ -17,6 +17,8 @@ Page({
     foldStyle2: "height:auto!important;",
     foldStyle3: "height:1250rpx!important;",
     team: "",
+    
+    code_info:[],
     teamList1: [],
     rice_rand:'',
     teamList2: [],
@@ -590,11 +592,12 @@ Page({
       data: { member_id: wx.getStorageSync("userinfo").uid },
       method: "post",
       success: function (res) {
-        console.log(123123132)
+        console.log(12312313222222222222222222222)
         console.log(res.data)
         that.setData({
           act: res.data
         })
+
       }
     })
     // 轮播上的倒计时
@@ -808,8 +811,16 @@ Page({
     var that = this;
     var zl = e.detail.value.zl;
     var rice_rand = e.detail.value.rice_rand;
+    var code_info_price = e.detail.value.code_info_price;
+    var code_info_num = e.detail.value.code_info_num;
+    var code_info_man = e.detail.value.code_info_man;
     var formId = e.detail.formId;
+    var team_id = e.detail.value.teamid;
     console.log(formId)
+    console.log(122222222222222222222222222222222)
+    console.log(team_id)
+    console.log(code_info_num)
+    console.log(code_info_man)
     if (zl == 1) {
       wx.request({
         url: app.globalData.Murl + '/Applets/Active/get_mem_formid',
@@ -820,9 +831,12 @@ Page({
         }
       })
       
+      
       wx.navigateTo({
-        url: '/pages/hasbeencompleted/hasbeencompleted?uid=' + that.data.uid + "&rice_rand=" + rice_rand,
+        url: '/pages/hasbeencompleted/hasbeencompleted?uid=' + that.data.uid + "&rice_rand=" + rice_rand + '&code_info_price=' + code_info_price + '&code_info_num=' + code_info_num + "&code_info_man=" + code_info_man + "&team_id=" + team_id
       })
+      
+      
     }
     if (zl == 2) {
       var teamid = e.detail.value.teamid;
@@ -861,8 +875,8 @@ Page({
       }
     })
     wx.showModal({
-      title: '组队',
-      content: '是否立即组队',
+      title: '创建团队',
+      content: '成为团长后，不可脱团完成任务',
       success: function (res) {
         console.log(222)
         console.log(res)

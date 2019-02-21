@@ -614,8 +614,8 @@ Page({
       }
     })
     wx.showModal({
-      title: '组队',
-      content: '是否立即组队',
+      title: '创建团队',
+      content: '成为团长后，不可脱团完成任务',
       success: function (res) {
         console.log(222)
         console.log(res)

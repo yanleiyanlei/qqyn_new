@@ -110,8 +110,11 @@ Page({
                         teamMember: res.data.info.member_info,
                         ac_id: res.data.info.step_id,
                         klist: klist,
-                        rice_rand: res.data.info.rice_rand
+                        rice_rand: res.data.info.rice_rand,
+                        code_info:res.data.code_info
+
                       })
+
                       if (res.data.info.step_people_num <= 5) {
                         that.setData({
                           five: "height:1220rpx;",
@@ -136,8 +139,12 @@ Page({
                         // wx.redirectTo({
                         //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
                         // })
+                        // var code_info_price = res.data.info.code_info.price;
+                        // var code_info_num = res.data.code_info.num;
+                        // var code_info_man = res.data.code_info.man;
+                
                         wx.redirectTo({
-                          url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                          url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand + '&code_info_price=' + res.data.info.code_info[0].price + '&code_info_num=' + res.data.info.code_info[0].num + '&code_info_man=' + res.data.info.code_info[0].man
                         })
                       }
                       if (res.data.status == 2) {//邀请好友，人数未满，该用户在该团队，
@@ -325,7 +332,7 @@ Page({
                             //   url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
                             // })
                             wx.redirectTo({
-                              url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                              url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand + '&code_info_price=' + res.data.info.code_info[0].price + '&code_info_num=' + res.data.info.code_info[0].num + '&code_info_man=' + res.data.info.code_info[0].man
                             })
                           }
                           if (res.data.status == 2) {//邀请好友，人数未满，该用户在该团队，
@@ -561,7 +568,7 @@ Page({
         console.log(res)
         if (res.data.status == 1) {
           wx.navigateTo({
-            url: '/pages/fxm/fxm?goodname=' + that.data.rice_rand + "&fxcode=" + res.data.code,
+            url: '/pages/fxm/fxm?goodname=' + that.data.rice_rand + "&fxcode=" + res.data.code + "&etime=" + res.data.etime + "&stime=" + res.data.stime,
           })
         } else if (res.data.status == -4) {
           wx.showToast({
@@ -655,7 +662,7 @@ Page({
                               if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
 
                                 wx.redirectTo({
-                                  url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                                  url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand + '&code_info_price=' + res.data.info.code_info[0].price + '&code_info_num=' + res.data.info.code_info[0].num + '&code_info_man=' + res.data.info.code_info[0].man
                                 })
                                 // wx.redirectTo({
                                 //   url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand
@@ -802,7 +809,7 @@ Page({
                 if (res.data.status == 1) {//跳晓阳页面，人数已满，步数已够，
 
                   wx.redirectTo({
-                    url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand
+                    url: '/pages/hasbeencompleted/hasbeencompleted?rice_rand=' + res.data.rice_rand + '&code_info_price=' + res.data.info.code_info[0].price + '&code_info_num=' + res.data.info.code_info[0].num + '&code_info_man=' + res.data.info.code_info[0].man
                   })
                   // wx.redirectTo({
                   //   url: '/pages/m-step2-success/m-step2-success?rice_rand=' + res.data.rice_rand

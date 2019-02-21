@@ -24,12 +24,12 @@ page{
 	left: 120rpx;
 }
 .titles{
-	width: 520rpx;
-	height: 90rpx;
-	text-align: center;
-	position: absolute;
-	top: 536rpx;
-	left: 120rpx;
+  width:750rpx;
+  height:90rpx;
+  text-align:center;
+  position:absolute;
+  top:475rpx;
+
 }
 .titles .ones{
 	display: block;
@@ -54,11 +54,12 @@ page{
 	line-height: 40rpx;
 }
 .btntext{
-	position: absolute;
-  bottom: 250rpx;
-	left: 120rpx;
-	width: 511rpx;
-    height: 70rpx; 
+	position:absolute;
+  bottom:10rpx;
+  left:85rpx;
+  width:580rpx;
+  height:70rpx;
+
 }
 .btntext text{
 	display: inline-block;
@@ -130,7 +131,7 @@ page{
 	color: #ff712b;
 }
 .prompt{
-  width: 464rpx;
+  width: 484rpx;
 	height: 66rpx;
 	font-family: FZLTHK--GBK1-0;
 	font-size: 22rpx;
@@ -139,11 +140,83 @@ page{
 	letter-spacing: 1px;
 	color: #aaaaaa;
   position: absolute;
-  top: 688rpx;
+  top: 1035rpx;
   left: 143rpx;
   display: flex;
   flex-direction: column;
   /* align-content: center; */
   justify-content: center;
   align-items: center;
+ 
+}
+.prompt text{
+  width: 150rpx;
+  text-decoration:underline;
+}
+.yiquan{
+  font-size: 26rpx;
+  color: gray;
+  margin-top:10rpx;
+}
+.dizhiPic{
+  width: 602rpx;
+  height: 362rpx;
+  margin: 20rpx 0 0 0;
+}
+.quanBox{
+  position: relative;
+  display: flex;
+  width:454rpx;
+  /* height:168rpx; */
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.youhuiquanPic{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.boxLeft{
+  width: 300rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  color: #fff;
+  /* align-items: baseline; */
+  
+}
+.boxLeft view{
+  width: 300rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  font-size: 26rpx;
+  color: #fff;
+  align-items: baseline;
+  
+}
+.boxRight{
+  width: 154rpx;
+  /* z-index: 2; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  margin-bottom: 40rpx;
+  color: #fff;
+}
+.shuliang{
+  color: #fff;
+  width: 56rpx;
+  height: 56rpx;
+  position: absolute;
+  top: -28rpx;
+  right: 0;
 }
