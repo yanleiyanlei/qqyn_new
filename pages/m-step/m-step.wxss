@@ -482,7 +482,7 @@ page {
 }
 
 .fail .member .item .active {
-  border: 1rpx dashed #bbb;
+  /* border: 1rpx dashed #bbb; */
 }
 
 .fail .member .item .two {
@@ -906,16 +906,17 @@ page {
   left: 104rpx;
 }
 .bottomBox .text2{
-  font-family:MicrosoftYaHei;
-  font-size:25rpx;
-  font-weight:normal;
-  font-style:italic;
-  font-stretch:normal;
-  letter-spacing:0px;
-  color:#ff8041;
-  position:absolute;
-  top:24rpx;
-  right:16rpx;
+font-family:MicrosoftYaHei;
+font-size:25rpx;
+font-weight:normal;
+font-style:italic;
+font-stretch:normal;
+letter-spacing:0px;
+color:#fff;
+position:absolute;
+top:-10rpx;
+right:35rpx;
+
 }
 .bottomBox .text3{
   font-family: MicrosoftYaHei;
@@ -1196,8 +1197,9 @@ page {
 .bottomBox .text22 {
   position:absolute;
   top:-10rpx;
-  right:10rpx;
-  color: #fff;
+  left: 130rpx;
+  color:#fff;
+
 }
 .textGreen{
   color: #096d39;
@@ -1212,3 +1214,16 @@ page {
   font-size: 22rpx;
   color: #333333;
 }
+.bottomBox .pic33 {
+position:absolute;
+right:6rpx;
+top:-17rpx;
+
+}
+.box image {
+width:710rpx;
+height:196rpx;
+margin:0 auto;
+
+}
+

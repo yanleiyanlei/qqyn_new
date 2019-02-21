@@ -1153,5 +1153,9 @@ top:-17rpx;
   color: #333333;
 }
 .border11{
-  top: 100rpx;
+  top: 110rpx;
+}
+.border111{
+  position: fixed;
+  top: 140rpx;
 }
