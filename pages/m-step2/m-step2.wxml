@@ -16,59 +16,61 @@
       <image src="https://m.7710mall.com/Uploads/xxc/close.png"></image>
     </form>
   </view>
-  <scroll-view scroll-y class="m-group" style="{{tt}}">
+  <view class="m-group" style="{{tt}}">
+    <view class="scroll-top border111">立即组队</view>
+    <scroll-view scroll-y style='height:788rpx;'>
 
-    <view class="scroll-top border1">立即组队</view>
-    <block wx:for="{{arr2}}">
-      <view class="border1 border11">
-        <view class="group-item clearfix border-box">
-          <view class="left clearfix">
-            <view class="tx">
-              <image src="{{item.head_pic}}"></image>
-              <text class="leader">团长</text>
-            </view>
-            <view class="two">
-              <block wx:if="{{item.nickname==''}}">
-                <view class="name">
-                  <text decode="{{true}}">&nbsp;</text>
-                </view>
-              </block>
-              <block wx:else>
+
+      <block wx:for="{{arr2}}">
+        <view class="border1 border11">
+          <view class="group-item clearfix border-box">
+            <view class="left clearfix">
+              <view class="tx">
+                <image src="{{item.head_pic}}"></image>
+                <text class="leader">团长</text>
+              </view>
+              <view class="two">
+                <block wx:if="{{item.nickname==''}}">
+                  <view class="name">
+                    <text decode="{{true}}">&nbsp;</text>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view>
+                    <text class="name">{{item.nickname}}</text>
+                  </view>
+                </block>
+
                 <view>
-                  <text class="name">{{item.nickname}}</text>
+                  <text class="hd">{{item.step_name}}</text>
                 </view>
-              </block>
-
-              <view>
-                <text class="hd">{{item.step_name}}</text>
+              </view>
+            </view>
+            <view class="right">
+              <view class="info">
+                <view class="one">还差
+                  <text style="color:#ff0000">{{item.sheng_mem}}</text>人</view>
+                <view class='two twooo'>剩余{{item.step_number}}步</view>
+              </view>
+              <view class="join">
+                <form report-submit="true" bindsubmit="Submit2">
+                  <input name='acid' value="{{item.step_id}}" style="display:none"></input>
+                  <input name="teamid" value="{{item.team_id}}" style="display:none"></input>
+                  <button formType="submit" class="jr">立即加入</button>
+                </form>
               </view>
             </view>
           </view>
-          <view class="right">
-            <view class="info">
-              <view class="one">还差
-                <text style="color:#ff0000">{{item.sheng_mem}}</text>人</view>
-              <view class='two twooo'>剩余{{item.step_number}}步</view>
-            </view>
-            <view class="join">
-              <form report-submit="true" bindsubmit="Submit2">
-                <input name='acid' value="{{item.step_id}}" style="display:none"></input>
-                <input name="teamid" value="{{item.team_id}}" style="display:none"></input>
-                <button formType="submit" class="jr">立即加入</button>
-              </form>
-            </view>
-          </view>
         </view>
-      </view>
 
 
-    </block>
+      </block>
 
 
 
-    <!-- <view class="scroll-bottom" wx:if="{{arr2.lenght>=10}}">显示10个正在组团的战队</view> -->
-  </scroll-view>
-
+      <!-- <view class="scroll-bottom" wx:if="{{arr2.lenght>=10}}">显示10个正在组团的战队</view> -->
+    </scroll-view>
+  </view>
   <!-- 内容 -->
   <view class="hd-banner">
     <!-- <view class="jrsc">
@@ -268,7 +270,7 @@
     </view>
   </view>
   <view class="box clearfix border-box">
-    <view class='renwu1' wx:if='{{act[0].step_endtime}}'>
+    <view class='renwu1' wx:if='{{act.etime}}'>
       <image src='https://m.test.7710mall.com/Uploads/xcx_img/1.png' class='renwuPic1'></image>
       <form report-submit="true" bindsubmit="Submit">
         <input value='{{act[0].id}}' name="ac_id" style="display:none"></input>
@@ -309,7 +311,7 @@
         </view>
       </view>
     </view>
-    <view class='renwu1 renwu2'>
+    <view class='renwu1 renwu2' wx:if='{{act.etime}}'>
       <image src='https://m.test.7710mall.com/Uploads/xcx_img/2.png' class='renwuPic1'></image>
       <form report-submit="true" bindsubmit="Submit">
         <input value='{{act[1].id}}' name="ac_id" style="display:none"></input>
@@ -350,7 +352,7 @@
         </view>
       </view>
     </view>
-    <view class='renwu1 renwu3'>
+    <view class='renwu1 renwu3' wx:if='{{act.etime}}'>
       <image src='https://m.test.7710mall.com/Uploads/xcx_img/3.png' class='renwuPic1'></image>
       <form report-submit="true" bindsubmit="Submit">
         <input value='{{act[2].id}}' name="ac_id" style="display:none"></input>

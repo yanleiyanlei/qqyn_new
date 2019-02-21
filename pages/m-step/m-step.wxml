@@ -520,6 +520,7 @@
   </view>
   <view class="box clearfix border-box">
     <view class='renwu1' wx:if="{{act[0].goods_short_name == '一'}}">
+      
       <image src='{{act[0].act_img}}' class='renwuPic1'></image>
       <form report-submit="true" bindsubmit="Submit">
         <input value='{{act[0].id}}' name="ac_id" style="display:none"></input>
@@ -539,23 +540,26 @@
       <view class='bottom'>
         <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[0].goods_id}}'>
           <!-- <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image> -->
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[0].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥1</text>
+          <text class='text2'>￥1.0</text>
           <text class='text3'>原价￥{{goods[0].shop_price}}</text>
         </view>
         <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[1].goods_id}}'>
           <!-- <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image> -->
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥1</text>
+          <text class='text2'>￥1.0</text>
           <text class='text3'>原价￥{{goods[1].shop_price}}</text>
         </view>
         <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[2].goods_id}}'>
           <!-- <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image> -->
+          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥1</text>
+          <text class='text2'>￥1.0</text>
           <text class='text3'>原价￥{{goods[2].shop_price}}</text>
         </view>
       </view>
