@@ -106,7 +106,7 @@
                 <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>剩余步数</view>
+                <view>还差步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
@@ -188,7 +188,7 @@
                 <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>剩余步数</view>
+                <view>还差步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
@@ -278,7 +278,7 @@
                 <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>剩余步数</view>
+                <view>还差步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
@@ -574,7 +574,7 @@
           <view class="one">{{act[1].step_name}}</view>
           <view class='one_'>可享受青青优农商城价值 <text class='textGreen' >{{act[1].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
-          <view class="joinn" data-acid="{{act[1].id}}">
+          <view class="joinn join2" data-acid="{{act[1].id}}">
             <text>立即组队</text>
           </view>
         </view>
@@ -615,7 +615,7 @@
           <view class="one">{{act[2].step_name}}</view>
           <view class='one_'>可享受青青优农商城价值 <text class='textBlue' >{{act[2].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
-          <view class="joinn" data-acid="{{act[2].id}}">
+          <view class="joinn join2" data-acid="{{act[2].id}}">
             <text>立即组队</text>
           </view>
         </view>

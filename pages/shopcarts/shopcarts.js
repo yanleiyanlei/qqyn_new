@@ -47,8 +47,8 @@ Page({
     var numprice = dalist.package_mail;
     this.setData({ // 最后赋值到data中渲染到页面
       carts: carts,
-      totalPrice: total.toFixed(1),
-      zonprice: Number(numprice - total).toFixed(1),
+      totalPrice: total.toFixed(2),
+      zonprice: Number(numprice - total).toFixed(2),
     });
     //判断是否有选中的  有商品券 商品
     for (var i = 0; i < carts.length; i++) {
@@ -546,8 +546,8 @@ Page({
           carts: carts,    //购物车
           commpany: dalist.commpany,   //其他满多少包邮
           package_mail: Number(dalist.commpany.package_mail),  //包邮的金额
-          totalPrice: total.toFixed(1),   //总价
-          zonprice: Number(package_mail - total).toFixed(1),   //总价差包邮的金额多少
+          totalPrice: total.toFixed(2),   //总价
+          zonprice: Number(package_mail - total).toFixed(2),   //总价差包邮的金额多少
         })
         //判断是否有选中的  有商品券 商品
         for (var i = 0; i < carts.length; i++) {
@@ -805,8 +805,8 @@ Page({
                     _this.getTotalPrice();
                     _this.setData({
                       carts: carts,
-                      totalPrice: total.toFixed(1),
-                      zonprice: (99 - total).toFixed(1),
+                      totalPrice: total.toFixed(2),
+                      zonprice: (99 - total).toFixed(2),
                     })
 
                   }

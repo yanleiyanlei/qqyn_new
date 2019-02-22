@@ -331,6 +331,9 @@ page {
   font-size: 20rpx;
   line-height: 55rpx;
   padding-left: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box-tit view {
@@ -950,17 +953,21 @@ right:35rpx;
 
 }
 .list .joinn{
-  width:112rpx;
-  height:28rpx;
-  font-family:MicrosoftYaHei;
-  font-size:28rpx;
-  font-weight:normal;
-  font-stretch:normal;
-  letter-spacing:0px;
-  color:#ffffff;
-  position:absolute;
-  top:64rpx;
-  right:100rpx;
+  width:290rpx;
+height:60rpx;
+font-family:MicrosoftYaHei;
+font-size:28rpx;
+font-weight:normal;
+font-stretch:normal;
+letter-spacing:0px;
+color:#ffffff;
+position:absolute;
+top:54rpx;
+right:16rpx;
+display:flex;
+justify-content:center;
+align-items:center;
+
 }
 .box .more{
   width: 80rpx;
@@ -1227,3 +1234,6 @@ margin:0 auto;
 
 }
 
+.renwu1 .join2{
+  top:49rpx;
+}

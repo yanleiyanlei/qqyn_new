@@ -958,8 +958,8 @@ right:35rpx;
 		rgba(119, 3, 157, 0.82); */
 }
 .list .join{
-  width:112rpx;
-  height:28rpx;
+  width:290rpx;
+  height:60rpx;
   font-family:MicrosoftYaHei;
   font-size:28rpx;
   font-weight:normal;
@@ -967,9 +967,11 @@ right:35rpx;
   letter-spacing:0px;
   color:#ffffff;
   position:absolute;
-  top:64rpx;
-  right:100rpx;
-  /* z-index:999; */
+  top:54rpx;
+  right:16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .box .more{
   width: 80rpx;
@@ -1158,4 +1160,7 @@ top:-17rpx;
 .border111{
   position: fixed;
   top: 140rpx;
+}
+.renwu1 .join2{
+  top:49rpx;
 }

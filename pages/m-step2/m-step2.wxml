@@ -50,7 +50,7 @@
               <view class="info">
                 <view class="one">还差
                   <text style="color:#ff0000">{{item.sheng_mem}}</text>人</view>
-                <view class='two twooo'>剩余{{item.step_number}}步</view>
+                <view class='two twooo'>还差{{item.step_number}}步</view>
               </view>
               <view class="join">
                 <form report-submit="true" bindsubmit="Submit2">
@@ -191,7 +191,7 @@
                 <view class="info">
                   <view class="one">还差
                     <text style="color:#ff0000">{{item.sheng_mem}}</text>人拼成</view>
-                  <view class="two">剩余{{item.step_number}}步</view>
+                  <view class="two">还差{{item.step_number}}步</view>
                 </view>
                 <view class="join">
                   <form report-submit="true" bindsubmit="Submit2">
@@ -236,7 +236,7 @@
                 <view class="info">
                   <view class="one">还差
                     <text style="color:#ff0000">{{item.sheng_mem}}</text>人拼成</view>
-                  <view class="two">剩余{{item.step_number}}步</view>
+                  <view class="two">还差{{item.step_number}}步</view>
                 </view>
                 <view class="join">
                   <form report-submit="true" bindsubmit="Submit2">
@@ -321,7 +321,7 @@
           <view class="one">{{act[1].step_name}}</view>
           <view class='one_'>可享受青青优农商城价值 <text class='textGreen' >{{act[1].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
-          <view class="join" data-acid="{{act[1].id}}">
+          <view class="join join2" data-acid="{{act[1].id}}">
             <text>立即组队</text>
           </view>
         </view>
@@ -362,7 +362,7 @@
           <view class="one">{{act[2].step_name}}</view>
           <view class='one_'>可享受青青优农商城价值 <text class='textBlue' >{{act[2].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
-          <view class="join" data-acid="{{act[2].id}}">
+          <view class="join join2" data-acid="{{act[2].id}}">
             <text>立即组队</text>
           </view>
         </view>
