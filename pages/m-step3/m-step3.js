@@ -303,6 +303,7 @@ Page({
                             }
                           }
                           that.setData({
+                            people_step: res.data.people_step,
                             actInfo: res.data.info,
                             teamMember: res.data.info.member_info,
                             ac_id: res.data.info.step_id,

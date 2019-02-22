@@ -9,6 +9,7 @@ Page({
   //   wx.stopPullDownRefresh()
   // },
   data: {
+    total_num:"",
     uid: "",
     mshow: "display:none",//授权遮罩
     act: "",
@@ -229,19 +230,19 @@ Page({
                             })
                           }
                           console.log(res.data.going)
-                          if (that.data.teamList.length > 4) {
-                            that.setData({
-                              foldStyle2: "height:1200rpx!important;",
-                              foldStyle21: "padding-bottom:70rpx!important;",
-                              fold2: true
-                            })
-                          } else {
-                            that.setData({
-                              foldStyle2: "height:auto!important;",
-                              foldStyle21: "padding-bottom:0rpx!important;",
-                              fold2: false
-                            })
-                          }
+                          // if (that.data.teamList.length > 4) {
+                          //   that.setData({
+                          //     foldStyle2: "height:1200rpx!important;",
+                          //     foldStyle21: "padding-bottom:70rpx!important;",
+                          //     fold2: true
+                          //   })
+                          // } else {
+                          //   that.setData({
+                          //     foldStyle2: "height:auto!important;",
+                          //     foldStyle21: "padding-bottom:0rpx!important;",
+                          //     fold2: false
+                          //   })
+                          // }
                         }
                       })
                     }
@@ -279,7 +280,7 @@ Page({
         that.setData({
           arr: res.data.list,
           arr2: res.data.list,
-          step: res.data.mem_step_num.step_number
+          //step: res.data.mem_step_num.step_number
         })
         // if (res.data.list.length > 2 && res.data.list.length <= 10) {
         //   that.setData({
@@ -319,6 +320,44 @@ Page({
 
       }
 
+    })
+
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Active/step_detail',
+      method: "post",
+      success: function (res) {
+        if (res.data.step_rand) {
+          that.setData({
+            step_rand: res.data.step_rand,
+            x: Math.floor(Math.random() * (res.data.step_rand.length - 1)),
+          })
+          // Math.floor(Math.random() * (res.data.step_rand.length - 1))
+          if (that.data.x == 0) {
+            that.setData({
+              y: parseInt(that.data.step_rand.length) - 1
+            })
+          } else {
+            that.setData({
+              y: that.data.x - 1
+            })
+          }
+
+        }
+
+        if (res.data.is_sale == 1) {//活动下架
+          that.setData({
+            soldout: true
+          })
+        } else {
+          that.setData({
+            soldout: false
+          })
+        }
+        that.setData({
+          total_num: res.data.total_num,
+        })
+        console.log(res.data.total_num)
+      }
     })
   },
   /**
