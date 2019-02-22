@@ -291,10 +291,13 @@ page {
   color: #ff712b;
   border: 1rpx solid #ff712b;
 }
-
+.op .op3::after{
+  border: none;
+}
 .op .op3 {
   color: #ff712b;
-  border: 1rpx solid #ff712b;
+  border: 4rpx solid #ff712b;
+  /* border: #ff712b; */
 }
 
 /* 规则 */
