@@ -296,7 +296,7 @@ page {
 }
 .op .op3 {
   color: #ff712b;
-  border: 4rpx solid #ff712b;
+  border: 1rpx solid #ff712b;
   /* border: #ff712b; */
 }
 

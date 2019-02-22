@@ -102,7 +102,7 @@
     <view class="sub-tit">总步数：
       <text class="mission">{{actInfo.step_name}}</text>
     </view>
-    <view class="sub-tit" style="margin-top:20rpx;margin-right:72rpx">我的步数：
+    <view class="sub-tit" style="margin-top:20rpx;margin-right:84rpx">我的步数：
       <text class="mission">{{people_step}}步</text>
     </view>
     <view class="way">
