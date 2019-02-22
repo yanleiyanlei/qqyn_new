@@ -106,7 +106,7 @@
                 <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>剩余步数</view>
+                <view>还差步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
@@ -188,7 +188,7 @@
                 <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>剩余步数</view>
+                <view>还差步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>
@@ -278,7 +278,7 @@
                 <view>任务{{items.goods_short_name}}</view>
                 <view>参与人数</view>
                 <view>完成率</view>
-                <view>剩余步数</view>
+                <view>还差步数</view>
               </view>
               <view class="lists box-tit box-con">
                 <view>{{items.step_name}}</view>

@@ -468,7 +468,7 @@ Page({
                   })
                 }
                 _this.setData({
-                  lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(1)
+                  lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(2)
                 })
                 console.log(_this.data.total);
                 console.log(_this.data.lasttotal);
@@ -564,7 +564,7 @@ Page({
                   })
                 }
                 _this.setData({
-                  lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(1)
+                  lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(2)
                 })
                 console.log(_this.data.total);
                 console.log(_this.data.lasttotal);

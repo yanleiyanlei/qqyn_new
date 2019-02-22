@@ -102,8 +102,8 @@
     <view class="sub-tit">总步数：
       <text class="mission">{{actInfo.step_name}}</text>
     </view>
-    <view class="sub-tit" style="margin-top:20rpx">我的步数：
-      <text class="mission">{{people_step}}</text>
+    <view class="sub-tit" style="margin-top:20rpx;margin-right:103rpx">我的步数：
+      <text class="mission">{{people_step}}步</text>
     </view>
     <view class="way">
       <view class="my-team">
@@ -137,7 +137,7 @@
         <view class="lists box-tit clearfix">
           <view>参与人数</view>
           <view>完成率</view>
-          <view>剩余步数</view>
+          <view>还差步数</view>
         </view>
         <view class="lists box-tit box-con">
           <view>{{actInfo.step_people_num}}</view>

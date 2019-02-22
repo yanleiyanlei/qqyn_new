@@ -331,6 +331,9 @@ page {
   font-size: 20rpx;
   line-height: 55rpx;
   padding-left: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box-tit view {

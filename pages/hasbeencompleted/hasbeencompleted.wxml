@@ -8,7 +8,23 @@
   	  	 <text class="ones">恭喜您任务完成！</text>
          <view wx:if="{{rice_rand == '1元优惠劵'}}">
             <view class='yiquan'>可到店享受1元兑换指定商品优惠活动</view>
-            <image class='dizhiPic' src='/image/hasbeencompleted/map.png'></image>
+            <!-- <image class='dizhiPic' src='/image/hasbeencompleted/map.png'></image> -->
+            <!-- map.wxml -->
+          <map
+            id="map"
+            longitude="116.339646"
+            latitude="39.790306"
+            bindtap='click'
+            scale="14"
+            controls="{{controls}}"
+            bindcontroltap="controltap"
+            markers="{{markers}}"
+            bindmarkertap="markertap"
+            polyline="{{polyline}}"
+            bindregionchange="regionchange"
+            show-location
+            style="width: 602rpx; height: 400rpx;margin:0 auto;margin-top:20rpx;"
+          ></map>
          </view>
          <view wx:if="{{rice_rand != '1元优惠劵'}}">
             <view class='yiquan'>可获得{{rice_rand}}</view>
