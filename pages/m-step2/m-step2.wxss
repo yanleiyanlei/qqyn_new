@@ -37,7 +37,10 @@ page {
 }
 
 .exchange {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: inline-block; */
   height: 60rpx;
   position: absolute;
   bottom: 20rpx;

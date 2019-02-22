@@ -9,6 +9,7 @@ Page({
     foldClass: 'display:none',
     now: "display:none",
     actInfo: "",
+    people_step:'',
     teamMember: [],
     sta: "",
     uid: "",
