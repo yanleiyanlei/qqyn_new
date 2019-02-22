@@ -19,30 +19,30 @@
       </view>
     
     <!-- <view class="remain">剩余:{{remainNum}}份</view> -->
-    <block wx:if="{{step_rand[y].type==1}}">
+    <!-- <block wx:if="{{step_rand[y].type==1}}">
       <view class="situation">
         <view class="one">{{step_rand[y].nickname}}</view>
         <view class="two">{{step_rand[y].step_name}}</view>
       </view>
-    </block>
-    <block wx:if="{{step_rand[y].type==2}}">
+    </block> -->
+    <!-- <block wx:if="{{step_rand[y].type==2}}">
       <view class="situation">
         <view class="one">{{step_rand[y].nickname}}</view>
         <view class="two">获得{{step_rand[y].rice_num}}g大米</view>
       </view>
-    </block>
-    <block wx:if="{{step_rand[x].type==1}}">
+    </block> -->
+    <!-- <block wx:if="{{step_rand[x].type==1}}">
       <view class="situation2">
         <view class="one">{{step_rand[x].nickname}}</view>
         <view class="two">{{step_rand[x].step_name}}</view>
       </view>
-    </block>
-    <block wx:if="{{step_rand[x].type==2}}">
+    </block> -->
+    <!-- <block wx:if="{{step_rand[x].type==2}}">
       <view class="situation2">
         <view class="one">{{step_rand[x].nickname}}</view>
         <view class="two">获得{{step_rand[x].rice_num}}g大米</view>
       </view>
-    </block>
+    </block> -->
     <view class="hd-dw">
       <view class='hd-time'>活动时间：{{act.stime}}-{{act.etime}}</view>
       <view class="now-join">已有\t
