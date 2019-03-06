@@ -506,11 +506,11 @@
 
   <!-- 组队选择 -->
   <view class="joinZD">
+        <button bindtap="GPSsubmit" type="primary">获取位置</button>
     <view class='top'>
       <view class='left2'>
         <view class='leftIcon'></view>
         <view class='leftText'>创建组队任务<text>(我的当前步数：{{step}}步)</text></view>
-
         <!--  -->
       </view>
       <view class='right'>
@@ -713,7 +713,7 @@
         </view>
         <view>
             {{msg.msg9}}
-          </view>
+          </view> 
       </view>
       <!-- <view class="left">1、</view>
       <view class="right"> 活动期间内每个微信用户均可参与活动，可自主发起组队拼团任务，也可加入他人战队完成拼团任务，队伍完成相应拼团任务，每位队员即可获得对应的特价商品券。。 -->
