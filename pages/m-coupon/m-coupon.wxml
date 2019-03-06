@@ -158,10 +158,59 @@
               <!-- 优惠劵价格 -->
               <text class="one"><text class="two">￥</text>{{item.new_price}}</text>
             </view>
-            <view class='quanma'>QQYN{{item.dis_id}}</view>
+            <view class='quanma' wx:if='{{item.new_price == "1"}}'>QQYN{{item.dis_id}}</view>
             <view class="m-list-right">
 
               <view class="m-good">{{item.goods_name}}</view>
+              <view class="m-full">
+
+                <!-- coupon_state==0 优惠卷为无门槛,coupon_state==1 优惠卷为满减券  -->
+                <text class="one" style="color:#434343" wx:if="{{item.coupon_state==0}}">无门槛</text>
+                <text class="one" style="color:#434343" wx:elif="{{item.coupon_state==1}}">【满{{item.coupon_man}}元可用】</text>
+
+                <!-- discounts==0 优惠券状态可以使用 连接可以点击 其他状态连接不可点击 -->
+                <block wx:if="{{item.discounts==0}}">
+                  <navigator open-type="switchTab" url="/pages/index/index" style="display:inline-block" hover-class="Nhover">
+                    <text class="two">去使用</text>
+                  </navigator>
+                </block>
+                <block wx:elif="{{item.discounts==1}}">
+
+                </block>
+                <block wx:elif="{{item.discounts==2}}">
+
+                </block>
+                <!-- <navigator url="/pages/details/details?goodsid={{item.goods_id}}" style="display:inline-block" hover-class="Nhover">
+                    <text class="two">查看商品</text>
+                  </navigator>  -->
+              </view>
+              <view class="m-time">有效期：{{item.coupon_addtime}} - {{item.coupon_endtime}}</view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+             <!-- coupon_type>1 是分类券 -->
+      <block wx:if="{{item.coupon_type>0}}">
+
+        <!-- discounts==0 优惠券状态可以使用 连接可以点击 其他状态连接不可点击 -->
+        <navigator open-type="switchTab" url="{{item.discounts==0 ? '/pages/index/index' : ' '}}" style="display:inline-block" hover-class="Nhover">
+
+          <!-- discounts==0 优惠券状态:未使用 加 m-listg1类名, discounts==1 优惠券状态:已使用 加 m-listg3类名, discounts==2 优惠券状态:已过期 加 m-listg4类名  -->
+          <view class="m-listg  {{item.discounts==0 ? 'm-listg1' : ' '}} {{item.discounts == 1 ? 'm-listg3' : ' ' }} {{item.discounts == 2 ? 'm-listg4' : ' '}} clearfix">
+            <view class="m-list-left">
+              <view class="zl border-box">
+                <text>分</text>
+                <text>类</text>
+                <text>券</text>
+              </view>
+
+              <!-- 优惠劵价格 -->
+              <text class="one"><text class="two">￥</text>{{item.coupon_money}}</text>
+            </view>
+            <!-- <view class='quanma' wx:if='{{}}'>QQYN{{item.dis_id}}</view> -->
+            <view class="m-list-right">
+
+              <view class="m-good">{{item.cat_type_name}}</view>
               <view class="m-full">
 
                 <!-- coupon_state==0 优惠卷为无门槛,coupon_state==1 优惠卷为满减券  -->
