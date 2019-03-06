@@ -209,7 +209,8 @@
 
 .m-box .m-list .m-list-right .m-scope {
   font-size: 26rpx;
-  color: #434343;
+  color:#ff712b;
+
   line-height:30rpx;
   margin-top: 35rpx;
 }
@@ -221,7 +222,8 @@
 
 .m-box .m-list .m-list-right .m-full .one {
   font-size: 22rpx;
-  color: #ff712b;
+color:#434343;
+
   line-height: 30rpx;
 }
 
