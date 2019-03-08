@@ -8,7 +8,7 @@
 
 <!-- 顶部banner图片 -->
 <view class='bannre'>
-  <image src='{{bannerimgurl}}{{banner}}'></image>
+  <image bindtap='lingquyouhuiquan' src='{{bannerimgurl}}{{banner}}'></image>
 </view>
 
 <!-- 商品列表 -->
