@@ -18,6 +18,10 @@
       </swiper-item>
     </block>
   </swiper>
+  <navigator url='/pages/morePosters/morePosters'>
+    <view class='gengduohaibao' style='color:#fff;font-size:32rpx;position:absolute;right:30rpx;bottom:34rpx'>更多海报
+  ></view>
+   </navigator>
   <view class="dots">
     <block wx:for="{{swiperli}}" wx:key="unique">
       <view class="dot{{index == swiperCurrent ? ' active' : ''}}" bindtap="chuangEvent" id="{{index}}"></view>

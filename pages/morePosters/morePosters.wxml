@@ -1,0 +1,8 @@
+<view class='main'>
+  <view class='classify' wx:for='{{ims}}'>
+    <image data-index='{{index}}' bindtap='previewImg' src='{{item}}'></image>
+    <view class='txt'>长按保存图片</view>
+  </view>
+  <view class='jiazai' bindtap='jiazai' wx:if='{{pd==1}}'>点击加载更多</view>
+  <view class='jiazai' wx:if='{{pd==0}}'>没有更多了</view>
+</view>
