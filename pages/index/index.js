@@ -385,7 +385,7 @@ Page({
               //console.log('aaaa');
               //console.log(falg_banner);
               if (falg_banner == false) {
-                var blink = "../my/my"
+                var blink = res.data[i].xcx_url
 
                 var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
                 banner.push(sj)

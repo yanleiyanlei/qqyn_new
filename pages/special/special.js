@@ -27,7 +27,7 @@ Page({
       myshow: "display:none"
     })
   },
-
+  
   // 添加购物车
 
   cart: function(e) {
@@ -104,7 +104,29 @@ Page({
       complete: function(res) {}
     })
   },
-
+  //点击banner领取优惠券
+  lingquyouhuiquan:function(e) {
+    var uid = wx.getStorageSync('userinfo').uid
+    console.log(uid)
+    wx.request({
+      url: app.globalData.Murl + "/Applets/Lq/lq", //请求地址
+      data: { //请求参数
+        member_id: uid, //用户id
+        fm: 0
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        // console.log(res)
+        wx.showToast({
+          title: res.data.data,
+          icon:'none'
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
