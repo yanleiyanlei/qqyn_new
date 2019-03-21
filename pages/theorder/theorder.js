@@ -348,9 +348,10 @@ Page({
     })
   },
   /*商品展示列表*/
-  listshop() {
+  listshop(e) {
+    var temp_id = e.currentTarget.dataset.tid ;
     wx.navigateTo({
-      url: '../shoplist/shoplist',
+      url: '../shoplist/shoplist?temp_id=' + temp_id,
       success: function(res) {
         console.log(res)
       },
@@ -526,6 +527,8 @@ Page({
         method: "post",
         success: function(res) {
           console.log(res.data);
+          var isset = res.data.is_ok;
+          var notgoods = res.data.not_show;
           var datalist = res.data; //返回的所有信息
           var godsorder = datalist.order; //商品信息
           var can_goods_coupon = datalist.can_goods_coupon; //商品卷可用数量
@@ -577,7 +580,7 @@ Page({
             notgoods: notgoods,
             isset: isset
           })
-          _this.setData({
+          _this.setData({ 
             lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(2)
           })
           console.log(_this.data.total);

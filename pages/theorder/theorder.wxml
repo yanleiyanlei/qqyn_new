@@ -48,9 +48,12 @@
             </image>
             </blcok>
           </view>
-          <view class="righship" bindtap="listshop">
+          <view class="righship" wx:if="{{item.goods.length>2}}" data-tid='{{index}}' bindtap="listshop">
             共{{item.other.quantity}}件
             <text class="iconfont icon-iconfontyoujiantou"></text>
+          </view>
+           <view class="righship"wx:else data-tid='{{index}}'>
+            共{{item.other.quantity}}件
           </view>
         </view>
         <view class='freight'>
