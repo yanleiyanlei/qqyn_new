@@ -1,5 +1,12 @@
 <!-- 订单页面 -->
 <page>
+
+  <view class='back' wx:if="{{popup}}">
+    <view class='backtxt'>
+      <text>["{{notgoods}}"]，配送范围无法覆盖您选择的收货地址，请更换其他商品或更换收货地址。</text>
+      <text bindtap='closepop'>确定</text>
+    </view>
+  </view>
   <view class="zhnegote">
     <view class="theorder adad" wx:if="{{address==null}}">
       <view class="adress_ther" bindtap="newaddress">
@@ -28,20 +35,30 @@
       </view>
       <image src="http://m.77farmers.com/Public/Home/img/order_loc.png" class="botthe"></image>
     </view>
-    <view class="centerothe">
-      <view class="toptime">
-        商品清单
-      </view>
-      <view class="imglist">
-        <view class="left_shop">
-          <image wx:for="{{goodsorder}}" src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_photo}}" bindtap="urldetails" data-id="{{item.goods_id}}"></image>
+    <block wx:for="{{goodsorder}}" wx:key="unipue">
+      <view class="centerothe">
+        <view class="toptime">
+          {{item.other.name}}
         </view>
-        <view class="righship" bindtap="listshop">
-          共{{quantity.quantity}}件
-          <text class="iconfont icon-iconfontyoujiantou"></text>
+        <view class="imglist">
+          <view class="left_shop">
+            <blcok wx:for="{{item.goods}}" wx:for-item="value">
+            <image src="http://ss.bjzzdk.com/Public/Uploads/{{value.goods_photo}}" bindtap="urldetails" data-id="{{value.goods_id}}">
+              <text wx:if="{{value.flag==0}}">此地区不可售</text>
+            </image>
+            </blcok>
+          </view>
+          <view class="righship" bindtap="listshop">
+            共{{item.other.quantity}}件
+            <text class="iconfont icon-iconfontyoujiantou"></text>
+          </view>
+        </view>
+        <view class='freight'>
+          运费小计
+          <text>￥{{item.other.yunfei}}</text>
         </view>
       </view>
-    </view>
+    </block>
     <view class="listwu">
 
       <view class="yutime">

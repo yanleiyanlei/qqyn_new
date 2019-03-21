@@ -15,17 +15,11 @@ Page({
     })
   },
   bindRegionChange: function (e) {
-    if (e.detail.value[0] == "北京市" || e.detail.value[0] == "天津市" || e.detail.value[0] == "河北省") {
+
       this.setData({
         region: e.detail.value
       })
-    } else {
-      wx.showToast({
-        title: '商城暂时仅支持京津冀的配送',
-        icon: "none",
-        duration: 3000
-      })
-    }
+    
   },
   defaltAddress: function (e) {
     var flag = e.currentTarget.dataset.defalt;
@@ -85,7 +79,6 @@ Page({
           duration: 1000
         })
       }
-
     }
     if (!regPhone.exec(formData.address_phone)) {
       wx.showToast({

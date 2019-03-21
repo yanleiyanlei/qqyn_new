@@ -9,14 +9,14 @@ Page({
     totaYunfei: 99, //满99免除运费
     startX: 0, //开始坐标
     startY: 0,
-    isTouchMove: false,  //列表右滑状态
+    isTouchMove: false, //列表右滑状态
     hieneflae: false, //false =编辑状态  true
     settlEment: "去结算",
     modelHidden: "true",
     numbers: [], //获取到 要 删除的 列表的下标
     cartsid: [],
-    zonprice: [],    //总价减去包邮的价格
-    hiddenLoading: true,  //加载中
+    zonprice: [], //总价减去包邮的价格
+    hiddenLoading: true, //加载中
     ress: [],
     commpany: [],
   },
@@ -101,12 +101,12 @@ Page({
     //let goodsid= e.currentTarget.dataset.index;
     var uid = wx.getStorageSync("userinfo").uid; //获取用户id
     var urlshop = app.globalData.Murl + "/Applets/Cart/CartBuy";
-    var carts = this.data.carts;   //购物车赋值
-    wx.request({    //获取购物车信息
+    var carts = this.data.carts; //购物车赋值
+    wx.request({ //获取购物车信息
       url: urlshop,
       data: {
-        member_id: uid,  //用户信息
-        seller_id: 1     //传参 1
+        member_id: uid, //用户信息
+        seller_id: 1 //传参 1
       },
       method: "post",
       success: function(res) {
@@ -115,9 +115,9 @@ Page({
         for (var i = 0; i < carts.length; i++) {
           if (carts[i].selected == true) {
             var kc = Number(carts[i].store_count); //商品库存
-            var num = Number(carts[i].goods_num);  //选中商品数量
-            var name = carts[i].goods_name;        //商品名称
-            var is_on_sale = carts[i].is_on_sale;  //商品状态  1 上架   0 下架
+            var num = Number(carts[i].goods_num); //选中商品数量
+            var name = carts[i].goods_name; //商品名称
+            var is_on_sale = carts[i].is_on_sale; //商品状态  1 上架   0 下架
             console.log(is_on_sale);
             if (is_on_sale == 0) {
               wx.showToast({
@@ -177,10 +177,10 @@ Page({
   /*全选事件*/
   selectAll(e) {
     let selectAllStatus = this.data.selectAllStatus; // 获取全选状态
-    selectAllStatus = !selectAllStatus;              // 改变选中状态
-    let carts = this.data.carts;                      //获取购物车信息
+    selectAllStatus = !selectAllStatus; // 改变选中状态
+    let carts = this.data.carts; //获取购物车信息
     var userinfo = wx.getStorageSync("userinfo");
-    var uid = userinfo.uid;                           //获取用户信息
+    var uid = userinfo.uid; //获取用户信息
     var _this = this;
     var value = _this.data.hieneflae; //删除 状态      
 
@@ -189,26 +189,26 @@ Page({
         if (carts[i].selected == true) {
 
         } else {
-          var kc = Number(carts[i].store_count);    //每个商品的库存
-          var num = Number(carts[i].goods_num);     //每个商品的选中数量
+          var kc = Number(carts[i].store_count); //每个商品的库存
+          var num = Number(carts[i].goods_num); //每个商品的选中数量
           if (value == false) {
             wx.request({
-              url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",  //后台请求地址
+              url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect", //后台请求地址
               data: {
-                member_id: uid,   //用户id
-                cart_id: carts[i].id,  //所选商品id
-                selected: 1,   
+                member_id: uid, //用户id
+                cart_id: carts[i].id, //所选商品id
+                selected: 1,
               },
               method: "POST",
               success: function(res) {
 
-                if (res.data.selected == 'true') {   //后台返回 res.data.selected == 'true' 请求成功
-                  let carts = _this.data.carts;  //获取购物车信息
-                  const selected = carts[i].selected;  //获取商品的selected 选中状态
-                  carts[i].selected = !selected;    //改变商品选中状态
-                  _this.getTotalPrice();            //重新计算总价
+                if (res.data.selected == 'true') { //后台返回 res.data.selected == 'true' 请求成功
+                  let carts = _this.data.carts; //获取购物车信息
+                  const selected = carts[i].selected; //获取商品的selected 选中状态
+                  carts[i].selected = !selected; //改变商品选中状态
+                  _this.getTotalPrice(); //重新计算总价
                   _this.setData({
-                    carts: carts,                   //更新购物车
+                    carts: carts, //更新购物车
                   })
 
                 } else {
@@ -321,17 +321,17 @@ Page({
   },
   // 增加数量
   addCount(e) {
-    var userinfo = wx.getStorageSync("userinfo");    //获取用户信息
-    var uid = userinfo.uid;                          //获取用户id
-    const index = e.currentTarget.dataset.index;     //获取商品index
-    const id = e.currentTarget.dataset.id;           //获取商品id
-    const goods_id = e.currentTarget.dataset.ids;    //获取商品goods_id
-    let carts = this.data.carts;                     //获取购物车信息
-    var kc = e.currentTarget.dataset.key;            //获取该商品库存
-    let num = carts[index].goods_num;                //获取商品选中
-    num = Number(num) + 1;                           //商品数量每次加一
+    var userinfo = wx.getStorageSync("userinfo"); //获取用户信息
+    var uid = userinfo.uid; //获取用户id
+    const index = e.currentTarget.dataset.index; //获取商品index
+    const id = e.currentTarget.dataset.id; //获取商品id
+    const goods_id = e.currentTarget.dataset.ids; //获取商品goods_id
+    let carts = this.data.carts; //获取购物车信息
+    var kc = e.currentTarget.dataset.key; //获取该商品库存
+    let num = carts[index].goods_num; //获取商品选中
+    num = Number(num) + 1; //商品数量每次加一
     console.log(goods_id);
-    if (num > kc) {                 //数目大于库存
+    if (num > kc) { //数目大于库存
       wx.showToast({
         title: '库存不足！',
         icon: 'loading',
@@ -479,10 +479,10 @@ Page({
     })
     var uid = wx.getStorageSync("userinfo").uid; //获取用户uid
     /* if(value=='')*/
-    var value = _that.data.hieneflae;  
+    var value = _that.data.hieneflae;
     if (value == false) {
       _that.setData({
-        hieneflae: true,   //设置默认为全选
+        hieneflae: true, //设置默认为全选
       })
       console.log(_that.data.hieneflae);
     } else {
@@ -492,19 +492,19 @@ Page({
 
     var uid = _that.data.uid;
     console.log(uid);
-    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";  //获取购物车数据
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList"; //获取购物车数据
     wx.request({
       url: shopusr,
       data: {
-        member_id: uid,  //用户uid
-        seller_id: 1,   
+        member_id: uid, //用户uid
+        seller_id: 1,
       },
       method: "POST",
       success: function(res) {
-        const dalist = res.data; 
-        var carts = dalist.cartList;  //购物车信息
+        const dalist = res.data;
+        var carts = dalist.cartList; //购物车信息
         console.log(dalist);
-        var package_mail = dalist.commpany.package_mail;  //包邮的金额
+        var package_mail = dalist.commpany.package_mail; //包邮的金额
         let total = 0;
         console.log(carts);
         for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
@@ -542,12 +542,12 @@ Page({
         //赋值
         _that.setData({
           dalist: dalist.commpany,
-          hasList: true,   //购物车有信息
-          carts: carts,    //购物车
-          commpany: dalist.commpany,   //其他满多少包邮
-          package_mail: Number(dalist.commpany.package_mail),  //包邮的金额
-          totalPrice: total.toFixed(2),   //总价
-          zonprice: Number(package_mail - total).toFixed(2),   //总价差包邮的金额多少
+          hasList: true, //购物车有信息
+          carts: carts, //购物车
+          commpany: dalist.commpany, //其他满多少包邮
+          package_mail: Number(dalist.commpany.package_mail), //包邮的金额
+          totalPrice: total.toFixed(2), //总价
+          zonprice: Number(package_mail - total).toFixed(2), //总价差包邮的金额多少
         })
         //判断是否有选中的  有商品券 商品
         for (var i = 0; i < carts.length; i++) {
@@ -581,18 +581,18 @@ Page({
   },
   /*选择商品*/
   selectList(e) {
-    const index = e.currentTarget.dataset.index;  //商品所在位置
-    const key = e.currentTarget.dataset.key;      //自定义  0  或者  1
-    const id = e.currentTarget.dataset.id;        //商品id
+    const index = e.currentTarget.dataset.index; //商品所在位置
+    const key = e.currentTarget.dataset.key; //自定义  0  或者  1
+    const id = e.currentTarget.dataset.id; //商品id
     var _this = this;
     var userinfo = wx.getStorageSync("userinfo");
-    var uid = userinfo.uid;    //用户id
+    var uid = userinfo.uid; //用户id
     var value = _this.data.hieneflae; //删除 状态
-    const kc = Number(e.currentTarget.dataset.kc);  //商品库存
+    const kc = Number(e.currentTarget.dataset.kc); //商品库存
     const num = Number(e.currentTarget.dataset.num); //选中商品数量
     console.log(kc);
     console.log(num);
-    const priceurl = app.globalData.Murl + "/Applets/Cart/ajaxCartSelect";  //请求后台地址
+    const priceurl = app.globalData.Murl + "/Applets/Cart/ajaxCartSelect"; //请求后台地址
     if (value == false) {
       wx.request({
         url: priceurl,
@@ -603,14 +603,14 @@ Page({
         },
         method: "POST",
         success: function(res) {
-          if (res.data.selected == 'true') {   //后台请求成功
-            let carts = _this.data.carts;      //购物车信息
+          if (res.data.selected == 'true') { //后台请求成功
+            let carts = _this.data.carts; //购物车信息
             console.log(carts);
-            const selected = carts[index].selected;  //获取此商品选中状态
-            carts[index].selected = !selected;       //改变此商品的选中状态
-            _this.getTotalPrice();                   //重新计算商品总价
+            const selected = carts[index].selected; //获取此商品选中状态
+            carts[index].selected = !selected; //改变此商品的选中状态
+            _this.getTotalPrice(); //重新计算商品总价
             _this.setData({
-              carts: carts,                           //更新购物车信息
+              carts: carts, //更新购物车信息
             })
 
             //判断购物车商品是否全补选中，如果全部选中，底部全选状态激活  selectAllStatus==true
@@ -695,40 +695,40 @@ Page({
   },
   /*删除*/
   deleteLists(e) {
-    const key = e.currentTarget.dataset.key;  //商品id
-    let carts = this.data.carts;              //购物车
-    const index = e.currentTarget.dataset.index;    //商品坐标
+    const key = e.currentTarget.dataset.key; //商品id
+    let carts = this.data.carts; //购物车
+    const index = e.currentTarget.dataset.index; //商品坐标
     var _this = this;
     wx.showModal({
       title: '删除',
       content: '确定要删除该商品吗？',
       success: function(res) {
-        if (res.confirm) {   //确定删除
-          wx.request({       //像后台发送请求删除此商品
-            url: app.globalData.Murl + "/Applets/Cart/ajaxDelCart",   //请求地址
+        if (res.confirm) { //确定删除
+          wx.request({ //像后台发送请求删除此商品
+            url: app.globalData.Murl + "/Applets/Cart/ajaxDelCart", //请求地址
             data: {
-              ids: key,      //商品id
+              ids: key, //商品id
             },
             method: "post",
-            success: function(res) {   //请求成功
+            success: function(res) { //请求成功
               console.log(res.data);
-              if (res.data.status == 1) {   //当res.data.status==1 说明后台删除成功
-                let carts = _this.data.carts;  //购物车
-                carts.splice(index, 1);        //购物车删除此商品
-                _this.getTotalPrice();         //重新计算总价
+              if (res.data.status == 1) { //当res.data.status==1 说明后台删除成功
+                let carts = _this.data.carts; //购物车
+                carts.splice(index, 1); //购物车删除此商品
+                _this.getTotalPrice(); //重新计算总价
                 _this.setData({
-                  carts: carts                 //更新购物车
+                  carts: carts //更新购物车
                 });
-                let cartstrue = [];            
-                for (let i = 0; i < carts.length; i++) {   //便利购物车中每一件商品是否选中
+                let cartstrue = [];
+                for (let i = 0; i < carts.length; i++) { //便利购物车中每一件商品是否选中
                   cartstrue.push(carts[i].selected);
-                } 
+                }
 
-                if (cartstrue.indexOf(false) !== -1) {     
+                if (cartstrue.indexOf(false) !== -1) {
                   _this.setData({
                     selectAllStatus: false,
                   })
-                } else {                            //购物车商品都为选中状态时全选激活
+                } else { //购物车商品都为选中状态时全选激活
                   _this.setData({
                     selectAllStatus: true,
                   })
@@ -758,13 +758,15 @@ Page({
     for (let i = 0; i < carts.length; i++) {
       if (carts[i].selected == true) {
         cartsid.push(carts[i].id);
-      } else {
-        wx.showToast({
-          title: '请选择商品',
-          icon: 'none',
-          duration: 2000
-        })
       }
+    }
+    if (cartsid.length < 1) {
+      wx.showToast({
+        title: '请选择商品',
+        icon: 'none',
+        duration: 2000
+      })
+      return false;
     }
     var cartsids = cartsid.toString();
     console.log(cartsids)
