@@ -309,6 +309,7 @@ Page({
     });
   },
   onLoad: function (options) {
+    let city = app.globalData.location
     wx.showShareMenu({
       withShareTicket: true
     })
@@ -393,6 +394,7 @@ Page({
         id: goodsid,
         member_id: uid,
         seller_id: 1,
+        city: city
       },
       success: function (res) {
 
@@ -410,6 +412,7 @@ Page({
         var shop_prices = datalist.goodsSpecInfo[0].shop_price;
         that.setData({
           datas: datalist,
+          ionot: datalist.goodsdetails.isnot,  //是否有货
           nowTime: datalist.timestos,//当前时间
           goodsAttrInfo: datalist.goodsAttrInfo,
           shopName: datalist.goodsdetails,

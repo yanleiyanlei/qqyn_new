@@ -92,7 +92,6 @@ swiper {
   font-size: 36rpx;
   color: #303030;
   font-weight: 480;
-
   margin-bottom: 28rpx;
   display: block;
 }
@@ -373,11 +372,18 @@ swiper {
 
 /* 底部 */
 
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
 .bottomdetaile {
   width: 100%;
   height: 100rpx;
   background: #fff;
-  position: fixed;
   bottom: 0px;
   border-top: 1rpx solid #bfbfbf;
   display: flex;
@@ -701,47 +707,56 @@ swiper {
   padding-top: 40rpx;
   box-sizing: border-box;
 }
-.detailimg{
+
+.detailimg {
   width: 100%;
   height: 184rpx;
   position: absolute;
   bottom: 510rpx;
 }
-.contentsa{
+
+.contentsa {
   width: 100%;
   height: 297rpx;
 }
-.contleft{
+
+.contleft {
   width: 85rpx;
   height: 100%;
   margin-left: 64rpx;
   float: left;
   text-align: center;
 }
-.contleft text{
+
+.contleft text {
   font-size: 26rpx;
   color: #9a9a9a;
   display: block;
   margin-top: 30rpx;
   margin-bottom: 30rpx;
 }
-.concent{
-   width: 85rpx;
+
+.concent {
+  width: 85rpx;
   height: 100%;
   float: left;
   text-align: center;
 }
-.xian{
+
+.xian {
   width: 17rpx;
   height: 224rpx;
 }
-.friendq{
+
+.friendq {
   padding-top: 15rpx;
 }
-.contright{
-  float: left
+
+.contright {
+  float: left;
 }
-.contright view{
+
+.contright view {
   width: 443rpx;
   height: 105rpx;
   background: url('https://m.7710mall.com/Uploads/xxc/fenx_03.png') no-repeat;
@@ -752,11 +767,13 @@ swiper {
   box-sizing: border-box;
   margin-bottom: 20rpx;
 }
-.backgr{
+
+.backgr {
   width: 100%;
   height: 100%;
 }
-.leftwe{
+
+.leftwe {
   float: left;
   width: 50%;
   height: 100%;
@@ -764,7 +781,8 @@ swiper {
   padding-right: 40rpx;
   box-sizing: border-box;
 }
-.leftwes{
+
+.leftwes {
   float: left;
   width: 50%;
   height: 100%;
@@ -772,21 +790,25 @@ swiper {
   padding-left: 40rpx;
   box-sizing: border-box;
 }
-.wecar{
+
+.wecar {
   width: 68rpx;
   height: 68rpx;
   margin-right: 97rpx;
 }
-.wecars{
+
+.wecars {
   width: 68rpx;
   height: 68rpx;
   margin-left: 97rpx;
 }
-.fexwe{
+
+.fexwe {
   font-size: 26rpx;
   color: #ff712b;
 }
-.leftwe button{
+
+.leftwe button {
   font-size: 26rpx;
   color: #ff712b;
   list-style: none;
@@ -796,7 +818,8 @@ swiper {
   border: none;
   float: right;
 }
-.leftwes button{
+
+.leftwes button {
   font-size: 26rpx;
   color: #ff712b;
   list-style: none;
@@ -806,10 +829,92 @@ swiper {
   border: none;
   float: left;
 }
-.oofsss{
+
+.oofsss {
   width: 50rpx;
   height: 50rpx;
   position: absolute;
   right: 40rpx;
   bottom: 679rpx;
+}
+
+.address {
+  width: 710rpx;
+  background: #fff;
+  margin-top: 10rpx;
+  border-radius: 5rpx;
+  box-shadow: 0rpx 3rpx 3rpx 3rpx #ccc;
+  padding: 34rpx 18rpx 34rpx 28rpx;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+}
+
+.add-top {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 43rpx;
+}
+
+.add-top text {
+  float: left;
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: rgba(48, 48, 48, 1);
+}
+
+.addend {
+  float: left;
+  width: 80rpx;
+}
+
+.addimg {
+  float: left;
+  margin-right: 10rpx;
+}
+
+.add-top image {
+  display: block;
+  width: 27rpx;
+  height: 32rpx;
+}
+
+.addgo {
+  float: right;
+}
+
+.addtxt {
+  width: 470rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.add-footer {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-left: 80rpx;
+  padding-right: 44rpx;
+  box-sizing: border-box;
+}
+
+.add-footer text {
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(48, 48, 48, 1);
+}
+
+.isnot {
+  width: 100%;
+  background: #ff712b;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  height: 43rpx;
+  line-height: 43rpx;
+  border-bottom: 2rpx solid #bfb9b7;
 }

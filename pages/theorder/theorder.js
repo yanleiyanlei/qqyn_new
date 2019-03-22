@@ -23,7 +23,9 @@ Page({
     lasttotal: " ", //最后实付的总价
     coupon_money: " ", //优惠卷金额
     upto_amount: " ", //运费
-    package_mail: "" //满减的价格 例如 “99.00”
+    package_mail: "", //满减的价格 例如 “99.00”
+    isset: "", //是否可以去结算
+    popup:false
   },
   userNameInput: function(e) { //用户留言
     this.setData({
@@ -49,7 +51,7 @@ Page({
       this.setData({
         weCharstatus: weCharstatus,
         wtimes: undefined
-      });
+      })
     }
   },
 
@@ -72,86 +74,102 @@ Page({
     }
   },
 
-  
-  subdingr: function() {
-    var _this = this;
-    var quantity = _this.data.quantity;
-    var weekday = _this.data.quantity.select_weekday1;
-    console.log(_this.data.quantity.coupon)
-    console.log(_this.data.quantity.coupon)
-    if (quantity.address == null) {
-      wx.showToast({
-        title: '请选择地址',
-        icon: 'loading',
-        duration: 2000
-      })
-      setTimeout(function() {
-        wx.hideLoading()
-      }, 1000)
-    } else {
-      var wi = wx.getStorageSync("wi");
-      var uid = wx.getStorageSync("userinfo").uid;
+//关闭弹窗
 
-      if (quantity.coupon == null) { //没有优惠券
-        var dis_id = null; //优惠券id
-        var coupon = 0; //优惠券信息
-      } else { //有优惠券
-        var dis_id = _this.data.quantity.coupon.dis_id; //优惠券id
-        var coupon = _this.data.quantity.coupon.coupon_money; //优惠券信息
-      }
-      if (weekday == undefined) {
-        var post_time = null //订单有蔬菜选择蔬菜送达时间
+  closepop:function(){
+    this.setData({
+      popup:false
+    })
+  },
+
+  subdingr: function() {
+    console.log(this.data.isset)
+    if (this.data.isset == 2) {
+      var popup = true
+    } else {
+      var popup = false
+      var _this = this;
+      var quantity = _this.data.quantity;
+      var weekday = _this.data.quantity.select_weekday1;
+      console.log(_this.data.quantity.coupon)
+      console.log(_this.data.quantity.coupon)
+      if (quantity.address == null) {
+        wx.showToast({
+          title: '请选择地址',
+          icon: 'loading',
+          duration: 2000
+        })
+        setTimeout(function() {
+          wx.hideLoading()
+        }, 1000)
       } else {
-        var post_time = _this.data.wtimes //订单有蔬菜选择蔬菜送达时间
-      }
-      var obj = {
-        wi: wi, //by yan.lei 把wi拿出来传到提交订单接口
-        member_id: uid, //用户id
-        seller_id: 1,
-        dis_id: dis_id,
-        coupon: coupon,
-        goods_money: _this.data.quantity.money, //后台传过来的总价
-        quantity: _this.data.quantity.order, //商品信息
-        freight: _this.data.upto_amount, //运费
-        actualpayment: _this.data.lasttotal, //实付价格
-        consigneename: _this.data.quantity.address.name, //用户姓名  
-        consigneephone: _this.data.quantity.address.phone, //用户电话
-        consigneeaddress: _this.data.quantity.address.sheng + _this.data.quantity.address.shi + _this.data.quantity.address.qu + _this.data.quantity.address.address_content, //用户全部地址信息
-        order_content: _this.data.userName, //用户留言
-        consigneeaddressid: _this.data.quantity.address.id, //地址id
-        post_time: post_time, //订单有蔬菜选择蔬菜送达时间
-      }
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Cart/Addordershow',
-        data: obj,
-        method: 'POST',
-        header: {
-          'Content-Type': 'application/json'
-        },
-        success: function(res) {
-          _this.setData({
-            actualpayment: _this.data.lasttotal,      //订单最终价格
-            orderid: res.data.orderid,                //订单id
-            order_number: res.data.order_number       //订单号
-          })  
-          console.log(_this.data.orderid);
-          console.log(_this.data.order_number);
-          wx.redirectTo({
-            url: '../pay/pay?order_number=' + _this.data.order_number + '&is_goods_coupon=' + _this.data.is_goods_coupon + '&reduce_moeny=' + _this.data.reduce_moeny + '&satisfy_money=' + _this.data.satisfy_money + '&now_time=' + _this.data.now_time,
-            success: function(res) {
-              console.log(res)
-            },
-            fail: function(res) {
-              console.log(res)
-            },
-            complete: function(res) {
-              console.log(res)
-            }
-          })
+        var wi = wx.getStorageSync("wi");
+        var uid = wx.getStorageSync("userinfo").uid;
+
+        if (quantity.coupon == null) { //没有优惠券
+          var dis_id = null; //优惠券id
+          var coupon = 0; //优惠券信息
+        } else { //有优惠券
+          var dis_id = _this.data.quantity.coupon.dis_id; //优惠券id
+          var coupon = _this.data.quantity.coupon.coupon_money; //优惠券信息
         }
-      })
-      console.log(obj)
+        if (weekday == undefined) {
+          var post_time = null //订单有蔬菜选择蔬菜送达时间
+        } else {
+          var post_time = _this.data.wtimes //订单有蔬菜选择蔬菜送达时间
+        }
+        var obj = {
+          wi: wi, //by yan.lei 把wi拿出来传到提交订单接口
+          member_id: uid, //用户id
+          seller_id: 1,
+          dis_id: dis_id,
+          coupon: coupon,
+          goods_money: _this.data.quantity.money, //后台传过来的总价
+          quantity: _this.data.quantity.quantity, //商品信息
+          freight: _this.data.upto_amount, //运费
+          actualpayment: _this.data.lasttotal, //实付价格
+          consigneename: _this.data.quantity.address.name, //用户姓名  
+          consigneephone: _this.data.quantity.address.phone, //用户电话
+          consigneeaddress: _this.data.quantity.address.sheng + _this.data.quantity.address.shi + _this.data.quantity.address.qu + _this.data.quantity.address.address_content, //用户全部地址信息
+          order_content: _this.data.userName, //用户留言
+          consigneeaddressid: _this.data.quantity.address.id, //地址id
+          post_time: post_time, //订单有蔬菜选择蔬菜送达时间
+        }
+        wx.request({
+          url: app.globalData.Murl + '/Applets/Cart/Addordershow',
+          data: obj,
+          method: 'POST',
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function(res) {
+            _this.setData({
+              actualpayment: _this.data.lasttotal, //订单最终价格
+              orderid: res.data.orderid, //订单id
+              order_number: res.data.order_number //订单号
+            })
+            console.log(_this.data.orderid);
+            console.log(_this.data.order_number);
+            wx.redirectTo({
+              url: '../pay/pay?order_number=' + _this.data.order_number + '&is_goods_coupon=' + _this.data.is_goods_coupon + '&reduce_moeny=' + _this.data.reduce_moeny + '&satisfy_money=' + _this.data.satisfy_money + '&now_time=' + _this.data.now_time,
+              success: function(res) {
+                console.log(res)
+              },
+              fail: function(res) {
+                console.log(res)
+              },
+              complete: function(res) {
+                console.log(res)
+              }
+            })
+          }
+        })
+        console.log(obj)
+      }
     }
+    this.setData({
+      popup: popup
+    })
   },
   /*去结算按钮 生成订单*/
   // subdingr(e) {
@@ -297,7 +315,7 @@ Page({
   //   }
   // },
   /*点击 跳到商品详情*/
-  urldetails(e) { 
+  urldetails(e) {
     let goodsid = e.currentTarget.dataset.id;
     wx.redirectTo({
       url: '../details/details?goodsid=' + goodsid,
@@ -330,9 +348,10 @@ Page({
     })
   },
   /*商品展示列表*/
-  listshop() {
+  listshop(e) {
+    var temp_id = e.currentTarget.dataset.tid ;
     wx.navigateTo({
-      url: '../shoplist/shoplist',
+      url: '../shoplist/shoplist?temp_id=' + temp_id,
       success: function(res) {
         console.log(res)
       },
@@ -412,6 +431,8 @@ Page({
               method: "post",
               success: function(res) {
                 console.log(res.data);
+                var isset = res.data.is_ok;
+                var notgoods = res.data.not_show;
                 var datalist = res.data; //返回的所有信息
                 var godsorder = datalist.order; //商品信息
                 var can_goods_coupon = datalist.can_goods_coupon; //商品卷可用数量
@@ -458,15 +479,13 @@ Page({
                     coupon_money: Number(datalist.coupon.coupon_money)
                   })
                 }
-                if (datalist.money - _this.data.coupon_money >= _this.data.package_mail) { //当商品总价-优惠券>= 满减的钱 运费
-                  _this.setData({
-                    upto_amount: Number("0.00") // upto_amount = 0
-                  })
-                } else { //否则
-                  _this.setData({
-                    upto_amount: Number(datalist.commpany.upto_amount)
-                  })
-                }
+
+                _this.setData({
+                  upto_amount: Number(datalist.yunfei),
+                  notgoods: notgoods,
+                  isset: isset
+                })
+
                 _this.setData({
                   lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(2)
                 })
@@ -497,82 +516,80 @@ Page({
       //   method: "post",
       //   success: function(res) {
       //     if (res.data.status == true) { //请求成功获取信息
-            wx.request({
-              url: app.globalData.Murl + '/Applets/Cart/order1',
-              data: {
-                member_id: uid,
-                seller_id: 1,
-                dis_id: dis_id, //优惠卷id
-                Cart_address_id: item //地址id
-              },
-              method: "post",
-              success: function(res) {
-                console.log(res.data);
-                var datalist = res.data; //返回的所有信息
-                var godsorder = datalist.order; //商品信息
-                var can_goods_coupon = datalist.can_goods_coupon; //商品卷可用数量
-                var is_goods_coupon = datalist.is_goods_coupon; //优惠卷是否为商品类型卷
-                datalist.timestos = getNowTime(datalist.reviews_addtime);
-                if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
-                  var reduce_moeny = datalist.reward_coupon.reduce_moeny;
-                  var satisfy_money = datalist.reward_coupon.satisfy_money;
-                  var now_time = datalist.reward_coupon.now_time;
-                  _this.setData({
-                    reduce_moeny: reduce_moeny,
-                    satisfy_money: satisfy_money,
-                    now_time: now_time,
-                  })
-                }
-                if (datalist.address == null) { //当没有地址时
-                  _this.setData({
-                    goodsorder: godsorder, //商品信息
-                    quantity: datalist, //返回的所有信息
-                    is_goods_coupon: is_goods_coupon, //是否为商品卷
-                    can_goods_coupon: can_goods_coupon, //商品卷可用数量
-                    address: datalist.address, //地址
-                    total: Number(datalist.money), //商品总价
-                    package_mail: Number(datalist.commpany.package_mail), //满99减运费
-                  })
-                } else { //当有地址时
-                  _this.setData({
-                    goodsorder: godsorder, //商品信息
-                    quantity: datalist, //返回的所有信息
-                    is_goods_coupon: is_goods_coupon, //是否为商品卷
-                    can_goods_coupon: can_goods_coupon, //商品卷可用数量
-                    address: datalist.address, //地址
-                    loc: datalist.address.sheng,
-                    total: Number(datalist.money), //商品总价
-                    package_mail: Number(datalist.commpany.package_mail), //满99减运费
-                  })
-                }
-                if (datalist.coupon == null) { //没用优惠卷 coupon_money = 0
-                  _this.setData({
-                    coupon_money: Number("0.00")
-                  })
-                } else { //用优惠券 coupon_money = datalist.coupon.coupon_money
-                  _this.setData({
-                    coupon_money: Number(datalist.coupon.coupon_money)
-                  })
-                }
-                if (datalist.money - _this.data.coupon_money >= _this.data.package_mail) { //当商品总价-优惠券>= 满减的钱 运费
-                  _this.setData({
-                    upto_amount: Number("0.00") // upto_amount = 0
-                  })
-                } else { //否则
-                  _this.setData({
-                    upto_amount: Number(datalist.commpany.upto_amount)
-                  })
-                }
-                _this.setData({
-                  lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(2)
-                })
-                console.log(_this.data.total);
-                console.log(_this.data.lasttotal);
-                console.log(_this.data.package_mail);
-                console.log(_this.data.coupon_money);
-                console.log(_this.data.upto_amount);
-              }
+      wx.request({
+        url: app.globalData.Murl + '/Applets/Cart/order1',
+        data: {
+          member_id: uid,
+          seller_id: 1,
+          dis_id: dis_id, //优惠卷id
+          Cart_address_id: item //地址id
+        },
+        method: "post",
+        success: function(res) {
+          console.log(res.data);
+          var isset = res.data.is_ok;
+          var notgoods = res.data.not_show;
+          var datalist = res.data; //返回的所有信息
+          var godsorder = datalist.order; //商品信息
+          var can_goods_coupon = datalist.can_goods_coupon; //商品卷可用数量
+          var is_goods_coupon = datalist.is_goods_coupon; //优惠卷是否为商品类型卷
+          datalist.timestos = getNowTime(datalist.reviews_addtime);
+          if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
+            var reduce_moeny = datalist.reward_coupon.reduce_moeny;
+            var satisfy_money = datalist.reward_coupon.satisfy_money;
+            var now_time = datalist.reward_coupon.now_time;
+            _this.setData({
+              reduce_moeny: reduce_moeny,
+              satisfy_money: satisfy_money,
+              now_time: now_time,
             })
+          }
+          if (datalist.address == null) { //当没有地址时
+            _this.setData({
+              goodsorder: godsorder, //商品信息
+              quantity: datalist, //返回的所有信息
+              is_goods_coupon: is_goods_coupon, //是否为商品卷
+              can_goods_coupon: can_goods_coupon, //商品卷可用数量
+              address: datalist.address, //地址
+              total: Number(datalist.money), //商品总价
+              package_mail: Number(datalist.commpany.package_mail), //满99减运费
+            })
+          } else { //当有地址时
+            _this.setData({
+              goodsorder: godsorder, //商品信息
+              quantity: datalist, //返回的所有信息
+              is_goods_coupon: is_goods_coupon, //是否为商品卷
+              can_goods_coupon: can_goods_coupon, //商品卷可用数量
+              address: datalist.address, //地址
+              loc: datalist.address.sheng,
+              total: Number(datalist.money), //商品总价
+              package_mail: Number(datalist.commpany.package_mail), //满99减运费
+            })
+          }
+          if (datalist.coupon == null) { //没用优惠卷 coupon_money = 0
+            _this.setData({
+              coupon_money: Number("0.00")
+            })
+          } else { //用优惠券 coupon_money = datalist.coupon.coupon_money
+            _this.setData({
+              coupon_money: Number(datalist.coupon.coupon_money)
+            })
+          }
+          _this.setData({
+            upto_amount: Number(datalist.yunfei),
+            notgoods: notgoods,
+            isset: isset
+          })
+          _this.setData({ 
+            lasttotal: Number(_this.data.total + _this.data.upto_amount - _this.data.coupon_money).toFixed(2)
+          })
+          console.log(_this.data.total);
+          console.log(_this.data.lasttotal);
+          console.log(_this.data.package_mail);
+          console.log(_this.data.coupon_money);
+          console.log(_this.data.upto_amount);
+        }
+      })
       //     } else if (res.data.status == false) { //跳转到我的订单页
       //       wx.redirectTo({
       //         url: '../m-order/m-order?sta=0',

@@ -105,6 +105,8 @@ Page({
   // 添加购物车=================
   cart: function (e) {
     var that = this;
+    // var city = "哈尔滨";
+    var city = app.globalData.location;
     var uid = wx.getStorageSync("userinfo").uid;
     if (!uid) {
       that.setData({
@@ -121,7 +123,8 @@ Page({
           member_id: uid,//会员ID
           goods_id: goods_id, //商品ID
           goods_num: 1, //商品数量
-          spec_key: spec_key
+          spec_key: spec_key,
+          city: city
         },
         method: "POST",
         header: {
@@ -252,7 +255,6 @@ Page({
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
-
         demo.reverseGeocoder({
           location: {
             latitude: res.latitude,
@@ -262,8 +264,11 @@ Page({
 
             //console.log(ress);
             that.setData({ location: ress.result.address_component.province });
+            getApp().globalData.location = ress.result.address_component.province;
+            // getApp().globalData.location = "上海";
           }
         })
+      
       },
       fail: function () {
         //console.log("获取失败")
@@ -290,6 +295,8 @@ Page({
 
                             //console.log(ress);
                             that.setData({ location: ress.result.address_component.province });
+                            getApp().globalData.location = ress.result.address_component.province;
+                            // getApp().globalData.location = "上海";
 
                           }
                         })
