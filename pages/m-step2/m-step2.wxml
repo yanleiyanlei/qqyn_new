@@ -319,7 +319,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[1].step_name}}</view>
-          <view class='one_'>可享受青青优农商城价值 <text class='textGreen' >{{act[1].money}} </text>元商品</view>
+          <view class='one_'>最高可享受青青优农商城价值 <text class='textGreen' >{{act[1].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="join join2" data-acid="{{act[1].id}}">
             <text>立即组队</text>
@@ -360,7 +360,7 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[2].step_name}}</view>
-          <view class='one_'>可享受青青优农商城价值 <text class='textBlue' >{{act[2].money}} </text>元商品</view>
+          <view class='one_'>最高可享受青青优农商城价值 <text class='textBlue' >{{act[2].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="join join2" data-acid="{{act[2].id}}">
             <text>立即组队</text>
