@@ -6,12 +6,15 @@ page {
 }
 
 .cehckadd {
+
+  
   width: 100%;
   background: #fff;
   margin-top: 10rpx;
 }
 
 .location {
+  
   width: 100%;
   height: 100rpx;
   display: flex;

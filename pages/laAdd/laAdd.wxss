@@ -6,8 +6,12 @@ page {
 }
 
 .laAdd {
+
+
+  
   width: 100%;
 }
+
 
 .newAdd {
   position: fixed;

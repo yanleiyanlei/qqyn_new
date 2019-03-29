@@ -3,8 +3,12 @@
   <view class='location' bindtap='locationadd'>
     <image src='../../image/cadd.png'></image>
     <text>定位当前位置</text>
+
   </view>
+
   <view class='addcity'>
+  
+  
     <view class='addcity-left'>
       <view>所在区域:</view>
       <picker mode="region" bindchange="bindRegionChange" value="{{city}}" >

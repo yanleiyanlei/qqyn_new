@@ -10,6 +10,8 @@ Page({
     activeid:""
   },
   checkloca:function(e){
+    
+    
     var id = e.currentTarget.dataset.id; //获取地址id
     var city = e.currentTarget.dataset.city; //获取地址id
     var add = e.currentTarget.dataset.add; //获取地址id
