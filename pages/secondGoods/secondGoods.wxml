@@ -2,6 +2,20 @@
 <import src="/lib/template/userInfo2.wxml" />
 <template is="user2" data="{{mshow}}">
 </template>
+<!-- 搜索 -->
+<view class='search'>
+    <navigator url='../laAdd/laAdd'>
+      <view class='searchLoc'>
+        <text class='iconfont icon-unie609'></text> {{location}}
+      </view>
+    </navigator>
+    <navigator url='../search/search'>
+      <view class='searchCont'>
+        <text class='iconfont icon-sousuo'></text> {{txt}}
+      </view>
+    </navigator>
+
+  </view>
 <!--筛选  -->
 <view class="screen">
   <view bindtap='newgoods' class="{{active}}">最新</view>

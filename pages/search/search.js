@@ -57,7 +57,7 @@ Page({
 
         if (status == 1) {
           wx.navigateTo({
-            url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids,
+            url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + e.currentTarget.dataset.name, 
             success: function (res) { },
             fail: function (res) { },
             complete: function (res) { },
@@ -153,17 +153,15 @@ Page({
           var status = res.data.status
           //console.log(res.data.status)
           //data
+          // var that = this 
           console.log(res)
-
           if (status == 1) {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids,
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + that.data.searchValue,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
-
-
           } else if (status == 0) {
             wx.navigateTo({
               url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,

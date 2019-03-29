@@ -63,14 +63,14 @@ Page({
           })
         }
         
-      },
-      complete: function () {
+      // },
+      // // complete: function () {
         
         const ctx = wx.createCanvasContext('myCanvas');
         var bgImgPath = '/image/hd/pyq.jpg';
         // var basicprofile = '../../../image/basicprofile.png';
         //填充背景  
-        ctx.setFillStyle('#ffffff');
+        ctx.setFillStyle('#333333');
 
         ctx.fillRect(1, 1, 375, 618);
 
@@ -123,7 +123,7 @@ Page({
         ctx.font = "bold 12";
         ctx.setFillStyle('#60b032');
         ctx.fillText('马上和' + that.data.nickName + '一起抢' + that.data.goodName, 105, 590);
-
+       
 
         //绘制小程序码
         wx.downloadFile({
@@ -134,9 +134,10 @@ Page({
             })
             ctx.drawImage(res.tempFilePath, 20, 538, 70, 70);
             ctx.stroke()
-            ctx.draw();
+            
           }
         })
+        ctx.draw();
       }
       
     })

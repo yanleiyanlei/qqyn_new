@@ -18,7 +18,8 @@ Page({
     xlOrder: 1,
     jgOrder: 1,
     mshow:"display:none",
-    show:"display:none"
+    show:"display:none",
+    location:''
   },
   
 
@@ -133,6 +134,10 @@ Page({
    */
   onLoad: function (options) {
     var pid = options.pid;
+    var txt = options.txt;
+    this.setData({
+      txt:txt
+    })
     if (pid) {
       wx.setStorageSync("pid", pid);
     }
@@ -252,6 +257,10 @@ Page({
   onShow: function () {
     var that = this;
     // 获取购物车列表
+    var location = app.globalData.location;
+    that.setData({
+      location: location
+    })
     var uid = wx.getStorageSync("userinfo").uid;
     const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
     wx.request({
