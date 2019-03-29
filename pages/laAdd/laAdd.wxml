@@ -1,0 +1,35 @@
+<!--pages/laAdd/laAdd.wxml-->
+<view class='laAdd'>
+  <block wx:for="{{addlist}}" wx:key="unipue">
+    <view class='laAdd-li' data-id='{{item.id}}' data-city='{{item.shi}}' data-add='{{item.address_content}}' bindtap='checkloca'>
+      <view class='laAdd-image' wx:if="{{activeid==item.id}}">
+        <image src='../../image/addactive.png'></image>
+      </view>
+      <view class='laAdd-txt'>
+        <view class='laAdd-li-top'>
+          <text>{{item.name}}</text>
+          <text>{{iten.phone}}</text>
+        </view>
+        <view class='laAdd-li-botm'>
+          <text>{{item.address_content}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- <view class='laAdd-li'>
+    <view class='laAdd-txt'>
+      <view class='laAdd-li-top'>
+        <text>张三</text>
+        <text>13014356245</text>
+      </view>
+      <view class='laAdd-li-botm'>
+        <text>北京市西城区车公庄大街五栋大楼旁边小区17号楼旁边报刊亭左拐地下车库入口处的代收点</text>
+      </view>
+    </view>
+  </view> -->
+</view>
+<view class='newAdd' bindtap='gocheckAdd'>
+  <text>选择其他地址</text>
+  <image src='../../image/detailadd.png'></image>
+</view>

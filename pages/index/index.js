@@ -1,8 +1,7 @@
-
 //获取腾讯地图应用实例
 var QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
 var demo = new QQMapWX({
-  key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT'   //密钥
+  key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT' //密钥
 })
 //获取应用实例
 const app = getApp()
@@ -17,7 +16,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hiddenLoading: true,
-    location: "北京",
+    location: "北京市",
     // 首页banner
     bannerUrls: [],
     banner: {
@@ -40,37 +39,47 @@ Page({
     goodsType: {},
     ewmimg: ["http://m.7710mall.com/Public/Home/img/m_ma.png"]
   },
-  gowx: function () {
+
+  golaAdd: function() {
+    wx.navigateTo({
+      url: '/pages/laAdd/laAdd',
+    })
+  },
+  gowx: function() {
     wx.switchTab({
       url: '/pages/members/members',
     })
   },
-  previewImage: function (e) {
+  previewImage: function(e) {
     //console.log("点击图片")
     wx.previewImage({
       current: this.data.ewmimg, // 当前显示图片的http链接   
       urls: this.data.ewmimg // 需要预览的图片http链接列表   
     })
   },
-  cs: function () {
+  cs: function() {
     //console.log("点击")
-    this.setData({ cs: false })
+    this.setData({
+      cs: false
+    })
   },
-  gz: function () {
-    this.setData({ cs: true })
+  gz: function() {
+    this.setData({
+      cs: true
+    })
   },
   //事件处理函数
-  bindViewTap: function () {
+  bindViewTap: function() {
     wx.switchTab({
       url: '../index/index'
     })
   },
-  close: function () {
+  close: function() {
     this.setData({
       mshow: "display:none"
     })
   },
-  UserInfo: function (e) {
+  UserInfo: function(e) {
     this.setData({
       mshow: "display:none"
     })
@@ -103,7 +112,7 @@ Page({
     // })
   },
   // 添加购物车=================
-  cart: function (e) {
+  cart: function(e) {
     var that = this;
     // var city = "哈尔滨";
     var city = app.globalData.location;
@@ -120,7 +129,7 @@ Page({
       wx.request({
         url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
         data: {
-          member_id: uid,//会员ID
+          member_id: uid, //会员ID
           goods_id: goods_id, //商品ID
           goods_num: 1, //商品数量
           spec_key: spec_key,
@@ -130,7 +139,7 @@ Page({
         header: {
           'content-type': 'application/json' // 默认值
         },
-        success: function (res) {
+        success: function(res) {
           // console.log(res.data)
           var txt = res.data.msg
           var num = res.data.thisGoodsNum
@@ -151,7 +160,7 @@ Page({
                 seller_id: 1,
               },
               method: "POST",
-              success: function (res) {
+              success: function(res) {
                 //console.log(res.data.cartList)
 
                 that.setData({
@@ -161,22 +170,28 @@ Page({
               }
             })
 
-          } else if (res.data.status == 10){//by yan.lei 一键代发执行跳转
+          } else if (res.data.status == 10) { //by yan.lei 一键代发执行跳转
             wx.navigateTo({
               url: '../theorder/theorder?goods_id=' + goods_id + '&num=1' + '&spec_key=' + spec_key + '&page=' + 1,
-              success: function (res) { console.log(res) },
-              fail: function (res) { console.log(res) },
-              complete: function (res) { console.log(res) },
+              success: function(res) {
+                console.log(res)
+              },
+              fail: function(res) {
+                console.log(res)
+              },
+              complete: function(res) {
+                console.log(res)
+              },
             })
           }
 
         },
-        fail: function (res) {
+        fail: function(res) {
           wx.showLoading({
             title: '网络连接失败！',
           })
 
-          setTimeout(function () {
+          setTimeout(function() {
             wx.hideLoading()
           }, 2000)
 
@@ -186,36 +201,36 @@ Page({
 
   },
   // 商品跳转详情================
-  goodsDetails: function (e) {
+  goodsDetails: function(e) {
     //console.log(e.currentTarget.dataset.goodsid)
     wx.navigateTo({
       url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
 
   },
-  onHide:function(){
+  onHide: function() {
     app.globalData.store = 0
   },
-   onLoad: function (options) {
-  //  console.log(options)
-     var pid = options.pid;
-     console.log(pid);
-     if(pid){
-       wx.setStorageSync("pid", pid);
-     }
+  onLoad: function(options) {
+    //  console.log(options)
+    var pid = options.pid;
+    console.log(pid);
+    if (pid) {
+      wx.setStorageSync("pid", pid);
+    }
     //by yan.lei 对方会把wi传进来 扔缓存里
-     var wi = options.wi;
-     if(wi){
-       wx.setStorageSync("wi", wi);
-     }
+    var wi = options.wi;
+    if (wi) {
+      wx.setStorageSync("wi", wi);
+    }
 
 
-     var uid = wx.getStorageSync("userinfo").uid;
-     var that = this;
-     
+    var uid = wx.getStorageSync("userinfo").uid;
+    var that = this;
+
     // 获取购物车列表
 
 
@@ -228,7 +243,7 @@ Page({
         seller_id: 1,
       },
       method: "POST",
-      success: function (res) {
+      success: function(res) {
         //console.log(res.data.cartList)
 
         that.setData({
@@ -238,7 +253,7 @@ Page({
       }
     })
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         //console.log(res.SDKVersion)//小程序版本库,低于1.9.0首页商品展示不兼容.
 
       }
@@ -254,48 +269,57 @@ Page({
     // 获取用户地点
     wx.getLocation({
       type: 'gcj02',
-      success: function (res) {
+      success: function(res) {
         demo.reverseGeocoder({
           location: {
             latitude: res.latitude,
             longitude: res.longitude
           },
-          success: function (ress) {
+          success: function(ress) {
 
             //console.log(ress);
-            that.setData({ location: ress.result.address_component.province });
-            getApp().globalData.location = ress.result.address_component.province;
+            that.setData({
+              location: ress.result.address_component.province
+            });
+            wx.setStorageSync("locationcity", ress.result.address_component.province);
+            wx.setStorageSync("locationid", "");
+            wx.setStorageSync("locationadd", "");
+            // getApp().globalData.location = ress.result.address_component.province;
             // getApp().globalData.location = "上海";
           }
         })
-      
+
       },
-      fail: function () {
+      fail: function() {
         //console.log("获取失败")
         wx.showModal({
           title: '提示',
           content: '您未授权访问位置，请点击确定授权，方便购物。',
           showCancel: false,
-          success: function (res) {
+          success: function(res) {
             if (res.confirm) {
               wx.openSetting({
                 success: (res) => {
                   //console.log(res)
-                  if (res.authSetting["scope.userLocation"]) {////如果用户重新同意了授权登录
+                  if (res.authSetting["scope.userLocation"]) { ////如果用户重新同意了授权登录
                     wx.getLocation({
                       type: 'gcj02',
-                      success: function (res) {
+                      success: function(res) {
                         //console.log(res)
                         demo.reverseGeocoder({
                           location: {
                             latitude: res.latitude,
                             longitude: res.longitude
                           },
-                          success: function (ress) {
+                          success: function(ress) {
 
                             //console.log(ress);
-                            that.setData({ location: ress.result.address_component.province });
-                            getApp().globalData.location = ress.result.address_component.province;
+                            that.setData({
+                              location: ress.result.address_component.province
+                            });
+                            wx.setStorageSync("locationcity", ress.result.address_component.province)
+
+                            // getApp().globalData.location = ress.result.address_component.province;
                             // getApp().globalData.location = "上海";
 
                           }
@@ -304,7 +328,8 @@ Page({
 
                     })
                   }
-                }, fail: function (res) {
+                },
+                fail: function(res) {
 
                 }
               })
@@ -326,17 +351,22 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         var banner = []
         console.log(res.data)
         var len = res.data.length
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].ad_position == 66) {
-            banner.push({ "bannerlink": res.data[i].link_url, "bannersrc": res.data[i].ad_img });
+            banner.push({
+              "bannerlink": res.data[i].link_url,
+              "bannersrc": res.data[i].ad_img
+            });
 
           } else {
             if (res.data[i].link_url == "") {
-              banner.push({ "bannersrc": res.data[i].ad_img });
+              banner.push({
+                "bannersrc": res.data[i].ad_img
+              });
 
             } else {
 
@@ -358,13 +388,19 @@ Page({
                   if (link[j + 1] == "parents_id") {
 
                     var blink = "../classifyGoods/classifyGoods?id=" + cas
-                    var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
+                    var sj = {
+                      "bannerlink": blink,
+                      "bannersrc": res.data[i].ad_img
+                    }
                     banner.push(sj)
                     break
 
                   } else if (link[j + 1] == "father_id") {
                     var blink = '../secondGoods/secondGoods?page=2&twoType=' + cas
-                    var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
+                    var sj = {
+                      "bannerlink": blink,
+                      "bannersrc": res.data[i].ad_img
+                    }
                     banner.push(sj)
                     break
                   }
@@ -374,27 +410,33 @@ Page({
                   falg_banner = true;
                   var blink = "../details/details?goodsid=" + cas
 
-                  var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
+                  var sj = {
+                    "bannerlink": blink,
+                    "bannersrc": res.data[i].ad_img
+                  }
                   banner.push(sj)
                   break
 
-                } 
+                }
                 //为毛跳转链接里的参数个数=7就跳到商品页  先注释了  by yan.lei 2019.01.21 没链接跳转到个人中心吧
-               /* else if (link.length == 7) {
-                  var blink = "../details/details?goodsid=" + cas2
+                /* else if (link.length == 7) {
+                   var blink = "../details/details?goodsid=" + cas2
 
-                  var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
-                  banner.push(sj)
-                  break
-                }*/
-              
+                   var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
+                   banner.push(sj)
+                   break
+                 }*/
+
               }
               //console.log('aaaa');
               //console.log(falg_banner);
               if (falg_banner == false) {
                 var blink = res.data[i].xcx_url
 
-                var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
+                var sj = {
+                  "bannerlink": blink,
+                  "bannersrc": res.data[i].ad_img
+                }
                 banner.push(sj)
               }
             }
@@ -412,20 +454,24 @@ Page({
 
 
 
-        that.setData({ banner: banner })
+        that.setData({
+          banner: banner
+        })
         //console.log(that.data.banner)
 
 
 
-        that.setData({ bannerUrls: res.data })
+        that.setData({
+          bannerUrls: res.data
+        })
 
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showLoading({
           title: '网络连接失败！',
         })
 
-        setTimeout(function () {
+        setTimeout(function() {
           wx.hideLoading()
         }, 2000)
 
@@ -439,16 +485,18 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
-        that.setData({ navUrls: res.data })
+      success: function(res) {
+        that.setData({
+          navUrls: res.data
+        })
 
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showLoading({
           title: '网络连接失败！',
         })
 
-        setTimeout(function () {
+        setTimeout(function() {
           wx.hideLoading()
         }, 2000)
 
@@ -461,7 +509,7 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         //  处理链接 分隔截取出页面和对应的商品参数
         var link = res.data[0].link_url.split("/")
         var len = link.length - 1
@@ -470,23 +518,29 @@ Page({
           //console.log(link[i])
           //  判断青青活动跳转页面 goodsdetails商品详情页面。
           if (link[i] == "goodsdetails") {
-            that.setData({ qqhdlink: "../details/details?goodsid=" + cas })
+            that.setData({
+              qqhdlink: "../details/details?goodsid=" + cas
+            })
             break
           } else if (link[i] == "classify_content") {
-            that.setData({ qqhdlink: "../classifyGoods/classifyGoods?id=" + cas })
+            that.setData({
+              qqhdlink: "../classifyGoods/classifyGoods?id=" + cas
+            })
             break
           }
         }
-        that.setData({ qqactiveUrls: res.data })
+        that.setData({
+          qqactiveUrls: res.data
+        })
 
 
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showLoading({
           title: '网络连接失败！',
         })
 
-        setTimeout(function () {
+        setTimeout(function() {
           wx.hideLoading()
         }, 2000)
 
@@ -499,16 +553,18 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         //console.log(res.data)
-        that.setData({ todayUrls: res.data })
+        that.setData({
+          todayUrls: res.data
+        })
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showLoading({
           title: '网络连接失败！',
         })
 
-        setTimeout(function () {
+        setTimeout(function() {
           wx.hideLoading()
         }, 2000)
 
@@ -522,19 +578,21 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         //console.log(res.data)
 
-        that.setData({ qfUrls: res.data })
+        that.setData({
+          qfUrls: res.data
+        })
 
 
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showLoading({
           title: '网络连接失败！',
         })
 
-        setTimeout(function () {
+        setTimeout(function() {
           wx.hideLoading()
         }, 2000)
 
@@ -547,18 +605,20 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         //console.log(res.data)
 
-        that.setData({ goodsType: res.data })
+        that.setData({
+          goodsType: res.data
+        })
 
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showLoading({
           title: '网络连接失败！',
         })
 
-        setTimeout(function () {
+        setTimeout(function() {
           wx.hideLoading()
         }, 2000)
 
@@ -571,7 +631,11 @@ Page({
 
 
   },
-  onShow: function () {
+  onShow: function() {
+    location = wx.getStorageSync("locationcity");
+    this.setData({
+      location: location
+    })
     var that = this;
     console.log(app.globalData.store)
     if (app.globalData.store == 1) {
@@ -586,9 +650,11 @@ Page({
     if (app.globalData.store == 1) {
       wx.request({
         url: app.globalData.Murl + "/Applets/User/my_shop",
-        data: { member_id: wx.getStorageSync("userinfo").uid },
+        data: {
+          member_id: wx.getStorageSync("userinfo").uid
+        },
         method: 'post',
-        success: function (res) {
+        success: function(res) {
 
           that.setData({
             shop: res.data
@@ -619,7 +685,7 @@ Page({
         seller_id: 1,
       },
       method: "POST",
-      success: function (res) {
+      success: function(res) {
         //console.log(res.data.cartList)
 
         that.setData({
@@ -629,14 +695,14 @@ Page({
       }
     })
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
     return {
       title: '【青青优农】追求原始的味道',
       path: '/pages/index/index?id=' + 123 + '&pid=' + uid,
       imageUrl: '',
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         // console.log
         // wx.getShareInfo({
@@ -648,7 +714,7 @@ Page({
         //   complete: function (res) { console.log(res) }
         // })
       },
-      fail: function (res) {
+      fail: function(res) {
         // 分享失败
         //console.log(res)
       }

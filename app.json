@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/index/index",
     "pages/morePosters/morePosters",
     "pages/third-number/third-number",
@@ -66,8 +67,10 @@
     "pages/luckdraw/luckdraw",
     "pages/bution/bution",
     "pages/cash/cash",
-   
+      "pages/checkAdd/checkAdd",
+      "pages/laAdd/laAdd",
     "pages/luckyears/luckyears"
+
 
   ],
   "window": {
