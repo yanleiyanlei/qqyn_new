@@ -1,0 +1,28 @@
+
+<!--pages/checkAdd/checkAdd.wxml-->
+<view class='cehckadd'>
+  <view class='location' bindtap='locationadd'>
+    <image src='../../image/cadd.png'></image>
+    <text>定位当前位置</text>
+
+  </view>
+
+  <view class='addcity'>
+  
+  
+    <view class='addcity-left'>
+      <view>所在区域:</view>
+      <picker mode="region" bindchange="bindRegionChange" value="{{city}}" >
+        <view class="picker">
+          {{city}}
+        </view>
+      </picker>
+    </view>
+    <view class='addcity-right'> 
+        <image src='../../image/cright.png'></image>
+    </view>
+  </view>
+</view>
+<view class='cnbottom' bindtap='save'>
+  <text>保存并使用</text>
+</view>

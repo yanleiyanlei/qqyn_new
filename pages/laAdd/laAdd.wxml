@@ -1,0 +1,27 @@
+
+<!--pages/laAdd/laAdd.wxml-->
+<view class='laAdd'>
+  <block wx:for="{{addlist}}" wx:key="unipue">
+    <view class='laAdd-li' data-id='{{item.id}}' data-city='{{item.shi}}' data-add='{{item.address_content}}' bindtap='checkloca'>
+      <view class='laAdd-image' wx:if="{{activeid==item.id}}">
+        <image src='../../image/addactive.png'></image>
+      </view>
+      <view class='laAdd-txt'>
+        <view class='laAdd-li-top'>
+          <text>{{item.name}}</text>
+          <text>{{iten.phone}}</text>
+        </view>
+        <view class='laAdd-li-botm'>
+          <text>{{item.address_content}}</text>
+        </view>
+      </view>
+
+
+    </view>
+  </block>
+
+</view>
+<view class='newAdd' bindtap='gocheckAdd'>
+  <text>选择其他地址</text>
+  <image src='../../image/detailadd.png'></image>
+</view>
