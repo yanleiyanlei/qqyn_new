@@ -19,6 +19,7 @@ Page({
     hiddenLoading: true, //加载中
     ress: [],
     commpany: [],
+    location:''
   },
   /*计算总价*/
   getTotalPrice() {
@@ -474,8 +475,10 @@ Page({
   },
   onShow: function() {
     const _that = this;
+    var location = app.globalData.location;
     _that.setData({
       is_coupon: 0,
+      location: location
     })
     var uid = wx.getStorageSync("userinfo").uid; //获取用户uid
     /* if(value=='')*/

@@ -14,6 +14,11 @@
     </navigator>
   </view>
   <view class="shopcartitle">
+    <navigator url='../laAdd/laAdd'>  
+      <view class='searchLoc'>
+        <text class='iconfont icon-unie609'></text> {{location}}
+      </view>
+    </navigator>
     <text class="sh-title">购物车</text>
     <view bindtap="toggle">
       <text class="bianji" wx:if="{{hieneflae}}">编辑</text>
@@ -27,10 +32,13 @@
         <!--  wx:if 是否选择显示不同图标 -->
         <view class="content">
           <icon wx:if="{{item.selected==true}}" type="success" data-key="0" data-id="{{item.id}}" color="#ff712b" bindtap="selectList" data-index="{{index}}" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
-          <icon wx:else type="circle" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+          <icon wx:elseif type="circle" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+          <!-- <icon wx:else type="fail"  data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" /> -->
           <!-- 购物车商品图片 -->
           <view class="imgtex" data-id="{{item.goods_id}}" bindtap="tiaodeilts">
             <image src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_thumb}}" class="shopimg" alt=""></image>
+            <!-- <view class='caigouzhong'>采购中</view> -->
+            <view class='caigouzhong'>区域不可售</view>
           </view>
           <view class="shop_name">
             <text class="shnm" data-id="{{item.goods_id}}" bindtap="tiaodeilts">{{item.goods_name}}</text>
