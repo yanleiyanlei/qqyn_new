@@ -1,3 +1,8 @@
+//获取腾讯地图应用实例
+var QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
+var demo = new QQMapWX({
+  key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT' //密钥
+})
 // pages/search/search.js
 const app=getApp();
 Page({
@@ -6,7 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hots: []
+    hots: [],
+    location:''
 
   },
   // 清楚最近搜索======
@@ -43,10 +49,10 @@ Page({
       key: "hots",
       data: hotarr
     })
-
+    var city = that.data.location
     wx.request({
       url: app.globalData.Murl+'/Applets/Index/search_goods',
-      data: { txt: e.currentTarget.dataset.name },
+      data: { txt: e.currentTarget.dataset.name ,city: city},
       method: "POST",
       header: {
         'content-type': 'application/json' // 默认值
@@ -325,6 +331,83 @@ Page({
         //console.log(that.data.hots)
       }
     })
+    // 获取用户地点
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        demo.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (ress) {
+     
+            console.log(ress);
+            
+            that.setData({
+              location: ress.result.address_component.province
+            });
+            wx.setStorageSync("locationcity", ress.result.address_component.province);
+            wx.setStorageSync("locationid", "");
+            wx.setStorageSync("locationadd", "");
+            // getApp().globalData.location = ress.result.address_component.province;
+            // getApp().globalData.location = "上海";
+          }
+        })
+
+      },
+      fail: function () {
+        //console.log("获取失败")
+        wx.showModal({
+          title: '提示',
+          content: '您未授权访问位置，请点击确定授权，方便购物。',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              wx.openSetting({
+                success: (res) => {
+                  //console.log(res)
+                  if (res.authSetting["scope.userLocation"]) { ////如果用户重新同意了授权登录
+                    wx.getLocation({
+                      type: 'gcj02',
+                      success: function (res) {
+                        //console.log(res)
+                        demo.reverseGeocoder({
+                          location: {
+                            latitude: res.latitude,
+                            longitude: res.longitude
+                          },
+                          success: function (ress) {
+
+                            //console.log(ress);
+                            that.setData({
+                              location: ress.result.address_component.province
+                            });
+                            wx.setStorageSync("locationcity", ress.result.address_component.province)
+
+                            // getApp().globalData.location = ress.result.address_component.province;
+                            // getApp().globalData.location = "上海";
+
+                          }
+                        })
+                      }
+
+                    })
+                  }
+                },
+                fail: function (res) {
+
+                }
+              })
+
+            }
+          }
+        })
+
+      }
+    })
+
+
     // 热门搜索
     wx.request({
       url: app.globalData.Murl+'/Applets/Index/hot_search',

@@ -1,3 +1,8 @@
+//获取腾讯地图应用实例
+var QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
+var demo = new QQMapWX({
+  key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT' //密钥
+})
 //获取应用实例
 const app = getApp();
 var user = require("../../lib/js/user.js");
@@ -240,7 +245,80 @@ Page({
 
     }
 
+    // 获取用户地点
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        demo.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (ress) {
 
+            //console.log(ress);
+            that.setData({
+              location: ress.result.address_component.province
+            });
+            wx.setStorageSync("locationcity", ress.result.address_component.province);
+            wx.setStorageSync("locationid", "");
+            wx.setStorageSync("locationadd", "");
+            // getApp().globalData.location = ress.result.address_component.province;
+            // getApp().globalData.location = "上海";
+          }
+        })
+
+      },
+      fail: function () {
+        //console.log("获取失败")
+        wx.showModal({
+          title: '提示',
+          content: '您未授权访问位置，请点击确定授权，方便购物。',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              wx.openSetting({
+                success: (res) => {
+                  //console.log(res)
+                  if (res.authSetting["scope.userLocation"]) { ////如果用户重新同意了授权登录
+                    wx.getLocation({
+                      type: 'gcj02',
+                      success: function (res) {
+                        //console.log(res)
+                        demo.reverseGeocoder({
+                          location: {
+                            latitude: res.latitude,
+                            longitude: res.longitude
+                          },
+                          success: function (ress) {
+
+                            //console.log(ress);
+                            that.setData({
+                              location: ress.result.address_component.province
+                            });
+                            wx.setStorageSync("locationcity", ress.result.address_component.province)
+
+                            // getApp().globalData.location = ress.result.address_component.province;
+                            // getApp().globalData.location = "上海";
+
+                          }
+                        })
+                      }
+
+                    })
+                  }
+                },
+                fail: function (res) {
+
+                }
+              })
+
+            }
+          }
+        })
+
+      }
+    })
 
   },
 
@@ -257,10 +335,10 @@ Page({
   onShow: function () {
     var that = this;
     // 获取购物车列表
-    var location = app.globalData.location;
-    that.setData({
-      location: location
-    })
+    // var location = app.globalData.location;
+    // that.setData({
+    //   location: location
+    // })
     var uid = wx.getStorageSync("userinfo").uid;
     const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
     wx.request({
