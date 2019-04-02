@@ -22,7 +22,8 @@ Page({
     show:"display:none",
     location:'',
     options:{},
-    pid:''
+    pid:'',
+    page:''
   },
   
 
@@ -144,6 +145,7 @@ Page({
     console.log(options)
     this.setData({
       txt:txt,
+      page:page,
       options: options
     })
     
