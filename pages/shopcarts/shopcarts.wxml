@@ -102,10 +102,11 @@
     <view class="zongnum" wx:if="{{hieneflae}}">
       <text class="hej">合计:</text>
       <text class="pricesnum">￥{{totalPrice}}</text>
-      <text class="hej" class="yuf" wx:if="{{ commpany.transportation_name==3 && totalPrice >= package_mail}}">(本单已达到免运费)</text>
-      <!--拼步数活动的运费价钱-->
-      <text class="hej" class="yuf" wx:elif="{{is_coupon==1}}">(选择优惠商品券免运费)</text>
-      <text class="hej" class="yuf" wx:else>(再购买{{zonprice}}元免运费)</text>
+      <block wx:if="{{package_mail!=0}}">
+        <text class="hej" class="yuf" wx:if="{{totalPrice >= package_mail}}">(本单已达到免运费)</text>
+        <!--拼步数活动的运费价钱-->
+        <text class="hej" class="yuf" wx:else>(再购买{{zonprice}}元免运费)</text>
+      </block>
     </view>
     <view class="zongnume" wx:if="{{hieneflae}}" bindtap="goshop" data-index="{{item.selected}}">
       <text>去结算</text>

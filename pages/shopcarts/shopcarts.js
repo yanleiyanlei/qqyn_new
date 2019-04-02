@@ -519,8 +519,10 @@ Page({
         let total = 0;
         console.log(carts);
         for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
-          if (carts[i].selected) { // 判断选中才会计算价格
-            total += carts[i].goods_num * carts[i].goods_price; // 所有价格加起来
+          if (carts[i].area != 0) {
+            if (carts[i].selected) { // 判断选中才会计算价格
+              total += carts[i].goods_num * carts[i].goods_price; // 所有价格加起来
+            }
           }
         }
         /*第二件商品 0元购*/
