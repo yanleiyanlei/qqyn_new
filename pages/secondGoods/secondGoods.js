@@ -1,8 +1,4 @@
-//获取腾讯地图应用实例
-var QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
-var demo = new QQMapWX({
-  key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT' //密钥
-})
+
 //获取应用实例
 const app = getApp();
 var user = require("../../lib/js/user.js");
@@ -24,7 +20,9 @@ Page({
     jgOrder: 1,
     mshow:"display:none",
     show:"display:none",
-    location:''
+    location:'',
+    options:{},
+    pid:''
   },
   
 
@@ -140,13 +138,18 @@ Page({
   onLoad: function (options) {
     var pid = options.pid;
     var txt = options.txt;
+    var page = options.page;
+    var goodsid = options.goodsid;
+    var options = options;
+    console.log(options)
     this.setData({
-      txt:txt
+      txt:txt,
+      options: options
     })
-    if (pid) {
-      wx.setStorageSync("pid", pid);
-    }
-
+    
+    var txt = options.txt;
+    var page = options.page;
+    var goodsid = options.goodsid;
     var that = this;
     // 获取购物车列表
     var uid = wx.getStorageSync("userinfo").uid;
@@ -167,13 +170,63 @@ Page({
 
       }
     })
+    
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this;
+    let location = wx.getStorageSync("locationcity");
+    that.setData({
+      location: location
+    })
+    // 获取购物车列表
+    // var location = app.globalData.location;
+    // that.setData({
+    //   location: location
+    // })
+    var uid = wx.getStorageSync("userinfo").uid;
+    const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
+    wx.request({
+      url: shopusr,
+      data: {
+        member_id: uid,
+        seller_id: 1,
+      },
+      method: "POST",
+      success: function (res) {
+        console.log(res.data.cartList)
+
+        that.setData({
+          cartList: res.data.cartList
+        })
+
+      }
+    })
+    console.log(111111111111111)
+    console.log(that.data.options)
+    var options = that.data.options
+    var pid = that.data.pid
+    if (pid) {
+      wx.setStorageSync("pid", pid);
+    }
     // 判断从哪个页面进来的
     if (options.page == 1) {
       // 从搜索页面过来
       console.log(options.goodsid)
       that.setData({ goodsid: options.goodsid })
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/search_list',
+        url: app.globalData.Murl + '/Applets/Index/search_list',
         data: { ids: options.goodsid },
         method: "POST",
         header: {
@@ -209,7 +262,7 @@ Page({
       that.setData({ oneType: options.oneType, twoType: options.twoType })
       // 从分类页面过来
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/classify_content',
+        url: app.globalData.Murl + '/Applets/Index/classify_content',
         data: { two_cat_id: options.twoType },
         method: "POST",
         header: {
@@ -219,13 +272,13 @@ Page({
           console.log(res)
 
           that.setData({ goods: res.data.goods })
-          
+
           if (res.data.goods.length < 3) {
-            
+
             that.setData({
               mstyle: "padding-bottom:550rpx"
             })
-            
+
           }
 
 
@@ -244,119 +297,6 @@ Page({
 
 
     }
-
-    // 获取用户地点
-    wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        demo.reverseGeocoder({
-          location: {
-            latitude: res.latitude,
-            longitude: res.longitude
-          },
-          success: function (ress) {
-
-            //console.log(ress);
-            that.setData({
-              location: ress.result.address_component.province
-            });
-            wx.setStorageSync("locationcity", ress.result.address_component.province);
-            wx.setStorageSync("locationid", "");
-            wx.setStorageSync("locationadd", "");
-            // getApp().globalData.location = ress.result.address_component.province;
-            // getApp().globalData.location = "上海";
-          }
-        })
-
-      },
-      fail: function () {
-        //console.log("获取失败")
-        wx.showModal({
-          title: '提示',
-          content: '您未授权访问位置，请点击确定授权，方便购物。',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              wx.openSetting({
-                success: (res) => {
-                  //console.log(res)
-                  if (res.authSetting["scope.userLocation"]) { ////如果用户重新同意了授权登录
-                    wx.getLocation({
-                      type: 'gcj02',
-                      success: function (res) {
-                        //console.log(res)
-                        demo.reverseGeocoder({
-                          location: {
-                            latitude: res.latitude,
-                            longitude: res.longitude
-                          },
-                          success: function (ress) {
-
-                            //console.log(ress);
-                            that.setData({
-                              location: ress.result.address_component.province
-                            });
-                            wx.setStorageSync("locationcity", ress.result.address_component.province)
-
-                            // getApp().globalData.location = ress.result.address_component.province;
-                            // getApp().globalData.location = "上海";
-
-                          }
-                        })
-                      }
-
-                    })
-                  }
-                },
-                fail: function (res) {
-
-                }
-              })
-
-            }
-          }
-        })
-
-      }
-    })
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var that = this;
-    // 获取购物车列表
-    // var location = app.globalData.location;
-    // that.setData({
-    //   location: location
-    // })
-    var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function (res) {
-        console.log(res.data.cartList)
-
-        that.setData({
-          cartList: res.data.cartList
-        })
-
-      }
-    })
   },
 
   /**
