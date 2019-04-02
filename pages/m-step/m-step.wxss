@@ -1000,7 +1000,7 @@ align-items:center;
 .bottomTitle{
   width: 589rpx;
   height: 25rpx;
-  background: url('https://m.test.7710mall.com/Uploads/xcx_img/wxts.png') no-repeat center;
+  background: url('https://m.7710mall.com/Uploads/xcx_img/wxts.png') no-repeat center;
   background-size: 100%;
   position: relative;
   margin-top: 10rpx;

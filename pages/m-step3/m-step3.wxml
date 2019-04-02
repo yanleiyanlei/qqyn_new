@@ -92,10 +92,10 @@
   <view class="main {{sta1==3?'finish':''}}">
     <view class="top">
       <view class="finish-mask" wx:if="{{sta1==3}}">
-        <image src="https://m.test.7710mall.com/Uploads/xcx_img/m_step_finish.png"></image>
+        <image src="https://m.7710mall.com/Uploads/xcx_img/m_step_finish.png"></image>
       </view>
       <navigator url="/pages/m-step/m-step" hover-class='Nhover'>
-        <image src="https://m.test.7710mall.com/Uploads/xcx_img/rentu.png"></image>
+        <image src="https://m.7710mall.com/Uploads/xcx_img/rentu.png"></image>
       </navigator>
     </view>
     <view class="tit">拼团组队任务</view>
