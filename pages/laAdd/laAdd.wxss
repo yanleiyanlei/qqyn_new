@@ -52,6 +52,9 @@ page {
   background: #ffffff;
   margin-top: 10rpx;
 }
+.laAdd-txt{
+  flex: auto;
+}
 .laAdd-txt view {
   width: 100%;
 }

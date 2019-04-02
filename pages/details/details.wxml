@@ -27,7 +27,7 @@
       <text class="newsshop" wx:else></text>
       <text class="yisw">已售{{shopName.sales_sum}}份</text>
     </view>
-    <view wx:if="{{cityName=='北京市' || cityName=='天津市' || cityName=='河北省'}}">
+    <!-- <view wx:if="{{cityName=='北京市' || cityName=='天津市' || cityName=='河北省'}}">
       <view class="yujitime" wx:if="{{shopName.is_sale==1}}">
         <text class="iconfont icon-tixing"></text>
         <text wx:if="{{nowTime>10}}"> 23:00前下单，预计{{shopName.goods_yd_num}}日后发货</text>
@@ -38,8 +38,8 @@
         <text wx:if="{{nowTime<17}}"> 17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
         <text wx:else>17:00后下单，预计48小时内送达(节假日及特殊情况延后发货)</text>
       </view>
-    </view>
-
+    </view> -->
+<!-- 
     <view wx:else>
       <view class="yujitime" wx:if="{{shopName.is_sale==1}}">
         <text class="iconfont icon-tixing"></text>
@@ -51,7 +51,7 @@
         <text wx:if="{{nowTime>10}}"> 23:00前下单，预计后天到达</text>
         <text wx:else> 10:00前下单，预计明日到达</text>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>
 <!-- center -->

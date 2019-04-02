@@ -474,7 +474,7 @@ Page({
         if (locationadd) {
           var add = locationadd
         } else {
-          var add = that.data.datas.address.sheng + that.data.datas.address.shi + that.data.datas.address.qu + that.data.datas.address.address_content
+          var add = wx.getStorageSync("locationcity")
 
         }
         that.setData({
