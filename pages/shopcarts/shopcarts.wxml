@@ -3,7 +3,7 @@
 <page>
   <!--小程序的loaing组件!-->
   <loading hidden="{{hiddenLoading}}">正在加载</loading>
-  <view class="hdtop">
+  <!-- <view class="hdtop">
     <view class="tiels">全场满99.00元包邮，还差
       <text wx:if="{{ commpany.transportation_name==3 && totalPrice >= package_mail}}">0</text>
       <text wx:elif="{{is_coupon==1}}">(选择优惠商品券免运费)</text>
@@ -12,9 +12,9 @@
     <navigator opent-type="redirectTo" url="/pages/m-coupon/m-coupon" hover-class='Nhover'>
       <view class="coupons">优惠券 ></view>
     </navigator>
-  </view>
+  </view> -->
   <view class="shopcartitle">
-    <navigator url='../laAdd/laAdd'>  
+    <navigator url='../laAdd/laAdd'>
       <view class='searchLoc'>
         <text class='iconfont icon-unie609'></text> {{location}}
       </view>
@@ -31,14 +31,23 @@
       <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" data-key="{{item.id}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
         <!--  wx:if 是否选择显示不同图标 -->
         <view class="content">
-          <icon wx:if="{{item.selected==true}}" type="success" data-key="0" data-id="{{item.id}}" color="#ff712b" bindtap="selectList" data-index="{{index}}" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
-          <icon wx:elseif type="circle" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+          <block wx:if="{{item.area==1}}">
+
+            <icon wx:if="{{item.selected==true}}" type="success" data-key="0" data-id="{{item.id}}" color="#ff712b" bindtap="selectList" data-index="{{index}}" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+            <icon wx:else type="circle" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+          </block>
+          <block wx:else>
+            <view class='noacti'></view>
+          </block>
+
+
+
           <!-- <icon wx:else type="fail"  data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" /> -->
           <!-- 购物车商品图片 -->
           <view class="imgtex" data-id="{{item.goods_id}}" bindtap="tiaodeilts">
             <image src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_thumb}}" class="shopimg" alt=""></image>
             <!-- <view class='caigouzhong'>采购中</view> -->
-            <view class='caigouzhong'>区域不可售</view>
+            <view wx:if="{{item.area==0}}" class='caigouzhong'>区域不可售</view>
           </view>
           <view class="shop_name">
             <text class="shnm" data-id="{{item.goods_id}}" bindtap="tiaodeilts">{{item.goods_name}}</text>
@@ -80,8 +89,13 @@
   </view>
   <view class="jiesnum" wx:for="{{carts}}">
     <!-- wx:if 是否全选显示不同图标 -->
-    <icon wx:if="{{selectAllStatus}}" type="success" color="#FF712B" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
-    <icon wx:else type="circle" color="#bfbfbf" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+    <block wx:if="{{isquan}}">
+      <icon wx:if="{{selectAllStatus}}" type="success" color="#FF712B" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+      <icon wx:else type="circle" color="#bfbfbf" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+    </block>
+    <block wx:else>
+      <view class='noacti' style='margin-top:24rpx;'></view>
+    </block>
     <text class="name_b">全选</text>
 
     <!-- 总价 -->
