@@ -54,7 +54,7 @@ Page({
     let idt = wx.getStorageSync("locationid");
     var uid = wx.getStorageSync("userinfo").uid;
     wx.request({
-      url: app.globalData.Murl + '/Applets/User/m_address1',
+      url: app.globalData.Murl + '/Applets/User/m_address2',
       method: "POST",
       data: {
         member_id: uid //会员ID
