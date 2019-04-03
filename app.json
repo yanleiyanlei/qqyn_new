@@ -1,6 +1,8 @@
 {
-  "pages": [
+  "pages": ["pages/m-coupon-2/m-coupon-2",
     "pages/index/index",
+    
+    
     "pages/morePosters/morePosters",
     "pages/third-number/third-number",
     "pages/pay199/pay199",

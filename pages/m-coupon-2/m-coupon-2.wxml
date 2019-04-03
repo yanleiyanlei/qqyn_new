@@ -1,0 +1,10 @@
+<view><image mode='widthFix' src='../../image/luodi/1.jpg'></image></view>
+<view><image mode='widthFix' src='../../image/luodi/2.jpg'></image></view>
+<view><image mode='widthFix' src='../../image/luodi/3.jpg'></image></view>
+<view class='position'>
+  <image mode='widthFix' src='../../image/luodi/4.jpg'></image>
+  <navigator url='/pages/m-coupon/m-coupon'>
+    <view bindtap='goyhq'></view>
+  </navigator>
+</view>
+<view bindtap='gowx'><image mode='widthFix' src='../../image/luodi/5.jpg'></image></view>
