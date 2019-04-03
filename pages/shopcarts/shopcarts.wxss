@@ -411,8 +411,8 @@ page {
   margin-top: 90rpx;
   display: block;
   float: left;
-  width: 46rpx;
-  height: 46rpx;
+  width: 40rpx;
+  height: 40rpx;
   border-radius: 50%;
   background:rgba(193,193,193,1);
 }
