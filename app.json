@@ -1,8 +1,6 @@
 {
-  "pages": ["pages/m-coupon-2/m-coupon-2",
+  "pages": [
     "pages/index/index",
-    
-    
     "pages/morePosters/morePosters",
     "pages/third-number/third-number",
     "pages/pay199/pay199",
@@ -68,7 +66,7 @@
     "pages/luckdraw/luckdraw",
     "pages/bution/bution",
     "pages/cash/cash",
-   
+    "pages/m-coupon-2/m-coupon-2",
     "pages/luckyears/luckyears"
 
   ],
