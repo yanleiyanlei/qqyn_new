@@ -68,6 +68,7 @@
     "pages/cash/cash",
     "pages/checkAdd/checkAdd",
     "pages/laAdd/laAdd",
+    "pages/m-coupon-2/m-coupon-2",
     "pages/luckyears/luckyears"
   ],
   "window": {

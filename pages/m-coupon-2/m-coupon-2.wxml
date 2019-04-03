@@ -1,0 +1,10 @@
+<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/1.jpg'></image></view>
+<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/2.jpg'></image></view>
+<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/3.jpg'></image></view>
+<view class='position'>
+  <image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/4.jpg'></image>
+  <navigator url='/pages/m-coupon/m-coupon'>
+    <view bindtap='goyhq'></view>
+  </navigator>
+</view>
+<view bindtap='gowx'><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/5.jpg'></image></view>
