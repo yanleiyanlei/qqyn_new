@@ -872,8 +872,7 @@ swiper {
   float: left;
   margin-right: 10rpx;
 }
-
-.addimg {
+.addimg{
   display: block;
   width: 27rpx;
   height: 32rpx;

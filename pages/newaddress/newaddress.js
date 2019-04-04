@@ -4,25 +4,26 @@ Page({
     iskong: false,
     address: []
   },
-  tiatheror(e) {
-    var id = e.currentTarget.dataset.id;
-    var city = e.currentTarget.dataset.city;
-    var sheng = e.currentTarget.dataset.sheng;
-    var qu = e.currentTarget.dataset.qu;
-    var address_content = e.currentTarget.dataset.address_content;
-    var add = sheng + city + qu + address_content;
+  tiatheror(e){
+      var id= e.currentTarget.dataset.id;
+    let city = e.currentTarget.dataset.city;
+    let sheng = e.currentTarget.dataset.sheng;
+    let qu = e.currentTarget.dataset.qu;
+    let address_content = e.currentTarget.dataset.address_content;
+    let add = sheng + city + qu + address_content;
+    wx.setStorageSync("locationcity", city);
     wx.setStorageSync("locationid", id);
-    wx.setStorageSync("locationcity", city)
-    wx.setStorageSync("locationadd", add)
-    // let pages = getCurrentPages();//当前页面
-    // let prevPage = pages[pages.length-2];//上一页面
-    // prevPage.setData({//直接给上移页面赋值
-    //    items: e.currentTarget.dataset.id,
-    // });
-    // console.log(prevPage.data.item);
-    wx.navigateBack({ //返回
-      delta: 1
-    })
+    wx.setStorageSync("locationadd", add);
+    
+      // let pages = getCurrentPages();//当前页面
+      // let prevPage = pages[pages.length-2];//上一页面
+      // prevPage.setData({//直接给上移页面赋值
+      //    items: e.currentTarget.dataset.id,
+      // });
+      // console.log(prevPage.data.item);
+     wx.navigateBack({//返回
+        delta:1
+      })
     /* wx.redirectTo({
               url: '../theorder/theorder?id='+id+'&page='+this.data.page+'&goods_id='+this.data.goods_id+'&spec_key='+this.data.spec_key+'&num='+this.data.num,
             success: function(res) {console.log(res)},
@@ -43,18 +44,15 @@ Page({
       num: options.num,
     })
     wx.request({
-      url: app.globalData.Murl + "/Applets/User/m_address2",
-      data: {
-        member_id: uid
-      },
-      method: "post",
-      success: function(res) {
-        console.log(213123);
-        that.setData({
-          iskong: res.data.status,
-          address: res.data.select
-        })
-
+      url:app.globalData.Murl+"/Applets/User/m_address2",
+      data:{member_id:uid},
+      method:"post",
+      success:function(res){
+          console.log(213123);
+          that.setData({
+            iskong:res.data.status,
+            address:res.data.select
+          })
       },
       fail: function(res) {
         console.log(res)
@@ -99,18 +97,15 @@ Page({
                   duration: 1000
                 })
                 wx.request({
-                  url: app.globalData.Murl + "/Applets/User/m_address2",
-                  data: {
-                    member_id: uid
-                  },
-                  method: "post",
-                  success: function(res) {
-                    console.log(res.data);
-                    that.setData({
-                      iskong: res.data.status,
-                      address: res.data.select
-                    })
-
+                   url: app.globalData.Murl+"/Applets/User/m_address2",
+                   data: { member_id:uid },
+                   method: "post",
+                   success: function (res) {
+                     console.log(res.data);
+                     that.setData({
+                       iskong: res.data.status,
+                       address: res.data.select
+                     })
                   },
                   fail: function(res) {
                     //console.log(res)
@@ -163,10 +158,8 @@ Page({
           //   url: 'm-address'
           // })
           wx.request({
-            url: app.globalData.Murl + "/Applets/User/m_address2",
-            data: {
-              member_id: uid
-            },
+            url: app.globalData.Murl+"/Applets/User/m_address2",
+            data: { member_id:uid},
             method: "post",
             success: function(res) {
               console.log(res.data);

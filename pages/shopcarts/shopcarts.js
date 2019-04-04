@@ -27,7 +27,7 @@ Page({
     let carts = this.data.carts; // 获取购物车列表
     let total = 0;
     for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
-      if (carts[i].area != 0) {
+      if (carts[i].area == 1 && carts[i].store_count > 0) {
         if (carts[i].selected) { // 判断选中才会计算价格
           total += carts[i].goods_num * carts[i].goods_price; // 所有价格加起来
         }
@@ -160,9 +160,12 @@ Page({
     let carts = this.data.carts; //获取购物车信息
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid; //获取用户信息
-    var hieneflae = _this.data.hieneflae
-    var value = _this.data.hieneflae; //删除 状态      
-    if (hieneflae == true) {
+
+    var _this = this;
+    var value = _this.data.hieneflae; //删除 状态 
+    console.log(value)     
+    if (value == true) {
+
       if (selectAllStatus == true) { //选中状态
         for (let i = 0; i < carts.length; i++) {
           if (carts[i].area == 1 && carts[i].store_count > 0) {
@@ -181,7 +184,6 @@ Page({
                   },
                   method: "POST",
                   success: function(res) {
-
                     if (res.data.selected == 'true') { //后台返回 res.data.selected == 'true' 请求成功
                       let carts = _this.data.carts; //获取购物车信息
                       const selected = carts[i].selected; //获取商品的selected 选中状态
@@ -214,7 +216,7 @@ Page({
                   method: "POST",
                   success: function(res) {
 
-                    if (res.data.selected == 'true') {
+                    // if (res.data.selected == 'true') {
                       let carts = _this.data.carts;
                       const selected = carts[i].selected;
                       carts[i].selected = !selected;
@@ -223,25 +225,26 @@ Page({
                         carts: carts,
                       })
 
-                    } else {
-                      wx.showToast({
-                        title: '系统繁忙',
-                        icon: 'none',
-                        duration: 2000
-                      })
-                      setTimeout(function() {
-                        wx.hideLoading()
-                      }, 1000)
-                    }
+                    // } else {
+                    //   wx.showToast({
+                    //     title: '系统繁忙',
+                    //     icon: 'none',
+                    //     duration: 2000
+                    //   })
+                    //   setTimeout(function() {
+                    //     wx.hideLoading()
+                    //   }, 1000)
+                    // }
                   }
                 })
-              } else {
-                wx.showToast({
-                  title: '未选中的商品库存不足，请修改数量',
-                  icon: 'none',
-                  duration: 2000
-                })
-              }
+              } 
+              // else {
+              //   wx.showToast({
+              //     title: '未选中的商品库存不足，请修改数量',
+              //     icon: 'none',
+              //     duration: 2000
+              //   })
+              // }
             }
           }
         }
@@ -291,60 +294,109 @@ Page({
     } else {
       if (selectAllStatus == true) { //选中状态
         for (let i = 0; i < carts.length; i++) {
-          if (carts[i].selected == true) {
+            if (carts[i].selected == true) {
 
-          } else {
-            var kc = Number(carts[i].store_count); //每个商品的库存
-            var num = Number(carts[i].goods_num); //每个商品的选中数量
-            if (value == false) {
-              wx.request({
-                url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect", //后台请求地址
-                data: {
-                  member_id: uid, //用户id
-                  cart_id: carts[i].id, //所选商品id
-                  selected: 1,
-                },
-                method: "POST",
-                success: function(res) {
+            } else {
+              var kc = Number(carts[i].store_count); //每个商品的库存
+              var num = Number(carts[i].goods_num); //每个商品的选中数量
+              if (value == false) {
+                wx.request({
+                  url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect", //后台请求地址
+                  data: {
+                    member_id: uid, //用户id
+                    cart_id: carts[i].id, //所选商品id
+                    selected: 1,
+                  },
+                  method: "POST",
+                  success: function(res) {
 
-                  // if (res.data.selected == 'true') { //后台返回 res.data.selected == 'true' 请求成功
-                    let carts = _this.data.carts; //获取购物车信息
-                    const selected = carts[i].selected; //获取商品的selected 选中状态
-                    carts[i].selected = !selected; //改变商品选中状态
-                    _this.getTotalPrice(); //重新计算总价
-                    _this.setData({
-                      carts: carts, //更新购物车
-                    })
+                    // if (res.data.selected == 'true') { //后台返回 res.data.selected == 'true' 请求成功
+                      let carts = _this.data.carts; //获取购物车信息
+                      const selected = carts[i].selected; //获取商品的selected 选中状态
+                      carts[i].selected = !selected; //改变商品选中状态
+                      _this.getTotalPrice(); //重新计算总价
+                      _this.setData({
+                        carts: carts, //更新购物车
+                      })
 
-                  // } else {
-                  //   wx.showToast({
-                  //     title: '系统繁忙',
-                  //     icon: 'none',
-                  //     duration: 2000
-                  //   })
-                  //   setTimeout(function() {
-                  //     wx.hideLoading()
-                  //   }, 1000)
-                  // }
-                }
-              })
-            } else if (value == true) {
+                    // } else {
+                    //   wx.showToast({
+                    //     title: '系统繁忙',
+                    //     icon: 'none',
+                    //     duration: 2000
+                    //   })
+                    //   setTimeout(function() {
+                    //     wx.hideLoading()
+                    //   }, 1000)
+                    // }
+                  }
+                })
+              } else if (value == true) {
+                wx.request({
+                  url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",
+                  data: {
+                    member_id: uid,
+                    cart_id: carts[i].id,
+                    selected: 1,
+                  },
+                  method: "POST",
+                  success: function(res) {
+
+                    if (res.data.selected == 'true') {
+                      let carts = _this.data.carts;
+                      const selected = carts[i].selected;
+                      carts[i].selected = !selected;
+                      _this.getTotalPrice();
+                      _this.setData({
+                        carts: carts,
+                      })
+
+                    } else {
+                      wx.showToast({
+                        title: '系统繁忙',
+                        icon: 'none',
+                        duration: 2000
+                      })
+                      setTimeout(function() {
+                        wx.hideLoading()
+                      }, 1000)
+                    }
+                  }
+                })
+              }
+              //  else {
+              //   wx.showToast({
+              //     title: '未选中的商品库存不足，请修改数量',
+              //     icon: 'none',
+              //     duration: 2000
+              //   })
+              // }
+            }
+        }
+
+      } else { //取消选中
+        for (let i = 0; i < carts.length; i++) {
+            if (carts[i].selected == false) {
+
+            } else {
               wx.request({
                 url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",
                 data: {
                   member_id: uid,
                   cart_id: carts[i].id,
-                  selected: 1,
+                  selected: 0,
                 },
                 method: "POST",
                 success: function(res) {
+
+                  console.log(res.data);
                   // if (res.data.selected == 'true') {
                     let carts = _this.data.carts;
                     const selected = carts[i].selected;
                     carts[i].selected = !selected;
                     _this.getTotalPrice();
                     _this.setData({
-                      carts: carts,
+                      carts: carts
                     })
 
                   // } else {
@@ -359,55 +411,8 @@ Page({
                   // }
                 }
               })
-            } else {
-              wx.showToast({
-                title: '未选中的商品库存不足，请修改数量',
-                icon: 'none',
-                duration: 2000
-              })
             }
-          }
         }
-
-      } else { //取消选中
-        for (let i = 0; i < carts.length; i++) {
-          if (carts[i].selected == false) {
-
-          } else {
-            wx.request({
-              url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",
-              data: {
-                member_id: uid,
-                cart_id: carts[i].id,
-                selected: 0,
-              },
-              method: "POST",
-              success: function(res) {
-                console.log(res.data);
-                // if (res.data.selected == 'true') {
-                  let carts = _this.data.carts;
-                  const selected = carts[i].selected;
-                  carts[i].selected = !selected;
-                  _this.getTotalPrice();
-                  _this.setData({
-                    carts: carts
-                  })
-
-                // } else {
-                //   wx.showToast({
-                //     title: '系统繁忙',
-                //     icon: 'none',
-                //     duration: 2000
-                //   })
-                //   setTimeout(function() {
-                //     wx.hideLoading()
-                //   }, 1000)
-                // }
-              }
-            })
-          }
-        }
-
       }
     }
     this.setData({
@@ -420,12 +425,22 @@ Page({
   toggle: function() {
     var value = !this.data.hieneflae;
     var carts = this.data.carts;
-    let arr = [];
-    for (let a = 0; a < carts.length; a++) {
-      arr.push(carts[a].selected)
+    let arr1 = [];
+    console.log(carts);
+    if (value == true) {
+      const pages = getCurrentPages()
+      const perpage = pages[pages.length - 1]
+      perpage.onShow()
     }
-    //使用indeof进行对比查找
-    if (arr.indexOf(false) !== -1) {
+    this.setData({
+      hieneflae: value,
+      isquan: true
+    })
+    for (let a = 0; a < carts.length; a++) {
+        arr1.push(carts[a].selected)
+    }
+    console.log(arr1);
+    if (arr1.indexOf(false) != -1) {
       this.setData({
         selectAllStatus: false,
       })
@@ -434,16 +449,7 @@ Page({
         selectAllStatus: true,
       })
     }
-    console.log(carts);
-    this.setData({
-      hieneflae: value,
-      isquan:true
-    })
-    if (value == true) {
-      const pages = getCurrentPages()
-      const perpage = pages[pages.length - 1]
-      perpage.onShow()
-    }
+    console.log(this.data.selectAllStatus);
   },
   // 增加数量
   addCount(e) {
@@ -637,7 +643,7 @@ Page({
         let total = 0;
         console.log(carts);
         for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
-          if (carts[i].area != 0 && carts[i].store_count > 0) {
+          if (carts[i].area == 1 && carts[i].store_count > 0) {
             if (carts[i].selected) { // 判断选中才会计算价格
               total += carts[i].goods_num * carts[i].goods_price; // 所有价格加起来
             }
@@ -761,12 +767,13 @@ Page({
             //判断购物车商品是否全补选中，如果全部选中，底部全选状态激活  selectAllStatus==true
             let cartstrue = [];
             for (let i = 0; i < carts.length; i++) {
-              if (carts[i].area == 1 && carts[i].store_count > 0) {
+
+              if (carts[i].area == 1 && carts[i].store_count>0) {
                 cartstrue.push(carts[i].selected);
               }
             }
             //使用indeof进行对比查找
-            if (cartstrue.indexOf(false) !== -1) {
+            if (cartstrue.indexOf(false) != -1) {
               _this.setData({
                 selectAllStatus: false,
               })
@@ -810,11 +817,11 @@ Page({
             let cartstrue = [];
             for (let i = 0; i < carts.length; i++) {
 
-              cartstrue.push(carts[i].selected);
+                cartstrue.push(carts[i].selected);
 
             }
 
-            if (cartstrue.indexOf(false) !== -1) {
+            if (cartstrue.indexOf(false) != -1) {
               _this.setData({
                 selectAllStatus: false,
               })
@@ -834,12 +841,6 @@ Page({
           //   }, 1000)
           // }
         }
-      })
-    } else {
-      wx.showToast({
-        title: '库存不足,请重新选择数量',
-        icon: 'none',
-        duration: 2000
       })
     }
   },
