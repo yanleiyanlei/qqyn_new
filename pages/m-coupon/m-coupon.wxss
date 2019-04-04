@@ -171,6 +171,7 @@
   background-position: center;
   background-size: cover;
   margin-bottom: 20rpx;
+  position: relative;
 }
 
 .m-box .m-list .m-list-left {
