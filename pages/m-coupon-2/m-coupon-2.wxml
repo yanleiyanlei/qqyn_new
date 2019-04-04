@@ -7,4 +7,5 @@
     <view bindtap='goyhq'></view>
   </navigator>
 </view>
+<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/6.jpg'></image></view>
 <view bindtap='gowx'><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/5.jpg'></image></view>
