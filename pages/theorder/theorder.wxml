@@ -1,6 +1,5 @@
 <!-- 订单页面 -->
 <page>
-
   <view class='back' wx:if="{{popup}}">
     <view class='backtxt'>
       <text>["{{notgoods}}"]，配送范围无法覆盖您选择的收货地址，请更换其他商品或更换收货地址。</text>

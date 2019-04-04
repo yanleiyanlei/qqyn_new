@@ -69,7 +69,7 @@
         <text class='addend'>送至:</text>
         <image class='addimg' src='../../image/detailadd.png'></image>
         <text class='addtxt'>{{locationadd}}</text>
-        <image class='addgo' src='../../image/detailadd.png'></image>
+        <image class='addgo' src='../../image/cright.png'></image>
     </view>
     <view class='add-footer'>
         <text style='color:rgba(255, 92, 37, 1);margin-top:6rpx; font-sizi:30rpx;' class="iconfont icon-tixing"></text>

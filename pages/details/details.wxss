@@ -873,12 +873,16 @@ swiper {
   margin-right: 10rpx;
 }
 
-.add-top image {
+.addimg{
   display: block;
   width: 27rpx;
   height: 32rpx;
 }
-
+.addgo{
+  display: block;
+  width: 14rpx;
+  height: 26rpx;
+}
 .addgo {
   float: right;
 }

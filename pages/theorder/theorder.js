@@ -402,7 +402,7 @@ Page({
     var uid = wx.getStorageSync("userinfo").uid; //用户id
     // var pages = getCurrentPages();
     // var currPage = pages[pages.length - 1]; //当前页面
-    var item = _this.data.items; //地址
+    var item = wx.getStorageSync("locationid"); //地址
 
     function getNowTime() { //计算下单事件如果超过上午十点  明天到达  否则  今日送达
       var now = new Date();

@@ -15,7 +15,7 @@
     <view class="box1">
       <view class="listBox clearfix" wx:for="{{address}}">
         <view class="list">
-          <view class="top border1" bindtap="tiatheror" data-id="{{item.id}}">
+          <view class="top border1" bindtap="tiatheror" data-id="{{item.id}}" data-city='{{item.shi}}' data-sheng='{{item.sheng}}' data-qu='{{item.qu}}' data-address_content='{{item.address_content}}'>
             <view class="one clearfix">
               <view class="left">
                 <text class="name">{{item.name}}</text>

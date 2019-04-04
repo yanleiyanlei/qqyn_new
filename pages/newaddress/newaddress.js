@@ -6,12 +6,21 @@ Page({
   },
   tiatheror(e){
       var id= e.currentTarget.dataset.id;
-      let pages = getCurrentPages();//当前页面
-      let prevPage = pages[pages.length-2];//上一页面
-      prevPage.setData({//直接给上移页面赋值
-         items: e.currentTarget.dataset.id,
-      });
-      console.log(prevPage.data.item);
+    let city = e.currentTarget.dataset.city;
+    let sheng = e.currentTarget.dataset.sheng;
+    let qu = e.currentTarget.dataset.qu;
+    let address_content = e.currentTarget.dataset.address_content;
+    let add = sheng + city + qu + address_content;
+    wx.setStorageSync("locationcity", city);
+    wx.setStorageSync("locationid", id);
+    wx.setStorageSync("locationadd", add);
+    
+      // let pages = getCurrentPages();//当前页面
+      // let prevPage = pages[pages.length-2];//上一页面
+      // prevPage.setData({//直接给上移页面赋值
+      //    items: e.currentTarget.dataset.id,
+      // });
+      // console.log(prevPage.data.item);
      wx.navigateBack({//返回
         delta:1
       })
@@ -35,7 +44,7 @@ Page({
        num:options.num,   
     })
     wx.request({
-      url:app.globalData.Murl+"/Applets/User/m_address1",
+      url:app.globalData.Murl+"/Applets/User/m_address2",
       data:{member_id:uid},
       method:"post",
       success:function(res){
@@ -87,7 +96,7 @@ Page({
                    duration: 1000
                  }) 
                 wx.request({
-                   url: app.globalData.Murl+"/Applets/User/m_address1",
+                   url: app.globalData.Murl+"/Applets/User/m_address2",
                    data: { member_id:uid },
                    method: "post",
                    success: function (res) {
@@ -146,7 +155,7 @@ Page({
           //   url: 'm-address'
           // })
           wx.request({
-            url: app.globalData.Murl+"/Applets/User/m_address1",
+            url: app.globalData.Murl+"/Applets/User/m_address2",
             data: { member_id:uid},
             method: "post",
             success: function (res) {
