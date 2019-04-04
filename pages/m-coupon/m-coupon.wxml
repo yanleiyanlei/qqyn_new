@@ -64,6 +64,7 @@
               <!-- 优惠劵价格 -->
               <text class="one"><text class="two">￥</text>{{item.coupon_money}}</text>
             </view>
+            <view class='quanma' wx:if='{{item.code}}'>{{item.code}}</view>
             <view class="m-list-right">
               <view class="m-scope">全场通用优惠券</view>
               <view class="m-full">
