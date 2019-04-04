@@ -117,7 +117,7 @@ Page({
         const dastas = res.data;
         console.log(dastas);
         for (var i = 0; i < carts.length; i++) {
-          if (carts[i].selected == true) {
+          if (carts[i].selected == true && carts[i].store_count>0) {
             var kc = Number(carts[i].store_count); //商品库存
             var num = Number(carts[i].goods_num); //选中商品数量
             var name = carts[i].goods_name; //商品名称
