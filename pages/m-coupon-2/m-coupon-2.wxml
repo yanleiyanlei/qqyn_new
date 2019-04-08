@@ -1,11 +1,35 @@
-<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/1.jpg'></image></view>
-<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/2.jpg'></image></view>
-<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/3.jpg'></image></view>
+<view>
+  <image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/1.jpg'></image>
+</view>
+<view>
+  <image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/2.jpg'></image>
+</view>
+<view>
+  <image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/3.jpg'></image>
+</view>
 <view class='position'>
   <image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/4.jpg'></image>
   <navigator url='/pages/m-coupon/m-coupon'>
     <view bindtap='goyhq'></view>
   </navigator>
 </view>
-<view><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/6.jpg'></image></view>
-<view bindtap='gowx'><image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/5.jpg'></image></view>
+<view>
+  <image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/6.jpg'></image>
+</view>
+<view bindtap='gowx'>
+  <image mode='widthFix' src='https://m.7710mall.com/Uploads/templet/5.jpg'></image>
+</view>
+<view class='' bindtap='showMask' hidden='{{flag1}}'>
+
+</view>
+<view class="mask" hidden="{{flag}}">
+  <view class="closeImg" >
+    <view class='txt'>
+      <view>当前距离青青优农（西红门）店仅
+        <text>{{distance}}米</text>
+      </view>
+      <view class='button_1' bindtap="closeMask">朕已阅</view>
+    </view>
+  </view>
+
+</view>
