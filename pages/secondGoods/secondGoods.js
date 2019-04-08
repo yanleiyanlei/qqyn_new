@@ -1,11 +1,11 @@
-//获取应用实例
+//获取应用实例 
 const app = getApp();
 var user = require("../../lib/js/user.js");
-// pages/secondGoods/secondGoods.js
+// pages/secondGoods/secondGoods.js 
 Page({
 
-  /**
-   * 页面的初始数据
+  /** 
+   * 页面的初始数据 
    */
   data: {
     goods: [],
@@ -17,10 +17,16 @@ Page({
     jgactive: "",
     xlOrder: 1,
     jgOrder: 1,
-    mshow:"display:none",
-    show:"display:none"
+    mshow: "display:none",
+    show: "display:none",
+    location: '',
+    options: {},
+    pid: '',
+    page: '',
+    txt: '',
+    goods_ids: ''
   },
-  
+
 
   close: function () {
     this.setData({
@@ -31,9 +37,9 @@ Page({
     this.setData({
       mshow: "display:none"
     })
-   user.user(e)
+    user.user(e)
   },
-  // 添加购物车=================
+  // 添加购物车================= 
   cart: function (e) {
     var that = this;
     var uid = wx.getStorageSync("userinfo").uid;
@@ -45,33 +51,33 @@ Page({
       var uid = wx.getStorageSync("userinfo").uid;
       var goods_id = e.currentTarget.dataset.goodsid;
       var spec_key = e.currentTarget.dataset.key;
-      //console.log(uid)
+      //console.log(uid) 
       wx.request({
-        url: app.globalData.Murl+'/Applets/Cart/ajaxAddcart/',
+        url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
         data: {
-          member_id: uid,//会员ID
-          goods_id: goods_id, //商品ID
-          goods_num: 1, //商品数量
+          member_id: uid,//会员ID 
+          goods_id: goods_id, //商品ID 
+          goods_num: 1, //商品数量 
           spec_key: spec_key
         },
         method: "POST",
         header: {
-          'content-type': 'application/json' // 默认值
+          'content-type': 'application/json' // 默认值 
         },
         success: function (res) {
-          // console.log(res.data)
+          // console.log(res.data) 
           var txt = res.data.msg
           var num = res.data.thisGoodsNum
           e.currentTarget.dataset.num = num
-          //console.log(e.currentTarget.dataset.num)
+          //console.log(e.currentTarget.dataset.num) 
           wx.showToast({
             title: txt,
             icon: 'none',
             duration: 2000
           })
           if (res.data.status == 1) {
-            // 重新更新购物车数据表
-            const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
+            // 重新更新购物车数据表 
+            const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
             wx.request({
               url: shopusr,
               data: {
@@ -80,7 +86,7 @@ Page({
               },
               method: "POST",
               success: function (res) {
-                //console.log(res.data.cartList)
+                //console.log(res.data.cartList) 
 
                 that.setData({
                   cartList: res.data.cartList
@@ -91,7 +97,7 @@ Page({
 
           }
           if (res.data.status == 10) {
-            //by yan.lei 一键代发执行跳转
+            //by yan.lei 一键代发执行跳转 
             wx.navigateTo({
               url: '../theorder/theorder?goods_id=' + goods_id + '&num=1' + '&spec_key=' + spec_key + '&page=' + 1,
               success: function (res) { console.log(res) },
@@ -116,9 +122,9 @@ Page({
     }
 
   },
-  // 商品跳转详情
+  // 商品跳转详情 
   goodsDetails: function (e) {
-    //console.log(e.currentTarget.dataset.goodsid)
+    //console.log(e.currentTarget.dataset.goodsid) 
     wx.navigateTo({
       url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
       success: function (res) { },
@@ -128,19 +134,29 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
+  /** 
+   * 生命周期函数--监听页面加载 
    */
   onLoad: function (options) {
     var pid = options.pid;
-    if (pid) {
-      wx.setStorageSync("pid", pid);
-    }
+    var txt = options.txt;
+    var page = options.page;
+    var goodsid = options.goodsid;
+    var options = options;
+    console.log(options)
+    this.setData({
+      txt: txt,
+      page: page,
+      options: options
+    })
 
+    var txt = options.txt;
+    var page = options.page;
+    var goodsid = options.goodsid;
     var that = this;
-    // 获取购物车列表
+    // 获取购物车列表 
     var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
     wx.request({
       url: shopusr,
       data: {
@@ -157,103 +173,155 @@ Page({
 
       }
     })
-    // 判断从哪个页面进来的
-    if (options.page == 1) {
-      // 从搜索页面过来
-      console.log(options.goodsid)
-      that.setData({ goodsid: options.goodsid })
-      wx.request({
-        url: app.globalData.Murl+'/Applets/Index/search_list',
-        data: { ids: options.goodsid },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          console.log(res)
-
-          that.setData({ goods: res.data })
-          if (res.data.length < 3) {
-            console.log("yes")
-            that.setData({
-              mstyle: "padding-bottom:550rpx"
-            })
-          }
-
-
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-
-
-    } else if (options.page == 2) {
-      that.setData({ oneType: options.oneType, twoType: options.twoType })
-      // 从分类页面过来
-      wx.request({
-        url: app.globalData.Murl+'/Applets/Index/classify_content',
-        data: { two_cat_id: options.twoType },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          console.log(res)
-
-          that.setData({ goods: res.data.goods })
-          
-          if (res.data.goods.length < 3) {
-            
-            that.setData({
-              mstyle: "padding-bottom:550rpx"
-            })
-            
-          }
-
-
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-
-
-    }
-
 
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
+  /** 
+   * 生命周期函数--监听页面初次渲染完成 
    */
   onReady: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
+  /** 
+   * 生命周期函数--监听页面显示 
    */
   onShow: function () {
     var that = this;
-    // 获取购物车列表
+    let location = wx.getStorageSync("locationcity");
+    let txt = that.data.txt
+    console.log(9999999999999999999999)
+    console.log(txt)
+    that.setData({
+      location: location
+    })
+
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Index/search_goods',
+      data: { txt: that.data.txt, city: location },
+      method: "POST",
+      header: {
+        'content-type': 'application/json' // 默认值 
+      },
+      success: function (res) {
+        //status:状态值。 
+        var status = res.data.status
+        //console.log(res.data.status) 
+        //data 
+        // var that = this  
+        console.log(res)
+        console.log(res.data.goods_ids)
+        that.setData({
+          goods_ids: res.data.goods_ids
+        })
+        console.log(111111111111111)
+        console.log(that.data.options)
+        var options = that.data.options
+        var pid = that.data.pid
+        if (pid) {
+          wx.setStorageSync("pid", pid);
+        }
+        // 判断从哪个页面进来的 
+        if (options.page == 1) {
+          // 从搜索页面过来 
+          console.log(options.goodsid)
+          that.setData({ goodsid: options.goodsid })
+          console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+          console.log(that.data.goods_ids)
+          wx.request({
+            url: app.globalData.Murl + '/Applets/Index/search_list',
+            data: { ids: that.data.goods_ids },
+            method: "POST",
+            header: {
+              'content-type': 'application/json' // 默认值 
+            },
+            success: function (res) {
+              console.log(res)
+
+              that.setData({ goods: res.data })
+              if (res.data.length < 3) {
+                console.log("yes")
+                that.setData({
+                  mstyle: "padding-bottom:550rpx"
+                })
+              }
+
+
+            },
+            fail: function (res) {
+              wx.showLoading({
+                title: '网络连接失败！',
+              })
+
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 2000)
+
+            }
+          })
+
+
+        } else if (options.page == 2) {
+          that.setData({ oneType: options.oneType, twoType: options.twoType })
+          // 从分类页面过来 
+          wx.request({
+            url: app.globalData.Murl + '/Applets/Index/classify_content',
+            data: { two_cat_id: options.twoType },
+            method: "POST",
+            header: {
+              'content-type': 'application/json' // 默认值 
+            },
+            success: function (res) {
+              console.log(res)
+
+              that.setData({ goods: res.data.goods })
+
+              if (res.data.goods.length < 3) {
+
+                that.setData({
+                  mstyle: "padding-bottom:550rpx"
+                })
+
+              }
+
+
+            },
+            fail: function (res) {
+              wx.showLoading({
+                title: '网络连接失败！',
+              })
+
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 2000)
+
+            }
+          })
+
+
+        }
+      },
+      fail: function (res) {
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+
+      }
+    })
+
+
+    // 获取购物车列表 
+    // var location = app.globalData.location; 
+    // that.setData({ 
+    //   location: location 
+    // }) 
     var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
     wx.request({
       url: shopusr,
       data: {
@@ -270,38 +338,39 @@ Page({
 
       }
     })
+
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
+  /** 
+   * 生命周期函数--监听页面隐藏 
    */
   onHide: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
+  /** 
+   * 生命周期函数--监听页面卸载 
    */
   onUnload: function () {
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
+  /** 
+   * 页面相关事件处理函数--监听用户下拉动作 
    */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
+  /** 
+   * 页面上拉触底事件的处理函数 
    */
   onReachBottom: function () {
 
   },
 
-  /**
-   * 用户点击右上角分享
+  /** 
+   * 用户点击右上角分享 
    */
   onShareAppMessage: function () {
     var pages = getCurrentPages()
@@ -315,36 +384,36 @@ Page({
     var uid = userinfo.uid;
     return {
       title: '【青青优农】追求原始的味道',
-      path: 'pages/secondGoods/secondGoods?page=' + options.page + '&oneType=' + options.oneType + '&twoType=' + options.twoType+'&pid='+uid,
+      path: 'pages/secondGoods/secondGoods?page=' + options.page + '&oneType=' + options.oneType + '&twoType=' + options.twoType + '&pid=' + uid,
       imageUrl: '',
       success: function (res) {
         console.log(res)
-        // console.log
-        // wx.getShareInfo({
-        //   shareTicket: res.shareTickets[0],
-        //   success: function (res) {
-        //     console.log(res)
-        //   },
-        //   fail: function (res) { console.log(res) },
-        //   complete: function (res) { console.log(res) }
-        // })
+        // console.log 
+        // wx.getShareInfo({ 
+        //   shareTicket: res.shareTickets[0], 
+        //   success: function (res) { 
+        //     console.log(res) 
+        //   }, 
+        //   fail: function (res) { console.log(res) }, 
+        //   complete: function (res) { console.log(res) } 
+        // }) 
       },
       fail: function (res) {
-        // 分享失败
-        //console.log(res)
+        // 分享失败 
+        //console.log(res) 
       }
     }
   },
 
-  // 最新商品查询
+  // 最新商品查询 
   newgoods: function () {
     var that = this;
     wx.request({
-      url: app.globalData.Murl+'/Applets/Index/timesort',
+      url: app.globalData.Murl + '/Applets/Index/timesort',
       data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType, ids: that.data.goodsid },
       method: "POST",
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' // 默认值 
       },
       success: function (res) {
 
@@ -374,18 +443,18 @@ Page({
 
   },
 
-  //销量排行
+  //销量排行 
   saleN: function (e) {
     var that = this;
     console.log(e)
     if (e.currentTarget.dataset.order == 1) {
-      // 销量降序
+      // 销量降序 
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/xiaoxia',
+        url: app.globalData.Murl + '/Applets/Index/xiaoxia',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType, ids: that.data.goodsid },
         method: "POST",
         header: {
-          'content-type': 'application/json' // 默认值
+          'content-type': 'application/json' // 默认值 
         },
         success: function (res) {
 
@@ -416,13 +485,13 @@ Page({
 
 
     } else if (e.currentTarget.dataset.order == 2) {
-      // 销量升序
+      // 销量升序 
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/xiaoshang',
+        url: app.globalData.Murl + '/Applets/Index/xiaoshang',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType, ids: that.data.goodsid },
         method: "POST",
         header: {
-          'content-type': 'application/json' // 默认值
+          'content-type': 'application/json' // 默认值 
         },
         success: function (res) {
 
@@ -454,18 +523,18 @@ Page({
     }
 
   },
-  //价格排序
+  //价格排序 
   priceN: function (e) {
     var that = this;
     console.log(e)
     if (e.currentTarget.dataset.order == 1) {
-      // 价格sheng序
+      // 价格sheng序 
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/priceshang',
+        url: app.globalData.Murl + '/Applets/Index/priceshang',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType, ids: that.data.goodsid },
         method: "POST",
         header: {
-          'content-type': 'application/json' // 默认值
+          'content-type': 'application/json' // 默认值 
         },
         success: function (res) {
 
@@ -496,13 +565,13 @@ Page({
 
 
     } else if (e.currentTarget.dataset.order == 2) {
-      // 价格jiang序
+      // 价格jiang序 
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/pricexia',
+        url: app.globalData.Murl + '/Applets/Index/pricexia',
         data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType, ids: that.data.goodsid },
         method: "POST",
         header: {
-          'content-type': 'application/json' // 默认值
+          'content-type': 'application/json' // 默认值 
         },
         success: function (res) {
 
@@ -534,13 +603,13 @@ Page({
     }
 
   },
-  // 筛选按钮点击
+  // 筛选按钮点击 
   sxClick: function () {
     var that = this;
     that.setData({ sxactive: "sxactive" })
     that.setData({ show: "show" })
   },
-  // 取消筛选
+  // 取消筛选 
   cancel: function () {
     var that = this;
     that.setData({ sxactive: "" })
@@ -548,24 +617,24 @@ Page({
     that.setData({ hsactive: "" })
     that.setData({ sactive: "" })
   },
-  // 新品上市点击
+  // 新品上市点击 
   ngoods: function () {
     var that = this;
     that.setData({ hactive: "" })
     that.setData({ sactive: "sactive" })
     that.setData({ sxID: "新品" })
   },
-  //热销产品点击
+  //热销产品点击 
   hgoods: function () {
     var that = this;
     that.setData({ sactive: "" })
     that.setData({ hactive: "hactive" })
     that.setData({ sxID: "热销" })
   },
-  //确定筛选事件
+  //确定筛选事件 
   confirm: function () {
     var that = this;
-    //console.log(1)
+    //console.log(1) 
     that.setData({ sxactive: "" })
     that.setData({ jgactive: "" })
     that.setData({ show: "" })
@@ -577,11 +646,11 @@ Page({
     console.log(that.data.oneType)
 
     wx.request({
-      url: app.globalData.Murl+'/Applets/Index/screen',
+      url: app.globalData.Murl + '/Applets/Index/screen',
       data: { one_cat_id: that.data.oneType, two_cat_id: that.data.twoType, ids: that.data.goodsid, state: that.data.sxID },
       method: "POST",
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' // 默认值 
       },
       success: function (res) {
 
