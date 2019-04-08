@@ -140,7 +140,7 @@ Page({
         data: hotarr
       })
 
-
+      var city = that.data.city
 
       wx.request({
         url: app.globalData.Murl+'/Applets/Index/search_goods',
