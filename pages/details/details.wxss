@@ -108,7 +108,7 @@ swiper {
   width: 100%;
   height: 70rpx;
   margin-top: 30rpx;
-  border-bottom: 1px solid #bfbfbf;
+  /* border-bottom: 1px solid #bfbfbf; */
 }
 
 .prices {
@@ -872,13 +872,16 @@ swiper {
   float: left;
   margin-right: 10rpx;
 }
-
-.add-top image {
+.addimg{
   display: block;
   width: 27rpx;
   height: 32rpx;
 }
-
+.addgo{
+  display: block;
+  width: 14rpx;
+  height: 26rpx;
+}
 .addgo {
   float: right;
 }

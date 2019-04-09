@@ -74,7 +74,7 @@
     </view>
 
 
-    <image src="https://m.test.7710mall.com/Uploads/xcx_img/banner.png" class="banner"></image>
+    <image src="https://m.7710mall.com/Uploads/xcx_img/banner.png" class="banner"></image>
   </view>
 <view class="tab clearfix">
   <view class="{{sta==1?'active':''}}" bindtap="tab" data-sta="1">进行中</view>
@@ -540,7 +540,7 @@
       <view class='bottom'>
         <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[0].goods_id}}'>
           <!-- <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image> -->
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[0].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥1.0</text>
@@ -548,7 +548,7 @@
         </view>
         <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[1].goods_id}}'>
           <!-- <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image> -->
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥1.0</text>
@@ -556,7 +556,7 @@
         </view>
         <view class='bottomBox' bindtap='goodsDetails' data-goodsid='{{goods[2].goods_id}}'>
           <!-- <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon3.png' class='pic1'></image> -->
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2'>￥1.0</text>
@@ -583,21 +583,21 @@
       <view class='more'>换一批</view>
       <view class='bottom'>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[0].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodsecond[0].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2 text22'>￥{{goodsecond[0].money}}</text>
           <text class='text3'>原价￥{{goodsecond[0].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[1].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodsecond[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2 text22'>￥{{goodsecond[1].money}}</text>
           <text class='text3'>原价￥{{goodsecond[1].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodsecond[2].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodsecond[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2 text22'>￥{{goodsecond[2].money}}</text>
@@ -624,21 +624,21 @@
       <view class='more'>换一批</view>
       <view class='bottom'>
         <view class='bottomBox bottomBox2'  bindtap='goodsDetails' data-goodsid='{{goodthrid[0].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodthrid[0].medium_img}}' class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2 text22'>￥{{goodthrid[0].money}}</text>
           <text class='text3'>原价￥{{goodthrid[0].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodthrid[1].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodthrid[1].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2 text22'>￥{{goodthrid[1].money}}</text>
           <text class='text3'>原价￥{{goodthrid[1].shop_price}}</text>
         </view>
         <view class='bottomBox bottomBox2' bindtap='goodsDetails' data-goodsid='{{goodthrid[2].goods_id}}'>
-          <image src='https://m.test.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
+          <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3'></image>
           <image src='{{goodthrid[2].medium_img}}'  class='pic2'></image>
           <text class='text1'>券后价</text>
           <text class='text2 text22'>￥{{goodthrid[2].money}}</text>
@@ -788,7 +788,7 @@
       <view class='center'>更多活动</view>
       <view class='right'></view>
     </view>
-    <image src="https://m.test.7710mall.com/Uploads/xcx_img/bannerFenxiao.png"></image>
+    <image src="https://m.7710mall.com/Uploads/xcx_img/bannerFenxiao.png"></image>
 
   </view>
 

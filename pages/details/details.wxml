@@ -27,7 +27,7 @@
       <text class="newsshop" wx:else></text>
       <text class="yisw">已售{{shopName.sales_sum}}份</text>
     </view>
-    <view wx:if="{{cityName=='北京市' || cityName=='天津市' || cityName=='河北省'}}">
+    <!-- <view wx:if="{{cityName=='北京市' || cityName=='天津市' || cityName=='河北省'}}">
       <view class="yujitime" wx:if="{{shopName.is_sale==1}}">
         <text class="iconfont icon-tixing"></text>
         <text wx:if="{{nowTime>10}}"> 23:00前下单，预计{{shopName.goods_yd_num}}日后发货</text>
@@ -38,8 +38,8 @@
         <text wx:if="{{nowTime<17}}"> 17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
         <text wx:else>17:00后下单，预计48小时内送达(节假日及特殊情况延后发货)</text>
       </view>
-    </view>
-
+    </view> -->
+<!-- 
     <view wx:else>
       <view class="yujitime" wx:if="{{shopName.is_sale==1}}">
         <text class="iconfont icon-tixing"></text>
@@ -51,7 +51,7 @@
         <text wx:if="{{nowTime>10}}"> 23:00前下单，预计后天到达</text>
         <text wx:else> 10:00前下单，预计明日到达</text>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>
 <!-- center -->
@@ -64,18 +64,18 @@
 
   </view>
   <!--判断是否有货  &&  地址 （暂时不用） -->
-  <!-- <view class='address'>
-    <view class='add-top'>
+  <view class='address'>
+    <view class='add-top' bindtap='golaAdd'>
         <text class='addend'>送至:</text>
         <image class='addimg' src='../../image/detailadd.png'></image>
-        <text class='addtxt'>北京市西城区车公庄大街五栋大楼B座北京市西城区车公庄大街五栋大楼B座</text>
-        <image class='addgo' src='../../image/detailadd.png'></image>
+        <text class='addtxt'>{{locationadd}}</text>
+        <image class='addgo' src='../../image/cright.png'></image>
     </view>
     <view class='add-footer'>
         <text style='color:rgba(255, 92, 37, 1);margin-top:6rpx; font-sizi:30rpx;' class="iconfont icon-tixing"></text>
-        <text><text style='color:rgba(255, 92, 37, 1)'>有货</text>,北京市西城区车公庄大街五栋大楼B座北京市西城区车公庄大街五栋大楼B座</text>
+        <text><text wx:if="{{ionot!=1}}" style='color:rgba(255, 92, 37, 1)'>无货</text><text wx:else style='color:rgba(255, 92, 37, 1)'>有货</text>，17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
     </view>
-  </view> -->
+  </view>
   <!-- 评价 -->
   <view class="evaluation">
     <view class="evalut">
@@ -211,9 +211,9 @@
 
     <view class="shopprices" wx:if="{{shopName.is_sale==2}}">
       <text wx:if="{{ionot!=1}}" style='color:rgba(255,255,255,0.2)' class="shopcar">加入购物车</text>
-      <text else class="shopcar" bindtap="addcars">加入购物车</text>
+      <text wx:else class="shopcar" bindtap="addcars">加入购物车</text>
       <text wx:if="{{ionot!=1}}" style='color: rgba(255,255,255,0.2)' class="lijgm">立即购买</text>
-      <text else class="lijgm" bindtap="addcarss">立即购买</text>
+      <text wx:else class="lijgm" bindtap="addcarss">立即购买</text>
     </view>
     <view wx:if="{{shopName.is_sale==1}}">
       <view class="shopprices" wx:if="{{item.number==0}}">

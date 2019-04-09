@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hots: []
+    hots: [],
+    location:''
 
   },
   // 清楚最近搜索======
@@ -43,10 +44,10 @@ Page({
       key: "hots",
       data: hotarr
     })
-
+    var city = that.data.location
     wx.request({
       url: app.globalData.Murl+'/Applets/Index/search_goods',
-      data: { txt: e.currentTarget.dataset.name },
+      data: { txt: e.currentTarget.dataset.name ,city: city},
       method: "POST",
       header: {
         'content-type': 'application/json' // 默认值
@@ -57,7 +58,7 @@ Page({
 
         if (status == 1) {
           wx.navigateTo({
-            url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids,
+            url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + e.currentTarget.dataset.name, 
             success: function (res) { },
             fail: function (res) { },
             complete: function (res) { },
@@ -139,11 +140,11 @@ Page({
         data: hotarr
       })
 
-
+      var city = that.data.city
 
       wx.request({
         url: app.globalData.Murl+'/Applets/Index/search_goods',
-        data: { txt: that.data.searchValue },
+        data: { txt: that.data.searchValue,city: city },
         method: "POST",
         header: {
           'content-type': 'application/json' // 默认值
@@ -153,17 +154,15 @@ Page({
           var status = res.data.status
           //console.log(res.data.status)
           //data
+          // var that = this 
           console.log(res)
-
           if (status == 1) {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids,
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + that.data.searchValue,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
-
-
           } else if (status == 0) {
             wx.navigateTo({
               url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,
@@ -251,10 +250,10 @@ Page({
         data: hotarr
       })
 
-
+      var city = that.data.city;
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/search_goods',
-        data: { txt: e.detail.value },
+        url: app.globalData.Murl + '/Applets/Index/search_goods',
+        data: { txt: e.detail.value, city: city },
         method: "POST",
         header: {
           'content-type': 'application/json' // 默认值
@@ -268,7 +267,7 @@ Page({
 
           if (status == 1) {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids,
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + that.data.searchValue,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
@@ -327,6 +326,9 @@ Page({
         //console.log(that.data.hots)
       }
     })
+
+
+
     // 热门搜索
     wx.request({
       url: app.globalData.Murl+'/Applets/Index/hot_search',
@@ -372,7 +374,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let location = wx.getStorageSync("locationcity");
+    let that = this;
+    that.setData({
+      location:location
+    })
   },
 
   /**

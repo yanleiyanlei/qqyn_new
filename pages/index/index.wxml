@@ -52,7 +52,7 @@
 <view class='index-swiper'>
   <!--搜索  -->
   <view class='search'>
-    <view class='searchLoc'>
+    <view class='searchLoc' bindtap='golaAdd'>
       <text class='iconfont icon-unie609'></text> {{location}}
     </view>
     <navigator url='../search/search'>

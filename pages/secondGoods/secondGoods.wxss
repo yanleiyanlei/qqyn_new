@@ -39,7 +39,8 @@ page{
   justify-content: space-around;
   font-size: 28rpx;
   height: 60rpx;
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
+background:#fff;
 
 }
 .screen view{
@@ -150,4 +151,38 @@ page{
 
 .screen .jgactive2 .icon-icon-test{
   color: #FF712B;
+}
+/*搜索===========  */
+
+.search {
+  z-index: 9999;
+  display: flex;
+  direction: center;
+  font-size: 24rpx;
+  color: #fff;
+  padding: 20rpx 32rpx;
+  background: #fff;
+  margin-top: 5rpx;
+}
+
+.search .searchLoc {
+  width: 115rpx;
+  line-height: 60rpx;
+  margin-right: 0rpx;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color:black;
+
+}
+
+.search .searchCont {
+  width:518rpx;
+  height:60rpx;
+  background:#EFEFEF;
+  border-radius:20rpx;
+  text-align:center;
+  line-height:60rpx;
+  margin-left:25rpx;
 }

@@ -7,7 +7,7 @@
     "pages/my/my",
     "pages/m-commission-in-d/m-commission-in-d",
     "pages/dfxm/dfxm",
-    "pages/members/members", 
+    "pages/members/members",
     "pages/shopinfo/shopinfo",
     "pages/m-withdraw-s/m-withdraw-s",
     "pages/m-fans/m-fans",
@@ -66,9 +66,10 @@
     "pages/luckdraw/luckdraw",
     "pages/bution/bution",
     "pages/cash/cash",
+    "pages/checkAdd/checkAdd",
+    "pages/laAdd/laAdd",
     "pages/m-coupon-2/m-coupon-2",
     "pages/luckyears/luckyears"
-
   ],
   "window": {
     "backgroundTextStyle": "light",
