@@ -250,9 +250,9 @@ Page({
         data: hotarr
       })
 
-
+      var city = that.data.city;
       wx.request({
-        url: app.globalData.Murl+'/Applets/Index/search_goods',
+        url: app.globalData.Murl + '/Applets/Index/search_goods',
         data: { txt: e.detail.value, city: city },
         method: "POST",
         header: {
@@ -267,7 +267,7 @@ Page({
 
           if (status == 1) {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids,
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + that.data.searchValue,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
