@@ -69,7 +69,8 @@
     "pages/checkAdd/checkAdd",
     "pages/laAdd/laAdd",
     "pages/m-coupon-2/m-coupon-2",
-    "pages/luckyears/luckyears"
+    "pages/luckyears/luckyears",
+    "pages/new-exclusive/new-exclusive"
   ],
   "window": {
     "backgroundTextStyle": "light",
