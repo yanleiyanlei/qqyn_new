@@ -1,30 +1,33 @@
 /* pages/classifyGoods/classifyGoods.wxss */
-@import"../../lib/style/iconfont.wxss";
-@import"../../lib/style/mainGoods.wxss";
-@import"../../lib/style/public.wxss";
-page{
+@import "../../lib/style/iconfont.wxss";
+@import "../../lib/style/mainGoods.wxss";
+@import "../../lib/style/public.wxss";
+
+page {
   background: #f7f7f7;
-   /* height: 100%;  */
+  /* height: 100%;  */
 }
-.second{
+
+.second {
   padding: 0 16rpx;
-   display: flex;
-   justify-content:flex-start;
-   flex-wrap: wrap;
-   align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
 }
-.second view{
+
+.second view {
   width: 324rpx;
   height: 75rpx;
-  border-radius: 5rpx; 
+  border-radius: 5rpx;
   background: #fff;
   font-size: 28rpx;
   color: #000;
   line-height: 75rpx;
   margin: 10rpx;
- 
 }
-.second view image{
+
+.second view image {
   width: 44rpx;
   height: 44rpx;
   margin-left: 42rpx;
@@ -32,18 +35,19 @@ page{
   position: relative;
   top: 13rpx;
 }
+
 /*筛选  */
 
-.screen{
+.screen {
   display: flex;
   justify-content: space-around;
   font-size: 28rpx;
   height: 60rpx;
   /* margin-top: 20rpx; */
-background:#fff;
-
+  background: #fff;
 }
-.screen view{
+
+.screen view {
   position: relative;
   width: 180rpx;
   height: 54rpx;
@@ -51,53 +55,62 @@ background:#fff;
   text-align: center;
   border-right: 1px solid #ccc;
 }
-.sxactive{
-  color: #FF712B;
+
+.sxactive {
+  color: #ff712b;
 }
-.sxactive text{
+
+.sxactive text {
   color: #000;
 }
-.main{
+
+.main {
   position: relative;
   padding-bottom: 30rpx;
 }
-.mark{
+
+.mark {
   position: absolute;
-  top: 0;
+  top: 160rpx;
   left: 0;
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.3);
   z-index: 9999;
   display: none;
   padding-bottom: 55rpx;
 }
 
-.show{
+.show {
   display: block;
 }
-.hide{
+
+.hide {
   display: none;
 }
-.mark .select{
+
+.mark .select {
   /* width: 100%; */
 }
 
-.mark .select-cont{
+.mark .select-cont {
   /* width: 100%; */
   height: auto;
   background: #fff;
   display: flex;
 }
-.mark .select-cont .sactive{
-  color: #FF712B;
-  border: 1rpx solid #FF712B;
+
+.mark .select-cont .sactive {
+  color: #ff712b;
+  border: 1rpx solid #ff712b;
 }
-.mark .select-cont .hactive{
-  color: #FF712B;
-  border: 1rpx solid #FF712B;
+
+.mark .select-cont .hactive {
+  color: #ff712b;
+  border: 1rpx solid #ff712b;
 }
-.mark .select-footer{
+
+.mark .select-footer {
   height: 90rpx;
   background: #fff;
   display: flex;
@@ -106,15 +119,15 @@ background:#fff;
   align-items: center;
   border-radius: 0 0 10rpx 10rpx;
   padding: 0 20rpx;
-
 }
-.mark .select-footer view{
+
+.mark .select-footer view {
   border: none;
   font-size: 32rpx;
   color: #828282;
-
 }
-.mark .select-cont view{
+
+.mark .select-cont view {
   padding: 10rpx 20rpx;
   text-align: center;
   border: 1rpx solid #bfbfbf;
@@ -122,36 +135,43 @@ background:#fff;
   font-size: 28rpx;
   margin: 30rpx 20rpx;
 }
-.screen view:last-child{
+
+.screen view:last-child {
   border: none;
 }
-.screen .active{
-  color: #FF712B;
+
+.screen .active {
+  color: #ff712b;
 }
-.screen .icon-sanjiao-bottom{
+
+.screen .icon-sanjiao-bottom {
   position: absolute;
   top: -10rpx;
   right: 20rpx;
 }
-.screen .icon-icon-test{
+
+.screen .icon-icon-test {
   position: absolute;
   bottom: -10rpx;
   right: 20rpx;
 }
-.screen .xlactive1 .icon-sanjiao-bottom{
-  color: #FF712B;
+
+.screen .xlactive1 .icon-sanjiao-bottom {
+  color: #ff712b;
 }
 
-.screen .xlactive2 .icon-icon-test{
-  color: #FF712B;
-}
-.screen .jgactive1 .icon-sanjiao-bottom{
-  color: #FF712B;
+.screen .xlactive2 .icon-icon-test {
+  color: #ff712b;
 }
 
-.screen .jgactive2 .icon-icon-test{
-  color: #FF712B;
+.screen .jgactive1 .icon-sanjiao-bottom {
+  color: #ff712b;
 }
+
+.screen .jgactive2 .icon-icon-test {
+  color: #ff712b;
+}
+
 /*搜索===========  */
 
 .search {
@@ -173,16 +193,15 @@ background:#fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color:black;
-
+  color: black;
 }
 
 .search .searchCont {
-  width:518rpx;
-  height:60rpx;
-  background:#EFEFEF;
-  border-radius:20rpx;
-  text-align:center;
-  line-height:60rpx;
-  margin-left:25rpx;
+  width: 518rpx;
+  height: 60rpx;
+  background: #efefef;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin-left: 25rpx;
 }
