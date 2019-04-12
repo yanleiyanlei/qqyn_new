@@ -37,18 +37,7 @@
 <!--商品  -->
 
 <view class='main' style="{{mstyle}}">
-  <view class='mark {{show}}' >
-    <view class='select'>
-      <view class='select-cont'>
-        <view class='{{sactive}}' bindtap='ngoods'>新品上市</view>
-        <view class='{{hactive}}' bindtap='hgoods'>热销产品</view>
-      </view>
-      <view class='select-footer'>
-        <view bindtap='cancel'>取消筛选</view>
-        <view bindtap='confirm'>确定</view>
-      </view>
-    </view>
-  </view>
+
 
   <block wx:for="{{goods}}">
     <view class='goods'>
@@ -75,3 +64,15 @@
 
 
 </view>
+  <view class='mark {{show}}' >
+    <view class='select'>
+      <view class='select-cont'>
+        <view class='{{sactive}}' bindtap='ngoods'>新品上市</view>
+        <view class='{{hactive}}' bindtap='hgoods'>热销产品</view>
+      </view>
+      <view class='select-footer'>
+        <view bindtap='cancel'>取消筛选</view>
+        <view bindtap='confirm'>确定</view>
+      </view>
+    </view>
+  </view>
