@@ -1,3 +1,6 @@
+<import src="/lib/template/userInfo2.wxml" />
+<template is="user2" data="{{mshow}}">
+</template>
 <view class='main'>
   <view class='use-guize' bindtap='showMask'>使用规则</view>
   <view class='now-lingqu' bindtap='getQuan'>立即领取</view>
