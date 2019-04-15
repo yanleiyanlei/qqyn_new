@@ -1,0 +1,25 @@
+<!--pages/wantsBuy/wantsBuy.wxml-->
+<view class='wantsBuy'>
+  <view class='wsTitle'><text wx:if="{{dataTitle.showTip}}"></text>{{dataTitle.name}}</view>
+  <view class='wbContent'>
+    <block wx:for="{{goods}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view class='goods'>
+        <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" bindtap='goodsDetails' />
+        <text class='goodsname'> {{item.goods_name}}</text>
+        <text class='goodsdis'>{{item.goods_remark}}</text>
+        <text class='goodsweight'>{{item.spec_name}}</text>
+        <view>
+          <view class='goodsprice'>
+            <text>￥</text>{{item.shop_price}}</view>
+          <view class='goodsdelprice' wx:if="{{item.market_price!=0}}">
+            <text>￥</text>{{item.market_price}}</view>
+          <block wx:for="{{cartList}}" wx:for-item="item2">
+            <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+          </block>
+          <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+          <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
