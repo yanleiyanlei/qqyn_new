@@ -17,7 +17,7 @@
             <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
           </block>
           <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
-          <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
+          <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" catchtap="cart"></image>
         </view>
       </view>
     </block>
