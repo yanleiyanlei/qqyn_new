@@ -185,4 +185,5 @@
   position: absolute;
   right: 15rpx;
   bottom: 75rpx;
+  display: none;
 }
