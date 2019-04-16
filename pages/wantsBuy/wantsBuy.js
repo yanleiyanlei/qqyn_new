@@ -46,16 +46,16 @@ Component({
       var data = {
         one_cat_id: 1
       };
-      var res = util.request('/Applets/Index/classify_content', data, "", "");
+      var res = util.request('/Applets/Index/getEveryoneBuyList', '', "", "");
       res.then(function(data) {
         console.log(data)
         var arr = [];
-        if (data.goods) {
+        if (data.data) {
           for (var i = 0; i < 6; i++) {
-            if (data.goods[i].goods_name.length > 17) {
-              data.goods[i].goods_name = data.goods[i].goods_name.substring(0, 16) + '...'
+            if (data.data[i].goods_name.length > 18) {
+              data.data[i].goods_name = data.data[i].goods_name.substring(0, 17) + '...'
             }
-            arr.push(data.goods[i])
+            arr.push(data.data[i])
           }
           that.setData({
             goods: arr
