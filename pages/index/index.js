@@ -1,5 +1,6 @@
 //获取腾讯地图应用实例
 var QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
+var request = require('../../utils/util.js');
 var demo = new QQMapWX({
   key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT' //密钥
 })
@@ -37,9 +38,15 @@ Page({
     qfUrls: {},
     //商品四个类目
     goodsType: {},
-    ewmimg: ["http://m.7710mall.com/Public/Home/img/m_ma.png"]
+    ewmimg: ["http://m.7710mall.com/Public/Home/img/m_ma.png"],
+    swiperCurrent: 0
   },
-
+  //轮播图的切换事件
+  swiperChange: function(e) {
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
+  },
   golaAdd: function() {
     wx.navigateTo({
       url: '/pages/laAdd/laAdd',
@@ -236,22 +243,31 @@ Page({
 
 
     const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function(res) {
-        //console.log(res.data.cartList)
+    // wx.request({
+    //   url: shopusr,
+    //   data: {
+    //     member_id: uid,
+    //     seller_id: 1,
+    //   },
+    //   method: "POST",
+    //   success: function(res) {
+    //     //console.log(res.data.cartList)
 
-        that.setData({
-          cartList: res.data.cartList
-        })
+    //     that.setData({
+    //       cartList: res.data.cartList
+    //     })
 
-      }
+    //   }
+    // })
+    request.request("/Applets/Cart/ajaxCartList", {
+      member_id: uid,
+      seller_id: 1,
+    }, ).then(function(data) {
+      that.setData({
+        cartList: data.cartList
+      })
     })
+
     wx.getSystemInfo({
       success: function(res) {
         //console.log(res.SDKVersion)//小程序版本库,低于1.9.0首页商品展示不兼容.
@@ -548,7 +564,7 @@ Page({
     })
     //今日推荐商品=======================================
     wx.request({
-      url: app.globalData.Murl + '/Applets/Index/recommend',
+      url: app.globalData.Murl + '/Applets/Index/getBoutiqueList',
       data: {},
       header: {
         'content-type': 'application/json' // 默认值
@@ -556,7 +572,7 @@ Page({
       success: function(res) {
         //console.log(res.data)
         that.setData({
-          todayUrls: res.data
+          todayUrls: res.data.data
         })
       },
       fail: function(res) {
