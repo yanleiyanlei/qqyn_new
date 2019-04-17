@@ -1,0 +1,19 @@
+/* pages/icontag/icontag.wxss */
+.label {
+  font-size: 24rpx;
+  color: #353535;
+  letter-spacing: 4rpx;
+  padding: 20rpx;
+  display: inline-block;
+}
+.label image{
+  width: 38rpx;
+  height: 38rpx;
+  vertical-align: middle;
+}
+.label text{
+  margin-left: 20rpx;
+  line-height: 38rpx;
+  vertical-align:middle;
+  font-weight: bold;
+}
