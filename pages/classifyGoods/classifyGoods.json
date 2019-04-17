@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "青青食谱",
+  "usingComponents": {
+    "wants-buy": "/pages/wantsBuy/wantsBuy"
+  }
+}
