@@ -2,6 +2,31 @@
 <!--二级分类 页面 -->
 <import src="/lib/template/userInfo2.wxml" />
 <template is="user2" data="{{mshow}}"></template>
+
+<view class='fixedHeader'>
+  <!-- 搜索 -->
+  <view class='classfySearch'>
+    <view class='csLeft' bindtap='golaAdd'>
+      <image src='../../image/new/add-h.png'></image>
+      <text>北京市</text>
+    </view>
+    <view class='csRight'>
+      <navigator url="../search/search" hover-class="none">
+        <image src='../../image/new/search.png'></image>
+      </navigator>
+    </view>
+  </view>
+  <!-- 类别 -->
+  <view class='classfy'>
+    <block wx:for="{{classfyBtn}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view catchtap='clickClassfy' data-index="{{index}}" class="classfyText {{classfyBtnActive === index ? 'active' : ''}}" data-id="{{item.id}}">{{item.name}}
+        <text></text>
+      </view>
+    </block>
+  </view>
+</view>
+
+
 <view class='second' id="second">
   <!-- <block wx:for="{{second}}">
     <view data-secondid='{{item.id}}' bindtap='second'>
@@ -9,7 +34,7 @@
     </view>
 
   </block> -->
-  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" indicator-color="rgba(255,255,255,.3)" interval="{{interval}}" duration="{{duration}}" display-multiple-items='2.5' circular='true'>
+  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" indicator-color="rgba(255,255,255,.3)" interval="{{interval}}" duration="{{duration}}" display-multiple-items='4.5' circular='true'>
 
     <block wx:for="{{second}}">
       <swiper-item>
@@ -79,7 +104,7 @@
           <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
         </block>
         <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
-        <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
+        <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
       </view>
     </view>
   </block>
