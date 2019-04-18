@@ -232,7 +232,7 @@ Page({
       };
       var that = this;
       for (var i = 0; i < this.data.classfyBtn.length; i++) {
-        if (classfyId === this.data.classfyBtn[i].id) {
+        if (options.id === this.data.classfyBtn[i].id) {
           that.setData({
             classfyBtnActive: i,
           })
