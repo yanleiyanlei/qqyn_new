@@ -27,7 +27,7 @@
       <view class='sub-title'>
         <text>{{shopName.goods_remark}}</text>
       </view>
-      <view class='active-name'>
+      <view class='active-name' hidden='{{shopName.active_name==null}}'>
         <text>{{shopName.active_name}}</text>
       </view>
       <view class="price">
