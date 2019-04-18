@@ -49,7 +49,7 @@ Component({
       var res = util.request('/Applets/Index/getEveryoneBuyList', data, "post", "");
       res.then(function(data) {
         console.log(data)
-        var arr = [];
+        var arr = []; 
         if (data.data) {
           for (var i = 0; i < 6; i++) {
             if (data.data[i].goods_name.length > 18) {
