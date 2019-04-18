@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "wantsbuy": "/pages/wantsBuy/wantsBuy",
-    "icon-tag": "/pages/icontag/icontag"
+    "wantsbuy": "/components/wantsBuy/wantsBuy",
+    "icon-tag": "/components/icontag/icontag"
   }
 }
