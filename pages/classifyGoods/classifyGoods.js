@@ -212,7 +212,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    console.log(options)
     /** 根据跳转过来的ID显示对应的分类 */
     if (options.id) {
       var classfyId = options.id;
