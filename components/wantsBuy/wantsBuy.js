@@ -46,7 +46,7 @@ Component({
       var data = {
         one_cat_id: 1
       };
-      var res = util.request('/Applets/Index/getEveryoneBuyList', '', "", "");
+      var res = util.request('/Applets/Index/getEveryoneBuyList', data, "post", "");
       res.then(function(data) {
         console.log(data)
         var arr = [];

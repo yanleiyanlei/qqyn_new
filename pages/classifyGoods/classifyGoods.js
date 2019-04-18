@@ -60,14 +60,14 @@ Page({
   },
   /** 点击分类 */
   clickClassfy: function(e) {
-    console.log(e);
+    console.log(e.target.dataset.id, e.target.dataset.index);
     var id = e.target.dataset.id;
     var index = e.target.dataset.index;
     var data = {
       one_cat_id: id
     };
     var that = this;
-    var res = util.request('/Applets/Index/classify_content', data, "", "");
+    var res = util.request('/Applets/Index/classify_content', data, "post", "");
     res.then(function(data) {
       that.setData({
         classfyBtnActive: index,
@@ -75,6 +75,36 @@ Page({
         goods: data.goods
       })
     })
+    /***wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Index/classify_content',
+      data: data,
+      method: 'post',
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      success: function (res) {
+        wx.hideLoading();
+        // resolve(res.data);
+        console.log(res)
+        that.setData({
+          classfyBtnActive: index,
+          second: res.data.seond_cat,
+          goods: res.data.goods
+        })
+      },
+      fail: function (err) {
+        wx.showToast({
+          icon: 'loading',
+          title: "网络错误！",
+          duration: 2000
+        })
+        //reject(err.data)
+        console.log(res)
+      }
+    })*/
   },
   // 添加购物车=================
 
