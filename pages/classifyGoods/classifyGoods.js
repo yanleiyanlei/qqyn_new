@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    location:'',
+    location: '',
     goods: [],
     second: [],
     mshow: "display:none",
@@ -43,7 +43,7 @@ Page({
     ],
     classfyBtnActive: 0
   },
-  golaAdd: function(){
+  golaAdd: function() {
     wx.navigateTo({
       url: '/pages/laAdd/laAdd',
     })
@@ -73,7 +73,8 @@ Page({
       that.setData({
         classfyBtnActive: index,
         second: data.seond_cat,
-        goods: data.goods
+        goods: data.goods,
+        one_cat_id: id
       })
     })
     /***wx.showLoading({
@@ -214,19 +215,20 @@ Page({
    */
   onLoad: function(options) {
     var locationcity = wx.getStorageSync("locationcity");
+    
     if (locationcity) {
       var add = locationcity
     } else {
       var add = wx.getStorageSync("locationcity")
     }
     this.setData({
-      location: add
+      location: add,
+      one_cat_id: options.id
     })
     /** 根据跳转过来的ID显示对应的分类 */
     if (options.id) {
-      var classfyId = options.id;
       var data = {
-        one_cat_id: classfyId
+        one_cat_id: options.id
       };
       var that = this;
       for (var i = 0; i < this.data.classfyBtn.length; i++) {
@@ -340,7 +342,55 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var locationcity = wx.getStorageSync("locationcity");
+    var add;
+    if (locationcity) {
+      add = locationcity
+    } else {
+      add = wx.getStorageSync("locationcity")
+    }
+    if(add != this.data.location){
+      // console.log(add+'onshow,改变了', this.data.location)
+      // var one_cat_id = this.data.one_cat_id;
+      // var city = locationcity;
+      // var data = {
+      //   one_cat_id: one_cat_id,
+      //   city: city
+      // }
+      // util.request('/Applets/Index/classify_content', data, 'post', '').then(function () {
+      //   if (data.seond_cat && data.goods) {
+      //     that.setData({
+      //       second: data.seond_cat,
+      //       goods: data.goods
+      //     })
+      //   }
+      // })
+    }
+    this.setData({
+      location: add
+    })
 
+
+    var that = this;
+    // 获取购物车列表
+    var uid = wx.getStorageSync("userinfo").uid;
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
+    wx.request({
+      url: shopusr,
+      data: {
+        member_id: uid,
+        seller_id: 1,
+      },
+      method: "POST",
+      success: function(res) {
+        console.log(res.data.cartList)
+
+        that.setData({
+          cartList: res.data.cartList
+        })
+
+      }
+    })
   },
 
   /**
@@ -771,34 +821,5 @@ Page({
 
 
 
-  },
-  onShow: function() {
-    var that = this;
-    // 获取购物车列表
-    var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function(res) {
-        console.log(res.data.cartList)
-
-        that.setData({
-          cartList: res.data.cartList
-        })
-
-      }
-    })
   }
-
-
-
-
-
-
-
 })

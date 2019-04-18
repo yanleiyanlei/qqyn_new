@@ -17,7 +17,7 @@
     </navigator>
   </view>
   <!-- 轮播内容 -->
-  <swiper current="{{swiperCurrent}}" bindchange="swiperChange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true'>
+  <swiper bindchange="swiperChange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true'>
     <block wx:for="{{banner}}" wx:key="unique">
       <swiper-item>
         <block wx:if="{{item.bannerlink && item.bannerlink !='../my/my'}}">
@@ -39,7 +39,7 @@
   <!-- 自定义轮播指示点 -->
   <view class="dots">
     <block wx:for="{{banner}}" wx:key="unique">
-      <view class="dot {{swiperCurrent < index?'nodotactive':'dotactive'}}" bindtap="chuangEvent" id="{{index}}"></view>
+      <view class="dot {{swiperCurrent < index?'nodotactive':'dotactive'}}" id="{{index}}"></view>
     </block>
   </view>
 </view>
