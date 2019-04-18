@@ -357,7 +357,7 @@ page {
   font-size: 20rpx;
   display: none;
 }
-.main .goods view{
+.main .goods view.listBottom{
   width: 295rpx;
   display:flex;
   flex-direction:row;
@@ -365,6 +365,7 @@ page {
   align-items:center;
   padding-bottom: 35rpx;
   margin-left: 30rpx;
+  position: relative;
 }
 .main .goods view image{
   float: right;
@@ -395,5 +396,4 @@ page {
   position: absolute;
   right: 15rpx;
   bottom: 75rpx;
-  display: none;
 }
