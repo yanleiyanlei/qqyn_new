@@ -1,6 +1,6 @@
 // pages/wantsBuy/wantsBuy.js
 const app = getApp();
-var util = require("../../utils/util.js")
+var util = require("../../utils/util.js");
 Component({
   /**
    * 组件的属性列表

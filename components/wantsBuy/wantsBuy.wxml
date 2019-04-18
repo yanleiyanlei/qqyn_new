@@ -1,6 +1,7 @@
 <!--pages/wantsBuy/wantsBuy.wxml-->
 <view class='wantsBuy'>
-  <view class='wsTitle'><text wx:if="{{dataTitle.showTip}}"></text>{{dataTitle.name}}</view>
+  <view class='wsTitle'>
+    <text wx:if="{{dataTitle.showTip}}"></text>{{dataTitle.name}}</view>
   <view class='wbContent'>
     <block wx:for="{{goods}}" wx:for-item="item" wx:for-index="index" wx:key="index">
       <view class='goods'>
