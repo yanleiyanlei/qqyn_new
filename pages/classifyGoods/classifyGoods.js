@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    location:'',
     goods: [],
     second: [],
     mshow: "display:none",
@@ -212,7 +213,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
+    var locationcity = wx.getStorageSync("locationcity");
+    if (locationcity) {
+      var add = locationcity
+    } else {
+      var add = wx.getStorageSync("locationcity")
+    }
+    this.setData({
+      location: add
+    })
     /** 根据跳转过来的ID显示对应的分类 */
     if (options.id) {
       var classfyId = options.id;
