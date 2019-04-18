@@ -227,7 +227,7 @@ Page({
           })
         }
       }
-      util.request('/Applets/Index/classify_content', data, '', '').then(function() {
+      util.request('/Applets/Index/classify_content', data, 'post', '').then(function() {
         if (data.seond_cat && data.goods) {
           that.setData({
             second: data.seond_cat,
