@@ -1,23 +1,32 @@
-//index.js
+// pages/details/details.js
 //获取应用实例
-var QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
-var demo = new QQMapWX({
+const QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
+const demo = new QQMapWX({
   key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT' //密钥
 })
-var user = require("../../lib/js/user.js")
+const user = require("../../lib/js/user.js")
 /*接口调用*/
 const app = getApp()
 
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
+    wantsObj: {
+      name: '大家都在买',
+      showTip: true
+    },
     show: "display:none",
     monstiden: "display:none",
     datas: [],
     imgUrls: [], //详情页上的banner图
+    current: 0,  //当前所在滑块的index
     detaIls: [], //商品的详情图
     describe: [], //商品的文字详情 by yan.lei
-    indicatorDots: true,
-    autoplay: false, //banner图时候自动播放
+    indicatorDots: false,
+    autoplay: true, //banner图时候自动播放
     interval: 5000, //轮换的 速度
     duration: 1000,
     src: "http://www.77farmers.com/Public/Home/images/morentouxiang.png", //默认的 头像
@@ -52,24 +61,202 @@ Page({
     Index: '',
     a: '',
     locationadd: "",
-    add:" "
+    add: " ",
+    tags:null,          //标签列表
+    tagHidden:false     //是否隐藏标签列表
+    // tagsArr:{
+    //   '1':'有机',
+    //   '2':'无公害',
+    //   '3':'绿色',
+    //   '4':'转换期',
+    //   '5':'产地直供'
+    // }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+
+    /*调用接口*/
+    var _that = this;
+    //console.log(options.pid);
+    var scene = decodeURIComponent(options.scene)
+    // console.log(scene);
+    if (scene == 'undefined') {
+      var goodsid = options.goodsid;
+      var pid = options.pid;
+    } else {
+      var goodsid = scene.split("&")[0];
+      var pid = scene.split("&")[1];
+    }
+    //创建缓存
+    _that.setData({
+      goodsid: goodsid,
+      member_id: pid,
+    })
+    if (pid) {
+      wx.setStorageSync("pid", pid);
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this;
+    var userinfo = wx.getStorageSync("userinfo");
+    var uid = userinfo.uid;
+    let city = wx.getStorageSync("locationcity");
+
+    function getNowTime() {
+      var now = new Date();
+      var h = now.getHours();
+      var formatDate = h;
+      return formatDate;
+    }
+
+    function toDate(number) {
+      const dateTime = new Date(number * 1000);
+      const year = dateTime.getFullYear();
+      const month = dateTime.getMonth() + 1;
+      const day = dateTime.getDate();
+      const hour = dateTime.getHours();
+      const minute = dateTime.getMinutes();
+      const second = dateTime.getSeconds();
+      const now = new Date();
+      const now_new = Date.parse(now.toDateString()); //typescript转换写法  
+      const milliseconds = now_new - dateTime;
+      const timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+      return timeSpanStr;
+    }
+
+    const _url = app.globalData.Murl + "/Applets/Goods/goodsdetails";
+    wx.request({
+      url: _url,
+      data: {
+        id: that.data.goodsid, //249
+        member_id: uid,       //1760
+        seller_id: 1,
+        city: city            //北京市
+      },
+      success: function (res) {
+
+        const datalist = res.data;
+        console.log(datalist);
+        const datas = datalist.goodsreviews;
+        /*将评论的 时间 循环添加到数据中*/
+        for (var i = 0; i < datas.length; i++) {
+          datas[i].timesto = toDate(datas[i].reviews_addtime)
+        }
+        /*获取当前时间 添加到 数据 中*/
+        datalist.timestos = getNowTime(datalist.reviews_addtime);
+        let tagHidden=false;
+        if (datalist.goodsdetails.tags == null || JSON.stringify(datalist.goodsdetails.tags) == "{}"){
+          tagHidden=true;
+        }
+        var shop_prices = datalist.goodsSpecInfo[0].shop_price;
+        //测试数据
+        // const tagsArr={
+        //   '1':'有机',
+        //   '2':'无公害',
+        //   '3':'绿色',
+        //   '4':'转换期',
+        //   '5':'产地直供'
+        // }
+        that.setData({
+          datas: datalist,
+          ionot: datalist.goodsdetails.isnot, //是否有货
+          nowTime: datalist.timestos, //当前时间
+          goodsAttrInfo: datalist.goodsAttrInfo,
+          shopName: datalist.goodsdetails,
+          goodsreviews: datalist.goodsreviews,
+          shop_prices: Number(shop_prices * 0.1).toFixed(2),
+          imgUrls: datalist.goodsdetails.goods_img,
+          priCes: datalist.goodsSpecInfo,
+          homoNet: datalist.goodsSpec,
+          goodImg: datalist.goodsImg2,
+          detaIls: datalist.goodsdetails.details_img,
+          describe: datalist.goodsdetails.goods_describe,
+          goodsReviews: datas,
+          reviewsNum: datalist.reviewsnum,
+          add: res.data.address,
+          tags: datalist.goodsdetails.tags,
+          tagHidden: tagHidden
+        })
+
+        var locationadd = wx.getStorageSync("locationadd");
+        if (locationadd) {
+          var add = locationadd
+        } else {
+          var add = wx.getStorageSync("locationcity")
+
+        }
+        that.setData({
+          locationadd: add
+        })
+
+      }
+    })
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    var that = this;
+    var member_id = that.data.member_id;
+    var userinfo = wx.getStorageSync("userinfo");
+    var uid = userinfo.uid;
+    var shopName = that.data.shopName;
+    var goods_name = shopName.goods_name;
+    var shop_price = shopName.shop_price;
+    return {
+      title: goods_name + "￥" + shop_price,
+      path: '/pages/details/details?goodsid=' + that.data.goodImg.goods_id + '&pid=' + uid,
+      imageUrl: '',
+      success: function (res) {
+        // console.log(res)
+      },
+      fail: function (res) {
+        // 分享失败
+        // console.log(res)
+      }
+    }
+  },
+
+  /*=======自定义事件==============*/
+  //swiper change事件
+  swiperChange: function (e) {
+    this.setData({
+      current: e.detail.current
+    })
   },
   //用户拒绝获取权限
-  close: function() {
+  close: function () {
     this.setData({
       show: "display:none"
     })
   },
 
   //获取用户的权限
-  UserInfo: function(e) {
+  UserInfo: function (e) {
     this.setData({
       show: "display:none"
     })
     user.user(e);
   },
   //事件处理函数
-  modalinput: function(e) {
+  modalinput: function (e) {
     var src = e.currentTarget.dataset.src; //获取data-src
     this.setData({
       modelHidden: !this.data.modelHidden,
@@ -77,25 +264,26 @@ Page({
     })
   },
   /*关闭评论图*/
-  modalinputs: function() {
+  modalinputs: function () {
     this.setData({
       modelHidden: !this.data.modelHidden
     })
   },
   //分享
-  openfx: function() {
+  openfx: function () {
     this.setData({
       monstiden: 'display:show',
     })
   },
   //关闭分享
-  ofssfeq: function() {
+  ofssfeq: function () {
     this.setData({
       monstiden: 'display:none',
     })
   },
   /*加入购物车*/
-  addcars: function() {
+  addcars: function () {
+    if (this.data.ionot != 1) return;
     var a = this.data.shopName.shop_price;
     this.setData({
       modelHiddens: !this.data.modelHiddens
@@ -114,13 +302,14 @@ Page({
     }
   },
   /*关闭加入购物车*/
-  offcasrts: function() {
+  offcasrts: function () {
     this.setData({
       modelHiddens: !this.data.modelHiddens
     })
   },
   /*立即购买*/
-  addcarss: function() {
+  addcarss: function () {
+    if (this.data.ionot != 1) return;
     var a = this.data.shopName.shop_price;
     this.setData({
       modelHiddenss: !this.data.modelHiddenss
@@ -139,28 +328,13 @@ Page({
     }
 
   },
-  /*  btensjop:function(){
-       var uid = wx.getStorageSync("userinfo").uid;
-       var urlshop ="http://ss.bjzzdk.com/index.php/Applets/Cart/CartBuy";
-       console.log(uid);
-       wx.request({
-        url: urlshop,
-        data:{member_id:uid,seller_id:1},
-        method: "post",
-        success: function (res) {
-          const dastas = res.data;
-          console.log(dastas);
-       }
-     
-      })
-    },*/
-  offcasrtss: function() {
+  offcasrtss: function () {
     this.setData({
       modelHiddenss: !this.data.modelHiddenss
     })
   },
   /*选择 商品 数量 ---*/
-  bindMinus: function() {
+  bindMinus: function () {
     var num = this.data.num;
     // 如果大于1时，才可以减  
     if (num > 1) {
@@ -175,7 +349,7 @@ Page({
     });
   },
   /* 点击加号 */
-  bindPlus: function(e) {
+  bindPlus: function (e) {
     var num = this.data.num;
     var kc = e.currentTarget.dataset.num; //获取data-num
     // console.log(kc);
@@ -198,8 +372,7 @@ Page({
     });
   },
   /*加入购物车*/
-  joincarts: function(e) {
-
+  joincarts: function (e) {
     var code = app.globalData.code;
     var that = this;
     var uid = wx.getStorageSync("userinfo").uid;
@@ -228,7 +401,7 @@ Page({
         url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
         data: obj,
         method: "post",
-        success: function(res) {
+        success: function (res) {
           const dastas = res.data;
           const datamsg = dastas.msg;
           // console.log(dastas);
@@ -276,14 +449,14 @@ Page({
             //by yan.lei 一键代发执行跳转
             wx.navigateTo({
               url: '../theorder/theorder?goods_id=' + goods_id + '&num=' + num + '&spec_key=' + spec_key + '&page=' + 1,
-              success: function(res) {
-                console.log(res)
+              success: function (res) {
+                // console.log(res)
               },
-              fail: function(res) {
-                console.log(res)
+              fail: function (res) {
+                // console.log(res)
               },
-              complete: function(res) {
-                console.log(res)
+              complete: function (res) {
+                // console.log(res)
               },
             })
 
@@ -296,7 +469,7 @@ Page({
 
   },
   /*跳转到首页*/
-  tiaoindex: function() {
+  tiaoindex: function () {
 
     wx.switchTab({
       url: '../index/index'
@@ -308,186 +481,27 @@ Page({
     let goods_id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../comments/comments?goods_id=' + goods_id,
-      success: function(res) {
-        console.log(res)
+      success: function (res) {
+        // console.log(res)
       },
-      fail: function(res) {
-        console.log(res)
+      fail: function (res) {
+        // console.log(res)
       },
-      complete: function(res) {
-        console.log(res)
+      complete: function (res) {
+        // console.log(res)
       },
     })
   },
   /*跳转到购物车*/
-  tiaocar: function() {
+  tiaocar: function () {
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
     wx.switchTab({
       url: '../shopcarts/shopcarts?member_id=uid'
     });
   },
-  onLoad: function(options) {
-   
-    wx.showShareMenu({
-      withShareTicket: true
-    })
 
-    /*调用接口*/
-    var _that = this;
-    //console.log(options.pid);
-
-    var scene = decodeURIComponent(options.scene)
-    console.log(scene);
-    if (scene == 'undefined') {
-      var goodsid = options.goodsid;
-      var pid = options.pid;
-      console.log(pid);
-
-    } else {
-      var goodsid = scene.split("&")[0];
-      var pid = scene.split("&")[1];
-    }
-    //创建缓存
-    _that.setData({
-      goodsid: goodsid,
-      member_id: pid,
-    })
-    if (pid) {
-      wx.setStorageSync("pid", pid);
-    }
-
-    var pids = wx.getStorageSync("pid");
-    console.log(pids);
-    // wx.getLocation({
-    //   type: 'gcj02',
-    //   success: function (res) {
-    //     _that.setData({
-    //       lat: res.latitude,
-    //       lng: res.longitude
-    //     })
-    //     demo.reverseGeocoder({
-    //       location: {
-    //         latitude: res.latitude,
-    //         longitude: res.longitude
-    //       },
-    //       success: function (ress) {
-    //         // console.log(ress.result.address_component.province);
-    //         _that.setData({
-    //           cityName: ress.result.address_component.province,
-    //         })
-    //       }
-    //     })
-    //   }
-    // })
-    //将后台返回的 时间戳 转化为 日期格式
-
-  },
-  onShow: function (options) {
-    // console.log("dddd")
-    // console.log(options)
-    //console.log(options)
-    // if (options.scene == 1044) {
-    //   wx.getShareInfo({
-    //     shareTicket: options.shareTicket,
-    //     success: function (res) {
-    //       var encryptedData = res.encryptedData;
-    //       var iv = res.iv;
-    //       console.log(2222)
-    //       console.log(encryptedData)
-    //     }
-    //   })
-    // }
-    var that=this;
-    var userinfo = wx.getStorageSync("userinfo");
-    var uid = userinfo.uid;
-    let city = wx.getStorageSync("locationcity");
-
-    function getNowTime() {
-      var now = new Date();
-      var h = now.getHours();
-      var formatDate = h;
-      return formatDate;
-    }
-
-    function toDate(number) {
-      const dateTime = new Date(number * 1000);
-      const year = dateTime.getFullYear();
-      const month = dateTime.getMonth() + 1;
-      const day = dateTime.getDate();
-      const hour = dateTime.getHours();
-      const minute = dateTime.getMinutes();
-      const second = dateTime.getSeconds();
-      const now = new Date();
-      const now_new = Date.parse(now.toDateString()); //typescript转换写法  
-      const milliseconds = now_new - dateTime;
-      const timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
-      return timeSpanStr;
-    }
-
-
-    const _url = app.globalData.Murl + "/Applets/Goods/goodsdetails";
-    wx.request({
-      url: _url,
-      data: {
-        id: that.data.goodsid,
-        member_id: uid,
-        seller_id: 1,
-        city: city
-      },
-      success: function (res) {
-
-        const datalist = res.data;
-        console.log(datalist);
-        const datas = datalist.goodsreviews;
-        /*将评论的 时间 循环添加到数据中*/
-        for (var i = 0; i < datas.length; i++) {
-
-          datas[i].timesto = toDate(datas[i].reviews_addtime)
-        }
-        /*获取当前时间 添加到 数据 中*/
-        datalist.timestos = getNowTime(datalist.reviews_addtime);
-        /* console.log(datalist.goodsreviews);*/
-        var shop_prices = datalist.goodsSpecInfo[0].shop_price;
-        that.setData({
-          datas: datalist,
-          ionot: datalist.goodsdetails.isnot, //是否有货
-          nowTime: datalist.timestos, //当前时间
-          goodsAttrInfo: datalist.goodsAttrInfo,
-          shopName: datalist.goodsdetails,
-          goodsreviews: datalist.goodsreviews,
-          shop_prices: Number(shop_prices * 0.1).toFixed(2),
-          imgUrls: datalist.goodsdetails.goods_img,
-          priCes: datalist.goodsSpecInfo,
-          homoNet: datalist.goodsSpec,
-          goodImg: datalist.goodsImg2,
-          detaIls: datalist.goodsdetails.details_img,
-          describe: datalist.goodsdetails.goods_describe,
-          goodsReviews: datas,
-          reviewsNum: datalist.reviewsnum,
-          add: res.data.address
-        })
-
-        var locationadd = wx.getStorageSync("locationadd");
-        console.log(that.data.datas)
-        console.log("123456")
-        if (locationadd) {
-          var add = locationadd
-        } else {
-          var add = wx.getStorageSync("locationcity")
-
-        }
-        that.setData({
-          locationadd: add
-        })
-
-      }
-    })
-
-
-
-  },
-  tabFun: function(e) {
+  tabFun: function (e) {
     // console.log(e.currentTarget.dataset.index);
     var shop_price = e.currentTarget.dataset.prices;
     var shop_key = e.currentTarget.dataset.key;
@@ -500,8 +514,6 @@ Page({
       shop_key: shop_key,
       nums: kc
     })
-
-
   },
   /*立即购买*/
   btensjop(e) {
@@ -537,7 +549,7 @@ Page({
             goods_num: num,
           },
           method: "post",
-          success: function(res) {
+          success: function (res) {
             const dastas = res.data;
             // console.log(dastas);
             if (dastas.status == false) {
@@ -552,14 +564,14 @@ Page({
               })
               wx.navigateTo({
                 url: '../theorder/theorder?goods_id=' + goods_id + '&num=' + num + '&spec_key=' + spec_key + '&page=' + 1,
-                success: function(res) {
-                  console.log(res)
+                success: function (res) {
+                  // console.log(res)
                 },
-                fail: function(res) {
-                  console.log(res)
+                fail: function (res) {
+                  // console.log(res)
                 },
-                complete: function(res) {
-                  console.log(res)
+                complete: function (res) {
+                  // console.log(res)
                 },
               })
 
@@ -573,7 +585,7 @@ Page({
   //分享朋友圈
   sharefrend() {
     var goods_id = this.data.goodsid;
-    console.log(goods_id);
+    // console.log(goods_id);
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
     var that = this;
@@ -585,48 +597,22 @@ Page({
     } else {
       wx.navigateTo({
         url: '../dfxm/dfxm?goods_id=' + goods_id,
-        success: function(res) {
-          console.log(res)
+        success: function (res) {
+          // console.log(res)
         },
-        fail: function(res) {
-          console.log(res)
+        fail: function (res) {
+          // console.log(res)
         },
-        complete: function(res) {
-          console.log(res)
+        complete: function (res) {
+          // console.log(res)
         },
       })
     }
   },
-
-
-  golaAdd:function(){
+  // 选择送货地址
+  selectAddress: function () {
     wx.navigateTo({
       url: '/pages/laAdd/laAdd',
     })
-  },
-  onShareAppMessage: function() {
-    var that = this;
-    var member_id = that.data.member_id;
-    var userinfo = wx.getStorageSync("userinfo");
-    var uid = userinfo.uid;
-    var shopName = that.data.shopName;
-    var goods_name = shopName.goods_name;
-    var shop_price = shopName.shop_price;
-    // console.log(that.data.id)
-    return {
-      title: goods_name + "￥" + shop_price,
-      path: '/pages/details/details?goodsid=' + that.data.goodImg.goods_id + '&pid=' + uid,
-      imageUrl: '',
-      success: function(res) {
-        console.log(111)
-        //console.log(res)
-
-        // console.lo
-      },
-      fail: function(res) {
-        // 分享失败
-        console.log(res)
-      }
-    }
   }
 })

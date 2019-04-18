@@ -1,0 +1,5 @@
+<!--pages/icontag/icontag.wxml-->
+<view class='label'>
+  <image src='{{urlsArr[iconUrl-1]}}'></image>
+  <text>{{iconTitle}}</text>
+</view>

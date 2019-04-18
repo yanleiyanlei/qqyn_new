@@ -1,346 +1,295 @@
 <!-- details.html商品详情 -->
-<view class="shopdetails">
-  <view class="bannerimg">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
-      <block wx:for="{{imgUrls}}">
-        <swiper-item>
-          <image src="http://ss.bjzzdk.com/Public/Uploads/{{item}}" class="slide-image" />
-        </swiper-item>
+<view class='page'>
+  <view class='page_section message'>
+    <view class='swiper'>
+      <swiper 
+        indicator-dots="{{indicatorDots}}" 
+        autoplay="{{autoplay}}" 
+        interval="{{interval}}" 
+        duration="{{duration}}" 
+        indicator-color="rgba(225, 113, 23, .6)" 
+        indicator-active-color="#ff7117" 
+        next-margin="0px"
+        bindchange="swiperChange"
+      >
+        <block wx:for="{{imgUrls}}" wx:key="imgkey">
+          <swiper-item>
+            <image src="http://ss.bjzzdk.com/Public/Uploads/{{item}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="swiperCount">{{current+1}}/{{imgUrls.length}}</view>
+    </view>
+    <view class='segment detail'>
+      <view class='title'>
+        <text>{{shopName.goods_name}} {{shopName.spec_name}}</text>
+      </view>
+      <view class='sub-title'>
+        <text>{{shopName.goods_remark}}</text>
+      </view>
+      <view class='active-name'>
+        <text>{{shopName.active_name}}</text>
+      </view>
+      <view class="price">
+        <view class='price-cur'>
+          <text>￥{{shopName.shop_price}}</text>
+        </view>
+        <!-- <view class='price-pre' wx:if="{{shopName.market_price!=0}}"> -->
+        <view class='price-pre'>
+          <text>￥{{shopName.market_price}}</text>
+        </view>
+        <view class='sales'>
+          <text>已售{{shopName.sales_sum}}份</text>
+        </view>
+        <!--是否为新品上市-->
+        <!-- <text class="newsshop" wx:if="{{datas.new_goods==1}}">新品上市</text>
+        <text class="newsshop" wx:else></text> -->
+      </view>
+      <!-- <view class="share">
+        <view>
+          <image src='/image/new/icon_share.png'></image>
+        </view>
+        <view>
+          <text>分享有礼</text>
+        </view>
+      </view> -->
+    </view>
+    <view class='segment label' hidden='{{tagHidden}}'>
+      <block wx:for="{{tags}}" wx:key='tagkey' wx:for-index="key"  wx:for-item="value">
+        <icon-tag iconUrl='{{key}}' iconTitle='{{value}}'></icon-tag>
       </block>
-    </swiper>
-  </view>
-</view>
-<view class="introduce">
-  <view class="name_shop">
-    <text class="goodsname">{{shopName.goods_name}} {{shopName.spec_name}}</text>
-    <text class="goodsms">{{shopName.goods_remark}}</text>
-    <!-- <view class='addcoupn' bindtap='openfx'>
-      <view><image src='../../image/hd/actimg_03.png' class='addimg'></image></view>
-      <view class='moneys'>点我赚￥{{shop_prices}}</view>
-    </view>-->
-    <view class="price">
-      <text class="prices">￥{{shopName.shop_price}}</text>
-      <text class="ylpries" wx:if="{{shopName.market_price!=0}}">￥{{shopName.market_price}}</text>
-      <!--是否为新品上市-->
-      <text class="newsshop" wx:if="{{datas.new_goods==1}}">新品上市</text>
-      <!-- <text class="newsshop" wx:if="{{shopName.goods_id==23 || shopName.goods_id==347  || shopName.goods_id==327}}">第二份0元购</text> -->
-      <text class="newsshop" wx:else></text>
-      <text class="yisw">已售{{shopName.sales_sum}}份</text>
     </view>
-    <!-- <view wx:if="{{cityName=='北京市' || cityName=='天津市' || cityName=='河北省'}}">
-      <view class="yujitime" wx:if="{{shopName.is_sale==1}}">
-        <text class="iconfont icon-tixing"></text>
-        <text wx:if="{{nowTime>10}}"> 23:00前下单，预计{{shopName.goods_yd_num}}日后发货</text>
-        <text wx:else> 10:00前下单，预计{{shopName.goods_yd_num}}日后发货</text>
-      </view>
-      <view class="yujitime" wx:else>
-        <text class="iconfont icon-tixing"></text>
-        <text wx:if="{{nowTime<17}}"> 17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
-        <text wx:else>17:00后下单，预计48小时内送达(节假日及特殊情况延后发货)</text>
-      </view>
-    </view> -->
-<!-- 
-    <view wx:else>
-      <view class="yujitime" wx:if="{{shopName.is_sale==1}}">
-        <text class="iconfont icon-tixing"></text>
-        <text wx:if="{{nowTime>10}}"> 23:00前下单，预计{{shopName.goods_yd_num}}日后发货</text>
-        <text wx:else> 10:00前下单，预计{{shopName.goods_yd_num}}日后发货</text>
-      </view>
-      <view class="yujitime" wx:else>
-        <text class="iconfont icon-tixing"></text>
-        <text wx:if="{{nowTime>10}}"> 23:00前下单，预计后天到达</text>
-        <text wx:else> 10:00前下单，预计明日到达</text>
-      </view>
-    </view> -->
-  </view>
-</view>
-<!-- center -->
-<view class="center">
-  <view class="discounts" wx:if="{{shopName.prom_id>0}}">
-    <text class="title_o"><text class="iconfont icon-youhui"></text> 优惠: {{shopName.active_name}}</text>
-    <text class="tishi">（此商品不与特价商品同时享受优惠）</text>
-  </view>
-  <view class="discounts" wx:else hidden="{{modelHidden}}">
-
-  </view>
-  <!--判断是否有货  &&  地址 （暂时不用） -->
-  <view class='address'>
-    <view class='add-top' bindtap='golaAdd'>
-        <text class='addend'>送至:</text>
+    <view class='segment address'>
+      <view class='add-top' bindtap='selectAddress'>
+        <view class='addend'>
+          <text>送至:</text>
+        </view>
         <image class='addimg' src='../../image/detailadd.png'></image>
-        <text class='addtxt'>{{locationadd}}</text>
+        <view class='addtxt'>
+          <text>{{locationadd}}</text>
+        </view>
         <image class='addgo' src='../../image/cright.png'></image>
+      </view>
+      <view class='add-footer'>
+        <image class='addimg' src='../../image/new/icon_notice.png'></image>
+        <view wx:if="{{ionot!=1}}" class='notice'>
+          <text style='color:rgba(255, 92, 37, 1)'>无货</text>
+        </view>
+        <view wx:else class='notice'>
+          <text style='color:rgba(255, 92, 37, 1)'>有货</text>
+          <text>，17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
+        </view>
+      </view>
     </view>
-    <view class='add-footer'>
-        <text style='color:rgba(255, 92, 37, 1);margin-top:6rpx; font-sizi:30rpx;' class="iconfont icon-tixing"></text>
-        <text><text wx:if="{{ionot!=1}}" style='color:rgba(255, 92, 37, 1)'>无货</text><text wx:else style='color:rgba(255, 92, 37, 1)'>有货</text>，17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
-    </view>
-  </view>
-  <!-- 评价 -->
-  <view class="evaluation">
-    <view class="evalut">
-
-      <text class="yhtit">用户评价<text class="num">({{reviewsNum}})</text></text>
-
-      <text class="quabu" bindtap="allcommes" data-id="{{shopName.goods_id}}">全部 ></text>
-    </view>
-    <view class="pingjis">
-      <view class="printisetse" wx:for="{{goodsReviews}}">
-
-        <view class="peonple">
-          <!--判断会员头像-->
-          <view wx:if="{{item.head_pic==null}}">
-            <image class="widget__arrow" src="{{src}}" mode="aspectFill"> </image>
-          </view>
-          <view wx:elif="{{item.openid==null && item.add_time >0}}">
-            <image class="widget__arrow" src="{{src}}" mode="aspectFill"> </image>
-          </view>
-          <view wx:else>
-            <image class="widget__arrow" src="{{item.head_pic}}" mode="aspectFill"> </image>
-          </view>
-
-          <view class="name_co">
-            <!--判段会员昵称-->
-            <view wx:if="{{item.nickname==null}}">
-              <text class="name_ni">匿名用户</text>
+    <view class='segment evaluation'>
+      <view class='title'>
+        <text class="decoration-title"></text>
+        <text>评价 </text>
+        <text class='totalNum'> ({{reviewsNum}})</text>
+      </view>
+      <view class='content'>
+        <view class='member fcolumn' wx:for="{{goodsReviews}}" wx:key="memberKey">
+          <view class='frow'>
+            <view class='header'>
+              <view wx:if="{{item.head_pic==null}}">
+                <image class="widget__arrow" src="{{src}}" mode="aspectFill"> </image>
+              </view>
+              <view wx:elif="{{item.openid==null && item.add_time >0}}">
+                <image class="widget__arrow" src="{{src}}" mode="aspectFill"> </image>
+              </view>
+              <view wx:else>
+                <image class="widget__arrow" src="{{item.head_pic}}" mode="aspectFill"> </image>
+              </view>
             </view>
-            <view wx:else>
-              <text class="name_ni">{{item.nickname}}</text>
+            <view class='nickname'>
+              <view wx:if="{{item.nickname==null}}">
+                <text class="name_ni">匿名用户</text>
+              </view>
+              <view wx:else>
+                <text class="name_ni">{{item.nickname}}</text>
+              </view>
             </view>
-            <text class="iomg">
-
-                    <text class="iconfont icon-haoping2"></text>
-            <text wx:if="{{item.satisfaction==1}}">差评</text>
-            <text wx:if="{{item.satisfaction==2}}">中评</text>
-            <text wx:if="{{item.satisfaction==3}}">好评</text>
-            </text>
-
+            <view class='subtime'>
+              {{item.timesto}}
+            </view>
+          </view>
+          <view class='evaluate'>
+            {{item.reviews_text}}
+          </view>
+          <view class="models_img" hidden="{{modelHidden}}" bindtap="modalinputs">
+            <view class="imgbig">
+              <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
+                <block wx:for="{{item.reviews_photo}}" wx:key="blocKey">
+                  <swiper-item>
+                    <image src="{{goodsReviewimg}}" class="slide-image" />
+                  </swiper-item>
+                </block>
+              </swiper>
+            </view>
+          </view>
+          <!--判断图片的路径   1为pc  2为微信 3为手机-->
+          <view wx:if="{{item.review_type==1}}">
+            <view class="contenter_igm" wx:if="{{item.reviews_photo==''}}">
+              <!-- <text class="conts"></text> -->
+            </view>
+            <view class="contenter_igm" wx:else>
+              <text class="conts"></text>
+              <image wx:for="{{item.reviews_photo}}" wx:key="key" src="{{pcSrc}}{{item}}" data-src="{{pcSrc}}{{item}}" class="imageUt" bindtap="modalinput"></image>
+            </view>
+          </view>
+          <!--判断图片的路径   1为pc  2为微信 3为手机-->
+          <view wx:if="{{item.review_type==2}}">
+            <view class="contenter_igm" wx:if="{{item.reviews_photo==''}}">
+              <!--  <text class="conts"></text> -->
+            </view>
+            <view class="contenter_igm" wx:else>
+              <!--  <text class="conts"></text> -->
+              <image wx:for="{{item.reviews_photo}}" wx:key="forkey" src="{{dImg}}{{item}}" data-src="{{dImg}}{{item}}" class="imageUt" bindtap="modalinput"></image>
+            </view>
           </view>
 
-          <view class="pintime">{{item.timesto}}</view>
-
-        </view>
-
-        <view class="conts">
-
-          {{item.reviews_text}}
-
-        </view>
-
-        <!--图片放大-->
-
-        <view class="models_img" hidden="{{modelHidden}}" bindtap="modalinputs">
-          <view class="imgbig">
-            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(225, 113, 23, .6)" indicator-active-color="#ff7117" next-margin="0px">
-              <block wx:for="{{item.reviews_photo}}">
-                <swiper-item>
-                  <image src="{{goodsReviewimg}}" class="slide-image" />
-                </swiper-item>
-              </block>
-            </swiper>
-          </view>
-        </view>
-        <!--判断图片的路径   1为pc  2为微信 3为手机-->
-        <view wx:if="{{item.review_type==1}}">
-          <view class="contenter_igm" wx:if="{{item.reviews_photo==''}}">
-            <!-- <text class="conts"></text> -->
-          </view>
-          <view class="contenter_igm" wx:else>
-            <text class="conts"></text>
-            <image wx:for="{{item.reviews_photo}}" src="{{pcSrc}}{{item}}" data-src="{{pcSrc}}{{item}}" class="imageUt" bindtap="modalinput"></image>
-          </view>
-        </view>
-        <!--判断图片的路径   1为pc  2为微信 3为手机-->
-        <view wx:if="{{item.review_type==2}}">
-          <view class="contenter_igm" wx:if="{{item.reviews_photo==''}}">
-            <!--  <text class="conts"></text> -->
-          </view>
-          <view class="contenter_igm" wx:else>
-            <!--  <text class="conts"></text> -->
-            <image wx:for="{{item.reviews_photo}}" src="{{dImg}}{{item}}" data-src="{{dImg}}{{item}}" class="imageUt" bindtap="modalinput"></image>
-          </view>
-        </view>
-
-        <!--判断图片的路径   1为pc  2为微信 3为手机-->
-        <view wx:if="{{item.review_type==3}}">
-          <view class="contenter_igm" wx:if="{{item.reviews_photo==''}}">
-            <text class="conts"></text>
-          </view>
-          <view class="contenter_igm" wx:else>
-            <text class="conts"></text>
-            <image wx:for="{{item.reviews_photo}}" src="{{wechatSrc}}{{item}}" data-src="{{wechatSrc}}{{item}}" class="imageUt" bindtap="modalinput"></image>
+          <!--判断图片的路径   1为pc  2为微信 3为手机-->
+          <view wx:if="{{item.review_type==3}}">
+            <view class="contenter_igm" wx:if="{{item.reviews_photo==''}}">
+              <text class="conts"></text>
+            </view>
+            <view class="contenter_igm" wx:else>
+              <text class="conts"></text>
+              <image wx:for="{{item.reviews_photo}}" wx:key="key" src="{{wechatSrc}}{{item}}" data-src="{{wechatSrc}}{{item}}" class="imageUt" bindtap="modalinput"></image>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-  </view>
-  <!--商品详情-->
-  <view class="detailshsop">
-    <view class="detailastitle">
-      商品详情
-    </view>
-    <view class="guige">
-      <text>规格：{{homoNet}}</text>
-    </view>
-    <view class="guige" wx:for="{{goodsAttrInfo}}">
-      <text>{{item.attr_name}} : {{item.attr_val}}</text>
-    </view>
-
-  </view>
-  <view style="margin-bottom:110rpx;">
-    <!-- by yan.lei 先简单写一下，以后可以考虑wxParse -->
-    <view style="width:100%;font-size:30rpx;line-height:60rpx;color:#ff7c3c;margin-top:80rpx;">
-      {{describe}}
-    </view>
-    <view wx:for="{{detaIls}}" class="adss">
-      <image src="http://ss.bjzzdk.com/Public/Uploads/{{item}}" class="adasdas" mode="widthFix"></image>
-    </view>
-  </view>
-</view>
-<!-- 底部 -->
-<view class='footer' wx:for="{{priCes}}">
-  <view class='isnot' wx:if="{{ionot!=1}}">您所在的地区暂时无货</view>
-  <view class="bottomdetaile">
-    <text class="homepage" bindtap="tiaoindex">
-       <text class="iconfont icon-weibiaoti11"></text> 首页
-    </text>
-
-    <text class="gouwuche" bindtap="tiaocar">
-      <text class="iconfont icon-gouwuche"></text> 购物车
-    </text>
-
-    <view class="shopprices" wx:if="{{shopName.is_sale==2}}">
-      <text wx:if="{{ionot!=1}}" style='color:rgba(255,255,255,0.2)' class="shopcar">加入购物车</text>
-      <text wx:else class="shopcar" bindtap="addcars">加入购物车</text>
-      <text wx:if="{{ionot!=1}}" style='color: rgba(255,255,255,0.2)' class="lijgm">立即购买</text>
-      <text wx:else class="lijgm" bindtap="addcarss">立即购买</text>
-    </view>
-    <view wx:if="{{shopName.is_sale==1}}">
-      <view class="shopprices" wx:if="{{item.number==0}}">
-        已售罄
-      </view>
-      <view class="shoppricess" bindtap="addcarss" wx:else>
-        预约购买
+      <view class='evaluation_footer' bindtap="allcommes" data-id="{{shopName.goods_id}}">
+        <text>查看全部评价</text>
       </view>
     </view>
   </view>
-</view>
-
-
-<!-- 加入购物车 -->
-<view class="addcatsw" hidden="{{modelHiddens}}" wx:for="{{priCes}}">
-  <view class="guigeadd">
-    <view class="tioheign">
-      <image src="{{dImg}}{{goodImg.thumbnails}}" class="touimg"></image>
-      <view class="iimgnage">
-        <view class="names">{{shopName.goods_name}}</view>
-
-        <view class="pricese" wx:if="{{shopprices==''}}">￥{{shopName.shop_price}}</view>
-        <view class="pricese" wx:else>￥{{shopprices}}</view>
-      </view>
-      <text class="iconfont icon-guanbi" bindtap="offcasrts"></text>
+  <view class='introduce'>
+    <view class='title'>
+      <text class="decoration-title"></text>
+      <text>商品介绍</text>
     </view>
-    <view class="tiel_g">规格：</view>
-    <view class="guiges">
-      <view wx:for="{{priCes}}" bindtap="tabFun" data-index="{{index}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
-        <!--  <text class="{{index==a ? 'active' : ''}}" data-id="{{a}}" wx:if="{{shopName.shop_price==item.shop_price}}" bindtap="guigetype" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">{{item.spec_name}}</text>
-              <text wx:else class="{{tabArr.curHdIndex==Index? 'active' : ''}}" data-id="{{Index}}" bindtap="guigetype" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">{{item.spec_name}}</text> -->
-        <text class="{{index==selectindex ? 'active' : ''}}" data-id="{{selectindex}}" data-num="{{item.number}}">{{item.spec_name}}</text>
+    <view class='content'>
+      <view wx:for="{{detaIls}}" wx:key="introKey">
+        <image src="http://ss.bjzzdk.com/Public/Uploads/{{item}}" mode="widthFix"></image>
       </view>
     </view>
-    <view class="tiel_ga">数量：
-      <view class="jiajian">
-        <text bindtap="bindMinus" data-id="{{goodImg.goods_id}}" class="fanku {{minusStatus}}">-</text>
-        <text class="number">{{num}}</text>
-        <text bindtap="bindPlus" data-num="{{item.number}}" class="fanku {{minusStatus}}">+</text>
-      </view>
-    </view>
-
   </view>
-  <view class="quebtn" bindtap="joincarts" data-num="{{item.number}}" data-key="{{shop_key}}" data-list="{{shopName.goods_id}}">
-    确认
+  <view class='recommend'>
+    <wantsbuy dataTitle="{{wantsObj}}"></wantsbuy>
   </view>
-</view>
-
-<!-- 立即购买 -->
-<view class="addcatsws" hidden="{{modelHiddenss}}" wx:for="{{priCes}}">
-  <view class="guigeadd">
-    <view class="tioheign">
-      <image src="{{dImg}}{{goodImg.thumbnails}}" class="touimg"></image>
-      <view class="iimgnage">
-        <view class="names">{{shopName.goods_name}}</view>
-        <view class="pricese" wx:if="{{shopprices==''}}">￥{{shopName.shop_price}}</view>
-        <view class="pricese" wx:else>￥{{shopprices}}</view>
-      </view>
-      <text class="iconfont icon-guanbi" bindtap="offcasrtss"></text>
+  <view class='subfooter' wx:if="{{ionot!=1}}">您所在的地区暂时无货</view>
+  <view class='footer'>
+    <view class='skip' bindtap="tiaoindex">
+      <image src='/image/new/icon_home.png'></image>
+      <text>进商城</text>
     </view>
-    <view class="tiel_g">规格：</view>
-    <view class="guiges">
-      <view wx:for="{{priCes}}" bindtap="tabFun" data-index="{{index}}" data-num="{{item.number}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
-        <!--  <text class="{{index==a ? 'active' : ''}}" data-id="{{a}}" wx:if="{{shopName.shop_price==item.shop_price}}" bindtap="guigetype" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">{{item.spec_name}}</text>
-              <text wx:else class="{{tabArr.curHdIndex==Index? 'active' : ''}}" data-id="{{Index}}" bindtap="guigetype" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">{{item.spec_name}}</text> -->
-        <text class="{{index==selectindex ? 'active' : ''}}" data-id="{{selectindex}}">{{item.spec_name}}</text>
-      </view>
+    <view class='skip' bindtap="tiaocar">
+      <image src='/image/new/icon_shop_cart.png'></image>
+      <text>购物车</text>
     </view>
-    <view class="tiel_g">数量：
-      <view class="jiajian">
-        <text bindtap="bindMinus" data-num="{{item.number}}" class="fanku {{minusStatus}}">-</text>
-        <text class="number">{{num}}</text>
-        <text bindtap="bindPlus" data-num="{{item.number}}" class="fanku {{minusStatus}}">+</text>
-      </view>
+    <!-- <view class='addcart' bindtap="addcars"> -->
+    <view class="addcart {{ionot!=1 ? 'active' : ''}}" bindtap="addcars">
+      <text>加入购物车</text>
     </view>
-
+    <view class="account {{ionot!=1 ? 'active' : ''}}" bindtap="addcarss">
+      <text>去结算</text>
+    </view>
   </view>
-  <view class="quebtn" data-num="{{item.number}}" bindtap="btensjop" data-key="{{shop_key}}" data-list="{{shopName.goods_id}}">
-    确认
-  </view>
-</view>
-<!--获取用户的权限 -->
-<view class="mask" style="{{show}}"></view>
-<view class="userInfo" style="{{show}}">
-  <view class="tt">"青青优农"要获得你的公开信息（昵称，头像等）</view>
-  <view class="op">
-    <view>
-      <button open-type='getUserInfo' bindgetuserinfo='UserInfo'>允许</button>
-    </view>
-    <view bindtap='close'>拒绝</view>
-  </view>
-</view>
-<!--分享弹窗-->
-<view class='fxtc' style='{{monstiden}}'>
-  <image src='https://m.7710mall.com/Uploads/xxc/offs.png' class='oofsss' bindtap='ofssfeq'></image>
-  <image src='https://m.7710mall.com/Uploads/xxc/dseelts.png' class='detailimg'></image>
-  <view class='fxconten'>
-    <view class='contentsa'>
-      <view class='contleft'>
-        <text>分享到微信</text>
-        <text class='friendq'>分享到朋友圈</text>
-      </view>
-      <view class='concent'>
-        <image src='https://m.7710mall.com/Uploads/xxc/xian.png' class='xian' mode="aspectFill">>></image>
-      </view>
-      <view class='contright'>
-        <view>
-          分享给好友，好友成功下单即可获得奖励
+  <!-- 加入购物车 -->
+  <view class="cartpopup" hidden="{{modelHiddens}}" wx:for="{{priCes}}" wx:key="cartKey">
+    <view class='cartpanel'>
+      <view class='panelhead'>
+        <view class='img'>
+          <image src="{{dImg}}{{goodImg.thumbnails}}"></image>
         </view>
-        <view>
-          新用户点击连接后即可成为你的圈子用户，每次下单即可获得奖励
+        <view class='title'>
+          <view class='name'>
+            <text>{{shopName.goods_name}}</text>
+          </view>
+          <view class="price" wx:if="{{shopprices==''}}">￥{{shopName.shop_price}}</view>
+          <view class="price" wx:else>￥{{shopprices}}</view>
+        </view>
+        <view class="iconfont icon-guanbi close" bindtap="offcasrts"></view>
+      </view>
+      <view class='panelcontent'>
+          <view class='panelitem'>
+            <view class="title">规格：</view>
+            <view class='content'>
+              <view wx:for="{{priCes}}" wx:key="prikey" bindtap="tabFun" data-index="{{index}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
+                <text class="{{index==selectindex ? 'active' : ''}}" data-id="{{selectindex}}" data-num="{{item.number}}">{{item.spec_name}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='panelitem'>
+            <view class='title'>数量：</view>
+            <view class="jiajian">
+                <text bindtap="bindMinus" data-id="{{goodImg.goods_id}}" class="fanku {{minusStatus}}">-</text>
+                <text class="number">{{num}}</text>
+                <text bindtap="bindPlus" data-num="{{item.number}}" class="fanku {{minusStatus}}">+</text>
+              </view>
+          </view>
+      </view>
+      <view class='panelfooter'>
+        <view class="quebtn" bindtap="joincarts" data-num="{{item.number}}" data-key="{{shop_key}}" data-list="{{shopName.goods_id}}">
+          确认
         </view>
       </view>
     </view>
-    <view class='backgr'>
-
-      <view class='leftwe'>
-        <image src='https://m.7710mall.com/Uploads/xxc/weicar.png' class='wecar'></image>
-
-        <view class='fexwe'>
-          <button class="" style="border:none;background:#fff;" open-type='share'>分享微信好友</button>
+  </view>
+  <!-- 加入购物车结束 -->
+  <!-- 去结算 -->
+  <view class="cartpopup" hidden="{{modelHiddenss}}" wx:for="{{priCes}}" wx:key="modelKey">
+    <view class='cartpanel'>
+      <view class='panelhead'>
+        <view class='img'>
+          <image src="{{dImg}}{{goodImg.thumbnails}}"></image>
+        </view>
+        <view class='title'>
+          <view class='name'>
+            <text>{{shopName.goods_name}}</text>
+          </view>
+          <view class="price" wx:if="{{shopprices==''}}">￥{{shopName.shop_price}}</view>
+          <view class="price" wx:else>￥{{shopprices}}</view>
+        </view>
+        <view class="iconfont icon-guanbi close" bindtap="offcasrtss"></view>
+      </view>
+      <view class='panelcontent'>
+          <view class='panelitem'>
+            <view class="title">规格：</view>
+            <view class='content'>
+              <view wx:for="{{priCes}}" wx:key="conkey" bindtap="tabFun" data-index="{{index}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
+                <text class="{{index==selectindex ? 'active' : ''}}" data-id="{{selectindex}}" data-num="{{item.number}}">{{item.spec_name}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='panelitem'>
+            <view class='title'>数量：</view>
+            <view class="jiajian">
+                <text bindtap="bindMinus" data-id="{{goodImg.goods_id}}" class="fanku {{minusStatus}}">-</text>
+                <text class="number">{{num}}</text>
+                <text bindtap="bindPlus" data-num="{{item.number}}" class="fanku {{minusStatus}}">+</text>
+              </view>
+          </view>
+      </view>
+      <view class='panelfooter'>
+        <view class="quebtn" bindtap="btensjop" data-num="{{item.number}}" data-key="{{shop_key}}" data-list="{{shopName.goods_id}}">
+          确认
         </view>
       </view>
-      <view class='leftwes' bindtap='sharefrend'>
-        <image src='https://m.7710mall.com/Uploads/xxc/peyq.png' class='wecars'></image>
-        <button class="" style="border:none;background:#fff;">保存海报</button>
+    </view>
+  </view>
+  <!-- 去结算 结束 -->
+  <!--获取用户的权限 -->
+  <view class="mask" style="{{show}}"></view>
+  <view class="userInfo" style="{{show}}">
+    <view class="tt">"青青优农"要获得你的公开信息（昵称，头像等）</view>
+    <view class="op">
+      <view>
+        <button open-type='getUserInfo' bindgetuserinfo='UserInfo'>允许</button>
       </view>
+      <view bindtap='close'>拒绝</view>
     </view>
   </view>
 </view>

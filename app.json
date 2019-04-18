@@ -91,32 +91,32 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "image/tabBar/1-1.png",
-        "selectedIconPath": "image/tabBar/1.png"
+        "iconPath": "image/new/1-1.png",
+        "selectedIconPath": "image/new/1.png"
       },
       {
         "pagePath": "pages/classify/classify",
         "text": "分类",
-        "iconPath": "image/tabBar/2-1.png",
-        "selectedIconPath": "image/tabBar/2.png"
+        "iconPath": "image/new/2-1.png",
+        "selectedIconPath": "image/new/2.png"
       },
       {
         "pagePath": "pages/bution/bution",
         "text": "福利",
-        "iconPath": "image/tabBar/fuli.png",
-        "selectedIconPath": "image/tabBar/fuli.png"
+        "iconPath": "image/new/fuli.png",
+        "selectedIconPath": "image/new/fuli.png"
       },
       {
         "pagePath": "pages/shopcarts/shopcarts",
         "text": "购物车",
-        "iconPath": "image/tabBar/3-1.png",
-        "selectedIconPath": "image/tabBar/3.png"
+        "iconPath": "image/new/3-1.png",
+        "selectedIconPath": "image/new/3.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "image/tabBar/5-1.png",
-        "selectedIconPath": "image/tabBar/5.png"
+        "iconPath": "image/new/5-1.png",
+        "selectedIconPath": "image/new/5.png"
       }
     ]
   }

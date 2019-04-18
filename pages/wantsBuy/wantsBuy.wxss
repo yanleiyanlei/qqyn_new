@@ -1,0 +1,189 @@
+/* pages/wantsBuy/wantsBuy.wxss */
+
+/*商品  */
+
+.wantsBuy {
+  width: 100%;
+}
+
+.wsTitle {
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 22rpx;
+}
+
+.wsTitle text {
+  width: 6rpx;
+  height: 30rpx;
+  background: rgba(143, 195, 31, 1);
+  border-radius: 3rpx;
+  margin-right: 9rpx;
+  display: block;
+}
+
+.title2 {
+  font-size: 36rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.title1 {
+  font-size: 34px;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.title1 .border {
+  width: 6px;
+  height: 30px;
+  background: rgba(143, 195, 31, 1);
+  border-radius: 3px;
+  margin-right: 9rpx;
+  display: block;
+}
+
+.wbContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  padding: 0 0rpx;
+  height: 100%;
+  margin:22rpx 20rpx 0 20rpx;
+}
+
+.wantsBuy .goods {
+  width: 230rpx;
+  /* height: 530rpx; */
+  margin: 0 0rpx;
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+  border-radius: 10rpx;
+  box-shadow: 0px 2rpx 6rpx 0px rgba(240, 236, 236, 0.77);
+  overflow: hidden;
+}
+
+.wantsBuy .goods image {
+  width: 185rpx;
+  height: 185rpx;
+  margin: 18rpx 27rpx 0 28rpx;
+}
+
+.wantsBuy .goods image.hot {
+  width: 34rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.wantsBuy .goods .goodsname {
+  width: 204rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  color: #303030;
+  /* overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap; */
+  text-align: left;
+  margin: 26rpx 10rpx 0 10rpx;
+  font-weight: bold;
+  height: 55rpx;
+}
+
+.wantsBuy .goods .goodsdis {
+  display: none;
+  width: 185rpx;
+  /* display: inline-block; */
+  font-size: 22rpx;
+  color: #888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  margin: 22rpx 20rpx 0 30rpx;
+  font-weight: 500;
+}
+
+.wantsBuy .goods .goodsweight {
+  font-size: 20rpx;
+  color: #909090;
+  margin: 0 20rpx 10rpx 30rpx;
+  display: none;
+}
+
+.wantsBuy .goods .goodsprice {
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(255, 113, 43, 1);
+  width: auto;
+  margin-left: 0;
+}
+
+.wantsBuy .goods .goodsprice text {
+  font-size: 24rpx;
+}
+
+.wantsBuy .goods .goodsdelprice {
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 30rpx;
+  display: none;
+}
+
+.wantsBuy .goods .goodsdelprice text {
+  font-size: 24rpx;
+}
+
+.wantsBuy .goods view {
+  width: 209rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20rpx 0rpx 19rpx 10rpx;
+  padding-right: 10rpx;
+}
+
+.wantsBuy .goods view image {
+  float: right;
+  margin: 0 0 0 0rpx;
+  width: 68rpx;
+  height: 68rpx;
+  background: rgba(143, 195, 31, 1);
+  box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(143, 195, 31, 0.5);
+  border-radius: 50%;
+}
+
+.wantsBuy .goods image.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 51rpx;
+  height: 65rpx;
+}
+
+.wantsBuy .goods view.cartnum {
+  width: 26rpx;
+  height: 26rpx;
+  background: #ff2f2f;
+  border-radius: 20rpx;
+  font-size: 18rpx;
+  text-align: center;
+  line-height: 26rpx;
+  color: #fff;
+  position: absolute;
+  right: 15rpx;
+  bottom: 75rpx;
+  display: none;
+}
