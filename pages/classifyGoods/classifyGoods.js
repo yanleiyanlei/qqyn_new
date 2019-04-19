@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    location: '',
     goods: [],
     second: [],
     mshow: "display:none",
@@ -42,7 +43,7 @@ Page({
     ],
     classfyBtnActive: 0
   },
-  golaAdd: function(){
+  golaAdd: function() {
     wx.navigateTo({
       url: '/pages/laAdd/laAdd',
     })
@@ -60,21 +61,74 @@ Page({
   },
   /** 点击分类 */
   clickClassfy: function(e) {
-    console.log(e);
+    console.log(e.target.dataset.id, e.target.dataset.index);
+    var locationcity = wx.getStorageSync("locationcity");
+    if (locationcity) {
+      var add = locationcity
+    } else {
+      var add = wx.getStorageSync("locationcity")
+    }
+
     var id = e.target.dataset.id;
     var index = e.target.dataset.index;
     var data = {
-      one_cat_id: id
+      one_cat_id: id,
+      city: add
     };
     var that = this;
-    var res = util.request('/Applets/Index/classify_content', data, "", "");
-    res.then(function(data) {
-      that.setData({
-        classfyBtnActive: index,
-        second: data.seond_cat,
-        goods: data.goods
-      })
+    that.setData({
+      classfyBtnActive: index,
+      one_cat_id: id
     })
+    this.updateList(add, id);
+    // var res = util.request('/Applets/Index/classify_content', data, "post", "");
+    // res.then(function(res) {
+    //   if(res.goods && res.seond_cat){
+    //     that.setData({
+    //       classfyBtnActive: index,
+    //       second: res.seond_cat,
+    //       goods: res.goods,
+    //       one_cat_id: id
+    //     })
+    //   }else{
+    //     that.setData({
+    //       classfyBtnActive: index,
+    //       second: res.seond_cat,
+    //       goods: '',
+    //       one_cat_id: id
+    //     })
+    //   }
+    // })
+    /***wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Index/classify_content',
+      data: data,
+      method: 'post',
+      header: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      success: function (res) {
+        wx.hideLoading();
+        // resolve(res.data);
+        console.log(res)
+        that.setData({
+          classfyBtnActive: index,
+          second: res.data.seond_cat,
+          goods: res.data.goods
+        })
+      },
+      fail: function (err) {
+        wx.showToast({
+          icon: 'loading',
+          title: "网络错误！",
+          duration: 2000
+        })
+        //reject(err.data)
+        console.log(res)
+      }
+    })*/
   },
   // 添加购物车=================
 
@@ -182,29 +236,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var locationcity = wx.getStorageSync("locationcity");
+    if (locationcity) {
+      var add = locationcity
+    } else {
+      var add = wx.getStorageSync("locationcity")
+    }
+    this.setData({
+      location: add,
+      one_cat_id: options.id
+    })
     /** 根据跳转过来的ID显示对应的分类 */
     if (options.id) {
-      var classfyId = options.id;
       var data = {
-        one_cat_id: classfyId
+        one_cat_id: options.id,
+        city: add
       };
       var that = this;
       for (var i = 0; i < this.data.classfyBtn.length; i++) {
-        if (classfyId === this.data.classfyBtn[i].id) {
+        if (options.id === this.data.classfyBtn[i].id) {
           that.setData({
             classfyBtnActive: i,
           })
         }
       }
-      util.request('/Applets/Index/classify_content', data, '', '').then(function() {
-        if (data.seond_cat && data.goods) {
-          that.setData({
-            second: data.seond_cat,
-            goods: data.goods
-          })
-        }
-      })
+
+      this.updateList(add, options.id);
+      // util.request('/Applets/Index/classify_content', data, 'post', '').then(function(res) {
+      //   if (res.seond_cat && res.goods) {
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: res.goods
+      //     })
+      //   }else{
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: ''
+      //     })
+      //   }
+      // })
     }
     /** 根据跳转过来的ID显示对应的分类 */
 
@@ -254,40 +324,6 @@ Page({
     that.setData({
       oneType: options.id
     })
-
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Index/classify_content',
-      data: {
-        one_cat_id: options.id
-      },
-      // data: { one_cat_id: 2 },
-      method: "POST",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function(res) {
-        //that.data.list.push(listcont)  
-        that.setData({
-          second: res.data.seond_cat
-        })
-        that.setData({
-          goods: res.data.goods
-        })
-        //console.log(that.data.imgUrls)
-
-      },
-      fail: function(res) {
-        wx.showLoading({
-          title: '网络连接失败！',
-        })
-
-        setTimeout(function() {
-          wx.hideLoading()
-        }, 2000)
-
-      }
-    })
-
   },
 
   /**
@@ -297,11 +333,92 @@ Page({
 
   },
 
+  updateList: function (city, one_cat_id) {
+    //if (city != this.data.location || one_cat_id != this.data.one_cat_id) {
+      //console.log(add+'onshow,改变了', this.data.location)
+      var that = this;
+      console.log(one_cat_id, city)
+      var data = {
+        one_cat_id: one_cat_id,
+        city: city
+      }
+      util.request('/Applets/Index/classify_content', data, 'post', '').then(function (res) {
+        if (res.seond_cat && res.goods) {
+          console.log('success' + res.seond_cat)
+          that.setData({
+            second: res.seond_cat,
+            goods: res.goods
+          })
+        } else {
+          that.setData({
+            second: res.seond_cat,
+            goods: ''
+          })
+        }
+      })
+    //}
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var locationcity = wx.getStorageSync("locationcity");
+    var add;
+    if (locationcity) {
+      add = locationcity
+    } else {
+      add = wx.getStorageSync("locationcity")
+    }
+    if(add != this.data.location){
+      //console.log(add+'onshow,改变了', this.data.location)
+      this.updateList(add, this.data.one_cat_id);
+      // var one_cat_id = this.data.one_cat_id;
+      // var city = locationcity;
+      // console.log(one_cat_id,city)
+      // var data = {
+      //   one_cat_id: one_cat_id,
+      //   city: city
+      // }
+      // util.request('/Applets/Index/classify_content', data, 'post', '').then(function (res) {
+      //   if (res.seond_cat && res.goods) {
+      //     console.log('success' + res.seond_cat)
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: res.goods
+      //     })
+      //   } else {
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: ''
+      //     })
+      //   }
+      // })
+    }
+    this.setData({
+      location: add
+    })
 
+
+    var that = this;
+    // 获取购物车列表
+    var uid = wx.getStorageSync("userinfo").uid;
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
+    wx.request({
+      url: shopusr,
+      data: {
+        member_id: uid,
+        seller_id: 1,
+      },
+      method: "POST",
+      success: function(res) {
+        console.log(res.data.cartList)
+
+        that.setData({
+          cartList: res.data.cartList
+        })
+
+      }
+    })
   },
 
   /**
@@ -732,34 +849,5 @@ Page({
 
 
 
-  },
-  onShow: function() {
-    var that = this;
-    // 获取购物车列表
-    var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function(res) {
-        console.log(res.data.cartList)
-
-        that.setData({
-          cartList: res.data.cartList
-        })
-
-      }
-    })
   }
-
-
-
-
-
-
-
 })

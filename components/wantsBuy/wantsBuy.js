@@ -1,6 +1,6 @@
 // pages/wantsBuy/wantsBuy.js
 const app = getApp();
-var util = require("../../utils/util.js")
+var util = require("../../utils/util.js");
 Component({
   /**
    * 组件的属性列表
@@ -46,10 +46,10 @@ Component({
       var data = {
         one_cat_id: 1
       };
-      var res = util.request('/Applets/Index/getEveryoneBuyList', '', "", "");
+      var res = util.request('/Applets/Index/getEveryoneBuyList', data, "post", "");
       res.then(function(data) {
         console.log(data)
-        var arr = [];
+        var arr = []; 
         if (data.data) {
           for (var i = 0; i < 6; i++) {
             if (data.data[i].goods_name.length > 18) {

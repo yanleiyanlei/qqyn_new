@@ -8,7 +8,7 @@
   <view class='classfySearch'>
     <view class='csLeft' bindtap='golaAdd'>
       <image src='../../image/new/add-h.png'></image>
-      <text>北京市</text>
+      <text>{{location}}</text>
     </view>
     <view class='csRight'>
       <navigator url="../search/search" hover-class="none">

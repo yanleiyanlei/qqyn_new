@@ -18,7 +18,7 @@ Page({
       name: '大家都在买',
       showTip: true
     },
-    show: "display:block",
+    show: "display:none",
     monstiden: "display:none",
     datas: [],
     imgUrls: [], //详情页上的banner图

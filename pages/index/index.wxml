@@ -17,7 +17,7 @@
     </navigator>
   </view>
   <!-- 轮播内容 -->
-  <swiper current="{{swiperCurrent}}" bindchange="swiperChange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true'>
+  <swiper bindchange="swiperChange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true'>
     <block wx:for="{{banner}}" wx:key="unique">
       <swiper-item>
         <block wx:if="{{item.bannerlink && item.bannerlink !='../my/my'}}">
@@ -39,7 +39,7 @@
   <!-- 自定义轮播指示点 -->
   <view class="dots">
     <block wx:for="{{banner}}" wx:key="unique">
-      <view class="dot {{swiperCurrent < index?'nodotactive':'dotactive'}}" bindtap="chuangEvent" id="{{index}}"></view>
+      <view class="dot {{swiperCurrent < index?'nodotactive':'dotactive'}}" id="{{index}}"></view>
     </block>
   </view>
 </view>
@@ -112,17 +112,17 @@
 <!-- 生态果蔬农场直采。每日上新 -->
 <block wx:for="{{goodsType}}" wx:key="unique" wx:for-item="item1" wx:for-index="index1">
   <view class='fruits'>
-    <navigator style='width:100%;height:100%' url='../classifyGoods/classifyGoods?id={{item.green[0].one_cat_id}}' hover-class='Nhover'>
+    <navigator style='width:100%;height:100%' url='../classifyGoods/classifyGoods?id={{item1.one_cat_id}}' hover-class='Nhover'>
       <view class='fruits-top'>
         <view class='fruits-txt'>
-          <text class='fruits-top-til'>生态果蔬</text>
-          <text>农场直采·每日上新</text>
+          <text class='fruits-top-til'>{{item1.cat_name}}</text>
+          <text>{{item1.cat_description}}</text>
         </view>
         <image src='../../image/cright.png'></image>
       </view>
     </navigator>
     <view class='fruits-img'>
-      <image src='{{item1.cat_img}}'></image>
+      <image src='{{item1.cat_img[0]}}'></image>
     </view>
     <view class='fruitslist'>
       <!-- 左边一列 -->
@@ -153,7 +153,7 @@
       </view>
       <!-- 右边一列 -->
       <view class='fruitslist-right'>
-        <image class='fruitslist-right-topimg' src='http://t.w2wz.cn/t6/700/1555054962x2890174285.jpg'></image>
+        <image class='fruitslist-right-topimg' src='{{item1.cat_img[1]}}'></image>
         <block wx:for="{{goodsType[0].green}}" wx:key="unique">
           <block wx:if="{{index%2!=0}}">
             <view class='fruitslist-li' data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
@@ -168,7 +168,9 @@
             </view>
           </block>
         </block>
-        <image class='fruitslist-right-botmimg' src='http://t.w2wz.cn/t6/700/1555055006x2890208907.jpg'></image>
+        <navigator url='../classifyGoods/classifyGoods?id={{item1.one_cat_id}}'>
+          <image class='fruitslist-right-botmimg' src='{{item1.cat_img[2]}}'></image>
+        </navigator>
       </view>
     </view>
   </view>

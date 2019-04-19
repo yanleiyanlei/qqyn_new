@@ -55,7 +55,7 @@
   /* align-items: center; */
   padding: 0 0rpx;
   height: 100%;
-  margin:22rpx 20rpx 0 20rpx;
+  margin: 22rpx 20rpx 0 20rpx;
 }
 
 .wantsBuy .goods {
