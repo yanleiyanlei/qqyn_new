@@ -76,24 +76,29 @@ Page({
       city: add
     };
     var that = this;
-    var res = util.request('/Applets/Index/classify_content', data, "post", "");
-    res.then(function(res) {
-      if(res.goods && res.seond_cat){
-        that.setData({
-          classfyBtnActive: index,
-          second: res.seond_cat,
-          goods: res.goods,
-          one_cat_id: id
-        })
-      }else{
-        that.setData({
-          classfyBtnActive: index,
-          second: res.seond_cat,
-          goods: '',
-          one_cat_id: id
-        })
-      }
+    that.setData({
+      classfyBtnActive: index,
+      one_cat_id: id
     })
+    this.updateList(add, id);
+    // var res = util.request('/Applets/Index/classify_content', data, "post", "");
+    // res.then(function(res) {
+    //   if(res.goods && res.seond_cat){
+    //     that.setData({
+    //       classfyBtnActive: index,
+    //       second: res.seond_cat,
+    //       goods: res.goods,
+    //       one_cat_id: id
+    //     })
+    //   }else{
+    //     that.setData({
+    //       classfyBtnActive: index,
+    //       second: res.seond_cat,
+    //       goods: '',
+    //       one_cat_id: id
+    //     })
+    //   }
+    // })
     /***wx.showLoading({
       title: '加载中',
     })
@@ -255,19 +260,21 @@ Page({
           })
         }
       }
-      util.request('/Applets/Index/classify_content', data, 'post', '').then(function(res) {
-        if (res.seond_cat && res.goods) {
-          that.setData({
-            second: res.seond_cat,
-            goods: res.goods
-          })
-        }else{
-          that.setData({
-            second: res.seond_cat,
-            goods: ''
-          })
-        }
-      })
+
+      this.updateList(add, options.id);
+      // util.request('/Applets/Index/classify_content', data, 'post', '').then(function(res) {
+      //   if (res.seond_cat && res.goods) {
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: res.goods
+      //     })
+      //   }else{
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: ''
+      //     })
+      //   }
+      // })
     }
     /** 根据跳转过来的ID显示对应的分类 */
 
@@ -317,40 +324,6 @@ Page({
     that.setData({
       oneType: options.id
     })
-
-    // wx.request({
-    //   url: app.globalData.Murl + '/Applets/Index/classify_content',
-    //   data: {
-    //     one_cat_id: options.id
-    //   },
-    //   // data: { one_cat_id: 2 },
-    //   method: "POST",
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success: function(res) {
-    //     //that.data.list.push(listcont)  
-    //     that.setData({
-    //       second: res.data.seond_cat
-    //     })
-    //     that.setData({
-    //       goods: res.data.goods
-    //     })
-    //     //console.log(that.data.imgUrls)
-
-    //   },
-    //   fail: function(res) {
-    //     wx.showLoading({
-    //       title: '网络连接失败！',
-    //     })
-
-    //     setTimeout(function() {
-    //       wx.hideLoading()
-    //     }, 2000)
-
-    //   }
-    // })
-
   },
 
   /**
@@ -360,32 +333,11 @@ Page({
 
   },
 
-  updateList: function() {
-    var locationcity = wx.getStorageSync("locationcity");
-    var add;
-    if (locationcity) {
-      add = locationcity
-    } else {
-      add = wx.getStorageSync("locationcity")
-    }
-    
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    var locationcity = wx.getStorageSync("locationcity");
-    var add;
-    if (locationcity) {
-      add = locationcity
-    } else {
-      add = wx.getStorageSync("locationcity")
-    }
-    if(add != this.data.location){
+  updateList: function (city, one_cat_id) {
+    //if (city != this.data.location || one_cat_id != this.data.one_cat_id) {
       //console.log(add+'onshow,改变了', this.data.location)
-      var one_cat_id = Number(this.data.one_cat_id);
-      var city = locationcity;
-      console.log(one_cat_id,city)
+      var that = this;
+      console.log(one_cat_id, city)
       var data = {
         one_cat_id: one_cat_id,
         city: city
@@ -404,6 +356,43 @@ Page({
           })
         }
       })
+    //}
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    var locationcity = wx.getStorageSync("locationcity");
+    var add;
+    if (locationcity) {
+      add = locationcity
+    } else {
+      add = wx.getStorageSync("locationcity")
+    }
+    if(add != this.data.location){
+      //console.log(add+'onshow,改变了', this.data.location)
+      this.updateList(add, this.data.one_cat_id);
+      // var one_cat_id = this.data.one_cat_id;
+      // var city = locationcity;
+      // console.log(one_cat_id,city)
+      // var data = {
+      //   one_cat_id: one_cat_id,
+      //   city: city
+      // }
+      // util.request('/Applets/Index/classify_content', data, 'post', '').then(function (res) {
+      //   if (res.seond_cat && res.goods) {
+      //     console.log('success' + res.seond_cat)
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: res.goods
+      //     })
+      //   } else {
+      //     that.setData({
+      //       second: res.seond_cat,
+      //       goods: ''
+      //     })
+      //   }
+      // })
     }
     this.setData({
       location: add
