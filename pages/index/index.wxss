@@ -389,7 +389,7 @@ page {
 }
 
 .goodshow .goodsdelprice {
-  display: block;
+  display: none;
   width: 100%;
   text-align: left;
   font-size: 24rpx;
