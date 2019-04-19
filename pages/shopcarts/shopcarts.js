@@ -20,7 +20,12 @@ Page({
     ress: [],
     commpany: [],
     location: '',
-    isquan: true //是否可以全选
+    isquan: true, //是否可以全选,
+    andImg: true, /** 判断如果超出库存之后按钮不可点 */
+    dataTitle:{
+      name:"大家都在买",
+      showTip:true
+    }
   },
   /*计算总价*/
   getTotalPrice() {
@@ -465,6 +470,9 @@ Page({
     num = Number(num) + 1; //商品数量每次加一
     console.log(goods_id);
     if (num > kc) { //数目大于库存
+      this.setData({
+        andImg: false,
+      })
       wx.showToast({
         title: '库存不足！',
         icon: 'loading',
@@ -519,7 +527,8 @@ Page({
     num = num - 1;
     carts[index].goods_num = num;
     this.setData({
-      carts: carts
+      carts: carts,
+      andImg: true
     });
     this.getTotalPrice();
     let jinsurl = app.globalData.Murl + "/Applets/Cart/ajaxCartCount";

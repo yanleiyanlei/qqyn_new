@@ -16,12 +16,12 @@
   <view class="shopcartitle">
     <navigator url='../laAdd/laAdd'>
       <view class='searchLoc'>
-        <text class='iconfont icon-unie609'></text> {{location}}
+        <image src="/image/new/add-h.png"></image>{{location}}
       </view>
     </navigator>
     <text class="sh-title">购物车</text>
     <view bindtap="toggle">
-      <text class="bianji" wx:if="{{hieneflae}}">编辑</text>
+      <text class="bianji" wx:if="{{hieneflae}}">编辑商品</text>
       <text class="bianji" wx:else>完成</text>
     </view>
   </view>
@@ -36,6 +36,7 @@
 
             <icon wx:if="{{item.selected==true}}" type="success" data-key="0" data-id="{{item.id}}" color="#ff712b" bindtap="selectList" data-index="{{index}}" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
             <icon wx:else type="circle" bindtap="selectList" data-index="{{index}}" data-id="{{item.id}}" data-key="1" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />
+
           </block>
           <block wx:else>
             <view class='noacti'></view>
@@ -49,16 +50,24 @@
             <view wx:if="{{item.area==0 ||h && item.store_count >0}}" class='caigouzhong'>区域不可售</view>
             <view wx:elif="{{ item.store_count < 1}}" class='caigouzhong'>采购中</view>
           </view>
-          <view class="shop_name">
-            <text class="shnm" data-id="{{item.goods_id}}" bindtap="tiaodeilts">{{item.goods_name}}</text>
-            <text class="shgg">{{item.goods_remark}}</text>
-            <text class="shgg">{{item.spec_name}}</text>
-            <text class="prices">￥{{item.goods_price}}</text>
-          </view>
-          <view class="jiajian">
-            <text bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}" class="fanku">-</text>
-            <text class="number">{{item.goods_num}}</text>
-            <text bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}" class="fanku">+</text>
+          <view class='info'>
+            <view class="shop_name">
+              <text class="shnm" data-id="{{item.goods_id}}" bindtap="tiaodeilts">{{item.goods_name}}</text>
+              <text class="shgg">{{item.goods_remark}}</text>
+              <text class="shgg">{{item.spec_name}}</text>
+            </view>
+            <view class="jiajian">
+              <view class="prices">￥
+                <text>{{item.goods_price}}</text>
+              </view>
+              <view class='num'>
+                <image wx:if="{{item.goods_num != 1}}" src="/image/new/reduce.png" bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}" class="fanku"></image>
+                <image wx:else src="/image/new/reduce-none.png" bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}" class="fanku"></image>
+                <text class="number">{{item.goods_num}}</text>
+                <image wx:if="{{andImg}}" bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}" class="fankuAdd" src="/image/new/and.png"></image>
+                <image wx:else data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}" class="fankuAdd" src="/image/new/and-none.png"></image>
+              </view>
+            </view>
           </view>
         </view>
 
@@ -69,6 +78,7 @@
     <view class="cart-box" wx:for="{{carts}}" wx:if="{{carts==''}}">
 
     </view>
+
   </view>
   <view class="cartboxs" wx:if="{{carts==''}}">
     <view class="kongcars">
@@ -86,6 +96,9 @@
         </view>
       </navigator>
     </view>
+  </view>
+  <view class="wantsBuy">
+    <wants-buy dataTitle="{{dataTitle}}"></wants-buy>
   </view>
   <view class="jiesnum" wx:for="{{carts}}">
     <!-- wx:if 是否全选显示不同图标 -->
