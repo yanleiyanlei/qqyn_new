@@ -110,7 +110,7 @@
 </view>
 
 <!-- 生态果蔬农场直采。每日上新 -->
-<block wx:for="{{goodsType}}" wx:key="unique" wx:for-item="item1" wx:for-index="index1">
+<block wx:for="{{goodsType}}" wx:key="unique" wx:for-item="item1" wx:for-index="index">
   <view class='fruits'>
     <navigator style='width:100%;height:100%' url='../classifyGoods/classifyGoods?id={{item1.one_cat_id}}' hover-class='Nhover'>
       <view class='fruits-top'>
@@ -128,7 +128,7 @@
       <!-- 左边一列 -->
       <view class='fruitslist-left'>
         <block wx:for="{{item1.green}}" wx:key="unique">
-          <block wx:if="{{index%2==0}}">
+          <block wx:if="{{index%2===0}}">
             <view class='fruitslist-li' data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
 
               <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
@@ -154,7 +154,7 @@
       <!-- 右边一列 -->
       <view class='fruitslist-right'>
         <image class='fruitslist-right-topimg' src='{{item1.cat_img[1]}}'></image>
-        <block wx:for="{{goodsType[0].green}}" wx:key="unique">
+        <block wx:for="{{item1.green}}" wx:key="unique">
           <block wx:if="{{index%2!=0}}">
             <view class='fruitslist-li' data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
               <image src='{{item.thumbnails}}'></image>
