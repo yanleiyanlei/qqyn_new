@@ -550,13 +550,15 @@ page {
 }
 
 .fruitslist-li-one {
+  width: 277rpx;
   font-size: 24rpx;
-  height: 66rpx;
+  height: 60rpx;
   font-family: SourceHanSansCN-Bold;
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
   margin-bottom: 22rpx;
   margin-top: 25rpx;
+  line-height: 28rpx;
   text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   text-overflow: ellipsis;

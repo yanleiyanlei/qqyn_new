@@ -140,7 +140,7 @@
               <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
 
               <image src='{{item.thumbnails}}'></image>
-              <text class='fruitslist-li-one'>{{item.goods_name}}{{item.spec_name}}</text>
+              <text class='fruitslist-li-one'>{{item.goods_name}}</text>
               <text class='fruitslist-li-two'>{{item.goods_remark}}</text>
               <text class='fruitslist-li-three'> <text style='font-size:24rpx'>￥</text>{{item.shop_price}}</text>
               <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
@@ -158,7 +158,7 @@
           <block wx:if="{{index%2!=0}}">
             <view class='fruitslist-li' data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
               <image src='{{item.thumbnails}}'></image>
-              <text class='fruitslist-li-one'>{{item.goods_name}}{{item.spec_name}}</text>
+              <text class='fruitslist-li-one'>{{item.goods_name}}</text>
               <text class='fruitslist-li-two'>{{item.goods_remark}}</text>
               <text class='fruitslist-li-three'> <text style='font-size:24rpx'>￥</text>{{item.shop_price}}</text>
               <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
