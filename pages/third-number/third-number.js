@@ -92,7 +92,16 @@ Page({
           setTimeout(function () {
             wx.hideToast();
           }, 1000)
-        } 
+        } else if (res.data == 4) {
+          wx.showToast({
+            title: '仅限新用户兑换！',
+            icon: 'none',
+            duration: 1000
+          })
+          setTimeout(function () {
+            wx.hideToast();
+          }, 1000)
+        }
 
       },
       fail:function(){
