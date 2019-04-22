@@ -10,36 +10,29 @@ Page({
     location:''
 
   },
-  // 清楚最近搜索======
+  // 清除最近搜索======
   clear: function () {
     var that = this;
     wx.clearStorage()
     that.setData({ hots: [] })
-
   },
   // 热门搜索事件=======
   hotsearch: function (e) {
     var that = this;
-    //console.log(e.currentTarget.dataset.name)
-    // 获取一下最近搜索
     wx.getStorage({
       key: 'hots',
       success: function (res) {
-        console.log(res)
         that.setData({ hots: res.data })
       }
     })
 
     // 新存贮本地最近搜索
     that.data.hots.push(e.currentTarget.dataset.name)
-    console.log(that.data.hots)
     var nhots = new Set(that.data.hots)
     var hotarr = []
     for (let item of nhots.keys()) {
-      //console.log(item);
       hotarr.push(item)
     }
-    //console.log(arr)
     wx.setStorage({
       key: "hots",
       data: hotarr
@@ -72,12 +65,7 @@ Page({
             fail: function (res) { },
             complete: function (res) { },
           })
-          //console.log(e.detail.value)
-
         }
-
-
-
       },
       fail: function (res) {
         wx.showLoading({
@@ -90,13 +78,9 @@ Page({
 
       }
     })
-
-
-
   },
   searchbtn: function () {
     var that = this;
-
     // 获取一下最近搜索
     wx.getStorage({
       key: 'hots',
@@ -106,10 +90,7 @@ Page({
       }
     })
 
-
-
-
-    if (that.data.searchValue == "") {
+    if (that.data.searchValue == "" || that.data.searchValue == null) {
       wx.showToast({
         title: '内容不能为空哦~',
         icon: 'none',
@@ -320,10 +301,7 @@ Page({
       key: 'hots',
       success: function (res) {
         console.log(res)
-        //var hots = []
-        //hots.push(res.data)
         that.setData({ hots: res.data })
-        //console.log(that.data.hots)
       }
     })
 

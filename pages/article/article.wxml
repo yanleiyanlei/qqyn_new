@@ -1,0 +1,27 @@
+<!--pages/article/article.wxml-->
+<view class='page'>
+  <view class='article'>
+    <view class='head'>
+      <view class='title'>
+        <text>{{articleObj.title}}</text>
+      </view>
+      <view class='subtitle'>
+        <text>{{articleObj.refer}} </text>
+        <text class='gray'> {{articleObj.date}}</text>
+      </view>
+    </view>
+    <view class='content'>
+      <view class='graphics'>
+        <image src='{{articleObj.imgUrl}}'></image>
+        <text class='img-explain'>{{articleObj.imgExplain}}</text>
+      </view>
+      <view class='texture'>
+        <text>{{articleObj.liters}}</text>   
+      </view>
+    </view>
+    <view class='footer'></view>
+  </view>
+  <view class='recommend'>
+    <wantsbuy dataTitle="{{wantsObj}}"></wantsbuy>
+  </view>
+</view>

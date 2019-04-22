@@ -82,21 +82,16 @@ Page({
     })
 
     /*调用接口*/
-    var _that = this;
-    //console.log(options.pid);
-    var scene = decodeURIComponent(options.scene)
-    // console.log(scene);
-    if (scene == 'undefined') {
-      var goodsid = options.goodsid;
-      var pid = options.pid;
-    } else {
-      var goodsid = scene.split("&")[0];
-      var pid = scene.split("&")[1];
-    }
+    let _that = this;
+    // console.log('onLoad-options',options);
+    let scene = decodeURIComponent(options.scene)
+    // console.log('onLoad-scene', scene)
+    let goodsid = scene =='undefined' ? options.goodsid : scene.split("&")[0];
+    let pid = scene == 'undefined' ? options.pid : scene.split("&")[1] ;
+    // console.log('onLoad-goodsid', goodsid);
     //创建缓存
     _that.setData({
-      goodsid: goodsid,
-      member_id: pid,
+      goodsid: goodsid
     })
     if (pid) {
       wx.setStorageSync("pid", pid);
