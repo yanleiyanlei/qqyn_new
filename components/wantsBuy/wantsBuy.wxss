@@ -97,7 +97,7 @@
   text-align: left;
   margin: 26rpx 10rpx 0 10rpx;
   font-weight: bold;
-  height: 62rpx;
+  height: 68rpx;
   text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   text-overflow: ellipsis;
