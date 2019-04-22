@@ -546,13 +546,13 @@ page {
   display: block;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 40rpx 0 30rpx;
+  padding: 0 30rpx 0 30rpx;
 }
 
 .fruitslist-li-one {
   width: 277rpx;
   font-size: 24rpx;
-  height: 60rpx;
+  height: 57rpx;
   font-family: SourceHanSansCN-Bold;
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
