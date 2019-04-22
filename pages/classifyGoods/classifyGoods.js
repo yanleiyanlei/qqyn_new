@@ -346,6 +346,9 @@ Page({
         if (res.seond_cat && res.goods) {
           console.log('success' ,res.goods)
           for(var i=0;i<res.goods.length;i++){
+            if (res.goods[i].spec_name === null) {
+              res.goods[i].spec_name = '';
+            }
             res.goods[i].goods_name = res.goods[i].goods_name+res.goods[i].spec_name;
             if (res.goods[i].goods_name.length>26){
               res.goods[i].goods_name = res.goods[i].goods_name.substring(0,26)+'...'

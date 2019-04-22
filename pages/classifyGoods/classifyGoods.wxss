@@ -357,11 +357,13 @@ page {
 }
 
 .main .goods .goodsprice{
-  font-size:24rpx;
+  font-size:36rpx;
   font-family:SourceHanSansCN-Bold;
   font-weight:bold;
   color:rgba(255,113,43,1);
-  
+}
+.main .goods .goodsprice text{
+  font-size: 24rpx;
 }
 .main .goods .goodsdelprice{
   text-decoration: line-through;

@@ -52,9 +52,11 @@ Component({
         var arr = []; 
         if (data.data) {
           for (var i = 0; i < 6; i++) {
-            if (data.data[i].goods_name.length > 18) {
-              data.data[i].goods_name = data.data[i].goods_name.substring(0, 17) + '...'
+            if (data.data[i].spec_name === null){
+              data.data[i].spec_name= '';
             }
+            data.data[i].goods_name = data.data[i].goods_name + data.data[i].spec_name;
+            
             arr.push(data.data[i])
           }
           that.setData({

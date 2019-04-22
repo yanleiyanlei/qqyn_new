@@ -135,10 +135,10 @@
   color: rgba(255, 113, 43, 1);
   width: auto;
   margin-left: 0;
-}
+} 
 
 .wantsBuy .goods .goodsprice text {
-  font-size: 24rpx;
+  font-size: 20rpx;
 }
 
 .wantsBuy .goods .goodsdelprice {
