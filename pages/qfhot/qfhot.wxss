@@ -55,7 +55,7 @@ page{
   height: 65rpx;
 }
 .main .goods .goodsname{
-  width: 330rpx;
+  width: 295rpx;
   display: inline-block;
   font-size: 26rpx;
   color: #303030;
@@ -68,7 +68,7 @@ page{
 }
 
 .main .goods .goodsdis{
-  width: 330rpx;
+  width: 295rpx;
   display: inline-block;
   font-size: 22rpx;
   color: #909090;
