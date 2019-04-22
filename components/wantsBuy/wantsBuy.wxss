@@ -75,7 +75,7 @@
 .wantsBuy .goods image {
   width: 185rpx;
   height: 185rpx;
-  margin: 18rpx 27rpx 0 28rpx;
+  margin: 23rpx 27rpx 0 28rpx;
 }
 
 .wantsBuy .goods image.hot {
@@ -97,7 +97,14 @@
   text-align: left;
   margin: 26rpx 10rpx 0 10rpx;
   font-weight: bold;
-  height: 55rpx;
+  height: 68rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .wantsBuy .goods .goodsdis {
@@ -122,16 +129,16 @@
 }
 
 .wantsBuy .goods .goodsprice {
-  font-size: 30rpx;
+  font-size: 36rpx;
   font-family: SourceHanSansCN-Bold;
   font-weight: bold;
   color: rgba(255, 113, 43, 1);
   width: auto;
   margin-left: 0;
-}
+} 
 
 .wantsBuy .goods .goodsprice text {
-  font-size: 24rpx;
+  font-size: 20rpx;
 }
 
 .wantsBuy .goods .goodsdelprice {
@@ -151,7 +158,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20rpx 0rpx 19rpx 10rpx;
+  margin: 23rpx 0rpx 10rpx 10rpx;
   padding-right: 10rpx;
 }
 

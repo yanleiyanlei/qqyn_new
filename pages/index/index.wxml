@@ -88,7 +88,7 @@
         <text class='goodsname'>{{item.goods_name}} </text>
         <text class='goodsdis'>{{item.spec_name}}</text>
         <view>
-          <text class='goodsprice'><text style='font-size:18rpx;'>￥</text>{{item.shop_price}}</text>
+          <text class='goodsprice'><text style='font-size:24rpx;'>￥</text>{{item.shop_price}}</text>
           <text class='goodsdelprice'>￥{{item.market_price}}</text>
           <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
             <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
@@ -141,7 +141,7 @@
 
               <image src='{{item.thumbnails}}'></image>
               <text class='fruitslist-li-one'>{{item.goods_name}}</text>
-              <text class='fruitslist-li-two'>{{item.spec_name}}</text>
+              <text class='fruitslist-li-two'>{{item.goods_remark}}</text>
               <text class='fruitslist-li-three'> <text style='font-size:24rpx'>￥</text>{{item.shop_price}}</text>
               <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
                 <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
@@ -159,7 +159,7 @@
             <view class='fruitslist-li' data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
               <image src='{{item.thumbnails}}'></image>
               <text class='fruitslist-li-one'>{{item.goods_name}}</text>
-              <text class='fruitslist-li-two'>{{item.spec_name}}</text>
+              <text class='fruitslist-li-two'>{{item.goods_remark}}</text>
               <text class='fruitslist-li-three'> <text style='font-size:24rpx'>￥</text>{{item.shop_price}}</text>
               <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
                 <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
