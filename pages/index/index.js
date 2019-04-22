@@ -622,8 +622,15 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        // console.log(res.data)
-
+        //console.log(res.data)
+        for (var i = 0; i < res.data.length;i++){
+          for (var j = 0; j < res.data[i].green.length;j++){
+            if (res.data[i].green[j].spec_name === null) {
+              res.data[i].green[j].spec_name = '';
+            }
+          }
+        }
+        
         that.setData({
           goodsType: res.data
         })
