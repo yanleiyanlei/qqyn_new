@@ -95,8 +95,8 @@
 
       <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" bindtap='goodsDetails' />
       <text class='goodsname'> {{item.goods_name}}</text>
+      <!-- <text class='goodsweight'>{{item.spec_name}}</text> -->
       <text class='goodsdis'>{{item.goods_remark}}</text>
-      <text class='goodsweight'>{{item.spec_name}}</text>
       <view class='listBottom'>
         <text class='goodsprice'>￥{{item.shop_price}}</text>
         <text class='goodsdelprice' wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>

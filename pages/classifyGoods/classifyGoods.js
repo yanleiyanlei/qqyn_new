@@ -344,7 +344,13 @@ Page({
       }
       util.request('/Applets/Index/classify_content', data, 'post', '').then(function (res) {
         if (res.seond_cat && res.goods) {
-          console.log('success' + res.seond_cat)
+          console.log('success' ,res.goods)
+          for(var i=0;i<res.goods.length;i++){
+            res.goods[i].goods_name = res.goods[i].goods_name+res.goods[i].spec_name;
+            if (res.goods[i].goods_name.length>26){
+              res.goods[i].goods_name = res.goods[i].goods_name.substring(0,26)+'...'
+            }
+          }
           that.setData({
             second: res.seond_cat,
             goods: res.goods
