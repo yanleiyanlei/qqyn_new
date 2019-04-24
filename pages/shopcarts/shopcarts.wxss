@@ -76,7 +76,7 @@ navigator .navigator-hover {
   position: absolute;
   right: 0;
   top: 0;
-  background-color: #ff712b;
+  background:rgba(225,55,59,1);
   width: 127rpx;
   height: 237rpx;
   display: flex;
@@ -203,6 +203,20 @@ navigator .navigator-hover {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+.jiajian .num .minus{
+  width: 50rpx;
+  height: 50rpx;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.jiajian .num jiajianAdd{
+  width: 50rpx;
+  height: 50rpx;
+  display:flex;
+  align-items:center;
+  justify-content: center;
 }
 
 .fanku {

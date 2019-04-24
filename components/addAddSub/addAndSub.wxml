@@ -1,0 +1,13 @@
+<!--components/addAddSub/addAndSub.wxml-->
+<!-- 购物车加减方法 -->
+<view class='addAndSub'>
+  <view class='minus' bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}">
+    <image wx:if="{{item.goods_num != 1}}" src="/image/new/reduce.png" class="fanku"></image>
+    <image wx:else src="/image/new/reduce-none.png" class="fanku"></image>
+  </view>
+  <text class="number">{{item.goods_num}}</text>
+  <view class='jiajianAdd' bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}">
+    <image wx:if="{{item.store_count > item.goods_num}}"  class="fankuAdd" src="/image/new/and.png"></image>
+    <image wx:else class="fankuAdd" src="/image/new/and-none.png"></image>
+  </view>
+</view>

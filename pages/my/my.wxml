@@ -13,8 +13,8 @@
     <navigator url="/pages/m-setting/m-setting">
       <text class="iconfont icon-shezhi setting"></text>
     </navigator>
-    <navigator url="/pages/gift-charge/gift-charge" hover-class='Nhover'>
-      <image class="m-cong" src="../../image/my/m_cong.png"></image>
+    <navigator url="/pages/gift-charge/gift-charge" hover-class='Nhover' class='gift'>
+      在线充值 >>
     </navigator>
     <view class="top-up-info clearfix">
       <view class="portrait">
@@ -67,10 +67,11 @@
         </navigator>
       </view>
     </view>
+
   </view>
   <!-- 订单 -->
   <view class="m-box clearfix">
-    <view class="m-order-tit border1">
+    <view class="m-order-tit">
       <view class="m-order-tit-box clearfix">
         <text class="one">我的订单</text>
         <navigator opent-type="redirectTo" url="/pages/m-order/m-order?sta=0" hover-class='Nhover'>
@@ -80,62 +81,104 @@
     </view>
     <!-- 订单分类 -->
     <view class="m-info flex">
-      <view class="list flex1">
+      <view class="list">
         <navigator opent-type="redirectTo" hover-class='Nhover' url="/pages/m-order/m-order?sta=1">
           <view class="one">
-            <image src="../../image/my/order_fk.png"></image>
+            <image src="../../image/new/order_fk.png"></image>
           </view>
           <view class="two">
             待付款
           </view>
+          <text class='num' wx:if="{{waitPayment>0}}">{{waitPayment}}</text>
         </navigator>
       </view>
-      <view class="list flex1">
+      <view class="list">
         <navigator opent-type="redirectTo" hover-class='Nhover' url="/pages/m-order/m-order?sta=2">
           <view class="one">
-            <image src="../../image/my/order_fh.png"></image>
+            <image src="../../image/new/order_fh.png"></image>
           </view>
           <view class="two">
             待发货
           </view>
+          <text class='num' wx:if="{{waitDelivery > 0}}">{{waitDelivery}}</text>
         </navigator>
       </view>
-      <view class="list flex1">
+      <view class="list">
         <navigator opent-type="redirectTo" hover-class='Nhover' url="/pages/m-order/m-order?sta=3">
           <view class="one">
-            <image src="../../image/my/order_sh.png"></image>
+            <image src="../../image/new/order_sh.png"></image>
           </view>
           <view class="two">
             待收货
           </view>
+          <text class='num' wx:if="{{waitTakeDelivery>0}}">{{waitTakeDelivery}}</text>
         </navigator>
       </view>
-      <view class="list flex1">
+      <view class="list">
         <navigator opent-type="redirectTo" hover-class='Nhover' url="/pages/m-order/m-order?sta=4">
           <view class="one">
-            <image src="../../image/my/order_pj.png"></image>
+            <image src="../../image/new/order_pj.png"></image>
           </view>
           <view class="two">
             待评价
           </view>
+          <text class='num' wx:if="{{waitEvaluate>0}}">{{waitEvaluate}}</text>
         </navigator>
       </view>
     </view>
   </view>
+  <!-- 我的收藏浏览记录 -->
+  <view class='collection'>
+    <view class='list'>
+      <navigator>
+        <text>5</text>
+        <text>我的收藏</text>
+      </navigator>
+      <navigator>
+        <text>53</text>
+        <text>浏览记录</text>
+      </navigator>
+      <navigator>
+        <text>5</text>
+        <text>我的评价</text>
+      </navigator>
+      <navigator hover-class="Nhover" url="/pages/m-fans/m-fans">
+        <text>5</text>
+        <text>我的青粉</text>
+      </navigator>
+    </view>
+  </view>
   <!-- 会员权益 -->
-  <view class="m-equity">
+  <view class='customerService'>
+    <view class='list'>
+      <navigator bindtap="link">
+        <image src="../../image/new/kf.png"></image>
+        <text>电话客服</text>
+      </navigator>
+      <navigator>
+        <image src="../../image/new/fp.png"></image>
+        <text>我的发票</text>
+      </navigator>
+      <navigator>
+        <image src="../../image/new/fx.png"></image>
+        <text>我的分销</text>
+      </navigator>
+      <navigator hover-class="Nhover" url="/pages/m-fans/m-fans">
+        <image src="../../image/new/fk.png"></image>
+        <text>功能反馈</text>
+      </navigator>
+    </view>
+  </view>
+  <!-- 会员权益 -->
+  <!-- <view class="m-equity">
     <view class="m-tit border1">
       <view class="m-tit-box clearfix">
         <text class="left">会员权益</text>
-        <!-- <text class="iconfont icon-kefu" style="color: #fd8d555!important;font-size: 0.36rem;margin-right: 0.1rem;font-weight: normal;"></text> -->
-
-        <!-- <text class="right" bindtap="link"><text class="iconfont icon-kefu" style="color: #fd8d555!important;font-size:36rpx;margin-right: 10rpx;font-weight: normal;"></text>联系客服</text> -->
-
       </view>
     </view>
     <view class="m-equity-box">
       <swiper class="swiper-container" display-multiple-items="3.2">
-        <!-- <view class="swiper-wrapper"> -->
+        <!-- <view class="swiper-wrapper">
         <swiper-item class="swiper-slide">
 
           <view class="m-store equity-list" bindtap='goindex'>
@@ -160,11 +203,11 @@
             </view>
           </navigator>
         </swiper-item>
-        <!-- </view> -->
+        <!-- </view>
       </swiper>
     </view>
 
-  </view>
+  </view> -->
 
 
 
@@ -176,13 +219,10 @@
   <image class="card" bindtap='members' src="https://m.7710mall.com/Uploads/xxc/m_card.jpg"></image>
 
   <!-- 我的专属 -->
-  <view class="my-exclusive">
+  <!-- <view class="my-exclusive">
     <view class="m-tit border1">
       <view class="m-tit-box clearfix">
         <text class="one">我的专属</text>
-        <!-- <navigator opent-type="navigateBack" url="/pages/link/link" hover-class='Nhover' style="display:inline-block;float:right">
-          <text class="two" decode='ture'><text class="iconfont icon-kefu" style="color: #fd8d555!important;font-size: 36rpx;margin-right: 10rpx;"></text>联系客服</text>
-        </navigator> -->
       </view>
     </view>
     <view class="my-exclusive-list border-box" style="border-bottom:1rpx dashed #eee">
@@ -193,14 +233,14 @@
       </navigator>
     </view>
     <view class="my-exclusive-list border-box" bindtap="link">
-      <!-- <navigator class=" clearfix" hover-class='Nhover' url="/pages/link/link"> -->
       <image src="../../image/my/m_kf.png"></image>
       <text class="one">联系客服</text>
       <text class="iconfont icon-iconfontyoujiantou"></text>
-      <!-- </navigator> -->
     </view>
-  </view>
+  </view> -->
   <view class="box2 border1">
 
   </view>
+
+  <wants-buy dataTitle="{{wantsBuyData}}"></wants-buy>
 </view>
