@@ -1,6 +1,7 @@
 //获取应用实例 
 const app = getApp();
-var user = require("../../lib/js/user.js");
+const user = require("../../lib/js/user.js");
+const request = require('../../utils/util.js');
 // pages/secondGoods/secondGoods.js 
 Page({
 
@@ -27,7 +28,6 @@ Page({
     goods_ids: ''
   },
 
-
   close: function() {
     this.setData({
       mshow: "display:none"
@@ -49,22 +49,18 @@ Page({
    * 生命周期函数--监听页面加载 
    */
   onLoad: function(options) {
-    var pid = options.pid;
-    var txt = options.txt;
-    var page = options.page;
-    var goodsid = options.goodsid;
-    var options = options;
-    console.log(options)
+    // var pid = options.pid;
+    let that = this;
+    let txt = options.txt;
+    let page = options.page;
+    let goodsid = options.goodsid;
+    // let options = options;
+    // console.log(options)
     this.setData({
       txt: txt,
       page: page,
       options: options
     })
-
-    var txt = options.txt;
-    var page = options.page;
-    var goodsid = options.goodsid;
-    var that = this;
     // 获取购物车列表 
     var uid = wx.getStorageSync("userinfo").uid;
     const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
@@ -77,17 +73,12 @@ Page({
       method: "POST",
       success: function(res) {
         console.log(res.data.cartList)
-
         that.setData({
           cartList: res.data.cartList
         })
-
       }
     })
-
-
   },
-
   /** 
    * 生命周期函数--监听页面初次渲染完成 
    */
@@ -99,15 +90,12 @@ Page({
    * 生命周期函数--监听页面显示 
    */
   onShow: function() {
-    var that = this;
+    let that = this;
     let location = wx.getStorageSync("locationcity");
-    let txt = that.data.txt
-    console.log(9999999999999999999999)
-    console.log(txt)
+    let txt = that.data.txt;
     that.setData({
       location: location
     })
-
     wx.request({
       url: app.globalData.Murl + '/Applets/Index/search_goods',
       data: {
@@ -121,30 +109,16 @@ Page({
       success: function(res) {
         //status:状态值。 
         var status = res.data.status
-        //console.log(res.data.status) 
-        //data 
-        // var that = this  
-        console.log(res)
-        console.log(res.data.goods_ids)
         that.setData({
           goods_ids: res.data.goods_ids
         })
-        console.log(111111111111111)
-        console.log(that.data.options)
         var options = that.data.options
-        var pid = that.data.pid
-        if (pid) {
-          wx.setStorageSync("pid", pid);
-        }
         // 判断从哪个页面进来的 
         if (options.page == 1) {
           // 从搜索页面过来 
-          console.log(options.goodsid)
           that.setData({
             goodsid: options.goodsid
           })
-          console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-          console.log(that.data.goods_ids)
           wx.request({
             url: app.globalData.Murl + '/Applets/Index/search_list',
             data: {
@@ -156,18 +130,14 @@ Page({
             },
             success: function(res) {
               console.log(res)
-
               that.setData({
                 goods: res.data
               })
               if (res.data.length < 3) {
-                console.log("yes")
                 that.setData({
                   mstyle: "padding-bottom:550rpx"
                 })
               }
-
-
             },
             fail: function(res) {
               wx.showLoading({
@@ -177,11 +147,8 @@ Page({
               setTimeout(function() {
                 wx.hideLoading()
               }, 2000)
-
             }
           })
-
-
         } else if (options.page == 2) {
           that.setData({
             oneType: options.oneType,
@@ -205,14 +172,10 @@ Page({
               })
 
               if (res.data.goods.length < 3) {
-
                 that.setData({
                   mstyle: "padding-bottom:550rpx"
                 })
-
               }
-
-
             },
             fail: function(res) {
               wx.showLoading({
@@ -222,11 +185,8 @@ Page({
               setTimeout(function() {
                 wx.hideLoading()
               }, 2000)
-
             }
           })
-
-
         }
       },
       fail: function(res) {
@@ -240,7 +200,6 @@ Page({
 
       }
     })
-
 
     // 获取购物车列表 
     // var location = app.globalData.location; 
@@ -258,11 +217,9 @@ Page({
       method: "POST",
       success: function(res) {
         console.log(res.data.cartList)
-
         that.setData({
           cartList: res.data.cartList
         })
-
       }
     })
 
@@ -315,15 +272,6 @@ Page({
       imageUrl: '',
       success: function(res) {
         console.log(res)
-        // console.log 
-        // wx.getShareInfo({ 
-        //   shareTicket: res.shareTickets[0], 
-        //   success: function (res) { 
-        //     console.log(res) 
-        //   }, 
-        //   fail: function (res) { console.log(res) }, 
-        //   complete: function (res) { console.log(res) } 
-        // }) 
       },
       fail: function(res) {
         // 分享失败 
@@ -334,439 +282,139 @@ Page({
 
   // 最新商品查询 
   newgoods: function() {
-    var that = this;
-
-    var city = wx.getStorageSync("locationcity");
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Index/search_goods',
-      data: {
-        txt: that.data.txt,
-        city: city
+    if(this.data.active) return;
+    let that = this;
+    let city = wx.getStorageSync("locationcity");
+    let url = '/Applets/Index/timesort';
+    let data={
+      one_cat_id: that.data.oneType,
+      two_cat_id: that.data.twoType,
+      ids: that.data.goods_ids
+    }
+    let req = request.request(url,data);
+    req.then(
+      function(res){
+        console.log(res);
+        that.setData({
+          active: "active",
+          xlactive: "",
+          jgactive: "",
+          goods: res
+        })
+        that.updateCartState();
       },
-      method: "POST",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        //status:状态值。
-        var status = res.data.status
-        //console.log(res.data.status)
-        //data
-        // var that = this 
-        console.log(res)
-        if (status == 1) {
-          wx.request({
-            url: app.globalData.Murl + '/Applets/Index/timesort',
-            data: {
-              one_cat_id: that.data.oneType,
-              two_cat_id: that.data.twoType,
-              ids: res.data.goods_ids
-            },
-            method: "POST",
-            header: {
-              'content-type': 'application/json' // 默认值 
-            },
-            success: function (res) {
-
-              that.setData({
-                active: "active"
-              })
-              that.setData({
-                xlactive: ""
-              })
-              that.setData({
-                jgactive: ""
-              })
-              that.setData({
-                goods: res.data
-              })
-              if (res.data.length < 3) {
-                that.setData({
-                  mstyle: "padding-bottom:550rpx"
-                })
-              }
-
-            },
-            fail: function (res) {
-              wx.showLoading({
-                title: '网络连接失败！',
-              })
-
-              setTimeout(function () {
-                wx.hideLoading()
-              }, 2000)
-
-            }
-          })
-        }
-      },
-      fail: function (res) {
+      function(err){
         wx.showLoading({
           title: '网络连接失败！',
         })
         setTimeout(function () {
           wx.hideLoading()
         }, 2000)
-
       }
-    })
-    
-
-
+    )
   },
 
   //销量排行 
   saleN: function(e) {
-    var that = this;
-    console.log(e)
-    if (e.currentTarget.dataset.order == 1) {
-      // 销量降序 
-      var city = wx.getStorageSync("locationcity");
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Index/search_goods',
-        data: {
-          txt: that.data.txt,
-          city: city
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          //status:状态值。
-          var status = res.data.status
-          //console.log(res.data.status)
-          //data
-          // var that = this 
-          console.log(res)
-          if (status == 1) {
-            wx.request({
-              url: app.globalData.Murl + '/Applets/Index/xiaoxia',
-              data: {
-                one_cat_id: that.data.oneType,
-                two_cat_id: that.data.twoType,
-                ids: res.data.goods_ids
-              },
-              method: "POST",
-              header: {
-                'content-type': 'application/json' // 默认值 
-              },
-              success: function (res) {
-                console.log(res)
-                that.setData({
-                  active: ""
-                })
-                that.setData({
-                  jgactive: ""
-                })
-                that.setData({
-                  xlactive: "xlactive1"
-                })
-                that.setData({
-                  goods: res.data
-                })
-                that.setData({
-                  xlOrder: 2
-                })
-                // if (res.data.length < 3) {
-                //   that.setData({
-                //     mstyle: "padding-bottom:550rpx"
-                //   })
-                // }
-
-
-              },
-              fail: function (res) {
-                wx.showLoading({
-                  title: '网络连接失败！',
-                })
-
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 2000)
-
-              }
-            })
-          }
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-      
-
-
-    } else if (e.currentTarget.dataset.order == 2) {
-      // 销量升序 
-      var city = wx.getStorageSync("locationcity");
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Index/search_goods',
-        data: {
-          txt: that.data.txt,
-          city: city
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          //status:状态值。
-          var status = res.data.status
-          //console.log(res.data.status)
-          //data
-          // var that = this 
-          console.log(res)
-          if (status == 1) {
-            wx.request({
-              url: app.globalData.Murl + '/Applets/Index/xiaoshang',
-              data: {
-                one_cat_id: that.data.oneType,
-                two_cat_id: that.data.twoType,
-                ids: res.data.goods_ids
-              },
-              method: "POST",
-              header: {
-                'content-type': 'application/json' // 默认值 
-              },
-              success: function (res) {
-
-                that.setData({
-                  active: ""
-                })
-                that.setData({
-                  jgactive: ""
-                })
-                that.setData({
-                  xlactive: "xlactive2"
-                })
-                that.setData({
-                  goods: res.data
-                })
-                that.setData({
-                  xlOrder: 1
-                })
-                // if (res.data.length < 3) {
-                //   that.setData({
-                //     mstyle: "padding-bottom:550rpx"
-                //   })
-                // }
-
-
-              },
-              fail: function (res) {
-                wx.showLoading({
-                  title: '网络连接失败！',
-                })
-
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 2000)
-
-              }
-            })
-          }
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-      
-      
-
+    let that = this;
+    let url;
+    let data={
+      one_cat_id: that.data.oneType,
+      two_cat_id: that.data.twoType,
+      ids: that.data.goods_ids
     }
-
+    let order = e.currentTarget.dataset.order;
+    if (order == 1) {
+      url = '/Applets/Index/xiaoxia';
+    } else if (order == 2){
+      url = '/Applets/Index/xiaoshang';
+    }
+    let req = request.request(url, data);
+    req.then(
+      function (res) {
+        console.log(res);
+        if(order==1){
+          that.setData({
+            active: "",
+            jgactive: "",
+            xlactive: "xlactive1",
+            goods: res,
+            xlOrder: 2
+          });
+        }else{
+          that.setData({
+            active: "",
+            jgactive: "",
+            xlactive: "xlactive2",
+            goods: res,
+            xlOrder: 1
+          })
+        }
+        that.updateCartState();
+      },
+      function (err) {
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+      }
+    )
   },
   //价格排序 
   priceN: function(e) {
-    var that = this;
-    console.log(e)
-    if (e.currentTarget.dataset.order == 1) {
-      // 价格sheng序 
-      var city = wx.getStorageSync("locationcity");
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Index/search_goods',
-        data: {
-          txt: that.data.txt,
-          city: city
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          //status:状态值。
-          var status = res.data.status
-          //console.log(res.data.status)
-          //data
-          // var that = this 
-          console.log(res)
-          if (status == 1) {
-            wx.request({
-              url: app.globalData.Murl + '/Applets/Index/priceshang',
-              data: {
-                one_cat_id: that.data.oneType,
-                two_cat_id: that.data.twoType,
-                ids: res.data.goods_ids
-              },
-              method: "POST",
-              header: {
-                'content-type': 'application/json' // 默认值 
-              },
-              success: function (res) {
-
-                that.setData({
-                  active: ""
-                })
-                that.setData({
-                  xlactive: ""
-                })
-                that.setData({
-                  jgactive: "jgactive1"
-                })
-                that.setData({
-                  goods: res.data
-                })
-                that.setData({
-                  jgOrder: 2
-                })
-                // if (res.data.length < 3) {
-                //   that.setData({
-                //     mstyle: "padding-bottom: 550rpx;"
-                //   })
-                // }
-
-
-              },
-              fail: function (res) {
-                wx.showLoading({
-                  title: '网络连接失败！',
-                })
-
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 2000)
-
-              }
-            })
-          }
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-      
-
-
-    } else if (e.currentTarget.dataset.order == 2) {
-      // 价格jiang序 
-      var city = wx.getStorageSync("locationcity");
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Index/search_goods',
-        data: {
-          txt: that.data.txt,
-          city: city
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          //status:状态值。
-          var status = res.data.status
-          //console.log(res.data.status)
-          //data
-          // var that = this 
-          console.log(res)
-          if (status == 1) {
-            wx.request({
-              url: app.globalData.Murl + '/Applets/Index/pricexia',
-              data: {
-                one_cat_id: that.data.oneType,
-                two_cat_id: that.data.twoType,
-                ids: res.data.goods_ids
-              },
-              method: "POST",
-              header: {
-                'content-type': 'application/json' // 默认值 
-              },
-              success: function (res) {
-
-                that.setData({
-                  active: ""
-                })
-                that.setData({
-                  xlactive: ""
-                })
-                that.setData({
-                  jgactive: "jgactive2"
-                })
-                that.setData({
-                  goods: res.data
-                })
-                that.setData({
-                  jgOrder: 1
-                })
-                // if (res.data.length < 3) {
-                //   that.setData({
-                //     mstyle: "padding-bottom:550rpx"
-                //   })
-                // }
-
-
-              },
-              fail: function (res) {
-                wx.showLoading({
-                  title: '网络连接失败！',
-                })
-
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 2000)
-
-              }
-            })
-          }
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-     
-
+    let that = this;
+    let url;
+    let data = {
+      one_cat_id: that.data.oneType,
+      two_cat_id: that.data.twoType,
+      ids: that.data.goods_ids
     }
-
+    let order = e.currentTarget.dataset.order;
+    if (order == 1) {
+      url = '/Applets/Index/priceshang';
+    } else if (order == 2) {
+      url = '/Applets/Index/pricexia';
+    }
+    let req = request.request(url, data);
+    req.then(
+      function (res) {
+        console.log(res);
+        if (order == 1) {
+          that.setData({
+            active: "",
+            xlactive: "",
+            jgactive: "jgactive1",
+            goods: res,
+            jgOrder: 2
+          })
+        } else {
+          that.setData({
+            active: "",
+            xlactive: "",
+            jgactive: "jgactive2",
+            goods: res,
+            jgOrder: 2
+          })
+        }
+        that.updateCartState();
+      },
+      function (err) {
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+      }
+    )
   },
   // 筛选按钮点击 
   sxClick: function() {
     var that = this;
     that.setData({
-      sxactive: "sxactive"
-    })
-    that.setData({
+      sxactive: "sxactive",
       show: "show"
     })
   },
@@ -774,15 +422,9 @@ Page({
   cancel: function() {
     var that = this;
     that.setData({
-      sxactive: ""
-    })
-    that.setData({
-      show: ""
-    })
-    that.setData({
-      hsactive: ""
-    })
-    that.setData({
+      sxactive: "",
+      show: "",
+      hsactive: "",
       sactive: ""
     })
   },
@@ -790,12 +432,8 @@ Page({
   ngoods: function() {
     var that = this;
     that.setData({
-      hactive: ""
-    })
-    that.setData({
-      sactive: "sactive"
-    })
-    that.setData({
+      hactive: "",
+      sactive: "sactive",
       sxID: "新品"
     })
   },
@@ -803,126 +441,88 @@ Page({
   hgoods: function() {
     var that = this;
     that.setData({
-      sactive: ""
-    })
-    that.setData({
-      hactive: "hactive"
-    })
-    that.setData({
+      hactive: "hactive",
+      sactive: "",
       sxID: "热销"
     })
   },
   //确定筛选事件 
   confirm: function() {
-    var that = this;
-    //console.log(1) 
+
+    let that = this;
+    let url = '/Applets/Index/screen';
+    let data = {
+      one_cat_id: that.data.oneType,
+      two_cat_id: that.data.twoType,
+      ids: that.data.goods_ids,
+      state: that.data.sxID
+    }
+
     that.setData({
-      sxactive: ""
-    })
-    that.setData({
-      jgactive: ""
-    })
-    that.setData({
-      show: ""
-    })
-    that.setData({
-      hsactive: ""
-    })
-    that.setData({
+      sxactive: "",
+      jgactive: "",
+      show: "",
+      hsactive: "",
       sactive: ""
     })
-    console.log(that.data.oneType)
-    console.log(that.data.twoType)
-    console.log(that.data.oneType)
-    console.log(that.data.oneType)
-    var city = wx.getStorageSync("locationcity");
+
+    let req = request.request(url, data);
+    req.then(
+      function (res) {
+        console.log(res);
+        that.setData({
+          active: "",
+          xlactive: "",
+          goods: res
+        })
+        that.updateCartState();
+      },
+      function (err) {
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+      }
+    )
+
     wx.request({
-      url: app.globalData.Murl + '/Applets/Index/search_goods',
+      url: app.globalData.Murl + '/Applets/Index/screen',
       data: {
-        txt: that.data.txt,
-        city: city
+        one_cat_id: that.data.oneType,
+        two_cat_id: that.data.twoType,
+        ids: that.data.goods_ids,
+        state: that.data.sxID
       },
       method: "POST",
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' // 默认值 
       },
-      success: function(res) {
-        //status:状态值。
-        var status = res.data.status
-        //console.log(res.data.status)
-        //data
-        // var that = this 
-        console.log(res)
-        if (status == 1) {
-          wx.request({
-            url: app.globalData.Murl + '/Applets/Index/screen',
-            data: {
-              one_cat_id: that.data.oneType,
-              two_cat_id: that.data.twoType,
-              ids: res.data.goods_ids,
-              state: that.data.sxID
-            },
-            method: "POST",
-            header: {
-              'content-type': 'application/json' // 默认值 
-            },
-            success: function(res) {
+      success: function (res) {
 
-              that.setData({
-                active: ""
-              })
-              that.setData({
-                xlactive: ""
-              })
-              that.setData({
-                goods: res.data
-              })
-              if (res.data.length < 3) {
-                that.setData({
-                  mstyle: "padding-bottom:550rpx"
-                })
-              }
-              console.log(res.data)
-            },
-            fail: function(res) {
-              wx.showLoading({
-                title: '网络连接失败！',
-              })
-
-              setTimeout(function() {
-                wx.hideLoading()
-              }, 2000)
-
-            }
-          })
-        }
-
-
-
+        that.setData({
+          active: "",
+          xlactive: "",
+          goods: res.data
+        })
+        that.updateCartState();
       },
-      fail: function(res) {
+      fail: function (res) {
         wx.showLoading({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
+        setTimeout(function () {
           wx.hideLoading()
         }, 2000)
-
       }
     })
-
-
-   
-
-
-
-
-
+  },
+  updateCartState:function(){
+    let domArr = this.selectAllComponents('.item');
+    domArr.forEach(function (v, k) {
+      v.init();
+    })
   }
-
-
-
-
-
 })
