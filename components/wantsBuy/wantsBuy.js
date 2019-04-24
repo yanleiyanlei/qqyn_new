@@ -48,7 +48,7 @@ Component({
       };
       var res = util.request('/Applets/Index/getEveryoneBuyList', data, "post", "");
       res.then(function(data) {
-        console.log(data)
+        // console.log(data)
         var arr = []; 
         if (data.data) {
           for (var i = 0; i < 6; i++) {
@@ -68,7 +68,6 @@ Component({
     // 添加购物车=================
 
     cart: function(e) {
-      console.log(1)
       var that = this;
       var uid = wx.getStorageSync("userinfo").uid;
       if (!uid) {
@@ -79,93 +78,113 @@ Component({
         var uid = wx.getStorageSync("userinfo").uid;
         var goods_id = e.currentTarget.dataset.goodsid;
         var spec_key = e.currentTarget.dataset.key;
-        //console.log(uid)
-        wx.request({
-          url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
-          data: {
-            member_id: uid, //会员ID
-            goods_id: goods_id, //商品ID
-            goods_num: 1, //商品数量
-            spec_key: spec_key
-          },
-          method: "POST",
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: function(res) {
-            // console.log(res.data)
-            var txt = res.data.msg
-            var num = res.data.thisGoodsNum
-            e.currentTarget.dataset.num = num
-            //console.log(e.currentTarget.dataset.num)
-            wx.showToast({
-              title: txt,
-              icon: 'none',
-              duration: 2000
-            })
-            if (res.data.status == 1) {
-              // 重新更新购物车数据表
-              const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-              wx.request({
-                url: shopusr,
-                data: {
-                  member_id: uid,
-                  seller_id: 1,
-                },
-                method: "POST",
-                success: function(res) {
-                  //console.log(res.data.cartList)
+        if (spec_key != null && goods_id != null && uid != null) {
+          wx.request({
+            url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
+            data: {
+              member_id: uid, //会员ID
+              goods_id: goods_id, //商品ID
+              goods_num: 1, //商品数量
+              spec_key: spec_key
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success: function (res) {
+              // console.log(res.data)
+              var txt = res.data.msg
+              var num = res.data.thisGoodsNum
+              e.currentTarget.dataset.num = num
+              //console.log(e.currentTarget.dataset.num)
+              wx.showToast({
+                title: txt,
+                icon: 'none',
+                duration: 2000
+              })
+              if (res.data.status == 1) {
+                var changeCarList = 22;
+                that.triggerEvent('changeCarList', changeCarList)
+                // 重新更新购物车数据表
+                const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
+                wx.request({
+                  url: shopusr,
+                  data: {
+                    member_id: uid,
+                    seller_id: 1,
+                  },
+                  method: "POST",
+                  success: function (res) {
+                    //console.log(res.data.cartList)
 
-                  that.setData({
-                    cartList: res.data.cartList
-                  })
+                    that.setData({
+                      cartList: res.data.cartList
+                    })
 
-                }
+                  }
+                })
+
+              }
+              if (res.data.status == 10) {
+                //by yan.lei 一键代发执行跳转
+                wx.navigateTo({
+                  url: '../theorder/theorder?goods_id=' + goods_id + '&num=1' + '&spec_key=' + spec_key + '&page=' + 1,
+                  success: function (res) {
+                    console.log(res)
+                  },
+                  fail: function (res) {
+                    console.log(res)
+                  },
+                  complete: function (res) {
+                    console.log(res)
+                  },
+                })
+
+              }
+
+            },
+            fail: function (res) {
+              wx.showLoading({
+                title: '网络连接失败！',
               })
 
-            }
-            if (res.data.status == 10) {
-              //by yan.lei 一键代发执行跳转
-              wx.navigateTo({
-                url: '../theorder/theorder?goods_id=' + goods_id + '&num=1' + '&spec_key=' + spec_key + '&page=' + 1,
-                success: function(res) {
-                  console.log(res)
-                },
-                fail: function(res) {
-                  console.log(res)
-                },
-                complete: function(res) {
-                  console.log(res)
-                },
-              })
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 2000)
 
             }
-
-          },
-          fail: function(res) {
-            wx.showLoading({
-              title: '网络连接失败！',
-            })
-
-            setTimeout(function() {
-              wx.hideLoading()
-            }, 2000)
-
-          }
-        })
+          })
+        }else{
+          wx.showToast({
+            title: '添加商品失败！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       }
 
     },
     // 商品跳转详情
     goodsDetails: function(e) {
       //console.log(e.currentTarget.dataset.goodsid)
-      wx.navigateTo({
-        url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
-
+      var uid = wx.getStorageSync("userinfo").uid;
+      var goods_id = e.currentTarget.dataset.goodsid;
+      var spec_key = e.currentTarget.dataset.key;
+      console.log(spec_key, goods_id, uid)
+      if (spec_key != null && goods_id != null && uid != null){
+        wx.navigateTo({
+          url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
+          success: function (res) { },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+      } else {
+        wx.showToast({
+          title: '请求商品失败！',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     },
   }
-})
+}) 

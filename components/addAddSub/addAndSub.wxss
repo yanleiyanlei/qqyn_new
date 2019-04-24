@@ -1,0 +1,51 @@
+/* components/addAddSub/addAndSub.wxss */
+.addAndSub {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.addAndSub .minus{
+  width: 50rpx;
+  height: 50rpx;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.addAndSub jiajianAdd{
+  width: 50rpx;
+  height: 50rpx;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.addAndSub .fanku {
+  display: block;
+  width: 26rpx;
+  height: 6rpx;
+  background: rgba(238, 238, 238, 1);
+  border-radius: 3px;
+}
+
+.addAndSub .fankuAdd {
+  font-size: 26rpx;
+  font-weight: bold;
+  width: 26rpx;
+  height: 26rpx;
+  display: inline-block;
+}
+
+.addAndSub .number {
+  color: #434343;
+  font-size: 36rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  width: 80rpx;
+  height: 50rpx;
+  background: rgba(238, 238, 238, 1);
+  border-radius: 4rpx;
+  text-align: center;
+  line-height: 50rpx;
+  display: block;
+}

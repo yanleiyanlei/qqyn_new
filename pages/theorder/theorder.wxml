@@ -61,9 +61,46 @@
         </view>
       </view>
     </block>
+    
+    <view class="majialiuya">
+      <text class="liuyan">买家留言：</text>
+      <input class="input" name="userName" placeholder="140字以内" bindinput="userNameInput" maxlength="140" />
+    </view>
+    <view class="yOne" bindtap="commentsi" data-moy="{{quantity.money}}">
+        <text>优惠券</text>
+        <text class="satimes" wx:if="{{quantity.coupon==null}}">
+			  <text>{{quantity.num}}张可用</text>
+        <text class="iconfont icon-iconfontyoujiantou"></text>
+        </text>
+        <text class="satimes" wx:else>
+			  <text class="coloa">-￥{{quantity.coupon.coupon_money}}</text>
+        </text>
+      </view>
+    <view class="listthetre">
+      <view class="youhuiq">
+        <text>商品总额</text>
+        <text class="satimes">￥{{quantity.money}}</text>
+      </view>
+      <view class="yutime">
+        <text>运费合计</text>
+        <!-- <text class="satime" wx:if="{{quantity.money>=jine}}">￥0.00</text>
+        <text class="satime" wx:else>￥{{quantity.commpany.upto_amount}}</text> -->
+        <text class="satime">￥{{upto_amount}}</text>
+      </view>
+      <view class="yutime">
+        <text>优惠金额</text>
+        <!-- <text class="satime" wx:if="{{quantity.huodong==null}}">-￥0.00</text>
+        <text class="satime" wx:else>-￥{{quantity.huodong}}</text> -->
+        <text class="satime" style='color:#E1373B'>-￥0.0</text>
+      </view>
+      <view class="actual">
+        <text>实付金额</text>
+        <text class="satimes">￥{{lasttotal}}</text>
+      </view>
+    </view>
     <view class="listwu">
 
-      <view class="yutime">
+      <!-- <view class="yutime">
         <text>预计送达时间</text>
         <view class="satime" wx:if="{{quantity.order[0].is_sale==1}}">
           <text>3日后发货</text>
@@ -76,7 +113,7 @@
           <text wx:if="{{quantity.timestos >= 10}}">后天到达</text>
           <text wx:else>次日到达</text>
         </view>
-      </view>
+      </view> -->
 
       <!-- <view class="yutime" wx:if="{{quantity.select_weekday1!=undefined}}">
         <text style='float:left'>蔬菜送达时间</text>
@@ -92,43 +129,12 @@
         </view>
       </view> -->
 
-      <view class="youhuiq">
-        <text>商品总额</text>
-        <text class="satimes">￥{{quantity.money}}</text>
-      </view>
+      
 
 
     </view>
 
-    <view class="listthetre">
-      <view class="yutime" bindtap="commentsi" data-moy="{{quantity.money}}">
-        <text>优惠券</text>
-        <text class="satimes" wx:if="{{quantity.coupon==null}}">
-			  <text>{{quantity.num}}张可用</text>
-        <text class="iconfont icon-iconfontyoujiantou"></text>
-        </text>
-        <text class="satimes" wx:else>
-			  <text class="coloa">-￥{{quantity.coupon.coupon_money}}</text>
-        </text>
-      </view>
-      <view class="yutime">
-        <text>优惠金额</text>
-        <!-- <text class="satime" wx:if="{{quantity.huodong==null}}">-￥0.00</text>
-        <text class="satime" wx:else>-￥{{quantity.huodong}}</text> -->
-        <text class="satime">-￥0.0</text>
-      </view>
-      <view class="yutime">
-        <text>运费</text>
-        <!-- <text class="satime" wx:if="{{quantity.money>=jine}}">￥0.00</text>
-        <text class="satime" wx:else>￥{{quantity.commpany.upto_amount}}</text> -->
-        <text class="satime">￥{{upto_amount}}</text>
-      </view>
-      <view class="majialiuya">
-        <text class="liuyan">买家留言：</text>
-        <input class="input" name="userName" placeholder="30字以内" bindinput="userNameInput" maxlength="30" />
 
-      </view>
-    </view>
     <view class="botbtn">
       <view class="numprices">
         合计:

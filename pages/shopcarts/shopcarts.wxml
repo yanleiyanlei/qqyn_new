@@ -26,7 +26,7 @@
     </view>
   </view>
   <view class="cartboxs" wx:if="{{carts!=''}}">
-    <view class="cart-box" wx:for="{{carts}}">
+    <view class="cart-box" wx:for="{{carts}}" wx:key="{{index}}">
       <!-- wx:for 渲染购物车列表 -->
       <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" data-key="{{item.id}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
         <!--  wx:if 是否选择显示不同图标 -->
@@ -61,11 +61,17 @@
                 <text>{{item.goods_price}}</text>
               </view>
               <view class='num'>
-                <image wx:if="{{item.goods_num != 1}}" src="/image/new/reduce.png" bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}" class="fanku"></image>
-                <image wx:else src="/image/new/reduce-none.png" bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}" class="fanku"></image>
+                <add-and-sub item="{{item}}" bind:changeCarts="changeCarts" index="{{index}}" carts="{{carts}}"></add-and-sub>
+                <!-- <view class='minus' bindtap="minusCount" data-index="{{index}}" data-id="{{item.id}}">
+                  <image wx:if="{{item.goods_num != 1}}" src="/image/new/reduce.png" class="fanku"></image>
+                  <image wx:else src="/image/new/reduce-none.png" class="fanku"></image>
+                </view>
                 <text class="number">{{item.goods_num}}</text>
-                <image wx:if="{{andImg}}" bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}" class="fankuAdd" src="/image/new/and.png"></image>
-                <image wx:else data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}" class="fankuAdd" src="/image/new/and-none.png"></image>
+                <view class='jiajianAdd' bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}">
+                  <image wx:if="{{item.store_count > item.goods_num}}"  class="fankuAdd" src="/image/new/and.png"></image>
+                  <image wx:else class="fankuAdd" src="/image/new/and-none.png"></image>
+                </view> -->
+
               </view>
             </view>
           </view>
@@ -75,7 +81,7 @@
         <view class="del" bindtap="deleteLists" data-index="{{index}}" data-key="{{item.id}}">删除</view>
       </view>
     </view>
-    <view class="cart-box" wx:for="{{carts}}" wx:if="{{carts==''}}">
+    <view class="cart-box" wx:for="{{carts}}" wx:if="{{carts==''}}" wx:key="{{index}}">
 
     </view>
 
@@ -98,9 +104,9 @@
     </view>
   </view>
   <view class="wantsBuy">
-    <wants-buy dataTitle="{{dataTitle}}"></wants-buy>
+    <wants-buy dataTitle="{{dataTitle}}" bind:changeCarList="changeCarList"></wants-buy>
   </view>
-  <view class="jiesnum" wx:for="{{carts}}">
+  <view class="jiesnum" wx:for="{{carts}}" wx:key="{{index}}">
     <!-- wx:if 是否全选显示不同图标 -->
     <block wx:if="{{isquan}}">
       <icon wx:if="{{selectAllStatus}}" type="success" color="#FF712B" bindtap="selectAll" data-kc="{{item.store_count}}" data-num="{{item.goods_num}}" />

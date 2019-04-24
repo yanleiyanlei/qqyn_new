@@ -93,13 +93,18 @@ kong {
   font-size:32rpx;
   color: #303030;
   line-height: 55rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width:500rpx;
+  display:block;
 }
 .order-info .good .right .goods-feature {
   font-size: 28rpx;
   color: #666;
   margin-top: 10rpx;
   line-height: 35rpx;
-  width: 500rpx;
+  width: 400rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

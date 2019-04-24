@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "wants-buy": "/components/wantsBuy/wantsBuy"
+    "wants-buy": "/components/wantsBuy/wantsBuy",
+    "add-and-sub": "/components/addAddSub/addAndSub"
   }
 }

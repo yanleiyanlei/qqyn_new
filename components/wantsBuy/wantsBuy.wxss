@@ -129,7 +129,7 @@
 }
 
 .wantsBuy .goods .goodsprice {
-  font-size: 36rpx;
+  font-size: 32rpx;
   font-family: SourceHanSansCN-Bold;
   font-weight: bold;
   color: rgba(255, 113, 43, 1);
