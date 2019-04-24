@@ -1,40 +1,47 @@
 /* pages/search/search.wxss */
 @import"../../lib/style/iconfont.wxss";
 @import"../../lib/style/mainGoods.wxss";
-page{
-  background: #f7f7f7;
-}
-/*头部搜索  */
-.search{
-  padding: 0 32rpx;
-  display: flex;
-  line-height: 110rpx;
-  height: 110rpx;
-  border-bottom: 1rpx solid #b5b5b5;
-  font-size: 32rpx;
-  background: #fff;
-}
-.search view{
-  width: 580rpx;
-  height: 70rpx;
-  background: #f3f3f3;
-  border-radius: 10rpx;
-  display: flex;
-  line-height: 70rpx;
-  margin-top: 22rpx;
-}
-.search view text{
-  font-size: 40rpx;
-  margin: 0 15rpx;
-}
-.search view input{
-  width: 480rpx;
-  height: 65rpx;
-}
-.btn{
-  margin-left: 20rpx;
-}
 
+.page{
+  width: 100%;
+  background:#fff;
+}
+.search{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+}
+.searchbar{
+  width: 611rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background:rgba(238,238,238,1);
+  box-shadow:0px 0px 38px 0px rgba(190,190,195,0.15);
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+}
+.searchbar image{
+  width: 24rpx;
+  height: 24rpx;
+  padding-left:22rpx;
+}
+.searchbar input{
+  width: 510rpx;
+  padding-left:20rpx;
+  font-size:28rpx;
+  font-family:SourceHanSansCN-Regular;
+  font-weight:400;
+  color:rgba(149,149,149,1);
+}
+.search .btn{
+  padding-left: 28rpx;
+  font-size:34rpx;
+  font-family:SourceHanSansCN-Regular;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+}
 /*提示  */
 .hint{
   width: 100%;
@@ -68,4 +75,12 @@ page{
 .recommend .recommend-tit view{
   color: #ff712b;
   font-size: 24rpx;
+}
+.main{
+  padding: 10rpx;
+  background-color: #f7f7f7;
+}
+.main .item{
+  float: left;
+  margin-left:10rpx; 
 }
