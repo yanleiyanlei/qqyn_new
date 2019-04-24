@@ -4,18 +4,14 @@
 </template>
 <!-- 搜索 -->
 <view class='search' wx:if='{{page == 1}}'>
-    <navigator url='../laAdd/laAdd'>
-      <view class='searchLoc'>
-        <text class='iconfont icon-unie609'></text> {{location}}
-      </view>
-    </navigator>
-    <navigator url='../search/search'>
-      <view class='searchCont'>
-        <text class='iconfont icon-sousuo'></text> {{txt}}
-      </view>
-    </navigator>
-
-  </view>
+  <navigator url='../laAdd/laAdd' class='addloc'>
+    <image src='/image/new/add-h.png'></image>
+    <text>{{location}}</text>
+  </navigator>
+  <navigator url='../search/search' class='navsearch'>
+    <view>{{txt}}</view>
+  </navigator>
+</view>
 <!--筛选  -->
 <view class="screen">
   <view bindtap='newgoods' class="{{active}}">最新</view>
@@ -35,34 +31,27 @@
   </view>
 </view>
 <!--商品  -->
-
+<!-- <view class='select'>
+  <view class='select_new {{active}}' bindtap='newgoods'>
+    <text>最新</text>
+  </view>
+  <view class='select_total {{xlactive}}' bindtap='saleN' data-order="{{xlOrder}}">
+    <text>销量</text>
+    <text class='iconfont icon-sanjiao-bottom'></text>
+    <text class='iconfont icon-icon-test'></text>
+  </view>
+  <view class='select_price'>
+    <text>价格</text>
+  </view>
+  <view class='select_screen'>
+    <text>筛选</text>
+    <image src='/image/new/icon_screen.png'></image>
+  </view>
+</view> -->
 <view class='main' style="{{mstyle}}">
-
-
-  <block wx:for="{{goods}}">
-    <view class='goods'>
-      <!--判断第二件0元购商品标示  -->
-      <!-- <image wx:if="{{item.goods_id==23||item.goods_id==347||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
-      <!--判断新品和预售标示  -->
-      <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
-      <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
-      <image src="{{item.thumbnails}}" data-goodsid='{{item.goods_id}}' bindtap='goodsDetails' />
-      <text class='goodsname'> {{item.goods_name}}</text>
-      <text class='goodsdis'>{{item.goods_remark}}</text>
-      <text class='goodsweight'>{{item.spec_name}}</text>
-      <view>
-        <text class='goodsprice'>￥{{item.shop_price}}</text>
-        <text class='goodsdelprice' wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
-        <block wx:for="{{cartList}}" wx:for-item="item2">
-          <view wx:if="{{item.goods_id==item2.goods_id}}" class="cartnum">{{item2.goods_num}}</view>
-        </block>
-        <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
-        <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
-      </view>
-    </view>
+  <block wx:for="{{goods}}" wx:key="goodsKey">
+    <goods-item bind:cartTap="onCartTap" cartlist="{{cartList}}" dataObj="{{item}}" class="item"></goods-item>
   </block>
-
-
 </view>
   <view class='mark {{show}}' >
     <view class='select'>

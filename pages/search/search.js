@@ -7,306 +7,50 @@ Page({
    */
   data: {
     hots: [],
-    location:''
-
+    location:'',
+    city:''
   },
-  // 清除最近搜索======
+  // 清楚最近搜索======
   clear: function () {
     var that = this;
     wx.clearStorage()
     that.setData({ hots: [] })
+
   },
   // 热门搜索事件=======
   hotsearch: function (e) {
-    var that = this;
-    wx.getStorage({
-      key: 'hots',
-      success: function (res) {
-        that.setData({ hots: res.data })
-      }
-    })
-
-    // 新存贮本地最近搜索
-    that.data.hots.push(e.currentTarget.dataset.name)
-    var nhots = new Set(that.data.hots)
-    var hotarr = []
-    for (let item of nhots.keys()) {
-      hotarr.push(item)
-    }
-    wx.setStorage({
-      key: "hots",
-      data: hotarr
-    })
-    var city = that.data.location
-    wx.request({
-      url: app.globalData.Murl+'/Applets/Index/search_goods',
-      data: { txt: e.currentTarget.dataset.name ,city: city},
-      method: "POST",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        //status:状态值。
-        var status = res.data.status
-
-        if (status == 1) {
-          wx.navigateTo({
-            url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + e.currentTarget.dataset.name, 
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
-
-
-        } else if (status == 0) {
-          wx.navigateTo({
-            url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
-        }
-      },
-      fail: function (res) {
-        wx.showLoading({
-          title: '网络连接失败！',
-        })
-
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 2000)
-
-      }
-    })
+    console.log("hotsearch", e.currentTarget.dataset.name);
+    let value = e.currentTarget.dataset.name;
+    this.requestPro(value)
   },
   searchbtn: function () {
-    var that = this;
-    // 获取一下最近搜索
-    wx.getStorage({
-      key: 'hots',
-      success: function (res) {
-        console.log(res)
-        that.setData({ hots: res.data })
-      }
-    })
-
-    if (that.data.searchValue == "" || that.data.searchValue == null) {
-      wx.showToast({
-        title: '内容不能为空哦~',
-        icon: 'none',
-        duration: 2000
-      })
-
-    } else if (that.data.searchValue == "巩建铄" || that.data.searchValue == "马丹丹" || that.data.searchValue == "赵晓阳") {
-      wx.showToast({
-        title: 'HELLO,WORLD!You are a lucky man！',
-        icon: 'none',
-        duration: 2000
-      })
-
-    } else {
-
-      // 新存贮本地最近搜索
-      that.data.hots.push(that.data.searchValue)
-      //console.log(that.data.hots)
-      var nhots = new Set(that.data.hots)
-      var hotarr = []
-      for (let item of nhots.keys()) {
-        console.log(item);
-        hotarr.push(item)
-      }
-      //console.log(arr)
-      wx.setStorage({
-        key: "hots",
-        data: hotarr
-      })
-
-      var city = that.data.city
-
-      wx.request({
-        url: app.globalData.Murl+'/Applets/Index/search_goods',
-        data: { txt: that.data.searchValue,city: city },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          //status:状态值。
-          var status = res.data.status
-          //console.log(res.data.status)
-          //data
-          // var that = this 
-          console.log(res)
-          if (status == 1) {
-            wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + that.data.searchValue,
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) { },
-            })
-          } else if (status == 0) {
-            wx.navigateTo({
-              url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) { },
-            })
-            //console.log(e.detail.value)
-
-          }
-
-
-
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-
-
-
-    }
-
-
+    // let value = this.data.searchValue;
+    this.requestPro(this.data.searchValue);
   },
   searchValue: function (e) {
     //console.log(e.detail.value)
-    var that = this;
-    that.setData({ searchValue: e.detail.value })
-    //console.log(that.data.searchValue)
-
+    this.setData({ searchValue: e.detail.value })
   },
   search: function (e) {
-    var that = this;
-    // 获取一下最近搜索
-    wx.getStorage({
-      key: 'hots',
-      success: function (res) {
-        console.log(res)
-        that.setData({ hots: res.data })
-      }
-    })
-    if (e.detail.value == "") {
-      wx.showToast({
-        title: '能容不能为空哦~',
-        icon: 'none',
-        duration: 2000
-      })
-
-    } else if (e.detail.value == "巩建铄" || that.data.searchValue == "马丹丹" || that.data.searchValue == "赵晓阳") {
-      wx.showToast({
-        title: 'HELLO,WORLD!You are a lucky man！',
-        icon: 'none',
-        duration: 2000
-      })
-
-    } else {
-      // 新存贮本地最近搜索
-      // that.data.hots.push(e.detail.value)
-      // //console.log(arr)
-      // wx.setStorage({
-      //   key: "hots",
-      //   data: that.data.hots
-      // })
-
-      // 新存贮本地最近搜索
-      that.data.hots.push(e.detail.value)
-      //console.log(that.data.hots)
-      var nhots = new Set(that.data.hots)
-      var hotarr = []
-      for (let item of nhots.keys()) {
-        console.log(item);
-        hotarr.push(item)
-      }
-      //console.log(arr)
-      wx.setStorage({
-        key: "hots",
-        data: hotarr
-      })
-
-      var city = that.data.city;
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Index/search_goods',
-        data: { txt: e.detail.value, city: city },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          //status:状态值。
-          var status = res.data.status
-          //console.log(res.data.status)
-          //data
-          //console.log(res.data)
-
-          if (status == 1) {
-            wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + that.data.searchValue,
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) { },
-            })
-
-
-          } else if (status == 0) {
-            wx.navigateTo({
-              url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) { },
-            })
-
-          }
-
-
-
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-
-
-
-    }
-
-
-
+    this.requestPro(e.detail.value);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-
     var that = this;
-
     // 获取本地搜索历史
     wx.getStorage({
       key: 'hots',
       success: function (res) {
         console.log(res)
+        //var hots = []
+        //hots.push(res.data)
         that.setData({ hots: res.data })
+        //console.log(that.data.hots)
       }
     })
-
-
-
     // 热门搜索
     wx.request({
       url: app.globalData.Murl+'/Applets/Index/hot_search',
@@ -317,9 +61,6 @@ Page({
       success: function (res) {
         //console.log(res.data)
         that.setData({ hot_seaech: res.data })
-
-
-
       },
       fail: function (res) {
         wx.showLoading({
@@ -332,13 +73,6 @@ Page({
 
       }
     })
-
-
-
-
-
-
-
   },
 
   /**
@@ -353,8 +87,7 @@ Page({
    */
   onShow: function () {
     let location = wx.getStorageSync("locationcity");
-    let that = this;
-    that.setData({
+    this.setData({
       location:location
     })
   },
@@ -392,6 +125,85 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //请求数据
+  requestPro:function(value){
+    var _this = this;
+    if (value == "") {
+      wx.showToast({
+        title: '内容不能为空哦~',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      // 更新搜索历史
+      this.updateHistory(value);
+      let city = _this.data.location;
+      console.log("city",city);
+      wx.request({
+        url: app.globalData.Murl + '/Applets/Index/search_goods',
+        data: { txt: value, city: city},
+        method: "POST",
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          //status:状态值。
+          var status = res.data.status
+          console.log("requestPro", res)
+          if (status == 1) {
+            wx.navigateTo({
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + _this.data.searchValue,
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) { },
+            })
+          } else if (status == 0) {
+            console.log("搜索不到商品，推荐商品：" + res.data.goods_ids);
+            wx.navigateTo({
+              url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) { },
+            })
+          }
+        },
+        fail: function (res) {
+          wx.showLoading({
+            title: '网络连接失败！',
+          })
 
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 2000)
+        }
+      })
+    }
+  },
+  //更新搜索历史
+  updateHistory:function(value){
+    console.log("updateHistory",value);
+    let _this=this;
+    if(!value) return;
+    // 获取一下最近搜索
+    wx.getStorage({
+      key: 'hots',
+      success: function (res) {
+        _this.setData({ hots: res.data })
+      }
+    });
+    // 新存贮本地最近搜索
+    _this.data.hots.push(value)
+
+    let nhots = new Set(_this.data.hots)
+    let hotarr = []
+    for (let item of nhots.keys()) {
+      hotarr.push(item)
+    }
+    //console.log(arr)
+    wx.setStorage({
+      key: "hots",
+      data: hotarr
+    })
   }
 })

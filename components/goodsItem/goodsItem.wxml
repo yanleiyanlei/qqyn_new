@@ -1,0 +1,23 @@
+<!--components/goodsItem/goodsItem.wxml-->
+<view class='goods' bindtap='goodsDetails'>
+  <image wx:if="{{dataObj.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+  <image wx:if="{{dataObj.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+  <image wx:if="{{dataObj.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+  <image wx:if="{{dataObj.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+  <image wx:if="{{dataObj.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+  <image wx:if="{{dataObj.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+  <image wx:if="{{dataObj.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+
+  <!-- <image src="{{dataObj.thumbnails}}" bindtap='goodsDetails' /> -->
+  <image src="{{dataObj.thumbnails}}" />
+  <text class='goodsname'> {{dataObj.goods_name}}</text>
+  <text class='goodsdis'>{{dataObj.goods_remark}}</text>
+  <view class='listBottom'>
+    <view class='goodsprice'><text>￥</text>{{dataObj.shop_price}}</view>
+    <text class='goodsdelprice' wx:if="{{dataObj.market_price!=0}}">￥{{dataObj.market_price}}</text>
+    <view class="cartnum">{{goodsNum}}</view>
+    <!-- <view wx:if="{{isCart && dataObj.is_sale!=1}}" class="cartnum">{{goodsNum}}</view> -->
+    <image wx:if="{{dataObj.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+    <image wx:else src='../../image/new/shop.png' catchtap="cart"></image>
+  </view>
+</view>
