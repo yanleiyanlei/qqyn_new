@@ -122,7 +122,9 @@
       </view>
     </navigator>
     <view class='fruits-img'>
-      <image src='{{item1.cat_img[0]}}'></image>
+      <navigator url='../classifyGoods/classifyGoods?id={{item1.one_cat_id}}'>
+        <image src='{{item1.cat_img[0]}}'></image>
+      </navigator>
     </view>
     <view class='fruitslist'>
       <!-- 左边一列 -->

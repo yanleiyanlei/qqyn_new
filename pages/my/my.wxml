@@ -128,7 +128,7 @@
     </view>
   </view>
   <!-- 我的收藏浏览记录 -->
-  <view class='collection'>
+  <!-- <view class='collection'>
     <view class='list'>
       <navigator>
         <text>5</text>
@@ -147,25 +147,25 @@
         <text>我的青粉</text>
       </navigator>
     </view>
-  </view>
+  </view> -->
   <!-- 会员权益 -->
   <view class='customerService'>
     <view class='list'>
+      <navigator url="/pages/m-fans/m-fans">
+        <image src="../../image/new/fx.png"></image>
+        <text>我的青粉</text>
+      </navigator>
+      <navigator bindtap='goindex'>
+        <image src="../../image/new/fp.png"></image>
+        <text>生成海报</text>
+      </navigator>
+      <navigator hover-class="Nhover" url="/pages/m-address/m-address">
+        <image src="../../image/new/fk.png"></image>
+        <text>收货地址</text>
+      </navigator>
       <navigator bindtap="link">
         <image src="../../image/new/kf.png"></image>
         <text>电话客服</text>
-      </navigator>
-      <navigator>
-        <image src="../../image/new/fp.png"></image>
-        <text>我的发票</text>
-      </navigator>
-      <navigator>
-        <image src="../../image/new/fx.png"></image>
-        <text>我的分销</text>
-      </navigator>
-      <navigator hover-class="Nhover" url="/pages/m-fans/m-fans">
-        <image src="../../image/new/fk.png"></image>
-        <text>功能反馈</text>
       </navigator>
     </view>
   </view>

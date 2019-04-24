@@ -461,7 +461,7 @@ Page({
         success: function(res) {
           const dalist = res.data;
           var carts = dalist.cartList; //购物车信息
-          console.log(dalist);
+          //console.log(dalist);
           var package_mail = dalist.commpany.package_mail; //包邮的金额
           let total = 0;
           console.log(carts);

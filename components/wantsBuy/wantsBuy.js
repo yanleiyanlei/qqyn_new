@@ -78,7 +78,7 @@ Component({
         var uid = wx.getStorageSync("userinfo").uid;
         var goods_id = e.currentTarget.dataset.goodsid;
         var spec_key = e.currentTarget.dataset.key;
-        if (spec_key != null && goods_id != null && uid != null) {
+        if (spec_key != null) {
           wx.request({
             url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
             data: {
@@ -116,14 +116,11 @@ Component({
                   method: "POST",
                   success: function (res) {
                     //console.log(res.data.cartList)
-
                     that.setData({
                       cartList: res.data.cartList
                     })
-
                   }
                 })
-
               }
               if (res.data.status == 10) {
                 //by yan.lei 一键代发执行跳转
@@ -139,19 +136,15 @@ Component({
                     console.log(res)
                   },
                 })
-
               }
-
             },
             fail: function (res) {
               wx.showLoading({
                 title: '网络连接失败！',
               })
-
               setTimeout(function () {
                 wx.hideLoading()
               }, 2000)
-
             }
           })
         }else{
@@ -166,12 +159,12 @@ Component({
     },
     // 商品跳转详情
     goodsDetails: function(e) {
-      //console.log(e.currentTarget.dataset.goodsid)
+      console.log(e)
       var uid = wx.getStorageSync("userinfo").uid;
       var goods_id = e.currentTarget.dataset.goodsid;
       var spec_key = e.currentTarget.dataset.key;
       console.log(spec_key, goods_id, uid)
-      if (spec_key != null && goods_id != null && uid != null){
+      if (spec_key != null){
         wx.navigateTo({
           url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
           success: function (res) { },

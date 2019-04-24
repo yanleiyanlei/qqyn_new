@@ -184,7 +184,6 @@ Page({
                   that.setData({
                     cartList: res.data.cartList
                   })
-
                 }
               })
 
@@ -235,7 +234,7 @@ Page({
     var goods_id = e.currentTarget.dataset.goodsid;
     var spec_key = e.currentTarget.dataset.key;
     console.log(e)
-    if (spec_key != null && goods_id != null && uid != null) {
+    if (spec_key != null && goods_id != null) {
       wx.navigateTo({
         url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
         success: function (res) { },
@@ -321,7 +320,10 @@ Page({
         that.setData({
           cartList: res.data.cartList
         })
-
+        let domArr = that.selectAllComponents('.goodsItem');
+        domArr.forEach(function (v, k) {
+          v.init();
+        })
       }
     })
 
@@ -447,6 +449,10 @@ Page({
           cartList: res.data.cartList
         })
 
+        let domArr = that.selectAllComponents('.goodsItem');
+        domArr.forEach(function (v, k) {
+          v.init();
+        })
       }
     })
   },
