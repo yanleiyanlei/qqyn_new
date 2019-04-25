@@ -127,7 +127,7 @@
       <block wx:elif="{{item.order_type==1&&item.orderstatus==3}}">
         <text class="delete" style="margin-right: 40rpx;" data-oid="{{item.show_id}}" bindtap='deleteOrder' hover-class="Nhover">删除订单</text>
         <!-- <text class="buy" style="margin-right: 40rpx;" data-oid="{{item.show_id}}" hover-class="Nhover">再次购买</text> -->
-        <navigator url="/pages/m-estimate-list/m-estimate-list?cla={{active}}&oid={{item.show_id}}">
+        <navigator url="/pages/m-estimate-list/m-estimate-list?cla={{active}}&oid={{item.show_id}}" hover-class="btn-hover">
           <text class="estimate" data-oid="{{item.show_id}}" hover-class="Nhover">评价</text>
         </navigator>
       </block>

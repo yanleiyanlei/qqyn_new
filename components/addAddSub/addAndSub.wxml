@@ -7,7 +7,7 @@
   </view>
   <text class="number">{{item.goods_num}}</text>
   <view class='jiajianAdd' bindtap="addCount" data-index="{{index}}" data-ids="{{item.goods_id}}" data-id="{{item.id}}" data-key="{{item.store_count}}">
-    <image wx:if="{{item.store_count > item.goods_num}}"  class="fankuAdd" src="/image/new/and.png"></image>
+    <image wx:if="{{(item.store_count - item.goods_num) > 0}}"  class="fankuAdd" src="/image/new/and.png"></image>
     <image wx:else class="fankuAdd" src="/image/new/and-none.png"></image>
   </view>
 </view>
