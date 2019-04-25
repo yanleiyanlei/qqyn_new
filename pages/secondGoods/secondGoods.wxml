@@ -30,25 +30,7 @@
     <text class='iconfont icon-shaixuan'></text>
   </view>
 </view>
-<!--商品  -->
-<!-- <view class='select'>
-  <view class='select_new {{active}}' bindtap='newgoods'>
-    <text>最新</text>
-  </view>
-  <view class='select_total {{xlactive}}' bindtap='saleN' data-order="{{xlOrder}}">
-    <text>销量</text>
-    <text class='iconfont icon-sanjiao-bottom'></text>
-    <text class='iconfont icon-icon-test'></text>
-  </view>
-  <view class='select_price'>
-    <text>价格</text>
-  </view>
-  <view class='select_screen'>
-    <text>筛选</text>
-    <image src='/image/new/icon_screen.png'></image>
-  </view>
-</view> -->
-<view class='main' style="{{mstyle}}">
+<view class='main'>
   <block wx:for="{{goods}}" wx:key="goodsKey">
     <goods-item bind:cartTap="onCartTap" cartlist="{{cartList}}" dataObj="{{item}}" class="item"></goods-item>
   </block>

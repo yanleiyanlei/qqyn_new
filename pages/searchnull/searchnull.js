@@ -173,7 +173,7 @@ Page({
         _this.setData({
           cartList: res.data.cartList
         })
-        let domArr=_this.selectAllComponents('.item');
+        let domArr = _this.selectAllComponents('.goodsItem');
         domArr.forEach(function(v,k){
           v.init();
         })

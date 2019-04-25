@@ -128,7 +128,7 @@ Page({
   },
   //请求数据
   requestPro:function(value){
-    var _this = this;
+    let _this = this;
     if (value == "") {
       wx.showToast({
         title: '内容不能为空哦~',
@@ -148,12 +148,13 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
+          console.log("search_goods",res);
           //status:状态值。
           var status = res.data.status
           console.log("requestPro", res)
           if (status == 1) {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + _this.data.searchValue,
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + value,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },

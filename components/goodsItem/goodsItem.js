@@ -36,6 +36,10 @@ Component({
    */
   methods: {
     init:function(){
+      this.setData({
+        isCart: false,
+        goodsNum: 0
+      });
       this.initData(this.data.dataObj.goods_id, this.data.cartlist);
     },
     initData:function(str,arr){
