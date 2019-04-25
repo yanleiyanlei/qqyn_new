@@ -50,13 +50,14 @@ Page({
    */
   onLoad: function(options) {
     // var pid = options.pid;
+    console.log("onload", options)
     let that = this;
-    let txt = options.txt;
-    let page = options.page;
+    let txt = options.txt ? options.txt:"";
+    // let page = options.page;
     let goodsid = options.goodsid;
     this.setData({
       txt: txt,
-      page: page,
+      // page: page,
       options: options
     })
     // 获取购物车列表 
@@ -75,147 +76,54 @@ Page({
   onShow: function() {
     let that = this;
     let location = wx.getStorageSync("locationcity");
-    let txt = that.data.txt;
+    let options = that.data.options;
     that.setData({
       location: location
-    })
+    });
+    // 获取购物车列表 
+    that.getCartList();
+
     // 请求商品列表
-    // let url = '/Applets/Index/search_goods';
-    // let data = {
-    //   txt: that.data.txt,
-    //   city: location
-    // }
-    // let req = request.request(url, data);
-    // req.then(
-    //   function (res) {
-    //     console.log(res);
-    //     that.setData({
-    //       active: "active",
-    //       xlactive: "",
-    //       jgactive: "",
-    //       goods: res
-    //     })
-    //     that.updateCartState();
-    //   },
-    //   function (err) {
-    //     wx.showLoading({
-    //       title: '网络连接失败！',
-    //     })
-    //     setTimeout(function () {
-    //       wx.hideLoading()
-    //     }, 2000)
-    //   }
-    // )
-    //------
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Index/search_goods',
-      data: {
-        txt: that.data.txt,
-        city: location
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/json' // 默认值 
-      },
-      success: function(res) {
-        //status:状态值。 
-        var status = res.data.status
+    let url = '/Applets/Index/search_goods';
+    let data = {
+      txt: that.data.txt ? that.data.txt:"",
+      city: location
+    }
+    let req = request.request(url, data);
+    req.then(
+      function (res) {
+        console.log("req",res);
         that.setData({
-          goods_ids: res.data.goods_ids
+          goods_ids: res.goods_ids
         })
-        var options = that.data.options
         // 判断从哪个页面进来的 
+        let reqSon;
         if (options.page == 1) {
-          // 从搜索页面过来 
-          that.setData({
-            goodsid: options.goodsid
-          })
-          wx.request({
-            url: app.globalData.Murl + '/Applets/Index/search_list',
-            data: {
-              ids: that.data.goods_ids
-            },
-            method: "POST",
-            header: {
-              'content-type': 'application/json' // 默认值 
-            },
-            success: function(res) {
-              console.log(res)
-              that.setData({
-                goods: res.data
-              })
-              if (res.data.length < 3) {
-                that.setData({
-                  mstyle: "padding-bottom:550rpx"
-                })
-              }
-            },
-            fail: function(res) {
-              wx.showLoading({
-                title: '网络连接失败！',
-              })
-
-              setTimeout(function() {
-                wx.hideLoading()
-              }, 2000)
-            }
-          })
+          reqSon = request.request('/Applets/Index/search_list', {ids:that.data.goods_ids});
+          
         } else if (options.page == 2) {
+          reqSon = request.request('/Applets/Index/classify_content', { two_cat_id: options.twoType });
+        };
+        reqSon.then(function(res){
+          console.log("reqSon",res)
+          let goods = res.goods ? res.goods:res
           that.setData({
-            oneType: options.oneType,
-            twoType: options.twoType
-          })
-          // 从分类页面过来 
-          wx.request({
-            url: app.globalData.Murl + '/Applets/Index/classify_content',
-            data: {
-              two_cat_id: options.twoType
-            },
-            method: "POST",
-            header: {
-              'content-type': 'application/json' // 默认值 
-            },
-            success: function(res) {
-              console.log(res)
-
-              that.setData({
-                goods: res.data.goods
-              })
-
-              if (res.data.goods.length < 3) {
-                that.setData({
-                  mstyle: "padding-bottom:550rpx"
-                })
-              }
-            },
-            fail: function(res) {
-              wx.showLoading({
-                title: '网络连接失败！',
-              })
-
-              setTimeout(function() {
-                wx.hideLoading()
-              }, 2000)
-            }
-          })
-        }
+            goods: goods
+          });
+          that.updateCartState();
+        })
       },
-      fail: function(res) {
+      function (err) {
         wx.showLoading({
           title: '网络连接失败！',
         })
-
-        setTimeout(function() {
+        setTimeout(function () {
           wx.hideLoading()
         }, 2000)
-
       }
-    })
-    // 获取购物车列表 
-    this.getCartList();
-
+    )
+    //------
   },
-
   /** 
    * 生命周期函数--监听页面隐藏 
    */
@@ -511,6 +419,7 @@ Page({
     })
   },
   updateCartState:function(){
+    console.log("updateCartState");
     let domArr = this.selectAllComponents('.item');
     domArr.forEach(function (v, k) {
       v.init();
