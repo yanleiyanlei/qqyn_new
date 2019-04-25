@@ -1,6 +1,7 @@
 //获取应用实例
 const app = getApp();
-var user = require("../../lib/js/user.js")
+const user = require("../../lib/js/user.js");
+const util = require('../../utils/util.js');
 // pages/qfhot/qfhot.js
 Page({
 
@@ -23,132 +24,24 @@ Page({
     })
     user.user(e);
   },
-  // 添加购物车=================
-  cart: function (e) {
-    var that = this;
-    var uid = wx.getStorageSync("userinfo").uid;
-    if (!uid) {
-      that.setData({
-        mshow: "display:block"
-      })
-    } else {
-      var uid = wx.getStorageSync("userinfo").uid;
-      var goods_id = e.currentTarget.dataset.goodsid;
-      var spec_key = e.currentTarget.dataset.key;
-      //console.log(uid)
-      wx.request({
-        url: app.globalData.Murl+'/Applets/Cart/ajaxAddcart/',
-        data: {
-          member_id: uid,//会员ID
-          goods_id: goods_id, //商品ID
-          goods_num: 1, //商品数量
-          spec_key: spec_key
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          // console.log(res.data)
-          var txt = res.data.msg
-          var num = res.data.thisGoodsNum
-          e.currentTarget.dataset.num = num
-          //console.log(e.currentTarget.dataset.num)
-          wx.showToast({
-            title: txt,
-            icon: 'none',
-            duration: 2000
-          })
-          if (res.data.status == 1) {
-            // 重新更新购物车数据表
-            const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
-            wx.request({
-              url: shopusr,
-              data: {
-                member_id: uid,
-                seller_id: 1,
-              },
-              method: "POST",
-              success: function (res) {
-                //console.log(res.data.cartList)
-
-                that.setData({
-                  cartList: res.data.cartList
-                })
-
-              }
-            })
-
-          }
-
-        },
-        fail: function (res) {
-          wx.showLoading({
-            title: '网络连接失败！',
-          })
-
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-
-        }
-      })
-    }
-
-  },
-  // 商品跳转详情======================
-  goodsDetails: function (e) {
-    //console.log(e.currentTarget.dataset.goodsid)
-    wx.navigateTo({
-      url: '../details/details?goodsid=' + e.currentTarget.dataset.goodsid,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-
-  },
-
   /**
    * 生命周期函数--监听页面加载========
    */
   onLoad: function (options) {
-
-    var that = this;
+    let _this = this;
     // 获取购物车列表
-    var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl+"/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function (res) {
-        console.log(res.data.cartList)
-
-        that.setData({
-          cartList: res.data.cartList
-        })
-
-      }
-    })
+    this.getCartlist();
     //青粉推荐banner及青粉商品==============
-    wx.request({
-      url: app.globalData.Murl+'/Applets/Index/hot_goods',
-      data: {},
-      header: {
-        'content-type': 'application/json' // 默认值
+    let req = util.request('/Applets/Index/hot_goods');
+    req.then(
+      function(res){
+        console.log("onload",res)
+        _this.setData({
+          banner: res.img,
+          goods: res.goods
+        })
       },
-      success: function (res) {
-        //console.log(res)
-        //that.data.list.push(listcont)  
-        that.setData({ banner: res.data.img })
-        that.setData({ goods: res.data.goods })
-        //console.log(that.data.imgUrls)
-
-      },
-      fail: function (res) {
+      function(err){
         wx.showLoading({
           title: '网络连接失败！',
         })
@@ -156,10 +49,8 @@ Page({
         setTimeout(function () {
           wx.hideLoading()
         }, 2000)
-
       }
-    })
-  
+    )
   },
 
   /**
@@ -209,5 +100,43 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  //是否获取用户信息
+  // onCartTap: function (options) {
+  //   // console.log('onCartTap',options);
+  //   this.setData({
+  //     mshow: "display:block"
+  //   })
+  // },
+  updateCartState: function () {
+    console.log("updateCartState");
+    let domArr = this.selectAllComponents('.item');
+    domArr.forEach(function (v, k) {
+      v.init();
+    })
+  },
+  //获取购物车列表
+  getCartlist: function () {
+    let _this = this;
+    let uid = wx.getStorageSync("userinfo").uid;
+    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
+    wx.request({
+      url: shopusr,
+      data: {
+        member_id: uid,
+        seller_id: 1,
+      },
+      method: "POST",
+      success: function (res) {
+        console.log("getCartlist", res)
+        _this.setData({
+          cartList: res.data.cartList
+        })
+        let domArr = _this.selectAllComponents('.item');
+        domArr.forEach(function (v, k) {
+          v.init();
+        })
+      }
+    })
   }
 })
