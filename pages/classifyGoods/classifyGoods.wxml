@@ -80,11 +80,12 @@
   </view>
 
   <block wx:for="{{goods}}">
-    <view class='goods'>
+    <goods-item class="goodsItem" dataObj="{{item}}" cartlist="{{cartlist}}"></goods-item>
+    <!-- <view class='goods'> -->
       <!--判断第二件0元购商品标示  -->
       <!-- <image wx:if="{{item.goods_id==23||item.goods_id==347||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
       <!--判断新品和预售标示  -->
-      <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+      <!-- <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
 
       <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
       <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
@@ -95,7 +96,6 @@
 
       <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" bindtap='goodsDetails' />
       <text class='goodsname'> {{item.goods_name}}</text>
-      <!-- <text class='goodsweight'>{{item.spec_name}}</text> -->
       <text class='goodsdis'>{{item.goods_remark}}</text>
       <view class='listBottom'>
         <view class='goodsprice'><text>￥</text>{{item.shop_price}}</view>
@@ -105,8 +105,8 @@
         </block>
         <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
         <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
-      </view>
-    </view>
+      </view> -->
+    <!-- </view> -->
   </block>
 
 

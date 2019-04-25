@@ -45,21 +45,26 @@ Page({
   getQueryNum: function (url, orderType){
     var that = this;
     this.queryNum(url).then(function (res) {
-      console.log(res)
-      var len = res.data.order.length;
-      if (orderType === 'waitPayment'){
+      // console.log(res)
+      var len;
+      if (res.data.order) {
+        len = res.data.order.length;
+      }else{
+        len = 0;
+      }
+      if (orderType === 'waitPayment') {
         that.setData({
           waitPayment: len
         })
-      } else if (orderType === 'waitDelivery'){
+      } else if (orderType === 'waitDelivery') {
         that.setData({
           waitDelivery: len
         })
-      } else if (orderType === 'waitTakeDelivery'){
+      } else if (orderType === 'waitTakeDelivery') {
         that.setData({
           waitTakeDelivery: len
         })
-      }else{
+      } else {
         that.setData({
           waitEvaluate: len
         })

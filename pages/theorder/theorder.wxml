@@ -87,12 +87,12 @@
         <text class="satime" wx:else>￥{{quantity.commpany.upto_amount}}</text> -->
         <text class="satime">￥{{upto_amount}}</text>
       </view>
-      <view class="yutime">
-        <text>优惠金额</text>
+      <!-- <view class="yutime"> -->
+        <!-- <text>优惠金额</text> -->
         <!-- <text class="satime" wx:if="{{quantity.huodong==null}}">-￥0.00</text>
         <text class="satime" wx:else>-￥{{quantity.huodong}}</text> -->
-        <text class="satime" style='color:#E1373B'>-￥0.0</text>
-      </view>
+        <!-- <text class="satime" style='color:#E1373B'>-￥0.0</text> -->
+      <!-- </view> -->
       <view class="actual">
         <text>实付金额</text>
         <text class="satimes">￥{{lasttotal}}</text>
