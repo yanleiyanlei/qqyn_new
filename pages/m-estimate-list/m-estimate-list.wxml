@@ -31,7 +31,7 @@
         <!-- <text style="font-size: 24rpx;color: #303030;margin-left:10rpx">(含运费:20)</text> -->
       </view>
       <view class="operation">
-        <navigator url="/pages/m-estimate/m-estimate?gid={{item.order_id}}&cla={{active}}&num={{item.order_number}}&goodid={{item.goods_id}}"><text class="estimate">评价商品</text></navigator>
+        <navigator hover-class="btn-hover" url="/pages/m-estimate/m-estimate?gid={{item.order_id}}&cla={{active}}&num={{item.order_number}}&goodid={{item.goods_id}}"><text class="estimate">评价商品</text></navigator>
       </view>
     </view>
   </view>
