@@ -54,30 +54,13 @@ Page({
     let txt = options.txt;
     let page = options.page;
     let goodsid = options.goodsid;
-    // let options = options;
-    // console.log(options)
     this.setData({
       txt: txt,
       page: page,
       options: options
     })
     // 获取购物车列表 
-    var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function(res) {
-        console.log(res.data.cartList)
-        that.setData({
-          cartList: res.data.cartList
-        })
-      }
-    })
+    // getCartList();
   },
   /** 
    * 生命周期函数--监听页面初次渲染完成 
@@ -96,6 +79,34 @@ Page({
     that.setData({
       location: location
     })
+    // 请求商品列表
+    // let url = '/Applets/Index/search_goods';
+    // let data = {
+    //   txt: that.data.txt,
+    //   city: location
+    // }
+    // let req = request.request(url, data);
+    // req.then(
+    //   function (res) {
+    //     console.log(res);
+    //     that.setData({
+    //       active: "active",
+    //       xlactive: "",
+    //       jgactive: "",
+    //       goods: res
+    //     })
+    //     that.updateCartState();
+    //   },
+    //   function (err) {
+    //     wx.showLoading({
+    //       title: '网络连接失败！',
+    //     })
+    //     setTimeout(function () {
+    //       wx.hideLoading()
+    //     }, 2000)
+    //   }
+    // )
+    //------
     wx.request({
       url: app.globalData.Murl + '/Applets/Index/search_goods',
       data: {
@@ -200,28 +211,8 @@ Page({
 
       }
     })
-
     // 获取购物车列表 
-    // var location = app.globalData.location; 
-    // that.setData({ 
-    //   location: location 
-    // }) 
-    var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function(res) {
-        console.log(res.data.cartList)
-        that.setData({
-          cartList: res.data.cartList
-        })
-      }
-    })
+    this.getCartList();
 
   },
 
@@ -524,5 +515,23 @@ Page({
     domArr.forEach(function (v, k) {
       v.init();
     })
+  },
+  getCartList:function(){
+    let _this=this;
+    // 获取购物车列表 
+    let uid = wx.getStorageSync("userinfo").uid;
+    let data = {
+      member_id: uid,
+      seller_id: 1,
+    }
+    let req = request.request("/Applets/Cart/ajaxCartList", data);
+    req.then(
+      function (res) {
+        console.log("获取购物车列表", res)
+        _this.setData({
+          cartList: res.cartList
+        })
+      }
+    )
   }
 })
