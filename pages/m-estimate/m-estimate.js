@@ -107,7 +107,7 @@ Page({
     }
   },
   bindinput: function(e){
-    console.log(e)
+    // console.log(e)
     this.setData({
       textareaVal: e.detail.value
     })
