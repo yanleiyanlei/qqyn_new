@@ -13,7 +13,11 @@ Page({
   // 清楚最近搜索======
   clear: function () {
     var that = this;
-    wx.clearStorage()
+    // wx.clearStorage();
+    wx.setStorage({
+      key: "hots",
+      data: []
+    })
     that.setData({ hots: [] })
 
   },
@@ -44,11 +48,7 @@ Page({
     wx.getStorage({
       key: 'hots',
       success: function (res) {
-        console.log(res)
-        //var hots = []
-        //hots.push(res.data)
         that.setData({ hots: res.data })
-        //console.log(that.data.hots)
       }
     })
     // 热门搜索
@@ -86,9 +86,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let that=this;
     let location = wx.getStorageSync("locationcity");
     this.setData({
       location:location
+    });
+    // 获取本地搜索历史
+    wx.getStorage({
+      key: 'hots',
+      success: function (res) {
+        that.setData({ hots: res.data })
+      }
     })
   },
 
@@ -150,16 +158,17 @@ Page({
         success: function (res) {
           console.log("search_goods",res);
           //status:状态值。
-          var status = res.data.status
+          let status = res.data.status;
+          let goods_ids = res.data.goods_ids
           console.log("requestPro", res)
-          if (status == 1) {
+          if (status == 1 && goods_ids!="") {
             wx.navigateTo({
               url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + value,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
-          } else if (status == 0) {
+          } else {
             console.log("搜索不到商品，推荐商品：" + res.data.goods_ids);
             wx.navigateTo({
               url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,

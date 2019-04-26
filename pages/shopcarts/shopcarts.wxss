@@ -184,7 +184,7 @@ navigator .navigator-hover {
 .prices text {
   font-size: 32rpx;
   font-family: MicrosoftYaHei;
-  font-weight: 400;
+  font-weight: bold;
   color: rgba(255, 113, 43, 1);
 }
 

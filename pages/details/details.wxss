@@ -242,7 +242,7 @@ swiper{
   width: 100%;
 }
 .recommend{
-  padding-bottom: 110rpx;
+  padding-bottom: 150rpx;
 }
 .subfooter{
   position: fixed;
