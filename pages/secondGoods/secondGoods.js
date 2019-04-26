@@ -86,7 +86,7 @@ Page({
     // 请求商品列表
     let url = '/Applets/Index/search_goods';
     let data = {
-      txt: that.data.txt ? that.data.txt:"",
+      txt: that.data.txt,
       city: location
     }
     let req = request.request(url, data);

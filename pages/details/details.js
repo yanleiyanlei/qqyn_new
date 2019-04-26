@@ -161,6 +161,11 @@ Page({
           tagHidden=true;
         }
         var shop_prices = datalist.goodsSpecInfo[0].shop_price;
+        //如果预售或者无货 统一显示无货 加入购物车/去结算不可点击
+        let ionot=1;
+        if (datalist.goodsdetails.isnot == 0 || datalist.goodsdetails.is_sale=="1"){
+          ionot=0;
+        }
         //测试数据
         // const tagsArr={
         //   '1':'有机',
@@ -171,7 +176,7 @@ Page({
         // }
         that.setData({
           datas: datalist,
-          ionot: datalist.goodsdetails.isnot, //是否有货
+          ionot: ionot, //是否有货
           nowTime: datalist.timestos, //当前时间
           goodsAttrInfo: datalist.goodsAttrInfo,
           shopName: datalist.goodsdetails,

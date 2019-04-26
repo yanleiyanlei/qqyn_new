@@ -97,6 +97,7 @@ page {
   height: auto;
   background: #fff;
   display: flex;
+  border-top:1rpx solid #bfbfbf;
 }
 
 .mark .select-cont .sactive {
@@ -215,7 +216,7 @@ page {
 }
 .select{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   font-size:28rpx;
   font-family:SourceHanSansCN-Bold;
