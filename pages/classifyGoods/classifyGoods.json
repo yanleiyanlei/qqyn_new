@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "青青食谱",
+  "navigationBarTitleText": "青青优农",
   "usingComponents":{
     "goods-item":"/components/goodsItem/goodsItem"
   }

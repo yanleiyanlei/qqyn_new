@@ -90,6 +90,10 @@
   font-size: 32rpx;
   color: #303030;
   line-height: 55rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
 }
 
 .order-info .good .right .goods-feature {
