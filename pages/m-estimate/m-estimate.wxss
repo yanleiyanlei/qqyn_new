@@ -35,6 +35,9 @@
 .order-info .good .right .goods-name {
   font-size: 32rpx;
   color: #303030;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .order-info .good .right .goods-feature {

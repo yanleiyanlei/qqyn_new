@@ -45,7 +45,7 @@
       <!-- <view class="tip">
      
     </view> -->
-      <textarea  class="border-box" placeholder=" 输入商品评价" name="reviews_text"></textarea>
+      <textarea  class="border-box" bindinput='bindinput' placeholder=" 输入商品评价" name="reviews_text"></textarea>
     </view>
     <!-- 图片 -->
     <view class="add-pic clearfix" style="margin-top: 20rpx;padding-bottom: 20rpx;">

@@ -14,10 +14,11 @@ Page({
     num: '',
     orderinfo: {},
     level: [['icon-chaping1', 'icon-chaping'], ['icon-weibiaoti1', 'icon-zhongping'], ['icon-haoping1', 'icon-haoping']],
-    levelDis: ['icon-chaping1', 'icon-weibiaoti1', 'icon-haoping1'],
-    hp: '',
+    levelDis: ['icon-chaping1', 'icon-weibiaoti1', 'icon-haoping'],
+    hp: 3,
     tip: "提交",
-    flag2: false
+    flag2: false,
+    textareaVal:''
   },
 
   /**
@@ -105,6 +106,12 @@ Page({
       })
     }
   },
+  bindinput: function(e){
+    console.log(e)
+    this.setData({
+      textareaVal: e.detail.value
+    })
+  },
   formSubmit: function (e) {
     var de = e.detail.value;
 
@@ -113,7 +120,7 @@ Page({
     var that = this;
     console.log(obj)
     if (that.data.flag) {
-      if (that.data.hp != "" || that.data.typp == 1) {
+      if (that.data.hp != "" && this.data.textareaVal != '' || that.data.typp == 1 ) {
         var l = that.data.imgList.length;
         if (l == 0) {
           wx.request({
@@ -221,6 +228,15 @@ Page({
         
 
 
+      } else if (this.data.textareaVal === ''){
+        wx.showToast({
+          title: "请选输入商品评价",
+          icon: 'none',
+          duration: 2000
+        })
+        setTimeout(function () {
+          wx.hideToast()
+        }, 2000)
       } else {
         wx.showToast({
           title: "请选择评价等级",
