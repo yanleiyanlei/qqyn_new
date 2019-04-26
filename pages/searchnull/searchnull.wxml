@@ -14,7 +14,7 @@
     <view>换个关键词吧</view>
   </view>
   <!--推荐商品  -->
-  <view class='recommend'>
+  <view class='recommend' wx:if="{{goods.length}}">
     <view class='recommend-tit'>
       <image src='../../image/index/m_xian.png'></image>
       推荐商品
