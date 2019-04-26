@@ -158,16 +158,17 @@ Page({
         success: function (res) {
           console.log("search_goods",res);
           //status:状态值。
-          var status = res.data.status
+          let status = res.data.status;
+          let goods_ids = res.data.goods_ids
           console.log("requestPro", res)
-          if (status == 1) {
+          if (status == 1 && goods_ids!="") {
             wx.navigateTo({
               url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + value,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
-          } else if (status == 0) {
+          } else {
             console.log("搜索不到商品，推荐商品：" + res.data.goods_ids);
             wx.navigateTo({
               url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,
