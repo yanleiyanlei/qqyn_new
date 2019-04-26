@@ -13,7 +13,11 @@ Page({
   // 清楚最近搜索======
   clear: function () {
     var that = this;
-    wx.clearStorage()
+    // wx.clearStorage();
+    wx.setStorage({
+      key: "hots",
+      data: []
+    })
     that.setData({ hots: [] })
 
   },
@@ -44,11 +48,7 @@ Page({
     wx.getStorage({
       key: 'hots',
       success: function (res) {
-        console.log(res)
-        //var hots = []
-        //hots.push(res.data)
         that.setData({ hots: res.data })
-        //console.log(that.data.hots)
       }
     })
     // 热门搜索
@@ -86,9 +86,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let that=this;
     let location = wx.getStorageSync("locationcity");
     this.setData({
       location:location
+    });
+    // 获取本地搜索历史
+    wx.getStorage({
+      key: 'hots',
+      success: function (res) {
+        that.setData({ hots: res.data })
+      }
     })
   },
 
