@@ -598,6 +598,15 @@ page {
   right: 40rpx;
   z-index: 100;
 }
+.fruitslist-li .wait {
+  width:68rpx;
+  height:68rpx;
+  float:right;
+  position:absolute;
+  bottom:38rpx;
+  right:40rpx;
+  z-index:100;
+}
 
 .fruitslist-right-topimg {
   width: 100%;

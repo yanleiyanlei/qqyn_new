@@ -83,6 +83,7 @@
 }
 .goods view.listBottom{
   width: 295rpx;
+  height:97rpx;
   display:flex;
   flex-direction:row;
   justify-content:space-between;
@@ -98,6 +99,11 @@
   width:80rpx;
   height:80rpx;
   background:rgba(143,195,31,0);
+}
+.goods .wait{
+  width:68rpx;
+  height:68rpx;
+  padding-bottom:10rpx;
 }
 .goods image.label{
   position: absolute;

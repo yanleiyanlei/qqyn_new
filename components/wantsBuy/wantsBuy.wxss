@@ -169,7 +169,10 @@
   height: 68rpx;
   background: rgba(143, 195, 31, 0);
 }
-
+.wantsBuy .goods .wait{
+  width: 58rpx;
+  height: 58rpx;
+}
 .wantsBuy .goods image.label {
   position: absolute;
   top: 0;
