@@ -175,7 +175,7 @@ Page({
     let data={
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.goods_ids
+      ids: that.data.options.goodsid
     }
     let req = request.request(url,data);
     req.then(
@@ -207,7 +207,7 @@ Page({
     let data={
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.goods_ids
+      ids: that.data.options.goodsid
     }
     let order = e.currentTarget.dataset.order;
     if (order == 1) {
@@ -255,7 +255,7 @@ Page({
     let data = {
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.goods_ids
+      ids: that.data.options.goodsid
     }
     let order = e.currentTarget.dataset.order;
     if (order == 1) {
@@ -340,7 +340,7 @@ Page({
     let data = {
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.goods_ids,
+      ids: that.data.options.goodsid,
       state: that.data.sxID
     }
 
@@ -373,37 +373,37 @@ Page({
       }
     )
 
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Index/screen',
-      data: {
-        one_cat_id: that.data.oneType,
-        two_cat_id: that.data.twoType,
-        ids: that.data.goods_ids,
-        state: that.data.sxID
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/json' // 默认值 
-      },
-      success: function (res) {
+    // wx.request({
+    //   url: app.globalData.Murl + '/Applets/Index/screen',
+    //   data: {
+    //     one_cat_id: that.data.oneType,
+    //     two_cat_id: that.data.twoType,
+    //     ids: that.data.goods_ids,
+    //     state: that.data.sxID
+    //   },
+    //   method: "POST",
+    //   header: {
+    //     'content-type': 'application/json' // 默认值 
+    //   },
+    //   success: function (res) {
 
-        that.setData({
-          active: "",
-          xlactive: "",
-          goods: res.data
-        })
-        that.updateCartState();
-      },
-      fail: function (res) {
-        wx.showLoading({
-          title: '网络连接失败！',
-        })
+    //     that.setData({
+    //       active: "",
+    //       xlactive: "",
+    //       goods: res.data
+    //     })
+    //     that.updateCartState();
+    //   },
+    //   fail: function (res) {
+    //     wx.showLoading({
+    //       title: '网络连接失败！',
+    //     })
 
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 2000)
-      }
-    })
+    //     setTimeout(function () {
+    //       wx.hideLoading()
+    //     }, 2000)
+    //   }
+    // })
   },
   updateCartState:function(){
     console.log("updateCartState");
