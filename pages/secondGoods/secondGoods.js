@@ -25,7 +25,8 @@ Page({
     pid: '',
     page: '',
     txt: '',
-    goods_ids: ''
+    goods_ids: '',
+    status:1
   },
 
   close: function() {
@@ -52,12 +53,14 @@ Page({
     // var pid = options.pid;
     console.log("onload", options)
     let that = this;
-    let goods_ids = options.goodsid;
+    let goods_ids = options.goodsid ?options.goodsid:[];
     let location = wx.getStorageSync("locationcity");
+    let txt = options.txt ? options.txt:'';
     this.setData({
       options: options,
       goods_ids: goods_ids,
-      location: location
+      location: location,
+      txt:txt
     })
   },
   /** 
@@ -151,7 +154,7 @@ Page({
     let data={
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.options.goodsid
+      ids: that.data.goods_ids
     }
     let req = request.request(url,data);
     req.then(
@@ -183,7 +186,7 @@ Page({
     let data={
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.options.goodsid
+      ids: that.data.goods_ids
     }
     let order = e.currentTarget.dataset.order;
     if (order == 1) {
@@ -231,7 +234,7 @@ Page({
     let data = {
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.options.goodsid
+      ids: that.data.goods_ids
     }
     let order = e.currentTarget.dataset.order;
     console.log("priceN",order)
@@ -317,7 +320,7 @@ Page({
     let data = {
       one_cat_id: that.data.oneType,
       two_cat_id: that.data.twoType,
-      ids: that.data.options.goodsid,
+      ids: that.data.goods_ids,
       state: that.data.sxID
     }
 
@@ -376,6 +379,7 @@ Page({
     )
   },
   reqGoodsid:function(str){
+    console.log("reqGoodsid-str",str)
     let that=this;
     let data={
       txt: that.data.options.txt,
@@ -386,18 +390,27 @@ Page({
       function (res) {
         if(res.status){
           that.setData({
+            status: res.status,
             goods_ids: res.goods_ids
           })
-          that.reqGoods();
         }else{
-          console.log("搜索不到商品，推荐商品：" + res.goods_ids);
-          wx.redirectTo({
-            url: '../searchnull/searchnull?goodsid=' + res.goods_ids,
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
+          that.setData({
+            status: res.status,
+            goods_ids: [],
+            goods:[]
+          });
+          return;
         }
+        that.reqGoods();
+        // else{
+        //   console.log("搜索不到商品，推荐商品：" + res.goods_ids);
+        //   wx.redirectTo({
+        //     url: '../searchnull/searchnull?goodsid=' + res.goods_ids,
+        //     success: function (res) { },
+        //     fail: function (res) { },
+        //     complete: function (res) { },
+        //   })
+        // }
       }
     )
   },
@@ -405,6 +418,7 @@ Page({
     let that=this;
     let options = that.data.options;
     let reqSon;
+    console.log("reqGoods-status", that.data.status)
     // 判断从哪个页面进来的 
     if (options.page == 1) {
       console.log("reqGoods-goods_ids", that.data.goods_ids)

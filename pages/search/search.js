@@ -8,7 +8,8 @@ Page({
   data: {
     hots: [],
     location:'',
-    city:''
+    city:'',
+    goods_ids:[]
   },
   // 清楚最近搜索======
   clear: function () {
@@ -143,6 +144,7 @@ Page({
       // 更新搜索历史
       this.updateHistory(value);
       let city = _this.data.location ? _this.data.location:'北京市';
+      console.log("requestPro-city", city)
       let data={
         txt: value,
         city: city
@@ -153,10 +155,10 @@ Page({
           //status:状态值。
           wx.hideLoading()
           let status = res.status;
-          let goods_ids = res.goods_ids;
+          let goods_ids = res.goods_ids ? res.goods_ids:[];
           // let goods_ids = [516, 517, 518, 522, 524, 525, 521, 520, 602, 500, 558, 396, 637, 97, 501, 523, 705];
           console.log("requestPro",res)
-          if (status == 1 && goods_ids != "") {
+          if (status == 1) {
             wx.navigateTo({
               url: '../secondGoods/secondGoods?page=1&txt=' + value +'&goodsid=' + goods_ids,
               success: function (res) { },
@@ -166,11 +168,17 @@ Page({
           } else {
             console.log("搜索不到商品，推荐商品：" + goods_ids);
             wx.navigateTo({
-              url: '../searchnull/searchnull?goodsid=' + goods_ids,
+              url: '../secondGoods/secondGoods?page=1&txt=' + value,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
+            // wx.navigateTo({
+            //   url: '../searchnull/searchnull?goodsid=' + goods_ids,
+            //   success: function (res) { },
+            //   fail: function (res) { },
+            //   complete: function (res) { },
+            // })
           }
         },
         function (err) {
