@@ -52,15 +52,13 @@ Page({
     // var pid = options.pid;
     console.log("onload", options)
     let that = this;
-    // let txt = options.txt ? options.txt:"";
-    // let page = options.page;
-    // let goodsid = options.goodsid;
+    let goods_ids = options.goodsid;
+    let location = wx.getStorageSync("locationcity");
     this.setData({
-      // page: page,
-      options: options
+      options: options,
+      goods_ids: goods_ids,
+      location: location
     })
-    // 获取购物车列表 
-    // getCartList();
   },
   /** 
    * 生命周期函数--监听页面初次渲染完成 
@@ -75,41 +73,19 @@ Page({
   onShow: function() {
     let that = this;
     let location = wx.getStorageSync("locationcity");
-    let options = that.data.options;
-    console.log("onshow-options", options)
-    that.setData({
-      location: location
-    });
+    // let goods_ids = options.goodsid;
     // 获取购物车列表 
     that.getCartList();
-    // 请求商品列表
-    // 判断从哪个页面进来的 
-    let reqSon;
-    if (options.page == 1) {
-      console.log("111")
-      reqSon = request.request('/Applets/Index/search_list', { ids: options.goodsid });
-
-    } else if (options.page == 2) {
-      reqSon = request.request('/Applets/Index/classify_content', { two_cat_id: options.twoType });
-    };
-    reqSon.then(
-      function (res) {
-      console.log("reqSon", res)
-      let goods = res.goods ? res.goods : res
+    //是否需要重新请求 ids
+    if (location!=that.data.location){
+      that.reqGoodsid(location);
       that.setData({
-        goods: goods
+        location: location
       });
-      that.updateCartState();
-      },
-      function (err) {
-        wx.showLoading({
-          title: '网络连接失败！',
-        })
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 2000)
-      }
-    )
+      return;
+    }
+    // 请求商品列表
+    that.reqGoods();
   },
   /** 
    * 生命周期函数--监听页面隐藏 
@@ -258,6 +234,7 @@ Page({
       ids: that.data.options.goodsid
     }
     let order = e.currentTarget.dataset.order;
+    console.log("priceN",order)
     if (order == 1) {
       url = '/Applets/Index/priceshang';
     } else if (order == 2) {
@@ -281,7 +258,7 @@ Page({
             xlactive: "",
             jgactive: "jgactive2",
             goods: res,
-            jgOrder: 2
+            jgOrder: 1
           })
         }
         that.updateCartState();
@@ -372,38 +349,6 @@ Page({
         }, 2000)
       }
     )
-
-    // wx.request({
-    //   url: app.globalData.Murl + '/Applets/Index/screen',
-    //   data: {
-    //     one_cat_id: that.data.oneType,
-    //     two_cat_id: that.data.twoType,
-    //     ids: that.data.goods_ids,
-    //     state: that.data.sxID
-    //   },
-    //   method: "POST",
-    //   header: {
-    //     'content-type': 'application/json' // 默认值 
-    //   },
-    //   success: function (res) {
-
-    //     that.setData({
-    //       active: "",
-    //       xlactive: "",
-    //       goods: res.data
-    //     })
-    //     that.updateCartState();
-    //   },
-    //   fail: function (res) {
-    //     wx.showLoading({
-    //       title: '网络连接失败！',
-    //     })
-
-    //     setTimeout(function () {
-    //       wx.hideLoading()
-    //     }, 2000)
-    //   }
-    // })
   },
   updateCartState:function(){
     console.log("updateCartState");
@@ -427,6 +372,62 @@ Page({
         _this.setData({
           cartList: res.cartList
         })
+      }
+    )
+  },
+  reqGoodsid:function(str){
+    let that=this;
+    let data={
+      txt: that.data.options.txt,
+      city: str
+    }
+    let req = request.request("/Applets/Index/search_goods", data);
+    req.then(
+      function (res) {
+        if(res.status){
+          that.setData({
+            goods_ids: res.goods_ids
+          })
+          that.reqGoods();
+        }else{
+          console.log("搜索不到商品，推荐商品：" + res.goods_ids);
+          wx.redirectTo({
+            url: '../searchnull/searchnull?goodsid=' + res.goods_ids,
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+        }
+      }
+    )
+  },
+  reqGoods:function(){
+    let that=this;
+    let options = that.data.options;
+    let reqSon;
+    // 判断从哪个页面进来的 
+    if (options.page == 1) {
+      console.log("reqGoods-goods_ids", that.data.goods_ids)
+      reqSon = request.request('/Applets/Index/search_list', { ids: that.data.goods_ids });
+    } else if (options.page == 2) {
+      reqSon = request.request('/Applets/Index/classify_content', { two_cat_id: options.twoType, city: that.data.location });
+    };
+    reqSon.then(
+      function (res) {
+        console.log("reqSon", res)
+        let goods = res.goods ? res.goods : res
+        that.setData({
+          goods: goods
+        });
+        that.updateCartState();
+      },
+      function (err) {
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
       }
     )
   }

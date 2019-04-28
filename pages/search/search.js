@@ -158,7 +158,7 @@ Page({
           console.log("requestPro",res)
           if (status == 1 && goods_ids != "") {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + goods_ids,
+              url: '../secondGoods/secondGoods?page=1&txt=' + value +'&goodsid=' + goods_ids,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
