@@ -52,11 +52,10 @@ Page({
     // var pid = options.pid;
     console.log("onload", options)
     let that = this;
-    let txt = options.txt ? options.txt:"";
+    // let txt = options.txt ? options.txt:"";
     // let page = options.page;
-    let goodsid = options.goodsid;
+    // let goodsid = options.goodsid;
     this.setData({
-      txt: txt,
       // page: page,
       options: options
     })
@@ -77,41 +76,30 @@ Page({
     let that = this;
     let location = wx.getStorageSync("locationcity");
     let options = that.data.options;
+    console.log("onshow-options", options)
     that.setData({
       location: location
     });
     // 获取购物车列表 
     that.getCartList();
-
     // 请求商品列表
-    let url = '/Applets/Index/search_goods';
-    let data = {
-      txt: that.data.txt,
-      city: location
-    }
-    let req = request.request(url, data);
-    req.then(
+    // 判断从哪个页面进来的 
+    let reqSon;
+    if (options.page == 1) {
+      console.log("111")
+      reqSon = request.request('/Applets/Index/search_list', { ids: options.goodsid });
+
+    } else if (options.page == 2) {
+      reqSon = request.request('/Applets/Index/classify_content', { two_cat_id: options.twoType });
+    };
+    reqSon.then(
       function (res) {
-        console.log("req",res);
-        that.setData({
-          goods_ids: res.goods_ids
-        })
-        // 判断从哪个页面进来的 
-        let reqSon;
-        if (options.page == 1) {
-          reqSon = request.request('/Applets/Index/search_list', {ids:that.data.goods_ids});
-          
-        } else if (options.page == 2) {
-          reqSon = request.request('/Applets/Index/classify_content', { two_cat_id: options.twoType });
-        };
-        reqSon.then(function(res){
-          console.log("reqSon",res)
-          let goods = res.goods ? res.goods:res
-          that.setData({
-            goods: goods
-          });
-          that.updateCartState();
-        })
+      console.log("reqSon", res)
+      let goods = res.goods ? res.goods : res
+      that.setData({
+        goods: goods
+      });
+      that.updateCartState();
       },
       function (err) {
         wx.showLoading({
@@ -122,7 +110,6 @@ Page({
         }, 2000)
       }
     )
-    //------
   },
   /** 
    * 生命周期函数--监听页面隐藏 
