@@ -94,7 +94,7 @@ Page({
   // 添加购物车=================
   cart: function(e) {
     let goods = e.currentTarget.dataset.goods;
-    console.log('cart',goods);
+    console.log('cart',e);
     //预售商品 不可加入购物车
     if (goods.is_sale==1) {
       wx.showToast({
@@ -113,7 +113,14 @@ Page({
         mshow: "display:block"
       })
     } else {
-      var spec_key = goods.key;
+      if (!goods.spec_key){
+        wx.showToast({
+          title: "没有设置规格",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
       //console.log(uid)
       wx.request({
         url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',

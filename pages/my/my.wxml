@@ -75,7 +75,7 @@
       <view class="m-order-tit-box clearfix">
         <text class="one">我的订单</text>
         <navigator opent-type="redirectTo" url="/pages/m-order/m-order?sta=0" hover-class='Nhover'>
-          <text class="two" decode='ture'>查看全部订单&nbsp;&nbsp;></text>
+          <text class="two" decode='ture'>全部订单&nbsp;&nbsp;></text>
         </navigator>
       </view>
     </view>

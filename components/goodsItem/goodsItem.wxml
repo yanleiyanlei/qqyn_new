@@ -16,7 +16,7 @@
     <view class='goodsprice'><text>￥</text>{{dataObj.shop_price}}</view>
     <text class='goodsdelprice' wx:if="{{dataObj.market_price!=0}}">￥{{dataObj.market_price}}</text>
     <view wx:if="{{isCart && dataObj.is_sale!=1}}" class="cartnum">{{goodsNum}}</view>
-    <image wx:if="{{dataObj.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+    <image class='wait' wx:if="{{dataObj.is_sale==1}}" src='../../image/index/ys_b.png'></image>
     <image wx:else src='../../image/new/shop.png' catchtap="cart"></image>
   </view>
 </view>

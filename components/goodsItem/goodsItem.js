@@ -44,7 +44,7 @@ Component({
     },
     initData:function(str,arr){
       let _this = this;
-      console.log("goodsItem-str"+str,arr)
+      // console.log("goodsItem-str"+str,arr)
       arr.forEach(function (v, k) {
         if (v.goods_id == str) {
           _this.setData({
