@@ -40,7 +40,13 @@ page {
   border: 5px solid rgba(255, 255, 255, 1);
   border-radius: 50%;
 }
-
+.top-up .top-up-info .portrait navigator{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width: 100%;
+  height: 100%;
+}
 .top-up .top-up-info .portrait image {
   width: 114rpx;
   height: 114rpx;
