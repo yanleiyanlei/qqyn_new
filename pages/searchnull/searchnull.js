@@ -1,5 +1,6 @@
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const request = require('../../utils/util.js');
 // pages/searchnull/searchnull.js
 Page({
 
@@ -83,13 +84,14 @@ Page({
    * 搜索
    */
   searchbtn: function () {
-    var _this = this;
-    if (_this.data.searchValue == "") {
+    let _this = this;
+    if (!_this.data.searchValue) {
       wx.showToast({
         title: '内容不能为空哦~',
         icon: 'none',
         duration: 2000
       })
+      // return;
     } else {
       // 新存贮本地最近搜索
       _this.data.hots.push(_this.data.searchValue)
@@ -101,29 +103,28 @@ Page({
       wx.showLoading({
         title: '搜索商品',
       })
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Index/search_goods',
-        data: { txt: _this.data.searchValue },
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
+      let city = _this.data.location ? _this.data.location : '北京市';
+      let data = {
+        txt: _this.data.searchValue,
+        city: city
+      }
+      let req = request.request('/Applets/Index/search_goods', data);
+      req.then(
+        function(res){
           //status:状态值。
           wx.hideLoading()
-          var status = res.data.status
+          var status = res.status
           //console.log(res.data.status)
           //data
-          console.log(res.data)
+          console.log(res)
           if (status == 1) {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids,
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.goods_ids,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
           } else if (status == 0) {
-            wx.hideLoading();
             wx.showToast({
               title: '没有找到相关产品~',
               icon: 'none',
@@ -132,7 +133,7 @@ Page({
             //console.log(e.detail.value)
           }
         },
-        fail: function (res) {
+        function(err){
           wx.hideLoading();
           wx.showToast({
             title: '没有找到相关产品~',
@@ -140,7 +141,7 @@ Page({
             duration: 2000
           })
         }
-      })
+      )
     }
   },
   searchValue: function (e) {
@@ -173,7 +174,7 @@ Page({
         _this.setData({
           cartList: res.data.cartList
         })
-        let domArr = _this.selectAllComponents('.goodsItem');
+        let domArr = _this.selectAllComponents('.item');
         domArr.forEach(function(v,k){
           v.init();
         })
@@ -185,20 +186,13 @@ Page({
     console.log("getRecommend", options.goodsid)
     if (!options.goodsid) return;
     let _this=this;
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Index/search_rec',
-      data: { ids: options.goodsid },
-      method: "POST",
-      header: {
-        'content-type': 'application/json' // 默认值
+    let req = request.request('/Applets/Index/search_rec', { ids: options.goodsid });
+    req.then(
+      function(res){
+        _this.setData({ goods: res })
+        console.log("getRecommend", res)
       },
-      success: function (res) {
-        //status:状态值。
-        // var status = res.data.status
-        _this.setData({ goods: res.data })
-        console.log("getRecommend", res.data)
-      },
-      fail: function (res) {
+      function(err){
         wx.showLoading({
           title: '网络连接失败！',
         })
@@ -206,6 +200,6 @@ Page({
           wx.hideLoading()
         }, 2000)
       }
-    })
+    )
   }
 })

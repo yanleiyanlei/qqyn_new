@@ -1,7 +1,7 @@
 // pages/search/search.js
 const app=getApp();
+const request = require('../../utils/util.js');
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -32,13 +32,8 @@ Page({
     this.requestPro(this.data.searchValue);
   },
   searchValue: function (e) {
-    //console.log(e.detail.value)
     this.setData({ searchValue: e.detail.value })
   },
-  search: function (e) {
-    this.requestPro(e.detail.value);
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -137,7 +132,8 @@ Page({
   //请求数据
   requestPro:function(value){
     let _this = this;
-    if (value == "") {
+    console.log("requestPro-value", value)
+    if (!value) {
       wx.showToast({
         title: '内容不能为空哦~',
         icon: 'none',
@@ -146,39 +142,38 @@ Page({
     } else {
       // 更新搜索历史
       this.updateHistory(value);
-      let city = _this.data.location;
-      console.log("city",city);
-      wx.request({
-        url: app.globalData.Murl + '/Applets/Index/search_goods',
-        data: { txt: value, city: city},
-        method: "POST",
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          console.log("search_goods",res);
+      let city = _this.data.location ? _this.data.location:'北京市';
+      let data={
+        txt: value,
+        city: city
+      }
+      let req = request.request('/Applets/Index/search_goods', data);
+      req.then(
+        function (res) {
           //status:状态值。
-          let status = res.data.status;
-          let goods_ids = res.data.goods_ids
-          console.log("requestPro", res)
-          if (status == 1 && goods_ids!="") {
+          wx.hideLoading()
+          let status = res.status;
+          let goods_ids = res.goods_ids;
+          // let goods_ids = [516, 517, 518, 522, 524, 525, 521, 520, 602, 500, 558, 396, 637, 97, 501, 523, 705];
+          console.log("requestPro",res)
+          if (status == 1 && goods_ids != "") {
             wx.navigateTo({
-              url: '../secondGoods/secondGoods?page=1&goodsid=' + res.data.goods_ids + '&txt=' + value,
+              url: '../secondGoods/secondGoods?page=1&goodsid=' + goods_ids,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
           } else {
-            console.log("搜索不到商品，推荐商品：" + res.data.goods_ids);
+            console.log("搜索不到商品，推荐商品：" + goods_ids);
             wx.navigateTo({
-              url: '../searchnull/searchnull?goodsid=' + res.data.goods_ids,
+              url: '../searchnull/searchnull?goodsid=' + goods_ids,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
             })
           }
         },
-        fail: function (res) {
+        function (err) {
           wx.showLoading({
             title: '网络连接失败！',
           })
@@ -187,7 +182,7 @@ Page({
             wx.hideLoading()
           }, 2000)
         }
-      })
+      )
     }
   },
   //更新搜索历史
