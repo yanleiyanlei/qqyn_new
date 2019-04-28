@@ -3,7 +3,7 @@
   <view class='search'>
     <view class='searchbar'>
       <image src='/image/new/icon_search.png'></image>
-      <input confirm-type="search" bindconfirm="search" bindinput='searchValue'></input>
+      <input confirm-type="search" bindconfirm="searchbtn" bindinput='searchValue'></input>
     </view>
     <text class='btn' bindtap='searchbtn'>搜索</text>
   </view>
