@@ -1,21 +1,52 @@
 <!--pages/search/search.wxml-->
+<view class='page'>
+  <view class='search'>
+    <view class='searchbar'>
+      <image src='/image/new/icon_search.png'></image>
+      <input confirm-type="search" bindconfirm="searchbtn" bindinput='searchValue'></input>
+    </view>
+    <text class='btn' bindtap='searchbtn'>搜索</text>
+  </view>
+  <view class='hot-search'>
+    <view class='title'>
+      <text>大家都在买</text>
+    </view>
+    <view class='content'>
+      <block wx:for="{{hot_seaech}}" wx:key='hotKey'>
+        <view bindtap='hotsearch' data-name="{{item.search_name}}" class='search-item'>
+            {{item.search_name}}
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='hot-search'>
+    <view class='title'>
+      <text>搜索历史</text>
+      <image src='/image/new/icon_delete.png' bindtap='clear'></image>
+    </view>
+    <view class='content'>
+      <block wx:for="{{hots}}" wx:key='hotsKey'>
+        <view bindtap='hotsearch' data-name="{{item}}" class='search-item'>
+          {{item}}
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
 
-
-<view class='search'>
+<!-- <view class='search'>
   <view>
     <text class='iconfont icon-sousuo'></text>
     <input confirm-type="search" bindconfirm="search" bindinput='searchValue'></input>
   </view>
   <text class='btn' bindtap='searchbtn'>搜索</text>
-</view>
-
+</view> -->
 
 <!--热门搜索  -->
-<view class='hotSearch'>
+<!-- <view class='hotSearch'>
   <view class='hotTit'>热门搜索</view>
   <view>
   <block wx:for="{{hot_seaech}}" >
-    <!--by yan.lei 前三个加了个样式 -->
     <view style='color:#ff712b' wx:if="{{index<=2}}" bindtap='hotsearch' data-name="{{item.search_name}}">
         {{item.search_name}}
     </view>
@@ -25,10 +56,10 @@
   </block>  
 
   </view>
-</view>
+</view> -->
 
 <!--最近搜索  -->
-<view class='hotSearch' style='border:none'>
+<!-- <view class='hotSearch' style='border:none'>
   <view class='hotTit'>最近搜索 <text class='clear' bindtap='clear'>清空</text></view>
   <view>
       <block wx:for="{{hots}}" >
@@ -38,4 +69,4 @@
       </block>  
 
   </view>
-</view>
+</view> -->

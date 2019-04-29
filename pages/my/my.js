@@ -8,7 +8,76 @@ Page({
     levelname: "",
     member_money: "",
     yhq: "",
-    mshow: "display:none"
+    mshow: "display:none",
+    wantsBuyData:{
+      name:"大家都在买",
+      "showTip": true
+    },
+    waitPayment: 0,
+    waitDelivery: 0,
+    waitTakeDelivery: 0,
+    waitEvaluate: 0,
+  },
+  /**订单查询数量*/
+  queryNum: function(url){
+    var num = new Promise(function (resolve, reject) {
+      var userInfo = wx.getStorageSync("userinfo");
+      var uid = userInfo.uid;
+      wx.request({
+        url: app.globalData.Murl + url,
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: "POST",
+        data:{
+          member_id: uid
+        },
+        success(res) {
+          resolve(res)
+        },
+        fail(res){
+          reject(res)
+        }
+      })
+    })
+    return num
+  },
+  getQueryNum: function (url, orderType){
+    var that = this;
+    this.queryNum(url).then(function (res) {
+      // console.log(res)
+      var len;
+      if (res.data.order) {
+        len = res.data.order.length;
+      }else{
+        len = 0;
+      }
+      if (orderType === 'waitPayment') {
+        that.setData({
+          waitPayment: len
+        })
+      } else if (orderType === 'waitDelivery') {
+        that.setData({
+          waitDelivery: len
+        })
+      } else if (orderType === 'waitTakeDelivery') {
+        that.setData({
+          waitTakeDelivery: len
+        })
+      }
+      if (url === '/Applets/User/m_order4'){
+        var numLen = 0;
+        for (var i = 0; i < res.data.order.length;i++){
+          if (res.data.order[i].order_list) {
+            numLen += res.data.order[i].order_list.length;
+          }
+          that.setData({
+            waitEvaluate: numLen
+          })
+        }
+        
+      }
+    })
   },
   tomcharge:function(){
     wx.navigateTo({
@@ -28,8 +97,12 @@ Page({
     })
   },
   onShow: function () {
+    this.getQueryNum('/Applets/User/m_order1', 'waitPayment');
+    this.getQueryNum('/Applets/User/m_order2', 'waitDelivery');
+    this.getQueryNum('/Applets/User/m_order3', 'waitTakeDelivery');
+    this.getQueryNum('/Applets/User/m_order4', 'waitEvaluate');
     var that = this;
-    console.log(wx.getStorageSync("userinfo").uid)
+    //console.log(wx.getStorageSync("userinfo").uid)
     if (wx.getStorageSync("userinfo").uid) {
       that.setData({
         uid: wx.getStorageSync("userinfo").uid,
@@ -40,7 +113,7 @@ Page({
         data: { uid: that.data.uid },
         method: "POST",
         success: function (res) {
-          console.log(res)
+          //console.log(res)
           that.setData({
             levelname: res.data.level_name,
             member_money: res.data.member_money,
@@ -120,7 +193,7 @@ Page({
   onLoad: function (options) {
 
     var pid = options.pid;
-    console.log(pid);
+    // console.log(pid);
     if (pid) {
       wx.setStorageSync("pid", pid);
     }

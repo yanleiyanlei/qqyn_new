@@ -82,21 +82,16 @@ Page({
     })
 
     /*调用接口*/
-    var _that = this;
-    //console.log(options.pid);
-    var scene = decodeURIComponent(options.scene)
-    // console.log(scene);
-    if (scene == 'undefined') {
-      var goodsid = options.goodsid;
-      var pid = options.pid;
-    } else {
-      var goodsid = scene.split("&")[0];
-      var pid = scene.split("&")[1];
-    }
+    let _that = this;
+    // console.log('onLoad-options',options);
+    let scene = decodeURIComponent(options.scene)
+    // console.log('onLoad-scene', scene)
+    let goodsid = scene =='undefined' ? options.goodsid : scene.split("&")[0];
+    let pid = scene == 'undefined' ? options.pid : scene.split("&")[1] ;
+    // console.log('onLoad-goodsid', goodsid);
     //创建缓存
     _that.setData({
-      goodsid: goodsid,
-      member_id: pid,
+      goodsid: goodsid
     })
     if (pid) {
       wx.setStorageSync("pid", pid);
@@ -166,6 +161,11 @@ Page({
           tagHidden=true;
         }
         var shop_prices = datalist.goodsSpecInfo[0].shop_price;
+        //如果预售或者无货 统一显示无货 加入购物车/去结算不可点击
+        let ionot=1;
+        if (datalist.goodsdetails.isnot == 0 || datalist.goodsdetails.is_sale=="1"){
+          ionot=0;
+        }
         //测试数据
         // const tagsArr={
         //   '1':'有机',
@@ -176,7 +176,7 @@ Page({
         // }
         that.setData({
           datas: datalist,
-          ionot: datalist.goodsdetails.isnot, //是否有货
+          ionot: ionot, //是否有货
           nowTime: datalist.timestos, //当前时间
           goodsAttrInfo: datalist.goodsAttrInfo,
           shopName: datalist.goodsdetails,

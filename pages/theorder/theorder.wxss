@@ -39,12 +39,14 @@ page{
 
 .adress_ther {
   text-align: center;
-  width: 100%;
+  width: 95%;
   height: 170rpx;
   background: none;
   line-height: 170rpx;
   font-size: 32rpx;
   color: #303030;
+  border-top: 1px solid #eee;
+  margin: 0 auto;
 }
 
 .botthe {
@@ -52,12 +54,13 @@ page{
   height: 8rpx;
   position: absolute;
   bottom: 1rpx;
+  box-shadow:0rpx 6rpx 10rpx #ccc;
 }
 
 .centerothe {
   width: 100%;
   /* height: 310rpx; */
-  margin-top: 10rpx;
+  margin-top: 21rpx;
   padding: 0 30rpx 0 30rpx;
   box-sizing: border-box;
   background: #fff;
@@ -69,10 +72,11 @@ page{
   line-height: 90rpx;
   font-size: 32rpx;
   color: #303030;
+  font-weight: bold;
 }
 
 .imglist {
-  border-bottom: 1rpx solid #bfbfbf;
+  border-bottom: 1rpx solid #BFBFBF;
   width: 100%;
   height: 220rpx;
   display: flex;
@@ -89,6 +93,7 @@ page{
   font-size: 24rpx;
   font-family: SourceHanSansCN-Regular;
   color: rgba(48, 48, 48, 1);
+  font-weight: bold;
 }
 
 .freight text {
@@ -137,7 +142,7 @@ page{
 .listwu {
   width: 100%;
   height: auto;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
   padding: 0 30rpx 0 30rpx;
   box-sizing: border-box;
   background: #fff;
@@ -148,7 +153,7 @@ page{
   width: 100%;
   /* height: 470rpx; */
   background: #fff;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
   padding: 0 30rpx 0 30rpx;
   box-sizing: border-box;
 }
@@ -166,15 +171,17 @@ page{
 
 .numprices {
   flex: 1;
-  text-align: right;
+  text-align: left;
   margin-right: 15rpx;
   line-height: 100rpx;
   font-size: 32rpx;
   color: #303030;
+  padding-left:31rpx;
 }
 
 .numbers {
-  color: #ff712b;
+  color: #FF712B;
+  font-weight: bold;
 }
 
 .tijiao {
@@ -186,54 +193,77 @@ page{
   font-size: 32rpx;
   color: #fff;
   text-align: center;
-  background: linear-gradient(#ffae31, #ff792c);
+  background:linear-gradient(-90deg,rgba(255,113,43,1),rgba(255,180,50,1));
 }
 
 .yutime {
   width: 100%;
   height: 90rpx;
-  border-bottom: 1rpx solid #bfbfbf;
   line-height: 90rpx;
-  font-size: 32rpx;
-  color: #303030;
+  font-size: 28rpx;
+  color: #888;
 }
-
+.yOne{
+  height: 90rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 0 30rpx 0 30rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #888;
+}
+.actual{
+  border-top: 1rpx solid #bfbfbf;
+  height: 90rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #888;
+}
 .youhuiq {
   width: 100%;
   height: 90rpx;
   line-height: 90rpx;
-  font-size: 32rpx;
-  color: #303030;
+  font-size: 28rpx;
+  color: #888;
 }
 
 .majialiuya {
-  width: 100%;
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 32rpx;
-  color: #303030;
+  font-size: 28rpx;
+  color: #888;
   display: flex;
   flex-direction: row;
+  margin-top: 20rpx;
+  background-color: #fff;
+  width: 100%;
 }
 
 .liuyan {
-  width: 170rpx;
+  width: 140rpx;
+  display: block;
+  margin-left: 30rpx;
 }
 
 .majialiuya input {
-  flex: 1;
   height: 100rpx;
   background: none;
+  display: block;
+  margin-right: 30rpx;
 }
 
 .satime {
   float: right;
-  color: #ff712b;
+  color: #353535;
+  font-weight: bold;
 }
 
 .satimes {
   float: right;
-  color: #b0b0b0;
+  color: #353535;
+  font-weight: bold;
 }
 
 .coloa {

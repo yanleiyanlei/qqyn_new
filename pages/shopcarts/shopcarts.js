@@ -20,7 +20,20 @@ Page({
     ress: [],
     commpany: [],
     location: '',
-    isquan: true //是否可以全选
+    isquan: true, //是否可以全选,
+    /** 判断如果超出库存之后按钮不可点 */
+    dataTitle: {
+      name: "大家都在买",
+      showTip: true
+    }
+  },
+  changeCarts(e){
+    //console.log(e);
+    var carts = e.detail;
+    this.setData({
+      carts: carts
+    })
+    this.getTotalPrice();
   },
   /*计算总价*/
   getTotalPrice() {
@@ -117,8 +130,8 @@ Page({
         const dastas = res.data;
         console.log(dastas);
         for (var i = 0; i < carts.length; i++) {
-          if (carts[i].selected == true && carts[i].store_count>0 ) {
-            
+          if (carts[i].selected == true && carts[i].store_count > 0) {
+
             var kc = Number(carts[i].store_count); //商品库存
             var num = Number(carts[i].goods_num); //选中商品数量
             var name = carts[i].goods_name; //商品名称
@@ -164,7 +177,7 @@ Page({
 
     var _this = this;
     var value = _this.data.hieneflae; //删除 状态 
-    console.log(value)     
+    console.log(value)
     if (value == true) {
 
       if (selectAllStatus == true) { //选中状态
@@ -218,13 +231,13 @@ Page({
                   success: function(res) {
 
                     // if (res.data.selected == 'true') {
-                      let carts = _this.data.carts;
-                      const selected = carts[i].selected;
-                      carts[i].selected = !selected;
-                      _this.getTotalPrice();
-                      _this.setData({
-                        carts: carts,
-                      })
+                    let carts = _this.data.carts;
+                    const selected = carts[i].selected;
+                    carts[i].selected = !selected;
+                    _this.getTotalPrice();
+                    _this.setData({
+                      carts: carts,
+                    })
 
                     // } else {
                     //   wx.showToast({
@@ -238,7 +251,7 @@ Page({
                     // }
                   }
                 })
-              } 
+              }
               // else {
               //   wx.showToast({
               //     title: '未选中的商品库存不足，请修改数量',
@@ -267,13 +280,13 @@ Page({
                 success: function(res) {
                   console.log(res.data);
                   // if (res.data.selected == 'true') {
-                    let carts = _this.data.carts;
-                    const selected = carts[i].selected;
-                    carts[i].selected = !selected;
-                    _this.getTotalPrice();
-                    _this.setData({
-                      carts: carts
-                    })
+                  let carts = _this.data.carts;
+                  const selected = carts[i].selected;
+                  carts[i].selected = !selected;
+                  _this.getTotalPrice();
+                  _this.setData({
+                    carts: carts
+                  })
 
                   // } else {
                   //   wx.showToast({
@@ -295,110 +308,30 @@ Page({
     } else {
       if (selectAllStatus == true) { //选中状态
         for (let i = 0; i < carts.length; i++) {
-            if (carts[i].selected == true) {
+          if (carts[i].selected == true) {
 
-            } else {
-              var kc = Number(carts[i].store_count); //每个商品的库存
-              var num = Number(carts[i].goods_num); //每个商品的选中数量
-              if (value == false) {
-                wx.request({
-                  url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect", //后台请求地址
-                  data: {
-                    member_id: uid, //用户id
-                    cart_id: carts[i].id, //所选商品id
-                    selected: 1,
-                  },
-                  method: "POST",
-                  success: function(res) {
-
-                    // if (res.data.selected == 'true') { //后台返回 res.data.selected == 'true' 请求成功
-                      let carts = _this.data.carts; //获取购物车信息
-                      const selected = carts[i].selected; //获取商品的selected 选中状态
-                      carts[i].selected = !selected; //改变商品选中状态
-                      _this.getTotalPrice(); //重新计算总价
-                      _this.setData({
-                        carts: carts, //更新购物车
-                      })
-
-                    // } else {
-                    //   wx.showToast({
-                    //     title: '系统繁忙',
-                    //     icon: 'none',
-                    //     duration: 2000
-                    //   })
-                    //   setTimeout(function() {
-                    //     wx.hideLoading()
-                    //   }, 1000)
-                    // }
-                  }
-                })
-              } else if (value == true) {
-                wx.request({
-                  url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",
-                  data: {
-                    member_id: uid,
-                    cart_id: carts[i].id,
-                    selected: 1,
-                  },
-                  method: "POST",
-                  success: function(res) {
-
-                    if (res.data.selected == 'true') {
-                      let carts = _this.data.carts;
-                      const selected = carts[i].selected;
-                      carts[i].selected = !selected;
-                      _this.getTotalPrice();
-                      _this.setData({
-                        carts: carts,
-                      })
-
-                    } else {
-                      wx.showToast({
-                        title: '系统繁忙',
-                        icon: 'none',
-                        duration: 2000
-                      })
-                      setTimeout(function() {
-                        wx.hideLoading()
-                      }, 1000)
-                    }
-                  }
-                })
-              }
-              //  else {
-              //   wx.showToast({
-              //     title: '未选中的商品库存不足，请修改数量',
-              //     icon: 'none',
-              //     duration: 2000
-              //   })
-              // }
-            }
-        }
-
-      } else { //取消选中
-        for (let i = 0; i < carts.length; i++) {
-            if (carts[i].selected == false) {
-
-            } else {
+          } else {
+            var kc = Number(carts[i].store_count); //每个商品的库存
+            var num = Number(carts[i].goods_num); //每个商品的选中数量
+            if (value == false) {
               wx.request({
-                url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",
+                url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect", //后台请求地址
                 data: {
-                  member_id: uid,
-                  cart_id: carts[i].id,
-                  selected: 0,
+                  member_id: uid, //用户id
+                  cart_id: carts[i].id, //所选商品id
+                  selected: 1,
                 },
                 method: "POST",
                 success: function(res) {
 
-                  console.log(res.data);
-                  // if (res.data.selected == 'true') {
-                    let carts = _this.data.carts;
-                    const selected = carts[i].selected;
-                    carts[i].selected = !selected;
-                    _this.getTotalPrice();
-                    _this.setData({
-                      carts: carts
-                    })
+                  // if (res.data.selected == 'true') { //后台返回 res.data.selected == 'true' 请求成功
+                  let carts = _this.data.carts; //获取购物车信息
+                  const selected = carts[i].selected; //获取商品的selected 选中状态
+                  carts[i].selected = !selected; //改变商品选中状态
+                  _this.getTotalPrice(); //重新计算总价
+                  _this.setData({
+                    carts: carts, //更新购物车
+                  })
 
                   // } else {
                   //   wx.showToast({
@@ -412,7 +345,87 @@ Page({
                   // }
                 }
               })
+            } else if (value == true) {
+              wx.request({
+                url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",
+                data: {
+                  member_id: uid,
+                  cart_id: carts[i].id,
+                  selected: 1,
+                },
+                method: "POST",
+                success: function(res) {
+
+                  if (res.data.selected == 'true') {
+                    let carts = _this.data.carts;
+                    const selected = carts[i].selected;
+                    carts[i].selected = !selected;
+                    _this.getTotalPrice();
+                    _this.setData({
+                      carts: carts,
+                    })
+
+                  } else {
+                    wx.showToast({
+                      title: '系统繁忙',
+                      icon: 'none',
+                      duration: 2000
+                    })
+                    setTimeout(function() {
+                      wx.hideLoading()
+                    }, 1000)
+                  }
+                }
+              })
             }
+            //  else {
+            //   wx.showToast({
+            //     title: '未选中的商品库存不足，请修改数量',
+            //     icon: 'none',
+            //     duration: 2000
+            //   })
+            // }
+          }
+        }
+
+      } else { //取消选中
+        for (let i = 0; i < carts.length; i++) {
+          if (carts[i].selected == false) {
+
+          } else {
+            wx.request({
+              url: app.globalData.Murl + "/Applets/Cart/ajaxCartSelect",
+              data: {
+                member_id: uid,
+                cart_id: carts[i].id,
+                selected: 0,
+              },
+              method: "POST",
+              success: function(res) {
+
+                console.log(res.data);
+                // if (res.data.selected == 'true') {
+                let carts = _this.data.carts;
+                const selected = carts[i].selected;
+                carts[i].selected = !selected;
+                _this.getTotalPrice();
+                _this.setData({
+                  carts: carts
+                })
+
+                // } else {
+                //   wx.showToast({
+                //     title: '系统繁忙',
+                //     icon: 'none',
+                //     duration: 2000
+                //   })
+                //   setTimeout(function() {
+                //     wx.hideLoading()
+                //   }, 1000)
+                // }
+              }
+            })
+          }
         }
       }
     }
@@ -421,6 +434,122 @@ Page({
       carts: carts
     });
     this.getTotalPrice(); // 重新获取总价
+  },
+
+  /** 当前页面点击添加购物车*/
+  changeCarList: function(data) {
+    //console.log(data);
+    if (data.detail) {
+      const _that = this;
+      var location = wx.getStorageSync("locationcity");
+      _that.setData({
+        is_coupon: 0,
+        location: location
+      })
+      var uid = wx.getStorageSync("userinfo").uid; //获取用户uid
+      var uid = _that.data.uid;
+      console.log(uid);
+      const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList"; //获取购物车数据
+      wx.request({
+        url: shopusr,
+        data: {
+          member_id: uid, //用户uid
+          seller_id: 1,
+          city: location
+        },
+        method: "POST",
+        success: function(res) {
+          const dalist = res.data;
+          var carts = dalist.cartList; //购物车信息
+          //console.log(dalist);
+          var package_mail = dalist.commpany.package_mail; //包邮的金额
+          let total = 0;
+          console.log(carts);
+          for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
+            if (carts[i].area == 1 && carts[i].store_count > 0) {
+              if (carts[i].selected) { // 判断选中才会计算价格
+                total += carts[i].goods_num * carts[i].goods_price; // 所有价格加起来
+              }
+            }
+          }
+          /*第二件商品 0元购*/
+          /*for (let i = 0; i < carts.length; i++) {
+            if (carts[i].selected == true) {
+              if (carts[i].goods_id == 23 || carts[i].goods_id == 347 || carts[i].goods_id == 300 || carts[i].goods_id == 327) {
+                if (carts[i].goods_num > 1) {
+                  total += carts[i].goods_num * carts[i].goods_price - carts[i].goods_price;
+                } else {
+                  total += carts[i].goods_num * carts[i].goods_price;
+                }
+              } else {
+                total += carts[i].goods_num * carts[i].goods_price;
+              }
+            }
+          }*/
+          let cartstrue = [];
+          for (let i = 0; i < carts.length; i++) {
+            if (carts[i].area == 1 && carts[i].store_count > 0) {
+              cartstrue.push(carts[i].selected);
+            }
+          }
+          if (cartstrue.length < 1) {
+            _that.setData({
+              selectAllStatus: false,
+              isquan: false
+            })
+          } else {
+            _that.setData({
+              isquan: true
+            })
+            if (cartstrue.indexOf(false) !== -1) {
+              _that.setData({
+                selectAllStatus: false,
+              })
+            } else {
+              _that.setData({
+                selectAllStatus: true,
+              })
+            }
+          }
+
+          // console.log(_that.data.selectAllStatus)
+          //赋值
+          _that.setData({
+            dalist: dalist.commpany,
+            hasList: true, //购物车有信息
+            carts: carts, //购物车
+            commpany: dalist.commpany, //其他满多少包邮
+            package_mail: Number(dalist.commpany.package_mail), //包邮的金额
+            totalPrice: total.toFixed(2), //总价
+            zonprice: Number(package_mail - total).toFixed(2), //总价差包邮的金额多少
+          })
+          //判断是否有选中的  有商品券 商品
+          for (var i = 0; i < carts.length; i++) {
+            if (carts[i].is_coupon == 1 && carts[i].selected == true) {
+              _that.setData({
+                is_coupon: 1,
+              })
+            } else if (carts[i].is_coupon == 1 && carts[i].selected == false) {
+              _that.setData({
+                is_coupon: 0,
+              })
+            }
+          }
+          console.log(_that.data.is_coupon);
+
+        },
+        fail: function(res) {
+          wx.showLoading({
+            title: '网络连接失败！',
+          })
+
+          setTimeout(function() {
+            wx.hideLoading()
+          }, 2000)
+
+        }
+      })
+    }
   },
   /*编辑*/
   toggle: function() {
@@ -438,7 +567,7 @@ Page({
       isquan: true
     })
     for (let a = 0; a < carts.length; a++) {
-        arr1.push(carts[a].selected)
+      arr1.push(carts[a].selected)
     }
     console.log(arr1);
     if (arr1.indexOf(false) != -1) {
@@ -463,7 +592,7 @@ Page({
     var kc = e.currentTarget.dataset.key; //获取该商品库存
     let num = carts[index].goods_num; //获取商品选中
     num = Number(num) + 1; //商品数量每次加一
-    console.log(goods_id);
+    //console.log(goods_id);
     if (num > kc) { //数目大于库存
       wx.showToast({
         title: '库存不足！',
@@ -519,7 +648,8 @@ Page({
     num = num - 1;
     carts[index].goods_num = num;
     this.setData({
-      carts: carts
+      carts: carts,
+      andImg: true
     });
     this.getTotalPrice();
     let jinsurl = app.globalData.Murl + "/Applets/Cart/ajaxCartCount";
@@ -756,33 +886,33 @@ Page({
         method: "POST",
         success: function(res) {
           // if (res.data.selected == 'true') { //后台请求成功
-            let carts = _this.data.carts; //购物车信息
-            console.log(carts);
-            const selected = carts[index].selected; //获取此商品选中状态
-            carts[index].selected = !selected; //改变此商品的选中状态
-            _this.getTotalPrice(); //重新计算商品总价
+          let carts = _this.data.carts; //购物车信息
+          console.log(carts);
+          const selected = carts[index].selected; //获取此商品选中状态
+          carts[index].selected = !selected; //改变此商品的选中状态
+          _this.getTotalPrice(); //重新计算商品总价
+          _this.setData({
+            carts: carts, //更新购物车信息
+          })
+
+          //判断购物车商品是否全补选中，如果全部选中，底部全选状态激活  selectAllStatus==true
+          let cartstrue = [];
+          for (let i = 0; i < carts.length; i++) {
+
+            if (carts[i].area == 1 && carts[i].store_count > 0) {
+              cartstrue.push(carts[i].selected);
+            }
+          }
+          //使用indeof进行对比查找
+          if (cartstrue.indexOf(false) != -1) {
             _this.setData({
-              carts: carts, //更新购物车信息
+              selectAllStatus: false,
             })
-
-            //判断购物车商品是否全补选中，如果全部选中，底部全选状态激活  selectAllStatus==true
-            let cartstrue = [];
-            for (let i = 0; i < carts.length; i++) {
-
-              if (carts[i].area == 1 && carts[i].store_count>0) {
-                cartstrue.push(carts[i].selected);
-              }
-            }
-            //使用indeof进行对比查找
-            if (cartstrue.indexOf(false) != -1) {
-              _this.setData({
-                selectAllStatus: false,
-              })
-            } else {
-              _this.setData({
-                selectAllStatus: true,
-              })
-            }
+          } else {
+            _this.setData({
+              selectAllStatus: true,
+            })
+          }
           // } else {
           //   wx.showToast({
           //     title: '系统繁忙',
@@ -807,30 +937,30 @@ Page({
         method: "POST",
         success: function(res) {
           // if (res.data.selected == 'true') {
-            let carts = _this.data.carts;
-            console.log(carts);
-            const selected = carts[index].selected;
-            carts[index].selected = !selected;
-            _this.getTotalPrice();
+          let carts = _this.data.carts;
+          console.log(carts);
+          const selected = carts[index].selected;
+          carts[index].selected = !selected;
+          _this.getTotalPrice();
+          _this.setData({
+            carts: carts,
+          })
+          let cartstrue = [];
+          for (let i = 0; i < carts.length; i++) {
+
+            cartstrue.push(carts[i].selected);
+
+          }
+
+          if (cartstrue.indexOf(false) != -1) {
             _this.setData({
-              carts: carts,
+              selectAllStatus: false,
             })
-            let cartstrue = [];
-            for (let i = 0; i < carts.length; i++) {
-
-                cartstrue.push(carts[i].selected);
-
-            }
-
-            if (cartstrue.indexOf(false) != -1) {
-              _this.setData({
-                selectAllStatus: false,
-              })
-            } else {
-              _this.setData({
-                selectAllStatus: true,
-              })
-            }
+          } else {
+            _this.setData({
+              selectAllStatus: true,
+            })
+          }
           // } else {
           //   wx.showToast({
           //     title: '系统繁忙',

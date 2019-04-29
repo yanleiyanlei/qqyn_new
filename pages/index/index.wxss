@@ -537,7 +537,7 @@ page {
   position: absolute;
   z-index: 111;
   right: 50rpx;
-  bottom: 67rpx;
+  bottom: 80rpx;
 }
 .fruitslist-li image {
   width: 350rpx;
@@ -594,9 +594,18 @@ page {
   height: 80rpx;
   float: right;
   position: absolute;
-  bottom: 10rpx;
+  bottom: 24rpx;
   right: 40rpx;
   z-index: 100;
+}
+.fruitslist-li .wait {
+  width:68rpx;
+  height:68rpx;
+  float:right;
+  position:absolute;
+  bottom:38rpx;
+  right:40rpx;
+  z-index:100;
 }
 
 .fruitslist-right-topimg {

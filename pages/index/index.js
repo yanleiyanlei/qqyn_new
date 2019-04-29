@@ -1,13 +1,12 @@
 //获取腾讯地图应用实例
-var QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
-var request = require('../../utils/util.js');
-var demo = new QQMapWX({
+const QQMapWX = require('../../lib/js/qqmap-wx-jssdk.min.js');
+const request = require('../../utils/util.js');
+const demo = new QQMapWX({
   key: '5UPBZ-OQLKD-AE44M-HBYKJ-32WLH-2JBKT' //密钥
 })
 //获取应用实例
 const app = getApp()
-var user = require("../../lib/js/user.js")
-// var common = require("../../lib/js/common.js");
+const user = require("../../lib/js/user.js")
 Page({
   data: {
     mshow: "display:none",
@@ -91,55 +90,45 @@ Page({
       mshow: "display:none"
     })
     user.user(e)
-    // wx.login({
-    //   success: function (res) {
-    //     var code = res.code;
-    //     var utoken = wx.getStorageSync("utoken");
-    //     wx.request({
-    //       //用户登陆URL地址，请根据自已项目修改
-    //       url: app.globalData.Murl+'/Applets/Login/userAuthSlogin',
-    //       method: "POST",
-    //       data: {
-    //         utoken: utoken,
-    //         code: code,
-    //         encryptedData: e.detail.encryptedData,
-    //         iv: e.detail.iv
-    //       },
-    //       fail: function (res) {
-    //       },
-    //       success: function (res) {
-    //         var utoken = res.data.utoken;
-    //         //设置用户缓存
-    //         wx.setStorageSync("utoken", utoken);
-    //         wx.setStorageSync("userinfo", res.data.userinfo);
-    //         //console.log("允许");
-    //       }
-    //     })
-    //   }
-    // })
   },
   // 添加购物车=================
   cart: function(e) {
-    var that = this;
+    let goods = e.currentTarget.dataset.goods;
+    console.log('cart',e);
+    //预售商品 不可加入购物车
+    if (goods.is_sale==1) {
+      wx.showToast({
+        title: '商品暂未开售',
+        icon:'none',
+        duration:2000
+      })
+      return;
+    }
+    let that = this;
     // var city = "哈尔滨";
-    var city = app.globalData.location;
-    var uid = wx.getStorageSync("userinfo").uid;
+    let city = app.globalData.location;
+    let uid = wx.getStorageSync("userinfo").uid;
     if (!uid) {
       that.setData({
         mshow: "display:block"
       })
     } else {
-      var uid = wx.getStorageSync("userinfo").uid;
-      var goods_id = e.currentTarget.dataset.goodsid;
-      var spec_key = e.currentTarget.dataset.key;
+      if (!goods.spec_key){
+        wx.showToast({
+          title: "没有设置规格",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
       //console.log(uid)
       wx.request({
         url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
         data: {
           member_id: uid, //会员ID
-          goods_id: goods_id, //商品ID
+          goods_id: goods.goods_id, //商品ID
           goods_num: 1, //商品数量
-          spec_key: spec_key,
+          spec_key: goods.spec_key,
           city: city
         },
         method: "POST",
@@ -147,11 +136,7 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function(res) {
-          // console.log(res.data)
           var txt = res.data.msg
-          var num = res.data.thisGoodsNum
-          e.currentTarget.dataset.num = num
-          //console.log(e.currentTarget.dataset.num)
           wx.showToast({
             title: txt,
             icon: 'none',
@@ -169,7 +154,6 @@ Page({
               method: "POST",
               success: function(res) {
                 //console.log(res.data.cartList)
-
                 that.setData({
                   cartList: res.data.cartList
                 })
@@ -224,7 +208,7 @@ Page({
   onLoad: function(options) {
     //  console.log(options)
     var pid = options.pid;
-    console.log(pid);
+    // console.log(pid);
     if (pid) {
       wx.setStorageSync("pid", pid);
     }
@@ -237,28 +221,8 @@ Page({
 
     var uid = wx.getStorageSync("userinfo").uid;
     var that = this;
-
     // 获取购物车列表
-
-
-
     const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-    // wx.request({
-    //   url: shopusr,
-    //   data: {
-    //     member_id: uid,
-    //     seller_id: 1,
-    //   },
-    //   method: "POST",
-    //   success: function(res) {
-    //     //console.log(res.data.cartList)
-
-    //     that.setData({
-    //       cartList: res.data.cartList
-    //     })
-
-    //   }
-    // })
     request.request("/Applets/Cart/ajaxCartList", {
       member_id: uid,
       seller_id: 1,
@@ -267,7 +231,6 @@ Page({
         cartList: data.cartList
       })
     })
-
     wx.getSystemInfo({
       success: function(res) {
         //console.log(res.SDKVersion)//小程序版本库,低于1.9.0首页商品展示不兼容.
@@ -275,13 +238,10 @@ Page({
       }
     })
 
-
     // 分享带票据===用作分享团购拼团操作部分数据。获取用户和群基本信息
     wx.showShareMenu({
       withShareTicket: true
     })
-
-
     // 获取用户地点
     wx.getLocation({
       type: 'gcj02',
@@ -300,8 +260,6 @@ Page({
             wx.setStorageSync("locationcity", ress.result.address_component.province);
             wx.setStorageSync("locationid", "");
             wx.setStorageSync("locationadd", "");
-            // getApp().globalData.location = ress.result.address_component.province;
-            // getApp().globalData.location = "上海";
           }
         })
 
@@ -334,10 +292,6 @@ Page({
                               location: ress.result.address_component.province
                             });
                             wx.setStorageSync("locationcity", ress.result.address_component.province)
-
-                            // getApp().globalData.location = ress.result.address_component.province;
-                            // getApp().globalData.location = "上海";
-
                           }
                         })
                       }
@@ -356,11 +310,7 @@ Page({
 
       }
     })
-
-
-
     // 首页banner轮播=========================================
-
     wx.request({
       url: app.globalData.Murl + '/Applets/Index/banner',
       data: {},
@@ -369,7 +319,7 @@ Page({
       },
       success: function(res) {
         var banner = []
-        console.log(res.data)
+        // console.log(res.data)
         var len = res.data.length
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].ad_position == 66) {
@@ -434,18 +384,7 @@ Page({
                   break
 
                 }
-                //为毛跳转链接里的参数个数=7就跳到商品页  先注释了  by yan.lei 2019.01.21 没链接跳转到个人中心吧
-                /* else if (link.length == 7) {
-                   var blink = "../details/details?goodsid=" + cas2
-
-                   var sj = { "bannerlink": blink, "bannersrc": res.data[i].ad_img }
-                   banner.push(sj)
-                   break
-                 }*/
-
               }
-              //console.log('aaaa');
-              //console.log(falg_banner);
               if (falg_banner == false) {
                 var blink = res.data[i].xcx_url
 
@@ -456,27 +395,12 @@ Page({
                 banner.push(sj)
               }
             }
-
-
-
-
-
-
           }
-
-
         }
-
-
-
-
         that.setData({
           banner: banner
         })
         //console.log(that.data.banner)
-
-
-
         that.setData({
           bannerUrls: res.data
         })
@@ -622,7 +546,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        console.log(res.data)
+        // console.log(res.data)
         for (var i = 0; i < res.data.length;i++){
           for (var j = 0; j < res.data[i].green.length;j++){
             if (res.data[i].green[j].spec_name === null) {
@@ -652,20 +576,14 @@ Page({
 
       }
     })
-
-
-
-
-
-
   },
   onShow: function() {
+    let that=this;
     location = wx.getStorageSync("locationcity");
     this.setData({
       location: location
     })
-    var that = this;
-    console.log(app.globalData.store)
+
     if (app.globalData.store == 1) {
       that.setData({
         store: true
@@ -704,24 +622,26 @@ Page({
     //console.log(1)
 
     // 获取购物车列表
-    var uid = wx.getStorageSync("userinfo").uid;
-    const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList";
-    wx.request({
-      url: shopusr,
-      data: {
-        member_id: uid,
-        seller_id: 1,
-      },
-      method: "POST",
-      success: function(res) {
-        //console.log(res.data.cartList)
-
-        that.setData({
-          cartList: res.data.cartList
+    this.getCartList();
+  },
+  // 获取购物车列表
+  getCartList: function () {
+    let _this = this;
+    // 获取购物车列表 
+    let uid = wx.getStorageSync("userinfo").uid;
+    let data = {
+      member_id: uid,
+      seller_id: 1,
+    }
+    let req = request.request("/Applets/Cart/ajaxCartList", data);
+    req.then(
+      function (res) {
+        console.log("获取购物车列表", res)
+        _this.setData({
+          cartList: res.cartList
         })
-
       }
-    })
+    )
   },
   onShareAppMessage: function() {
     var userinfo = wx.getStorageSync("userinfo");
@@ -732,15 +652,6 @@ Page({
       imageUrl: '',
       success: function(res) {
         console.log(res)
-        // console.log
-        // wx.getShareInfo({
-        //   shareTicket: res.shareTickets[0],
-        //   success: function (res) {
-        //     console.log(res)
-        //   },
-        //   fail: function (res) { console.log(res) },
-        //   complete: function (res) { console.log(res) }
-        // })
       },
       fail: function(res) {
         // 分享失败
@@ -748,15 +659,4 @@ Page({
       }
     }
   }
-
-  // getUserInfo: function(e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   this.setData({
-  //     userInfo: e.detail.userInfo,
-  //     hasUserInfo: true
-  //   })
-  // }
-
-
 })
