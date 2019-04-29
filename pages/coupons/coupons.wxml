@@ -16,13 +16,13 @@
           <view class="pricelist assas" style="padding-left:30rpx;box-sizing: border-box;">
             ￥
             <text class="moneys">{{item.coupon_money}}</text>
-            <text style="display:block" class="yprice">原价:{{item.coupon_money}}</text>
+            <!-- <text style="display:block" class="yprice">原价:{{item.coupon_money}}</text> -->
           </view>
           <view class="pricerigh">
             <view class="m-scope" wx:if="{{item.coupon_type==0}}">全场通用</view>
             <view class="m-scope" wx:elif="{{item.coupon_type=='zt1'}}">专题券</view>
             <view class="m-scope" wx:elif="{{item.coupon_type=='a'}}">{{item.goods_name}}</view>
-            <view class="m-scope" wx:elif="{{item.coupon_type>0}}">{{item.cat_type_name}}</view>
+            <view class="m-scope" wx:elif="{{item.fl==1}}">{{item.cat_type_name}}</view>
             <view class="m-full">
               <view class="wmks" wx:if="{{item.coupon_state==0}}">无门槛</view>
               <view class="wmks" wx:elif="{{item.coupon_state==1}}">满{{item.coupon_man}}减{{item.coupon_money}}</view>
