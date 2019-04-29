@@ -87,6 +87,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log("onLoad", options);
     let _this=this;
     let locationcity = wx.getStorageSync("locationcity");
     /** 根据跳转过来的ID显示对应的分类 */

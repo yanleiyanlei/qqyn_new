@@ -429,10 +429,16 @@ Page({
     reqSon.then(
       function (res) {
         console.log("reqSon", res)
-        let goods = res.goods ? res.goods : res
-        that.setData({
-          goods: goods
-        });
+        let goods = res.goods ? res.goods : res;
+        if (goods instanceof Array){
+          that.setData({
+            goods: goods
+          })
+        }else{
+          that.setData({
+            goods: []
+          });
+        }
         that.updateCartState();
       },
       function (err) {
