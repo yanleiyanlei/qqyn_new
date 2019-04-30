@@ -191,8 +191,7 @@
         </navigator>
       </block>
              <!-- coupon_type>1 是分类券 -->
-      <block wx:if="{{item.coupon_type>0}}">
-
+      <block wx:if="{{item.fl==1}}">
         <!-- discounts==0 优惠券状态可以使用 连接可以点击 其他状态连接不可点击 -->
         <navigator open-type="switchTab" url="{{item.discounts==0 ? '/pages/index/index' : ' '}}" style="display:inline-block" hover-class="Nhover">
 
