@@ -57,6 +57,8 @@
   margin: 22rpx 20rpx 0 30rpx;
   font-weight: 500;
   height:30rpx;
+  line-height:24rpx;
+
 }
 .goods .goodsweight{
   font-size: 24rpx;
@@ -90,7 +92,7 @@
   justify-content:space-between;
   align-items:flex-end;
   padding-bottom: 30rpx;
-  padding-top:20rpx;
+  padding-top:18rpx;
   margin-left: 30rpx;
   position: relative;
 }
