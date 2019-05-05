@@ -26,7 +26,7 @@
   </view>
 </view>
 <view class='second' id="second">
-  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" indicator-color="rgba(255,255,255,.3)" interval="{{interval}}" duration="{{duration}}" display-multiple-items='4.5' circular='true'>
+  <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" indicator-color="rgba(255,255,255,.3)" interval="{{interval}}" duration="{{duration}}" display-multiple-items='4.5' >
     <block wx:for="{{second}}">
       <swiper-item>
         <view data-secondid='{{item.id}}' bindtap='second'>

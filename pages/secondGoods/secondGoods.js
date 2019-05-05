@@ -76,15 +76,20 @@ Page({
   onShow: function() {
     let that = this;
     let location = wx.getStorageSync("locationcity");
+    that.setData({
+      active: "",
+      xlactive: "",
+      jgactive: ""
+    })
     // let goods_ids = options.goodsid;
     // 获取购物车列表 
     that.getCartList();
     //是否需要重新请求 ids
     if (location!=that.data.location){
-      that.reqGoodsid(location);
       that.setData({
         location: location
       });
+      that.reqGoodsid(location);
       return;
     }
     // 请求商品列表
@@ -147,16 +152,18 @@ Page({
 
   // 最新商品查询 
   newgoods: function() {
+    console.log('newgoods',this.data.active)
     if(this.data.active) return;
     let that = this;
     let city = wx.getStorageSync("locationcity");
     let url = '/Applets/Index/timesort';
     let data={
-      one_cat_id: that.data.oneType,
-      two_cat_id: that.data.twoType,
+      // one_cat_id: that.data.options.oneType,
+      // two_cat_id: that.data.options.twoType,
       ids: that.data.goods_ids
     }
     let req = request.request(url,data);
+    console.log('newgoods', data)
     req.then(
       function(res){
         console.log(res);
@@ -379,40 +386,83 @@ Page({
     )
   },
   reqGoodsid:function(str){
-    console.log("reqGoodsid-str",str)
     let that=this;
-    let data={
-      txt: that.data.options.txt,
-      city: str
-    }
-    let req = request.request("/Applets/Index/search_goods", data);
-    req.then(
-      function (res) {
-        if(res.status){
-          that.setData({
-            status: res.status,
-            goods_ids: res.goods_ids
-          })
-        }else{
-          that.setData({
-            status: res.status,
-            goods_ids: [],
-            goods:[]
-          });
-          return;
+    console.log("reqGoodsid-str", str)
+    let page=that.data.options.page;
+    let options=that.data.options;
+    let reqSon;
+    // 判断从哪个页面进来的 
+    if (page == 1) {
+      reqSon = request.request('/Applets/Index/search_goods', { txt: that.data.options.txt, city: str });
+    } else if (page == 2) {
+      reqSon = request.request('/Applets/Index/classify_content', {two_cat_id: options.twoType, city: str });
+    };
+    reqSon.then(
+      function (res){
+        console.log("reqGoodsid-res", res);
+        if(page==1){
+          if(res.status==1){
+            that.setData({
+              goods_ids: res.goods_ids
+            })
+            that.reqGoods();
+          }else{
+            that.setData({
+              goods: [],
+              goods_ids: ''
+            })
+          }
+        }else if(page==2){
+          if(res.goods){
+            let goods_ids = res.goods.map(function (v, k) {
+              return v.goods_id;
+            }).join(',');
+            that.setData({
+              goods: res.goods,
+              goods_ids: goods_ids
+            })
+          }else{
+            that.setData({
+              goods: [],
+              goods_ids: ''
+            })
+          }
         }
-        that.reqGoods();
-        // else{
-        //   console.log("搜索不到商品，推荐商品：" + res.goods_ids);
-        //   wx.redirectTo({
-        //     url: '../searchnull/searchnull?goodsid=' + res.goods_ids,
-        //     success: function (res) { },
-        //     fail: function (res) { },
-        //     complete: function (res) { },
-        //   })
-        // }
       }
     )
+    // let data;
+    // data = {
+    //   txt: that.data.options.txt,
+    //   city: str
+    // }
+    // let req = request.request("/Applets/Index/search_goods", data);
+    // req.then(
+    //   function (res) {
+    //     if(res.status){
+    //       that.setData({
+    //         status: res.status,
+    //         goods_ids: res.goods_ids
+    //       })
+    //     }else{
+    //       that.setData({
+    //         status: res.status,
+    //         goods_ids: [],
+    //         goods:[]
+    //       });
+    //       return;
+    //     }
+    //     that.reqGoods();
+    //     // else{
+    //     //   console.log("搜索不到商品，推荐商品：" + res.goods_ids);
+    //     //   wx.redirectTo({
+    //     //     url: '../searchnull/searchnull?goodsid=' + res.goods_ids,
+    //     //     success: function (res) { },
+    //     //     fail: function (res) { },
+    //     //     complete: function (res) { },
+    //     //   })
+    //     // }
+    //   }
+    // )
   },
   reqGoods:function(){
     let that=this;
@@ -431,12 +481,19 @@ Page({
         console.log("reqSon", res)
         let goods = res.goods ? res.goods : res;
         if (goods instanceof Array){
+          let goods_ids=goods.map(function(v,k){
+            return v.goods_id;
+          }).join(',');
+          
+          console.log("reqSon-goods_ids", goods_ids);
           that.setData({
-            goods: goods
+            goods: goods,
+            goods_ids:goods_ids
           })
         }else{
           that.setData({
-            goods: []
+            goods: [],
+            goods_ids:''
           });
         }
         that.updateCartState();

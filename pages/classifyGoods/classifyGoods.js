@@ -64,6 +64,10 @@ Page({
   /** 点击分类 */
   clickClassfy: function(e) {
     console.log(e.target.dataset.id, e.target.dataset.index);
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 0
+    })
     var locationcity = wx.getStorageSync("locationcity");
     if (locationcity) {
       var add = locationcity
@@ -81,10 +85,6 @@ Page({
     that.setData({
       classfyBtnActive: index,
       one_cat_id: id
-    })
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration:1000
     })
     this.updateList(add, id);
   },
