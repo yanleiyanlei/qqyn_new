@@ -496,3 +496,13 @@ swiper{
   margin-top: -150rpx;
   margin-left: -300rpx;
 }
+.cont-item{
+  display:inline-block;
+  border:1rpx solid #c0c0c0;
+  line-height:55rpx;
+  text-align:center;
+  border-radius:10rpx;
+  padding:8rpx;
+  color: #000;
+  margin-right:20rpx;
+}

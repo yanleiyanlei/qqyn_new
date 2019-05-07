@@ -217,8 +217,8 @@
           <view class='panelitem'>
             <view class="title">规格：</view>
             <view class='content'>
-              <view wx:for="{{priCes}}" wx:key="prikey" bindtap="tabFun" data-index="{{index}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
-                <text class="{{index==selectindex ? 'active' : ''}}" data-id="{{selectindex}}" data-num="{{item.number}}">{{item.spec_name}}</text>
+              <view class="cont-item {{index==selectindex ? 'active' : ''}}" wx:for="{{priCes}}" wx:key="prikey" bindtap="tabFun" data-index="{{index}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
+                <text data-id="{{selectindex}}" data-num="{{item.number}}">{{item.spec_name}}</text>
               </view>
             </view>
           </view>
@@ -259,8 +259,8 @@
           <view class='panelitem'>
             <view class="title">规格：</view>
             <view class='content'>
-              <view wx:for="{{priCes}}" wx:key="conkey" bindtap="tabFun" data-index="{{index}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
-                <text class="{{index==selectindex ? 'active' : ''}}" data-id="{{selectindex}}" data-num="{{item.number}}">{{item.spec_name}}</text>
+              <view class="cont-item {{index==selectindex ? 'active' : ''}}" wx:for="{{priCes}}" wx:key="conkey" bindtap="tabFun" data-index="{{index}}" data-prices="{{item.shop_price}}" data-key="{{item.spec_key}}">
+                <text  data-id="{{selectindex}}" data-num="{{item.number}}">{{item.spec_name}}</text>
               </view>
             </view>
           </view>
