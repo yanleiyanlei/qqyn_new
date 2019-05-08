@@ -51,7 +51,6 @@ Page({
     num: 1, //默认 选择为 1 件
     minusStatus: 'disabled',
     Number: [], //库存
-    goodsreviews: [],
     shopprices: [],
     shop_key: [],
     tabArr: {

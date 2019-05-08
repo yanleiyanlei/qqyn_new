@@ -200,7 +200,6 @@ page {
   color:rgba(130,130,130,1);
   overflow:hidden;
   line-height:60rpx;
-
 }
 .search .navsearch{
   width: 530rpx;

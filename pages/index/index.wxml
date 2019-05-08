@@ -145,6 +145,7 @@
               <text class='fruitslist-li-one'>{{item.goods_name}}</text>
               <text class='fruitslist-li-two'>{{item.goods_remark}}</text>
               <text class='fruitslist-li-three'> <text style='font-size:24rpx'>￥</text>{{item.shop_price}}</text>
+              <text class='goodsdelprice'>￥{{item.market_price}}</text>
               <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
                 <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
               </block>
@@ -164,10 +165,11 @@
               <text class='fruitslist-li-one'>{{item.goods_name}}</text>
               <text class='fruitslist-li-two'>{{item.goods_remark}}</text>
               <text class='fruitslist-li-three'> <text style='font-size:24rpx'>￥</text>{{item.shop_price}}</text>
+              <text class='goodsdelprice'>￥{{item.market_price}}</text>
               <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
                 <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
               </block>
-              <image  class='addshop' wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png' data-goods="{{item}}" catchtap="cart"></image>
+              <image  class='wait' wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png' data-goods="{{item}}" catchtap="cart"></image>
               <image  class='addshop' wx:else src='../../image/new/shop.png' data-goods="{{item}}" catchtap="cart"></image>
             </view>
           </block>
