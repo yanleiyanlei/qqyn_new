@@ -34,10 +34,9 @@
         <view class='price-cur'>
           <text>￥{{shopName.shop_price}}</text>
         </view>
-        <!-- <view class='price-pre' wx:if="{{shopName.market_price!=0}}"> -->
-        <!-- <view class='price-pre'>
+        <view class='price-pre'>
           <text>￥{{shopName.market_price}}</text>
-        </view> -->
+        </view>
         <view class='sales'>
           <text>已售{{shopName.sales_sum}}份</text>
         </view>

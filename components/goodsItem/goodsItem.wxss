@@ -81,15 +81,15 @@
   text-decoration: line-through;
   color: #aaa;
   font-size: 20rpx;
-  display: none;
+  display: block;
 }
 .goods view.listBottom{
   width: 295rpx;
   height:97rpx;
-  display:flex;
+  /* display:flex;
   flex-direction:row;
   justify-content:space-between;
-  align-items:flex-end;
+  align-items:flex-end; */
   padding-bottom: 30rpx;
   padding-top:18rpx;
   margin-left: 30rpx;
@@ -98,9 +98,12 @@
 .goods view image{
   float: right;
   margin-right: 10rpx;
-  width:80rpx;
-  height:80rpx;
+  width:68rpx;
+  height:68rpx;
   background:rgba(143,195,31,0);
+  position: absolute;
+  right: 0;
+  bottom: 35rpx;
 }
 .goods .wait{
   width:68rpx;
@@ -125,6 +128,6 @@
   line-height: 26rpx;
   color: #fff;
   position: absolute;
-  right: 15rpx;
-  bottom: 90rpx;
+  right: 10rpx;
+  bottom: 80rpx;
 }
