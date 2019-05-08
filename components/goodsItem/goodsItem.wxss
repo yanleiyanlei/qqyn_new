@@ -106,8 +106,8 @@
   bottom: 35rpx;
 }
 .goods .wait{
-  width:68rpx;
-  height:68rpx;
+  width:60rpx;
+  height:60rpx;
   padding-bottom:10rpx;
 }
 .goods image.label{
