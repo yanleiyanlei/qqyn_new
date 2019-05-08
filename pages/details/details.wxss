@@ -72,19 +72,21 @@ swiper{
 .message .detail .price{
   margin-top: 20rpx;
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
 }
 .message .detail .price .price-cur{
   color: #FF712B;
   font-size: 40rpx;
   font-weight: bold;
+  line-height: 40rpx;
   font-family: SourceHanSansCN-Bold;
 }
 .message .detail .price .price-pre{
   margin-left: 20rpx;
   color: #B2B2B2;
   font-size: 30rpx;
-  line-height: 40rpx;
+  line-height: 33rpx;
   text-decoration: line-through;
 }
 .message .detail .price .sales{
@@ -495,4 +497,14 @@ swiper{
   left: 50%;
   margin-top: -150rpx;
   margin-left: -300rpx;
+}
+.cont-item{
+  display:inline-block;
+  border:1rpx solid #c0c0c0;
+  line-height:55rpx;
+  text-align:center;
+  border-radius:10rpx;
+  padding:8rpx;
+  color: #000;
+  margin-right:20rpx;
 }
