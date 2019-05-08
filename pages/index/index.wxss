@@ -555,7 +555,7 @@ page {
 .fruitslist-li-one {
   width: 277rpx;
   font-size: 24rpx;
-  height: 57rpx;
+  height: 60rpx;
   font-family: SourceHanSansCN-Bold;
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
