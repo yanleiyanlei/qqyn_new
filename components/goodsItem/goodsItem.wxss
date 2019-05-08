@@ -34,7 +34,7 @@
   margin: 26rpx 20rpx 0 30rpx;
   font-weight: bold;
   height: 70rpx;
-  line-height: 28rpx;
+  line-height: 30rpx;
   text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   text-overflow: ellipsis;
