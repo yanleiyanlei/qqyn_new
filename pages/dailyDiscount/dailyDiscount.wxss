@@ -1,0 +1,20 @@
+/* pages/dailyDiscount/dailyDiscount.wxss */
+.banner{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.content{
+  background-color: #FFE7AD;
+  padding-bottom: 20rpx;
+}
+navigator{
+  width: 100%; 
+  margin-top: 30rpx;
+}
+.adv{
+  width: 710rpx;
+  padding: 0rpx 20rpx;
+  display: block;
+  height: auto;
+}
