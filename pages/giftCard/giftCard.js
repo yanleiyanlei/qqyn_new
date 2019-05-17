@@ -9,7 +9,7 @@ Page({
       name: "",
       showTip: false,
     },
-    listData:3,
+    listData:'',
     id:''
   },
 
@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     var id = options.id;
     this.setData({
-      id: id
+      listData: id
     })
   },
 

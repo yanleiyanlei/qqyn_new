@@ -1,6 +1,9 @@
 <!--pages/giftCard/giftCard.wxml-->
 <view class='giftCard'>
   <image class='banner' mode="widthFix" src='http://m.77farmers.com/Public/xcximg/newyear/giftCard.png'></image>
+  <navigator  open-type='switchTab' url='/pages/shopcarts/shopcarts' hover-class="navigator-hover">
+    <image class='goshopcart' mode="widthFix" src='../../image/new/goshopcart.png'></image>
+  </navigator>
   <view class='content'>
     <text class='conp'>温馨提示</text>
     <text class='conp'>1、扫描左侧二维码可直接激活本卡。2、此卡有效期为1年。3、本卡最终解释权归青青优农所有。咨询电话：400-688-1602</text>

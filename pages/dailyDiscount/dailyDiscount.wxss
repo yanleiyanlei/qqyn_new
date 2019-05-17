@@ -4,9 +4,20 @@
   height: auto;
   display: block;
 }
+.dailyDiscount{
+  position: relative;
+}
+.goshopcart{
+  position: fixed;
+  right: 15rpx;
+  bottom: 40rpx;
+  width: 97rpx;
+  height: 97rpx;
+  z-index: 11;
+}
 .content{
   background-color: #FFE7AD;
-  padding-bottom: 20rpx;
+  padding-bottom: 100rpx;
 }
 navigator{
   width: 100%; 

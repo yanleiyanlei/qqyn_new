@@ -18,10 +18,6 @@ Component({
     },
     listData: {
       type: Number,
-      value: true
-    },
-    goodsid:{
-      type: Number,
       value: ''
     }
   },
@@ -55,9 +51,9 @@ Component({
   methods: {
     getwantsBuy: function () {
       var that = this;
-      var url='';
-      if (that.data.listData) {
-        console.log(that.data.listData)
+      var url = '';
+      console.log(that.data.listData)
+      if (!that.data.listData) {
         var data = {
           one_cat_id: 1
         };
@@ -79,26 +75,15 @@ Component({
             })
           }
         })
-      } else if (that.data.listData == 2){
+      } else {
         var data = {
-          id: that.data.goodsid
+          id: that.data.listData
         };
         var res = util.request('/Applets/Index/getThemeById', data, "post", "");
         res.then(function (data) {
           console.log(data)
           that.setData({
             special:data.data
-          })
-        })
-      } else{
-        var data = {
-          id: that.data.goodsid
-        };
-        var res = util.request('/Applets/Index/getThemeById', data, "post", "");
-        res.then(function (data) {
-          console.log(data)
-          that.setData({
-            special: data.data
           })
         })
       }

@@ -9,14 +9,17 @@ Page({
       name: "",
       showTip: false,
     },
-    listData: 2
+    listData: 2,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //console.log(options)
+    this.setData({
+      listData: options.id
+    })
   },
 
   /**
@@ -29,7 +32,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
     // var that = this;
     // var _urlshop = app.globalData.Murl + "/Applets/Index/getThemeById";
     // wx.request({
