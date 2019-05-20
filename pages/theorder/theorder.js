@@ -25,7 +25,14 @@ Page({
     upto_amount: " ", //运费
     package_mail: "", //满减的价格 例如 “99.00”
     isset: "", //是否可以去结算
-    popup:false
+    popup:false,
+    //配送时间
+    timeTips: '当日达',
+    tiemInfo: '',
+    deliveryList: '',
+    timeImgShow: 0,
+    tpShow: false,
+    timeDay: '' //暂存,提交用
   },
   userNameInput: function(e) { //用户留言
     this.setData({
@@ -133,7 +140,8 @@ Page({
           consigneeaddress: _this.data.quantity.address.sheng + _this.data.quantity.address.shi + _this.data.quantity.address.qu + _this.data.quantity.address.address_content, //用户全部地址信息
           order_content: _this.data.userName, //用户留言
           consigneeaddressid: _this.data.quantity.address.id, //地址id
-          post_time: post_time, //订单有蔬菜选择蔬菜送达时间
+          //post_time: post_time, //订单有蔬菜选择蔬菜送达时间
+          post_time: _this.data.timeDay,
         }
         wx.request({
           url: app.globalData.Murl + '/Applets/Cart/Addordershow',
@@ -599,6 +607,44 @@ Page({
       // })
     }
   },*/
+  /** 选择时间 */
+  showTimePop: function () {
+    this.setData({
+      tpShow: true
+    })
+  },
+  chooseTime: function (e) {
+    console.log(e)
+    var item = e.currentTarget.dataset.item;
+    var index = e.currentTarget.dataset.index;
+    this.setData({
+      timeDay: item.day,
+      tiemInfo: item.day + ' ' + item.week,
+      timeImgShow: index,
+    })
+    switch (index) {
+      case 0:
+        this.setData({
+          timeTips: '当日达'
+        })
+        break;
+      case 1:
+        this.setData({
+          timeTips: '次日达'
+        })
+        break;
+      default:
+        this.setData({
+          timeTips: ''
+        })
+    }
+  },
+  /**关闭弹窗 */
+  closeTimePop: function () {
+    this.setData({
+      tpShow: false
+    })
+  },
   onShow: function () {
     var _this = this;
     var page = _this.data.page; //page= 2 购物车进入  page=1 商品立即购买进入
@@ -647,6 +693,12 @@ Page({
                 var can_goods_coupon = datalist.can_goods_coupon; //商品卷可用数量
                 var is_goods_coupon = datalist.is_goods_coupon; //优惠卷是否为商品类型卷
                 datalist.timestos = getNowTime(datalist.reviews_addtime);
+                
+                _this.setData({
+                  tiemInfo: datalist.delivery_date.date[0].day + ' ' + datalist.delivery_date.date[0].week,
+                  deliveryList: datalist.delivery_date.date,
+                  timeDay: datalist.delivery_date.date[0].day
+                })
                 if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
                   var reduce_moeny = datalist.reward_coupon.reduce_moeny;
                   var satisfy_money = datalist.reward_coupon.satisfy_money;
@@ -743,6 +795,11 @@ Page({
           var can_goods_coupon = datalist.can_goods_coupon; //商品卷可用数量
           var is_goods_coupon = datalist.is_goods_coupon; //优惠卷是否为商品类型卷
           datalist.timestos = getNowTime(datalist.reviews_addtime);
+          _this.setData({
+            tiemInfo: datalist.delivery_date.date[0].day + ' ' + datalist.delivery_date.date[0].week,
+            deliveryList: datalist.delivery_date.date,
+            timeDay: datalist.delivery_date.date[0].day
+          })
           if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
             var reduce_moeny = datalist.reward_coupon.reduce_moeny;
             var satisfy_money = datalist.reward_coupon.satisfy_money;

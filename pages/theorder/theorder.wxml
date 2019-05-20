@@ -53,6 +53,7 @@
           </view>
            <view class="righship"wx:else data-tid='{{index}}'>
             共{{item.other.quantity}}件
+            <text class="iconfont icon-iconfontyoujiantou"></text>
           </view>
         </view>
         <view class='freight'>
@@ -61,7 +62,38 @@
         </view>
       </view>
     </block>
-    
+    <!-- 选择配送时间 -->
+    <view class="chooseTime" bindtap="showTimePop">
+      <text class="timeTit">配送时间</text>
+      <view class="ctInfo">
+        <view>
+          <text class="ctTime">{{tiemInfo}}</text>
+          <text class="ctDesc" wx:if="{{timeTips != ''}}">{{timeTips}}</text>
+        </view>
+        <text class="iconfont icon-iconfontyoujiantou"></text>
+      </view>
+    </view>
+    <!-- 选择时间弹窗 -->
+    <view class="TimePopup" wx:if="{{tpShow}}">
+      <view class="tpBox">
+        <view class="timeTitle">
+          <text class='textH4'>选择配送时间</text>
+          <text class='ttClose' bindtap="closeTimePop">×</text>
+        </view>
+        <view class="deliveryList">
+          <block class="clsssFor" wx:for="{{deliveryList}}" wx:key="index">
+            <view class="{{timeImgShow == index ? 'active' : ''}}" bindtap="chooseTime" data-item="{{item}}" data-index="{{index}}">
+              <icon wx:if="{{timeImgShow == index}}" type="success"  color="#ff712b" />
+              
+              <text>{{item.tips}}</text>
+            </view>
+          </block>
+        </view>
+        <text bindtap="closeTimePop" class="timeYes">确定</text>	
+      </view>
+    </view>
+
+
     <view class="majialiuya">
       <text class="liuyan">买家留言：</text>
       <input class="input" name="userName" placeholder="140字以内" bindinput="userNameInput" maxlength="140" />
@@ -73,9 +105,10 @@
         <text class="iconfont icon-iconfontyoujiantou"></text>
         </text>
         <text class="satimes" wx:else>
-			  <text class="coloa">-￥{{quantity.coupon.coupon_money}}</text>
+          <text class="coloa">-￥{{quantity.coupon.coupon_money}}</text>
+          <text class="iconfont icon-iconfontyoujiantou"></text>
         </text>
-      </view>
+    </view>
     <view class="listthetre">
       <view class="youhuiq">
         <text>商品总额</text>
