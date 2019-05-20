@@ -93,7 +93,7 @@ Page({
   //跳到199
   members() {
     wx.switchTab({
-      url: '../members/members'
+      url: '../bution/bution'
     })
   },
   onShow: function () {

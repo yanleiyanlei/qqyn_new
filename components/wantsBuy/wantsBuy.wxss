@@ -138,21 +138,21 @@
 } 
 
 .wantsBuy .goods .goodsprice text {
-  font-size: 20rpx;
+  font-size: 24rpx;
 }
 
 .wantsBuy .goods .goodsdelprice {
   text-decoration: line-through;
   color: #aaa;
-  font-size: 30rpx;
-  display: none;
+  font-size: 22rpx;
+  display: block;
 }
 
 .wantsBuy .goods .goodsdelprice text {
-  font-size: 24rpx;
+  font-size: 20rpx;
 }
 
-.wantsBuy .goods view {
+/* .wantsBuy .goods view {
   width: 209rpx;
   display: flex;
   flex-direction: row;
@@ -160,8 +160,14 @@
   align-items: center;
   margin: 23rpx 0rpx 10rpx 10rpx;
   padding-right: 10rpx;
+} */
+.listBottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20rpx 10rpx;
 }
-
 .wantsBuy .goods view image {
   float: right;
   margin: 0 0 0 0rpx;
@@ -193,5 +199,5 @@
   position: absolute;
   right: 15rpx;
   bottom: 75rpx;
-  display: none;
+  /* display: none; */
 }

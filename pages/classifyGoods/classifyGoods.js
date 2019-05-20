@@ -42,7 +42,8 @@ Page({
       }
     ],
     classfyBtnActive: 0,
-    cartList:[]
+    cartList:[],
+    scrollTop:0
   },
   golaAdd: function() {
     wx.navigateTo({
@@ -63,6 +64,10 @@ Page({
   /** 点击分类 */
   clickClassfy: function(e) {
     console.log(e.target.dataset.id, e.target.dataset.index);
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 0
+    })
     var locationcity = wx.getStorageSync("locationcity");
     if (locationcity) {
       var add = locationcity
@@ -88,6 +93,7 @@ Page({
    */
   onLoad: function(options) {
     console.log("onLoad", options);
+    console.log("onLoad", parseInt("1,2")>0);
     let _this=this;
     let locationcity = wx.getStorageSync("locationcity");
     /** 根据跳转过来的ID显示对应的分类 */
@@ -124,6 +130,9 @@ Page({
     //if (city != this.data.location || one_cat_id != this.data.one_cat_id) {
       //console.log(add+'onshow,改变了', this.data.location)
       var that = this;
+      // wx.pageScrollTo({
+      //   scrollTop: 0
+      // });
       console.log(one_cat_id, city)
       var data = {
         one_cat_id: one_cat_id,

@@ -47,7 +47,7 @@
             <image src="http://ss.bjzzdk.com/Public/Uploads/{{item.goods_thumb}}" class="shopimg" alt=""></image>
             <!-- <view class='caigouzhong'>采购中</view> -->
 
-            <view wx:if="{{item.area==0 ||h && item.store_count >0}}" class='caigouzhong'>区域不可售</view>
+            <view wx:if="{{item.area==0 && item.store_count >0}}" class='caigouzhong'>区域不可售</view>
             <view wx:elif="{{ item.store_count < 1}}" class='caigouzhong'>采购中</view>
           </view>
           <view class='info'>

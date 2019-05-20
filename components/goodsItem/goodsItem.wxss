@@ -33,9 +33,8 @@
   text-align: left;
   margin: 26rpx 20rpx 0 30rpx;
   font-weight: bold;
-  height: 62rpx;
-  line-height: 28rpx;
-  
+  height: 70rpx;
+  line-height: 30rpx;
   text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -56,6 +55,9 @@
   text-align: left;
   margin: 22rpx 20rpx 0 30rpx;
   font-weight: 500;
+  height:30rpx;
+  line-height:24rpx;
+
 }
 .goods .goodsweight{
   font-size: 24rpx;
@@ -69,7 +71,7 @@
   font-family:SourceHanSansCN-Bold;
   font-weight:bold;
   color:rgba(255,113,43,1);
-  line-height:60rpx;
+  /* line-height:60rpx; */
 
 }
 .goods .goodsprice text{
@@ -79,30 +81,33 @@
   text-decoration: line-through;
   color: #aaa;
   font-size: 20rpx;
-  display: none;
+  display: block;
 }
 .goods view.listBottom{
   width: 295rpx;
   height:97rpx;
-  display:flex;
+  /* display:flex;
   flex-direction:row;
   justify-content:space-between;
-  align-items:flex-end;
+  align-items:flex-end; */
   padding-bottom: 30rpx;
-  padding-top:20rpx;
+  padding-top:18rpx;
   margin-left: 30rpx;
   position: relative;
 }
 .goods view image{
   float: right;
   margin-right: 10rpx;
-  width:80rpx;
-  height:80rpx;
-  background:rgba(143,195,31,0);
-}
-.goods .wait{
   width:68rpx;
   height:68rpx;
+  background:rgba(143,195,31,0);
+  position: absolute;
+  right: 0;
+  bottom: 35rpx;
+}
+.goods .wait{
+  width:60rpx;
+  height:60rpx;
   padding-bottom:10rpx;
 }
 .goods image.label{
@@ -123,6 +128,6 @@
   line-height: 26rpx;
   color: #fff;
   position: absolute;
-  right: 15rpx;
-  bottom: 90rpx;
+  right: 10rpx;
+  bottom: 80rpx;
 }
