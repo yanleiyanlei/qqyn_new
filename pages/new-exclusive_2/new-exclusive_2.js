@@ -4,25 +4,25 @@ var user = require("../../lib/js/user.js")
 Page({
   data: {
     flag: true,
-    mshow:'display:none'
+    mshow: 'display:none'
   },
-  showMask: function() {
+  showMask: function () {
     this.setData({
       flag: false
     })
   },
-  closeMask: function() {
+  closeMask: function () {
     this.setData({
       flag: true,
     })
   },
-  onLoad: function() {
+  onLoad: function () {
     var that = this;
     wx.getSetting({
       success: function success(res) {
         console.log(res.authSetting);
         var authSetting = res.authSetting;
-        
+
         if (util.isEmptyObject(authSetting)) {
           console.log('首次授权');
           that.setData({
@@ -84,17 +84,17 @@ Page({
     //   }
     // })
   },
-  getQuan:  function() {
+  getQuan: function () {
     var uid = wx.getStorageSync("userinfo").uid;
     console.log(uid)
     var member_id = uid;
     wx.request({
-      url: app.globalData.Murl +'/Applets/Lq/qudaoxlx',
+      url: app.globalData.Murl + '/Applets/Lq/qudaoxlx',
       data: {
         member_id
       },
       method: "post",
-      success: function(res) {
+      success: function (res) {
         console.log(res.data.status)
         // console.log(123)
         if (res.data.status == 1) {
@@ -102,8 +102,8 @@ Page({
             title: res.data.data,
             icon: 'none',
             duration: 1500,
-            complete: function() {
-              setTimeout(function() {
+            complete: function () {
+              setTimeout(function () {
                 wx.navigateTo({
                   url: '/pages/m-coupon/m-coupon',
                 })
@@ -117,8 +117,8 @@ Page({
             title: res.data.data,
             icon: 'none',
             duration: 1500,
-            complete: function() {
-              setTimeout(function() {
+            complete: function () {
+              setTimeout(function () {
                 wx.switchTab({
                   url: '/pages/index/index',
                 })
@@ -129,7 +129,7 @@ Page({
 
         }
       },
-      fail: function() {}
+      fail: function () { }
     })
 
   },
