@@ -81,11 +81,11 @@ Page({
         ctx.setFontSize(12);
         //ctx.font = "bold";
         ctx.setFillStyle('#333333');
-        ctx.fillText('活动时间:', 108, 225);
+        //ctx.fillText('活动时间:', 108, 225);
         ctx.setFontSize(12);
         //ctx.font = "bold";
         ctx.setFillStyle('#333333');
-        ctx.fillText(that.data.stime, 165, 225);
+        //ctx.fillText(that.data.stime, 165, 225);
         ctx.setFontSize(12);
         //ctx.font = "bold";
         ctx.setFillStyle('#333333');
@@ -93,7 +93,7 @@ Page({
         ctx.setFontSize(12);
         //ctx.font = "bold";
         ctx.setFillStyle('#333333');
-        ctx.fillText(that.data.etime, 223, 225);
+        //ctx.fillText(that.data.etime, 223, 225);
         ctx.font = "bold 50px sans-serif";
         ctx.setFontSize(15);
         //ctx.font = "bold";
