@@ -89,7 +89,7 @@ Page({
     console.log(uid)
     var member_id = uid;
     wx.request({
-      url: app.globalData.Murl +'/Applets/Lq/qudao',
+      url: app.globalData.Murl +'/Applets/Lq/qudaoxlx',
       data: {
         member_id
       },
