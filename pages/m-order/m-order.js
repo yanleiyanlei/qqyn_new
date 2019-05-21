@@ -6,13 +6,19 @@ Page({
     orderlist: [],
     active: 0,
     uid: "",
-    tt:"display:none"
+    tt:"display:none",
+    showShare:false
   },
   onLoad: function (options) {
     var userInfo = wx.getStorageSync("userinfo");
     var uid = userInfo.uid;
     //var uid=62;
-    console.log(options.coupon)
+    console.log(options)
+    if (options.suc == 1){
+      this.setData({
+        showShare: true
+      })
+    }
 
     if (options.coupon=='1'){
       this.setData({
@@ -56,6 +62,12 @@ Page({
           duration: 1000
         })
       }
+    })
+  },
+  onShare: function(){
+    console.log(1)
+    this.setData({
+      showShare: false
     })
   },
   link: function () {
