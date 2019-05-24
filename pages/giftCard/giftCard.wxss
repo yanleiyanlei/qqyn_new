@@ -19,15 +19,15 @@
   background-color: #333;
   text-align: left;
   border-top: 1px dashed #666;
-  padding-top: 22rpx;
   padding-bottom: 100rpx;
+  overflow: hidden;
 }
 .content .conp{
   width:659rpx;
   font-size:18rpx;
   font-family:SourceHanSansSC-Normal;
   font-weight:400;
-  color:rgba(136,136,136,1);
+  color:#fff;
   display: block;
   margin:0 auto;
   line-height:30rpx;

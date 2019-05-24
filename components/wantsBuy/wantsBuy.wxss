@@ -2,6 +2,45 @@
 
 /*商品  */
 
+
+.wbContentDay{
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 0rem;
+  height: 100%;
+}
+.wbContentDay image{
+  display: block;
+  width: 100%;
+}
+.goodsDay{
+  float: left;
+  margin-left: 15rpx !important;
+}
+.wbBoxDay{
+  margin-bottom:30rpx;
+  overflow: hidden;
+}
+.wbContentDay .wbText{
+  color: red;
+  font-size: 24rpx;
+  text-align: left;
+  margin: 20rpx;
+  width: 100%;
+  display: block;
+}
+.wbContentDay .conp{
+  width:659rpx;
+  font-size:18rpx;
+  font-family:SourceHanSansSC-Normal;
+  font-weight:400;
+  color:#fff;
+  display: block;
+  margin:15rpx auto;
+  line-height:30rpx;
+}
+
+
 .wantsBuy {
   width: 100%;
 }

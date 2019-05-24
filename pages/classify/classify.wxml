@@ -33,8 +33,8 @@
   </view>
   <view class='content'>
     <!-- <view class='interval'></view> -->
-    <view class='leftBar'>
-      <view class='cell-group'>
+    <!-- <view class='leftBar' id="leftBar"> -->
+      <!-- <view class='cell-group'>
         <view 
           class='cell {{uniqueIndex==index?uniqueClass[index]:""}}' 
           wx:for="{{recommend_list}}" 
@@ -57,8 +57,33 @@
           <text wx:if="{{index==currentIndex}}" class='cell-bar'></text>
           <text>{{item.cat_name}}</text>
         </view>
-      </view>
-    </view>
+      </view> -->
+      <scroll-view  class='leftBar' scroll-y="true" scroll-into-view="{{key}}" scroll-with-animation="true">
+        <view 
+          class='cell {{uniqueIndex==index?uniqueClass[index]:""}}' 
+          wx:for="{{recommend_list}}" 
+          wx:key="uniqueKey"
+          data-id="{{item.id}}" 
+          data-index="{{index}}" 
+          bindtap='onUniqueClick'
+          >
+          <image  src='{{uniqueIcon[index]}}' class='{{uniqueImgClass[index]}}'></image>
+          <text>{{item.name}}</text>
+        </view>
+        <view 
+          class='cell {{index==currentIndex?"active":""}}' 
+          wx:for="{{class_list}}" 
+          wx:key="classKey" 
+          data-id="{{item.id}}" 
+          data-index="{{index}}" 
+          bindtap='onCellClick'
+          id="sw{{item.id}}"
+          >
+          <text wx:if="{{index==currentIndex}}" class='cell-bar'></text>
+          <text>{{item.cat_name}}</text>
+        </view>
+      </scroll-view>
+    <!-- </view> -->
     <view class='rightBar'>
       <view class='goods' wx:for="{{goodsList}}" wx:key="goodsKey" data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
         <view class='img'>

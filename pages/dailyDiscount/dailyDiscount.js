@@ -10,6 +10,7 @@ Page({
       showTip: false,
     },
     listData: 2,
+    ztId:''
   },
 
   /**
@@ -18,7 +19,7 @@ Page({
   onLoad: function (options) {
     //console.log(options)
     this.setData({
-      listData: options.id
+      ztId: options.id
     })
   },
 

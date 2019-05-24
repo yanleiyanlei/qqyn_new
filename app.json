@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/bution/bution",
     "pages/giftCard/giftCard",
     "pages/dailyDiscount/dailyDiscount",
     "pages/morePosters/morePosters",
@@ -66,7 +67,6 @@
     "pages/newaddaddress/newaddaddress",
     "pages/special/special",
     "pages/luckdraw/luckdraw",
-    "pages/bution/bution",
     "pages/cash/cash",
     "pages/checkAdd/checkAdd",
     "pages/laAdd/laAdd",

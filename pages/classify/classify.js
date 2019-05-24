@@ -29,6 +29,22 @@ Page({
       '../../image/new/icon-fresh.png'
     ]
   },
+  //检测从首页icon二级跳转过来
+  getClassifyId: function (that) {
+    var id = app.globalData.tabBarId;
+    if (id) {
+      that.class_list.forEach(function (item, index) {
+        if (id === item.id) {
+          that.setData({
+            currentIndex: index,
+            uniqueIndex: -1,
+          })
+          console.log('index', index);
+        }
+      })
+      // this.reqGoods(id);
+    }
+  },
   //获取分类列表
   getClassList(){
     let _this=this;
@@ -42,7 +58,25 @@ Page({
           class_list: res.data.class_list,
           recommend_list:res.data.recommend_list
         })
-        _this.onUniqueClick(res.data.recommend_list[0].id);
+
+        if (app.globalData.tabBarId){
+          _this.reqGoods(app.globalData.tabBarId);
+        } else {
+          _this.onUniqueClick(res.data.recommend_list[0].id);
+        }
+
+
+        _this.data.class_list.forEach(function (item, index) {
+          // console.log(item,index)
+          if (item.id == app.globalData.tabBarId) {
+            _this.setData({
+              currentIndex: index,
+            })
+          }
+        })
+
+        //获取传过来的tabBarId
+
       },
       function(err){
         console.log("getClassList-err", err);
@@ -105,6 +139,10 @@ Page({
         _this.setData({
           goodsList:res.goods
         });
+        _this.setData({
+          uniqueIndex: -1,
+          key: 'sw' + app.globalData.tabBarId
+        }) 
       },
       function(err){
 
@@ -276,6 +314,8 @@ Page({
       if (this.data.currentIndex == -1) return;
       this.reqGoods(this.data.class_list[this.data.currentIndex].id);
     }
+    
+    console.log(app.globalData.tabBarId);
   },
 
   /**

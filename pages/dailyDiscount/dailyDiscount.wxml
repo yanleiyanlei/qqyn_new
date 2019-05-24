@@ -1,11 +1,11 @@
 <!--pages/dailyDiscount/dailyDiscount.wxml-->
 <view class='dailyDiscount'>
-  <image class='banner'  mode="widthFix" src='http://m.77farmers.com/Public/xcximg/newyear/mrth.png'></image>
+  <!-- <image class='banner'  mode="widthFix" src='http://m.77farmers.com/Public/xcximg/newyear/mrth.png'></image> -->
   
   <navigator open-type='switchTab' url='../shopcarts/shopcarts' hover-class="navigator-hover">
     <image class='goshopcart' mode="widthFix" src='../../image/new/goshopcart.png'></image>
   </navigator>
   <view class='content'>
-    <wants-buy dataTitle="{{dataTitle}}" listData="{{listData}}" bind:changeCarList="changeCarList"></wants-buy>
+    <wants-buy dataTitle="{{dataTitle}}" ztId="{{ztId}}" listData="{{listData}}" bind:changeCarList="changeCarList"></wants-buy>
   </view>
 </view>

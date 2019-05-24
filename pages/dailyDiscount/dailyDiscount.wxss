@@ -18,6 +18,7 @@
 .content{
   background-color: #FFE7AD;
   padding-bottom: 100rpx;
+  overflow: hidden;
 }
 navigator{
   width: 100%; 

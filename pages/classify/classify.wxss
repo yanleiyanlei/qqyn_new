@@ -75,19 +75,19 @@
   background:rgba(239,239,239,1); 
   top: 100rpx;
   bottom: 0rpx;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-x: hidden;
+  overflow-y: scroll; */
 }
 .content .leftBar::-webkit-scrollbar {
-        display: none;
-    }
+    display: none;
+}
 .leftBar .cell-group{
   display: flex;
   flex-direction: column;
   align-items: center;
   
 }
-.leftBar .cell-group .cell{
+.leftBar .cell{
   height:100rpx;
   font-size:26rpx;
   color:rgba(136, 136, 136, 1);
@@ -97,7 +97,7 @@
   position:relative;
 
 }
-.leftBar .cell-group .cell-bar{
+.leftBar .cell-bar{
   width:6rpx;
   height:40rpx;
   background:rgba(143, 195, 31, 1);
@@ -108,15 +108,15 @@
   left:1rpx;
   top:30rpx;
 }
-.leftBar .cell-group .active{
+.leftBar .active{
   color:rgba(143, 195, 31, 1);
   background:rgba(256,256,256,1); 
 }
-.leftBar .cell-group .unique-hot{
+.leftBar .unique-hot{
   color:rgba(225, 55, 59, 1);
   background:linear-gradient(90deg,rgba(255,208,177,1) 0%,rgba(255,255,255,1) 100%);
 }
-.leftBar .cell-group .unique-fresh{
+.leftBar .unique-fresh{
   color:rgba(225, 55, 59, 1);
   background:linear-gradient(90deg,rgba(198,255,180,1) 0%,rgba(255,255,255,1) 100%);
 }

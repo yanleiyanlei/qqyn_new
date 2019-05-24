@@ -699,6 +699,12 @@ Page({
                   deliveryList: datalist.delivery_date.date,
                   timeDay: datalist.delivery_date.date[0].day
                 })
+                if (datalist.address.shi != '北京市') {
+                  _this.setData({
+                    deliveryList: _this.data.deliveryList.slice(-3),
+                    timeDay: _this.data.timeDay.slice(-3)
+                  })
+                }
                 if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
                   var reduce_moeny = datalist.reward_coupon.reduce_moeny;
                   var satisfy_money = datalist.reward_coupon.satisfy_money;
@@ -720,6 +726,7 @@ Page({
                     package_mail: Number(datalist.commpany.package_mail), //满99减运费
                   })
                 } else { //当有地址时
+                
                   _this.setData({
                     goodsorder: godsorder, //商品信息
                     quantity: datalist, //返回的所有信息
@@ -730,6 +737,20 @@ Page({
                     total: Number(datalist.money), //商品总价
                     package_mail: Number(datalist.commpany.package_mail), //满99减运费
                   })
+                  let locationcity = datalist.address.shi;
+                  console.log('locationcity',locationcity)
+                  _this.setData({
+                    locationcity: locationcity
+                  });
+                  if (locationcity != '北京市') {
+                    _this.setData({
+                      timeTips: ''
+                    });
+                  } else {
+                    _this.setData({
+                      timeTips: '当日达'
+                    });
+                  }
                 }
                 if (datalist.coupon == null) { //没用优惠卷 coupon_money = 0
                   _this.setData({
@@ -800,6 +821,12 @@ Page({
             deliveryList: datalist.delivery_date.date,
             timeDay: datalist.delivery_date.date[0].day
           })
+          if (datalist.address.shi != '北京市') {
+            _this.setData({
+              deliveryList: _this.data.deliveryList.slice(-3),
+              timeDay: _this.data.timeDay.slice(-3)
+            })
+          }
           if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
             var reduce_moeny = datalist.reward_coupon.reduce_moeny;
             var satisfy_money = datalist.reward_coupon.satisfy_money;
@@ -831,6 +858,19 @@ Page({
               total: Number(datalist.money), //商品总价
               package_mail: Number(datalist.commpany.package_mail), //满99减运费
             })
+            let locationcity = datalist.address.shi;
+            _this.setData({
+              locationcity: locationcity
+            });
+            if (locationcity != '北京市') {
+              _this.setData({
+                timeTips: ''
+              });
+            }else{
+              _this.setData({
+                timeTips: '当日达'
+              });
+            }
           }
           if (datalist.coupon == null) { //没用优惠卷 coupon_money = 0
             _this.setData({

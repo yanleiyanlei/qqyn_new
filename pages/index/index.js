@@ -41,7 +41,25 @@ Page({
     swiperCurrent: 0,
     //每日秒杀
     dailySpike:[],
-    dailySpikeIndex: 0
+    dailySpikeIndex: 0,
+    dailySpikeShow: true
+  },
+  //跳转连接
+  goUrl:function(e){
+    console.log(e)
+    var url = e.currentTarget.dataset.url;
+    let splitUrl = url.split('/');
+    if (splitUrl[2] == 'classify'){
+      var idArr = url.split('?');
+      app.globalData.tabBarId = idArr[1].split('=')[1];
+      wx.switchTab({
+        url: url
+      })
+    }else{
+      wx.navigateTo({
+        url:url
+      })
+    }
   },
   intervalChange:function(e){
     console.log(e.detail.current);
@@ -221,6 +239,11 @@ Page({
     request.request(shopusr, {},'post').then(function (data) {
       if(data.code == 200){
         console.log(data);
+        if (data.data == null) {
+          that.setData({
+            dailySpikeShow: false
+          })
+        }
         that.setData({
           dailySpike: data.data.goods_list
         });

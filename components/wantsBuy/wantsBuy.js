@@ -19,6 +19,10 @@ Component({
     listData: {
       type: Number,
       value: ''
+    },
+    ztId: {
+      type: Number,
+      value: ''
     }
   },
 
@@ -75,18 +79,29 @@ Component({
             })
           }
         })
-      } else {
-        var data = {
-          id: that.data.listData
+      } else if(that.data.listData == 2) {
+        var dataDay = {
+          id: that.data.ztId
         };
-        var res = util.request('/Applets/Index/getThemeById', data, "post", "");
-        res.then(function (data) {
-          console.log(data)
+        var req = util.request('/Applets/Index/getThemeById', dataDay, "post", "");
+        req.then(function (res) {
+          console.log(res)
           that.setData({
-            special:data.data
+            special: res.data
           })
         })
-      }
+    } else if (that.data.listData == 4) {
+      var data = {
+        id: that.data.ztId
+      };
+      var req = util.request('/Applets/Index/getTwoClassGoodListById', data,"post", "")
+      req.then(function (res) {
+        console.log(222, res)
+        that.setData({
+          special: res.data
+        })
+      })
+    }
       
     },
     // 添加购物车=================
@@ -202,6 +217,6 @@ Component({
           duration: 2000
         })
       }
-    },
-  }
+    }
+  } 
 }) 

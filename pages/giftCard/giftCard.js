@@ -9,8 +9,8 @@ Page({
       name: "",
       showTip: false,
     },
-    listData:'',
-    id:''
+    listData:4,
+    ztId:''
   },
 
   /**
@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     var id = options.id;
     this.setData({
-      listData: id
+      ztId: id
     })
   },
 
