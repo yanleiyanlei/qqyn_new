@@ -253,10 +253,11 @@ Page({
           that.setData({
             dailySpikeShow: false
           })
+        } else {
+          that.setData({
+            dailySpike: data.data.goods_list
+          });
         }
-        that.setData({
-          dailySpike: data.data.goods_list
-        });
         var startTime = data.data.info.current_time;
         var endTime = data.data.info.end_time;
         var time_distance = (endTime - startTime);
@@ -290,6 +291,9 @@ Page({
             minute: int_minute,
             second: int_second,
           })
+          if (int_hour == '00' && int_minute == '00' && int_second == '00'){
+            that.mrms();
+          }
         }
         
 

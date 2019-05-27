@@ -103,6 +103,11 @@ Page({
     }, 1000)
     var obj = { member_id: uid, type: 1, akey: akey, address_name: formData.address_name, address_phone: formData.address_phone, beiyong_phone: formData.beiyong_phone, address_sheng: formData.address_sheng, address_content: formData.address_content }
     if (formData.address_name != "" && regPhone.exec(formData.address_phone) && formData.address_sheng != "" && formData.address_content != "" && (regPhone.exec(formData.beiyong_phone) || formData.beiyong_phone == "")) {
+      wx.showToast({
+        title: 'loading',
+        icon: "none",
+        duration: 1000
+      })
       wx.request({
         url: app.globalData.Murl + '/Applets/User/AddAddress',
         data: obj,
