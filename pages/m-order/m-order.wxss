@@ -279,3 +279,41 @@ kong {
   -moz-border-radius:50rpx; 
   -webkit-border-radius:50rpx; 
 }
+
+/* share */
+.share{
+  position: fixed;
+  top:0;
+  left:0;
+  bottom: 0;
+  right:0;
+  z-index: 10;
+  background-color: rgba(0,0,0,.5);
+  display: flex;
+}
+.share image{
+  width: 416rpx;
+  height: 691rpx;
+  display: block;
+  position: absolute;
+  top:50%;
+  margin-top: -346rpx;
+  left:50%;
+  margin-left: -208rpx;
+  z-index: 11;
+}
+.shareBox{
+  position: relative;
+  z-index: 12;
+  width: 100%;
+  height: 100%;
+}
+.share .shareClose{
+  position:absolute;
+  left:50%;
+  width:80rpx;
+  height:80rpx;
+  margin-left:-40rpx;
+  top:73%;
+  /* background-color: #fff */
+}

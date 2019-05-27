@@ -1,4 +1,5 @@
 const app = getApp();
+let interval1, interval2;
 Page({
   data: {
     items: [],
@@ -25,8 +26,44 @@ Page({
     dataTitle: {
       name: "大家都在买",
       showTip: true
-    }
+    },
+    text: '北京地区六环内15点前下单可当日送达！北京地区六环外17点前下单可次日送达！', //滚动文字
+    duration: 0, //水平滚动方法一中文字滚动总时间
+    pace: 1,  //滚动速度
+    posLeft1: 0,  //水平滚动方法二中left值
+    posLeft2: 0,  //水平滚动方法三中left值
+    marginLeft: 60   //水平滚动方法三中两条文本之间的间距
   },
+  /** 文字滚动 */
+  roll1: function (that, txtLength, windowWidth) {
+    interval1 = setInterval(function () {
+      if (-that.data.posLeft1 < txtLength) {
+        that.setData({
+          posLeft1: that.data.posLeft1 - that.data.pace
+        })
+      } else {
+        that.setData({
+          posLeft1: windowWidth
+        })
+      }
+    }, 20)
+  },
+  roll2: function (that, txtLength, windowWidth) {
+    interval2 = setInterval(function () {
+      if (-that.data.posLeft2 < txtLength + that.data.marginLeft) {
+        that.setData({
+          posLeft2: that.data.posLeft2 - that.data.pace
+        })
+      } else { // 第二段文字滚动到左边后重新滚动
+        that.setData({
+          posLeft2: 0
+        })
+        clearInterval(interval2);
+        that.roll2(that, txtLength, windowWidth);
+      }
+    }, 20)
+  },
+  /** 文字滚动 */
   changeCarts(e){
     //console.log(e);
     var carts = e.detail;
@@ -737,6 +774,18 @@ Page({
   },
   onShow: function() {
     const _that = this;
+
+    //文字滚动start
+    let windowWidth = wx.getSystemInfoSync().windowWidth; //屏幕宽度
+    wx.createSelectorQuery().select('#txt1').boundingClientRect(function (rect) {
+      let duration = rect.width * 0.03;//滚动文字时间,滚动速度为0.03s/px
+      _that.setData({
+        duration: duration
+      })
+    }).exec()
+
+    //文字滚动end 
+
     var location = wx.getStorageSync("locationcity");
     _that.setData({
       is_coupon: 0,
@@ -860,6 +909,10 @@ Page({
 
 
 
+  },
+  onHide: function(){
+    clearInterval(interval1);
+    clearInterval(interval2);
   },
   /*选择商品*/
   selectList(e) {

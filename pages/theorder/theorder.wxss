@@ -294,8 +294,7 @@ page{
   left: 32rpx;
 }
 
-.tehdaar .aadress_ther {
-}
+
 
 .addressname {
   padding-top: 20rpx;
@@ -305,7 +304,7 @@ page{
   line-height: 36rpx;
   margin-left: 80rpx;
   margin-top: 20rpx;
-  width: 580rpx;
+  width: 560rpx;
   background: none;
   height: 150rpx;
   padding-left: 20rpx;
@@ -386,4 +385,136 @@ page{
   font-weight: 500;
   color: rgba(255, 113, 43, 1);
   line-height: 36rpx;
+}
+
+
+/** 选择时间 */ 
+.chooseTime{
+  font-size: 28rpx;
+  color: #888;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  background-color: #fff;
+  width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+.timeTit{
+  width: 140rpx;
+  display: block;
+  margin-left: 30rpx;
+}
+
+.TimePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11100;
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  right: 0;
+}
+.TimePopup .tpBox{
+  background-color: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.TimePopup .tpBox .timeTitle {
+  position: relative;
+  text-align: center;
+  padding: 39rpx 0;
+}
+.TimePopup .tpBox .deliveryList {
+  padding: 0 24rpx;
+}
+.TimePopup .tpBox .timeTitle .textH4 {
+  font-size: 32rpx;
+  color: #353535;
+}
+.TimePopup .tpBox .timeTitle .ttClose {
+  font-size: 30px;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  color: #B2B2B2;
+}
+.TimePopup .timeYes {
+  background: #FF712B;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+  color: #fff;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: block;
+  text-align: center;
+}
+.TimePopup .tpBox .deliveryList view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  color: #353535;
+  padding: 39rpx 0;
+  font-size: 30rpx;
+}
+.TimePopup .tpBox .deliveryList view icon{
+  display: none;
+}
+.TimePopup .tpBox .deliveryList view.active{
+    color: #FF712B;
+}
+.TimePopup .tpBox .deliveryList view.active icon{
+  display: block;
+  margin-right: 15rpx;
+}
+.ctInfo{
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin: 33rpx 0 25rpx 0;
+	text-align: right;
+	justify-content:flex-end;
+	position: relative;
+	margin-right: 30rpx;
+}
+.ctInfo view{
+  display: flex;
+	flex-direction: column;
+}
+.ctInfo view .ctDesc{
+  padding: 0 10rpx;
+  border:1px solid rgba(255,113,43,1);
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  font-family:SourceHanSansCN-Medium;
+  font-weight:500;
+  color:rgba(255,113,43,1);
+  margin-top: 10rpx;
+  margin-left: 150rpx;
+  width: 60rpx;
+}
+.ctInfo .ctTime{
+  font-size: 28rpx;
+  font-family:SourceHanSansCN-Bold;
+  font-weight:bold;
+  color:rgba(53,53,53,1);
+}
+.ctInfo	img{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
 }

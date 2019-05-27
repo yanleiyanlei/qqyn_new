@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/bution/bution",
+    "pages/giftCard/giftCard",
+    "pages/dailyDiscount/dailyDiscount",
     "pages/morePosters/morePosters",
     "pages/third-number/third-number",
     "pages/pay199/pay199",
@@ -64,7 +67,6 @@
     "pages/newaddaddress/newaddaddress",
     "pages/special/special",
     "pages/luckdraw/luckdraw",
-    "pages/bution/bution",
     "pages/cash/cash",
     "pages/checkAdd/checkAdd",
     "pages/laAdd/laAdd",
@@ -101,12 +103,6 @@
         "selectedIconPath": "image/new/2.png"
       },
       {
-        "pagePath": "pages/bution/bution",
-        "text": "福利",
-        "iconPath": "image/new/fuli.png",
-        "selectedIconPath": "image/new/fuli.png"
-      },
-      {
         "pagePath": "pages/shopcarts/shopcarts",
         "text": "购物车",
         "iconPath": "image/new/3-1.png",
@@ -119,5 +115,6 @@
         "selectedIconPath": "image/new/5.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

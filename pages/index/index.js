@@ -38,7 +38,34 @@ Page({
     //商品四个类目
     goodsType: {},
     ewmimg: ["http://m.7710mall.com/Public/Home/img/m_ma.png"],
-    swiperCurrent: 0
+    swiperCurrent: 0,
+    //每日秒杀
+    dailySpike:[],
+    dailySpikeIndex: 0,
+    dailySpikeShow: true
+  },
+  //跳转连接
+  goUrl:function(e){
+    console.log(e)
+    var url = e.currentTarget.dataset.url;
+    let splitUrl = url.split('/');
+    if (splitUrl[2] == 'classify'){
+      var idArr = url.split('?');
+      app.globalData.tabBarId = idArr[1].split('=')[1];
+      wx.switchTab({
+        url: url
+      })
+    }else{
+      wx.navigateTo({
+        url:url
+      })
+    }
+  },
+  intervalChange:function(e){
+    console.log(e.detail.current);
+    this.setData({
+      dailySpikeIndex: e.detail.current 
+    })
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -201,6 +228,73 @@ Page({
       complete: function(res) {},
     })
 
+  },
+  timeFormat(param) {//小于10的格式化函数
+    return param < 10 ? '0' + param : param;
+  },
+  //每日秒杀
+  mrms:function(){
+    var that = this;
+    const shopusr = "/Applets/Index/getBargainsRushGoodsList";
+    request.request(shopusr, {},'post').then(function (data) {
+      if(data.code == 200){
+        console.log(data);
+        if (data.data == null) {
+          that.setData({
+            dailySpikeShow: false
+          })
+        }
+        that.setData({
+          dailySpike: data.data.goods_list
+        });
+        var startTime = data.data.info.current_time;
+        var endTime = data.data.info.end_time;
+        var time_distance = (endTime - startTime);
+
+        function time(time_distance) {
+          var int_day = Math.floor(time_distance / 86400000);
+          time_distance -= int_day * 86400000;
+          // 时
+          var int_hour = Math.floor(time_distance / 3600000)
+          time_distance -= int_hour * 3600000;
+          // 分
+          var int_minute = Math.floor(time_distance / 60000)
+          time_distance -= int_minute * 60000;
+          // 秒
+          var int_second = Math.floor(time_distance / 1000)
+          // 时分秒为单数时、前面加零
+          if (int_day < 10) {
+            int_day = "0" + int_day;
+          }
+          if (int_hour < 10) {
+            int_hour = "0" + int_hour;
+          }
+          if (int_minute < 10) {
+            int_minute = "0" + int_minute;
+          }
+          if (int_second < 10) {
+            int_second = "0" + int_second;
+          }
+          that.setData({
+            hour: int_hour,
+            minute: int_minute,
+            second: int_second,
+          })
+        }
+        setInterval(function () {
+          time_distance -= 1000;
+          time(time_distance);
+        },1000)
+        
+      }else{
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+      }
+    })
   },
   onHide: function() {
     app.globalData.store = 0
@@ -420,14 +514,15 @@ Page({
 
     //nav导航图片及连接=======================================
     wx.request({
-      url: app.globalData.Murl + '/Applets/Index/icon',
+      url: app.globalData.Murl + '/Applets/Index/iconByV2',
       data: {},
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
+        // console.log(res.data)
         that.setData({
-          navUrls: res.data
+          navUrls: res.data.data.data.xcx.data
         })
 
       },
@@ -578,6 +673,10 @@ Page({
     })
   },
   onShow: function() {
+    this.setData({
+      dailySpikeIndex: 0
+    })
+    this.mrms();
     let that=this;
     location = wx.getStorageSync("locationcity");
     this.setData({

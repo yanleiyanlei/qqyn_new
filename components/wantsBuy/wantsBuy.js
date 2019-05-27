@@ -13,8 +13,16 @@ Component({
       type: Object,
       value: {
         name: '',
-        showTip: ''
-      },
+        showTip: '',
+      }
+    },
+    listData: {
+      type: Number,
+      value: ''
+    },
+    ztId: {
+      type: Number,
+      value: ''
     }
   },
 
@@ -23,7 +31,8 @@ Component({
    */
   data: {
     goods: [],
-    cartlist:[]
+    cartlist:[],
+    special:[]
   },
 
   /**
@@ -38,33 +47,62 @@ Component({
       // 在组件实例被从页面节点树移除时执行
     },
     created() {
+    },
+    ready() {
       this.getwantsBuy();
     }
   },
   methods: {
-    getwantsBuy: function() {
+    getwantsBuy: function () {
       var that = this;
-      var data = {
-        one_cat_id: 1
-      };
-      var res = util.request('/Applets/Index/getEveryoneBuyList', data, "post", "");
-      res.then(function(data) {
-        // console.log(data)
-        var arr = []; 
-        if (data.data) {
-          for (var i = 0; i < 6; i++) {
-            if (data.data[i].spec_name === null){
-              data.data[i].spec_name= '';
+      var url = '';
+      console.log(that.data.listData)
+      if (!that.data.listData) {
+        var data = {
+          one_cat_id: 1
+        };
+        var res = util.request('/Applets/Index/getEveryoneBuyList', data, "post", "");
+        res.then(function (data) {
+          // console.log(data)
+          var arr = [];
+          if (data.data) {
+            for (var i = 0; i < 6; i++) {
+              if (data.data[i].spec_name === null) {
+                data.data[i].spec_name = '';
+              }
+              data.data[i].goods_name = data.data[i].goods_name + data.data[i].spec_name;
+
+              arr.push(data.data[i])
             }
-            data.data[i].goods_name = data.data[i].goods_name + data.data[i].spec_name;
-            
-            arr.push(data.data[i])
+            that.setData({
+              goods: arr
+            })
           }
+        })
+      } else if(that.data.listData == 2) {
+        var dataDay = {
+          id: that.data.ztId
+        };
+        var req = util.request('/Applets/Index/getThemeById', dataDay, "post", "");
+        req.then(function (res) {
+          console.log(res)
           that.setData({
-            goods: arr
+            special: res.data
           })
-        }
+        })
+    } else if (that.data.listData == 4) {
+      var data = {
+        id: that.data.ztId
+      };
+      var req = util.request('/Applets/Index/getTwoClassGoodListById', data,"post", "")
+      req.then(function (res) {
+        console.log(222, res)
+        that.setData({
+          special: res.data
+        })
       })
+    }
+      
     },
     // 添加购物车=================
 
@@ -179,6 +217,6 @@ Component({
           duration: 2000
         })
       }
-    },
-  }
+    }
+  } 
 }) 
