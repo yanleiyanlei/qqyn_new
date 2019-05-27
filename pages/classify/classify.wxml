@@ -23,10 +23,14 @@
 <view class='page'>
   <!-- 搜索 -->
   <view class='search'>
-    <navigator url='../laAdd/laAdd' class='addloc'>
+    <!-- <navigator url='../laAdd/laAdd' class='addloc'>
       <image src='/image/new/add-h.png'></image>
       <text>{{location}}</text>
-    </navigator>
+    </navigator> -->
+    <view class='addloc' bindtap='onAddressClick'>
+      <image src='/image/new/add-h.png'></image>
+      <text>{{location}}</text>
+    </view>
     <navigator url='../search/search' class='navsearch'>
       <view>{{txt}}</view>
     </navigator>

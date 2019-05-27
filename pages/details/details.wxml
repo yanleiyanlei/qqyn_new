@@ -76,7 +76,7 @@
         </view>
         <view wx:else class='notice'>
           <text style='color:rgba(255, 92, 37, 1)'>有货</text>
-          <text>，17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
+          <text>，北京地区17:00前下单，预计次日送达(节假日及特殊情况延后发货)</text>
         </view>
       </view>
     </view>
