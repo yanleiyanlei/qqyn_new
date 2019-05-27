@@ -49,11 +49,13 @@ Page({
     console.log(e)
     var url = e.currentTarget.dataset.url;
     let splitUrl = url.split('/');
-    if (splitUrl[2] == 'classify'){
+    console.log(splitUrl)
+    let len = splitUrl.length;
+    if (splitUrl[len-2] == 'classify'){
       var idArr = url.split('?');
       app.globalData.tabBarId = idArr[1].split('=')[1];
       wx.switchTab({
-        url: url
+        url: '/pages/classify/classify'
       })
     }else{
       wx.navigateTo({
