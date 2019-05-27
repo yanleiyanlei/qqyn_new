@@ -8,9 +8,10 @@ Page({
    */
   data: {
     hiddenLoading: true,
+    comeForm:'tab',
     key:'',
     location: '',
-    tabbarId:'',
+    tabBarId:'',
     currentIndex:-1,
     uniqueIndex:0,
     class_list:[],
@@ -67,10 +68,10 @@ Page({
           });
           if (_this.data.currentIndex == -1) return;
           _this.reqGoods(_this.data.class_list[_this.data.currentIndex].id);
-        } else if (app.globalData.tabbarId!=''){
+        } else if (app.globalData.tabBarId!=''){
           let obj={};
-          obj.id = app.globalData.tabbarId;
-          app.globalData.tabbarId = '';
+          obj.id = app.globalData.tabBarId;
+          app.globalData.tabBarId = '';
           _this.data.class_list.forEach(function (item, index) {
             // console.log(item,index)
             if (item.id == obj.id) {
@@ -78,9 +79,11 @@ Page({
             }
           });
           _this.onCellClick(obj);
-        } else if (_this.data.currentIndex!=-1){
+        } 
+        // else if (_this.data.currentIndex!=-1){
 
-        }else{
+        // }
+        else{
           _this.onUniqueClick(res.data.recommend_list[0].id);
         }
 
@@ -308,7 +311,7 @@ Page({
     let location = wx.getStorageSync("locationcity");
     this.setData({
       location: location
-      // tabbarId:app.globalData.tabbarId
+      // tabBarId:app.globalData.tabBarId
     });
     // _this.getCartList();
     // _this.getClassList();
@@ -325,13 +328,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let pages=getCurrentPages();
-    let prevPage = pages[pages.length - 2];  //上一个页面
-    // let prevPage = getPrevPage();
-    console.log("currentPage:",pages);
-    console.log("prevPage:", prevPage);
-    console.log('onShow-app.globalData.tabbarId', app.globalData.tabbarId);
     // let location = wx.getStorageSync("locationcity");
+    console.log("classify-show-comefrom",this.data.comeForm)
+    if (this.data.comeForm=="detail"){
+      this.setData({
+        comeForm:'tab'
+      })
+      return;
+    }
     // 获取购物车列表 
     this.getCartList();
     this.getClassList();
@@ -342,11 +346,11 @@ Page({
     //   });
     //   if (this.data.currentIndex == -1) return;
     //   this.reqGoods(this.data.class_list[this.data.currentIndex].id);
-    // } else if (app.globalData.tabbarId!=''){
-    //   console.log('onshow-tabBarId', app.globalData.tabbarId);
+    // } else if (app.globalData.tabBarId!=''){
+    //   console.log('onshow-tabBarId', app.globalData.tabBarId);
     //   let obj={};
-    //   obj.id = app.globalData.tabbarId;
-    //   app.globalData.tabbarId='';
+    //   obj.id = app.globalData.tabBarId;
+    //   app.globalData.tabBarId='';
     //   this.class_list.forEach(function(v,k){
     //     if(v.id==obj.id){
     //       obj.index=k;
@@ -361,7 +365,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    
   },
 
   /**

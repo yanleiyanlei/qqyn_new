@@ -103,7 +103,19 @@ Page({
   onReady: function () {
 
   },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onUnload: function () {
+    console.log("detail-onhide")
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];  //上一个页面
 
+    //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      comeForm:'detail'
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -121,7 +133,7 @@ Page({
       var formatDate = h;
       return formatDate;
     }
-
+    
     function toDate(number) {
       const dateTime = new Date(number * 1000);
       const year = dateTime.getFullYear();
