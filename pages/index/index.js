@@ -752,7 +752,15 @@ Page({
 
     // 获取购物车列表
     this.getCartList();
+
+
+
   },
+  // onPullDownRefresh() {
+  //   this.mrms();
+  //   // this.getCartList();
+  //   wx.stopPullDownRefresh();
+  // },
   // 获取购物车列表
   getCartList: function () {
     let _this = this;
