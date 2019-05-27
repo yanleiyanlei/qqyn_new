@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isComeFrom:true,
     wantsObj: {
       name: '大家都在买',
       showTip: true
@@ -107,10 +108,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onUnload: function () {
-    console.log("detail-onhide")
+    console.log("detail-onhide");
+    if (!this.data.isComeFrom) return;
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];  //上一个页面
-
     //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
     prevPage.setData({
       comeForm:'detail'
@@ -120,8 +121,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var pages = getCurrentPages();
-    console.log("detail-onShow",pages);
     var that = this;
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
@@ -483,7 +482,9 @@ Page({
   },
   /*跳转到首页*/
   tiaoindex: function () {
-
+    this.setData({
+      isComeFrom:false
+    })
     wx.switchTab({
       url: '../index/index'
     });
@@ -507,6 +508,9 @@ Page({
   },
   /*跳转到购物车*/
   tiaocar: function () {
+    this.setData({
+      isComeFrom: false
+    });
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
     wx.switchTab({
@@ -573,7 +577,8 @@ Page({
               })
             } else {
               _this.setData({
-                modelHiddenss: true
+                modelHiddenss: true,
+                isComeFrom:false
               })
               wx.navigateTo({
                 url: '../theorder/theorder?goods_id=' + goods_id + '&num=' + num + '&spec_key=' + spec_key + '&page=' + 1,
