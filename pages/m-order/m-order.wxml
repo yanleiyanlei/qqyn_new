@@ -28,6 +28,7 @@
   <image src="http://m.77farmers.com/Public/xcximg/newyear/xcxShare.png"></image>
   <view class='shareBox'>
     <view class='shareClose' bindtap='onShare'></view>
+    <button open-type="share"></button>
   </view>
 </view>
 <!-- 分享  -->

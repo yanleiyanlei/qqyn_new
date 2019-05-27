@@ -9,6 +9,26 @@ Page({
     tt:"display:none",
     showShare:false
   },
+  onShareAppMessage(res) {
+    var userinfo = wx.getStorageSync("userinfo");
+    var uid = userinfo.uid;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '【青青优农】追求原始的味道',
+      path: '/pages/index/index?id=' + 123 + '&pid=' + uid,
+      imageUrl: '',
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        // 分享失败
+        //console.log(res)
+      }
+    }
+  },
   onLoad: function (options) {
     var userInfo = wx.getStorageSync("userinfo");
     var uid = userInfo.uid;

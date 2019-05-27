@@ -139,7 +139,8 @@
                 <text class='goodsdelprice'>￥{{item.market_price}}</text>
               </view>
               <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
-                <image src="../../image/new/rushBuy.png"></image>
+                <image wx:if="{{item.number>0}}" src="../../image/new/rushBuy.png"></image>
+                <image wx:else src="../../image/new/rushBuyNone.png"></image>
               </navigator>
             </view>
           </view>
