@@ -321,13 +321,11 @@ page {
 .swTitle{
   width:241rpx;
   font-size:24rpx;
-  height:60rpx;
   font-family:SourceHanSansCN-Bold;
   font-weight:bold;
   color:rgba(51, 51, 51, 1);
   margin-bottom:22rpx;
   margin-top:25rpx;
-  line-height:28rpx;
   text-overflow:-o-ellipsis-lastline;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -375,7 +373,7 @@ page {
   margin-left: 14rpx;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items:flex-end;
 }
 .swBottom navigator{
   width: 110rpx;
@@ -411,6 +409,7 @@ page {
   font-weight:400;
   text-decoration:line-through;
   color:rgba(85,85,85,1);
+  line-height: 20rpx;
 }
 /*
 .todayRecommend-tit {
