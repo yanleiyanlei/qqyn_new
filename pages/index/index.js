@@ -432,7 +432,12 @@ Page({
       success: function(res) {
         var banner = []
         // console.log(res.data)
-        var len = res.data.length
+        var len = res.data.length;
+        if (res.data){
+          that.setData({
+            bannerCon: res.data
+          })
+        }
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].ad_position == 66) {
             banner.push({

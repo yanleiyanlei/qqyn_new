@@ -18,7 +18,7 @@
   </view>
   <!-- 轮播内容 -->
   <swiper bindchange="swiperChange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true'>
-    <block wx:for="{{banner}}" wx:key="unique">
+    <!-- <block wx:for="{{banner}}" wx:key="unique">
       <swiper-item data-index="{{index}}">
         <block wx:if="{{item.bannerlink && item.bannerlink !='../my/my'}}">
           <navigator url='{{item.bannerlink}}' hover-class='Nhover'>
@@ -33,6 +33,17 @@
         <block>
           <image src="{{item.bannersrc}}" class="slide-image" />
         </block>
+      </swiper-item>
+    </block> -->
+
+    <block wx:for="{{bannerCon}}" wx:key="unique">
+      <swiper-item data-index="{{index}}">
+        <view class='goUrl' bindtap='goUrl' data-url="{{item.xcx_url}}" hover-class='Nhover'>
+          <view class='imgTextBox'>
+            <image src='{{item.ad_img}}'></image>
+            <text>{{item.ad_name}}</text>
+          </view>
+        </view>
       </swiper-item>
     </block>
   </swiper>
