@@ -69,6 +69,7 @@ Page({
           if (_this.data.currentIndex == -1) return;
           _this.reqGoods(_this.data.class_list[_this.data.currentIndex].id);
         } else if (app.globalData.tabBarId!=''){
+          console.log("getClassList", app.globalData.tabBarId)
           let obj={};
           obj.id = app.globalData.tabBarId;
           app.globalData.tabBarId = '';
@@ -308,6 +309,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('classify-onload');
     let location = wx.getStorageSync("locationcity");
     this.setData({
       location: location
