@@ -12,6 +12,7 @@
 .wbContentDay image{
   display: block;
   width: 100%;
+  margin-bottom: 20rpx;
 }
 .goodsDay{
   float: left;
@@ -26,6 +27,7 @@
   font-size: 24rpx;
   text-align: left;
   margin: 20rpx;
+  margin-top: 0;
   width: 100%;
   display: block;
 }

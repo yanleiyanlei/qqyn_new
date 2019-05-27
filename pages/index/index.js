@@ -7,6 +7,7 @@ const demo = new QQMapWX({
 //获取应用实例
 const app = getApp()
 const user = require("../../lib/js/user.js")
+var setInterTimer = null;
 Page({
   data: {
     mshow: "display:none",
@@ -65,9 +66,15 @@ Page({
   },
   intervalChange:function(e){
     console.log(e.detail.current);
-    this.setData({
-      dailySpikeIndex: e.detail.current 
-    })
+    if (e.detail.source == "touch") {
+      //防止swiper控件卡死
+      if (this.data.current == 0 && this.data.dailySpikeIndex > 1) {//卡死时，重置current为正确索引
+        this.setData({ dailySpikeIndex: this.data.dailySpikeIndex });
+      }
+      else {//正常轮转时，记录正确页码索引
+        this.setData({ dailySpikeIndex: e.detail.current });
+      }
+    }
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -211,8 +218,9 @@ Page({
             title: '网络连接失败！',
           })
 
-          setTimeout(function() {
-            wx.hideLoading()
+          var timer = setTimeout(function() {
+            wx.hideLoading();
+            clearTimeout(timer);
           }, 2000)
 
         }
@@ -283,17 +291,21 @@ Page({
             second: int_second,
           })
         }
-        setInterval(function () {
+        
+
+        clearInterval(setInterTimer);
+        setInterTimer = setInterval(function () {
           time_distance -= 1000;
           time(time_distance);
-        },1000)
-        
+        }, 1000)
+
       }else{
         wx.showLoading({
           title: '网络连接失败！',
         })
-        setTimeout(function () {
-          wx.hideLoading()
+        var timer = setTimeout(function () {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
       }
     })
@@ -507,8 +519,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -533,8 +546,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -577,8 +591,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -601,8 +616,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -629,8 +645,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -667,8 +684,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -678,6 +696,7 @@ Page({
     this.setData({
       dailySpikeIndex: 0
     })
+    clearInterval(setInterTimer);
     this.mrms();
     let that=this;
     location = wx.getStorageSync("locationcity");

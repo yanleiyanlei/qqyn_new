@@ -688,13 +688,26 @@ Page({
                   deliveryList: datalist.delivery_date.date,
                   timeDay: datalist.delivery_date.date[0].day
                 })
-                if (datalist.address.shi != '北京市') {
-                  _this.setData({
-                    deliveryList: _this.data.deliveryList.slice(-3),
-                    timeDay: _this.data.timeDay.slice(-3),
-                    tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
-                  })
+                if (datalist.address){
+                  if (datalist.address.shi != '北京市') {
+                    _this.setData({
+                      deliveryList: _this.data.deliveryList.slice(-3),
+                      timeDay: _this.data.timeDay.slice(-3),
+                      tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
+                      timeTips: ''
+                    })
+                  }
+                }else{
+                  if (wx.getStorageSync('locationcity') != '北京市') {
+                    _this.setData({
+                      deliveryList: _this.data.deliveryList.slice(-3),
+                      timeDay: _this.data.timeDay.slice(-3),
+                      tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
+                      timeTips: ''
+                    })
+                  }
                 }
+                
                 if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
                   var reduce_moeny = datalist.reward_coupon.reduce_moeny;
                   var satisfy_money = datalist.reward_coupon.satisfy_money;
@@ -811,12 +824,24 @@ Page({
             deliveryList: datalist.delivery_date.date,
             timeDay: datalist.delivery_date.date[0].day
           })
-          if (datalist.address.shi != '北京市') {
-            _this.setData({
-              deliveryList: _this.data.deliveryList.slice(-3),
-              timeDay: _this.data.timeDay.slice(-3),
-              tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
-            })
+          if (datalist.address) {
+            if (datalist.address.shi != '北京市') {
+              _this.setData({
+                deliveryList: _this.data.deliveryList.slice(-3),
+                timeDay: _this.data.timeDay.slice(-3),
+                tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
+                timeTips: ''
+              })
+            }
+          } else {
+            if (wx.getStorageSync('locationcity') != '北京市') {
+              _this.setData({
+                deliveryList: _this.data.deliveryList.slice(-3),
+                timeDay: _this.data.timeDay.slice(-3),
+                tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
+                timeTips: ''
+              })
+            }
           }
           if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
             var reduce_moeny = datalist.reward_coupon.reduce_moeny;
