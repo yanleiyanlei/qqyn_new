@@ -126,22 +126,26 @@
   >
   <block wx:for="{{dailySpike}}" wx:for-index="idx"  wx:key="unique">
     <swiper-item>
+    
+      <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
       <view data-dailySpikeIndex="{{dailySpikeIndex}}" data-index="{{idx}}" class="swContent {{dailySpikeIndex == idx ? 'active' : 'aa'}}">
-        <image src="{{item.thumbnails}}" class="slide-image" width="355" height="150" />
-        <view class='swInfo'>
-          <text class='swTitle'>{{item.alias}}</text>
-          <text class='swRemark'>{{item.goods_remark}}</text>
-          <view class='swBottom'>
-            <view class='swCon'>
-              <text class='goodsprice'><text>￥</text>{{item.shop_price}}</text>
-              <text class='goodsdelprice'>￥{{item.market_price}}</text>
+          <image src="{{item.thumbnails}}" class="slide-image" width="355" height="150" />
+          <view class='swInfo'>
+            <text class='swTitle'>{{item.alias}}</text>
+            <text class='swRemark'>{{item.goods_remark}}</text>
+            <view class='swBottom'>
+              <view class='swCon'>
+                <text class='goodsprice'><text>￥</text>{{item.shop_price}}</text>
+                <text class='goodsdelprice'>￥{{item.market_price}}</text>
+              </view>
+              <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
+                <image src="../../image/new/rushBuy.png"></image>
+              </navigator>
             </view>
-            <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
-              <image src="../../image/new/rushBuy.png"></image>
-            </navigator>
           </view>
-        </view>
       </view>
+      
+      </navigator>
     </swiper-item>
   </block>
 </swiper>

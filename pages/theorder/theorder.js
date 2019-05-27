@@ -622,22 +622,11 @@ Page({
       tiemInfo: item.day + ' ' + item.week,
       timeImgShow: index,
     })
-    switch (index) {
-      case 0:
-        this.setData({
-          timeTips: '当日达'
-        })
-        break;
-      case 1:
-        this.setData({
-          timeTips: '次日达'
-        })
-        break;
-      default:
-        this.setData({
-          timeTips: ''
-        })
-    }
+
+    this.timeDay = item.day;
+    this.tiemInfo = item.day + ' ' + item.week;
+    this.timeImgShow = index;
+    this.timeTips = item.label;
   },
   /**关闭弹窗 */
   closeTimePop: function () {
@@ -702,7 +691,8 @@ Page({
                 if (datalist.address.shi != '北京市') {
                   _this.setData({
                     deliveryList: _this.data.deliveryList.slice(-3),
-                    timeDay: _this.data.timeDay.slice(-3)
+                    timeDay: _this.data.timeDay.slice(-3),
+                    tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
                   })
                 }
                 if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券
@@ -824,7 +814,8 @@ Page({
           if (datalist.address.shi != '北京市') {
             _this.setData({
               deliveryList: _this.data.deliveryList.slice(-3),
-              timeDay: _this.data.timeDay.slice(-3)
+              timeDay: _this.data.timeDay.slice(-3),
+              tiemInfo: _this.data.deliveryList.slice(-3)[0].tips,
             })
           }
           if (is_goods_coupon == 1) { //当is_goods_coupon == 1说明有商品券

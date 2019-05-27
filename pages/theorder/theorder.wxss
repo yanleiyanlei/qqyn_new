@@ -505,6 +505,7 @@ page{
   color:rgba(255,113,43,1);
   margin-top: 10rpx;
   margin-left: 150rpx;
+  width: 60rpx;
 }
 .ctInfo .ctTime{
   font-size: 28rpx;
