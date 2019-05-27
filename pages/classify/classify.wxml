@@ -66,8 +66,9 @@
           data-id="{{item.id}}" 
           data-index="{{index}}" 
           bindtap='onUniqueClick'
+          id='{{"uniq"+index}}'
           >
-          <image  src='{{uniqueIcon[index]}}' class='{{uniqueImgClass[index]}}'></image>
+          <image  src='{{uniqueIcon[uniqueIndex==index?index+2:index]}}' class='{{uniqueImgClass[index]}}'></image>
           <text>{{item.name}}</text>
         </view>
         <view 

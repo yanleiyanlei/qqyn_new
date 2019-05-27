@@ -244,9 +244,9 @@
   top:40rpx;
 }
 .unique-icon-fresh{
-  width:14rpx;
-  height: 18rpx; 
+  width:44rpx;
+  height: 40rpx; 
   position:absolute;
-  left:6rpx;
-  top:40rpx;
+  left:0;
+  top:0;
 }

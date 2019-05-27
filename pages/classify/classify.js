@@ -8,7 +8,9 @@ Page({
    */
   data: {
     hiddenLoading: true,
+    key:'',
     location: '',
+    tabbarId:'',
     currentIndex:-1,
     uniqueIndex:0,
     class_list:[],
@@ -26,25 +28,27 @@ Page({
     ],
     uniqueIcon:[
       '../../image/new/icon-hot.png',
-      '../../image/new/icon-fresh.png'
+      '../../image/new/icon-fresh.png',
+      '../../image/new/icon-hot-active.png',
+      '../../image/new/icon-fresh-active.png'
     ]
   },
   //检测从首页icon二级跳转过来
-  getClassifyId: function (that) {
-    var id = app.globalData.tabBarId;
-    if (id) {
-      that.class_list.forEach(function (item, index) {
-        if (id === item.id) {
-          that.setData({
-            currentIndex: index,
-            uniqueIndex: -1,
-          })
-          console.log('index', index);
-        }
-      })
-      // this.reqGoods(id);
-    }
-  },
+  // getClassifyId: function () {
+  //   var id = app.globalData.tabBarId;
+  //   if (id) {
+  //     this.class_list.forEach(function (item, index) {
+  //       if (id === item.id) {
+  //         that.setData({
+  //           currentIndex: index,
+  //           uniqueIndex: -1,
+  //         })
+  //         console.log('index', index);
+  //       }
+  //     })
+  //     // this.reqGoods(id);
+  //   }
+  // },
   //获取分类列表
   getClassList(){
     let _this=this;
@@ -52,28 +56,33 @@ Page({
     reqClass.then(
       function(res){
         console.log("getClassList-res",res);
-        // let class_list = res.data.class_list;
-        // let recommend_list = res.data.recommend_list;
         _this.setData({
           class_list: res.data.class_list,
           recommend_list:res.data.recommend_list
         })
+        let location = wx.getStorageSync("locationcity");
+        if (location != _this.data.location) {
+          this.setData({
+            location: location
+          });
+          if (_this.data.currentIndex == -1) return;
+          _this.reqGoods(_this.data.class_list[_this.data.currentIndex].id);
+        } else if (app.globalData.tabbarId!=''){
+          let obj={};
+          obj.id = app.globalData.tabbarId;
+          app.globalData.tabbarId = '';
+          _this.data.class_list.forEach(function (item, index) {
+            // console.log(item,index)
+            if (item.id == obj.id) {
+              obj.index=index;
+            }
+          });
+          _this.onCellClick(obj);
+        } else if (_this.data.currentIndex!=-1){
 
-        if (app.globalData.tabBarId){
-          _this.reqGoods(app.globalData.tabBarId);
-        } else {
+        }else{
           _this.onUniqueClick(res.data.recommend_list[0].id);
         }
-
-
-        _this.data.class_list.forEach(function (item, index) {
-          // console.log(item,index)
-          if (item.id == app.globalData.tabBarId) {
-            _this.setData({
-              currentIndex: index,
-            })
-          }
-        })
 
         //获取传过来的tabBarId
 
@@ -104,17 +113,29 @@ Page({
   },
   onCellClick(event){
     console.log("onCellClick",event);
-    let cellIndex = event.currentTarget.dataset.index;
+    let cellIndex,id;
+    if(event.index){
+      cellIndex = event.index;
+      id = event.id;
+    }else{
+      cellIndex = event.currentTarget.dataset.index;
+      id = event.currentTarget.dataset.id;
+    }
     if (this.currentIndex == cellIndex) return;
     this.setData({
       uniqueIndex: -1,
-      currentIndex:event.currentTarget.dataset.index
+      currentIndex: cellIndex
     });
-    this.reqGoods(event.currentTarget.dataset.id);
+    this.reqGoods(id);
   },
   onUniqueClick(event){
     console.log("onUniqueClick", event);
     if(!event.currentTarget){
+      this.setData({
+        currentIndex: -1,
+        uniqueIndex: 0,
+        key: "uniq0"
+      });
       this.reqUnique(event);
       return;
     }
@@ -122,7 +143,8 @@ Page({
     if (this.uniqueIndex == uniqueIndex) return;
     this.setData({
       currentIndex:-1,
-      uniqueIndex: event.currentTarget.dataset.index
+      uniqueIndex: event.currentTarget.dataset.index,
+      key: "uniq" + event.currentTarget.dataset.index
     });
     this.reqUnique(event.currentTarget.dataset.id);
   },
@@ -141,7 +163,7 @@ Page({
         });
         _this.setData({
           uniqueIndex: -1,
-          key: 'sw' + app.globalData.tabBarId
+          key: 'sw' + goodsId
         }) 
       },
       function(err){
@@ -283,19 +305,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
     let location = wx.getStorageSync("locationcity");
     this.setData({
       location: location
+      // tabbarId:app.globalData.tabbarId
     });
-    _this.getCartList();
-    _this.getClassList();
+    // _this.getCartList();
+    // _this.getClassList();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    console.log("onready===========");
   
   },
 
@@ -303,19 +325,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let location = wx.getStorageSync("locationcity");
+    let pages=getCurrentPages();
+    let prevPage = pages[pages.length - 2];  //上一个页面
+    // let prevPage = getPrevPage();
+    console.log("currentPage:",pages);
+    console.log("prevPage:", prevPage);
+    console.log('onShow-app.globalData.tabbarId', app.globalData.tabbarId);
+    // let location = wx.getStorageSync("locationcity");
     // 获取购物车列表 
     this.getCartList();
-    //是否需要重新请求 ids
-    if (location != this.data.location) {
-      this.setData({
-        location: location
-      });
-      if (this.data.currentIndex == -1) return;
-      this.reqGoods(this.data.class_list[this.data.currentIndex].id);
-    }
-    
-    console.log(app.globalData.tabBarId);
+    this.getClassList();
+    // //是否需要重新请求 ids
+    // if (location != this.data.location) {
+    //   this.setData({
+    //     location: location
+    //   });
+    //   if (this.data.currentIndex == -1) return;
+    //   this.reqGoods(this.data.class_list[this.data.currentIndex].id);
+    // } else if (app.globalData.tabbarId!=''){
+    //   console.log('onshow-tabBarId', app.globalData.tabbarId);
+    //   let obj={};
+    //   obj.id = app.globalData.tabbarId;
+    //   app.globalData.tabbarId='';
+    //   this.class_list.forEach(function(v,k){
+    //     if(v.id==obj.id){
+    //       obj.index=k;
+    //     }
+    //   });
+    //   this.onCellClick(obj);
+    // }
+    // console.log(app.globalData.tabBarId);
   },
 
   /**

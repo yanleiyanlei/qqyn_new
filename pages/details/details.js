@@ -108,6 +108,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var pages = getCurrentPages();
+    console.log("detail-onShow",pages);
     var that = this;
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
