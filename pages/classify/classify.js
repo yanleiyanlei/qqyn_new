@@ -62,13 +62,7 @@ Page({
           recommend_list:res.data.recommend_list
         })
         let location = wx.getStorageSync("locationcity");
-        if (location != _this.data.location) {
-          this.setData({
-            location: location
-          });
-          if (_this.data.currentIndex == -1) return;
-          _this.reqGoods(_this.data.class_list[_this.data.currentIndex].id);
-        } else if (app.globalData.tabBarId!=''){
+        if (app.globalData.tabBarId!=''){
           console.log("getClassList", app.globalData.tabBarId)
           let obj={};
           obj.id = app.globalData.tabBarId;
@@ -80,11 +74,7 @@ Page({
             }
           });
           _this.onCellClick(obj);
-        } 
-        // else if (_this.data.currentIndex!=-1){
-
-        // }
-        else{
+        }else{
           _this.onUniqueClick(res.data.recommend_list[0].id);
         }
 
@@ -118,14 +108,14 @@ Page({
   onCellClick(event){
     console.log("onCellClick",event);
     let cellIndex,id;
-    if(event.index){
+    if(event.id){
       cellIndex = event.index;
       id = event.id;
     }else{
       cellIndex = event.currentTarget.dataset.index;
       id = event.currentTarget.dataset.id;
     }
-    if (this.currentIndex == cellIndex) return;
+    // if (this.currentIndex == cellIndex) return;
     this.setData({
       uniqueIndex: -1,
       currentIndex: cellIndex
@@ -192,6 +182,17 @@ Page({
 
       }
     )
+  },
+  onAddressClick:function(e){
+    this.setData({
+      comeForm:'address'
+    });
+    wx.navigateTo({
+      url: '../laAdd/laAdd',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
   // 添加购物车=================
   onAddCart: function (e) {
@@ -330,17 +331,77 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // let location = wx.getStorageSync("locationcity");
+    let location = wx.getStorageSync("locationcity");
+    console.log("show-location", location);
     console.log("classify-show-comefrom",this.data.comeForm)
+    console.log("classify-show-tabBarId", app.globalData.tabBarId)
     if (this.data.comeForm=="detail"){
       this.setData({
         comeForm:'tab'
       })
       return;
     }
-    // 获取购物车列表 
+    if (this.data.comeForm == "address"){
+      this.setData({
+        comeForm: 'tab'
+      });
+      let location = wx.getStorageSync("locationcity");
+      if (location != this.data.location) {
+        this.setData({
+          location:location
+        });
+        if (this.data.currentIndex == -1) return;
+        let obj={};
+        obj.id = this.data.class_list[this.data.currentIndex].id;
+        obj.index = this.data.currentIndex
+        this.onCellClick(obj);
+      }
+      return;
+    }
+    if (location != this.data.location) {
+      this.setData({
+        location: location
+      });
+      if(app.globalData.tabBarId!=''){
+        let obj={};
+        obj.id = app.globalData.tabBarId;
+        app.globalData.tabBarId='';
+        this.data.class_list.forEach(function(v,k){
+          if(v.id==obj.id){
+            obj.index=k;
+          }
+        })
+        this.onCellClick(obj);
+        return;
+      }else{
+        this.onUniqueClick(this.data.recommend_list[0].id);
+        // if (this.data.currentIndex == -1) return;
+        // this.reqGoods(this.data.class_list[this.data.currentIndex].id);
+        return;
+      }
+    }
     this.getCartList();
     this.getClassList();
+    // else if (this.data.comeForm == "address"){
+    //   this.setData({
+    //     comeForm: 'tab'
+    //   });
+    //   let location = wx.getStorageSync("locationcity");
+    //   if (location != this.data.location) {
+    //     console.log("getClassList-location", location)
+    //     this.setData({
+    //       location: location
+    //     });
+    //     console.log("this.data.currentIndex", this.data.currentIndex);
+    //     if (this.data.currentIndex == -1) return;
+    //     let obj={};
+    //     obj.id = this.data.class_list[this.data.currentIndex].id;
+    //     obj.index = this.data.currentIndex
+    //     // this.onCellClick(this.data.class_list[this.data.currentIndex].id);
+    //     this.onCellClick(obj);
+    //   }else{
+        
+    //   }
     // //是否需要重新请求 ids
     // if (location != this.data.location) {
     //   this.setData({
