@@ -255,6 +255,7 @@ Page({
           })
         } else {
           that.setData({
+            dailySpikeShow: true,
             dailySpike: data.data.goods_list
           });
         }
