@@ -621,12 +621,8 @@ Page({
       timeDay: item.day,
       tiemInfo: item.day + ' ' + item.week,
       timeImgShow: index,
+      timeTips: item.label
     })
-
-    this.timeDay = item.day;
-    this.tiemInfo = item.day + ' ' + item.week;
-    this.timeImgShow = index;
-    this.timeTips = item.label;
   },
   /**关闭弹窗 */
   closeTimePop: function () {
@@ -750,9 +746,15 @@ Page({
                       timeTips: ''
                     });
                   } else {
-                    _this.setData({
-                      timeTips: '当日达'
-                    });
+                    if (datalist.delivery_date.date.length == 4) {
+                      _this.setData({
+                        timeTips: '次日达'
+                      });
+                    } else if (datalist.delivery_date.date.length == 5) {
+                      _this.setData({
+                        timeTips: '当日达'
+                      });
+                    }
                   }
                 }
                 if (datalist.coupon == null) { //没用优惠卷 coupon_money = 0
@@ -883,9 +885,15 @@ Page({
                 timeTips: ''
               });
             }else{
-              _this.setData({
-                timeTips: '当日达'
-              });
+              if (datalist.delivery_date.date.length == 4){
+                _this.setData({
+                  timeTips: '次日达'
+                });
+              } else if (datalist.delivery_date.date.length == 5){
+                _this.setData({
+                  timeTips: '当日达'
+                });
+              }
             }
           }
           if (datalist.coupon == null) { //没用优惠卷 coupon_money = 0
