@@ -6,13 +6,39 @@ Page({
     orderlist: [],
     active: 0,
     uid: "",
-    tt:"display:none"
+    tt:"display:none",
+    showShare:false
+  },
+  onShareAppMessage(res) {
+    var userinfo = wx.getStorageSync("userinfo");
+    var uid = userinfo.uid;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '【青青优农】追求原始的味道',
+      path: '/pages/index/index?id=' + 123 + '&pid=' + uid,
+      imageUrl: '',
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        // 分享失败
+        //console.log(res)
+      }
+    }
   },
   onLoad: function (options) {
     var userInfo = wx.getStorageSync("userinfo");
     var uid = userInfo.uid;
     //var uid=62;
-    console.log(options.coupon)
+    console.log(options)
+    if (options.suc == 1){
+      this.setData({
+        showShare: true
+      })
+    }
 
     if (options.coupon=='1'){
       this.setData({
@@ -56,6 +82,12 @@ Page({
           duration: 1000
         })
       }
+    })
+  },
+  onShare: function(){
+    console.log(1)
+    this.setData({
+      showShare: false
     })
   },
   link: function () {

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "wants-buy": "/components/wantsBuy/wantsBuy"
+  }
+}

@@ -1,0 +1,33 @@
+/* pages/giftCard/giftCard.wxss */
+.giftCard{
+  position: relative;
+}
+.goshopcart{
+  position: fixed;
+  right: 15rpx;
+  bottom: 40rpx;
+  width: 97rpx;
+  height: 97rpx;
+  z-index: 11;
+}
+.banner{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.content{
+  background-color: #333;
+  text-align: left;
+  padding-bottom: 100rpx;
+  overflow: hidden;
+}
+.content .conp{
+  width:659rpx;
+  font-size:18rpx;
+  font-family:SourceHanSansSC-Normal;
+  font-weight:400;
+  color:#fff;
+  display: block;
+  margin:0 auto;
+  line-height:30rpx;
+}

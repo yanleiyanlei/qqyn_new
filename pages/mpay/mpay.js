@@ -88,7 +88,7 @@ Page({
               if (that.data.wz == 1) {
 
                 wx.redirectTo({
-                  url: '/pages/m-order/m-order?sta=' + that.data.sta + "&coupon=" + that.data.coupon + "&end=" + that.data.end + "&tip=" + that.data.tip,
+                  url: '/pages/m-order/m-order?suc=1&sta=' + that.data.sta + "&coupon=" + that.data.coupon + "&end=" + that.data.end + "&tip=" + that.data.tip,
                 })
               } else if (that.data.wz == 0) {
                 wx.redirectTo({
@@ -175,7 +175,7 @@ Page({
                       //console.log("支付成功");
                       console.log(res)
                       wx.redirectTo({
-                        url: '/pages/m-order/m-order?sta=' + that.data.sta+"&coupon="+that.data.coupon+"&end="+that.data.end+"&tip="+that.data.tip,
+                        url: '/pages/m-order/m-order?suc=1&sta=' + that.data.sta+"&coupon="+that.data.coupon+"&end="+that.data.end+"&tip="+that.data.tip,
                       })
 
 

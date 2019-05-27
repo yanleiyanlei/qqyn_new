@@ -21,7 +21,7 @@ page {
 
 .hd-banner {
   width: 750rpx;
-  height: 594rpx;
+  height: 650rpx;
   position: relative;
 }
 
@@ -50,6 +50,7 @@ page {
   filter: opacity(80);
   padding: 5rpx 15rpx 5rpx 5rpx;
   border-radius: 30rpx 0 0 30rpx;
+  z-index:99;
 }
 
 .exchange image {
@@ -87,7 +88,7 @@ page {
   width: 100%;
   position: absolute;
   text-align: center;
-  top: 180rpx;
+  top: 530rpx;
 }
 
 .hd-banner .situation {
@@ -164,12 +165,12 @@ page {
 	font-stretch: normal;
 	line-height: 36rpx;
 	letter-spacing: 0px;
-	color: #333333;
+	color: #ffffff;
 }
 
 .hd-dw .now-join .now-join-num {
   font-size: 26rpx;
-  color: #048c31;
+  color: #6e181e;
   line-height: 68rpx;
 }
 
@@ -204,7 +205,7 @@ page {
 	font-weight:bold;
 
 	letter-spacing: 0px;
-	color: #333333;
+	color: #ffffff;
 }
 
 .end-gap text {
@@ -224,7 +225,7 @@ page {
   -ms-border-radius: 8rpx;
   -moz-border-radius: 8rpx;
   -o-border-radius: 8rpx;
-  color: #048c31;
+  color: #6e181e;
 }
 
 .hd-banner .banner {
@@ -838,13 +839,13 @@ page {
 .renwu1{
   position: relative;
   width: 710rpx;
-  height: 320rpx;
+  height: 400rpx;
   border: solid 2rpx #8300f3;
   margin-top: 20rpx;
 }
 .bottom{
   width: 710rpx;
-  height: 160rpx;
+  height: 183rpx;
   position: absolute;
   left: 0;
   bottom: 0;

@@ -7,6 +7,7 @@ const demo = new QQMapWX({
 //获取应用实例
 const app = getApp()
 const user = require("../../lib/js/user.js")
+var setInterTimer = null;
 Page({
   data: {
     mshow: "display:none",
@@ -38,7 +39,42 @@ Page({
     //商品四个类目
     goodsType: {},
     ewmimg: ["http://m.7710mall.com/Public/Home/img/m_ma.png"],
-    swiperCurrent: 0
+    swiperCurrent: 0,
+    //每日秒杀
+    dailySpike:[],
+    dailySpikeIndex: 0,
+    dailySpikeShow: true
+  },
+  //跳转连接
+  goUrl:function(e){
+    console.log(e)
+    var url = e.currentTarget.dataset.url;
+    let splitUrl = url.split('/');
+    console.log(splitUrl)
+    let len = splitUrl.length;
+    if (splitUrl[len-2] == 'classify'){
+      var idArr = url.split('?');
+      app.globalData.tabBarId = idArr[1].split('=')[1];
+      wx.switchTab({
+        url: '/pages/classify/classify'
+      })
+    }else{
+      wx.navigateTo({
+        url:url
+      })
+    }
+  },
+  intervalChange:function(e){
+    console.log(e.detail.current);
+    if (e.detail.source == "touch") {
+      //防止swiper控件卡死
+      if (this.data.current == 0 && this.data.dailySpikeIndex > 1) {//卡死时，重置current为正确索引
+        this.setData({ dailySpikeIndex: this.data.dailySpikeIndex });
+      }
+      else {//正常轮转时，记录正确页码索引
+        this.setData({ dailySpikeIndex: e.detail.current });
+      }
+    }
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -182,8 +218,9 @@ Page({
             title: '网络连接失败！',
           })
 
-          setTimeout(function() {
-            wx.hideLoading()
+          var timer = setTimeout(function() {
+            wx.hideLoading();
+            clearTimeout(timer);
           }, 2000)
 
         }
@@ -201,6 +238,82 @@ Page({
       complete: function(res) {},
     })
 
+  },
+  timeFormat(param) {//小于10的格式化函数
+    return param < 10 ? '0' + param : param;
+  },
+  //每日秒杀
+  mrms:function(){
+    var that = this;
+    const shopusr = "/Applets/Index/getBargainsRushGoodsList";
+    request.request(shopusr, {},'post').then(function (data) {
+      if(data.code == 200){
+        console.log(data);
+        if (data.data == null) {
+          that.setData({
+            dailySpikeShow: false
+          })
+        } else {
+          that.setData({
+            dailySpikeShow: true,
+            dailySpike: data.data.goods_list
+          });
+        }
+        var startTime = data.data.info.current_time;
+        var endTime = data.data.info.end_time;
+        var time_distance = (endTime - startTime);
+
+        function time(time_distance) {
+          var int_day = Math.floor(time_distance / 86400000);
+          time_distance -= int_day * 86400000;
+          // 时
+          var int_hour = Math.floor(time_distance / 3600000)
+          time_distance -= int_hour * 3600000;
+          // 分
+          var int_minute = Math.floor(time_distance / 60000)
+          time_distance -= int_minute * 60000;
+          // 秒
+          var int_second = Math.floor(time_distance / 1000)
+          // 时分秒为单数时、前面加零
+          if (int_day < 10) {
+            int_day = "0" + int_day;
+          }
+          if (int_hour < 10) {
+            int_hour = "0" + int_hour;
+          }
+          if (int_minute < 10) {
+            int_minute = "0" + int_minute;
+          }
+          if (int_second < 10) {
+            int_second = "0" + int_second;
+          }
+          that.setData({
+            hour: int_hour,
+            minute: int_minute,
+            second: int_second,
+          })
+          if (int_hour == '00' && int_minute == '00' && int_second == '00'){
+            that.mrms();
+          }
+        }
+        
+
+        clearInterval(setInterTimer);
+        setInterTimer = setInterval(function () {
+          time_distance -= 1000;
+          time(time_distance);
+        }, 1000)
+
+      }else{
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+        var timer = setTimeout(function () {
+          wx.hideLoading();
+          clearTimeout(timer);
+        }, 2000)
+      }
+    })
   },
   onHide: function() {
     app.globalData.store = 0
@@ -320,7 +433,12 @@ Page({
       success: function(res) {
         var banner = []
         // console.log(res.data)
-        var len = res.data.length
+        var len = res.data.length;
+        if (res.data){
+          that.setData({
+            bannerCon: res.data
+          })
+        }
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].ad_position == 66) {
             banner.push({
@@ -411,8 +529,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -420,14 +539,15 @@ Page({
 
     //nav导航图片及连接=======================================
     wx.request({
-      url: app.globalData.Murl + '/Applets/Index/icon',
+      url: app.globalData.Murl + '/Applets/Index/iconByV2',
       data: {},
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
+        // console.log(res.data)
         that.setData({
-          navUrls: res.data
+          navUrls: res.data.data.data.xcx.data
         })
 
       },
@@ -436,8 +556,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -480,8 +601,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -504,8 +626,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -532,8 +655,9 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
@@ -570,14 +694,20 @@ Page({
           title: '网络连接失败！',
         })
 
-        setTimeout(function() {
-          wx.hideLoading()
+        var timer = setTimeout(function() {
+          wx.hideLoading();
+          clearTimeout(timer);
         }, 2000)
 
       }
     })
   },
   onShow: function() {
+    this.setData({
+      dailySpikeIndex: 0
+    })
+    clearInterval(setInterTimer);
+    this.mrms();
     let that=this;
     location = wx.getStorageSync("locationcity");
     this.setData({
@@ -623,7 +753,15 @@ Page({
 
     // 获取购物车列表
     this.getCartList();
+
+
+
   },
+  // onPullDownRefresh() {
+  //   this.mrms();
+  //   // this.getCartList();
+  //   wx.stopPullDownRefresh();
+  // },
   // 获取购物车列表
   getCartList: function () {
     let _this = this;

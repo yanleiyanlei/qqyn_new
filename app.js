@@ -14,7 +14,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-
     const updateManager = wx.getUpdateManager()
 
     updateManager.onCheckForUpdate(function(res) {
@@ -133,7 +132,8 @@ App({
     userInfo: null,
     code: "1",
     location: "北京市",
-    //  Murl: "https://m.7710mall.com/index.php"
-    Murl: "https://m.test.7710mall.com/index.php"
+    //  Murl: "https://m.7710mall.com/index.php",
+    Murl: "https://m.test.7710mall.com/index.php",
+    tabBarId:''
   }
 })

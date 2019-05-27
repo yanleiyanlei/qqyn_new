@@ -1,7 +1,6 @@
 <!--分类页面-->
 <loading hidden="{{hiddenLoading}}">正在加载</loading>
-<view class='main'>
-
+<!-- <view class='main'>
   <block wx:for="{{imgurl}}">
     <navigator wx:if="{{item.img[0].ad_position==17}}" url='../qfhot/qfhot'>
       <view class='classify'>
@@ -20,5 +19,96 @@
     </navigator>
 
   </block>
-
+</view> -->
+<view class='page'>
+  <!-- 搜索 -->
+  <view class='search'>
+    <!-- <navigator url='../laAdd/laAdd' class='addloc'>
+      <image src='/image/new/add-h.png'></image>
+      <text>{{location}}</text>
+    </navigator> -->
+    <view class='addloc' bindtap='onAddressClick'>
+      <image src='/image/new/add-h.png'></image>
+      <text>{{location}}</text>
+    </view>
+    <navigator url='../search/search' class='navsearch'>
+      <view>{{txt}}</view>
+    </navigator>
+  </view>
+  <view class='content'>
+    <!-- <view class='interval'></view> -->
+    <!-- <view class='leftBar' id="leftBar"> -->
+      <!-- <view class='cell-group'>
+        <view 
+          class='cell {{uniqueIndex==index?uniqueClass[index]:""}}' 
+          wx:for="{{recommend_list}}" 
+          wx:key="uniqueKey"
+          data-id="{{item.id}}" 
+          data-index="{{index}}" 
+          bindtap='onUniqueClick'
+          >
+          <image  src='{{uniqueIcon[index]}}' class='{{uniqueImgClass[index]}}'></image>
+          <text>{{item.name}}</text>
+        </view>
+        <view 
+          class='cell {{index==currentIndex?"active":""}}' 
+          wx:for="{{class_list}}" 
+          wx:key="classKey" 
+          data-id="{{item.id}}" 
+          data-index="{{index}}" 
+          bindtap='onCellClick'
+          >
+          <text wx:if="{{index==currentIndex}}" class='cell-bar'></text>
+          <text>{{item.cat_name}}</text>
+        </view>
+      </view> -->
+      <scroll-view  class='leftBar' scroll-y="true" scroll-into-view="{{key}}" scroll-with-animation="true">
+        <view 
+          class='cell {{uniqueIndex==index?uniqueClass[index]:""}}' 
+          wx:for="{{recommend_list}}" 
+          wx:key="uniqueKey"
+          data-id="{{item.id}}" 
+          data-index="{{index}}" 
+          bindtap='onUniqueClick'
+          id='{{"uniq"+index}}'
+          >
+          <image  src='{{uniqueIcon[uniqueIndex==index?index+2:index]}}' class='{{uniqueImgClass[index]}}'></image>
+          <text>{{item.name}}</text>
+        </view>
+        <view 
+          class='cell {{index==currentIndex?"active":""}}' 
+          wx:for="{{class_list}}" 
+          wx:key="classKey" 
+          data-id="{{item.id}}" 
+          data-index="{{index}}" 
+          bindtap='onCellClick'
+          id="sw{{item.id}}"
+          >
+          <text wx:if="{{index==currentIndex}}" class='cell-bar'></text>
+          <text>{{item.cat_name}}</text>
+        </view>
+      </scroll-view>
+    <!-- </view> -->
+    <view class='rightBar'>
+      <view class='goods' wx:for="{{goodsList}}" wx:key="goodsKey" data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
+        <view class='img'>
+          <image src='{{item.thumbnails}}'></image>
+        </view>
+        <view class='content'>
+          <text class='title'> {{item.goods_name}}</text>
+          <text class='sub-title'>{{item.goods_remark}}</text>
+          <view class='listBottom'>
+            <view class='goodsprice'><text>￥</text>{{item.shop_price}}</view>
+            <text class='goodsdelprice'>￥{{item.market_price}}</text>
+            <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
+              <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+            </block>
+            <image class='wait' wx:if="{{dataObj.is_sale==1}}" src='../../image/index/ys_b.png'></image>
+            <image class='cart' wx:else src='../../image/new/shop.png' data-goods="{{item}}" catchtap="onAddCart"></image>
+            <view wx:if="{{isCart && dataObj.is_sale!=1}}" class="cartnum">{{goodsNum}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

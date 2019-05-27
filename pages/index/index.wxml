@@ -18,8 +18,8 @@
   </view>
   <!-- 轮播内容 -->
   <swiper bindchange="swiperChange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true'>
-    <block wx:for="{{banner}}" wx:key="unique">
-      <swiper-item>
+    <!-- <block wx:for="{{banner}}" wx:key="unique">
+      <swiper-item data-index="{{index}}">
         <block wx:if="{{item.bannerlink && item.bannerlink !='../my/my'}}">
           <navigator url='{{item.bannerlink}}' hover-class='Nhover'>
             <image src="{{item.bannersrc}}" class="slide-image" />
@@ -33,6 +33,17 @@
         <block>
           <image src="{{item.bannersrc}}" class="slide-image" />
         </block>
+      </swiper-item>
+    </block> -->
+
+    <block wx:for="{{bannerCon}}" wx:key="unique">
+      <swiper-item data-index="{{index}}">
+        <view class='goUrl' bindtap='goUrl' data-url="{{item.xcx_url}}" hover-class='Nhover'>
+          <view class='imgTextBox'>
+            <image src='{{item.ad_img}}'></image>
+            <text>{{item.ad_name}}</text>
+          </view>
+        </view>
       </swiper-item>
     </block>
   </swiper>
@@ -58,13 +69,13 @@
 </view>
 <!--nav  -->
 <view class='nav'>
-  <block wx:for="{{navUrls}}" wx:ket="unique">
-    <navigator url='../classifyGoods/classifyGoods?id={{item.one_cat_id}}' hover-class='Nhover'>
-      <view>
+  <block wx:for="{{navUrls}}" wx:key="unique">
+    <view class='goUrl' bindtap='goUrl' data-url="{{item.link_url}}" hover-class='Nhover'>
+      <view class='imgTextBox'>
         <image src='{{item.ad_img}}'></image>
         <text>{{item.ad_name}}</text>
       </view>
-    </navigator>
+    </view>
   </block>
 </view>
 
@@ -99,6 +110,92 @@
       </view>
     </block>
   </scroll-view>
+</view>
+
+<!-- 每日秒杀 -->
+<view class='dailyDiscount' wx:if="{{dailySpikeShow}}">
+  <view class='ddbj'>
+    <image src='http://m.77farmers.com/Public/xcximg/newyear/msbj.png'></image>
+  </view>
+  <view class='dd_title'>
+    <image src='../../image/new/msicon.png'></image>
+    <text class='titleText'>每日秒杀</text>
+    <text class='CountDown'>倒计时</text>
+    <view class='time'>
+      <text class='hour'>{{hour}}</text> :
+      <text class='minute'>{{minute}}</text> :
+      <text class='second'>{{second}}</text>
+    </view>
+  </view>
+  <swiper
+    interval="{{interval}}"
+    duration="{{duration}}"
+    display-multiple-items="1"
+    class='dailySpike'
+    bindchange="intervalChange"
+    next-margin="50px"
+  >
+  <block wx:for="{{dailySpike}}" wx:for-index="idx"  wx:key="unique">
+    <swiper-item>
+    
+      <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
+      <view data-dailySpikeIndex="{{dailySpikeIndex}}" data-index="{{idx}}" class="swContent {{dailySpikeIndex == idx ? 'active' : 'aa'}}">
+          <image src="{{item.thumbnails}}" class="slide-image" width="355" height="150" />
+          <view class='swInfo'>
+            <text class='swTitle'>{{item.alias}}</text>
+            <text class='swRemark'>{{item.goods_remark}}</text>
+            <view class='swBottom'>
+              <view class='swCon'>
+                <text class='goodsprice'><text>￥</text>{{item.shop_price}}</text>
+                <text class='goodsdelprice'>￥{{item.market_price}}</text>
+              </view>
+              <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
+                <image wx:if="{{item.number>0}}" src="../../image/new/rushBuy.png"></image>
+                <image wx:else src="../../image/new/rushBuyNone.png"></image>
+              </navigator>
+            </view>
+          </view>
+      </view>
+      
+      </navigator>
+    </swiper-item>
+  </block>
+</swiper>
+
+
+
+
+<!-- <scroll-view scroll-x="true" upper-threshold="{{scr}}">
+  <view class='box'>
+    <block wx:for="{{dailySpike}}" wx:for-index="idx"  wx:key="unique">
+        <view data-dailySpikeIndex="{{dailySpikeIndex}}" data-index="{{idx}}" class="swContent {{dailySpikeIndex == idx ? 'active' : 'aa'}}">
+          <image src="{{item.thumbnails}}" class="slide-image" width="355" height="150" />
+          <view class='swInfo'>
+            <text class='swTitle'>{{item.alias}}</text>
+            <text class='swRemark'>{{item.goods_remark}}</text>
+            <view class='swBottom'>
+              <view class='swCon'>
+                <text class='goodsprice'><text>￥</text>{{item.shop_price}}</text>
+                <text class='goodsdelprice'>￥{{item.market_price}}</text>
+              </view>
+              <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
+                <image src="../../image/new/rushBuy.png"></image>
+              </navigator>
+            </view>
+          </view>
+        </view>
+    </block>
+  </view>
+</scroll-view> -->
+
+
+
+
+
+
+
+
+
 </view>
 
 <!-- 深入了解青青优农 -->

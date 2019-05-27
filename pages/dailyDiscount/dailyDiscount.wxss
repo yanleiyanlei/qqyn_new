@@ -1,0 +1,32 @@
+/* pages/dailyDiscount/dailyDiscount.wxss */
+.banner{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.dailyDiscount{
+  position: relative;
+}
+.goshopcart{
+  position: fixed;
+  right: 15rpx;
+  bottom: 40rpx;
+  width: 97rpx;
+  height: 97rpx;
+  z-index: 11;
+}
+.content{
+  background-color: #FFE7AD;
+  padding-bottom: 100rpx;
+  overflow: hidden;
+}
+navigator{
+  width: 100%; 
+  margin-top: 30rpx;
+}
+.adv{
+  width: 710rpx;
+  padding: 0rpx 20rpx;
+  display: block;
+  height: auto;
+}

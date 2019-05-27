@@ -91,7 +91,7 @@ Page({
                 duration: 2000
               })
               wx.redirectTo({
-                url: '../m-order/m-order?sta=' + 0,
+                url: '../m-order/m-order?suc=1&sta=' + 0,
               })
             } else if (that.data.is_goods_coupon == 1) {
               wx.showToast({
@@ -100,7 +100,7 @@ Page({
                 duration: 2000
               })
               wx.redirectTo({
-                url: '../m-order/m-order?sta=' + 0,
+                url: '../m-order/m-order?suc=1&sta=' + 0,
               })
             }
 					} else if (datalist.data == -4) {
@@ -196,7 +196,7 @@ Page({
                         duration: 2000
                       })
                       wx.redirectTo({
-                        url: '../m-order/m-order?sta=' + 0,
+                        url: '../m-order/m-order?suc=1&sta=' + 0,
                       })
                     } else if (_this.data.is_goods_coupon == 1){
                          _this.setData({

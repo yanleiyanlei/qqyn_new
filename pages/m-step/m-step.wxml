@@ -44,7 +44,7 @@
       </view>
     </block> -->
     <view class="hd-dw">
-      <view class='hd-time'>活动时间：{{act.stime}}-{{act.etime}}</view>
+      <!-- <view class='hd-time'>活动时间：{{act.stime}}-{{act.etime}}</view> -->
       <view class="now-join">已有\t
         <text class="now-join-num">{{total_num}}</text>\t人组队拼步</view>
       <block wx:if="{{soldout}}">

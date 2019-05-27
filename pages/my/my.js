@@ -86,14 +86,14 @@ Page({
   },
   goindex:function(){
     // app.globalData.store=1
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/bution/bution',
     })
   },
   //跳到199
   members() {
-    wx.switchTab({
-      url: '../bution/bution'
+    wx.navigateTo({
+      url: '/pages/bution/bution'
     })
   },
   onShow: function () {

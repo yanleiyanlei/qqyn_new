@@ -23,6 +23,15 @@
   <image src="https://m.7710mall.com/Uploads/xxc//m-fsuccess.png" class="bg">
   </image>
 </view>
+<!-- 分享 -->
+<view class='share' wx:if="{{showShare}}">
+  <image src="http://m.77farmers.com/Public/xcximg/newyear/xcxShare.png"></image>
+  <view class='shareBox'>
+    <view class='shareClose' bindtap='onShare'></view>
+    <button open-type="share"></button>
+  </view>
+</view>
+<!-- 分享  -->
 <!-- 切换 -->
 <view class="nav border1 border-box">
   <view class="nav-box border-box">
