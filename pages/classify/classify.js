@@ -118,7 +118,8 @@ Page({
     // if (this.currentIndex == cellIndex) return;
     this.setData({
       uniqueIndex: -1,
-      currentIndex: cellIndex
+      currentIndex: cellIndex,
+      key: 'sw' + id
     });
     this.reqGoods(id);
   },
@@ -155,10 +156,10 @@ Page({
         _this.setData({
           goodsList:res.goods
         });
-        _this.setData({
-          uniqueIndex: -1,
-          key: 'sw' + goodsId
-        }) 
+        // _this.setData({
+        //   uniqueIndex: -1,
+        //   key: 'sw' + goodsId
+        // }) 
       },
       function(err){
 
