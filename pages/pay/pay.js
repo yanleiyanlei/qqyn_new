@@ -172,7 +172,7 @@ Page({
 						console.log(weCharstatus);
 						console.log(orderid);
 						wx.request({
-							url: app.globalData.Murl+'/Applets/Api/index',
+              url: app.globalData.Murl +'/Applets/Api/XcxPay',
 							data: {
 								openid: openid,
 								orderid: orderid
@@ -181,13 +181,14 @@ Page({
 							method: 'POST',
 							header: { 'Content-Type': 'application/json' },
 							success: function (res) {
-								console.log(res)
+								console.log(res);
+                let data = res.data.data.data;
 								wx.requestPayment({
-									'timeStamp': res.data['timeStamp'],
-									'nonceStr': res.data['nonceStr'],
-									'package': res.data['package'],
+                  'timeStamp': data.jsApiParameters['timeStamp'],
+                  'nonceStr': data.jsApiParameters['nonceStr'],
+                  'package': data.jsApiParameters['package'],
 									'signType': 'MD5',
-									'paySign': res.data['paySign'],
+                  'paySign': data.jsApiParameters['paySign'],
 									'success': function (res) {
                     if (_this.data.is_goods_coupon==0){
                       wx.showToast({
@@ -205,7 +206,11 @@ Page({
                     }
 									},
 									'fail': function (res) {
-
+                    wx.showToast({
+                      title: '支付失败',
+                      icon: 'fail',
+                      duration: 2000
+                    })
 									}
 								})
 							}
