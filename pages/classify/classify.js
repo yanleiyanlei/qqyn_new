@@ -117,6 +117,7 @@ Page({
     }
     // if (this.currentIndex == cellIndex) return;
     this.setData({
+      goodsList: [],
       uniqueIndex: -1,
       currentIndex: cellIndex,
       key: 'sw' + id
@@ -137,6 +138,7 @@ Page({
     let uniqueIndex = event.currentTarget.dataset.index;
     if (this.uniqueIndex == uniqueIndex) return;
     this.setData({
+      goodsList:[],
       currentIndex:-1,
       uniqueIndex: event.currentTarget.dataset.index,
       key: "uniq" + event.currentTarget.dataset.index
@@ -153,16 +155,26 @@ Page({
     reqGoods.then(
       function(res){
         console.log("reqGoods-res", res);
-        _this.setData({
-          goodsList:res.goods
-        });
+        if (Array.isArray(res.goods)){
+          _this.setData({
+            goodsList: res.goods
+          });
+        }else{
+          wx.showToast({
+            title: '暂时无货',
+            icon: 'none'
+          })
+        }
         // _this.setData({
         //   uniqueIndex: -1,
         //   key: 'sw' + goodsId
         // }) 
       },
       function(err){
-
+        wx.showToast({
+          title: '未请求到数据',
+          icon: 'none'
+        })
       }
     )
   },
@@ -175,12 +187,22 @@ Page({
     reqGoods.then(
       function (res) {
         console.log("reqUnique-res", res);
-        _this.setData({
-          goodsList: res.data[0]
-        });
+        if (Array.isArray(res.data)){
+          _this.setData({
+            goodsList: res.data[0]
+          });
+        }else{
+          wx.showToast({
+            title: '暂时无货',
+            icon:'none'
+          })
+        }
       },
       function (err) {
-
+        wx.showToast({
+          title: '未请求到数据',
+          icon: 'none'
+        })
       }
     )
   },
