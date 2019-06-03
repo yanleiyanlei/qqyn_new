@@ -20,6 +20,7 @@ Page({
       data: {
         page: "0",
         uid: wx.getStorageInfoSync().uid,
+        from:'x'
       },
       method: 'post',
       success: function (res) {
