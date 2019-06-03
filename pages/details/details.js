@@ -59,6 +59,7 @@ Page({
       curBdIndex: 0
     },
     Index: '',
+    selectindex:0,
     a: '',
     locationadd: "",
     add: " ",
@@ -296,22 +297,24 @@ Page({
   /*加入购物车*/
   addcars: function () {
     if (this.data.ionot != 1) return;
-    var a = this.data.shopName.shop_price;
+    // var a = this.data.shopName.shop_price;
     this.setData({
       modelHiddens: !this.data.modelHiddens
     })
-    var len = this.data.priCes.length;
-    // console.log(this.data.priCes)
-    for (var i = 0; i < len; i++) {
+    this.setData({
+      shop_key: this.data.priCes[this.data.selectindex].spec_key
+    })
+    // var len = this.data.priCes.length;
+    // for (var i = 0; i < len; i++) {
 
-      if (a == this.data.priCes[i].shop_price) {
-        // console.log(this.data.priCes[i].spec_key);
-        this.setData({
-          selectindex: i,
-          shop_key: this.data.priCes[i].spec_key
-        })
-      }
-    }
+    //   if (a == this.data.priCes[i].shop_price) {
+    //     // console.log(this.data.priCes[i].spec_key);
+    //     this.setData({
+    //       selectindex: i,
+    //       shop_key: this.data.priCes[i].spec_key
+    //     })
+    //   }
+    // }
   },
   /*关闭加入购物车*/
   offcasrts: function () {
@@ -322,22 +325,28 @@ Page({
   /*立即购买*/
   addcarss: function () {
     if (this.data.ionot != 1) return;
-    var a = this.data.shopName.shop_price;
     this.setData({
-      modelHiddenss: !this.data.modelHiddenss
+      modelHiddens: !this.data.modelHiddens
     })
-    var len = this.data.priCes.length;
-    // console.log(this.data.priCes)
-    for (var i = 0; i < len; i++) {
+    this.setData({
+      shop_key: this.data.priCes[this.data.selectindex].spec_key
+    })
+    // var a = this.data.shopName.shop_price;
+    // this.setData({
+    //   modelHiddenss: !this.data.modelHiddenss
+    // })
+    // var len = this.data.priCes.length;
+    // // console.log(this.data.priCes)
+    // for (var i = 0; i < len; i++) {
 
-      if (a == this.data.priCes[i].shop_price) {
-        // console.log(this.data.priCes[i].spec_key);
-        this.setData({
-          selectindex: i,
-          shop_key: this.data.priCes[i].spec_key
-        })
-      }
-    }
+    //   if (a == this.data.priCes[i].shop_price) {
+    //     // console.log(this.data.priCes[i].spec_key);
+    //     this.setData({
+    //       selectindex: i,
+    //       shop_key: this.data.priCes[i].spec_key
+    //     })
+    //   }
+    // }
 
   },
   offcasrtss: function () {
