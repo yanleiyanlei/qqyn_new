@@ -188,7 +188,8 @@ Page({
     wx.request({
       url: app.globalData.Murl + '/Applets/Fx/index',
       data: {
-        uid: uid
+        uid: uid,
+        from:'x'
       },
       method: "POST",
       header: {
