@@ -67,13 +67,15 @@ Page({
       }
       if (url === '/Applets/User/m_order4'){
         var numLen = 0;
-        for (var i = 0; i < res.data.order.length;i++){
-          if (res.data.order[i].order_list) {
-            numLen += res.data.order[i].order_list.length;
+        if (!res.data.is_check) {
+          for (var i = 0; i < res.data.order.length; i++) {
+            if (res.data.order[i].order_list) {
+              numLen += res.data.order[i].order_list.length;
+            }
+            that.setData({
+              waitEvaluate: numLen
+            })
           }
-          that.setData({
-            waitEvaluate: numLen
-          })
         }
         
       }
