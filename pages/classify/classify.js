@@ -75,7 +75,15 @@ Page({
           });
           _this.onCellClick(obj);
         }else{
-          _this.onUniqueClick(res.data.recommend_list[0].id);
+          if (_this.data.recommend_list){
+            _this.onUniqueClick(res.data.recommend_list[0].id);
+          }else{
+            let obj = {
+              index:0,
+              id: _this.data.class_list[0].id
+            };
+            _this.onCellClick(obj);
+          }
         }
 
         //获取传过来的tabBarId
