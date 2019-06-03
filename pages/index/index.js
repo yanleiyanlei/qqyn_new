@@ -259,50 +259,54 @@ Page({
             dailySpike: data.data.goods_list
           });
         }
-        var startTime = data.data.info.current_time;
-        var endTime = data.data.info.end_time;
-        var time_distance = (endTime - startTime);
 
-        function time(time_distance) {
-          var int_day = Math.floor(time_distance / 86400000);
-          time_distance -= int_day * 86400000;
-          // 时
-          var int_hour = Math.floor(time_distance / 3600000)
-          time_distance -= int_hour * 3600000;
-          // 分
-          var int_minute = Math.floor(time_distance / 60000)
-          time_distance -= int_minute * 60000;
-          // 秒
-          var int_second = Math.floor(time_distance / 1000)
-          // 时分秒为单数时、前面加零
-          if (int_day < 10) {
-            int_day = "0" + int_day;
+        if (data.data){
+          var startTime = data.data.info.current_time;
+          var endTime = data.data.info.end_time;
+          var time_distance = (endTime - startTime);
+
+          function time(time_distance) {
+            var int_day = Math.floor(time_distance / 86400000);
+            time_distance -= int_day * 86400000;
+            // 时
+            var int_hour = Math.floor(time_distance / 3600000)
+            time_distance -= int_hour * 3600000;
+            // 分
+            var int_minute = Math.floor(time_distance / 60000)
+            time_distance -= int_minute * 60000;
+            // 秒
+            var int_second = Math.floor(time_distance / 1000)
+            // 时分秒为单数时、前面加零
+            if (int_day < 10) {
+              int_day = "0" + int_day;
+            }
+            if (int_hour < 10) {
+              int_hour = "0" + int_hour;
+            }
+            if (int_minute < 10) {
+              int_minute = "0" + int_minute;
+            }
+            if (int_second < 10) {
+              int_second = "0" + int_second;
+            }
+            that.setData({
+              hour: int_hour,
+              minute: int_minute,
+              second: int_second,
+            })
+            if (int_hour == '00' && int_minute == '00' && int_second == '00') {
+              that.mrms();
+            }
           }
-          if (int_hour < 10) {
-            int_hour = "0" + int_hour;
-          }
-          if (int_minute < 10) {
-            int_minute = "0" + int_minute;
-          }
-          if (int_second < 10) {
-            int_second = "0" + int_second;
-          }
-          that.setData({
-            hour: int_hour,
-            minute: int_minute,
-            second: int_second,
-          })
-          if (int_hour == '00' && int_minute == '00' && int_second == '00'){
-            that.mrms();
-          }
+
+
+          clearInterval(setInterTimer);
+          setInterTimer = setInterval(function () {
+            time_distance -= 1000;
+            time(time_distance);
+          }, 1000)
         }
         
-
-        clearInterval(setInterTimer);
-        setInterTimer = setInterval(function () {
-          time_distance -= 1000;
-          time(time_distance);
-        }, 1000)
 
       }else{
         wx.showLoading({

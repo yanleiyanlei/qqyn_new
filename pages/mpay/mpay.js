@@ -134,9 +134,7 @@ Page({
   },
   pay: function () {
     /*微信支付*/
-
-
-
+    console.log("pay");
     let weCharstatus = this.data.weCharstatus;
     let yuestutea = this.data.yuestutea;
     var orderid = this.data.orderid;
@@ -156,7 +154,7 @@ Page({
               // console.log(openid)
               //订单支付
               wx.request({
-                url: app.globalData.Murl + '/Applets/Api/index',
+                url: app.globalData.Murl + '/Applets/Api/XcxPay',
                 data: {
                   openid: openid,
                   orderid: orderid
@@ -164,13 +162,14 @@ Page({
                 method: 'POST',
                 header: { 'Content-Type': 'application/json' },
                 success: function (res) {
-                  console.log(res)
+                  console.log("pay",res);
+                  let data=res.data.data.data;
                   wx.requestPayment({
-                    'timeStamp': res.data['timeStamp'],
-                    'nonceStr': res.data['nonceStr'],
-                    'package': res.data['package'],
+                    'timeStamp': data.jsApiParameters['timeStamp'],
+                    'nonceStr': data.jsApiParameters['nonceStr'],
+                    'package': data.jsApiParameters['package'],
                     'signType': 'MD5',
-                    'paySign': res.data['paySign'],
+                    'paySign': data.jsApiParameters['paySign'],
                     'success': function (res) {
                       //console.log("支付成功");
                       console.log(res)

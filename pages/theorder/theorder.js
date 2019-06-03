@@ -685,7 +685,7 @@ Page({
                   timeDay: datalist.delivery_date.date[0].day
                 })
                 if (datalist.address){
-                  if (datalist.address.shi != '北京市') {
+                  if (datalist.address.sheng != '北京市') {
                     _this.setData({
                       deliveryList: _this.data.deliveryList.slice(-3),
                       timeDay: _this.data.timeDay.slice(-3),
@@ -736,7 +736,7 @@ Page({
                     total: Number(datalist.money), //商品总价
                     package_mail: Number(datalist.commpany.package_mail), //满99减运费
                   })
-                  let locationcity = datalist.address.shi;
+                  let locationcity = datalist.address.sheng;
                   console.log('locationcity',locationcity)
                   _this.setData({
                     locationcity: locationcity
@@ -827,7 +827,7 @@ Page({
             timeDay: datalist.delivery_date.date[0].day
           })
           if (datalist.address) {
-            if (datalist.address.shi != '北京市') {
+            if (datalist.address.sheng != '北京市') {
               _this.setData({
                 deliveryList: _this.data.deliveryList.slice(-3),
                 timeDay: _this.data.timeDay.slice(-3),
@@ -876,7 +876,7 @@ Page({
               total: Number(datalist.money), //商品总价
               package_mail: Number(datalist.commpany.package_mail), //满99减运费
             })
-            let locationcity = datalist.address.shi;
+            let locationcity = datalist.address.sheng;
             _this.setData({
               locationcity: locationcity
             });
