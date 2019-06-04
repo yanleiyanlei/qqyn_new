@@ -53,13 +53,16 @@ Page({
   //获取分类列表
   getClassList(){
     let _this=this;
-    let reqClass = request.request("/Applets/Index/getClassificationList");
+    _this.setData({
+      class_list: [],
+    })
+    let reqClass = request.request("/Applets/Index/getClassificationList", { city: wx.getStorageSync("locationcity")});
     reqClass.then(
       function(res){
         console.log("getClassList-res",res);
         _this.setData({
           class_list: res.data.class_list,
-          recommend_list:res.data.recommend_list
+          recommend_list: res.data.recommend_list
         })
         let location = wx.getStorageSync("locationcity");
         if (app.globalData.tabBarId!=''){
@@ -363,9 +366,10 @@ Page({
    */
   onShow: function () {
     let location = wx.getStorageSync("locationcity");
-    console.log("show-location", location);
+    console.log("show-location", this.data.location);
     console.log("classify-show-comefrom",this.data.comeForm)
     console.log("classify-show-tabBarId", app.globalData.tabBarId)
+    this.getClassList();
     if (this.data.comeForm=="detail"){
       this.setData({
         comeForm:'tab'
@@ -412,7 +416,6 @@ Page({
       }
     }
     this.getCartList();
-    this.getClassList();
     // else if (this.data.comeForm == "address"){
     //   this.setData({
     //     comeForm: 'tab'
