@@ -326,7 +326,7 @@ Page({
   addcarss: function () {
     if (this.data.ionot != 1) return;
     this.setData({
-      modelHiddens: !this.data.modelHiddens
+      modelHiddenss: !this.data.modelHiddenss
     })
     this.setData({
       shop_key: this.data.priCes[this.data.selectindex].spec_key
