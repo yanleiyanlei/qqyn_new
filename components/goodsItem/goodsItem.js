@@ -60,6 +60,7 @@ Component({
       let uid = wx.getStorageSync("userinfo").uid;
       let goods_id = this.data.dataObj.goods_id;
       let spec_key = this.data.dataObj.spec_key;
+      let city = wx.getStorageSync("locationcity");
       console.log("添加购物车-spec_key", spec_key)
       if (!uid) {
         this.triggerEvent('cartTap', uid);
@@ -77,7 +78,8 @@ Component({
             member_id: uid, //会员ID 
             goods_id: goods_id, //商品ID 
             goods_num: 1, //商品数量 
-            spec_key: spec_key
+            spec_key: spec_key,
+            city:city
           },
           method: "POST",
           header: {
