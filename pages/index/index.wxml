@@ -200,7 +200,7 @@
 
 <!-- 深入了解青青优农 -->
 <view class='understand'>
-  <navigator url='{{qqactiveUrls[0].link_url}}' style='width:100%;height:100%'>
+  <navigator url='{{qqactiveUrls[0].xcx_url}}' style='width:100%;height:100%'>
     <image src='{{qqactiveUrls[0].ad_img}}'>
     </image>
   </navigator>
