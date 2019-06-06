@@ -95,7 +95,7 @@
           <image src='{{item.thumbnails}}'></image>
         </view>
         <view class='content'>
-          <text class='title'> {{item.goods_name}}</text>
+          <text class='title'> {{item.goods_name}} {{item.spec_name}}</text>
           <text class='sub-title'>{{item.goods_remark}}</text>
           <view class='listBottom'>
             <view class='goodsprice'><text>￥</text>{{item.shop_price}}</view>
