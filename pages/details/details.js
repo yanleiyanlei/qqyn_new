@@ -126,7 +126,6 @@ Page({
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
     let city = wx.getStorageSync("locationcity");
-
     function getNowTime() {
       var now = new Date();
       var h = now.getHours();
@@ -326,7 +325,7 @@ Page({
   addcarss: function () {
     if (this.data.ionot != 1) return;
     this.setData({
-      modelHiddens: !this.data.modelHiddens
+      modelHiddenss: !this.data.modelHiddenss
     })
     this.setData({
       shop_key: this.data.priCes[this.data.selectindex].spec_key
@@ -407,6 +406,7 @@ Page({
 
       var goods_id = e.currentTarget.dataset.list;
       var uid = wx.getStorageSync("userinfo").uid;
+      var city = wx.getStorageSync("locationcity");
       var memner_id = uid;
       var goods_id = goods_id;
       var num = that.data.num; //获取data-num
@@ -415,7 +415,8 @@ Page({
         member_id: memner_id,
         goods_id: goods_id,
         goods_num: num,
-        spec_key: spec_key
+        spec_key: spec_key,
+        city:city
       }
       // console.log(spec_key);
       wx.request({

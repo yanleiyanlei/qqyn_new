@@ -117,6 +117,7 @@ Component({
         var uid = wx.getStorageSync("userinfo").uid;
         var goods_id = e.currentTarget.dataset.goodsid;
         var spec_key = e.currentTarget.dataset.key;
+        var city = wx.getStorageSync("locationcity");
         if (spec_key != null) {
           wx.request({
             url: app.globalData.Murl + '/Applets/Cart/ajaxAddcart/',
@@ -124,7 +125,8 @@ Component({
               member_id: uid, //会员ID
               goods_id: goods_id, //商品ID
               goods_num: 1, //商品数量
-              spec_key: spec_key
+              spec_key: spec_key,
+              city:city
             },
             method: "POST",
             header: {
