@@ -79,38 +79,6 @@
   </block>
 </view>
 
-<!--今日推荐  -->
-<view class='todayRecommend'>
-
-  <view class='todayRecommend-top'>
-    <image src='../../image/new/gift.png'></image>
-    <view class='todayRecommend-txt'>
-      <text class='biaoti'>青青优选</text>
-      <text>为您精挑细选</text>
-    </view>
-  </view>
-
-  <!-- 优选商品轮播 -->
-  <scroll-view scroll-x="true" scroll-with-animation="true" scroll-left="{{scrollLeft}}" class='swipt'>
-    <block wx:for="{{todayUrls}}" wx:key="unique">
-      <view class='goodshow'>
-        <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" catchtap='goodsDetails' />
-
-        <text class='goodsname'>{{item.goods_name}} </text>
-        <text class='goodsdis'>{{item.spec_name}}</text>
-        <view>
-          <text class='goodsprice'><text style='font-size:24rpx;'>￥</text>{{item.shop_price}}</text>
-          <text class='goodsdelprice'>￥{{item.market_price}}</text>
-          <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
-            <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
-          </block>
-          <image  wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png' data-goods="{{item}}" catchtap="cart"></image>
-          <image  wx:else src='../../image/new/shop.png' data-goods="{{item}}" catchtap="cart"></image>
-        </view>
-      </view>
-    </block>
-  </scroll-view>
-</view>
 
 <!-- 每日秒杀 -->
 <view class='dailyDiscount' wx:if="{{dailySpikeShow}}">
@@ -161,42 +129,44 @@
     </swiper-item>
   </block>
 </swiper>
-
-
-
-
-<!-- <scroll-view scroll-x="true" upper-threshold="{{scr}}">
-  <view class='box'>
-    <block wx:for="{{dailySpike}}" wx:for-index="idx"  wx:key="unique">
-        <view data-dailySpikeIndex="{{dailySpikeIndex}}" data-index="{{idx}}" class="swContent {{dailySpikeIndex == idx ? 'active' : 'aa'}}">
-          <image src="{{item.thumbnails}}" class="slide-image" width="355" height="150" />
-          <view class='swInfo'>
-            <text class='swTitle'>{{item.alias}}</text>
-            <text class='swRemark'>{{item.goods_remark}}</text>
-            <view class='swBottom'>
-              <view class='swCon'>
-                <text class='goodsprice'><text>￥</text>{{item.shop_price}}</text>
-                <text class='goodsdelprice'>￥{{item.market_price}}</text>
-              </view>
-              <navigator url='../details/details?goodsid={{item.goods_id}}' hover-class='Nhover'>
-                <image src="../../image/new/rushBuy.png"></image>
-              </navigator>
-            </view>
-          </view>
-        </view>
-    </block>
-  </view>
-</scroll-view> -->
-
-
-
-
-
-
-
-
-
 </view>
+
+
+
+<!--今日推荐  -->
+<view class='todayRecommend'>
+
+  <view class='todayRecommend-top'>
+    <image src='../../image/new/gift.png'></image>
+    <view class='todayRecommend-txt'>
+      <text class='biaoti'>青青优选</text>
+      <text>为您精挑细选</text>
+    </view>
+  </view>
+
+  <!-- 优选商品轮播 -->
+  <scroll-view scroll-x="true" scroll-with-animation="true" scroll-left="{{scrollLeft}}" class='swipt'>
+    <block wx:for="{{todayUrls}}" wx:key="unique">
+      <view class='goodshow'>
+        <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" catchtap='goodsDetails' />
+
+        <text class='goodsname'>{{item.goods_name}} </text>
+        <text class='goodsdis'>{{item.spec_name}}</text>
+        <view>
+          <text class='goodsprice'><text style='font-size:24rpx;'>￥</text>{{item.shop_price}}</text>
+          <text class='goodsdelprice'>￥{{item.market_price}}</text>
+          <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
+            <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
+          </block>
+          <image  wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png' data-goods="{{item}}" catchtap="cart"></image>
+          <image  wx:else src='../../image/new/shop.png' data-goods="{{item}}" catchtap="cart"></image>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+
 
 <!-- 深入了解青青优农 -->
 <view class='understand'>
