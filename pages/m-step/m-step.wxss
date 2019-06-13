@@ -919,7 +919,7 @@ letter-spacing:0px;
 color:#fff;
 position:absolute;
 top:-10rpx;
-right:35rpx;
+right:15rpx;
 
 }
 .bottomBox .text3{
