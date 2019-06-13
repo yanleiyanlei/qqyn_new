@@ -278,7 +278,8 @@
         <view class="list" style="background:#ff7990">
           <button form-type='submit' class="tj"></button>
           <view class="one">{{act[0].step_name}}</view>
-          <view class='one_'>可到店享受<text class='textYellow' >{{act[0].money}}</text> 元兑换指定商品优惠活动</view>
+          <!-- <view class='one_'>可到店享受<text class='textYellow' >{{act[0].money}}</text> 元兑换指定商品优惠活动</view> -->
+          <view class='one_'>最高可享受青青优农商城价值 <text class='textGreen' >{{act[0].money}} </text>元商品</view>
           <!-- <view class="one">{{item.step_name}}</view> -->
           <view class="join" data-acid="{{act[0].id}}">
             <text>立即组队</text>
@@ -292,21 +293,21 @@
           <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[0].medium_img}}'class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥1.0</text>
+          <text class='text2'>￥{{goods[0].money}}</text>
           <text class='text3'>原价￥{{goods[0].shop_price}}</text>
         </view>
         <view class='bottomBox'  bindtap='goodsDetails' data-goodsid='{{goods[1].goods_id}}'>
           <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[1].medium_img}}' class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥1.0</text>
+          <text class='text2'>￥{{goods[1].money}}</text>
           <text class='text3'>原价￥{{goods[1].shop_price}}</text>
         </view>
         <view class='bottomBox'  bindtap='goodsDetails' data-goodsid='{{goods[2].goods_id}}'>
           <image src='https://m.7710mall.com/Uploads/xcx_img/icon4.png' class='pic3 pic33'></image>
           <image src='{{goods[2].medium_img}}' class='pic2'></image>
           <text class='text1'>券后价</text>
-          <text class='text2'>￥1.0</text>
+          <text class='text2'>￥{{goods[2].money}}</text>
           <text class='text3'>原价￥{{goods[2].shop_price}}</text>
         </view>
       </view>
