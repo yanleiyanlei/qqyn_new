@@ -72,7 +72,7 @@ Page({
         //填充背景  
         ctx.setFillStyle('#333333');
 
-        ctx.fillRect(1, 1, 375, 618);
+        ctx.fillRect(1, 1, 375, 529);
 
         //绘制背景图 
         ctx.drawImage(bgImgPath, 0, 0, 375, 529);
@@ -134,11 +134,11 @@ Page({
             })
             ctx.drawImage(res.tempFilePath, 20, 538, 70, 70);
             ctx.stroke()
-            
+            ctx.draw();
           }
         })
 
-         ctx.draw();
+         
 
       }
       
