@@ -902,7 +902,7 @@ page {
  color:#fff;
 position:absolute;
 top:-10rpx;
-right:35rpx;
+right:14rpx;
 
 
 }
