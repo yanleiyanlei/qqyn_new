@@ -675,9 +675,9 @@
       <view class='center'>更多活动</view>
       <view class='right'></view>
     </view>
-
+    <navigator url="/pages/bution/bution" hover-class='Nhover'>
       <image src="https://m.7710mall.com/Uploads/xcx_img/bannerFenxiao.png"></image>
-
+    </navigator>
   </view>
 </view>
 <!-- <view class="other-hd">
