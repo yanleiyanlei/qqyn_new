@@ -2,5 +2,6 @@
   "usingComponents": {
     "wants-buy": "/components/wantsBuy/wantsBuy",
     "add-and-sub": "/components/addAddSub/addAndSub"
-  }
+  },
+  "navigationBarTitleText": "青青优农-购物车"
 }
