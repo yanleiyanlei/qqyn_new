@@ -1,5 +1,6 @@
 {
   "usingComponents":{
     "wants-buy": "/components/wantsBuy/wantsBuy"
-  }
+  },
+  "navigationBarTitleText": "我的青青优农"
 }
