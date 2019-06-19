@@ -216,7 +216,8 @@
 
   <!-- 礼品卡 -->
 
-  <image class="card" catchtap='members' src="https://m.7710mall.com/Uploads/xxc/m_card.jpg"></image>
+  <!-- <image class="card" catchtap='members' src="https://m.7710mall.com/Uploads/xxc/m_card.jpg"></image> -->
+  <image class="card" catchtap='members' src="https://m.7710mall.com/Uploads/xxc/m_card_new.jpg"></image>
 
   <!-- 我的专属 -->
   <!-- <view class="my-exclusive">
