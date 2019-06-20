@@ -839,7 +839,7 @@ page {
 .renwu1{
   position: relative;
   width: 710rpx;
-  height: 400rpx;
+  height: 350rpx;
   border: solid 2rpx #8300f3;
   margin-top: 20rpx;
 }
