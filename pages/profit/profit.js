@@ -254,9 +254,9 @@ Page({
   onShareAppMessage: function (options) {
     var uid = wx.getStorageSync("userinfo").uid;
     return {
-      title: '我获得了大量佣金，有福同享！点我查看薅羊毛攻略',
-      path: '/pages/bution/bution?pid=' + uid,
-      imageUrl: "http://m.7710mall.com/Uploads/xxc/yess.jpg",
+      title: '我获得了大量优惠劵，有福同享！点我查看薅羊毛攻略',
+      path: '/pages/profit/profit?pid=' + uid,
+      //imageUrl: "http://m.7710mall.com/Uploads/xxc/yess.jpg",
       success: (res) => {
         console.log("转发成功", res);
       },
