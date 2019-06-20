@@ -788,8 +788,10 @@
       <view class='center'>更多活动</view>
       <view class='right'></view>
     </view>
-    <navigator url="/pages/bution/bution" hover-class='Nhover'>
-    <image src="https://m.7710mall.com/Uploads/xcx_img/bannerFenxiao.png"></image>
+    <!-- <navigator url="/pages/bution/bution" hover-class='Nhover'>
+    <image src="https://m.7710mall.com/Uploads/xcx_img/bannerFenxiao.png"></image> -->
+      <navigator url="/pages/profit/profit" hover-class='Nhover'>
+      <image src="https://m.7710mall.com/Uploads/xxc/m_card_new.jpg"></image>
     </navigator>
   </view>
 
