@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/bution/bution",
+    "pages/profit/profit",
     "pages/giftCard/giftCard",
     "pages/dailyDiscount/dailyDiscount",
     "pages/morePosters/morePosters",

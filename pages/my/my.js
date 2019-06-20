@@ -89,13 +89,15 @@ Page({
   goindex:function(){
     // app.globalData.store=1
     wx.navigateTo({
-      url: '/pages/bution/bution',
+      // url: '/pages/bution/bution',
+      url: '/pages/profit/profit'
     })
   },
   //跳到199
   members() {
     wx.navigateTo({
-      url: '/pages/bution/bution'
+      // url: '/pages/bution/bution'
+      url: '/pages/profit/profit'
     })
   },
   onShow: function () {
