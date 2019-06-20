@@ -88,6 +88,7 @@ page {
   margin-top: 15rpx;
   padding: 0 12rpx;
   box-sizing: border-box;
+  display: none;
 }
 
 .con-proble .probleli {
@@ -120,7 +121,8 @@ page {
 
 .tapback {
   box-sizing: border-box;
-  display: block;
+  /* display: block; */
+  display: none;
   width: 100%;
   padding-left: 280rpx;
   color: #ff6c00;

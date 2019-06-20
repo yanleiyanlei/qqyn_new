@@ -156,34 +156,34 @@ Page({
         mshow: "display:block"
       })
     } else {
-      setInterval(function () {
-        wx.request({
-          url: app.globalData.Murl + '/Applets/Fx/message',
-          data: {},
-          method: "POST",
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: function (res) {
-            _this.setData({
-              message: res.data.word
-            })
-          }
-        })
-        var a = 0;
-        var showtime = setInterval(function () {
-          a += 3000;
-          _this.setData({
-            mentshow: false
-          })
-          if (a >= 9000) {
-            _this.setData({
-              mentshow: true
-            })
-            clearInterval(showtime);
-          }
-        }, 3000)
-      }, 10000)
+      // setInterval(function () {
+      //   wx.request({
+      //     url: app.globalData.Murl + '/Applets/Fx/message',
+      //     data: {},
+      //     method: "POST",
+      //     header: {
+      //       'content-type': 'application/json' // 默认值
+      //     },
+      //     success: function (res) {
+      //       _this.setData({
+      //         message: res.data.word
+      //       })
+      //     }
+      //   })
+      //   var a = 0;
+      //   var showtime = setInterval(function () {
+      //     a += 3000;
+      //     _this.setData({
+      //       mentshow: false
+      //     })
+      //     if (a >= 9000) {
+      //       _this.setData({
+      //         mentshow: true
+      //       })
+      //       clearInterval(showtime);
+      //     }
+      //   }, 3000)
+      // }, 10000)
     }
     wx.request({
       url: app.globalData.Murl + '/Applets/Fx/index',
