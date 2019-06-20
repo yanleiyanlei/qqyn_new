@@ -58,7 +58,7 @@ Page({
             wx.setStorageSync("userinfo", res.data.userinfo);
             //console.log("允许");
             wx.reLaunch({
-              url: '/pages/bution/bution',
+              url: '/pages/profit/profit',
             })
           }
         })
