@@ -1,0 +1,4 @@
+<!--pages/qqfarm/qqfarm.wxml-->
+<view class="main">
+  <image src='../../image/new/pic_qqfarm.jpg'>></image>
+</view>
