@@ -125,7 +125,7 @@ Page({
     var that = this;
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
-    let city = wx.getStorageSync("locationcity");
+    let city = wx.getStorageSync("locationcity") ? wx.getStorageSync("locationcity") : app.globalData.location;
     function getNowTime() {
       var now = new Date();
       var h = now.getHours();
@@ -153,7 +153,7 @@ Page({
       url: _url,
       data: {
         id: that.data.goodsid, //249
-        member_id: uid,       //1760
+        member_id: uid ? uid:'',       //1760
         seller_id: 1,
         city: city            //北京市
       },
