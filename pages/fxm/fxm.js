@@ -67,7 +67,8 @@ Page({
       // // complete: function () {
         
         const ctx = wx.createCanvasContext('myCanvas');
-        var bgImgPath = '/image/hd/pyq.jpg';
+        // var bgImgPath = '/image/hd/pyq.jpg';
+        var bgImgPath = 'http://m.7710mall.com/Public/xcximg/pyq.jpg';
         // var basicprofile = '../../../image/basicprofile.png';
         //填充背景  
         ctx.setFillStyle('#333333');

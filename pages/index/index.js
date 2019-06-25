@@ -43,7 +43,45 @@ Page({
     //每日秒杀
     dailySpike:[],
     dailySpikeIndex: 0,
-    dailySpikeShow: true
+    dailySpikeShow: true,
+    isPhone:false
+  },
+  //获取手机号信息
+  getPhoneNumber(e) {
+    // console.log(e.detail.errMsg)
+    // console.log(e.detail.iv)
+    // console.log(e.detail.encryptedData)
+
+    let that = this;
+    if (e.detail.iv){
+      let uid = wx.getStorageSync("userinfo").uid;
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/getPhone',
+        method: "POST",
+        data: {
+          iv: e.detail.iv,
+          encryptedData: e.detail.encryptedData,
+          member_id: uid
+        },
+        success: function (res) {
+          console.log(res)
+          if(res.data.status === 1){
+            that.setData({
+              isPhone: false
+            })
+          }
+          wx.showTabBar({
+            success: function () {
+              return
+            }
+          })
+        }
+      })
+
+
+
+    }
   },
   //跳转连接
   goUrl:function(e){
@@ -116,16 +154,26 @@ Page({
       url: '../index/index'
     })
   },
-  close: function() {
-    this.setData({
-      mshow: "display:none"
-    })
-  },
   UserInfo: function(e) {
-    this.setData({
-      mshow: "display:none"
-    })
-    user.user(e)
+    console.log(e);
+    if (e.detail.iv) {
+      this.setData({
+        mshow: "display:none"
+      })
+    }
+    
+    user.user(e,this.isPhoneFun);
+    
+  },
+  isPhoneFun:function(obj){
+    let that = this;
+    console.log('isPhoneFun',obj);
+    if (obj.data.status === 1){
+      that.setData({
+        mshow: "display:none",
+        isPhone: true
+      })
+    }
   },
   // 添加购物车=================
   cart: function(e) {
@@ -707,6 +755,11 @@ Page({
     })
   },
   onShow: function() {
+    wx.hideTabBar({
+      success:function(){
+
+      }
+    })
     this.setData({
       dailySpikeIndex: 0
     })

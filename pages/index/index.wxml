@@ -1,5 +1,8 @@
 <import src="/lib/template/userInfo2.wxml" />
+<import src="/lib/template/phone.wxml" />
 <template is="user2" data="{{mshow}}">
+</template>
+<template is="phone" data="{{isPhone}}">
 </template>
 
 <!--首页轮播  -->
