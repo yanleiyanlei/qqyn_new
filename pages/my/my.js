@@ -205,18 +205,14 @@ Page({
           member_id: uid
         },
         success: function (res) {
-          console.log(res)
-          if (res.data.status === 1) {
+          console.log("getPhoneNumber", res)
+          if (res.data.status == 1) {
+            wx.showTabBar({})
+            app.globalData.isPhone = true;
             that.setData({
               isPhone: false
             })
           }
-          wx.showTabBar({
-            success: function () {
-              return
-            }
-          })
-          app.globalData.isPhone = true;
         }
       })
     }
@@ -234,30 +230,21 @@ Page({
           member_id: uid
         },
         success: function (ress) {
-          console.log(ress)
+          console.log(ress.message);
           if (ress.data.status == 1) {
-            wx.showTabBar({
-              success: function () {
-                return
-              }
-            })
-            app.globalData.isPhone = true;
-            that.setData({
-              isPhone: false
-            })
-            // app.globalData.isPhone = true;
-          } else {
             that.setData({
               isPhone: true
             })
-            wx.hideTabBar({
-
-            })
+          } else {
+            app.globalData.isPhone = true;
+            that.setData({
+              isPhone: false
+            });
+            wx.showTabBar({});
           }
         }
       })
     }
-
   },
   link: function () {
     wx.makePhoneCall({
@@ -302,6 +289,9 @@ Page({
         isPhone: true
       })
     } else {
+      that.setData({
+        isPhone: false
+      })
       wx.showTabBar({
         success: function () {
           return

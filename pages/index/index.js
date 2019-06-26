@@ -48,10 +48,6 @@ Page({
   },
   //获取手机号信息
   getPhoneNumber(e) {
-    // console.log(e.detail.errMsg)
-    // console.log(e.detail.iv)
-    // console.log(e.detail.encryptedData)
-
     let that = this;
     if (e.detail.iv){
       let uid = wx.getStorageSync("userinfo").uid;
@@ -65,8 +61,8 @@ Page({
           member_id: uid
         },
         success: function (res) {
-          console.log(res)
-          if(res.data.status === 1){
+          console.log("getPhoneNumber",res)
+          if(res.data.status == 1){
             wx.showTabBar({})
             app.globalData.isPhone = true; 
             that.setData({
@@ -75,9 +71,6 @@ Page({
           }
         }
       })
-
-
-
     }
   },
   //跳转连接
@@ -158,32 +151,22 @@ Page({
         mshow: "display:none"
       })
     }
-    
     user.user(e,this.isPhoneFun);
   },
   isPhoneFun:function(obj){
     let that = this;
     console.log('isPhoneFun',obj);
-    if (obj.data.status === 1){
+    if (obj.data.status == 1){
       that.setData({
         mshow: "display:none",
         isPhone: true
       })
-      wx.hideTabBar({
-        success: function () {
-          return
-        }
-      })
-      app.globalData.isPhone = true;
     }else{
+      app.globalData.isPhone = true;
       that.setData({
-        isPhone: true
+        isPhone: false
       })
-      wx.showTabBar({
-        success: function () {
-          return
-        }
-      })
+      wx.showTabBar({});
     }
   },
   // 添加购物车=================
@@ -821,7 +804,7 @@ Page({
     // 获取购物车列表
     this.getCartList();
     if (!app.globalData.isPhone){
-      wx.hideTabBar({})
+      wx.hideTabBar({});
       this.hasPhone();
     }
   },
@@ -838,27 +821,21 @@ Page({
           member_id: uid
         },
         success: function (ress) {
-          console.log(ress)
+          console.log(ress.message);
           if (ress.data.status == 1){
-            wx.showTabBar({
-              success: function () {
-                return
-              }
-            })
-            app.globalData.isPhone = true;
-            that.setData({
-              isPhone: false
-            })
-            // app.globalData.isPhone = true;
-          } else {
             that.setData({
               isPhone: true
             })
+          } else {
+            app.globalData.isPhone = true;
+            that.setData({
+              isPhone: false
+            });
+            wx.showTabBar({});
           }
         }
       })
     }
-    
   },
   // onPullDownRefresh() {
   //   this.mrms();
