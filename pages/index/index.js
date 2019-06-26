@@ -43,7 +43,45 @@ Page({
     //每日秒杀
     dailySpike:[],
     dailySpikeIndex: 0,
-    dailySpikeShow: true
+    dailySpikeShow: true,
+    isPhone:false
+  },
+  //获取手机号信息
+  getPhoneNumber(e) {
+    // console.log(e.detail.errMsg)
+    // console.log(e.detail.iv)
+    // console.log(e.detail.encryptedData)
+
+    let that = this;
+    if (e.detail.iv){
+      let uid = wx.getStorageSync("userinfo").uid;
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/getPhone',
+        method: "POST",
+        data: {
+          iv: e.detail.iv,
+          encryptedData: e.detail.encryptedData,
+          member_id: uid
+        },
+        success: function (res) {
+          console.log(res)
+          if(res.data.status === 1){
+            that.setData({
+              isPhone: false
+            })
+          }
+          wx.showTabBar({
+            success: function () {
+              return
+            }
+          })
+        }
+      })
+
+
+
+    }
   },
   //跳转连接
   goUrl:function(e){
@@ -116,16 +154,31 @@ Page({
       url: '../index/index'
     })
   },
-  close: function() {
-    this.setData({
-      mshow: "display:none"
-    })
-  },
   UserInfo: function(e) {
-    this.setData({
-      mshow: "display:none"
-    })
-    user.user(e)
+    console.log(e);
+    if (e.detail.iv) {
+      this.setData({
+        mshow: "display:none"
+      })
+    }
+    
+    user.user(e,this.isPhoneFun);
+  },
+  isPhoneFun:function(obj){
+    let that = this;
+    // console.log('isPhoneFun',obj);
+    if (obj.data.status === 1){
+      that.setData({
+        mshow: "display:none",
+        isPhone: true
+      })
+    }else{
+      wx.showTabBar({
+        success: function () {
+          return
+        }
+      })
+    }
   },
   // 添加购物车=================
   cart: function(e) {
@@ -248,7 +301,7 @@ Page({
     const shopusr = "/Applets/Index/getBargainsRushGoodsList";
     request.request(shopusr, {},'post').then(function (data) {
       if(data.code == 200){
-        console.log(data);
+        // console.log(data);
         if (data.data == null) {
           that.setData({
             dailySpikeShow: false
@@ -370,11 +423,13 @@ Page({
           },
           success: function(ress) {
 
-            //console.log(ress);
+            console.log(ress);
             that.setData({
               location: ress.result.address_component.province
             });
             wx.setStorageSync("locationcity", ress.result.address_component.province);
+            wx.setStorageSync("city", ress.result.address_component.city);
+            wx.setStorageSync("district", ress.result.address_component.district);
             wx.setStorageSync("locationid", "");
             wx.setStorageSync("locationadd", "");
           }
@@ -707,6 +762,11 @@ Page({
     })
   },
   onShow: function() {
+    wx.hideTabBar({
+      success:function(){
+
+      }
+    })
     this.setData({
       dailySpikeIndex: 0
     })
@@ -752,14 +812,40 @@ Page({
         mshow: "display:none"
       })
     }
+    
 
     //console.log(1)
 
     // 获取购物车列表
     this.getCartList();
+    this.hasPhone()
 
 
-
+  },
+  //判断是否注册手机号了
+  hasPhone: function (func){
+    let uid = wx.getStorageSync("userinfo").uid;
+    if (uid){
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/isPhone',
+        method: "POST",
+        data: {
+          member_id: uid
+        },
+        success: function (ress) {
+          console.log(ress)
+          if (ress.data.status == 0){
+            wx.showTabBar({
+              success: function () {
+                return
+              }
+            })
+          }
+        }
+      })
+    }
+    
   },
   // onPullDownRefresh() {
   //   this.mrms();
@@ -778,7 +864,7 @@ Page({
     let req = request.request("/Applets/Cart/ajaxCartList", data);
     req.then(
       function (res) {
-        console.log("获取购物车列表", res)
+        // console.log("获取购物车列表", res)
         _this.setData({
           cartList: res.cartList
         })
