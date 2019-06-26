@@ -139,6 +139,20 @@ Page({
 
     }
 
+  },
+  onShow:function(){
+    let locationcity = wx.getStorageSync("locationcity");
+    let city = wx.getStorageSync("city");
+    let district = wx.getStorageSync("district");
+    if (district){
+    let arr=[];
+      arr[0] = locationcity;
+      arr[1] = city;
+      arr[2] = district;
+      this.setData({
+        region: arr
+      })
+    }
   }
 
 })

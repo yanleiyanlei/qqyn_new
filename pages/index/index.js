@@ -163,15 +163,20 @@ Page({
     }
     
     user.user(e,this.isPhoneFun);
-    
   },
   isPhoneFun:function(obj){
     let that = this;
-    console.log('isPhoneFun',obj);
+    // console.log('isPhoneFun',obj);
     if (obj.data.status === 1){
       that.setData({
         mshow: "display:none",
         isPhone: true
+      })
+    }else{
+      wx.showTabBar({
+        success: function () {
+          return
+        }
       })
     }
   },
@@ -296,7 +301,7 @@ Page({
     const shopusr = "/Applets/Index/getBargainsRushGoodsList";
     request.request(shopusr, {},'post').then(function (data) {
       if(data.code == 200){
-        console.log(data);
+        // console.log(data);
         if (data.data == null) {
           that.setData({
             dailySpikeShow: false
@@ -418,11 +423,13 @@ Page({
           },
           success: function(ress) {
 
-            //console.log(ress);
+            console.log(ress);
             that.setData({
               location: ress.result.address_component.province
             });
             wx.setStorageSync("locationcity", ress.result.address_component.province);
+            wx.setStorageSync("city", ress.result.address_component.city);
+            wx.setStorageSync("district", ress.result.address_component.district);
             wx.setStorageSync("locationid", "");
             wx.setStorageSync("locationadd", "");
           }
@@ -805,14 +812,40 @@ Page({
         mshow: "display:none"
       })
     }
+    
 
     //console.log(1)
 
     // 获取购物车列表
     this.getCartList();
+    this.hasPhone()
 
 
-
+  },
+  //判断是否注册手机号了
+  hasPhone: function (func){
+    let uid = wx.getStorageSync("userinfo").uid;
+    if (uid){
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/isPhone',
+        method: "POST",
+        data: {
+          member_id: uid
+        },
+        success: function (ress) {
+          console.log(ress)
+          if (ress.data.status == 0){
+            wx.showTabBar({
+              success: function () {
+                return
+              }
+            })
+          }
+        }
+      })
+    }
+    
   },
   // onPullDownRefresh() {
   //   this.mrms();
@@ -831,7 +864,7 @@ Page({
     let req = request.request("/Applets/Cart/ajaxCartList", data);
     req.then(
       function (res) {
-        console.log("获取购物车列表", res)
+        // console.log("获取购物车列表", res)
         _this.setData({
           cartList: res.cartList
         })
