@@ -284,6 +284,11 @@ Page({
             that.setData({
               isPhone: true
             })
+            wx.hideTabBar({
+              success: function () {
+                return
+              }
+            })
           }
         }
       })

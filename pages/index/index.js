@@ -76,6 +76,7 @@ Page({
               return
             }
           })
+          app.globalData.isPhone = true;
         }
       })
 
@@ -172,6 +173,12 @@ Page({
         mshow: "display:none",
         isPhone: true
       })
+      wx.hideTabBar({
+        success: function () {
+          return
+        }
+      })
+      app.globalData.isPhone = true;
     }else{
       wx.showTabBar({
         success: function () {
@@ -762,11 +769,7 @@ Page({
     })
   },
   onShow: function() {
-    wx.hideTabBar({
-      success:function(){
-
-      }
-    })
+    
     this.setData({
       dailySpikeIndex: 0
     })
@@ -818,8 +821,15 @@ Page({
 
     // 获取购物车列表
     this.getCartList();
-    this.hasPhone()
 
+    if (!app.globalData.isPhone){
+      this.hasPhone();
+      wx.hideTabBar({
+        success: function () {
+          return
+        }
+      })
+    }
 
   },
   //判断是否注册手机号了
@@ -846,6 +856,11 @@ Page({
             that.setData({
               isPhone: true
             })
+            wx.hideTabBar({
+              success: function () {
+              }
+            })
+            app.globalData.isPhone = true;
           }
         }
       })

@@ -102,11 +102,7 @@ Page({
     })
   },
   onShow: function () {
-    wx.hideTabBar({
-      success: function () {
-        return
-      }
-    })
+    
     this.getQueryNum('/Applets/User/m_order1', 'waitPayment');
     this.getQueryNum('/Applets/User/m_order2', 'waitDelivery');
     this.getQueryNum('/Applets/User/m_order3', 'waitTakeDelivery');
@@ -188,8 +184,15 @@ Page({
 
 
     }
-
-    this.hasPhone();
+    if (!app.globalData.isPhone) {
+      this.hasPhone();
+      wx.hideTabBar({
+        success: function () {
+          return
+        }
+      })
+    }
+    
   },
   //获取手机号信息
   getPhoneNumber(e) {
@@ -221,6 +224,7 @@ Page({
               return
             }
           })
+          app.globalData.isPhone = true;
         }
       })
     }
@@ -252,6 +256,13 @@ Page({
             that.setData({
               isPhone: true
             })
+            wx.hideTabBar({
+              success: function () {
+                return
+              }
+            })
+
+            app.globalData.isPhone = true;
           }
         }
       })
