@@ -67,16 +67,12 @@ Page({
         success: function (res) {
           console.log(res)
           if(res.data.status === 1){
+            wx.showTabBar({})
+            app.globalData.isPhone = true; 
             that.setData({
               isPhone: false
             })
           }
-          wx.showTabBar({
-            success: function () {
-              return
-            }
-          })
-          app.globalData.isPhone = true;
         }
       })
 
@@ -167,7 +163,7 @@ Page({
   },
   isPhoneFun:function(obj){
     let that = this;
-    // console.log('isPhoneFun',obj);
+    console.log('isPhoneFun',obj);
     if (obj.data.status === 1){
       that.setData({
         mshow: "display:none",
@@ -180,6 +176,9 @@ Page({
       })
       app.globalData.isPhone = true;
     }else{
+      that.setData({
+        isPhone: true
+      })
       wx.showTabBar({
         success: function () {
           return
@@ -821,16 +820,10 @@ Page({
 
     // 获取购物车列表
     this.getCartList();
-
     if (!app.globalData.isPhone){
+      wx.hideTabBar({})
       this.hasPhone();
-      wx.hideTabBar({
-        success: function () {
-          return
-        }
-      })
     }
-
   },
   //判断是否注册手机号了
   hasPhone: function (){
@@ -846,21 +839,21 @@ Page({
         },
         success: function (ress) {
           console.log(ress)
-          if (ress.data.status == 0){
+          if (ress.data.status == 1){
             wx.showTabBar({
               success: function () {
                 return
               }
             })
-          } else if (ress.data.status == 1){
+            app.globalData.isPhone = true;
+            that.setData({
+              isPhone: false
+            })
+            // app.globalData.isPhone = true;
+          } else {
             that.setData({
               isPhone: true
             })
-            wx.hideTabBar({
-              success: function () {
-              }
-            })
-            app.globalData.isPhone = true;
           }
         }
       })

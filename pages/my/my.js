@@ -185,21 +185,13 @@ Page({
 
     }
     if (!app.globalData.isPhone) {
+      wx.hideTabBar({});
       this.hasPhone();
-      wx.hideTabBar({
-        success: function () {
-          return
-        }
-      })
     }
     
   },
   //获取手机号信息
   getPhoneNumber(e) {
-    // console.log(e.detail.errMsg)
-    // console.log(e.detail.iv)
-    // console.log(e.detail.encryptedData)
-
     let that = this;
     if (e.detail.iv) {
       let uid = wx.getStorageSync("userinfo").uid;
@@ -243,26 +235,24 @@ Page({
         },
         success: function (ress) {
           console.log(ress)
-          if (ress.data.status == 0) {
+          if (ress.data.status == 1) {
             wx.showTabBar({
               success: function () {
                 return
               }
             })
+            app.globalData.isPhone = true;
             that.setData({
               isPhone: false
             })
-          } else if (ress.data.status == 1) {
+            // app.globalData.isPhone = true;
+          } else {
             that.setData({
               isPhone: true
             })
             wx.hideTabBar({
-              success: function () {
-                return
-              }
-            })
 
-            app.globalData.isPhone = true;
+            })
           }
         }
       })
