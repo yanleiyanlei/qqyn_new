@@ -485,7 +485,7 @@ swiper{
   background: #000;
   opacity: 0.3;
   filter: opacity(30);
-  z-index: 9999999;
+  z-index: 999;
 }
 .userInfo {
   position: fixed;

@@ -6,7 +6,10 @@
   <button open-type='getUserInfo' bindgetuserinfo='UserInfo' class="open">获得权限</button>
 </view> -->
 <import src="/lib/template/userInfo.wxml" />
+<import src="/lib/template/phone.wxml" />
 <template is="user" data="{{mshow}}">
+</template>
+<template is="phone" data="{{isPhone}}">
 </template>
 <view class="m-content">
   <view class="top-up clearfix">

@@ -823,7 +823,8 @@ Page({
 
   },
   //判断是否注册手机号了
-  hasPhone: function (func){
+  hasPhone: function (){
+    let that = this;
     let uid = wx.getStorageSync("userinfo").uid;
     if (uid){
       wx.request({
@@ -840,6 +841,10 @@ Page({
               success: function () {
                 return
               }
+            })
+          } else if (ress.data.status == 1){
+            that.setData({
+              isPhone: true
             })
           }
         }
