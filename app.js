@@ -134,6 +134,7 @@ App({
     location: "北京市",
      Murl: "https://m.7710mall.com/index.php",
     // Murl: "https://m.test.7710mall.com/index.php",
-    tabBarId:''
+    tabBarId:'',
+    isPhone:false
   }
 })
