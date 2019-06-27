@@ -48,10 +48,6 @@ Page({
   },
   //获取手机号信息
   getPhoneNumber(e) {
-    // console.log(e.detail.errMsg)
-    // console.log(e.detail.iv)
-    // console.log(e.detail.encryptedData)
-
     let that = this;
     if (e.detail.iv){
       let uid = wx.getStorageSync("userinfo").uid;
@@ -65,23 +61,16 @@ Page({
           member_id: uid
         },
         success: function (res) {
-          console.log(res)
-          if(res.data.status === 1){
+          console.log("getPhoneNumber",res)
+          if(res.data.status == 1){
+            wx.showTabBar({})
+            app.globalData.isPhone = true; 
             that.setData({
               isPhone: false
             })
           }
-          wx.showTabBar({
-            success: function () {
-              return
-            }
-          })
-          app.globalData.isPhone = true;
         }
       })
-
-
-
     }
   },
   //跳转连接
@@ -162,29 +151,22 @@ Page({
         mshow: "display:none"
       })
     }
-    
     user.user(e,this.isPhoneFun);
   },
   isPhoneFun:function(obj){
     let that = this;
-    // console.log('isPhoneFun',obj);
-    if (obj.data.status === 1){
+    console.log('isPhoneFun',obj);
+    if (obj.data.status == 1){
       that.setData({
         mshow: "display:none",
         isPhone: true
       })
-      wx.hideTabBar({
-        success: function () {
-          return
-        }
-      })
-      app.globalData.isPhone = true;
     }else{
-      wx.showTabBar({
-        success: function () {
-          return
-        }
+      app.globalData.isPhone = true;
+      that.setData({
+        isPhone: false
       })
+      wx.showTabBar({});
     }
   },
   // 添加购物车=================
@@ -822,16 +804,10 @@ Page({
 
     // 获取购物车列表
     this.getCartList();
-
     if (!app.globalData.isPhone){
+      wx.hideTabBar({});
       this.hasPhone();
-      wx.hideTabBar({
-        success: function () {
-          return
-        }
-      })
     }
-
   },
   //判断是否注册手机号了
   hasPhone: function (){
@@ -846,27 +822,21 @@ Page({
           member_id: uid
         },
         success: function (ress) {
-          console.log(ress)
-          if (ress.data.status == 0){
-            wx.showTabBar({
-              success: function () {
-                return
-              }
-            })
-          } else if (ress.data.status == 1){
+          console.log(ress.message);
+          if (ress.data.status == 1){
             that.setData({
               isPhone: true
             })
-            wx.hideTabBar({
-              success: function () {
-              }
-            })
+          } else {
             app.globalData.isPhone = true;
+            that.setData({
+              isPhone: false
+            });
+            wx.showTabBar({});
           }
         }
       })
     }
-    
   },
   // onPullDownRefresh() {
   //   this.mrms();

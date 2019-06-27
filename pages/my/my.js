@@ -185,21 +185,13 @@ Page({
 
     }
     if (!app.globalData.isPhone) {
+      wx.hideTabBar({});
       this.hasPhone();
-      wx.hideTabBar({
-        success: function () {
-          return
-        }
-      })
     }
     
   },
   //获取手机号信息
   getPhoneNumber(e) {
-    // console.log(e.detail.errMsg)
-    // console.log(e.detail.iv)
-    // console.log(e.detail.encryptedData)
-
     let that = this;
     if (e.detail.iv) {
       let uid = wx.getStorageSync("userinfo").uid;
@@ -213,18 +205,14 @@ Page({
           member_id: uid
         },
         success: function (res) {
-          console.log(res)
-          if (res.data.status === 1) {
+          console.log("getPhoneNumber", res)
+          if (res.data.status == 1) {
+            wx.showTabBar({})
+            app.globalData.isPhone = true;
             that.setData({
               isPhone: false
             })
           }
-          wx.showTabBar({
-            success: function () {
-              return
-            }
-          })
-          app.globalData.isPhone = true;
         }
       })
     }
@@ -242,32 +230,21 @@ Page({
           member_id: uid
         },
         success: function (ress) {
-          console.log(ress)
-          if (ress.data.status == 0) {
-            wx.showTabBar({
-              success: function () {
-                return
-              }
-            })
-            that.setData({
-              isPhone: false
-            })
-          } else if (ress.data.status == 1) {
+          console.log(ress.message);
+          if (ress.data.status == 1) {
             that.setData({
               isPhone: true
             })
-            wx.hideTabBar({
-              success: function () {
-                return
-              }
-            })
-
+          } else {
             app.globalData.isPhone = true;
+            that.setData({
+              isPhone: false
+            });
+            wx.showTabBar({});
           }
         }
       })
     }
-
   },
   link: function () {
     wx.makePhoneCall({
@@ -312,6 +289,9 @@ Page({
         isPhone: true
       })
     } else {
+      that.setData({
+        isPhone: false
+      })
       wx.showTabBar({
         success: function () {
           return
