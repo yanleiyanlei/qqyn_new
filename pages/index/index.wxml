@@ -1,5 +1,8 @@
 <import src="/lib/template/userInfo2.wxml" />
+<import src="/lib/template/phone.wxml" />
 <template is="user2" data="{{mshow}}">
+</template>
+<template is="phone" data="{{isPhone}}">
 </template>
 
 <!--首页轮播  -->
@@ -198,15 +201,16 @@
       <view class='fruitslist-left'>
         <block wx:for="{{item1.green}}" wx:key="unique">
           <block wx:if="{{index%2===0}}">
-            <view class='fruitslist-li' data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
+            <view class='fruitslist-li' data-goodsid="{{item.goods_id}}"  catchtap='goodsDetails'>
 
-              <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
-              <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
-              <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
-              <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
-              <image wx:if="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
-              <image wx:if="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
-              <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+              <!-- <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image> -->
+              <image wx:if="{{item.prom_id==7}}" src='../../image/new/reduction.png' class='label2'></image>
+              <image wx:elif="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+              <image wx:elif="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+              <image wx:elif="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+              <image wx:elif="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+              <image wx:elif="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+              <image wx:elif="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
 
               <image src='{{item.thumbnails}}'></image>
               <text class='fruitslist-li-one'>{{item.goods_name}}</text>
@@ -228,6 +232,14 @@
         <block wx:for="{{item1.green}}" wx:key="unique">
           <block wx:if="{{index%2!=0}}">
             <view class='fruitslist-li' data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
+              <!-- <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image> -->
+              <image wx:if="{{item.prom_id==7}}" src='../../image/new/reduction.png' class='label2'></image>
+              <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+              <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+              <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+              <image wx:if="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+              <image wx:if="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+              <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
               <image src='{{item.thumbnails}}'></image>
               <text class='fruitslist-li-one'>{{item.goods_name}}</text>
               <text class='fruitslist-li-two'>{{item.goods_remark}}</text>

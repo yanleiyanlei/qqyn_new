@@ -1,4 +1,7 @@
 <!-- details.html商品详情 -->
+<import src="/lib/template/phone.wxml" />
+<template is="phone" data="{{isPhone}}">
+</template>
 <view class='page'>
   <view class='page_section message'>
     <view class='swiper'>

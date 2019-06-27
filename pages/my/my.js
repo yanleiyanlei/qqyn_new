@@ -17,6 +17,7 @@ Page({
     waitDelivery: 0,
     waitTakeDelivery: 0,
     waitEvaluate: 0,
+    isPhone:false
   },
   /**订单查询数量*/
   queryNum: function(url){
@@ -101,6 +102,7 @@ Page({
     })
   },
   onShow: function () {
+    
     this.getQueryNum('/Applets/User/m_order1', 'waitPayment');
     this.getQueryNum('/Applets/User/m_order2', 'waitDelivery');
     this.getQueryNum('/Applets/User/m_order3', 'waitTakeDelivery');
@@ -182,6 +184,67 @@ Page({
 
 
     }
+    if (!app.globalData.isPhone) {
+      wx.hideTabBar({});
+      this.hasPhone();
+    }
+    
+  },
+  //获取手机号信息
+  getPhoneNumber(e) {
+    let that = this;
+    if (e.detail.iv) {
+      let uid = wx.getStorageSync("userinfo").uid;
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/getPhone',
+        method: "POST",
+        data: {
+          iv: e.detail.iv,
+          encryptedData: e.detail.encryptedData,
+          member_id: uid
+        },
+        success: function (res) {
+          console.log("getPhoneNumber", res)
+          if (res.data.status == 1) {
+            wx.showTabBar({})
+            app.globalData.isPhone = true;
+            that.setData({
+              isPhone: false
+            })
+          }
+        }
+      })
+    }
+  },
+  //判断是否注册手机号了
+  hasPhone: function () {
+    let that = this;
+    let uid = wx.getStorageSync("userinfo").uid;
+    if (uid) {
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/isPhone',
+        method: "POST",
+        data: {
+          member_id: uid
+        },
+        success: function (ress) {
+          console.log(ress.message);
+          if (ress.data.status == 1) {
+            that.setData({
+              isPhone: true
+            })
+          } else {
+            app.globalData.isPhone = true;
+            that.setData({
+              isPhone: false
+            });
+            wx.showTabBar({});
+          }
+        }
+      })
+    }
   },
   link: function () {
     wx.makePhoneCall({
@@ -214,7 +277,27 @@ Page({
   },
   // open: open.open,
   UserInfo: function (e) {
-    user.user(e)
+    user.user(e, this.isPhoneFun)
+
+  },
+  //回调函数 user.js
+  isPhoneFun: function (obj) {
+    let that = this;
+    // console.log('isPhoneFun',obj);
+    if (obj.data.status === 1) {
+      that.setData({
+        isPhone: true
+      })
+    } else {
+      that.setData({
+        isPhone: false
+      })
+      wx.showTabBar({
+        success: function () {
+          return
+        }
+      })
+    }
   },
   onShareAppMessage: function () {
     var uid = wx.getStorageSync("userinfo").uid;

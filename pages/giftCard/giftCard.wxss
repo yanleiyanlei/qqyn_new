@@ -5,7 +5,15 @@
 .goshopcart{
   position: fixed;
   right: 15rpx;
-  bottom: 40rpx;
+  bottom: 20rpx;
+  width: 97rpx;
+  height: 97rpx;
+  z-index: 11;
+}
+.goback{
+  position: fixed;
+  right: 15rpx;
+  bottom: 120rpx;
   width: 97rpx;
   height: 97rpx;
   z-index: 11;

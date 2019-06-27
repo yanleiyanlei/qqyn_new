@@ -64,7 +64,7 @@ Page({
     locationadd: "",
     add: " ",
     tags:null,          //标签列表
-    tagHidden:false     //是否隐藏标签列表
+    tagHidden:false,     //是否隐藏标签列表
     // tagsArr:{
     //   '1':'有机',
     //   '2':'无公害',
@@ -72,6 +72,7 @@ Page({
     //   '4':'转换期',
     //   '5':'产地直供'
     // }
+    isPhone: false
   },
 
   /**
@@ -220,6 +221,79 @@ Page({
 
       }
     })
+    this.hasPhone();
+  },
+  //获取手机号信息
+  getPhoneNumber(e) {
+    // console.log(e.detail.errMsg)
+    // console.log(e.detail.iv)
+    // console.log(e.detail.encryptedData)
+
+    let that = this;
+    if (e.detail.iv) {
+      let uid = wx.getStorageSync("userinfo").uid;
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/getPhone',
+        method: "POST",
+        data: {
+          iv: e.detail.iv,
+          encryptedData: e.detail.encryptedData,
+          member_id: uid
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.status === 1) {
+            that.setData({
+              isPhone: false
+            })
+          }
+          wx.showTabBar({
+            success: function () {
+              return
+            }
+          })
+        }
+      })
+    }
+  },
+  //判断是否注册手机号了
+  hasPhone: function () {
+    let that = this;
+    let uid = wx.getStorageSync("userinfo").uid;
+    if (uid) {
+      wx.request({
+        //用户登陆URL地址，请根据自已项目修改
+        url: app.globalData.Murl + '/Applets/Login/isPhone',
+        method: "POST",
+        data: {
+          member_id: uid
+        },
+        success: function (ress) {
+          console.log(ress)
+          if (ress.data.status == 0) {
+            wx.showTabBar({
+              success: function () {
+                return
+              }
+            });
+            that.setData({
+              isPhone: false
+            })
+          } else if (ress.data.status == 1) {
+            that.setData({
+              isPhone: true
+            })
+            wx.hideTabBar({
+              success: function () {
+                return
+              }
+            })
+          }
+        }
+      })
+    }
+
   },
   /**
    * 用户点击右上角分享
@@ -265,7 +339,23 @@ Page({
     this.setData({
       show: "display:none"
     })
-    user.user(e);
+    user.user(e,this.isPhoneFun);
+  },
+  //回调函数 user.js
+  isPhoneFun: function (obj) {
+    let that = this;
+    // console.log('isPhoneFun',obj);
+    if (obj.data.status === 1) {
+      that.setData({
+        isPhone: true
+      })
+    } else {
+      wx.showTabBar({
+        success: function () {
+          return
+        }
+      })
+    }
   },
   //事件处理函数
   modalinput: function (e) {

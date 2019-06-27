@@ -139,6 +139,21 @@ Page({
 
     }
 
+  },
+  onShow:function(){
+    let locationcity = wx.getStorageSync("locationcity");
+    let city = wx.getStorageSync("city");
+    let district = wx.getStorageSync("district");
+    let province = wx.getStorageSync("province");
+    if (district){
+    let arr=[];
+      arr[0] = province;
+      arr[1] = city;
+      arr[2] = district;
+      this.setData({
+        region: arr
+      })
+    }
   }
 
 })
