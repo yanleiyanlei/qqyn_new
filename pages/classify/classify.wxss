@@ -145,6 +145,13 @@
   width:51rpx;
   height:65rpx;
 }
+.rightBar .goods .img .label2{
+  position:absolute;
+  top:10rpx;
+  left:10rpx;
+  width:123rpx;
+  height:38rpx;
+}
 .rightBar .goods .img image{
   height: 240rpx;
   width: 240rpx;

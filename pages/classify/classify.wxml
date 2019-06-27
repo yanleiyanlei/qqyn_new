@@ -92,7 +92,8 @@
     <view class='rightBar'>
       <view class='goods' wx:for="{{goodsList}}" wx:key="goodsKey" data-goodsid="{{item.goods_id}}" catchtap='goodsDetails'>
         <view class='img'>
-          <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
+          <!-- <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image> -->
+          <image wx:if="{{item.prom_id==7}}" src='../../image/new/reduction.png' class='label2'></image>
           <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
           <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
           <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
