@@ -303,7 +303,7 @@ page {
   /* margin-right: 40rpx; */
 }
 .dailySpike{
-  height: 180px;
+  height: 200px;
 }
 .dailySpike swiper-item {
   transition: all .5 linear;
