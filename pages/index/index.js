@@ -437,6 +437,7 @@ Page({
             wx.setStorageSync("locationcity", ress.result.address_component.province);
             wx.setStorageSync("city", ress.result.address_component.city);
             wx.setStorageSync("district", ress.result.address_component.district);
+            wx.setStorageSync("province", ress.result.address_component.province);
             wx.setStorageSync("locationid", "");
             wx.setStorageSync("locationadd", "");
           }
