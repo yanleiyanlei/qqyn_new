@@ -136,6 +136,14 @@
 }
 .rightBar .goods .img{
   margin-left:10rpx;
+  position: relative;
+}
+.rightBar .goods .img .label{
+  position:absolute;
+  top:10rpx;
+  left:10rpx;
+  width:51rpx;
+  height:65rpx;
 }
 .rightBar .goods .img image{
   height: 240rpx;
