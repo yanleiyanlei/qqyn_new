@@ -48,8 +48,8 @@ Page({
   },
   formSubmit:function(e){
     var val=e.detail.value;
-    var card_number=val.cart1+val.cart2+val.cart3;
-    var pwd=val.pwd1+val.pwd2;
+    var card_number=val.cart;
+    var pwd=val.pwd;
     var that=this;
     // console.log(card_number);
     // console.log(pwd)
