@@ -117,7 +117,13 @@
   width: 51rpx;
   height: 65rpx;
 }
-
+.goods image.label2{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 123rpx;
+  height: 38rpx;
+}
 .goods view.cartnum{
   width: 26rpx;
   height: 26rpx;
