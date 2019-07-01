@@ -67,7 +67,6 @@ Page({
             that.setData({
               isPhone: false
             });
-            wx.showTabBar({});
           }
         }
       })
@@ -215,7 +214,9 @@ Page({
     let uid = wx.getStorageSync("userinfo").uid; //获取用户id
     this.setData({
       uid:uid
-    })
+    });
+    //获取优惠券
+    this.deliverCoupon('login');
     // 获取购物车列表
     this.getCartList();
     // 获取商品列表  及banner图片
@@ -253,7 +254,7 @@ Page({
     // if (!app.globalData.isPhone) {
     //   this.hasPhone();
     // }
-    this.deliverCoupon('login');
+    // this.deliverCoupon('login');
   },
 
   /**
@@ -287,7 +288,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function (options) {
+    var that = this;
+    console.log('onShareAppMessage');
     this.deliverCoupon('share');
+    return {
+      title: '【青青优农】快来抢199减100优惠券',
+      path: '/pages/special/special?id='+this.data.id,
+      imageUrl: that.data.bannerimgurl + that.data.banner
+    }
   }
 })
