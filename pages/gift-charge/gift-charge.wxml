@@ -7,7 +7,7 @@
   <view class="chong-text">
     礼品卡充值可重置到账户余额中，供消费使用。
   </view>
-  <view class="tit">
+  <!-- <view class="tit">
     <text class="bt">礼品卡卡号</text>
     <text class="ts">（填写12位数字卡号）</text>
   </view>
@@ -33,17 +33,23 @@
     </text>
     <input type="text" name="pwd2" maxlength="4" data-sta="5" focus="{{sta==5?true:false}}" class="{{sta==5?'active':''}}" bindfocus="focus" bindblur="blur" bindinput="inputChange" />
 
-  </view>
-  <!-- <view class="chong-card">
-  <view class="card border1">
-    <text>礼品卡卡号</text>
-    <input type="text" name="" id="num" placeholder="填写12位数字卡号" value="" />
-  </view>
-  <view class="card border1">
-    <text>礼品卡验证码</text>
-    <input type="text" name="" id="num" placeholder="8位字母、符号或数字验证码" value="" />
-  </view>
+  </view> -->
+  <view class="chong-card">
+    <view class="card">
+      <view class="tit">
+        <text class="bt">礼品卡卡号</text>
+        <text class="ts">（填写8或12位数字卡号）</text>
+      </view>
+      <input type="number" maxlength="12" name="cart"  id="num" placeholder="" value="" />
+    </view>
+    <view class="card">
+      <view class="tit">
+        <text class="bt">礼品卡验证码</text>
+        <text class="ts">( 6位或8位字母、符号或数字验证码 )</text>
+      </view>
+      <input type="number" maxlength="8" name="pwd" id="num" placeholder="" value="" />
+    </view>
 
-</view> -->
+  </view>
   <button form-type='submit' class="tj">确认充值</button>
 </form>

@@ -65,14 +65,7 @@ page{
   height: 68rpx;
 }
 
-.box input {
-  float: left;
-  width: 188rpx;
-  height: 68rpx;
-  border: 1px solid #ccc;
-  font-size: 28rpx;
-  text-align: center;
-}
+
 
 .box .active {
   border: 1px solid #ff712b;
@@ -88,4 +81,12 @@ page{
   position: fixed;
   bottom: 0;
   border-radius: 0;
+}
+input{
+  width: 300rpx;
+  height: 68rpx;
+  border: 1px solid #ccc;
+  font-size: 28rpx;
+  text-align: center;
+  margin-left: 35rpx;
 }

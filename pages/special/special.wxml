@@ -2,6 +2,11 @@
 
 <!-- 引入确认授权模板 -->
 <import src="/lib/template/userInfo2.wxml" />
+<import src="/lib/template/phone.wxml" />
+<template is="user2" data="{{mshow}}">
+</template>
+<template is="phone" data="{{isPhone}}">
+</template>
 
 <!-- 授权模板参数 mshow is="user2" -->
 <template is="user2" data="{{mshow}}"></template>
@@ -12,43 +17,8 @@
 </view>
 
 <!-- 商品列表 -->
-
 <view class='main'>
-  <block wx:for="{{goods}}" wx:key="unique" >
-    <view class='goods'>
-      <!--判断第二件0元购商品标示  -->
-      <!-- <image wx:if="{{item.goods_id==23||item.goods_id==347||item.goods_id==327}}" src='https://m.7710mall.com/Public/Home/img/m_0yg.png' class='label'></image> -->
-      <!--判断新品和预售标示  -->
-      <!-- 商品右上方图标 -->
-      <image wx:if="{{item.prom_id==7}}" src='../../image/index/newpro.png' class='label'></image>
-      <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
-      <image wx:if="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
-      <image wx:if="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
-      <image wx:if="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
-      <image wx:if="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
-      <image wx:if="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
-      <!-- 商品主图片 -->
-      <image src='{{imgurl}}{{item.medium_img}}' data-goodsid='{{item.goods_id}}' bindtap='goodsDetails'></image>
-      <!-- 商品名称 -->
-      <text class='goodsname'> {{item.goods_name}}</text>
-      <!-- 商品描述 -->
-      <text class='goodsdis'>{{item.goods_remark}}</text>
-      <!-- 商品规格 -->
-      <text class='goodsweight'>{{item.spec_name}}</text>
-      <view>
-        <!-- 商品价格 -->
-        <text class='goodsprice'>￥{{item.shop_price}}</text>
-        <!-- 促销价格 -->
-        <text class='goodsdelprice' wx:if="{{item.market_price!=0}}">￥{{item.market_price}}</text>
-        <!-- 购物车中商品数量 -->
-        <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="unique">
-          <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
-        </block>
-        <!-- 购物车图片 -->
-        <!-- is_sale  == 1 预售 -->
-        <image wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
-        <image wx:else src='../../image/index/cart.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" bindtap="cart"></image>
-      </view>
-    </view>
+  <block wx:for="{{goods}}" wx:key="goodsKey">
+    <goods-item class="goodsItem" dataObj="{{item}}" cartlist='{{cartList}}'></goods-item>
   </block>
 </view>
