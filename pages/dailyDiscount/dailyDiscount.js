@@ -10,7 +10,8 @@ Page({
       showTip: false,
     },
     listData: 2,
-    ztId:''
+    ztId:'',
+    isRotate: false
   },
 
   /**
@@ -29,7 +30,40 @@ Page({
   onReady: function () {
 
   },
-
+  onPageScroll: function(e){
+    if(e.scrollTop >150){
+      //改变
+      this.setData({
+        isRotate:true
+      })
+    }else{
+      //正常
+      this.setData({
+        isRotate: false
+      })
+    }
+  },
+  //返回顶部
+  goBack:function(){
+    console.log(this.data.isRotate)
+    if (this.data.isRotate){
+      //旋转
+      if (wx.pageScrollTo) {
+        wx.pageScrollTo({
+          scrollTop: 0
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+        })
+      }
+    }else{
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */
