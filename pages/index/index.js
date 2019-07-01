@@ -49,6 +49,7 @@ Page({
   //获取手机号信息
   getPhoneNumber(e) {
     let that = this;
+    // console.log(e)
     if (e.detail.iv){
       let uid = wx.getStorageSync("userinfo").uid;
       wx.request({
@@ -66,6 +67,12 @@ Page({
             wx.showTabBar({})
             app.globalData.isPhone = true; 
             that.setData({
+              isPhone: false
+            })
+          } else if (res.data.status == 3){
+            wx.removeStorageSync('userinfo')
+            that.setData({
+              mshow:'display:block',
               isPhone: false
             })
           }
