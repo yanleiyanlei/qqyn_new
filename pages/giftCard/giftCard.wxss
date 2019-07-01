@@ -5,15 +5,28 @@
 .goshopcart{
   position: fixed;
   right: 15rpx;
-  bottom: 20rpx;
+  bottom: 120rpx;
   width: 97rpx;
   height: 97rpx;
   z-index: 11;
 }
+.gobackImg{
+  position: fixed;
+  right: 53rpx;
+  bottom: 250rpx;
+  width: 21rpx;
+  height: 40rpx;
+  z-index: 11;
+  transition: all .3s linear;
+  transform-origin: center;
+}
+.rotate{
+  transform: rotate(90deg);
+}
 .goback{
   position: fixed;
   right: 15rpx;
-  bottom: 120rpx;
+  bottom: 220rpx;
   width: 97rpx;
   height: 97rpx;
   z-index: 11;
