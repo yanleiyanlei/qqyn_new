@@ -34,11 +34,11 @@ Page({
         success: function (res) {
           console.log("getPhoneNumber", res)
           if (res.data.status == 1) {
-            wx.showTabBar({})
             app.globalData.isPhone = true;
             that.setData({
               isPhone: false
-            })
+            });
+            that.initPage()
           }
         }
       })
@@ -174,7 +174,8 @@ Page({
         console.log(res.data.cartList)
         _this.setData({
           cartList: res.data.cartList //请求成功更新购物车数据
-        })
+        });
+        _this.getPageData();
       }
     })
   },
@@ -218,7 +219,7 @@ Page({
     // 获取购物车列表
     this.getCartList();
     // 获取商品列表  及banner图片
-    this.getPageData();
+    // this.getPageData();
   },
   /**
    * 生命周期函数--监听页面加载
