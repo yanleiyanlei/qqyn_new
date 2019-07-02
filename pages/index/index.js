@@ -69,12 +69,6 @@ Page({
             that.setData({
               isPhone: false
             })
-          } else if (res.data.status == 3){
-            wx.removeStorageSync('userinfo')
-            that.setData({
-              mshow:'display:block',
-              isPhone: false
-            })
           }
         }
       })
@@ -155,7 +149,8 @@ Page({
     console.log(e);
     if (e.detail.iv) {
       this.setData({
-        mshow: "display:none"
+        mshow: "display:none",
+        isPhone:true
       })
     }
     user.user(e,this.isPhoneFun);
@@ -168,7 +163,7 @@ Page({
         mshow: "display:none",
         isPhone: true
       })
-    }else{
+    } else if (obj.data.status == 0){
       app.globalData.isPhone = true;
       that.setData({
         isPhone: false
@@ -829,12 +824,17 @@ Page({
           member_id: uid
         },
         success: function (ress) {
-          console.log(ress.message);
+          console.log('hasPhone',ress);
           if (ress.data.status == 1){
             that.setData({
               isPhone: true
             })
-          } else {
+          } else if (ress.data.status == 3){
+            wx.removeStorageSync('utoken');
+            that.setData({
+              mshow: "display:block"
+            })
+          } else if (ress.data.status == 0){
             app.globalData.isPhone = true;
             that.setData({
               isPhone: false
