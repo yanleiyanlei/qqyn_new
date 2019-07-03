@@ -1,7 +1,7 @@
 <template name="phone">
   <view class="mask" wx:if="{{isPhone}}"></view>
   <view class='getIphone' wx:if="{{isPhone}}">
-    <view class="tt">"青青优农"要获得你的手机号</view>
+    <view class="tt">"青青优农"申请使用您的手机号</view>
     <button class='openPhone' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键登录</button>
   </view>
 </template>
