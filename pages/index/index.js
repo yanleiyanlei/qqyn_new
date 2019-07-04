@@ -369,7 +369,6 @@ Page({
   onLoad: function(options) {
     //  console.log(options)
     var pid = options.pid;
-    // console.log(pid);
     if (pid) {
       wx.setStorageSync("pid", pid);
     }
@@ -808,20 +807,24 @@ Page({
     this.getCartList();
     if (!app.globalData.isPhone){
       wx.hideTabBar({});
-      this.hasPhone();
+      //this.hasPhone();
     }
+    this.hasPhone();
   },
   //判断是否注册手机号了
   hasPhone: function (){
     let that = this;
     let uid = wx.getStorageSync("userinfo").uid;
+    let pid = wx.getStorageSync("pid");
+    console.log('pid1', pid);
     if (uid){
       wx.request({
         //用户登陆URL地址，请根据自已项目修改
         url: app.globalData.Murl + '/Applets/Login/isPhone',
         method: "POST",
         data: {
-          member_id: uid
+          member_id: uid,
+          pid: pid
         },
         success: function (ress) {
           console.log('hasPhone',ress);
