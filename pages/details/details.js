@@ -261,13 +261,15 @@ Page({
   hasPhone: function () {
     let that = this;
     let uid = wx.getStorageSync("userinfo").uid;
+    let pid = wx.getStorageSync("pid");
     if (uid) {
       wx.request({
         //用户登陆URL地址，请根据自已项目修改
         url: app.globalData.Murl + '/Applets/Login/isPhone',
         method: "POST",
         data: {
-          member_id: uid
+          member_id: uid,
+          pid: pid
         },
         success: function (ress) {
           console.log(ress)
