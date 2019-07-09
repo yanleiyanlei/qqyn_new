@@ -75,7 +75,8 @@
     "pages/m-coupon-2/m-coupon-2",
     "pages/luckyears/luckyears",
     "pages/new-exclusive_2/new-exclusive_2",
-    "pages/new-exclusive/new-exclusive"
+    "pages/new-exclusive/new-exclusive",
+    "pages/special2/special2"
   ],
   "window": {
     "backgroundTextStyle": "light",

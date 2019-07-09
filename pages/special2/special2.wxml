@@ -1,0 +1,50 @@
+<!--pages/special2/special2.wxml-->
+<!-- 引入确认授权模板 -->
+<import src="/lib/template/userInfo2.wxml" />
+<template is="user2" data="{{mshow}}">
+</template>
+
+<view class="{{changeClass}}">
+    <!-- <a class='use-guize' v-if="isPeach" @click="openPeach">使用规则</a> -->
+    <!-- <a class='use-guize' v-else @click="open">使用规则</a> -->
+    <view class='use-guize' bindtap="rule" data-goodsInfoId="{{goodsInfoId}}">使用规则</view>
+    <view class='now-lingqu' bindtap="receive">立即领取</view>
+    <view class='txt' wx:if="{{fruit}}">
+      <view class='close' bindtap="close"></view>
+      <text class='guize-1'>使用规则</text>
+      <text style='margin-top:1.80rem;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月12日。本活动新老用户均可参加。</text>
+      <text>2、每个用户限购一件，同一账号、手机号、设备（手机、ipad等）、银行卡、支付账号视为同一用户。</text>
+      <text>3、该兑换券不能与其他优惠同时使用，每笔订单只能使用一张优惠券。</text>
+      <text>4、下单时如果不符合活动规则，将按照原价进行下单或取消订单。</text>
+      <text>5、活动商品无质量问题不退不换，订单若拒收，兑换券不返还。</text>
+      <text>6、在参加活动过程中，如果出现作弊行为（如批量注册、恶意购买、虚假分享、虚假交易等）青青优农将自动取消您本次活动订单，并有权取消您后续参与青青优农任何活动的权利，必要时追究法律责任。</text>
+      <text>7、因用户原因造成商品无法送达或拒收，概不返还代金券，如在兑换过程中遇到问题，请拨打青青优农客服：400-688-1602或添加微信：qqyounong123（周一至周日 8:00-22:00）。</text>
+      <text>8、活动最终解释权归青青优农（北京）农产品贸易有限公司所有。</text>
+    </view>
+
+
+    <view class='txt' wx:if="{{textShow}}">
+      <view class='close' bindtap='close'></view>
+      <text class='guize-1'>使用规则</text>
+      <text style='margin-top:1.80rem;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月31日。本活动新老用户均可参加。</text>
+      <text>2、每个用户限购一件，同一账号、手机号、设备（手机、ipad等）、银行卡、支付账号视为同一用户。</text>
+      <text>3、该兑换券不能与其他优惠同时使用，每笔订单只能使用一张优惠券。</text>
+      <text>4、下单时如果不符合活动规则，将按照原价进行下单或取消订单。</text>
+      <text>5、活动商品无质量问题不退不换，订单若拒收，兑换券不返还。</text>
+      <text>6、在参加活动过程中，如果出现作弊行为（如批量注册、恶意购买、虚假分享、虚假交易等）青青优农将自动取消您本次活动订单，并有权取消您后续参与青青优农任何活动的权利，必要时追究法律责任。</text>
+      <text>7、因用户原因造成商品无法送达或拒收，概不返还代金券，如在兑换过程中遇到问题，请拨打青青优农客服：400-688-1602或添加微信：qqyounong123（周一至周日 8:00-22:00）。</text>
+      <text>8、活动最终解释权归青青优农（北京）农产品贸易有限公司所有。</text>
+    </view>
+
+    <view class="peachTxt" wx:if="{{peachTxt}}">
+      <view class='close' bindtap="closePeach"></view>
+      <text class='guize-1'>使用规则</text>
+      <text style='margin-top:1.80rem;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月20日。新疆、西藏、内蒙、青海、海南、云南不发货</text>
+      <text>2、该兑换券不能与其他优惠同时使用，每笔订单只能使用一张优惠券。</text>
+      <text>3、下单时如果不符合活动规则，将按照原价进行下单或取消订单。</text>
+      <text>4、活动商品无质量问题不退不换，订单若拒收，兑换券不返还。</text>
+      <text>5、在参加活动过程中，如果出现作弊行为（如批量注册、恶意购买、虚假分享、虚假交易等）青青优农将自动取消您本次活动订单，并有权取消您后续参与青青优农任何活动的权利。</text>
+      <text>6、因用户原因造成商品无法送达或拒收，概不返还代金券，如在兑换过程中遇到问题，请拨打青青优农客服：400-688-1602或添加微信：qqyounong123（周一至周日 8:00-22:00）。</text>
+    </view>
+
+  </view>
