@@ -13,7 +13,7 @@ Page({
     //isPeach:false,  好像没啥用了
     goodsInfoId: '',
     fruit: false,
-    mshow:'display:none'
+    mshow: 'display:none'
   },
   UserInfo: function (e) {
     console.log(e);
@@ -24,29 +24,45 @@ Page({
     }
     user.user(e);
   },
-  rule: function (i) {
+  rule: function (opt) {
+    // console.log(opt)
+    let i = opt.currentTarget.dataset.goodsinfoid;
     if (i == '1104' || i == '1105' || i == '1105a' || i == '1105b') {
-      this.textShow = true;
+      this.setData({
+        textShow: true
+      })
     } else if (i == '1113' || i == '1113a' || i == '1113b') {
-      this.peachTxt = true;
+      this.setData({
+        peachTxt: true
+      })
     } else if (i == '1193') {
-      this.fruit = true;
+      this.setData({
+        fruit: true
+      })
     }
   },
 
   close: function () {
-    this.textShow = false;
-    this.fruit = false;
+    this.setData({
+      textShow: false,
+      fruit: false
+    })
   },
   closePeach: function () {
-    this.textShow = false;
-    this.peachTxt = false;
+    this.setData({
+      textShow: false,
+      peachTxt: false
+    })
   },
   open: function () {
-    this.textShow = true;
+    this.setData({
+      textShow: true
+    })
   },
   openPeach: function () {
-    this.peachTxt = true;
+    this.setData({
+      peachTxt: true
+    })
   },
 
   receive: function () {
@@ -59,7 +75,7 @@ Page({
       url: app.globalData.Murl + "/Applets/Lq/qdcount",
       data: param,
       method: "POST",
-      success:function(res){
+      success: function (res) {
         console.log(res)
         if (res.data.status == 1) {
           wx.showToast({
@@ -70,12 +86,12 @@ Page({
               url: '../m-coupon/m-coupon',
             })
           }, 500);
-          
+
         } else {
           wx.showToast({
             title: res.data.data,
           })
-          
+
           setTimeout(function () {
             wx.switchTab({
               url: '../index/index',
@@ -97,7 +113,7 @@ Page({
     this.setData({
       goodsInfoId: goodid
     });
-    
+
   },
 
   /**
@@ -190,6 +206,19 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var userinfo = wx.getStorageSync("userinfo");
+    var uid = userinfo.uid;
+    return {
+      title: '青青优农喊你领优惠劵',
+      path: '/pages/special2/special2?id=' + 123 + '&pid=' + uid,
+      imageUrl: '',
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        // 分享失败
+        //console.log(res)
+      }
+    }
   }
 })
