@@ -210,7 +210,7 @@ Page({
     var uid = userinfo.uid;
     return {
       title: '青青优农喊你领优惠劵',
-      path: '/pages/special2/special2?id=' + 123 + '&pid=' + uid,
+      path: '/pages/special2/special2?pid=' + uid,
       imageUrl: '',
       success: function (res) {
         console.log(res)
