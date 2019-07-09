@@ -208,9 +208,10 @@ Page({
   onShareAppMessage: function () {
     var userinfo = wx.getStorageSync("userinfo");
     var uid = userinfo.uid;
+    let goodsInfoId = this.data.goodsInfoId;
     return {
       title: '青青优农喊你领优惠劵',
-      path: '/pages/special2/special2?id=' + 123 + '&pid=' + uid,
+      path: '/pages/special2/special2?id='+ goodsInfoId+'&pid=' + uid,
       imageUrl: '',
       success: function (res) {
         console.log(res)
