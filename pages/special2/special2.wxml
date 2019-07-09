@@ -12,7 +12,7 @@
     <view class='txt' wx:if="{{fruit}}">
       <view class='close' bindtap="close"></view>
       <text class='guize-1'>使用规则</text>
-      <text style='margin-top:1.80rem;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月12日。本活动新老用户均可参加。</text>
+      <text style='margin-top:180rpx;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月12日。本活动新老用户均可参加。</text>
       <text>2、每个用户限购一件，同一账号、手机号、设备（手机、ipad等）、银行卡、支付账号视为同一用户。</text>
       <text>3、该兑换券不能与其他优惠同时使用，每笔订单只能使用一张优惠券。</text>
       <text>4、下单时如果不符合活动规则，将按照原价进行下单或取消订单。</text>
@@ -26,7 +26,7 @@
     <view class='txt' wx:if="{{textShow}}">
       <view class='close' bindtap='close'></view>
       <text class='guize-1'>使用规则</text>
-      <text style='margin-top:1.80rem;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月31日。本活动新老用户均可参加。</text>
+      <text style='margin-top:180rpx;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月31日。本活动新老用户均可参加。</text>
       <text>2、每个用户限购一件，同一账号、手机号、设备（手机、ipad等）、银行卡、支付账号视为同一用户。</text>
       <text>3、该兑换券不能与其他优惠同时使用，每笔订单只能使用一张优惠券。</text>
       <text>4、下单时如果不符合活动规则，将按照原价进行下单或取消订单。</text>
@@ -39,7 +39,7 @@
     <view class="peachTxt" wx:if="{{peachTxt}}">
       <view class='close' bindtap="closePeach"></view>
       <text class='guize-1'>使用规则</text>
-      <text style='margin-top:1.80rem;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月20日。新疆、西藏、内蒙、青海、海南、云南不发货</text>
+      <text style='margin-top:180rpx;'>1、优惠券领取后七日内有效，活动截止日期为2019年7月20日。新疆、西藏、内蒙、青海、海南、云南不发货</text>
       <text>2、该兑换券不能与其他优惠同时使用，每笔订单只能使用一张优惠券。</text>
       <text>3、下单时如果不符合活动规则，将按照原价进行下单或取消订单。</text>
       <text>4、活动商品无质量问题不退不换，订单若拒收，兑换券不返还。</text>
