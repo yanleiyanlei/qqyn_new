@@ -406,6 +406,7 @@ Page({
     wx.getLocation({
       type: 'gcj02',
       success: function(res) {
+        console.log(res,123123)
         demo.reverseGeocoder({
           location: {
             latitude: res.latitude,
@@ -753,7 +754,7 @@ Page({
     })
   },
   onShow: function() {
-    
+    console.log(this.getGreatCircleDistance(39.790306,116.339646,39.85856,116.28616));
     this.setData({
       dailySpikeIndex: 0
     })
@@ -887,5 +888,33 @@ Page({
         //console.log(res)
       }
     }
+  },
+
+
+
+
+
+
+
+  
+
+ 
+  getGreatCircleDistance: function (lat1, lng1, lat2, lng2) {
+    var EARTH_RADIUS = 6378137.0;
+    var PI = Math.PI;
+    function getRad(d) {
+      return d * PI / 180.0;
+    }
+    var radLat1 = getRad(lat1);
+    var radLat2 = getRad(lat2);
+
+    var a = radLat1 - radLat2;
+    var b = getRad(lng1) - getRad(lng2);
+
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    s = s * EARTH_RADIUS;
+    s = Math.round(s * 10000) / 10000.0;
+
+    return s;
   }
 })

@@ -191,8 +191,16 @@ Page({
           })
 
         } else {
+          var msg;
+          if(res.data.number == 1){
+            msg = '限购品只能一种';
+          } else if (res.data.number == 5){
+            msg = '限购品只能一件';
+          }else{
+            msg = res.data.data;
+          }
           wx.showToast({
-            title: res.data.data,
+            title: msg,
             icon: 'loading',
             duration: 2000
           })
