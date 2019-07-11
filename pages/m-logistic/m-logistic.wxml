@@ -11,6 +11,7 @@
       <view class="log-state" wx:else>未签收</view>
       </view>
       <view class="log-express">{{expressName}}：{{expressNum}}</view>
+      <view class='orderNum' wx:if="{{order_number}}"><text>快递单号：</text>{{order_number}}</view>
       <view class="service">客服电话：400-688-1602</view>
     </view>
   </view>

@@ -13,7 +13,8 @@ Page({
     expressNum: "",
     logistic: "",
     sta: false,
-    lstart: false
+    lstart: false,
+    order_number:''
   },
 
   /**
@@ -57,7 +58,8 @@ Page({
                 expressName: res.data.ordershow.express_name,
                 expressNum: res.data.ordershow.couriernumber,
                 logistic: res.data.xml.Body.RouteResponse.Route,
-                lstart: true
+                lstart: true,
+                order_number: res.data.ordershow.couriernumber
               })
             } else {
               that.setData({
@@ -65,7 +67,8 @@ Page({
                 logisticNum: res.data.order_num,
                 expressName: res.data.ordershow.express_name,
                 expressNum: res.data.ordershow.couriernumber,
-                lstart: false
+                lstart: false,
+                order_number: res.data.ordershow.couriernumber
               })
             }
 
@@ -77,38 +80,38 @@ Page({
               logisticNum: res.data.order_num,
               expressName: res.data.ordershow.express_name,
               expressNum: res.data.ordershow.couriernumber,
-
+              order_number: res.data.ordershow.couriernumber
             })
           }
 
 
         }
        //万家康冷链
-        if (res.data.ordershow.courierservices == 5) {
-          that.setData({
-            express: 5,
-            logisticImg: res.data.order[0].thumbnails,
-            logisticNum: res.data.order_num,
-            expressNum: res.data.ordershow.express_name,
-            sta: true
-          })
-          if (res.data.ordershow.orderstatus==1){
-           that.setData({
-             expressName: '待发货'
-           })
-          } else if (res.data.ordershow.orderstatus == 2){
-            that.setData({
-              expressName: '已由万家康冷链发货'
-            })
-          } else if (res.data.ordershow.orderstatus == 3){
-            that.setData({
-              expressName: '已完成'
-            })
-          }
-        }
+        // if (res.data.ordershow.courierservices == 5) {
+        //   that.setData({
+        //     express: 5,
+        //     logisticImg: res.data.order[0].thumbnails,
+        //     logisticNum: res.data.order_num,
+        //     expressNum: res.data.ordershow.express_name,
+        //     sta: true
+        //   })
+        //   if (res.data.ordershow.orderstatus==1){
+        //    that.setData({
+        //      expressName: '待发货'
+        //    })
+        //   } else if (res.data.ordershow.orderstatus == 2){
+        //     that.setData({
+        //       expressName: '已由万家康冷链发货'
+        //     })
+        //   } else if (res.data.ordershow.orderstatus == 3){
+        //     that.setData({
+        //       expressName: '已完成'
+        //     })
+        //   }
+        // }
 
         // 中通
-        if (res.data.ordershow.courierservices == 4) {
+        else if (res.data.ordershow.courierservices == 4) {
           that.setData({
             express: 4
           })
@@ -121,7 +124,8 @@ Page({
               expressName: res.data.ordershow.express_name,
               expressNum: res.data.ordershow.couriernumber,
               logistic: res.data.xml.data[0].traces,
-              lstart: true
+              lstart: true,
+              order_number: res.data.ordershow.couriernumber
             })
 
             var l = res.data.xml.data[0].traces.length - 1
@@ -138,8 +142,31 @@ Page({
               logisticNum: res.data.order_num,
               expressName: res.data.ordershow.express_name,
               expressNum: res.data.ordershow.couriernumber,
-              lstart: false
+              lstart: false,
+              order_number: res.data.ordershow.couriernumber
 
+            })
+          }
+        }else{
+          that.setData({
+            express: 5,
+            logisticImg: res.data.order[0].thumbnails,
+            logisticNum: res.data.order_num,
+            expressNum: res.data.ordershow.express_name,
+            sta: true,
+            order_number: res.data.ordershow.couriernumber
+          })
+          if (res.data.ordershow.orderstatus==1){
+           that.setData({
+             expressName: '待发货'
+           })
+          } else if (res.data.ordershow.orderstatus == 2){
+            that.setData({
+              expressName: '已由' + res.data.ordershow.express_name+'发货'
+            })
+          } else if (res.data.ordershow.orderstatus == 3){
+            that.setData({
+              expressName: '已完成'
             })
           }
         }
