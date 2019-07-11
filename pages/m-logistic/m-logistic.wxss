@@ -62,6 +62,11 @@
   line-height: 60rpx;
   color: #666;
 }
+.orderNum{
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: #666;
+}
 
 /* 物流 */
 
