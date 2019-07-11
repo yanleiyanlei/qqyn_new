@@ -192,7 +192,7 @@ Page({
 
         } else {
           wx.showToast({
-            title: '请选择商品',
+            title: res.data.data,
             icon: 'loading',
             duration: 2000
           })
