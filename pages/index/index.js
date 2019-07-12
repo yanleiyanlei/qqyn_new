@@ -406,6 +406,7 @@ Page({
     wx.getLocation({
       type: 'gcj02',
       success: function(res) {
+        console.log(res,123123)
         demo.reverseGeocoder({
           location: {
             latitude: res.latitude,
@@ -753,7 +754,6 @@ Page({
     })
   },
   onShow: function() {
-    
     this.setData({
       dailySpikeIndex: 0
     })
@@ -887,5 +887,5 @@ Page({
         //console.log(res)
       }
     }
-  }
+  },
 })
