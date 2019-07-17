@@ -1,0 +1,236 @@
+/* pages/join/join.wxss */
+
+view {
+  width: 100%;
+  height: 100%;
+}
+
+.content image {
+  width: 100%;
+  display: block;
+}
+
+.content image:nth-of-type(1) {
+  height: 1205rpx;
+}
+
+.content image:nth-of-type(2) {
+  height: 1333rpx;
+}
+
+.content image:nth-of-type(3) {
+  height: 1335rpx;
+}
+
+.content image:nth-of-type(4) {
+  height: 1336rpx;
+}
+
+.form_bj {
+  background: url('https://m.7710mall.com/Public/xcximg/join/bj4.jpg') no-repeat left top;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding-top: 273rpx;
+  padding-bottom: 350rpx;
+}
+
+.form_con {
+  width: 487rpx;
+  margin: 0 auto;
+}
+
+form .h4 {
+  font-size: 54rpx;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  color: rgba(31, 76, 10, 1);
+  line-height: 74rpx;
+  margin-bottom: 55rpx;
+  text-align: center;
+}
+
+form .input1 {
+  background-color: rgba(255, 255, 255, 0.7);
+  min-height: 60rpx;
+  line-height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15rpx;
+}
+
+input {
+  outline: none;
+}
+
+form .input1 input {
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  height: 60rpx;
+  width: 300rpx;
+  font-size: 28rpx;
+  color: rgba(153, 153, 153, 1);
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+}
+
+form .input1 textarea {
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  color: rgba(153, 153, 153, 1);
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+  min-height: 60rpx;
+  height: 100rpx;
+  max-height: 100rpx;
+  max-width: 300rpx;
+  padding: 2rpx;
+  font-size: 28rpx;
+  outline: none;
+}
+form .form_bj .input2{
+  line-height: 30rpx;
+}
+.input2 .label2{
+  padding-top: 20rpx;
+}
+form .input1 .label {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+  color: #277105;
+  margin-left: 25rpx;
+  width: 185rpx;
+  display: block;
+  position: relative;
+}
+form .form_bj .input1 .label2{
+  width: 350rpx;
+}
+form .input1 .label text {
+  position: absolute;
+  left: -15rpx;
+  top: 5rpx;
+}
+
+.choose {
+  display: flex;
+  flex-direction: row;
+}
+
+.choose text {
+  font-size: 28rpx;
+}
+
+.choose view {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 60rpx;
+}
+
+.choose view image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 5rpx;
+}
+
+.form_con .p_con2 {
+  font-size: 22rpx;
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  padding-left: 24rpx;
+}
+
+.form button {
+  width: 446rpx;
+  height: 71rpx;
+  background: rgba(0, 167, 128, 1);
+  display: block;
+  margin: 0 auto;
+  font-size: 30rpx;
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  text-align: center;
+  line-height: 71rpx;
+  margin-top: 104rpx;
+}
+
+.p_con {
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Light;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 1);
+  text-align: center;
+  position: absolute;
+  bottom: 50rpx;
+  left: 50%;
+  width: 480rpx;
+  margin-left: -240rpx;
+}
+.p_con3{
+    font-size: 26rpx;
+  font-family: SourceHanSansCN-Light;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 1);
+  text-align: center;
+  position: absolute;
+  bottom: 10rpx;
+  left: 50%;
+  width: 480rpx;
+  margin-left: -240rpx;
+}
+
+	.alert .alertp {
+			position: absolute;
+			top: 100rpx;
+			left: 10rpx;
+			font-size: 26rpx;
+			color: #1f4c0a;
+			margin: 0 20rpx;
+	}
+
+	.alert .a_txt {
+			position: absolute;
+			top: 200rpx;
+			font-size: 22rpx;
+			color: #fff;
+			text-align: center;
+			left: 40%;
+			background-color: #1f4c0a;
+			padding: 3rpx 7rpx;
+			text-decoration: none;
+			width: 102rpx;
+			height: 35rpx;
+			line-height: 35rpx;
+	}
+
+	.alert {
+			width: 526rpx;
+			height: 245rpx;
+			margin: 0 auto;
+			position: absolute;
+			left: 50%;
+			margin-left: -268rpx;
+			z-index: 99;
+			top: 30%;
+	}
+
+	.alert image {
+			width: 100%;
+      height: 300rpx;
+	}
+
+	.shadow {
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 12;
+			background-color: rgba(0, 0, 0, 0.3);
+	}

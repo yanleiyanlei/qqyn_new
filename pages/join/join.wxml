@@ -1,0 +1,57 @@
+<!--pages/join/join.wxml-->
+<view>
+  <!-- <web-view src="https://m.test.7710mall.com/join"></web-view> -->
+  <view class='content'>
+    <image src='https://m.7710mall.com/Public/xcximg/join/xcx_img1.jpg'></image>
+    <image src='https://m.7710mall.com/Public/xcximg/join/xcx_img2.jpg'></image>
+    <image src='https://m.7710mall.com/Public/xcximg/join/xcx_img3.jpg'></image>
+    <image src='https://m.7710mall.com/Public/xcximg/join/xcx_img4.jpg'></image>
+  </view>
+  <form bindsubmit='bindsubmit' class='form'>
+    <view class='form_bj'>
+      <view class="form_con">
+        <view class='h4'>验证模式 申请加盟</view>
+        <view class="input1">
+          <view class='label'>申请人姓名</view>
+          <input type="text" class="name" value='{{val}}' name="name"></input>
+        </view>
+        <view class="input1">
+          <view class='label' style="letter-spacing:0.09rem">
+            <text>*</text>联系电话</view>
+          <input type="text" value='{{val}}' class="tel_inuput" name="tel_input"></input>
+        </view>
+        <view class="input1 input2">
+          <view class='label label2'>计划加盟位置</view>
+          <!-- <input type="text" class="address"> -->
+          <textarea name="text" id="textArea" value='{{val}}' class="address" cols="30" rows="1" name="textarea"></textarea>
+        </view>
+        <view class="input1">
+          <view class='label label2'>是否自带店铺</view>
+          <view class="choose">
+            <view bindtap="isshop" data-id="0">
+              <text>否</text>
+              <image wx:if="{{isImg}}" src="https://m.7710mall.com/Public/xcximg/join/xcx_yuan.png" alt=""></image>
+              <image wx:else src="https://m.7710mall.com/Public/xcximg/join/xcx_choose.png" alt=""></image>
+            </view>
+            <view bindtap="isshop" data-id="1">
+              <text>是</text>
+              <image wx:if="{{isImg}}" src="https://m.7710mall.com/Public/xcximg/join/xcx_choose.png" alt=""></image>
+              <image wx:else src="https://m.7710mall.com/Public/xcximg/join/xcx_yuan.png" alt=""></image>
+            </view>
+          </view>
+        </view>
+        <text class='p_con2'>注：*号为必填项</text>
+      </view>
+      <button form-type='submit'>提交</button>
+      <view class="shadow" wx:if="{{isshow}}"></view>
+      <view class="alert" wx:if="{{isshow}}">
+          <image src="https://www.7710mall.com/Public/Home/images/food/alert.png" alt=""></image>
+          <text class="alertp">{{alertp}}</text>
+          <text class='a_txt' bindtap="close">我知道了</text>
+      </view>
+      <p class="p_con">青青优农（北京）农产品贸易有限公司</p>
+      <p class="p_con3">京ICP备17067495号-2</p>
+    </view>
+
+  </form>
+</view>
