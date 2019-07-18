@@ -1,0 +1,62 @@
+<!--pages/Ingredients/Ingredients.wxml-->
+<view>
+  
+  <view class="qq">
+    <image src="https://m.7710mall.com/Public/xcximg/ing/qq-m2.png" style="width: 121rpx;height:330rpx;"></image>
+    
+    <view class="kf" bindtap='link'>
+      <image src="https://m.7710mall.com/Public/xcximg/ing/tell.png" style="width: 42rpx;height:42rpx;"></image>
+    </view>
+    <view class="erweima" bindtap='onerweima'>
+      <image src="https://m.7710mall.com/Public/xcximg/ing/erweimaicon.png" style="width: 42rpx;height:36rpx;"></image>
+    </view>
+  </view>
+  <view class='logo'>
+    <image src='https://m.7710mall.com/Public/xcximg/ing/img_logo.png'></image>
+  </view>
+  <view class='content'>
+    <image class='img1' src='https://m.7710mall.com/Public/xcximg/ing/ing_img1.jpg'></image>
+    <image class='img2' src='https://m.7710mall.com/Public/xcximg/ing/ing_img2.jpg'></image>
+    <image class='img3' src='https://m.7710mall.com/Public/xcximg/ing/ing_img3.jpg'></image>
+    <image class='img4' src='https://m.7710mall.com/Public/xcximg/ing/ing_img4.jpg'></image>
+    <image class='img5' src='https://m.7710mall.com/Public/xcximg/ing/ing_img5.jpg'></image>
+  </view>
+  <view>
+    <view class="erweimaShadow" bindtap="imgClose" wx:if="{{iserweima}}"></view>
+    <view class="erweimaImg" wx:if="{{iserweima}}" >
+      <image src="https://m.7710mall.com/Public/xcximg/ing/ewm.png"></image>
+      <text>了解更多</text>
+    </view>
+  </view>
+
+
+
+  <view class="bottom">
+    <text class='h3'>食材询价 立即下单</text>
+    <form class="form" bindsubmit='bindFormSubmit'>
+      <view class="f_top clearfix">
+        <view class="company">
+          <text class='label'>采购单位:</text>
+          <input type="text" value="{{com_val}}" name="com_input" class="com_inuput"></input>
+        </view>
+        <view class="tel">
+          <text class='label'>联系电话:</text>
+          <input type="text" value="{{com_val}}" name="tel_input" class="tel_inuput"></input>
+        </view>
+      </view>
+      <view class="f_bottom">
+        <text class='label'>配送地址:</text>
+        <textarea name="textarea" value="{{com_val}}" id="" cols="30" class="address" rows="3"></textarea>
+      </view>
+      <button form-type='submit' button-hover="none">提 交</button>
+    </form>
+    <view class="shadow" wx:if="{{showAlert}}"></view>
+    <view class="alert" wx:if="{{showAlert}}">
+      <image src="https://www.7710mall.com/Public/Home/images/food/alert.png" alt=""></image>
+      <text class='p_text'>您的信息已经提交成功，我们会尽快与您联系，请注意接听来电！</text>
+      <text class='yes' bindtap='close'>我知道了</text>
+    </view>
+    <text class="p_con">青青优农（北京）农产品贸易有限公司</text>
+    <text class="p_con2">京ICP备17067495号-2 </text>
+  </view>
+</view>
