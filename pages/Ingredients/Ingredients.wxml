@@ -46,7 +46,8 @@
       </view>
       <view class="f_bottom">
         <text class='label'>配送地址:</text>
-        <textarea name="textarea" value="{{com_val}}" id="" cols="30" class="address" rows="3"></textarea>
+        <textarea  wx:if="{{showMask}}" name="textarea" value="{{com_val}}" id="" cols="30" class="address" rows="3"></textarea>
+        <view wx:else class='border'></view>
       </view>
       <button form-type='submit' button-hover="none">提 交</button>
     </form>
@@ -54,7 +55,7 @@
     <view class="alert" wx:if="{{showAlert}}">
       <image src="https://www.7710mall.com/Public/Home/images/food/alert.png" alt=""></image>
       <text class='p_text'>您的信息已经提交成功，我们会尽快与您联系，请注意接听来电！</text>
-      <text class='yes' bindtap='close'>我知道了</text>
+      <view class='yes' bindtap='close'>我知道了</view>
     </view>
     <text class="p_con">青青优农（北京）农产品贸易有限公司</text>
     <text class="p_con2">京ICP备17067495号-2 </text>
