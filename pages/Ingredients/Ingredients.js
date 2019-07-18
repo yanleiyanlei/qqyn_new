@@ -8,7 +8,8 @@ Page({
   data: {
     iserweima:false,
     showAlert:false,
-    com_val:''
+    com_val:'',
+    showMask:true
   },
 
   /**
@@ -72,7 +73,8 @@ Page({
           if (res.data.status == 1) {
             that.setData({
               showAlert:true,
-              com_val:''
+              com_val:'',
+              showMask:false
             })
           }
         }
@@ -86,7 +88,8 @@ Page({
   },
   close: function () {
     this.setData({
-      showAlert: false
+      showAlert: false,
+      showMask: true
     })
   },
   onerweima:function(){

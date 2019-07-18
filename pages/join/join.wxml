@@ -43,12 +43,14 @@
         <text class='p_con2'>注：*号为必填项</text>
       </view>
       <button form-type='submit'>提交</button>
-      <view class="shadow" wx:if="{{isshow}}"></view>
-      <view class="alert" wx:if="{{isshow}}">
-          <image src="https://www.7710mall.com/Public/Home/images/food/alert.png" alt=""></image>
-          <text class="alertp">{{alertp}}</text>
-          <text class='a_txt' bindtap="close">我知道了</text>
-      </view>
+        <view class="shadow" wx:if="{{isshow}}"></view>
+        <cover-view class="alert" wx:if="{{isshow}}">
+            <!-- <image src="https://www.7710mall.com/Public/Home/images/food/alert.png" alt=""></image> -->
+            <cover-image src="https://www.7710mall.com/Public/Home/images/food/alert.png"></cover-image>
+            <cover-view class="alertp">{{alertp}}</cover-view>
+            <cover-view class='a_txt' bindtap="close">我知道了</cover-view>
+        </cover-view>
+      
       <p class="p_con">青青优农（北京）农产品贸易有限公司</p>
       <p class="p_con3">京ICP备17067495号-2</p>
     </view>
