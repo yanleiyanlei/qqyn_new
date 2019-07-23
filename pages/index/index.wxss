@@ -519,6 +519,13 @@ page {
   width: 185rpx;
   height: 185rpx;
 }
+.goodshow .label2{
+  position:absolute;
+  top:10rpx;
+  left:10rpx;
+  width:123rpx;
+  height:38rpx;
+}
 
 
 .fruitslist-li .label {

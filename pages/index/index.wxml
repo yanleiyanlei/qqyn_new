@@ -150,7 +150,15 @@
   <!-- 优选商品轮播 -->
   <scroll-view scroll-x="true" scroll-with-animation="true" scroll-left="{{scrollLeft}}" class='swipt'>
     <block wx:for="{{todayUrls}}" wx:key="unique">
-      <view class='goodshow'>
+      <view class='goodshow' data-item="{{item.prom_id}}">
+        <image wx:if="{{item.prom_id==7}}" src='../../image/new/reduction.png' class='label2'></image>
+        <image wx:elif="{{item.prom_id==12}}" src='../../image/index/mde5.png' class='label'></image>
+        <image wx:elif="{{item.prom_id==13}}" src='../../image/index/mde6.png' class='label'></image>
+        <image wx:elif="{{item.prom_id==14}}" src='../../image/index/mde7.png' class='label'></image>
+        <image wx:elif="{{item.prom_id==15}}" src='../../image/index/mde8.png' class='label'></image>
+        <image wx:elif="{{item.prom_id==16}}" src='../../image/index/mde9.png' class='label'></image>
+        <image wx:elif="{{item.is_sale==1}}" src='../../image/index/ys.png' class='label'></image>
+
         <image src="{{item.thumbnails}}" data-goodsid="{{item.goods_id}}" catchtap='goodsDetails' />
 
         <text class='goodsname'>{{item.goods_name}} </text>

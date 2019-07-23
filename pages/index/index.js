@@ -667,7 +667,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        //console.log(res.data)
+        console.log(res.data)
         that.setData({
           todayUrls: res.data.data
         })
