@@ -375,12 +375,12 @@ page {
   flex-direction: row;
   align-items:flex-end;
 }
-.swBottom navigator{
+.swBottom .swimg{
   width: 110rpx;
   height: 46rpx;
   margin-left: 10rpx;
 }
-.dailyDiscount swiper swiper-item .swBottom navigator image{
+.dailyDiscount swiper swiper-item .swBottom .swimg image{
   width: 100%;
   height: 100%;
   display: block;
@@ -525,6 +525,13 @@ page {
   left:10rpx;
   width:123rpx;
   height:38rpx;
+}
+.goodshow .label {
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  width: 51rpx;
+  height: 65rpx;
 }
 
 
