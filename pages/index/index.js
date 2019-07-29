@@ -659,32 +659,7 @@ Page({
 
       }
     })
-    //今日推荐商品=======================================
-    wx.request({
-      url: app.globalData.Murl + '/Applets/Index/getBoutiqueList',
-      data: {},
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function(res) {
-        console.log(res.data)
-        that.setData({
-          todayUrls: res.data.data
-        })
-      },
-      fail: function(res) {
-        wx.showLoading({
-          title: '网络连接失败！',
-        })
-
-        var timer = setTimeout(function() {
-          wx.hideLoading();
-          clearTimeout(timer);
-        }, 2000)
-
-      }
-    })
-
+    
     //青粉推荐=========================================
     wx.request({
       url: app.globalData.Murl + '/Applets/Index/hot',
@@ -800,6 +775,31 @@ Page({
       })
     }
     
+    //今日推荐商品=======================================
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Index/getBoutiqueList',
+      data: {},
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          todayUrls: res.data.data
+        })
+      },
+      fail: function (res) {
+        wx.showLoading({
+          title: '网络连接失败！',
+        })
+
+        var timer = setTimeout(function () {
+          wx.hideLoading();
+          clearTimeout(timer);
+        }, 2000)
+
+      }
+    })
 
     //console.log(1)
 
