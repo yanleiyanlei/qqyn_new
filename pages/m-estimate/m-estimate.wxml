@@ -68,6 +68,6 @@
 
   </view>
   <view class="tijiao">
-    <button formType="submit">{{tip}}</button>
+    <button formType="submit" disabled="{{disabled}}">{{tip}}</button>
   </view>
 </form>

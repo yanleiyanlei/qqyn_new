@@ -23,9 +23,9 @@
               <view class='goodsdelprice' >
                 <text>￥</text>{{item.market_price}}</view>
             </view>
-            <!-- <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="index">
+            <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="index">
               <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
-            </block> -->
+            </block>
             <image class='wait' wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
             <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" catchtap="cart"></image>
           </view>
@@ -57,9 +57,9 @@
             <view class='goodsdelprice' >
               <text>￥</text>{{item.market_price}}</view>
           </view>
-          <!-- <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="index">
+          <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="index">
             <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
-          </block> -->
+          </block>
           <image class='wait' wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
           <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" catchtap="cart"></image>
         </view>
@@ -80,9 +80,9 @@
             <view class='goodsdelprice' >
               <text>￥</text>{{item.market_price}}</view>
           </view>
-          <!-- <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="index">
+          <block wx:for="{{cartList}}" wx:for-item="item2" wx:key="index">
             <view wx:if="{{item.goods_id==item2.goods_id&&item.is_sale!=1}}" class="cartnum">{{item2.goods_num}}</view>
-          </block> -->
+          </block>
           <image class='wait' wx:if="{{item.is_sale==1}}" src='../../image/index/ys_b.png'></image>
           <image wx:else src='../../image/new/shop.png' data-goodsid="{{item.goods_id}}" data-key="{{item.spec_key}}" catchtap="cart"></image>
         </view>
