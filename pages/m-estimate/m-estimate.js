@@ -18,7 +18,8 @@ Page({
     hp: 3,
     tip: "提交",
     flag2: false,
-    textareaVal:''
+    textareaVal:'',
+    disabled:false
   },
 
   /**
@@ -123,12 +124,18 @@ Page({
       if (that.data.hp != "" && this.data.textareaVal != '' || that.data.typp == 1 ) {
         var l = that.data.imgList.length;
         if (l == 0) {
+          that.setData({
+            disabled: true
+          });
           wx.request({
             url: app.globalData.Murl+'/Applets/User/add_estimate',
             data: obj,
             method: "post",
             success: function (res) {
               console.log(res)
+              that.setData({
+                disabled: false
+              });
               if (res.data.status == 1) {//评价成功
                 wx.showToast({
                   title: res.data.msg,
@@ -166,7 +173,9 @@ Page({
           })
 
         } else {
-
+          that.setData({
+            disabled: true
+          });
           var success=0
           for (var i = 0; i < l; i++) {
             wx.uploadFile({
@@ -176,6 +185,9 @@ Page({
               header: { 'content-type': 'multipart/form-data' },
               formData: obj,
               success: function (res) {
+                that.setData({
+                  disabled: false
+                });
                 success++
                 console.log(res)
                 var sta=JSON.parse(res.data)
