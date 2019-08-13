@@ -100,8 +100,9 @@ Page({
     })
   },
   
-  //点击banner领取优惠券
+  //点击banner领取优惠券 
   lingquyouhuiquan:function(e) {
+    return; // 闫磊 去掉
     var uid = wx.getStorageSync('userinfo').uid
     console.log(uid)
     wx.request({
@@ -125,6 +126,9 @@ Page({
   },
   // 分享送券
   deliverCoupon(type) {  
+    if (this.data.id != 24) {
+      return;
+    }
     let comeFrom = type == 'login' ? 'a' : 'b';
     //
     wx.request({
