@@ -72,7 +72,17 @@ page {
   margin-top: 50rpx;
   display: block;
 }
-
+.loginbtn:after{ border: none; }
+.loginbtn{
+  height: 36rpx;
+  font-size: 30rpx;
+  color: #fff;
+  line-height: 36rpx;
+  margin-top: 50rpx;
+  display: block;
+  background: rgba(0,0,0,0);
+  text-align: left;
+}
 .top-up .top-up-info .info .level {
   display: block;
   font-size: 20rpx;

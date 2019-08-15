@@ -26,7 +26,8 @@
         </navigator>
       </view>
       <view class="info">
-        <text class="username">{{nickName}}</text>
+        <text class="loginbtn" bindtap="login" wx:if="{{uid == 'undefined'}}">登录/注册</text>
+        <text class="username" wx:else>{{nickName}}</text>
         <!-- <text class="level">{{levelname}}</text> -->
       </view>
     </view>
@@ -35,12 +36,21 @@
         <view class="one">
           <text>{{member_money}}</text>
         </view>
-        <view class="two">
+        <view class="two" wx:if="{{uid  != 'undefined'}}">
           <navigator open-type='navigate' hover-class='Nhover' url="/pages/m-charge/m-charge">
             <text>余额</text>
           </navigator>
           <text class="iconfont icon-dian1"></text>
           <navigator opent-type="redirectTo" hover-class='Nhover' url="/pages/m-charge/m-charge">
+            <text>充值</text>
+          </navigator>
+        </view>
+        <view class="two" wx:else>
+          <navigator  hover-class='Nhover'>
+            <text>余额</text>
+          </navigator>
+          <text class="iconfont icon-dian1"></text>
+          <navigator hover-class='Nhover'>
             <text>充值</text>
           </navigator>
         </view>
