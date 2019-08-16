@@ -148,6 +148,8 @@ Page({
   UserInfo: function(e) {
     console.log(e);
     if (e.detail.iv) {
+      //    app.globalData.source
+
       this.setData({
         mshow: "display:none",
         isPhone:true
@@ -290,7 +292,86 @@ Page({
   mrms:function(){
     var that = this;
     const shopusr = "/Applets/Index/getBargainsRushGoodsList";
-    request.request(shopusr, {},'post').then(function (data) {
+    wx.request({
+      url: app.globalData.Murl + '/Applets/Index/getBargainsRushGoodsList',
+      method:'post',
+      data:{},
+      success:function(data){
+        //console.log(data)
+        var data = data.data;
+        if (data.code == 200) {
+          // console.log(data);
+          if (data.data == null) {
+            that.setData({
+              dailySpikeShow: false
+            })
+          } else {
+            that.setData({
+              dailySpikeShow: true,
+              dailySpike: data.data.goods_list
+            });
+          }
+
+          if (data.data) {
+            var startTime = data.data.info.current_time;
+            var endTime = data.data.info.end_time;
+            var time_distance = (endTime - startTime);
+
+            function time(time_distance) {
+              var int_day = Math.floor(time_distance / 86400000);
+              time_distance -= int_day * 86400000;
+              // 时
+              var int_hour = Math.floor(time_distance / 3600000)
+              time_distance -= int_hour * 3600000;
+              // 分
+              var int_minute = Math.floor(time_distance / 60000)
+              time_distance -= int_minute * 60000;
+              // 秒
+              var int_second = Math.floor(time_distance / 1000)
+              // 时分秒为单数时、前面加零
+              if (int_day < 10) {
+                int_day = "0" + int_day;
+              }
+              if (int_hour < 10) {
+                int_hour = "0" + int_hour;
+              }
+              if (int_minute < 10) {
+                int_minute = "0" + int_minute;
+              }
+              if (int_second < 10) {
+                int_second = "0" + int_second;
+              }
+              that.setData({
+                hour: int_hour,
+                minute: int_minute,
+                second: int_second,
+              })
+              if (int_hour == '00' && int_minute == '00' && int_second == '00') {
+                that.mrms();
+              }
+            }
+
+
+            clearInterval(setInterTimer);
+            setInterTimer = setInterval(function () {
+              time_distance -= 1000;
+              time(time_distance);
+            }, 1000)
+          }
+
+
+        } else {
+          wx.showLoading({
+            title: '网络连接失败！',
+          })
+          var timer = setTimeout(function () {
+            wx.hideLoading();
+            clearTimeout(timer);
+          }, 2000)
+        }
+      }
+    })
+    /*request.request(shopusr, {},'post').then(function (data) {
       if(data.code == 200){
         // console.log(data);
         if (data.data == null) {
@@ -361,13 +442,44 @@ Page({
           clearTimeout(timer);
         }, 2000)
       }
-    })
+    }) */
   },
   onHide: function() {
     app.globalData.store = 0
   },
   onLoad: function(options) {
     //  console.log(options)
+    //第三方跳转过来的小程序 app.globalData.source
+    if (app.globalData.source != '') {
+      wx.request({
+        url: app.globalData.Murl + '/Applets/Index/xcx_cou',
+        method: 'post',
+        data: {
+          member_id: wx.getStorageSync("userinfo").uid
+        },
+        success: function (res) {
+          console.log(res)
+
+          wx.showToast({
+            title: res.data.msg,
+            duration: 2500,
+            success: function () {
+              if (res.data.status == 1) {
+                wx.switchTab({
+                  url: '/pages/my/my'
+                })
+              } else {
+                return;
+              }
+            }
+          })
+        }
+      })
+    }
+    console.log('onload', options);
+    if(options.source){
+      app.globalData.source = options.source;
+    }
     var pid = options.pid;
     if (pid) {
       wx.setStorageSync("pid", pid);
@@ -728,7 +840,11 @@ Page({
       }
     })
   },
-  onShow: function() {
+  onShow: function(e) {
+
+    
+
+
     this.setData({
       dailySpikeIndex: 0
     })
@@ -862,6 +978,22 @@ Page({
       member_id: uid,
       seller_id: 1,
     }
+    wx.request({
+      //用户登陆URL地址，请根据自已项目修改
+      url: app.globalData.Murl + '/Applets/Cart/ajaxCartList',
+      method: "POST",
+      data: {
+        member_id: uid,
+        seller_id: 1,
+      },
+      success: function (res) {
+        console.log("获取购物车列表", res)
+        _this.setData({
+          cartList: res.data.cartList
+        })
+      }
+    })
+  /*
     let req = request.request("/Applets/Cart/ajaxCartList", data);
     req.then(
       function (res) {
@@ -871,6 +1003,7 @@ Page({
         })
       }
     )
+  */
   },
   onShareAppMessage: function() {
     var userinfo = wx.getStorageSync("userinfo");
