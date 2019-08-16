@@ -1,0 +1,93 @@
+/* pages/midautumn/midautumn.wxss */
+.midautumn{
+  background: #051A49;
+  padding-bottom: 60rpx;
+}
+.header{
+    width: 100%;
+}
+.header image{
+    width: 100%;
+    height: 968rpx;
+}
+.mooncake-title{
+    text-align: center;
+    height: 178rpx;
+}
+.mooncake-title image{
+    width: 643rpx;
+    height: 178rpx;
+}
+.mooncake-con{
+    width: 574rpx;
+    /* height: 4500rpx; */
+    margin: 0 auto;
+    padding: 45rpx 16rpx;
+    /* margin-bottom: 60rpx; */
+    background: url("https://m.7710mall.com/Public/xcximg/ing/bg_up.png") no-repeat 0 0/606rpx 177rpx padding-box,
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_mid.png") no-repeat 0 177rpx/606rpx 3300rpx padding-box,
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_down.png") no-repeat 0 3476rpx/606rpx 200rpx padding-box;
+}
+.interdot{
+    width:528rpx;
+    height:2rpx;
+    /* background:rgba(5,26,73,1); */
+    border-bottom:2rpx dotted rgba(255,255,255,1);
+    display: block;
+    margin: 25rpx auto;
+}
+.mooncake-con .moom-image1{
+    width: 549rpx;
+    height: 222rpx;
+}
+.mooncake-con .moom-image2{
+    width: 574rpx;
+    height: 250rpx;
+}
+.mooncake-con .moom-image3{
+    width: 549rpx;
+    height: 214rpx;
+}
+.mooncake-con .moom-image4{
+    width: 574rpx;
+    height: 258rpx;
+}
+.mooncake-con .moom-image5{
+    width: 548rpx;
+    height: 249rpx;
+}
+.mooncake-con .moom-image6{
+    width: 541rpx;
+    height: 223rpx;
+}
+.mooncake-con .moom-image7{
+    width: 552rpx;
+    height: 255rpx;
+}
+.mooncake-con .moom-image8{
+    width: 541rpx;
+    height: 251rpx;
+    padding-left: 0.33rpx;
+}
+.mooncake-con .moom-image9{
+    width: 552rpx;
+    height: 249rpx;
+}
+.mooncake-con .moom-image10{
+    width: 541rpx;
+    height: 251rpx;
+    padding-left: 33rpx;
+}
+.mooncake-con .moom-image11{
+    width: 568rpx;
+    height: 249rpx;
+}
+.mooncake-con .moom-image12{
+    width: 541rpx;
+    height: 251rpx;
+    padding-left: 33rpx;
+}
+.mooncake-con .moom-image13{
+    width: 550rpx;
+    height: 249rpx;
+}

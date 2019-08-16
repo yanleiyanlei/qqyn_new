@@ -1,0 +1,38 @@
+<!--pages/midautumn/midautumn.wxml-->
+<view class='midautumn'>
+  <view class="header">
+        <image src='https://m.7710mall.com/Public/xcximg/ing/header.png'></image>
+    </view>
+    <view class="mooncake">
+        <view class="mooncake-title">
+          <image src='https://m.7710mall.com/Public/xcximg/ing/container_title.png'></image>
+        </view>
+        <view class="mooncake-con">
+            <image bindtap='onImgTap' data-id='1385' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_1.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1386' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_2.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1387' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_3.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1388' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_4.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1389' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_5.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1390' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_6.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1391' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_7.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1392' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_8.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1396' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_9.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1263' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_10.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1393' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_11.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1394' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_12.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1395' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_13.png" alt=""></image>
+        </view>
+    </view>
+</view>

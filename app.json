@@ -78,7 +78,8 @@
     "pages/new-exclusive/new-exclusive",
     "pages/special2/special2",
     "pages/join/join",
-    "pages/Ingredients/Ingredients"
+    "pages/Ingredients/Ingredients",
+    "pages/midautumn/midautumn"
   ],
   "window": {
     "backgroundTextStyle": "light",

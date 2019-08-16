@@ -12,5 +12,6 @@
     开通权限
   </view> -->
     <button open-type='getUserInfo' bindgetuserinfo='UserInfo' class="open">微信授权</button>
+    <button class="cancel" bindtap="cancel">取消</button>
   </view>
 </template>
