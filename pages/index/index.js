@@ -77,21 +77,38 @@ Page({
   //跳转连接
   goUrl:function(e){
     console.log(e)
-    var url = e.currentTarget.dataset.url;
-    let splitUrl = url.split('/');
-    console.log(splitUrl)
-    let len = splitUrl.length;
-    if (splitUrl[len-2] == 'classify'){
-      var idArr = url.split('?');
-      app.globalData.tabBarId = idArr[1].split('=')[1];
-      wx.switchTab({
-        url: '/pages/classify/classify'
+    let index = e.currentTarget.dataset.index;
+    console.log()
+    if (index == this.data.bannerCon.length - 1){
+      //console.log(1111111111111);
+      
+      wx.navigateToMiniProgram({
+        appId: 'wxc23d0a231b36d62d',
+        path: 'pages/goods/detail?id=56060360149&recommendType=-1',
+        envVersion: 'release',
+        success(res) {
+          // 打开成功
+          console.log(res)
+        }
       })
     }else{
-      wx.navigateTo({
-        url:url
-      })
+      var url = e.currentTarget.dataset.url;
+      let splitUrl = url.split('/');
+      console.log(splitUrl)
+      let len = splitUrl.length;
+      if (splitUrl[len - 2] == 'classify') {
+        var idArr = url.split('?');
+        app.globalData.tabBarId = idArr[1].split('=')[1];
+        wx.switchTab({
+          url: '/pages/classify/classify'
+        })
+      } else {
+        wx.navigateTo({
+          url: url
+        })
+      }
     }
+    
   },
   intervalChange:function(e){
     console.log(e.detail.current);

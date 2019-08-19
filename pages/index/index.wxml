@@ -41,7 +41,7 @@
 
     <block wx:for="{{bannerCon}}" wx:key="unique">
       <swiper-item data-index="{{index}}">
-        <view class='goUrl' bindtap='goUrl' data-url="{{item.xcx_url}}" hover-class='Nhover'>
+        <view class='goUrl' data-index="{{index}}" bindtap='goUrl' data-url="{{item.xcx_url}}" hover-class='Nhover'>
           <view class='imgTextBox'>
             <image src='{{item.ad_img}}'></image>
             <text>{{item.ad_name}}</text>

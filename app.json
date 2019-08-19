@@ -81,6 +81,9 @@
     "pages/Ingredients/Ingredients",
     "pages/midautumn/midautumn"
   ],
+  "navigateToMiniProgramAppIdList": [
+    "wxc23d0a231b36d62d"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
