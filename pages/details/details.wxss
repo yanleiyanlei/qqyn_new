@@ -242,6 +242,7 @@ swiper{
 }
 .introduce .content image{
   width: 100%;
+  display: block;
 }
 .recommend{
   padding-bottom: 150rpx;
