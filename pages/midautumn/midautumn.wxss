@@ -21,12 +21,32 @@
 .mooncake-con{
     width: 574rpx;
     /* height: 4500rpx; */
-    margin: 0 auto;
+    margin: 0 auto 20rpx;
     padding: 45rpx 16rpx;
     /* margin-bottom: 60rpx; */
     background: url("https://m.7710mall.com/Public/xcximg/ing/bg_up.png") no-repeat 0 0/606rpx 177rpx padding-box,
-            url("https://m.7710mall.com/Public/xcximg/ing/bg_mid.png") no-repeat 0 177rpx/606rpx 3300rpx padding-box,
-            url("https://m.7710mall.com/Public/xcximg/ing/bg_down.png") no-repeat 0 3476rpx/606rpx 200rpx padding-box;
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_mid.png") no-repeat 0 177rpx/606rpx 3600rpx padding-box,
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_down.png") no-repeat 0 3776rpx/606rpx 200rpx padding-box;
+}
+.container-dazhaxie{
+    width: 574rpx;
+    /* height: 4500rpx; */
+    margin: 0 auto 20rpx;
+    padding: 45rpx 16rpx;
+    /* margin-bottom: 60rpx; */
+    background: url("https://m.7710mall.com/Public/xcximg/ing/bg_up.png") no-repeat 0 0/606rpx 177rpx padding-box,
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_mid.png") no-repeat 0 177rpx/606rpx 280rpx padding-box,
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_down.png") no-repeat 0 456rpx/606rpx 200rpx padding-box;
+}
+.container-meiguijiu{
+    width: 574rpx;
+    /* height: 4500rpx; */
+    margin: 0 auto 20rpx;
+    padding: 45rpx 16rpx;
+    /* margin-bottom: 60rpx; */
+    background: url("https://m.7710mall.com/Public/xcximg/ing/bg_up.png") no-repeat 0 0/606rpx 177rpx padding-box,
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_mid.png") no-repeat 0 177rpx/606rpx 280rpx padding-box,
+            url("https://m.7710mall.com/Public/xcximg/ing/bg_down.png") no-repeat 0 456rpx/606rpx 200rpx padding-box;
 }
 .interdot{
     width:528rpx;
@@ -89,5 +109,23 @@
 }
 .mooncake-con .moom-image13{
     width: 550rpx;
+    height: 249rpx;
+}
+.container-dazhaxie .moom-image14{
+    width: 541rpx;
+    height: 260rpx;
+    padding-left: 33rpx;
+}
+.container-dazhaxie .moom-image15{
+    width: 578rpx;
+    height: 249rpx;
+}
+.container-meiguijiu .moom-image16{
+    width: 541rpx;
+    height: 251rpx;
+    padding-left: 33rpx;
+}
+.container-meiguijiu .moom-image17{
+    width: 549rpx;
     height: 249rpx;
 }
