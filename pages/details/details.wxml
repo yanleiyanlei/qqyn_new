@@ -47,6 +47,16 @@
         <!-- <text class="newsshop" wx:if="{{datas.new_goods==1}}">新品上市</text>
         <text class="newsshop" wx:else></text> -->
       </view>
+
+        <view class="price">
+        <view class='salesleft'>
+          <text> 规格：</text> 
+          <text>{{priCes[0].spec_name}}</text>
+        </view>
+
+
+
+      </view>
       <!-- <view class="share">
         <view>
           <image src='/image/new/icon_share.png'></image>
