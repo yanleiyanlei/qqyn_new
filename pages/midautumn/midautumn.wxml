@@ -10,29 +10,45 @@
         <view class="mooncake-con">
             <image bindtap='onImgTap' data-id='1385' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_1.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1386' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_2.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1386' class="moom-image2" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_2.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1387' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_3.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1387' class="moom-image3" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_3.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1388' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_4.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1388' class="moom-image4" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_4.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1389' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_5.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1389' class="moom-image5" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_5.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1390' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_6.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1390' class="moom-image6" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_6.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1391' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_7.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1391' class="moom-image7" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_7.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1392' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_8.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1392' class="moom-image8" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_8.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1396' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_9.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1396' class="moom-image9" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_9.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1263' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_10.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1263' class="moom-image10" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_10.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1393' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_11.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1393' class="moom-image11" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_11.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1394' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_12.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1394' class="moom-image12" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_12.png" alt=""></image>
             <view class="interdot"></view>
-            <image bindtap='onImgTap' data-id='1395' class="moom-image1" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_13.png" alt=""></image>
+            <image bindtap='onImgTap' data-id='1395' class="moom-image13" src="https://m.7710mall.com/Public/xcximg/ing/moonCake_13.png" alt=""></image>
+        </view>
+        <view class="mooncake-title">
+            <image src='https://m.7710mall.com/Public/xcximg/ing/dazhaxie_title.png'></image>
+        </view>
+        <view class="container-dazhaxie">
+            <image bindtap='onImgTap' data-id='1381' class="moom-image14" src="https://m.7710mall.com/Public/xcximg/ing/dazhaxie_1.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1383' class="moom-image15" src="https://m.7710mall.com/Public/xcximg/ing/dazhaxie_2.png" alt=""></image>
+        </view>
+        <view class="mooncake-title">
+            <image src='https://m.7710mall.com/Public/xcximg/ing/meiguijiu_title.png'></image>
+        </view>
+        <view class="container-meiguijiu">
+            <image bindtap='onImgTap' data-id='1332' class="moom-image16" src="https://m.7710mall.com/Public/xcximg/ing/meiguijiu_1.png" alt=""></image>
+            <view class="interdot"></view>
+            <image bindtap='onImgTap' data-id='1336' class="moom-image17" src="https://m.7710mall.com/Public/xcximg/ing/meiguijiu_2.png" alt=""></image>
         </view>
     </view>
 </view>
