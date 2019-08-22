@@ -32,7 +32,8 @@ Page({
       '../../image/new/icon-fresh.png',
       '../../image/new/icon-hot-active.png',
       '../../image/new/icon-fresh-active.png'
-    ]
+    ],
+    mshow:'display:none'
   },
   //检测从首页icon二级跳转过来
   // getClassifyId: function () {
@@ -226,6 +227,12 @@ Page({
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
+    })
+  },
+  //用户拒绝获取权限
+  close: function () {
+    this.setData({
+      mshow: "display:none"
     })
   },
   // 添加购物车=================

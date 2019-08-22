@@ -182,6 +182,9 @@ Page({
         mshow: "display:none",
         isPhone: true
       })
+      if (!app.globalData.isPhone) {
+        wx.hideTabBar({});
+      }
     } else if (obj.data.status == 0){
       app.globalData.isPhone = true;
       that.setData({
@@ -290,6 +293,12 @@ Page({
       })
     }
 
+  },
+  //用户拒绝获取权限
+  close: function () {
+    this.setData({
+      mshow: "display:none"
+    })
   },
   // 商品跳转详情================
   goodsDetails: function(e) {
@@ -898,15 +907,15 @@ Page({
       })
     }
     var uid = wx.getStorageSync("userinfo").uid;
-    if (!uid) {
-      that.setData({
-        mshow: "display:block"
-      })
-    } else {
-      that.setData({
-        mshow: "display:none"
-      })
-    }
+    // if (!uid) {
+    //   that.setData({
+    //     mshow: "display:block"
+    //   })
+    // } else {
+    //   that.setData({
+    //     mshow: "display:none"
+    //   })
+    // }
     
     //今日推荐商品=======================================
     wx.request({
@@ -938,10 +947,9 @@ Page({
 
     // 获取购物车列表
     this.getCartList();
-    if (!app.globalData.isPhone){
-      wx.hideTabBar({});
-      //this.hasPhone();
-    }
+    // if (!app.globalData.isPhone){
+    //   wx.hideTabBar({});
+    // }
     this.hasPhone();
   },
   //判断是否注册手机号了

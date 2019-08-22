@@ -1,7 +1,7 @@
 <import src="/lib/template/userInfo2.wxml" />
 <import src="/lib/template/phone.wxml" />
-<template is="user2" data="{{mshow}}">
-</template>
+<!-- <template is="user2" data="{{mshow}}">
+</template> -->
 <template is="phone" data="{{isPhone}}">
 </template>
 
@@ -274,3 +274,14 @@
   <text>没有更多啦</text>
   <view></view>
 </view>
+<!--获取用户的权限 -->
+  <view class="mask" style="{{mshow}}"></view>
+  <view class="userInfo" style="{{mshow}}">
+    <view class="tt">"青青优农"要获得你的公开信息（昵称，头像等）</view>
+    <view class="op">
+      <view>
+        <button open-type='getUserInfo' bindgetuserinfo='UserInfo'>允许</button>
+      </view>
+      <view bindtap='close'>拒绝</view>
+    </view>
+  </view>

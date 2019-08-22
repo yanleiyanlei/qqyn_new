@@ -63,7 +63,7 @@ Component({
       let city = wx.getStorageSync("locationcity");
       console.log("添加购物车-spec_key", spec_key)
       if (!uid) {
-        this.triggerEvent('cartTap', uid);
+        this.triggerEvent('cartTap', '1');
       } else if (spec_key == null){
         wx.showToast({
           title: "添加商品失败！",
