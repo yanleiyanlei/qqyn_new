@@ -351,12 +351,12 @@ Page({
       that.setData({
         isPhone: true
       })
-    } else {
-      wx.showTabBar({
-        success: function () {
-          return
-        }
+    } else if (obj.data.status == 0) {
+      app.globalData.isPhone = true;
+      that.setData({
+        isPhone: false
       })
+      wx.showTabBar({});
     }
   },
   //事件处理函数

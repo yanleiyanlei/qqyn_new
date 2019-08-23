@@ -1,7 +1,7 @@
 <!--pages/classifyGoods/classifyGoods.wxml-->
 <!--二级分类 页面 -->
-<import src="/lib/template/userInfo2.wxml" />
-<template is="user2" data="{{mshow}}"></template>
+<!-- <import src="/lib/template/userInfo2.wxml" /> -->
+<!-- <template is="user2" data="{{mshow}}"></template> -->
 
 <view class='fixedHeader'>
   <!-- 搜索 -->
@@ -38,6 +38,18 @@
 </view>
 <view class='main'>
   <block wx:for="{{goods}}" wx:key="goodsKey">
-    <goods-item class="goodsItem" dataObj="{{item}}" cartlist='{{cartList}}'></goods-item>
+    <goods-item class="goodsItem" dataObj="{{item}}" bind:cartTap="cartTap" cartlist='{{cartList}}'></goods-item>
   </block>
 </view>
+
+<!--获取用户的权限 -->
+  <view class="mask" style="{{mshow}}"></view>
+  <view class="userInfo" style="{{mshow}}">
+    <view class="tt">"青青优农"要获得你的公开信息（昵称，头像等）</view>
+    <view class="op">
+      <view>
+        <button open-type='getUserInfo' bindgetuserinfo='UserInfo'>允许</button>
+      </view>
+      <view bindtap='close'>拒绝</view>
+    </view>
+  </view>

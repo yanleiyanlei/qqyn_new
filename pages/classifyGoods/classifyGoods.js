@@ -61,6 +61,14 @@ Page({
     })
     user.user(e);
   },
+  cartTap:function(e){
+    console.log('123',e)
+    if(e.detail == '1'){
+      this.setData({
+        mshow: "display:block"
+      })
+    }
+  },
   /** 点击分类 */
   clickClassfy: function(e) {
     console.log(e.target.dataset.id, e.target.dataset.index);
