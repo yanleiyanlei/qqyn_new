@@ -492,7 +492,6 @@ Page({
         location: location
       })
       var uid = wx.getStorageSync("userinfo").uid; //获取用户uid
-      var uid = _that.data.uid;
       console.log(uid);
       const shopusr = app.globalData.Murl + "/Applets/Cart/ajaxCartList"; //获取购物车数据
       wx.request({
