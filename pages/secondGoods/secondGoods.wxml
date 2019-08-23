@@ -1,7 +1,7 @@
 <!--pages/secondGoods/secondGoods.wxml-->
 <import src="/lib/template/userInfo2.wxml" />
-<template is="user2" data="{{mshow}}">
-</template>
+<!-- <template is="user2" data="{{mshow}}">
+</template> -->
 <!-- 搜索 -->
 <view class='search'>
   <navigator url='../laAdd/laAdd' class='addloc'>
@@ -45,5 +45,16 @@
         <view bindtap='cancel'>取消筛选</view>
         <view bindtap='confirm'>确定</view>
       </view>
+    </view>
+  </view>
+  <!--获取用户的权限 -->
+  <view class="mask" style="{{mshow}}"></view>
+  <view class="userInfo" style="{{mshow}}">
+    <view class="tt">"青青优农"要获得你的公开信息（昵称，头像等）</view>
+    <view class="op">
+      <view>
+        <button open-type='getUserInfo' bindgetuserinfo='UserInfo'>允许</button>
+      </view>
+      <view bindtap='close'>拒绝</view>
     </view>
   </view>
