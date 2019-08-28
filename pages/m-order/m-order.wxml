@@ -1,28 +1,22 @@
 <!-- 个人中心，订单页面 -->
 
 <!-- 优惠券 -->
-<view class="mask" style="{{tt}}"></view>
+<!-- <view class="mask" style="{{tt}}"></view>
 <view class="success" style="{{tt}}">
-  <image class="close" bindtap='close' src="https://m.7710mall.com/Uploads/xxc//close.png"></image>
-  <view class="success-con">
-    <image class="success-img" src="https://m.7710mall.com/Uploads/xxc//hd_fx.png">
-    </image>
-    <!-- <block wx:for="{{pop_msg}}">
-      <view class="one">{{item}}</view>
-    </block> -->
-      <view class="one">{{tip}}</view> 
-    <!-- <view class="one">11111</view> -->
-    <view class="two">有效期至：{{end}}</view>
-  </view>
-  <view class="op-box">
-    <navigator url="/pages/index/index" open-type='switchTab' hover-class='Nhover'>
-      <view class="use">立即使用</view>
-    </navigator>
-  
-  </view>
-  <image src="https://m.7710mall.com/Uploads/xxc//m-fsuccess.png" class="bg">
-  </image>
-</view>
+        <image class="close" bindtap='close' src="https://m.7710mall.com/Uploads/xxc//close.png"></image>
+        <view class="success-con">
+                <image class="success-img" src="https://m.7710mall.com/Uploads/xxc//hd_fx.png"></image>
+                 <view class="one">{{tip}}</view> 
+                <view class="two">有效期至：{{end}}</view>
+        </view>
+        <view class="op-box">
+            <navigator url="/pages/index/index" open-type='switchTab' hover-class='Nhover'>
+                <view class="use">立即使用</view>
+            </navigator>
+        
+        </view>
+        <image src="https://m.7710mall.com/Uploads/xxc//m-fsuccess.png" class="bg"></image>
+</view> -->
 <!-- 分享 -->
 <view class='share' wx:if="{{showShare}}">
   <image src="http://m.77farmers.com/Public/xcximg/newyear/xcxShare.png"></image>
